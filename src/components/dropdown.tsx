@@ -54,7 +54,7 @@ export function Dropdown({
         </div>
       </button>
       {open ? (
-        <div className="scrollbar-y @container absolute top-46 z-30 w-full rounded-8 bg-grey-28 p-8">
+        <div className="scrollbar-y @container absolute top-46 z-30 w-full animate-open-y rounded-8 bg-grey-28 p-8">
           <div className="grid max-h-[300px] w-full grid-cols-1 gap-6 overflow-y-scroll pt-3">
             {options.map((o) => (
               <div key={o.id} className="@lg/page:w-auto group grid h-36 w-full grid-cols-1 overflow-hidden rounded-5 bg-grey-28">

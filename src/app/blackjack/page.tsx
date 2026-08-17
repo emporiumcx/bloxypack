@@ -5,7 +5,8 @@ import { BetField } from "@/components/bet-field";
 import { GameShell } from "@/components/game-shell";
 import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
-import { useStore } from "@/components/providers";
+import { useStore, useBalanceHold } from "@/components/providers";
+import type { BjCard } from "@/lib/backend";
 
 const SUITS = [
   { mark: "♠", red: false },
@@ -17,11 +18,20 @@ const RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
 type Card = { rank: string; suit: (typeof SUITS)[number] };
 
-function draw(): Card {
-  return {
-    rank: RANKS[Math.floor(Math.random() * RANKS.length)],
-    suit: SUITS[Math.floor(Math.random() * SUITS.length)],
-  };
+const SUIT_MAP: Record<string, (typeof SUITS)[number]> = {
+  heart: SUITS[1],
+  diamond: SUITS[2],
+  spade: SUITS[0],
+  club: SUITS[3],
+};
+
+function fromServer(cards: BjCard[]): Card[] {
+  return cards
+    .filter((c) => !c.hidden && c.rank)
+    .map((c) => ({
+      rank: c.rank,
+      suit: SUIT_MAP[c.suit || "spade"] ?? SUITS[0],
+    }));
 }
 
 function total(cards: Card[]) {
@@ -43,19 +53,19 @@ function total(cards: Card[]) {
 
 function PlayingCard({ card, hidden, offset, deal, flip }: { card?: Card; hidden?: boolean; offset: number; deal?: boolean; flip?: boolean }) {
   return (
-    <div className="absolute top-0" style={{ width: 56, height: 78, left: offset, marginTop: offset ? -2 : 0 }}>
+    <div className="absolute top-0" style={{ width: 72, height: 100, left: offset, marginTop: offset ? -3 : 0 }}>
       <div
-        className={`h-full w-full overflow-hidden rounded-[6px] border-1 border-black/20 bg-white shadow-[0_8px_18px_rgba(0,0,0,0.35)] ${
+        className={`h-full w-full overflow-hidden rounded-[8px] border-1 border-black/20 bg-white shadow-[0_10px_22px_rgba(0,0,0,0.4)] ${
           deal ? "animate-card-deal" : ""
         } ${flip ? "animate-card-flip" : ""}`}
       >
       {hidden || !card ? (
         <div className="h-full w-full bg-[repeating-linear-gradient(135deg,#0d1013_0_8px,#1e2228_8px_16px)]" />
       ) : (
-        <div className={`flex h-full flex-col p-6 ${card.suit.red ? "text-red" : "text-grey-28"}`}>
-          <p className="text-14 leading-none">{card.rank}</p>
-          <p className="mt-2 text-18 leading-none">{card.suit.mark}</p>
-          <p className="mt-auto self-end rotate-180 text-14 leading-none">{card.rank}</p>
+        <div className={`flex h-full flex-col p-8 ${card.suit.red ? "text-red" : "text-grey-28"}`}>
+          <p className="text-16 leading-none">{card.rank}</p>
+          <p className="mt-4 text-22 leading-none">{card.suit.mark}</p>
+          <p className="mt-auto self-end rotate-180 text-16 leading-none">{card.rank}</p>
         </div>
       )}
       </div>
@@ -74,16 +84,16 @@ function Hand({
   score?: number;
   dealFrom?: number;
 }) {
-  const width = Math.max(56, 56 + Math.max(0, cards.length - 1) * 28);
+  const width = Math.max(72, 72 + Math.max(0, cards.length - 1) * 36);
   return (
     <div className="@lg/page:py-40 relative flex justify-center py-20">
-      <div className="relative" style={{ width, height: 78 }}>
+      <div className="relative" style={{ width, height: 100 }}>
         {cards.map((c, i) => (
           <PlayingCard
             key={`${c.rank}${c.suit.mark}${i}`}
             card={c}
             hidden={hideHole && i === 1}
-            offset={i * 28}
+            offset={i * 36}
             deal={dealFrom != null && i >= dealFrom}
             flip={!hideHole && i === 1}
           />
@@ -102,7 +112,8 @@ function Hand({
 }
 
 export default function BlackjackPage() {
-  const { user, spend, addBalance, openModal } = useStore();
+  const { user, openModal, applyUser, blackjackStart, blackjackHit, blackjackStand, blackjackDouble, addBalance } = useStore();
+  const { begin: holdBalance, end: revealBalance } = useBalanceHold();
   const [bet, setBet] = useState(10);
   const [player, setPlayer] = useState<Card[]>([]);
   const [dealer, setDealer] = useState<Card[]>([]);
@@ -117,67 +128,92 @@ export default function BlackjackPage() {
 
   async function deal() {
     if (!user) return openModal("login");
-    if (!spend(bet)) return openModal("deposit");
+    if (user.balance < bet) return openModal("deposit");
     setDealing(true);
     setLive(false);
     setPlayer([]);
     setDealer([]);
     dealFromPlayer.current = 0;
     dealFromDealer.current = 0;
-    const p1 = draw();
-    const d1 = draw();
-    const p2 = draw();
-    const d2 = draw();
-    await wait(80);
-    setDealer([d1]);
-    await wait(180);
-    setPlayer([p1]);
-    await wait(180);
-    setDealer([d1, d2]);
-    await wait(180);
-    setPlayer([p1, p2]);
-    setDealing(false);
-    setLive(true);
-    if (total([p1, p2]) === 21) finish([p1, p2], [d1, d2], true);
-  }
-
-  function finish(p = player, d = dealer, instant = false) {
-    let dealerCards = [...d];
-    if (!instant) {
-      while (total(dealerCards) < 17) dealerCards.push(draw());
+    try {
+      holdBalance();
+      const res = await blackjackStart(bet);
+      addBalance(-bet);
+      applyUser(res.user);
+      const p = fromServer(res.game.player);
+      const d = fromServer(res.game.dealer);
+      await wait(120);
+      setDealer(d.slice(0, 1));
+      await wait(220);
+      setPlayer(p.slice(0, 1));
+      await wait(220);
+      setDealer(d.length > 1 ? d.slice(0, 2) : d);
+      await wait(220);
+      setPlayer(p);
+      setDealing(false);
+      setLive(res.game.state === "live");
+      if (res.game.state === "completed") setDealer(fromServer(res.game.dealer));
+      revealBalance();
+    } catch (err) {
+      setDealing(false);
+      revealBalance();
+      alert(err instanceof Error ? err.message : "Could not start blackjack.");
     }
-    setDealer(dealerCards);
-    const pt = total(p);
-    const dt = total(dealerCards);
-    let payout = 0;
-    if (pt > 21) payout = 0;
-    else if (pt === 21 && p.length === 2 && dt !== 21) payout = Math.round(bet * 2.5);
-    else if (dt > 21 || pt > dt) payout = bet * 2;
-    else if (pt === dt) payout = bet;
-    if (payout) addBalance(payout);
-    setLive(false);
   }
 
-  function hit() {
+  async function hit() {
     if (!live || dealing) return;
     dealFromPlayer.current = player.length;
-    const next = [...player, draw()];
-    setPlayer(next);
-    if (total(next) >= 21) finish(next, dealer);
+    try {
+      holdBalance();
+      const res = await blackjackHit();
+      applyUser(res.user);
+      setPlayer(fromServer(res.game.player));
+      if (res.game.state === "completed") {
+        setDealer(fromServer(res.game.dealer));
+        setLive(false);
+        await wait(280);
+      }
+      revealBalance();
+    } catch (err) {
+      revealBalance();
+      alert(err instanceof Error ? err.message : "Hit failed.");
+    }
   }
 
-  function stand() {
+  async function stand() {
     if (!live) return;
-    finish();
+    try {
+      holdBalance();
+      const res = await blackjackStand();
+      applyUser(res.user);
+      setPlayer(fromServer(res.game.player));
+      setDealer(fromServer(res.game.dealer));
+      setLive(false);
+      await wait(280);
+      revealBalance();
+    } catch (err) {
+      revealBalance();
+      alert(err instanceof Error ? err.message : "Stand failed.");
+    }
   }
 
-  function doubleDown() {
+  async function doubleDown() {
     if (!live || player.length !== 2) return;
-    if (!spend(bet)) return openModal("deposit");
-    setBet(bet * 2);
-    const next = [...player, draw()];
-    setPlayer(next);
-    finish(next, dealer);
+    try {
+      holdBalance();
+      addBalance(-bet);
+      const res = await blackjackDouble();
+      applyUser(res.user);
+      setPlayer(fromServer(res.game.player));
+      setDealer(fromServer(res.game.dealer));
+      setLive(false);
+      await wait(280);
+      revealBalance();
+    } catch (err) {
+      revealBalance();
+      alert(err instanceof Error ? err.message : "Double failed.");
+    }
   }
 
   const canAct = live && !dealing;

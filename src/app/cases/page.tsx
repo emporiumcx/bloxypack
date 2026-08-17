@@ -6,6 +6,7 @@ import { Bux } from "@/components/bux";
 import { ChoiceBar } from "@/components/bet-field";
 import { Dropdown } from "@/components/dropdown";
 import { Icons } from "@/components/icons";
+import { ItemBg } from "@/components/item-bg";
 import { CASES } from "@/lib/catalog";
 
 export default function CasesPage() {
@@ -77,6 +78,7 @@ export default function CasesPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100" />
             <div className="relative grid w-full grid-cols-1 gap-16">
               <div className="relative flex w-full pt-[81%]">
+                <ItemBg className="inset-[8%] opacity-40" />
                 <img
                   className="absolute inset-0 w-full scale-100 object-contain transition-transform duration-300 group-hover:rotate-[5deg] group-hover:scale-[1.1] group-active:rotate-[5deg] group-active:scale-[1.1]"
                   alt=""

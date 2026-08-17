@@ -4,8 +4,8 @@ import { useMemo, useState } from "react";
 import { Bux } from "./bux";
 import { ChoiceBar } from "./bet-field";
 import { Dropdown } from "./dropdown";
-import { GreenButton } from "./green-button";
 import { Icons } from "./icons";
+import { ItemBg } from "./item-bg";
 import { CASES, type CaseItem } from "@/lib/catalog";
 
 export function AddCaseModal({
@@ -15,83 +15,101 @@ export function AddCaseModal({
   onClose: () => void;
   onAdd: (item: CaseItem) => void;
 }) {
+  const [q, setQ] = useState("");
   const [risk, setRisk] = useState("all");
   const [sort, setSort] = useState("high");
 
   const list = useMemo(() => {
-    return CASES.filter((c) => (risk === "all" ? true : c.risk === risk)).sort((a, b) =>
-      sort === "high" ? b.price - a.price : a.price - b.price,
-    );
-  }, [risk, sort]);
+    return CASES.filter((c) => {
+      if (q && !c.name.toLowerCase().includes(q.toLowerCase())) return false;
+      if (risk !== "all" && c.risk !== risk) return false;
+      return true;
+    }).sort((a, b) => (sort === "high" ? b.price - a.price : a.price - b.price));
+  }, [q, risk, sort]);
 
   return (
-    <div className="fixed inset-0 z-50 flex w-full min-w-[330px] items-center overflow-hidden p-10 sm:p-20 md:p-24 lg:p-30">
-      <button type="button" aria-label="close overlay" className="absolute inset-0 bg-black/60" onClick={onClose} />
-      <div className="relative flex max-h-full w-full overflow-y-auto rounded-4 sm:rounded-4">
-        <div className="animate-open relative left-1/2 top-0 bottom-0 w-full max-w-[800px] -translate-x-1/2 xs:w-auto">
-          <div className="relative z-50 grid !max-w-full rounded-8 bg-grey-39 @sm/page:rounded-12">
-            <div className="bg-purple-46 relative flex h-full w-full flex-col overflow-y-auto rounded-8 @sm/page:h-auto @sm/page:rounded-12">
-              <div className="grid w-full grid-cols-1 gap-16 p-16 sm:gap-24 sm:p-24">
-                <div className="grid w-full grid-cols-1 items-center gap-10 @sm/page:grid-cols-[1fr_auto]">
-                  <ChoiceBar
-                    value={risk}
-                    onChange={setRisk}
-                    options={[
-                      { id: "all", label: "All" },
-                      { id: "high", label: "High Risk" },
-                      { id: "low", label: "Low Risk" },
-                    ]}
-                  />
-                  <Dropdown
-                    value={sort}
-                    onChange={setSort}
-                    prefix="Sort by:"
-                    tone="58"
-                    className="w-full @sm/page:w-[220px]"
-                    options={[
-                      { id: "high", label: "Price High-Low" },
-                      { id: "low", label: "Price Low-High" },
-                    ]}
-                  />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-12 sm:p-24">
+      <button type="button" aria-label="close overlay" className="animate-overlay-in absolute inset-0 bg-black/70" onClick={onClose} />
+      <div className="relative z-10 flex h-[min(860px,calc(100vh-48px))] w-full max-w-[1100px] animate-modal-in flex-col overflow-hidden rounded-12 bg-grey-34 shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
+        <div className="flex items-center justify-between border-b-1 border-grey-47 px-16 py-14 sm:px-24">
+          <div>
+            <p className="text-18 font-bold text-white sm:text-20">Add case</p>
+            <p className="mt-4 text-13 text-grey-142">{list.length} cases</p>
+          </div>
+          <button
+            type="button"
+            aria-label="close"
+            onClick={onClose}
+            className="flex h-36 w-36 items-center justify-center rounded-8 bg-grey-28 text-grey-142 hover:bg-grey-47 hover:text-white"
+          >
+            <Icons.close className="text-18" />
+          </button>
+        </div>
+
+        <div className="grid shrink-0 grid-cols-1 gap-10 border-b-1 border-grey-47 px-16 py-14 sm:grid-cols-[1fr_auto_auto] sm:items-center sm:px-24">
+          <div className="relative flex h-40 w-full items-center rounded-8 border-2 border-transparent bg-grey-28 px-12">
+            <Icons.search className="mr-2 text-20 text-grey-142" />
+            <input
+              autoComplete="off"
+              className="h-full w-full bg-transparent px-8 text-14 text-white outline-none placeholder:text-grey-112"
+              placeholder="Search by case name"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+            />
+          </div>
+          <ChoiceBar
+            value={risk}
+            onChange={setRisk}
+            options={[
+              { id: "all", label: "All" },
+              { id: "high", label: "High Risk" },
+              { id: "low", label: "Low Risk" },
+            ]}
+          />
+          <Dropdown
+            value={sort}
+            onChange={setSort}
+            prefix="Sort by:"
+            tone="58"
+            className="w-full sm:w-[220px]"
+            options={[
+              { id: "high", label: "Price High-Low" },
+              { id: "low", label: "Price Low-High" },
+            ]}
+          />
+        </div>
+
+        <div className="scrollbar-y min-h-0 flex-1 overflow-y-auto bg-grey-28 p-12 sm:p-16">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {list.map((item, i) => (
+              <button
+                key={item.slug}
+                type="button"
+                onClick={() => onAdd(item)}
+                className="group relative w-full overflow-hidden rounded-12 bg-grey-39 p-14 text-left transition-transform duration-300 hover:-translate-y-4 hover:bg-grey-47 hover:scale-[1.02] active:scale-[1.02] animate-show"
+                style={{ animationDelay: `${(i % 20) * 16}ms` }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-grey-39" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="relative grid w-full grid-cols-1 gap-10">
+                  <div className="relative flex w-full pt-[82%]">
+                    <ItemBg className="inset-[8%] opacity-40" />
+                    <img
+                      className="absolute inset-0 w-full object-contain transition-transform duration-300 group-hover:rotate-[5deg] group-hover:scale-[1.1]"
+                      alt=""
+                      src={item.image ?? `/cdn/cases/${item.imageId}.webp`}
+                    />
+                  </div>
+                  <p className="truncate text-center text-14 text-white">{item.name}</p>
+                  <div className="flex w-full justify-center">
+                    <Bux value={item.price} />
+                  </div>
+                  <div className="flex h-32 items-center justify-center rounded-6 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green text-13 text-grey-28">
+                    Add case
+                  </div>
                 </div>
-                <div className="scrollbar-y grid max-h-[408px] w-full grid-cols-2 gap-10 overflow-y-auto sm:grid-cols-3 md:grid-cols-4">
-                  {list.map((item, i) => (
-                    <div
-                      key={item.slug}
-                      className="@sm/page:rounded-12 group relative w-full overflow-hidden rounded-8 bg-grey-39 p-16 animate-show"
-                      style={{ animationDelay: `${(i % 16) * 20}ms` }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-grey-39" />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100" />
-                      <div className="relative grid w-full grid-cols-1 gap-12">
-                        <div className="relative flex w-full pt-[81%]">
-                          <img
-                            className="absolute inset-0 w-full scale-100 object-contain transition-transform duration-300 group-hover:rotate-[5deg] group-hover:scale-[1.1] group-active:rotate-[5deg] group-active:scale-[1.1]"
-                            alt=""
-                            src={item.image ?? `/cdn/cases/${item.imageId}.webp`}
-                          />
-                        </div>
-                        <p className="truncate text-center text-14 text-grey-190">{item.name}</p>
-                        <div className="flex w-full justify-center">
-                          <Bux value={item.price} />
-                        </div>
-                        <GreenButton size="sm" onClick={() => onAdd(item)}>
-                          Add case
-                        </GreenButton>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  aria-label="close"
-                  onClick={onClose}
-                  className="absolute right-16 top-16 flex h-32 w-32 items-center justify-center rounded-6 bg-grey-28 text-grey-142 hover:text-white"
-                >
-                  <Icons.close className="text-18" />
-                </button>
-              </div>
-            </div>
+              </button>
+            ))}
           </div>
         </div>
       </div>

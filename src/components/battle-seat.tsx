@@ -55,7 +55,7 @@ export function BattleSeat({
           <div className="absolute -bottom-0 -left-0">
             <div className="group/rank relative" style={{ width: 13.5, height: 15 }}>
               <img alt="" className="absolute left-1/2 top-0 max-w-none -translate-x-1/2" src={rank} style={{ height: 15 }} />
-              <div className="absolute top-1/2 z-10 hidden h-20 -translate-y-1/2 items-center rounded-4 bg-grey-190 px-6 group-hover/rank:flex -right-8 translate-x-[100%]">
+              <div className="absolute top-1/2 z-10 -right-8 flex h-20 -translate-y-1/2 translate-x-[100%] items-center rounded-4 bg-grey-190 px-6 opacity-0 scale-90 transition-all duration-150 group-hover/rank:opacity-100 group-hover/rank:scale-100">
                 <div className="absolute top-1/2 left-0 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-1 bg-grey-190" />
                 <p className="whitespace-nowrap text-12 text-grey-28">Level 89-998</p>
               </div>

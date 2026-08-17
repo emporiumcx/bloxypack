@@ -5,7 +5,8 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Bux } from "./bux";
 import { ChoiceBar } from "./bet-field";
 import { Icons } from "./icons";
-import { useStore } from "./providers";
+import { ItemBg } from "./item-bg";
+import { useStore, useBalanceHold } from "./providers";
 import { dropsForCase, pickDrop, type CaseDrop, type CaseItem, type DropColor } from "@/lib/catalog";
 
 const RARITY: Record<DropColor, string> = {
@@ -250,6 +251,7 @@ function SpinnerItem({
             won ? "@md/page:translate-y-[-16px] translate-y-[-10px] animate-float" : "translate-y-[-8px]"
           }`}
         >
+          <ItemBg className="inset-0 h-full w-full opacity-40" />
           <img
             alt=""
             className={`absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 object-contain opacity-100 ${
@@ -460,7 +462,7 @@ function DropCard({ d }: { d: CaseDrop }) {
               className="absolute left-1/4 top-1/4 h-1/2 w-1/2 rounded opacity-80 blur-[40px] transition-all group-hover:scale-110 group-active:scale-110"
               style={{ backgroundColor: color }}
             />
-            <img alt="" className="absolute inset-10 h-88 w-88 object-contain opacity-60" src="/img/icon.png" />
+            <ItemBg className="inset-10 h-88 w-88 opacity-55" />
             <img
               alt=""
               className="relative h-[108px] w-full object-contain transition-all group-hover:-translate-y-6 group-hover:scale-110 group-active:-translate-y-6 group-active:scale-110"
@@ -489,7 +491,8 @@ type RowState = {
 };
 
 export function CaseOpening({ item }: { item: CaseItem }) {
-  const { user, spend, addBalance, openModal } = useStore();
+  const { user, openModal, applyUser, unboxBet, addBalance } = useStore();
+  const { begin: holdBalance, end: revealBalance } = useBalanceHold();
   const [qty, setQty] = useState("1");
   const [sound, setSound] = useState(true);
   const [fast, setFast] = useState(false);
@@ -521,6 +524,7 @@ export function CaseOpening({ item }: { item: CaseItem }) {
     if (phase !== "spinning") return;
     const land = window.setTimeout(() => {
       setPhase("landed");
+      revealBalance();
       if (!sound) return;
       playSfx("/sounds/case_land_sweet.wav");
       const winners = rowsRef.current.map((r) => r.winner?.color);
@@ -532,7 +536,7 @@ export function CaseOpening({ item }: { item: CaseItem }) {
       }
     }, duration);
     return () => window.clearTimeout(land);
-  }, [phase, spinKey, duration, sound]);
+  }, [phase, spinKey, duration, sound, revealBalance]);
 
   useEffect(() => {
     if (phase !== "spinning" || !sound) return;
@@ -552,21 +556,44 @@ export function CaseOpening({ item }: { item: CaseItem }) {
     return () => cancelAnimationFrame(raf);
   }, [phase, spinKey, duration, sound]);
 
-  function open(demo: boolean) {
+  async function open(demo: boolean) {
     if (spinning) return;
     if (!demo && !user) return openModal("login");
-    if (!demo && !spend(cost)) return openModal("deposit");
+    if (!demo && user && user.balance < cost) return openModal("deposit");
     if (!drops.length) return;
 
     const next: RowState[] = [];
-    for (let i = 0; i < n; i++) {
-      const hit = pickDrop(drops);
-      if (hit && !demo) addBalance(hit.value);
-      next.push({
-        strip: buildStrip(drops, hit ?? undefined),
-        winIndex: WIN_INDEX,
-        winner: hit ?? null,
-      });
+    if (demo) {
+      for (let i = 0; i < n; i++) {
+        const hit = pickDrop(drops);
+        next.push({
+          strip: buildStrip(drops, hit ?? undefined),
+          winIndex: WIN_INDEX,
+          winner: hit ?? null,
+        });
+      }
+    } else {
+      holdBalance();
+      try {
+        const res = await unboxBet(item.slug, n);
+        addBalance(-cost);
+        applyUser(res.user);
+        for (const game of res.games) {
+          const hit =
+            drops.find((d) => d.id === game.item.dropId) ??
+            drops.find((d) => game.ticket >= d.minTicket && game.ticket <= d.maxTicket) ??
+            pickDrop(drops);
+          next.push({
+            strip: buildStrip(drops, hit ?? undefined),
+            winIndex: WIN_INDEX,
+            winner: hit ?? null,
+          });
+        }
+      } catch (err) {
+        revealBalance();
+        alert(err instanceof Error ? err.message : "Could not open case.");
+        return;
+      }
     }
     setRows(next);
     setSpinKey((k) => k + 1);

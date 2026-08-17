@@ -7,10 +7,11 @@ import { AutobetFields, FieldBox, FieldInput, GameShell, GameSidebar } from "@/c
 import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { BuxIcon } from "@/components/bux";
-import { useStore } from "@/components/providers";
+import { useStore, useBalanceHold } from "@/components/providers";
 
 export default function DicePage() {
-  const { user, spend, addBalance, openModal } = useStore();
+  const { user, openModal, applyUser, diceBet, addBalance } = useStore();
+  const { begin: holdBalance, end: revealBalance } = useBalanceHold();
   const [mode, setMode] = useState<"manual" | "auto">("manual");
   const [bet, setBet] = useState(10);
   const [rollUnder, setRollUnder] = useState(true);
@@ -36,25 +37,35 @@ export default function DicePage() {
     setChance(c);
   }
 
-  function play() {
+  async function play() {
     if (!user) return openModal("login");
-    if (!spend(bet)) return openModal("deposit");
+    if (user.balance < bet) return openModal("deposit");
     if (rollTimer.current) window.clearInterval(rollTimer.current);
     setRolling(true);
     setWin(null);
-    const roll = Math.random() * 100;
-    const hit = rollUnder ? roll < target : roll > target;
     rollTimer.current = window.setInterval(() => {
       setLast(Math.random() * 100);
-    }, 50);
-    window.setTimeout(() => {
+    }, 40);
+    try {
+      holdBalance();
+      const res = await diceBet(bet, target, !rollUnder);
+      addBalance(-bet);
+      applyUser(res.user);
+      window.setTimeout(() => {
+        if (rollTimer.current) window.clearInterval(rollTimer.current);
+        rollTimer.current = null;
+        setLast(res.game.roll / 100);
+        setWin(res.game.won);
+        setRolling(false);
+        revealBalance();
+      }, 1100);
+    } catch (err) {
       if (rollTimer.current) window.clearInterval(rollTimer.current);
       rollTimer.current = null;
-      setLast(roll);
-      setWin(hit);
-      if (hit) addBalance(profit);
       setRolling(false);
-    }, 900);
+      revealBalance();
+      alert(err instanceof Error ? err.message : "Roll failed.");
+    }
   }
 
   const slider = Math.round(target * 100);

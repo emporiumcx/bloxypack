@@ -8,7 +8,7 @@ import { GreenButton } from "@/components/green-button";
 import { useStore } from "@/components/providers";
 
 export default function MinesPage() {
-  const { user, spend, addBalance, openModal } = useStore();
+  const { user, openModal, applyUser, minesBet, minesReveal, minesCashout } = useStore();
   const [mode, setMode] = useState<"manual" | "auto">("manual");
   const [size, setSize] = useState("5");
   const [bet, setBet] = useState(10);
@@ -27,40 +27,55 @@ export default function MinesPage() {
     return Number((0.99 * (cells / (cells - mines)) ** safe).toFixed(2));
   }, [safe, mines, cells]);
 
-  function start() {
+  async function start() {
     if (!user) return openModal("login");
-    if (!spend(bet)) return openModal("deposit");
+    if (user.balance < bet) return openModal("deposit");
     setBooting(true);
-    const set = new Set<number>();
-    while (set.size < Math.min(mines, maxMines)) set.add(Math.floor(Math.random() * cells));
-    window.setTimeout(() => {
-      setMineSet(set);
+    try {
+      const res = await minesBet(bet, Math.min(mines, maxMines), n);
+      if (res.user) applyUser(res.user);
+      setMineSet(new Set());
       setRevealed([]);
       setBoom(null);
       setStarted(true);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Could not start mines.");
+    } finally {
       setBooting(false);
-    }, 420);
+    }
   }
 
-  function click(i: number) {
+  async function click(i: number) {
     if (!started || boom !== null || revealed.includes(i)) return;
-    if (mineSet.has(i)) {
-      setBoom(i);
-      setStarted(false);
-      return;
-    }
-    const next = [...revealed, i];
-    setRevealed(next);
-    if (next.length >= cells - mines) {
-      addBalance(Math.round(bet * (0.99 * (cells / (cells - mines)) ** next.length)));
-      setStarted(false);
+    try {
+      const res = await minesReveal(i);
+      if (res.user) applyUser(res.user);
+      const last = res.game.revealed[res.game.revealed.length - 1];
+      if (last?.value === "mine") {
+        setBoom(i);
+        setRevealed(res.game.revealed.map((r) => r.tile));
+        const minesFound = (res.game.deck || []).map((v, idx) => (v === "mine" ? idx : -1)).filter((v) => v >= 0);
+        setMineSet(new Set(minesFound));
+        setStarted(false);
+        return;
+      }
+      const tiles = res.game.revealed.map((r) => r.tile);
+      setRevealed(tiles);
+      if (res.game.state === "completed") setStarted(false);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Reveal failed.");
     }
   }
 
-  function cashout() {
+  async function cashout() {
     if (!started || !revealed.length) return;
-    addBalance(Math.round(bet * multi));
-    setStarted(false);
+    try {
+      const res = await minesCashout();
+      applyUser(res.user);
+      setStarted(false);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Cashout failed.");
+    }
   }
 
   const minePresets = ["1", "3", "5", "10", String(maxMines)];

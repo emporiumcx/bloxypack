@@ -7,7 +7,9 @@ import { Bux } from "@/components/bux";
 import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
+import { ItemBg } from "@/components/item-bg";
 import { TICKER } from "@/lib/catalog";
+import { rankIdFromLevel, xpProgress } from "@/lib/levels";
 
 const ORIGINALS = [
   { href: "/battles", label: "Battles", img: "/img/home/battles.webp", icon: Icons.battles, scale: 3.5 },
@@ -77,7 +79,7 @@ function tickerName(name: string) {
 
 export default function HomePage() {
   const { openModal, user } = useStore();
-  const xpPct = user ? Math.min(96, 40 + user.level * 2) : 0;
+  const xpPct = user ? xpProgress(user.xp) : 0;
   const scroller = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(true);
@@ -109,7 +111,7 @@ export default function HomePage() {
                 Welcome back, <span className="text-20 font-bold text-white">{user.username}</span>
               </p>
               <div className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-14">
-                <img alt="" src="/img/rank/7.svg" className="h-24" />
+                <img alt="" src={`/img/rank/${rankIdFromLevel(user.level)}.svg`} className="h-24" />
                 <div className="relative h-8 w-full rounded-full bg-grey-28">
                   <div className="absolute left-0 top-0 h-8 rounded-full bg-green" style={{ width: `${xpPct}%` }} />
                 </div>
@@ -131,7 +133,7 @@ export default function HomePage() {
                         className="absolute inset-10 scale-100 blur-[34px] transition-transform group-hover:scale-150 group-active:scale-150"
                         style={{ background: item.glow }}
                       />
-                      <img alt="" className="absolute inset-0 object-contain opacity-50" src="/img/icon.png" />
+                      <ItemBg className="inset-0 h-full w-full opacity-50" />
                       <img
                         alt=""
                         className="relative h-full w-full scale-100 object-contain transition-transform group-hover:-translate-y-2 group-hover:scale-125 group-active:-translate-y-2 group-active:scale-125"

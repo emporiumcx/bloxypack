@@ -3,6 +3,7 @@
 import { BattleSeat } from "@/components/battle-seat";
 import { GreenButton } from "@/components/green-button";
 import { useStore } from "@/components/providers";
+import { rankIdFromLevel, xpProgress } from "@/lib/levels";
 
 export default function ProfilePage() {
   const { user, openModal, logout } = useStore();
@@ -35,14 +36,18 @@ export default function ProfilePage() {
           </div>
         </div>
         <div className="mt-16 h-8 overflow-hidden rounded-full bg-grey-39">
-          <div className="h-full w-2/3 rounded-full bg-green" />
+          <div className="h-full rounded-full bg-green" style={{ width: `${xpProgress(user.xp)}%` }} />
         </div>
+        <p className="mt-6 text-12 text-grey-142">
+          Level {user.level} · {xpProgress(user.xp)}% to next · rank icon{" "}
+          <img alt="" src={`/img/rank/${rankIdFromLevel(user.level)}.svg`} className="ml-4 inline h-16" />
+        </p>
         <div className="mt-16 grid grid-cols-2 gap-10 md:grid-cols-4">
           {[
-            ["Total bets", "0"],
-            ["Total wagered", "0"],
-            ["Total deposited", "0"],
-            ["Rewards claimed", "0"],
+            ["Total bets", String(Math.round(user.stats.bet))],
+            ["Total won", String(Math.round(user.stats.won))],
+            ["Total deposited", String(Math.round(user.stats.deposit))],
+            ["XP", String(user.xp)],
           ].map(([k, v]) => (
             <div key={k} className="rounded-8 bg-grey-34 p-12">
               <p className="text-12 text-grey-142">{k}</p>

@@ -27,11 +27,13 @@ function NavItem({
   label,
   icon: Icon,
   onClick,
+  delay = 0,
 }: {
   href?: string;
   label: string;
   icon: (p: { className?: string; style?: CSSProperties }) => React.ReactNode;
   onClick?: () => void;
+  delay?: number;
 }) {
   const pathname = usePathname();
   const active = href ? pathname === href || pathname.startsWith(href + "/") : false;
@@ -64,16 +66,17 @@ function NavItem({
       </div>
     </>
   );
-  const cls = "group relative flex h-44 rounded-8 bg-grey-34 xl:bg-transparent";
+  const cls = "group relative flex h-44 animate-nav-in rounded-8 bg-grey-34 xl:bg-transparent";
+  const style = { animationDelay: `${delay}ms` };
   if (onClick) {
     return (
-      <button type="button" aria-label={label.toLowerCase()} className={cls} onClick={onClick}>
+      <button type="button" aria-label={label.toLowerCase()} className={cls} style={style} onClick={onClick}>
         {inner}
       </button>
     );
   }
   return (
-    <Link href={href!} aria-label={label.toLowerCase()} className={cls}>
+    <Link href={href!} aria-label={label.toLowerCase()} className={cls} style={style}>
       {inner}
     </Link>
   );
@@ -84,30 +87,30 @@ export function Sidebar() {
 
   return (
     <aside
-      className={`fixed bottom-0 left-0 top-0 z-40 flex w-64 flex-col border-r-1 border-grey-47 bg-grey-28 transition-transform ease-in-out xl:w-[300px] ${
+      className={`fixed bottom-0 left-0 top-0 z-40 flex w-64 flex-col border-r-1 border-grey-47 bg-grey-28 transition-transform duration-300 ease-in-out xl:w-[300px] ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <div className="relative h-64 w-full overflow-hidden border-b-1 border-grey-47 p-10 transition-colors hover:bg-grey-34 active:bg-grey-34">
+      <div className="relative z-10 h-64 w-full overflow-hidden border-b-1 border-grey-47 p-10 transition-colors hover:bg-grey-34 active:bg-grey-34">
         <Link href="/" aria-label="home" className="relative flex h-full w-full items-center justify-center">
           <img alt="WildPVP" className="relative hidden h-full w-auto max-w-full object-contain xl:block" src="/img/logo.png" />
           <img alt="WildPVP" className="relative h-full w-auto object-contain xl:hidden" src="/img/icon.png" />
         </Link>
       </div>
 
-      <div className="flex h-[calc(100vh-64px)] w-full flex-grow flex-col">
-        <div className="flex w-full flex-grow items-start overflow-auto p-12 xl:p-16">
-          <div className="grid w-full grid-cols-1 gap-10 sm:gap-16">
+      <div className="relative z-10 flex h-[calc(100vh-64px)] w-full flex-grow flex-col">
+        <div className="relative flex w-full flex-grow items-start overflow-auto p-12 xl:p-16">
+          <div className="relative z-10 grid w-full grid-cols-1 gap-10 sm:gap-16">
             <div className="grid w-full grid-cols-1 gap-10">
-              <p className="w-full text-center text-10 text-grey-142 xl:text-left xl:text-14">GAMES</p>
+              <p className="w-full animate-nav-in text-center text-10 text-grey-142 xl:text-left xl:text-14">GAMES</p>
               <div className="grid w-full grid-cols-1 gap-4">
-                {GAMES.map((item) => (
-                  <NavItem key={item.href} {...item} />
+                {GAMES.map((item, i) => (
+                  <NavItem key={item.href} {...item} delay={40 + i * 40} />
                 ))}
               </div>
             </div>
 
-            <Link href="/leaderboard" className="relative hidden h-64 w-full rounded-12 xl:block">
+            <Link href="/leaderboard" className="relative hidden h-64 w-full animate-nav-in rounded-12 xl:block" style={{ animationDelay: "260ms" }}>
               <img
                 alt=""
                 className="absolute h-full w-full rounded-12 object-cover"
@@ -132,18 +135,20 @@ export function Sidebar() {
             </Link>
 
             <div className="grid w-full grid-cols-1 gap-10">
-              <p className="w-full text-center text-10 text-grey-142 xl:text-left xl:text-14">MORE</p>
+              <p className="w-full animate-nav-in text-center text-10 text-grey-142 xl:text-left xl:text-14" style={{ animationDelay: "280ms" }}>
+                MORE
+              </p>
               <div className="grid w-full grid-cols-1 gap-4">
-                {MORE.map((item) => (
-                  <NavItem key={item.href} {...item} />
+                {MORE.map((item, i) => (
+                  <NavItem key={item.href} {...item} delay={300 + i * 40} />
                 ))}
-                <NavItem label="Support" icon={Icons.support} onClick={() => openModal("support")} />
+                <NavItem label="Support" icon={Icons.support} delay={460} onClick={() => openModal("support")} />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 grid w-full grid-cols-1 gap-12 px-12 pb-12 sm:mt-16 xl:grid-cols-2 xl:px-16 xl:pb-16">
+        <div className="relative z-10 mt-12 grid w-full grid-cols-1 gap-12 px-12 pb-12 sm:mt-16 xl:grid-cols-2 xl:px-16 xl:pb-16">
           <a
             className="group flex h-40 w-full items-center justify-center rounded-8 bg-grey-39 px-10 py-6 transition-colors hover:bg-grey-47 active:bg-grey-47 xl:h-44"
             target="_blank"

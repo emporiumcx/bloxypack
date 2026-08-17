@@ -375,7 +375,7 @@ a > * {
 }
 
 .animate-open {
-  animation: open 0.2s ease-in-out;
+  animation: open 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes open-y {
@@ -390,7 +390,7 @@ a > * {
 }
 
 .animate-open-y {
-  animation: open-y 0.2s ease-in-out;
+  animation: open-y 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes slide-up {
@@ -406,6 +406,64 @@ a > * {
 
 .animate-slide-up {
   animation: slide-up 0.35s ease-out both;
+}
+
+.animate-page-in {
+  animation: page-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-overlay-in {
+  animation: overlay-in 0.28s ease-out both;
+}
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-modal-in {
+  animation: modal-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-nav-in {
+  animation: nav-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes pop {
@@ -451,7 +509,7 @@ a > * {
 }
 
 .animate-chat {
-  animation: chat-in 0.3s ease-in-out;
+  animation: chat-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes glow {

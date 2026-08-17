@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { rankIdFromLevel } from "@/lib/levels";
 import { EMOTES, EMOTE_SET, emoteSrc } from "@/lib/emotes";
 import { Bux } from "./bux";
 import { GreenButton, GreyButton } from "./green-button";
@@ -52,14 +53,15 @@ function rankKey(rank: string) {
   return "bronze";
 }
 
-function RankBadge({ rank }: { rank: string }) {
+function RankBadge({ rank, level }: { rank: string; level?: number }) {
+  const id = rankKey(rank) === "staff" ? 23 : rankIdFromLevel(level || 1);
   const meta = RANK_META[rankKey(rank)] ?? RANK_META.bronze;
   return (
     <div className="group/rank relative" style={{ width: 16.2, height: 18 }}>
-      <img alt="" className="absolute left-1/2 top-0 max-w-none -translate-x-1/2" src={`/img/rank/${meta.id}.svg`} style={{ height: 18 }} />
-      <div className="absolute top-1/2 z-10 -right-8 hidden h-20 -translate-y-1/2 translate-x-[100%] items-center rounded-4 bg-grey-190 px-6 group-hover/rank:flex">
+      <img alt="" className="absolute left-1/2 top-0 max-w-none -translate-x-1/2" src={`/img/rank/${id}.svg`} style={{ height: 18 }} />
+      <div className="absolute top-1/2 z-10 -right-8 flex h-20 -translate-y-1/2 translate-x-[100%] items-center rounded-4 bg-grey-190 px-6 opacity-0 scale-90 transition-all duration-150 group-hover/rank:opacity-100 group-hover/rank:scale-100">
         <div className="absolute left-0 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-1 bg-grey-190" />
-        <p className="whitespace-nowrap text-12 text-grey-28">{meta.label}</p>
+        <p className="whitespace-nowrap text-12 text-grey-28">{level ? `Level ${level}` : meta.label}</p>
       </div>
     </div>
   );
@@ -158,13 +160,13 @@ export function ChatPanel() {
 
   return (
     <aside
-      className={`tr fixed bottom-0 right-0 top-0 z-50 flex w-[300px] max-w-[220px] flex-col border-l-1 border-grey-47 bg-grey-28 duration-200 ease-in-out xs:max-w-[240px] sm:max-w-[90vw] ${
+      className={`tr fixed bottom-0 right-0 top-0 z-50 flex w-[300px] max-w-[220px] flex-col overflow-visible border-l-1 border-grey-47 bg-grey-28 duration-300 ease-in-out xs:max-w-[240px] sm:max-w-[90vw] ${
         chatOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
-      <div className="flex h-64 w-full items-center border-b-1 border-grey-47 p-12 sm:px-16 sm:py-10">
+      <div className="relative z-50 flex h-64 w-full shrink-0 items-center border-b-1 border-grey-47 p-12 sm:px-16 sm:py-10">
         {user ? (
-          <div ref={menuRef} className="grid w-full grid-cols-[1fr_auto] items-center gap-16">
+          <div ref={menuRef} className="relative z-50 grid w-full grid-cols-[1fr_auto] items-center gap-16">
             <button
               type="button"
               className="group relative grid h-36 w-full grid-cols-[1fr_auto] items-center gap-10"
@@ -177,7 +179,7 @@ export function ChatPanel() {
                 </div>
                 <div className="grid w-full grid-cols-1 gap-8">
                   <div className="grid grid-cols-[auto_1fr] items-center gap-8">
-                    <RankBadge rank={user.rank || "silver"} />
+                    <RankBadge rank={user.rank || "silver"} level={user.level} />
                     <p className="w-full truncate overflow-ellipsis text-left text-14 text-white">{user.username}</p>
                   </div>
                   <div className="flex h-4 w-full overflow-hidden rounded-full bg-grey-39">
@@ -203,13 +205,13 @@ export function ChatPanel() {
                 </svg>
               </div>
             </button>
+            {menuOpen ? (
             <div
-              className={`scrollbar-y @container absolute left-0 top-[63px] w-[230px] rounded-b-12 border-1 border-grey-47 bg-grey-28 p-8 transition-colors duration-200 sm:left-16 animate-open-y ${
-                menuOpen ? "" : "hidden"
-              }`}
+              className="scrollbar-y @container absolute left-0 top-[63px] z-50 w-[230px] animate-open-y rounded-b-12 border-1 border-grey-47 bg-grey-28 p-8 sm:left-16"
+              onPointerDown={(e) => e.stopPropagation()}
             >
               <div className="grid w-full grid-cols-1 gap-4">
-                <Link aria-label="profile" href="/profile" onClick={() => setMenuOpen(false)}>
+                <Link aria-label="profile" href="/profile" className="relative z-10 block w-full" onClick={() => setMenuOpen(false)}>
                   <div className={MENU_ITEM}>
                     <div className={MENU_INNER}>
                       <div className={MENU_ICON}>
@@ -224,7 +226,7 @@ export function ChatPanel() {
                     </div>
                   </div>
                 </Link>
-                <Link aria-label="transactions" href="/profile" onClick={() => setMenuOpen(false)}>
+                <Link aria-label="transactions" href="/profile" className="relative z-10 block w-full" onClick={() => setMenuOpen(false)}>
                   <div className={MENU_ITEM}>
                     <div className={MENU_INNER}>
                       <div className={MENU_ICON}>
@@ -239,7 +241,7 @@ export function ChatPanel() {
                     </div>
                   </div>
                 </Link>
-                <Link aria-label="gamebets" href="/profile" onClick={() => setMenuOpen(false)}>
+                <Link aria-label="gamebets" href="/profile" className="relative z-10 block w-full" onClick={() => setMenuOpen(false)}>
                   <div className={MENU_ITEM}>
                     <div className={MENU_INNER}>
                       <div className={MENU_ICON}>
@@ -254,7 +256,7 @@ export function ChatPanel() {
                     </div>
                   </div>
                 </Link>
-                <Link aria-label="affiliates" href="/affiliate" onClick={() => setMenuOpen(false)}>
+                <Link aria-label="affiliates" href="/affiliate" className="relative z-10 block w-full" onClick={() => setMenuOpen(false)}>
                   <div className={MENU_ITEM}>
                     <div className={MENU_INNER}>
                       <div className={MENU_ICON}>
@@ -268,7 +270,7 @@ export function ChatPanel() {
                     </div>
                   </div>
                 </Link>
-                <Link aria-label="live_stats" href="/leaderboard" onClick={() => setMenuOpen(false)}>
+                <Link aria-label="live_stats" href="/leaderboard" className="relative z-10 block w-full" onClick={() => setMenuOpen(false)}>
                   <div className={MENU_ITEM}>
                     <div className={MENU_INNER}>
                       <div className={MENU_ICON}>
@@ -286,6 +288,7 @@ export function ChatPanel() {
                 <button
                   type="button"
                   aria-label="redeem"
+                  className="relative z-10 w-full"
                   onClick={() => {
                     setMenuOpen(false);
                     openModal("deposit");
@@ -308,6 +311,7 @@ export function ChatPanel() {
                 <button
                   type="button"
                   aria-label="withdraw"
+                  className="relative z-10 w-full"
                   onClick={() => {
                     setMenuOpen(false);
                     openModal("deposit");
@@ -330,6 +334,7 @@ export function ChatPanel() {
                 <button
                   type="button"
                   aria-label="support"
+                  className="relative z-10 w-full"
                   onClick={() => {
                     setMenuOpen(false);
                     openModal("support");
@@ -352,6 +357,7 @@ export function ChatPanel() {
                 <button
                   type="button"
                   aria-label="logout"
+                  className="relative z-10 w-full"
                   onClick={() => {
                     setMenuOpen(false);
                     logout();
@@ -373,21 +379,22 @@ export function ChatPanel() {
                 </button>
               </div>
             </div>
+            ) : null}
           </div>
         ) : (
-          <div className="grid w-full grid-cols-2 gap-8">
+          <div className="grid w-full animate-pop grid-cols-2 gap-8">
             <GreenButton onClick={() => openModal("login")}>Login</GreenButton>
             <GreyButton onClick={() => openModal("register")}>Register</GreyButton>
           </div>
         )}
       </div>
 
-      <div className="relative flex w-full flex-grow flex-col">
-        <div className="absolute left-0 right-8 top-0 z-20">
+      <div className="relative z-0 flex w-full flex-grow flex-col">
+        <div className="pointer-events-none absolute left-0 right-8 top-0 z-10">
           <div className="absolute inset-0 bg-grey-28 opacity-80" />
           <div className="absolute -bottom-40 left-0 right-0 z-10 h-40 bg-gradient-to-b from-grey-28 to-transparent opacity-80" />
-          <div className="relative grid w-full grid-cols-1 gap-6 px-12 pt-12">
-            <div className="relative w-full animate-show overflow-hidden rounded-8 bg-grey-39">
+          <div className="pointer-events-auto relative grid w-full grid-cols-1 gap-6 px-12 pt-12">
+            <div className="relative w-full animate-pop overflow-hidden rounded-8 bg-grey-39">
               <div className="group relative overflow-hidden rounded-6 bg-grey-39">
                 <div className="absolute -right-1/3 -top-1/2 h-2/3 w-2/3 rounded-full bg-yellow blur-[50px]" />
                 <div className="absolute bottom-0 left-0 top-0 w-[70%] bg-gradient-to-r from-green/10 to-transparent" />
@@ -470,7 +477,7 @@ export function ChatPanel() {
                       </button>
                       <div className="pointer-events-none ml-2 mr-4">
                         <div className="flex items-center">
-                          <RankBadge rank={m.rank} />
+                          <RankBadge rank={m.rank} level={m.level} />
                         </div>
                       </div>
                       <button type="button" aria-label="chat_profile" className="relative z-10 truncate text-left text-14 text-white" style={{ color: m.color }}>
@@ -534,7 +541,7 @@ export function ChatPanel() {
                   </button>
                 </div>
                 {emotesOpen ? (
-                  <div className="absolute -left-2 right-2 bottom-[50px] z-10 grid animate-show overflow-hidden rounded-8 bg-grey-34">
+                  <div className="absolute -left-2 right-2 bottom-[50px] z-10 grid animate-open-y overflow-hidden rounded-8 bg-grey-34">
                     <div className="scrollbar-y max-h-[calc(100vh-308px)] w-full overflow-y-scroll p-12 md:max-h-[500px]">
                       <div className="grid w-full grid-cols-6 gap-4 md:grid-cols-6">
                         {EMOTES.map((name) => (

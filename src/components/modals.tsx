@@ -24,9 +24,13 @@ function Overlay({
   }, []);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/60 backdrop-blur-sm">
-      <button className="absolute inset-0" aria-label="close overlay" onClick={onClose} />
-      <div className="relative z-10 my-24 animate-pop">{children}</div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto">
+      <button
+        className="animate-overlay-in absolute inset-0 bg-black/60 backdrop-blur-sm"
+        aria-label="close overlay"
+        onClick={onClose}
+      />
+      <div className="relative z-10 my-24 animate-modal-in">{children}</div>
     </div>
   );
 }
@@ -59,10 +63,10 @@ function ModalFrame({
         <button
           type="button"
           aria-label="close"
-          className="animate-hide animate-show fixed top-0 left-0 h-full w-screen min-w-[330px] bg-black/10 backdrop-blur-[4px] backdrop-filter transition-opacity"
+          className="animate-overlay-in fixed top-0 left-0 h-full w-screen min-w-[330px] bg-black/40 backdrop-blur-[4px] backdrop-filter"
           onClick={onClose}
         />
-        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 animate-open relative xs:w-auto">
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 animate-modal-in relative xs:w-auto">
           <div className="relative z-50 grid !max-w-full rounded-8 bg-grey-39 @sm/page:rounded-12" style={{ width }}>
             <div className="bg-purple-46 relative flex h-full w-full flex-col overflow-y-auto rounded-8 @sm/page:h-auto @sm/page:rounded-12">
               {children}
@@ -176,6 +180,7 @@ export function Modals() {
   const {
     modal,
     closeModal,
+    dismissWelcome,
     openModal,
     login,
     register,
@@ -204,7 +209,7 @@ export function Modals() {
           </span>
           <img src="/img/logo.png" alt="WildPVP" className="h-48 object-contain" />
           <p className="text-16 text-grey-190">Welcome to the #1 Roblox Case Opening Site!</p>
-          <GreenButton onClick={closeModal}>Continue to WildPVP →</GreenButton>
+          <GreenButton onClick={dismissWelcome}>Continue to WildPVP →</GreenButton>
         </div>
       </Overlay>
     );
@@ -215,9 +220,9 @@ export function Modals() {
       <AuthShell title="Log in" onClose={closeModal}>
         <form
           className="contents"
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            const err = login(username, password);
+            const err = await login(username, password);
             setError(err ?? "");
           }}
         >
@@ -274,13 +279,13 @@ export function Modals() {
       <AuthShell title="Register" onClose={closeModal}>
         <form
           className="contents"
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
             if (!agreed) {
               setError("Please confirm you are 18+ and agree to the terms.");
               return;
             }
-            const err = register(username, email, password);
+            const err = await register(username, email, password);
             setError(err ?? "");
           }}
         >

@@ -48,16 +48,22 @@ function remainingMs(kind: "daily" | "weekly" | "monthly") {
 }
 
 function RakebackTimer({ kind }: { kind: "daily" | "weekly" | "monthly" }) {
-  const [label, setLabel] = useState(() => formatRemain(remainingMs(kind)));
+  const [label, setLabel] = useState("00:00:00:00");
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const tick = () => setLabel(formatRemain(remainingMs(kind)));
     tick();
+    setReady(true);
     const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
   }, [kind]);
 
-  return <span className="min-w-[8.7ch] max-w-[8.7ch] text-14 text-gray-500">{label}</span>;
+  return (
+    <span className={`min-w-[8.7ch] max-w-[8.7ch] text-14 text-gray-500 ${ready ? "" : "invisible"}`}>
+      {label}
+    </span>
+  );
 }
 
 export default function RewardsPage() {

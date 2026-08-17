@@ -10,8 +10,10 @@ import { Dropdown } from "@/components/dropdown";
 import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
-import { BATTLES, getCase, type Battle } from "@/lib/catalog";
-import { loadLocalBattles } from "@/lib/battles-local";
+import { ItemBg } from "@/components/item-bg";
+import { getCase, type Battle } from "@/lib/catalog";
+import { subscribeBattles } from "@/lib/backend";
+import { mapBattleGame } from "@/lib/battles-map";
 
 const SORTS = [
   { id: "high", label: "Price High-Low" },
@@ -40,22 +42,23 @@ export default function BattlesPage() {
   const { user, openModal } = useStore();
   const [sort, setSort] = useState("high");
   const [activeOnly, setActiveOnly] = useState("all");
-  const [extra, setExtra] = useState<Battle[]>([]);
+  const [live, setLive] = useState<Battle[]>([]);
 
   useEffect(() => {
-    setExtra(loadLocalBattles());
+    return subscribeBattles((state) => {
+      setLive(state.games.map(mapBattleGame));
+    });
   }, []);
 
   const list = useMemo(() => {
-    const all = [...extra, ...BATTLES];
-    const filtered = all.filter((b) => (activeOnly === "active" ? b.status === "active" : true));
+    const filtered = live.filter((b) => (activeOnly === "active" ? b.status === "active" : true));
     return filtered.sort((a, b) => {
       if (sort === "high") return b.cost - a.cost;
       if (sort === "low") return a.cost - b.cost;
       if (sort === "new") return b.id.localeCompare(a.id);
       return a.id.localeCompare(b.id);
     });
-  }, [sort, activeOnly, extra]);
+  }, [sort, activeOnly, live]);
 
   return (
     <div className="flex w-full justify-center">
@@ -85,7 +88,9 @@ export default function BattlesPage() {
           <button
             type="button"
             aria-label="refresh"
-            onClick={() => setExtra(loadLocalBattles())}
+            onClick={() => {
+              /* live list is socket-driven */
+            }}
             className="group/button relative flex h-40 w-40 cursor-pointer items-center justify-center rounded-6 bg-grey-28"
           >
             <Icons.refresh className="text-20 text-grey-142 transition-transform duration-500 group-hover/button:rotate-[360deg]" />
@@ -96,6 +101,11 @@ export default function BattlesPage() {
       <div className="grid w-full grid-cols-1 gap-12">
       <div>
       <ul className="grid w-full grid-cols-1 gap-8">
+        {list.length === 0 ? (
+          <li className="rounded-12 bg-grey-39 p-24 text-center text-14 text-grey-142">
+            No live battles yet. Create one to get started.
+          </li>
+        ) : null}
         {list.map((b) => {
           const ended = b.status === "ended";
           const groups = seatGroups(b);
@@ -143,11 +153,14 @@ export default function BattlesPage() {
                                   className="group/case @sm/page:h-80 @sm/page:w-84 relative flex h-56 w-56 items-center justify-center opacity-100"
                                 >
                                   {c ? (
-                                    <img
-                                      alt=""
-                                      src={c.image ?? `/cdn/cases/${c.imageId}.webp`}
-                                      className="@sm/page:h-72 @sm/page:w-72 relative h-48 w-48 object-contain"
-                                    />
+                                    <>
+                                      <ItemBg className="inset-4 opacity-35" />
+                                      <img
+                                        alt=""
+                                        src={c.image ?? `/cdn/cases/${c.imageId}.webp`}
+                                        className="@sm/page:h-72 @sm/page:w-72 relative h-48 w-48 object-contain"
+                                      />
+                                    </>
                                   ) : null}
                                 </button>
                               );

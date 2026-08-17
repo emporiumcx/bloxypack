@@ -24,7 +24,7 @@ function rowMulti(diff: keyof typeof DIFF, steps: number) {
 }
 
 export default function TowersPage() {
-  const { user, spend, addBalance, openModal } = useStore();
+  const { user, openModal, applyUser, towersBet, towersReveal, towersCashout } = useStore();
   const [mode, setMode] = useState<"manual" | "auto">("manual");
   const [bet, setBet] = useState(10);
   const [diff, setDiff] = useState<keyof typeof DIFF>("Medium");
@@ -32,63 +32,81 @@ export default function TowersPage() {
   const [started, setStarted] = useState(false);
   const [dead, setDead] = useState<{ r: number; c: number } | null>(null);
   const [cleared, setCleared] = useState<Record<number, number>>({});
+  const [bombs, setBombs] = useState<Record<number, number[]>>({});
   const [picking, setPicking] = useState<{ r: number; c: number } | null>(null);
   const cols = DIFF[diff].cols;
-  const mineCount = DIFF[diff].mines;
   const climbed = ROWS - row;
   const multi = climbed > 0 ? rowMulti(diff, climbed) : 1;
 
-  function plantRow() {
-    const spots = new Set<number>();
-    while (spots.size < mineCount) spots.add(Math.floor(Math.random() * cols));
-    return [...spots];
-  }
-
-  function start() {
+  async function start() {
     if (!user) return openModal("login");
-    if (!spend(bet)) return openModal("deposit");
-    setStarted(true);
-    setRow(ROWS - 1);
-    setDead(null);
-    setCleared({});
-    setBombs({});
+    if (user.balance < bet) return openModal("deposit");
+    try {
+      const res = await towersBet(bet, diff.toLowerCase());
+      applyUser(res.user);
+      setStarted(true);
+      setRow(ROWS - 1);
+      setDead(null);
+      setCleared({});
+      setBombs({});
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Could not start towers.");
+    }
   }
 
-  function pick(r: number, c: number) {
+  async function pick(r: number, c: number) {
     if (!started || r !== row || dead || picking) return;
     setPicking({ r, c });
-    const mines = plantRow();
-    window.setTimeout(() => {
-      setBombs((b) => ({ ...b, [r]: mines }));
+    try {
+      const res = await towersReveal(c);
+      if (res.user) applyUser(res.user);
+      const last = res.game.revealed[res.game.revealed.length - 1];
+      const rowTiles = last?.row || [];
+      const mineTiles = rowTiles.map((v, idx) => (v === "lose" ? idx : -1)).filter((v) => v >= 0);
+      const lost = rowTiles[c] === "lose";
       setPicking(null);
-      if (mines.includes(c)) {
+      if (lost) {
         setDead({ r, c });
+        setBombs((b) => {
+          const next = { ...b, [r]: mineTiles };
+          const deck = res.game.deck || [];
+          deck.forEach((deckRow, di) => {
+            const uiRow = ROWS - 1 - di;
+            if (next[uiRow]) return;
+            next[uiRow] = deckRow.map((v, idx) => (v === "lose" ? idx : -1)).filter((v) => v >= 0);
+          });
+          return next;
+        });
         setStarted(false);
         return;
       }
-      const next = r - 1;
       setCleared((prev) => ({ ...prev, [r]: c }));
-      if (next < 0) {
-        addBalance(Math.round(bet * rowMulti(diff, ROWS)));
+      const next = r - 1;
+      if (res.game.state === "completed" || next < 0) {
         setStarted(false);
         setRow(-1);
         return;
       }
       setRow(next);
-    }, 280);
+    } catch (err) {
+      setPicking(null);
+      alert(err instanceof Error ? err.message : "Reveal failed.");
+    }
   }
 
-  function cashout() {
+  async function cashout() {
     if (!started || climbed === 0) return;
-    addBalance(Math.round(bet * multi));
-    setStarted(false);
+    try {
+      const res = await towersCashout();
+      applyUser(res.user);
+      setStarted(false);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Cashout failed.");
+    }
   }
 
   const payoutForRow = useMemo(() => {
-    return Array.from({ length: ROWS }, (_, r) => {
-      const steps = ROWS - r;
-      return Math.round(bet * rowMulti(diff, steps));
-    });
+    return Array.from({ length: ROWS }, (_, r) => Math.round(bet * rowMulti(diff, ROWS - r)));
   }, [bet, diff]);
 
   return (
@@ -99,7 +117,7 @@ export default function TowersPage() {
           action={
             started ? (
               <GreenButton onClick={cashout} disabled={climbed === 0 || Boolean(picking)}>
-                Cashout
+                Cashout {climbed > 0 ? `${multi.toFixed(2)}x` : ""}
               </GreenButton>
             ) : (
               <GreenButton onClick={start}>Start game</GreenButton>
@@ -113,7 +131,7 @@ export default function TowersPage() {
               <AutobetFields />
             ) : (
               <div className="grid w-full grid-cols-1 gap-8">
-                <h1 className="text-14 text-grey-142 transition-colors duration-200">Difficulty</h1>
+                <h1 className="text-14 text-grey-142">Difficulty</h1>
                 <Dropdown
                   value={diff}
                   onChange={(id) => {
@@ -133,7 +151,7 @@ export default function TowersPage() {
             <img alt="" className="h-full w-full object-cover opacity-80 grayscale" src="/img/games/bg_mines.webp" />
           </div>
           <div
-            className="@xl/page:gap-12 @xl/page:w-[480px] relative grid h-full w-[406px] max-w-full gap-8 rounded-16 bg-grey-28 p-12"
+            className="@xl/page:gap-10 @xl/page:w-[480px] relative grid h-full w-[406px] max-w-full gap-6 rounded-16 bg-grey-28/90 p-12"
             style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
           >
             {Array.from({ length: ROWS * cols }).map((_, i) => {
@@ -141,43 +159,45 @@ export default function TowersPage() {
               const c = i % cols;
               const active = started && r === row && !dead && !picking;
               const won = cleared[r] === c;
-              const isBomb = dead && bombs[r]?.includes(c);
+              const isBomb = Boolean(bombs[r]?.includes(c));
               const hit = dead?.r === r && dead?.c === c;
               const pulsing = picking?.r === r && picking?.c === c;
-              const open = won || Boolean(hit) || Boolean(isBomb);
+              const open = won || isBomb || Boolean(hit);
+              const dim = started && r !== row && !open && !dead;
               return (
-                <div
+                <button
                   key={i}
+                  type="button"
+                  disabled={!active}
+                  onClick={() => pick(r, c)}
                   className={`@xl/page:h-52 relative flex h-44 w-full items-center justify-center overflow-hidden rounded-12 ${
-                    active ? "cursor-pointer" : "cursor-not-allowed"
-                  }`}
+                    active ? "cursor-pointer" : "cursor-default"
+                  } ${dim ? "opacity-45" : "opacity-100"}`}
                 >
                   <div
-                    className={`tr border-b-black/25 border-t-white/15 absolute inset-0 flex h-full w-full items-center justify-center rounded-12 border-b-3 border-t-3 bg-grey-58 ${
-                      open ? "animate-minescover" : "opacity-100"
-                    }`}
+                    className={`tr absolute inset-0 flex items-center justify-center rounded-12 border-b-3 border-t-3 border-b-black/25 border-t-white/15 bg-grey-58 ${
+                      open ? "animate-minescover pointer-events-none" : "opacity-100"
+                    } ${active ? "bg-grey-70" : ""}`}
                   >
                     <img alt="" className={`h-34 w-34 ${pulsing ? "animate-tower-pulse" : ""}`} src="/img/robux_dark.webp" />
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => pick(r, c)}
-                    className={`tr border-b-black/25 absolute inset-0 flex h-full w-full items-center justify-center rounded-12 border-b-3 border-t-3 border-solid transition-colors ${
+                  <div
+                    className={`tr absolute inset-0 flex items-center justify-center rounded-12 border-b-3 border-t-3 ${
                       hit || isBomb
                         ? "border-b-red border-t-red-143 bg-red"
-                        : "border-t-white/60 bg-green active:border-b-green active:border-t-green"
-                    } ${open ? "animate-minescontent opacity-100" : active ? "opacity-100" : "opacity-0"}`}
+                        : "border-b-green-95 border-t-green-222 bg-green"
+                    } ${open ? "animate-minescontent opacity-100" : "pointer-events-none opacity-0"}`}
                   >
                     {hit || isBomb ? (
                       <img alt="" className="h-28 w-28 object-contain" src="/img/bomb.webp" />
                     ) : (
-                      <div className="flex items-center">
-                        <BuxGlyph style={{ width: 18, height: 18 }} />
-                        <p className="text-14 text-grey-28">{payoutForRow[r].toLocaleString("en-US")}</p>
+                      <div className="flex items-center gap-4">
+                        <BuxGlyph style={{ width: 16, height: 16 }} />
+                        <p className="text-13 font-semibold text-grey-28">{payoutForRow[r].toLocaleString("en-US")}</p>
                       </div>
                     )}
-                  </button>
-                </div>
+                  </div>
+                </button>
               );
             })}
           </div>

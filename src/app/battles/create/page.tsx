@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { AddCaseModal } from "@/components/add-case-modal";
 import { Bux } from "@/components/bux";
 import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
-import { saveLocalBattle } from "@/lib/battles-local";
-import { type Battle, type CaseItem } from "@/lib/catalog";
+import { subscribeBattles } from "@/lib/backend";
+import { type CaseItem } from "@/lib/catalog";
 
 const NORMAL = [
   { id: "1v1", label: "1V1", slots: 2, teams: "1v1" },
@@ -18,8 +18,6 @@ const NORMAL = [
 ];
 const TEAM = [
   { id: "2v2", label: "2V2", slots: 4, teams: "2v2 Team" },
-  { id: "3v3", label: "3V3", slots: 6, teams: "3v3 Team" },
-  { id: "2v2v2", label: "2V2V2", slots: 6, teams: "2v2v2 Team" },
 ];
 const GROUP = [
   { id: "2p", label: "2P", slots: 2, teams: "2P Group" },
@@ -87,8 +85,9 @@ function ModeChip({
 
 export default function CreateBattlePage() {
   const router = useRouter();
-  const { user, openModal, spend } = useStore();
+  const { user, openModal, applyUser, battlesCreate } = useStore();
   const [picked, setPicked] = useState<CaseItem[]>([]);
+  const [boxIds, setBoxIds] = useState<Record<string, string>>({});
   const [adding, setAdding] = useState(false);
   const [jackpot, setJackpot] = useState(false);
   const [wild, setWild] = useState(false);
@@ -99,31 +98,48 @@ export default function CreateBattlePage() {
   const [borrow, setBorrow] = useState(false);
   const [borrowPct, setBorrowPct] = useState(0);
   const [layoutId, setLayoutId] = useState("1v1");
+  const [creating, setCreating] = useState(false);
   const layout = ALL.find((l) => l.id === layoutId) ?? ALL[0];
   const cost = picked.reduce((s, c) => s + c.price, 0);
 
-  const create = () => {
+  useEffect(() => {
+    return subscribeBattles((state) => {
+      const next: Record<string, string> = {};
+      for (const box of state.boxes) next[box.slug] = box._id;
+      setBoxIds(next);
+    });
+  }, []);
+
+  const create = async () => {
     if (!user) return openModal("login");
     if (!picked.length) return;
-    if (!spend(cost)) return openModal("deposit");
-    const flags = [
-      jackpot ? "Jackpot" : "",
-      wild ? "Wild" : "",
-      terminal ? "Terminal" : "",
-      fast ? "Fast" : "",
-    ].filter(Boolean);
-    const battle: Battle = {
-      id: `local-${Date.now()}`,
-      cost,
-      cases: picked.map((c) => c.slug),
-      players: [{ name: user.username, team: 0 }],
-      slots: layout.slots,
-      teams: flags.length ? `${layout.teams} ${flags.join(" ")}` : layout.teams,
-      status: "active",
-      unboxed: 0,
-    };
-    saveLocalBattle(battle);
-    router.push(`/battles/${battle.id}`);
+    if (user.balance < cost) return openModal("deposit");
+    const boxes = picked.map((c) => {
+      const id = boxIds[c.slug];
+      if (!id) throw new Error(`Case ${c.name} is not seeded on the server.`);
+      return { _id: id, count: 1 };
+    });
+    const mode = TEAM.some((m) => m.id === layoutId) ? "team" : GROUP.some((m) => m.id === layoutId) ? "group" : "standard";
+    setCreating(true);
+    try {
+      const res = await battlesCreate({
+        playerCount: layout.slots,
+        mode,
+        boxes,
+        funding: borrow ? borrowPct : 0,
+        private: priv,
+        cursed: wild,
+        terminal,
+        affiliateOnly: false,
+        levelMin: 0,
+      });
+      if (res.user) applyUser(res.user);
+      router.push(`/battles/${res.game._id}`);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Could not create battle.");
+    } finally {
+      setCreating(false);
+    }
   };
 
   return (
@@ -348,8 +364,8 @@ export default function CreateBattlePage() {
                 </div>
               ) : null}
             </div>
-            <GreenButton onClick={create} disabled={!picked.length} icon={<Icons.plus className="text-18" />}>
-              Create battle
+            <GreenButton onClick={create} disabled={!picked.length || creating} icon={<Icons.plus className="text-18" />}>
+              {creating ? "Creating..." : "Create battle"}
             </GreenButton>
           </div>
         </div>

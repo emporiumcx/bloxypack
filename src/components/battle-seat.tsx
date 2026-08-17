@@ -1,6 +1,6 @@
 import { Icons } from "./icons";
 
-const AVATARS = ["/cdn/avatars/default.webp", "/img/icon.webp"];
+const AVATARS = ["/cdn/avatars/default.webp", "/img/icon.png"];
 const RANKS = ["/img/rank/23.svg", "/img/rank/7.svg", "/img/rank/11.svg", "/img/rank/13.svg"];
 const RINGS = [
   "var(--color-rank-diamond)",

@@ -2,26 +2,27 @@
 
 :root {
   --color-blue: rgb(82, 181, 255);
-  --color-green: rgb(136, 255, 85);
-  --color-green-8: rgba(136, 255, 85, 0.08);
-  --color-green-20: rgba(136, 255, 85, 0.2);
-  --color-green-95: rgb(95, 183, 57);
-  --color-green-136: rgb(136, 255, 85);
-  --color-green-184: rgb(184, 255, 136);
-  --color-green-202: rgb(202, 255, 180);
-  --color-green-222: rgb(222, 255, 180);
+  --color-green: #90ef30;
+  --color-green-2: #15ef4b;
+  --color-green-8: rgba(144, 239, 48, 0.08);
+  --color-green-20: rgba(21, 239, 75, 0.2);
+  --color-green-95: #0e9a32;
+  --color-green-136: #90ef30;
+  --color-green-184: #6ef05a;
+  --color-green-202: #b6f56a;
+  --color-green-222: #d4f98a;
   --color-purple-80: rgba(137, 94, 255, 0.16);
   --color-purple-96: rgba(137, 94, 255, 0.25);
-  --color-purple-46: color-mix(in srgb, rgb(137, 94, 255) 8%, rgb(39, 44, 50));
+  --color-purple-46: color-mix(in srgb, rgb(137, 94, 255) 8%, rgb(22, 25, 30));
   --color-red-dark: rgb(206, 41, 80);
   --color-red-206: rgb(206, 41, 80);
-  --color-grey-1: rgb(1, 16, 30);
-  --color-grey-28: rgb(28, 32, 37);
-  --color-grey-34: rgb(34, 38, 44);
-  --color-grey-39: rgb(39, 44, 50);
-  --color-grey-47: rgb(47, 53, 61);
-  --color-grey-58: rgb(58, 64, 72);
-  --color-grey-70: rgb(70, 76, 84);
+  --color-grey-1: rgb(0, 10, 20);
+  --color-grey-28: rgb(13, 16, 19);
+  --color-grey-34: rgb(18, 21, 25);
+  --color-grey-39: rgb(22, 25, 30);
+  --color-grey-47: rgb(30, 34, 40);
+  --color-grey-58: rgb(40, 44, 51);
+  --color-grey-70: rgb(50, 54, 61);
   --color-grey-112: rgb(112, 115, 118);
   --color-grey-118: rgb(118, 121, 126);
   --color-grey-142: rgb(142, 144, 147);
@@ -52,7 +53,7 @@
   --color-rank-gold: rgb(241, 201, 71);
   --color-rank-platinum: rgb(172, 195, 240);
   --color-rank-diamond: rgb(96, 188, 255);
-  --background: rgb(28, 32, 37);
+  --background: rgb(13, 16, 19);
   --foreground: #fff;
 }
 
@@ -60,6 +61,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-green: var(--color-green);
+  --color-green-2: var(--color-green-2);
   --color-green-8: var(--color-green-8);
   --color-green-20: var(--color-green-20);
   --color-green-95: var(--color-green-95);
@@ -110,7 +112,8 @@
   --color-rank-platinum: var(--color-rank-platinum);
   --color-rank-diamond: var(--color-rank-diamond);
   --color-rank-gold: var(--color-rank-gold);
-  --font-sans: var(--font-onest), Onest, "Onest Fallback", Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-golden-smile), "Golden Smile", Arial, Helvetica, sans-serif;
+  --font-chat: var(--font-skranji), Skranji, cursive;
   --spacing: 0.0625rem;
   --text-10: 0.625rem;
   --text-11: 0.6875rem;
@@ -153,23 +156,14 @@
   --container-bt: 850px;
 }
 
-@font-face {
-  font-family: "Onest Fallback";
-  src: local("Arial");
-  ascent-override: 92.2%;
-  descent-override: 28.99%;
-  line-gap-override: 0%;
-  size-adjust: 105.2%;
-}
-
 html,
 body {
   min-height: 100%;
   height: auto;
   background: var(--color-grey-28);
   color: #fff;
-  font-family: var(--font-onest), Onest, "Onest Fallback", Arial, Helvetica, sans-serif;
-  font-weight: 600;
+  font-family: var(--font-golden-smile), "Golden Smile", Arial, Helvetica, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
@@ -193,8 +187,19 @@ textarea,
 ul,
 select,
 label {
-  font-family: var(--font-onest), onest, Arial, Helvetica, sans-serif;
-  font-weight: 600;
+  font-family: var(--font-golden-smile), "Golden Smile", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+.font-chat,
+.font-chat p,
+.font-chat a,
+.font-chat button,
+.font-chat span,
+.font-chat input,
+.font-chat textarea,
+.font-chat label {
+  font-family: var(--font-skranji), Skranji, cursive;
 }
 
 h1,
@@ -243,6 +248,11 @@ body {
 
 button {
   cursor: pointer;
+}
+
+.bg-green {
+  background-color: #90ef30;
+  background-image: radial-gradient(circle at 50% 50%, #90ef30 0%, #15ef4b 100%);
 }
 
 a,
@@ -752,4 +762,25 @@ input.rs-range::-moz-range-track {
 
 .spin-image-show {
   animation: pulseScale 2s ease-out;
+}
+
+@keyframes ripple-breathe {
+  0% {
+    transform: scale(0);
+  }
+  18% {
+    transform: scale(1.1);
+  }
+  35% {
+    transform: scale(0.15);
+  }
+  55% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
 }

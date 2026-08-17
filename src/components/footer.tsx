@@ -1,9 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Icons } from "./icons";
-import { useStore } from "./providers";
 
 const PAYMENTS = [
   { src: "/img/payment/btc.webp", border: "border-orange", bg: "bg-orange" },
@@ -33,25 +31,22 @@ function ColHead({ label, accent }: { label: string; accent?: boolean }) {
 }
 
 export function SiteFooter() {
-  const { openModal } = useStore();
-  const router = useRouter();
-
   return (
     <div className="relative grid w-full grid-cols-1">
       <div className="@lg/page:grid-cols-[1fr_auto] @sm/page:p-24 @md/page:px-70 @md/page:py-56 grid w-full grid-cols-1 gap-30 border-t-1 border-grey-47 p-24">
         <div className="flex w-full justify-start">
           <div className="grid w-[450px] max-w-full grid-cols-1 gap-16 sm:gap-26">
             <Link aria-label="home" className="relative flex h-full w-full items-center justify-start" href="/">
-              <img alt="" className="relative h-24 object-contain" src="/img/logo.webp" />
+              <img alt="WildPVP" className="relative h-36 w-auto object-contain" src="/img/logo.png" />
             </Link>
             <div className="grid w-full grid-cols-1 gap-16">
               <p className="text-left text-12 text-grey-142">
-                RoStake is an entirely independent platform. It has no association, partnership, or endorsement from
+                WildPVP is an entirely independent platform. It has no association, partnership, or endorsement from
                 Roblox Corporation or any of its subsidiaries or affiliates. Roblox accounts cannot be used to access
                 our site, and Robux is not accepted or exchangeable here.
               </p>
               <p className="text-left text-12 text-grey-142">
-                RoStake is a service provided by D.G.P. SOFTWORKS LTD, registered at Themistokli Dervi 48, 306, 1066
+                WildPVP is a service provided by D.G.P. SOFTWORKS LTD, registered at Themistokli Dervi 48, 306, 1066
                 Nicosia, Cyprus.
               </p>
             </div>
@@ -100,6 +95,9 @@ export function SiteFooter() {
                 <Link aria-label="link" className={LINK} href="/towers">
                   Towers
                 </Link>
+                <Link aria-label="link" className={LINK} href="/blackjack">
+                  Blackjack
+                </Link>
               </div>
             </div>
             <div className="grid w-full grid-cols-1 gap-16">
@@ -111,14 +109,23 @@ export function SiteFooter() {
                 <Link aria-label="link" className={LINK} href="/leaderboard">
                   Leaderboard
                 </Link>
+                <Link aria-label="link" className={LINK} href="/marketplace">
+                  Marketplace
+                </Link>
+                <Link aria-label="link" className={LINK} href="/rewards">
+                  Rewards
+                </Link>
               </div>
             </div>
             <div className="grid w-full grid-cols-1 gap-16">
               <ColHead label="Info" />
               <div className="grid w-full grid-cols-1 gap-8">
-                <button type="button" aria-label="button" className={LINK} onClick={() => openModal("support")}>
+                <Link aria-label="link" className={LINK} href="/support">
                   Support
-                </button>
+                </Link>
+                <Link aria-label="link" className={LINK} href="/faq">
+                  FAQ
+                </Link>
                 <Link aria-label="link" className={LINK} href="/terms">
                   TOS
                 </Link>
@@ -128,9 +135,9 @@ export function SiteFooter() {
                 <Link aria-label="link" className={LINK} href="/privacy">
                   Privacy
                 </Link>
-                <button type="button" aria-label="button" className={LINK} onClick={() => router.push("/fairness")}>
+                <Link aria-label="link" className={LINK} href="/fairness">
                   Fairness
-                </button>
+                </Link>
               </div>
             </div>
             <div className="grid w-full grid-cols-1 gap-16">
@@ -148,7 +155,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="w-full bg-grey-28 p-14">
-        <h2 className="text-center text-12 text-grey-142">© 2026 RoStake.com All rights reserved.</h2>
+        <h2 className="text-center text-12 text-grey-142">© 2026 WildPVP.com All rights reserved.</h2>
       </div>
     </div>
   );

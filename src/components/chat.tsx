@@ -459,7 +459,7 @@ export function ChatPanel() {
               {chat.map((m) => (
                 <div key={m.id} className="tr group relative grid w-full animate-chat grid-cols-1 gap-2 rounded-6 bg-grey-39 py-5 pl-6 pr-8">
                   <div className="absolute inset-0 rounded-6 bg-transparent" />
-                  <div className="p relative w-full !select-text whitespace-pre-line break-words rounded-4 text-14" style={{ color: "rgb(190, 190, 190)" }}>
+                  <div className="p font-chat relative w-full !select-text whitespace-pre-line break-words rounded-4 text-14" style={{ color: "rgb(190, 190, 190)" }}>
                     <div className="flex flex-wrap items-center gap-x-2">
                       <button type="button" aria-label="chat_profile" className="relative z-10 mr-4">
                         <div className="relative w-24">
@@ -506,7 +506,7 @@ export function ChatPanel() {
                   <input
                     aria-label="chat_message"
                     autoComplete="off"
-                    className="h-32 w-full bg-grey-39 text-14 text-white outline-none"
+                    className="font-chat h-32 w-full bg-grey-39 text-14 text-white outline-none"
                     placeholder="Enter your message..."
                     type="text"
                     maxLength={200}
@@ -518,7 +518,7 @@ export function ChatPanel() {
                         submit();
                       }
                     }}
-                    name="chat_message_rostake"
+                    name="chat_message_wildpvp"
                   />
                   <button
                     type="button"

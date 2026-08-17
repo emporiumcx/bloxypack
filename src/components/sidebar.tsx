@@ -17,6 +17,7 @@ const GAMES = [
 
 const MORE = [
   { href: "/rewards", label: "Rewards", icon: Icons.rewards },
+  { href: "/marketplace", label: "Marketplace", icon: Icons.cases },
   { href: "/affiliate", label: "Affiliate", icon: Icons.affiliate },
   { href: "/leaderboard", label: "Leaderboard", icon: Icons.leaderboard },
 ];
@@ -89,8 +90,8 @@ export function Sidebar() {
     >
       <div className="relative h-64 w-full overflow-hidden border-b-1 border-grey-47 p-10 transition-colors hover:bg-grey-34 active:bg-grey-34">
         <Link href="/" aria-label="home" className="relative flex h-full w-full items-center justify-center">
-          <img alt="" className="relative hidden h-24 object-contain xl:block" src="/img/logo.webp" />
-          <img alt="" className="relative h-32 object-contain xl:hidden" src="/img/icon.webp" />
+          <img alt="WildPVP" className="relative hidden h-full w-auto max-w-full object-contain xl:block" src="/img/logo.png" />
+          <img alt="WildPVP" className="relative h-full w-auto object-contain xl:hidden" src="/img/icon.png" />
         </Link>
       </div>
 

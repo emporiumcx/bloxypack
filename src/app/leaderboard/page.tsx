@@ -76,7 +76,7 @@ function PodiumCard({
             <div className="relative grid w-full grid-cols-[auto_1fr] items-center gap-12">
               <div className="relative h-80 w-80">
                 <div className={`absolute left-1/4 top-1/4 h-1/2 w-1/2 rounded opacity-80 blur-[40px] ${t.bg}`} />
-                <img alt="" className="absolute inset-6 h-68 w-68 animate-floaty opacity-60" src="/img/icon_shadow.webp" />
+                <img alt="" className="absolute inset-6 h-68 w-68 animate-floaty object-contain opacity-60" src="/img/icon.png" />
                 <img alt="" className="relative h-[80px] w-full animate-floaty object-contain" src={PRIZE_IMG[place]} />
               </div>
               <div className="grid w-full grid-cols-1 gap-8">

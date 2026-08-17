@@ -3,7 +3,7 @@ export default function FairnessPage() {
     <article className="mx-auto max-w-[720px] space-y-12 text-14 leading-7 text-grey-190">
       <h1 className="text-24 font-semibold text-white">Provably Fair</h1>
       <p>
-        RoStake games use hashed server seeds and client seeds so each result can be verified after the round. You can
+        WildPVP games use hashed server seeds and client seeds so each result can be verified after the round. You can
         rotate your client seed from the fairness tools in-game where available.
       </p>
       <p>

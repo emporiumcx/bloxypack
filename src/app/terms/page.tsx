@@ -3,7 +3,7 @@ export default function TermsPage() {
     <article className="mx-auto max-w-[720px] space-y-12 text-14 leading-7 text-grey-190">
       <h1 className="text-24 font-semibold text-white">Terms of Service</h1>
       <p>
-        RoStake is an entertainment platform for virtual Roblox-style items and site balance. By using the site you
+        WildPVP is an entertainment platform for virtual Roblox-style items and site balance. By using the site you
         confirm you are at least 18 years old and that you understand games of chance can result in loss of deposited
         funds.
       </p>

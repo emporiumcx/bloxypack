@@ -16,8 +16,8 @@ const ORIGINALS = [
   { href: "/towers", label: "Towers", img: "/img/home/towers.webp", icon: Icons.towers, scale: 3.5 },
   { href: "/dice", label: "Dice", img: "/img/home/dice.webp", icon: Icons.dice, scale: 3.5 },
   { href: "/blackjack", label: "Blackjack", img: "/img/home/blackjack.webp", icon: Icons.blackjack, scale: 3.5 },
-  { href: "/", label: "Roulette", img: "/img/home/roulette.webp", icon: Icons.roulette, scale: 3.5, soon: true },
-  { href: "/", label: "Crash", img: "/img/home/crash.webp", icon: Icons.crash, scale: 0.538462, soon: true },
+  { href: "/roulette", label: "Roulette", img: "/img/home/roulette.webp", icon: Icons.roulette, scale: 3.5, soon: true },
+  { href: "/crash", label: "Crash", img: "/img/home/crash.webp", icon: Icons.crash, scale: 0.538462, soon: true },
 ];
 
 function TiltBanner({ href, src, external }: { href: string; src: string; external?: boolean }) {
@@ -131,7 +131,7 @@ export default function HomePage() {
                         className="absolute inset-10 scale-100 blur-[34px] transition-transform group-hover:scale-150 group-active:scale-150"
                         style={{ background: item.glow }}
                       />
-                      <img alt="" className="absolute inset-0" src="/img/icon_shadow.webp" />
+                      <img alt="" className="absolute inset-0 object-contain opacity-50" src="/img/icon.png" />
                       <img
                         alt=""
                         className="relative h-full w-full scale-100 object-contain transition-transform group-hover:-translate-y-2 group-hover:scale-125 group-active:-translate-y-2 group-active:scale-125"
@@ -169,7 +169,7 @@ export default function HomePage() {
 
       <div className="@sm/page:gap-20 @sm/page:py-0 grid w-full grid-cols-1 gap-12 py-24">
         <div className="grid w-full grid-cols-[1fr_auto] items-center gap-10">
-          <h2 className="@sm/page:text-20 text-16 text-white">RoStake Originals</h2>
+          <h2 className="@sm/page:text-20 text-16 text-white">WildPVP Originals</h2>
           <div className="grid w-full grid-cols-2 gap-8">
             <button
               type="button"

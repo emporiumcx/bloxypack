@@ -202,9 +202,9 @@ export function Modals() {
           <span className="rounded-full bg-green px-12 py-4 text-12 font-bold tracking-wide text-grey-1">
             WELCOME TO
           </span>
-          <img src="/img/logo.webp" alt="RoStake" className="h-40 object-contain" />
+          <img src="/img/logo.png" alt="WildPVP" className="h-48 object-contain" />
           <p className="text-16 text-grey-190">Welcome to the #1 Roblox Case Opening Site!</p>
-          <GreenButton onClick={closeModal}>Continue to RoStake →</GreenButton>
+          <GreenButton onClick={closeModal}>Continue to WildPVP →</GreenButton>
         </div>
       </Overlay>
     );

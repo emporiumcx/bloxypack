@@ -10,7 +10,7 @@ export function CaseArt({ item, className = "" }: { item: CaseItem; className?: 
         <div
           className="h-full w-full"
           style={{
-            background: `radial-gradient(circle at 50% 30%, hsl(${item.hue} 70% 42%), #1c2025 70%)`,
+            background: `radial-gradient(circle at 50% 30%, hsl(${item.hue} 70% 42%), #0d1013 70%)`,
           }}
         />
       )}

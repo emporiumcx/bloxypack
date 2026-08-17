@@ -1,10 +1,10 @@
 import { formatBux } from "@/lib/format";
 import { BuxGlyph } from "./icons";
 
-export function BuxIcon({ className = "text-green" }: { className?: string }) {
+export function BuxIcon({ className = "" }: { className?: string }) {
   return (
-    <div className="flex items-center justify-center" style={{ width: 20, height: 20 }}>
-      <BuxGlyph className={className} style={{ marginLeft: 0, scale: 1 }} />
+    <div className={`flex items-center justify-center ${className}`} style={{ width: 20, height: 20 }}>
+      <BuxGlyph />
     </div>
   );
 }
@@ -37,21 +37,15 @@ export function Bux({
       ? "text-grey-142"
       : amount === "onGreen" || tone === "onGreen"
         ? "text-grey-28"
-        : amount === "green"
-          ? "text-green"
-          : "text-white";
+        : "text-white";
   return (
     <div className={`group grid grid-cols-[auto_1fr] items-center ${className}`}>
       <div className="mr-6 flex justify-center" style={{ marginTop: 0 }}>
-        <div
-          className="flex items-center justify-center"
-          style={
-            sm
-              ? { marginLeft: -3.2, marginRight: -3.2, width: 19.2, height: 16 }
-              : { marginLeft: -3.6, marginRight: -3.6, width: 21.6, height: 18 }
-          }
-        >
-          <BuxGlyph className={TONE[tone]} style={{ transform: sm ? "scale(0.8)" : "scale(0.9)" }} />
+        <div className="flex items-center justify-center">
+          <BuxGlyph
+            className={tone === "muted" ? "opacity-50" : undefined}
+            style={sm ? { width: 16, height: 16 } : { width: 18, height: 18 }}
+          />
         </div>
       </div>
       <div className={`relative flex items-center ${amountClass}`}>

@@ -50,7 +50,7 @@ function PlayingCard({ card, hidden, offset, deal, flip }: { card?: Card; hidden
         } ${flip ? "animate-card-flip" : ""}`}
       >
       {hidden || !card ? (
-        <div className="h-full w-full bg-[repeating-linear-gradient(135deg,#1c2025_0_8px,#2f353d_8px_16px)]" />
+        <div className="h-full w-full bg-[repeating-linear-gradient(135deg,#0d1013_0_8px,#1e2228_8px_16px)]" />
       ) : (
         <div className={`flex h-full flex-col p-6 ${card.suit.red ? "text-red" : "text-grey-28"}`}>
           <p className="text-14 leading-none">{card.rank}</p>

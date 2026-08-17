@@ -172,7 +172,7 @@ export default function TowersPage() {
                       <img alt="" className="h-28 w-28 object-contain" src="/img/bomb.webp" />
                     ) : (
                       <div className="flex items-center">
-                        <BuxGlyph className="text-grey-28" style={{ transform: "scale(0.9)", width: 20, height: 20 }} />
+                        <BuxGlyph style={{ width: 18, height: 18 }} />
                         <p className="text-14 text-grey-28">{payoutForRow[r].toLocaleString("en-US")}</p>
                       </div>
                     )}

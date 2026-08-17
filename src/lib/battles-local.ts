@@ -1,6 +1,6 @@
 import { BATTLES, type Battle } from "./catalog";
 
-const KEY = "rostake-battles";
+const KEY = "wildpvp-battles";
 
 export function loadLocalBattles(): Battle[] {
   if (typeof window === "undefined") return [];

@@ -1,27 +1,38 @@
 import type { Metadata } from "next";
-import { Onest } from "next/font/google";
+import localFont from "next/font/local";
+import { Skranji } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { Shell } from "@/components/shell";
 import "./globals.css";
 
-const onest = Onest({
-  variable: "--font-onest",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+const goldenSmile = localFont({
+  src: [
+    { path: "../fonts/GoldenSmile.otf", weight: "400", style: "normal" },
+    { path: "../fonts/GoldenSmile.ttf", weight: "400", style: "normal" },
+  ],
+  variable: "--font-golden-smile",
   display: "swap",
-  adjustFontFallback: true,
+  fallback: ["Arial", "Helvetica", "sans-serif"],
+  adjustFontFallback: false,
+});
+
+const skranji = Skranji({
+  variable: "--font-skranji",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "RoStake | Premium Case Opening Site",
+  title: "WildPVP | Premium Case Opening Site",
   description: "Crack cases. Win limiteds. Cash out crypto.",
-  icons: { icon: "/img/icon.webp" },
+  icons: { icon: "/img/icon.png" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${onest.variable} min-h-full antialiased`}>
-      <body className={`${onest.className} min-h-full`}>
+    <html lang="en" className={`${goldenSmile.variable} ${skranji.variable} min-h-full antialiased`}>
+      <body className={`${goldenSmile.className} min-h-full`}>
         <Providers>
           <Shell>{children}</Shell>
         </Providers>

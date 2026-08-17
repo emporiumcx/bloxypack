@@ -65,14 +65,14 @@ type Accounts = Record<string, User>;
 
 function loadAccounts(): Accounts {
   try {
-    return JSON.parse(localStorage.getItem("rostake-accounts") || "{}") as Accounts;
+    return JSON.parse(localStorage.getItem("wildpvp-accounts") || "{}") as Accounts;
   } catch {
     return {};
   }
 }
 
 function saveAccounts(accounts: Accounts) {
-  localStorage.setItem("rostake-accounts", JSON.stringify(accounts));
+  localStorage.setItem("wildpvp-accounts", JSON.stringify(accounts));
 }
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -84,26 +84,26 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const [chatOpen, setChatOpen] = useState(true);
 
   useEffect(() => {
-    const raw = localStorage.getItem("rostake-user");
+    const raw = localStorage.getItem("wildpvp-user");
     if (raw) {
       setUser(JSON.parse(raw) as User);
       setModal(null);
     }
-    const seen = localStorage.getItem("rostake-welcome");
+    const seen = localStorage.getItem("wildpvp-welcome");
     if (seen && !raw) setModal(null);
-    const savedChat = localStorage.getItem("rostake-chat");
+    const savedChat = localStorage.getItem("wildpvp-chat");
     if (savedChat) setChat(JSON.parse(savedChat) as ChatMsg[]);
   }, []);
 
   const persist = (u: User | null) => {
     setUser(u);
     if (u) {
-      localStorage.setItem("rostake-user", JSON.stringify(u));
+      localStorage.setItem("wildpvp-user", JSON.stringify(u));
       const accounts = loadAccounts();
       accounts[u.username.toLowerCase()] = u;
       saveAccounts(accounts);
     } else {
-      localStorage.removeItem("rostake-user");
+      localStorage.removeItem("wildpvp-user");
     }
   };
 
@@ -150,7 +150,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
     setUser((u) => {
       if (!u) return u;
       const next = { ...u, balance: u.balance + n };
-      localStorage.setItem("rostake-user", JSON.stringify(next));
+      localStorage.setItem("wildpvp-user", JSON.stringify(next));
       const accounts = loadAccounts();
       accounts[next.username.toLowerCase()] = next;
       saveAccounts(accounts);
@@ -164,7 +164,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       if (!u || u.balance < n) return u;
       ok = true;
       const next = { ...u, balance: u.balance - n };
-      localStorage.setItem("rostake-user", JSON.stringify(next));
+      localStorage.setItem("wildpvp-user", JSON.stringify(next));
       const accounts = loadAccounts();
       accounts[next.username.toLowerCase()] = next;
       saveAccounts(accounts);
@@ -190,7 +190,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           time,
         },
       ].slice(-80);
-      localStorage.setItem("rostake-chat", JSON.stringify(next));
+      localStorage.setItem("wildpvp-chat", JSON.stringify(next));
       return next;
     });
   }, [user]);
@@ -200,12 +200,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }, []);
 
   const openModal = useCallback((m: Modal) => {
-    if (m === null) localStorage.setItem("rostake-welcome", "1");
+    if (m === null) localStorage.setItem("wildpvp-welcome", "1");
     setModal(m);
   }, []);
 
   const closeModal = useCallback(() => {
-    localStorage.setItem("rostake-welcome", "1");
+    localStorage.setItem("wildpvp-welcome", "1");
     setModal(null);
   }, []);
 

@@ -115,7 +115,7 @@ function buildStrip(drops: CaseDrop[], winner?: CaseDrop) {
 
 function HexGlow({ color }: { color: string }) {
   return (
-    <svg className="h-80 w-80" fill="#272c327f" viewBox="0 0 108 122" xmlns="http://www.w3.org/2000/svg">
+    <svg className="h-80 w-80" fill="#16191e7f" viewBox="0 0 108 122" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M49.0348 2.82894C52.1025 1.07598 55.8684 1.07599 58.9361 2.82894L102.265 27.5886C105.374 29.3651 107.293 32.6714 107.293 36.2522V85.594C107.293 89.1748 105.374 92.481 102.265 94.2576L58.9361 119.017C55.8684 120.77 52.1025 120.77 49.0348 119.017L5.70542 94.2576C2.59643 92.481 0.677734 89.1748 0.677734 85.594V36.2522C0.677734 32.6714 2.59643 29.3651 5.70543 27.5886L49.0348 2.82894Z"
         opacity="0.3"
@@ -131,6 +131,69 @@ function HexGlow({ color }: { color: string }) {
   );
 }
 
+function playSfx(src: string, volume = 1) {
+  const audio = new Audio(src);
+  audio.volume = volume;
+  void audio.play().catch(() => {});
+  return audio;
+}
+
+const RIPPLE_DOTS = (() => {
+  const dots: { index: number; inCircle: boolean; delay: number; opacity: number }[] = [];
+  const span = 4 * Math.SQRT2;
+  for (let t = 0; t < 81; t++) {
+    const n = Math.floor(t / 9);
+    const s = t % 9;
+    const l = Math.sqrt((n - 4) ** 2 + (s - 4) ** 2);
+    const inCircle = l <= 4.5;
+    const o = 43758.5453 * Math.sin(127.1 * t + 311.7 * n + 74.3 * s);
+    dots.push({
+      index: t,
+      inCircle,
+      delay: inCircle ? (l / span) * 600 : 0,
+      opacity: inCircle ? 0.2 + (o - Math.floor(o)) * 0.8 : 0,
+    });
+  }
+  return dots;
+})();
+
+function RippleBurst({ color }: { color: string }) {
+  return (
+    <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ borderRadius: "inherit" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(9, 13px)",
+          gridTemplateRows: "repeat(9, 13px)",
+          gap: 6,
+          opacity: 0.7,
+        }}
+      >
+        {RIPPLE_DOTS.map((d) =>
+          d.inCircle ? (
+            <div
+              key={d.index}
+              style={{
+                width: 13,
+                height: 13,
+                borderRadius: 30,
+                background: color,
+                transform: "scale(0)",
+                animation: "ripple-breathe 1.5s ease-in-out forwards",
+                animationDelay: `${d.delay}ms`,
+                animationFillMode: "both",
+                opacity: d.opacity,
+              }}
+            />
+          ) : (
+            <div key={d.index} style={{ width: 13, height: 13 }} />
+          ),
+        )}
+      </div>
+    </div>
+  );
+}
+
 function SpinnerItem({
   drop,
   i,
@@ -143,6 +206,7 @@ function SpinnerItem({
   won: boolean;
 }) {
   const color = RARITY[drop.color] ?? RARITY.GRAY;
+  const showRipple = won && drop.color === "PURPLE";
   return (
     <div
       className="relative flex items-center"
@@ -167,6 +231,7 @@ function SpinnerItem({
               transition: "opacity 0.45s ease-out, transform 0.45s ease-out",
             }}
           />
+          {showRipple ? <RippleBurst color={color} /> : null}
           <div className="absolute inset-0 flex items-center justify-center">
             <div
               className="relative"
@@ -243,8 +308,7 @@ function SpinnerTrack({
   spinKey,
   duration,
   winIndex,
-  goldFlash,
-  playCoin,
+  goldWin,
 }: {
   drops: CaseDrop[];
   row: number;
@@ -252,14 +316,15 @@ function SpinnerTrack({
   spinKey: number;
   duration: number;
   winIndex: number | null;
-  goldFlash: boolean;
-  playCoin: boolean;
+  goldWin: boolean;
 }) {
   const reelRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const startX = centerX(START_INDEX);
   const endX = centerX(winIndex ?? WIN_INDEX);
   const x = phase === "landed" ? endX : startX;
+  const showCoin = goldWin && phase === "landed";
+  const showGoldPng = phase === "idle";
 
   useLayoutEffect(() => {
     const el = reelRef.current;
@@ -289,14 +354,15 @@ function SpinnerTrack({
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    if (playCoin) {
+    if (showCoin) {
+      video.playbackRate = 2.5;
       video.currentTime = 0;
       void video.play().catch(() => {});
     } else {
       video.pause();
       video.currentTime = 0;
     }
-  }, [playCoin]);
+  }, [showCoin]);
 
   return (
     <div className="relative h-full w-full min-h-[160px] @sm/page:min-h-[180px]">
@@ -309,7 +375,9 @@ function SpinnerTrack({
             <div className="absolute top-1/2 left-1/2 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2">
               <img
                 alt=""
-                className="absolute top-1/2 left-1/2 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 object-contain opacity-100"
+                className={`absolute top-1/2 left-1/2 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 object-contain ${
+                  showGoldPng ? "opacity-100" : "opacity-0"
+                }`}
                 src="/img/spin/initial_gold.png"
               />
             </div>
@@ -338,8 +406,8 @@ function SpinnerTrack({
             </div>
           </div>
           <div
-            className={`bg-gold/5 absolute right-0 bottom-0 left-0 top-0 z-10 transition-opacity duration-0 ${
-              goldFlash ? "opacity-100" : "opacity-0"
+            className={`bg-gold/5 absolute right-0 bottom-0 left-0 top-0 z-10 transition-opacity ${
+              goldWin && phase === "landed" ? "opacity-100 duration-300" : "opacity-0 duration-0"
             }`}
           />
           <div className="absolute -left-1 top-0 z-20 h-full w-1/3 bg-gradient-to-r from-grey-28 to-transparent" />
@@ -348,7 +416,7 @@ function SpinnerTrack({
             <div className="absolute top-1/2 left-1/2 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2">
               <div
                 className={`relative z-20 flex h-full w-full scale-125 items-center justify-center ${
-                  playCoin ? "opacity-100" : "opacity-0"
+                  showCoin ? "opacity-100" : "opacity-0"
                 }`}
               >
                 <div className="flex h-200 w-200 items-center justify-center overflow-hidden">
@@ -392,7 +460,7 @@ function DropCard({ d }: { d: CaseDrop }) {
               className="absolute left-1/4 top-1/4 h-1/2 w-1/2 rounded opacity-80 blur-[40px] transition-all group-hover:scale-110 group-active:scale-110"
               style={{ backgroundColor: color }}
             />
-            <img alt="" className="absolute inset-10 h-88 w-88 opacity-60" src="/img/icon_shadow.webp" />
+            <img alt="" className="absolute inset-10 h-88 w-88 object-contain opacity-60" src="/img/icon.png" />
             <img
               alt=""
               className="relative h-[108px] w-full object-contain transition-all group-hover:-translate-y-6 group-hover:scale-110 group-active:-translate-y-6 group-active:scale-110"
@@ -428,8 +496,6 @@ export function CaseOpening({ item }: { item: CaseItem }) {
   const [refreshOn, setRefreshOn] = useState(true);
   const [phase, setPhase] = useState<"idle" | "spinning" | "landed">("idle");
   const [spinKey, setSpinKey] = useState(0);
-  const [goldFlash, setGoldFlash] = useState(false);
-  const [playCoin, setPlayCoin] = useState(false);
   const drops = useMemo(() => dropsForCase(item.slug), [item.slug]);
   const n = Number(qty);
   const [rows, setRows] = useState<RowState[]>(() =>
@@ -439,6 +505,8 @@ export function CaseOpening({ item }: { item: CaseItem }) {
   const duration = fast ? FAST_MS : SPIN_MS;
   const caseImg = item.imageId ? `/cdn/cases/${item.imageId}.webp` : item.image ?? "";
   const spinning = phase === "spinning";
+  const rowsRef = useRef(rows);
+  rowsRef.current = rows;
 
   useEffect(() => {
     if (phase === "spinning") return;
@@ -453,13 +521,36 @@ export function CaseOpening({ item }: { item: CaseItem }) {
     if (phase !== "spinning") return;
     const land = window.setTimeout(() => {
       setPhase("landed");
-      setGoldFlash(true);
-      setPlayCoin(true);
-      window.setTimeout(() => setGoldFlash(false), 80);
-      window.setTimeout(() => setPlayCoin(false), 1800);
+      if (!sound) return;
+      playSfx("/sounds/case_land_sweet.wav");
+      const winners = rowsRef.current.map((r) => r.winner?.color);
+      if (winners.includes("YELLOW")) {
+        playSfx("/sounds/goldspin.mp3");
+      } else if (winners.includes("PURPLE")) {
+        const v = 1 + Math.floor(Math.random() * 2);
+        playSfx(`/sounds/battle/Land Epic V${v}.wav`);
+      }
     }, duration);
     return () => window.clearTimeout(land);
-  }, [phase, spinKey, duration]);
+  }, [phase, spinKey, duration, sound]);
+
+  useEffect(() => {
+    if (phase !== "spinning" || !sound) return;
+    let last = -1;
+    let raf = 0;
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const u = Math.min(1, (now - t0) / duration);
+      const tile = Math.floor(liveEase(u) * 15);
+      if (tile !== last) {
+        last = tile;
+        playSfx("/sounds/tick.mp3");
+      }
+      if (u < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [phase, spinKey, duration, sound]);
 
   function open(demo: boolean) {
     if (spinning) return;
@@ -478,10 +569,9 @@ export function CaseOpening({ item }: { item: CaseItem }) {
       });
     }
     setRows(next);
-    setPlayCoin(false);
-    setGoldFlash(false);
     setSpinKey((k) => k + 1);
     setPhase("spinning");
+    if (sound) playSfx("/sounds/battle/Spin V1 With Whoosh.wav", 0.7);
   }
 
   return (
@@ -528,8 +618,7 @@ export function CaseOpening({ item }: { item: CaseItem }) {
               spinKey={spinKey}
               duration={duration}
               winIndex={row.winIndex}
-              goldFlash={goldFlash}
-              playCoin={playCoin}
+              goldWin={phase === "landed" && row.winner?.color === "YELLOW"}
             />
           ))}
         </div>

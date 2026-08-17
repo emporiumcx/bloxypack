@@ -1,0 +1,8819 @@
+{
+  "half-a-cola": [
+    {
+      "name": "Bloxy Cola",
+      "id": 10472779,
+      "value": 50,
+      "chance": 50,
+      "color": "BLUE",
+      "minTicket": 0,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Hilarious",
+      "id": 27861352,
+      "value": 15,
+      "chance": 50,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 99999
+    }
+  ],
+  "cheap-meal": [
+    {
+      "name": "Cherry Pie",
+      "id": 40493590,
+      "value": 200,
+      "chance": 15,
+      "color": "PURPLE",
+      "minTicket": 0,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Cheezburger",
+      "id": 16726030,
+      "value": 99,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Turkey Leg",
+      "id": 13745494,
+      "value": 75,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Taco",
+      "id": 15177716,
+      "value": 75,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Watermelon",
+      "id": 22787248,
+      "value": 75,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Bloxy Cola",
+      "id": 10472779,
+      "value": 50,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "back-to-17": [
+    {
+      "name": "Chill Cap",
+      "id": 321570512,
+      "value": 643,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Hipster Glasses",
+      "id": 125369932,
+      "value": 125,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Bear Face Mask",
+      "id": 1192464705,
+      "value": 105,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Beautiful Brown Hair for Beautiful People",
+      "id": 17877340,
+      "value": 95,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Holiday Crown",
+      "id": 139152472,
+      "value": 95,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Paper Hat",
+      "id": 10476359,
+      "value": 95,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "shaggy-please": [
+    {
+      "name": "Shaggy",
+      "id": 20573078,
+      "value": 1486,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Stylish Blue Hair",
+      "id": 846803597,
+      "value": 65,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 27999
+    },
+    {
+      "name": "Green Stylish Hair",
+      "id": 1033117580,
+      "value": 65,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 28000,
+      "maxTicket": 45999
+    },
+    {
+      "name": "Red Dreamy Hair",
+      "id": 835065519,
+      "value": 65,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 46000,
+      "maxTicket": 63999
+    },
+    {
+      "name": "Blonde Manga Hero",
+      "id": 553917533,
+      "value": 65,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 64000,
+      "maxTicket": 81999
+    },
+    {
+      "name": "Stylish Purple Hair",
+      "id": 430062818,
+      "value": 65,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 82000,
+      "maxTicket": 99999
+    }
+  ],
+  "gucci-dream": [
+    {
+      "name": "Gucci Dionysus Bag with Bee",
+      "id": 6803402872,
+      "value": 12934,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Gucci Spiked Basketball Bag",
+      "id": 6803400584,
+      "value": 298,
+      "chance": 19,
+      "color": "GRAY",
+      "minTicket": 1000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Gucci Horsebit 1955 Shoulder Bag",
+      "id": 6803397504,
+      "value": 285,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Gucci Geometric Bag",
+      "id": 6803398976,
+      "value": 214,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Gucci GG Marmont Bag",
+      "id": 6803403781,
+      "value": 206,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "GucciGhost Bag",
+      "id": 6803404717,
+      "value": 180,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "cyber-case": [
+    {
+      "name": "1337 Cyber Assassin",
+      "id": 81688937,
+      "value": 4067,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Cybernetic Wings",
+      "id": 116073713,
+      "value": 1500,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Technowings",
+      "id": 1191136725,
+      "value": 1000,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 20000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Crimson Cyber Golem",
+      "id": 89620654,
+      "value": 500,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Grandpappy Computer",
+      "id": 1046282284,
+      "value": 300,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Cyber Stealth Goggles",
+      "id": 100426086,
+      "value": 275,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Lightronic Techbot",
+      "id": 105342844,
+      "value": 95,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Sound Wave Mask",
+      "id": 857270189,
+      "value": 105,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "noob-case": [
+    {
+      "name": "Noob Attack: Ninja Nuisance",
+      "id": 27171057,
+      "value": 2860,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 499
+    },
+    {
+      "name": "Noob Attack: Artemis Annhilation",
+      "id": 553718984,
+      "value": 1965,
+      "chance": 1,
+      "color": "PURPLE",
+      "minTicket": 500,
+      "maxTicket": 1499
+    },
+    {
+      "name": "Noob Attack: Raig Table Revenge",
+      "id": 243853798,
+      "value": 1559,
+      "chance": 1.5,
+      "color": "BLUE",
+      "minTicket": 1500,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Noob Attack: Crescendo Crusher",
+      "id": 1191119857,
+      "value": 1184,
+      "chance": 2,
+      "color": "BLUE",
+      "minTicket": 3000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Noob Attack: Fallen Artemis Fatality",
+      "id": 1744078238,
+      "value": 1014,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 5000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Noob Assist: Basketball Buddy",
+      "id": 100929743,
+      "value": 999,
+      "chance": 20,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Noob Attack: Golden Sword Gladiator",
+      "id": 833771102,
+      "value": 966,
+      "chance": 20,
+      "color": "BLUE",
+      "minTicket": 35000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Noob Attack: Laser Scythe Scuffle",
+      "id": 2566105661,
+      "value": 553,
+      "chance": 22.5,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 77499
+    },
+    {
+      "name": "Noob Assist: Gingerbread Gratitude",
+      "id": 2620416387,
+      "value": 566,
+      "chance": 22.5,
+      "color": "GRAY",
+      "minTicket": 77500,
+      "maxTicket": 99999
+    }
+  ],
+  "tie-trouble": [
+    {
+      "name": "Epic Face Tie",
+      "id": 51352999,
+      "value": 17031,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Art Tie",
+      "id": 51353061,
+      "value": 4106,
+      "chance": 13,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Ninja Necktie",
+      "id": 71429414,
+      "value": 1939,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Neon Necktie",
+      "id": 678278463,
+      "value": 50,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Fly Tie",
+      "id": 697778975,
+      "value": 50,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Sweet Jelly Bean Tie",
+      "id": 738681545,
+      "value": 50,
+      "chance": 35,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 99999
+    }
+  ],
+  "10-random": [
+    {
+      "name": "Golden Top Hat of Bling Bling",
+      "id": 6552812,
+      "value": 20408,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Adurite Antlers",
+      "id": 162066057,
+      "value": 15899,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 3999
+    },
+    {
+      "name": "8-Bit Royal Crown",
+      "id": 10159600649,
+      "value": 14624,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 4000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Bucket",
+      "id": 1081239,
+      "value": 14079,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 6000,
+      "maxTicket": 7999
+    },
+    {
+      "name": "Purple Wistful Wink",
+      "id": 583722710,
+      "value": 13539,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 8000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Sir Golden Locks",
+      "id": 28221786,
+      "value": 65,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Pirate Parrot",
+      "id": 20721256,
+      "value": 58,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "ROBLOX U Foam Finger",
+      "id": 176219131,
+      "value": 50,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "200-iq": [
+    {
+      "name": "Reading Textbook",
+      "id": 1136590,
+      "value": 6656,
+      "chance": 25,
+      "color": "PURPLE",
+      "minTicket": 0,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Chemistry Textbook",
+      "id": 1139753,
+      "value": 4723,
+      "chance": 15,
+      "color": "BLUE",
+      "minTicket": 25000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Brainwave Detector",
+      "id": 49939692,
+      "value": 3008,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Lime Glasses",
+      "id": 250364732,
+      "value": 207,
+      "chance": 12.5,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 62499
+    },
+    {
+      "name": "Thinking Cap",
+      "id": 27814348,
+      "value": 85,
+      "chance": 12.5,
+      "color": "GRAY",
+      "minTicket": 62500,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Math Homework",
+      "id": 22788102,
+      "value": 350,
+      "chance": 12.5,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 87499
+    },
+    {
+      "name": "Spell Book of Ice Cold Revenge",
+      "id": 1241586091,
+      "value": 600,
+      "chance": 12.5,
+      "color": "GRAY",
+      "minTicket": 87500,
+      "maxTicket": 99999
+    }
+  ],
+  "fruit-salad": [
+    {
+      "name": "Lime Green Shaggy",
+      "id": 135470963,
+      "value": 30964,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 2499
+    },
+    {
+      "name": "Watermelon Helm",
+      "id": 116777149,
+      "value": 14116,
+      "chance": 4.5,
+      "color": "YELLOW",
+      "minTicket": 2500,
+      "maxTicket": 6999
+    },
+    {
+      "name": "Dancing Apple",
+      "id": 53918608,
+      "value": 6753,
+      "chance": 6,
+      "color": "PURPLE",
+      "minTicket": 7000,
+      "maxTicket": 12999
+    },
+    {
+      "name": "Orange Starface",
+      "id": 162200666,
+      "value": 6316,
+      "chance": 6,
+      "color": "BLUE",
+      "minTicket": 13000,
+      "maxTicket": 18999
+    },
+    {
+      "name": "Banana Crown",
+      "id": 23300068,
+      "value": 5771,
+      "chance": 7,
+      "color": "BLUE",
+      "minTicket": 19000,
+      "maxTicket": 25999
+    },
+    {
+      "name": "Watermelon Samurai",
+      "id": 160207626,
+      "value": 2171,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 26000,
+      "maxTicket": 35999
+    },
+    {
+      "name": "Grape Headphones",
+      "id": 1678340845,
+      "value": 500,
+      "chance": 16,
+      "color": "GRAY",
+      "minTicket": 36000,
+      "maxTicket": 51999
+    },
+    {
+      "name": "Strawberry Ice Cream Hair",
+      "id": 430063008,
+      "value": 100,
+      "chance": 24,
+      "color": "GRAY",
+      "minTicket": 52000,
+      "maxTicket": 75999
+    },
+    {
+      "name": "8-Bit Pineapple Hat",
+      "id": 3454748703,
+      "value": 85,
+      "chance": 24,
+      "color": "GRAY",
+      "minTicket": 76000,
+      "maxTicket": 99999
+    }
+  ],
+  "big-case": [
+    {
+      "name": "BIG: Silverthorn Antlers",
+      "id": 477860473,
+      "value": 53850,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "BIG: Purple Banded Top Hat",
+      "id": 477859537,
+      "value": 28356,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Bighead",
+      "id": 1048037,
+      "value": 4079,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 5000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "BIG: Bighead Santa",
+      "id": 567531362,
+      "value": 1610,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "BIG: Rainbow Shades",
+      "id": 477860100,
+      "value": 1511,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "BIG: Galaxy Girl",
+      "id": 477858669,
+      "value": 1069,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "iced-out": [
+    {
+      "name": "Ice Valkyrie",
+      "id": 4390891467,
+      "value": 463340,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 249
+    },
+    {
+      "name": "The Ice Skull of Nevermoor",
+      "id": 6552254,
+      "value": 80632,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 250,
+      "maxTicket": 1249
+    },
+    {
+      "name": "Transparent Icephones",
+      "id": 135470710,
+      "value": 42750,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 1250,
+      "maxTicket": 2249
+    },
+    {
+      "name": "Snowflake Eyes",
+      "id": 76233968067050,
+      "value": 28693,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 2250,
+      "maxTicket": 4749
+    },
+    {
+      "name": "Snowflake Necklace",
+      "id": 42847638,
+      "value": 11229,
+      "chance": 4,
+      "color": "PURPLE",
+      "minTicket": 4750,
+      "maxTicket": 8749
+    },
+    {
+      "name": "Ice Wizard",
+      "id": 20643315,
+      "value": 9564,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 8750,
+      "maxTicket": 13749
+    },
+    {
+      "name": "Frozen Swordpack Crown of the Northern Tundra",
+      "id": 330295337,
+      "value": 7260,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 13750,
+      "maxTicket": 18749
+    },
+    {
+      "name": "Noob Attack: Frozen Crossbow Collision",
+      "id": 2830454962,
+      "value": 581,
+      "chance": 37,
+      "color": "GRAY",
+      "minTicket": 18750,
+      "maxTicket": 55749
+    },
+    {
+      "name": "Snowflake Styles",
+      "id": 67200878,
+      "value": 959,
+      "chance": 24,
+      "color": "GRAY",
+      "minTicket": 55750,
+      "maxTicket": 79749
+    },
+    {
+      "name": "Forever 21 Ice Queen Face Beanie",
+      "id": 11700921895,
+      "value": 456,
+      "chance": 20.25,
+      "color": "GRAY",
+      "minTicket": 79750,
+      "maxTicket": 99999
+    }
+  ],
+  "10-hat": [
+    {
+      "name": "Brighteyes' Top Hat",
+      "id": 169454280,
+      "value": 58832,
+      "chance": 8,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 7999
+    },
+    {
+      "name": "Psychedelic Top Hat",
+      "id": 80293983,
+      "value": 11785,
+      "chance": 2,
+      "color": "BLUE",
+      "minTicket": 8000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Counterfeit Wizard\u2019s Hat",
+      "id": 1743924583,
+      "value": 1000,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 13999
+    },
+    {
+      "name": "Blue Top Hat",
+      "id": 1016145591,
+      "value": 992,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 14000,
+      "maxTicket": 18999
+    },
+    {
+      "name": "Holiday Clockwork Top Hat",
+      "id": 2606189336,
+      "value": 800,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 19000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Piano Top Hat",
+      "id": 155671034,
+      "value": 750,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 31999
+    },
+    {
+      "name": "Dragon Top Hat",
+      "id": 2413962870,
+      "value": 500,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 32000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Golden Pilgrim Hat",
+      "id": 136217608,
+      "value": 449,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Alpine Hat",
+      "id": 13701005,
+      "value": 360,
+      "chance": 35,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 99999
+    }
+  ],
+  "sugar-rush": [
+    {
+      "name": "Bubble Trouble",
+      "id": 19264845,
+      "value": 63303,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Candy Cane Launcher",
+      "id": 101078326,
+      "value": 4919,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Candy Crusher",
+      "id": 327319628,
+      "value": 4315,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Candy Cane Bow",
+      "id": 569676258,
+      "value": 2614,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 47999
+    },
+    {
+      "name": "Candy Corn Knit",
+      "id": 94262384,
+      "value": 552,
+      "chance": 23,
+      "color": "GRAY",
+      "minTicket": 48000,
+      "maxTicket": 70999
+    },
+    {
+      "name": "Retro Candy",
+      "id": 65079094,
+      "value": 350,
+      "chance": 29,
+      "color": "GRAY",
+      "minTicket": 71000,
+      "maxTicket": 99999
+    }
+  ],
+  "overseer-case": [
+    {
+      "name": "Overseer's Eye",
+      "id": 82665932,
+      "value": 39750,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Overseer Short Sword",
+      "id": 156467990,
+      "value": 25996,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 2000,
+      "maxTicket": 6999
+    },
+    {
+      "name": "Overseer All-Seeing Pendant ",
+      "id": 483306493,
+      "value": 19035,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 7000,
+      "maxTicket": 16999
+    },
+    {
+      "name": "Overseer Overlord",
+      "id": 286511038,
+      "value": 14299,
+      "chance": 13,
+      "color": "BLUE",
+      "minTicket": 17000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Overseer Warlord's Sword",
+      "id": 483308034,
+      "value": 13088,
+      "chance": 20,
+      "color": "BLUE",
+      "minTicket": 30000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Overseer Oversleeper: Terrible Teddy",
+      "id": 3339372724,
+      "value": 100,
+      "chance": 50,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 99999
+    }
+  ],
+  "pink-case": [
+    {
+      "name": "Princess Hat",
+      "id": 1032641,
+      "value": 39750,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Neon Pink Top Hat",
+      "id": 376806474,
+      "value": 30390,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 4000,
+      "maxTicket": 8999
+    },
+    {
+      "name": "Ultimate Pink Victory",
+      "id": 435115571,
+      "value": 24790,
+      "chance": 7,
+      "color": "PURPLE",
+      "minTicket": 9000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Pink Mermaid Princess",
+      "id": 1428418448,
+      "value": 20770,
+      "chance": 9,
+      "color": "PURPLE",
+      "minTicket": 16000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Hot Pink Faberg\u00e9 Egg",
+      "id": 31149956,
+      "value": 4308,
+      "chance": 18.75,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 43749
+    },
+    {
+      "name": "Reese's Mystery Pony Pinata",
+      "id": 25308989,
+      "value": 3057,
+      "chance": 18.75,
+      "color": "GRAY",
+      "minTicket": 43750,
+      "maxTicket": 62499
+    },
+    {
+      "name": "Brighteyes' Treasure Chest",
+      "id": 23726438,
+      "value": 2999,
+      "chance": 18.75,
+      "color": "GRAY",
+      "minTicket": 62500,
+      "maxTicket": 81249
+    },
+    {
+      "name": "The Bright One ",
+      "id": 151787264,
+      "value": 2306,
+      "chance": 18.75,
+      "color": "GRAY",
+      "minTicket": 81250,
+      "maxTicket": 99999
+    }
+  ],
+  "lol-roulette": [
+    {
+      "name": "LOLHOO",
+      "id": 25306182,
+      "value": 20046,
+      "chance": 16.7,
+      "color": "BLUE",
+      "minTicket": 0,
+      "maxTicket": 16699
+    },
+    {
+      "name": "LOL Moon",
+      "id": 162372650,
+      "value": 14917,
+      "chance": 16.66,
+      "color": "BLUE",
+      "minTicket": 16700,
+      "maxTicket": 33359
+    },
+    {
+      "name": "LOLHOW",
+      "id": 25687227,
+      "value": 13177,
+      "chance": 16.66,
+      "color": "GRAY",
+      "minTicket": 33360,
+      "maxTicket": 50019
+    },
+    {
+      "name": "LOLEARTH",
+      "id": 50382508,
+      "value": 11198,
+      "chance": 16.66,
+      "color": "GRAY",
+      "minTicket": 50020,
+      "maxTicket": 66679
+    },
+    {
+      "name": "LOLWHY",
+      "id": 26424215,
+      "value": 10599,
+      "chance": 16.66,
+      "color": "GRAY",
+      "minTicket": 66680,
+      "maxTicket": 83339
+    },
+    {
+      "name": "LOL Santa",
+      "id": 19264489,
+      "value": 3613,
+      "chance": 16.66,
+      "color": "GRAY",
+      "minTicket": 83340,
+      "maxTicket": 99999
+    }
+  ],
+  "monochrome": [
+    {
+      "name": "Black Iron Bucket of Ultimate Pwnage",
+      "id": 128159108,
+      "value": 249751,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1499
+    },
+    {
+      "name": "JJ5x5's White Top Hat",
+      "id": 1073690,
+      "value": 168133,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 1500,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Blackvalk Shades",
+      "id": 175134718,
+      "value": 29571,
+      "chance": 6,
+      "color": "PURPLE",
+      "minTicket": 4000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Black Iron Antlers",
+      "id": 398674411,
+      "value": 11163,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Black Iron Commando",
+      "id": 928908332,
+      "value": 4212,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "White Witch Hat",
+      "id": 5207053,
+      "value": 2817,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "White Ninja Headband of the Unimpeachable Soul",
+      "id": 11297746,
+      "value": 1710,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "katana-flip": [
+    {
+      "name": "Crimson Katana of the Unsetting Sun",
+      "id": 18017365,
+      "value": 49202,
+      "chance": 8.33,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 8329
+    },
+    {
+      "name": "Blue Katana of One Thousand Tears",
+      "id": 20577851,
+      "value": 32466,
+      "chance": 8.33,
+      "color": "PURPLE",
+      "minTicket": 8330,
+      "maxTicket": 16659
+    },
+    {
+      "name": "Iris Katana of Goldengrove Unleaving",
+      "id": 22787168,
+      "value": 28322,
+      "chance": 8.33,
+      "color": "BLUE",
+      "minTicket": 16660,
+      "maxTicket": 24989
+    },
+    {
+      "name": "Golden Katana of the Unflinching Dawn",
+      "id": 18776718,
+      "value": 25036,
+      "chance": 8.33,
+      "color": "BLUE",
+      "minTicket": 24990,
+      "maxTicket": 33319
+    },
+    {
+      "name": "Jade Katana of the Darkest Forest",
+      "id": 21294489,
+      "value": 22197,
+      "chance": 8.33,
+      "color": "BLUE",
+      "minTicket": 33320,
+      "maxTicket": 41649
+    },
+    {
+      "name": "Ocherous Katana of the Setting Sun",
+      "id": 25545089,
+      "value": 15106,
+      "chance": 8.35,
+      "color": "GRAY",
+      "minTicket": 41650,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Katana",
+      "id": 11453385,
+      "value": 250,
+      "chance": 50,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 99999
+    }
+  ],
+  "beach-case": [
+    {
+      "name": "Seeking Sea King",
+      "id": 61895706,
+      "value": 119220,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Beach Ball Head",
+      "id": 172327379,
+      "value": 33605,
+      "chance": 24.5,
+      "color": "PURPLE",
+      "minTicket": 1000,
+      "maxTicket": 25499
+    },
+    {
+      "name": "Portrait of a Hero at the Beach",
+      "id": 1744356057,
+      "value": 11378,
+      "chance": 24.5,
+      "color": "GRAY",
+      "minTicket": 25500,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Beach Day",
+      "id": 31541373,
+      "value": 1745,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Ralph Lauren Snow Beach Waist Bag",
+      "id": 8198301926,
+      "value": 419,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Eggraging Shark of the Sea",
+      "id": 4786869155,
+      "value": 154,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "deep-sea": [
+    {
+      "name": "Mr. Bubbles",
+      "id": 31616411,
+      "value": 86048,
+      "chance": 13,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 12999
+    },
+    {
+      "name": "Teal Mermaid Queen",
+      "id": 1428417334,
+      "value": 28894,
+      "chance": 11,
+      "color": "BLUE",
+      "minTicket": 13000,
+      "maxTicket": 23999
+    },
+    {
+      "name": "Mrs. Tentacles",
+      "id": 13416321,
+      "value": 24270,
+      "chance": 11,
+      "color": "BLUE",
+      "minTicket": 24000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Sword of the Seas",
+      "id": 155661985,
+      "value": 11734,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Kuddly Kraken",
+      "id": 52554739,
+      "value": 3870,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Anchor Cannon",
+      "id": 155662087,
+      "value": 300,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Eggraging Shark of the Sea",
+      "id": 4786869155,
+      "value": 145,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Amerisnorkels ",
+      "id": 60662771,
+      "value": 130,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 84999
+    },
+    {
+      "name": "Jellyfish",
+      "id": 32661648,
+      "value": 105,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 85000,
+      "maxTicket": 99999
+    }
+  ],
+  "molten-core": [
+    {
+      "name": "The Fire Crown",
+      "id": 362032819,
+      "value": 463209,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 2499
+    },
+    {
+      "name": "SFOTH IV Crown of Fire",
+      "id": 173783297,
+      "value": 119112,
+      "chance": 7.5,
+      "color": "YELLOW",
+      "minTicket": 2500,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Horns of the Magmawrath",
+      "id": 280896465,
+      "value": 10863,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Dragon's Blaze Sword",
+      "id": 105351545,
+      "value": 4409,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Flaming Mohawk",
+      "id": 191101707,
+      "value": 500,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Fiery Egg of Egg Testing",
+      "id": 27345567,
+      "value": 244,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Molten Horns",
+      "id": 9272755340,
+      "value": 95,
+      "chance": 35,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 99999
+    }
+  ],
+  "emo-drip": [
+    {
+      "name": "Black Iron Horns",
+      "id": 628771505,
+      "value": 197476,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Emo King",
+      "id": 42846048,
+      "value": 143897,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Blackvalk Shades",
+      "id": 175134718,
+      "value": 29571,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "DarkAge Ninjas: Dual Kamas",
+      "id": 60888284,
+      "value": 8451,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Overseer Collar",
+      "id": 343585127,
+      "value": 8165,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Sinister P.",
+      "id": 17450053,
+      "value": 5327,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Stitch Face",
+      "id": 1212,
+      "value": 4000,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "antler-alarm": [
+    {
+      "name": "Golden Antlers",
+      "id": 193659065,
+      "value": 221987,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Wanwood Antlers",
+      "id": 1272714,
+      "value": 181295,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Antenna Antlers",
+      "id": 148791559,
+      "value": 145650,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Adurite Antlers",
+      "id": 162066057,
+      "value": 15832,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Black Iron Antlers",
+      "id": 398674411,
+      "value": 11137,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Silverthorn Antlers",
+      "id": 9255011,
+      "value": 6089,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Blue 8-Bit Antlers",
+      "id": 507783603,
+      "value": 2316,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "hypebeast": [
+    {
+      "name": "Ice Valkyrie",
+      "id": 4390891467,
+      "value": 463340,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 2499
+    },
+    {
+      "name": "Prankster",
+      "id": 20052135,
+      "value": 237490,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 2500,
+      "maxTicket": 7499
+    },
+    {
+      "name": "Supa Dupa Fly Cap",
+      "id": 1609401184,
+      "value": 49846,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 7500,
+      "maxTicket": 12499
+    },
+    {
+      "name": "Adurite Antlers",
+      "id": 162066057,
+      "value": 15652,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 12500,
+      "maxTicket": 27499
+    },
+    {
+      "name": "Chill Cap",
+      "id": 321570512,
+      "value": 612,
+      "chance": 17.5,
+      "color": "GRAY",
+      "minTicket": 27500,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Super Beanie Red",
+      "id": 5063333303,
+      "value": 85,
+      "chance": 22.5,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 67499
+    },
+    {
+      "name": "Yeezi Shoes",
+      "id": 127150205524717,
+      "value": 85,
+      "chance": 32.5,
+      "color": "GRAY",
+      "minTicket": 67500,
+      "maxTicket": 99999
+    }
+  ],
+  "telamon-case": [
+    {
+      "name": "Telamon's Chicken Suit",
+      "id": 24112667,
+      "value": 910993,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Telamon Hair",
+      "id": 31312357,
+      "value": 696670,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2499
+    },
+    {
+      "name": "Telamonster: the Chaos Edge",
+      "id": 93136746,
+      "value": 539341,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 2500,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Telamon's Foe Hammer",
+      "id": 53623350,
+      "value": 36290,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Telamon's Mystery Donuts",
+      "id": 38971471,
+      "value": 4034,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Telamon's Mystery Box",
+      "id": 23172653,
+      "value": 2488,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Telamon's Other Chicken Suit",
+      "id": 121390996,
+      "value": 500,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "terracotta-bloom": [
+    {
+      "name": "The Crown of Roses",
+      "id": 17449820,
+      "value": 2799288,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Arborist's Verdant Egg of Leafyness",
+      "id": 24826823,
+      "value": 88764,
+      "chance": 9,
+      "color": "PURPLE",
+      "minTicket": 1000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Tea Cup",
+      "id": 158066632,
+      "value": 4402,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Carnagecopia",
+      "id": 98346415,
+      "value": 3244,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Wanwood Autumn King Crown",
+      "id": 2705893733,
+      "value": 2902,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Garden Tulip",
+      "id": 9185200431,
+      "value": 1,
+      "chance": 35,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 99999
+    }
+  ],
+  "bucket-bonanza": [
+    {
+      "name": "Agonizingly White Bucket of Ultimate Doom",
+      "id": 1402433072,
+      "value": 275840,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Black Iron Bucket of Ultimate Pwnage",
+      "id": 128159108,
+      "value": 249751,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Agonizingly Green Bucket of Cheer",
+      "id": 102604869,
+      "value": 220872,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 6000,
+      "maxTicket": 8999
+    },
+    {
+      "name": "Agonizingly Violet Bucket of Cheer",
+      "id": 102606919,
+      "value": 189896,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 9000,
+      "maxTicket": 13999
+    },
+    {
+      "name": "Agonizingly Red Bucket of Cheer",
+      "id": 102605392,
+      "value": 183246,
+      "chance": 6,
+      "color": "YELLOW",
+      "minTicket": 14000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "The Agonizingly Ugly Bucket of Doom",
+      "id": 1286490,
+      "value": 143336,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 20000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Festive Bucket",
+      "id": 1241181482,
+      "value": 2559,
+      "chance": 75,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 99999
+    }
+  ],
+  "golden-opportunity": [
+    {
+      "name": "Dominus Aureus",
+      "id": 138932314,
+      "value": 5114391,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 249
+    },
+    {
+      "name": "The Golden Robloxian",
+      "id": 2799053,
+      "value": 1904351,
+      "chance": 0.75,
+      "color": "YELLOW",
+      "minTicket": 250,
+      "maxTicket": 999
+    },
+    {
+      "name": "Gold King of the Night",
+      "id": 439945864,
+      "value": 271196,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Golden Antlers",
+      "id": 193659065,
+      "value": 224788,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5499
+    },
+    {
+      "name": "Gold Emperor of the Night",
+      "id": 878895806,
+      "value": 224788,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 5500,
+      "maxTicket": 7999
+    },
+    {
+      "name": "Golden Crown of Warlords",
+      "id": 1743906481,
+      "value": 45603,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 8000,
+      "maxTicket": 17999
+    },
+    {
+      "name": "Katana of the Golden Snake",
+      "id": 435116927,
+      "value": 18152,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 18000,
+      "maxTicket": 27999
+    },
+    {
+      "name": "Gold Clockwork Headphones",
+      "id": 16477149823,
+      "value": 4926,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 28000,
+      "maxTicket": 42999
+    },
+    {
+      "name": "Golden Paintball Mask",
+      "id": 173781209,
+      "value": 250,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 43000,
+      "maxTicket": 60999
+    },
+    {
+      "name": "Goldrow",
+      "id": 3581868178,
+      "value": 231,
+      "chance": 39,
+      "color": "GRAY",
+      "minTicket": 61000,
+      "maxTicket": 99999
+    }
+  ],
+  "stay-fresh": [
+    {
+      "name": "Clockwork's Shades",
+      "id": 11748356,
+      "value": 1330659,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1499
+    },
+    {
+      "name": "Peach Thug Shades",
+      "id": 97852103,
+      "value": 447722,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 1500,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Magnaspectro Inspectors",
+      "id": 40493240,
+      "value": 337042,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 4000,
+      "maxTicket": 6999
+    },
+    {
+      "name": "Tasteless Bluesteel Shades",
+      "id": 362080535,
+      "value": 264264,
+      "chance": 3.5,
+      "color": "YELLOW",
+      "minTicket": 7000,
+      "maxTicket": 10499
+    },
+    {
+      "name": "Classicx89's Stylin' Intern Shades",
+      "id": 15095717,
+      "value": 178706,
+      "chance": 4.5,
+      "color": "PURPLE",
+      "minTicket": 10500,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Vampire Sunglasses",
+      "id": 306969564,
+      "value": 174639,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 15000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Pink Heart Shutter Shades",
+      "id": 1402317393,
+      "value": 300,
+      "chance": 80,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 99999
+    }
+  ],
+  "valk-volatility": [
+    {
+      "name": "Blackvalk",
+      "id": 124730194,
+      "value": 6362612,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 249
+    },
+    {
+      "name": "Emerald Valkyrie",
+      "id": 2830437685,
+      "value": 4336949,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 250,
+      "maxTicket": 499
+    },
+    {
+      "name": "Sparkle Time Valkyrie",
+      "id": 1180433861,
+      "value": 2580879,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 749
+    },
+    {
+      "name": "Tixvalk",
+      "id": 382881237,
+      "value": 1228429,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 750,
+      "maxTicket": 999
+    },
+    {
+      "name": "Ice Valkyrie",
+      "id": 4390891467,
+      "value": 463340,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Valkyrie Helm",
+      "id": 1365767,
+      "value": 356561,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Blackvalk Shades",
+      "id": 175134718,
+      "value": 29571,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Ornate Valkyrie",
+      "id": 23634704,
+      "value": 15379,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Valkyrie 3000",
+      "id": 74214775,
+      "value": 7292,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Emerald Valk Shades",
+      "id": 3210243135,
+      "value": 3921,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "bux-or-tix": [
+    {
+      "name": "Dominus Pittacium",
+      "id": 335080779,
+      "value": 6829988,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 249
+    },
+    {
+      "name": "Green Sparkle Time Fedora",
+      "id": 100929604,
+      "value": 4927744,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 250,
+      "maxTicket": 499
+    },
+    {
+      "name": "Lord of the Tixeration",
+      "id": 382880833,
+      "value": 1776922,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 749
+    },
+    {
+      "name": "Green Glowing Eyes",
+      "id": 398676450,
+      "value": 1730110,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 750,
+      "maxTicket": 999
+    },
+    {
+      "name": "Tix Shaggy",
+      "id": 382881373,
+      "value": 1674542,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 1999
+    },
+    {
+      "name": "): Green Sidewinder",
+      "id": 250394771,
+      "value": 1422216,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Tixvalk",
+      "id": 382881237,
+      "value": 1228429,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Neon Green Crazy Crown",
+      "id": 321346616,
+      "value": 372596,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 4000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Tixsplosion",
+      "id": 6512277,
+      "value": 1633,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 5000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Green Balloon",
+      "id": 27494652,
+      "value": 725,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Tickets Tie",
+      "id": 390972175,
+      "value": 561,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "frenzy-faces": [
+    {
+      "name": "Red Tango",
+      "id": 16652251,
+      "value": 3431820,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 499
+    },
+    {
+      "name": "Red Glowing Eyes",
+      "id": 180660043,
+      "value": 2741506,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 999
+    },
+    {
+      "name": "Eyes of Emeraldwrath",
+      "id": 209994352,
+      "value": 1119314,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2499
+    },
+    {
+      "name": "Tattletale",
+      "id": 26343188,
+      "value": 1090054,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 2500,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Yum!",
+      "id": 26019070,
+      "value": 742878,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 7499
+    },
+    {
+      "name": "Prankster",
+      "id": 20052135,
+      "value": 251023,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 7500,
+      "maxTicket": 12499
+    },
+    {
+      "name": "Emperor",
+      "id": 25267538,
+      "value": 211950,
+      "chance": 7.5,
+      "color": "BLUE",
+      "minTicket": 12500,
+      "maxTicket": 19999
+    },
+    {
+      "name": "RAWR!",
+      "id": 7076224,
+      "value": 300,
+      "chance": 80,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 99999
+    }
+  ],
+  "crystal-silence": [
+    {
+      "name": "White Sparkle Time Fedora",
+      "id": 1016143686,
+      "value": 3410356,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1499
+    },
+    {
+      "name": "Frozen Horns of the Frigid Planes",
+      "id": 74891470,
+      "value": 2741506,
+      "chance": 3.5,
+      "color": "YELLOW",
+      "minTicket": 1500,
+      "maxTicket": 4999
+    },
+    {
+      "name": "The Ice Crown",
+      "id": 1323384,
+      "value": 672975,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Sapphire Crystal Circlet ",
+      "id": 293318274,
+      "value": 30590,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Horns of Frozenfaic",
+      "id": 1744068357,
+      "value": 26284,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Diamond Crystal Circlet",
+      "id": 4390875496,
+      "value": 3934,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Blue Ice Horns",
+      "id": 2588166615,
+      "value": 3000,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "toxic-waste": [
+    {
+      "name": "Green Sparkle Time Fedora",
+      "id": 100929604,
+      "value": 6384970,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Green Glowing Eyes",
+      "id": 398676450,
+      "value": 1730110,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Poisoned Horns of the Toxic Wasteland",
+      "id": 1744060292,
+      "value": 1628247,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Radioactive Beast Mode",
+      "id": 2225761296,
+      "value": 76619,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Neon Purple Crazy Crown",
+      "id": 376805769,
+      "value": 70600,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Neon Green Beautiful Hair",
+      "id": 151786902,
+      "value": 9081,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Toxic Waste Cap",
+      "id": 362080690,
+      "value": 95,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "mafia-case": [
+    {
+      "name": "Bling $$ Necklace",
+      "id": 33171947,
+      "value": 9939382,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Clockwork's Shades",
+      "id": 11748356,
+      "value": 1330659,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "The Classic ROBLOX Fedora",
+      "id": 1029025,
+      "value": 592119,
+      "chance": 15,
+      "color": "BLUE",
+      "minTicket": 5000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Al Capwn",
+      "id": 24123795,
+      "value": 249692,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Perfectly Legitimate Business Hat",
+      "id": 19027209,
+      "value": 3838,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Historic 'Timmy' Gun",
+      "id": 116693764,
+      "value": 1,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "after-life": [
+    {
+      "name": "Eerie Pumpkin Head",
+      "id": 1158416,
+      "value": 6275664,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Ghosdeeri",
+      "id": 183468963,
+      "value": 1187251,
+      "chance": 8.5,
+      "color": "PURPLE",
+      "minTicket": 2000,
+      "maxTicket": 10499
+    },
+    {
+      "name": "Eyes of Emeraldwrath",
+      "id": 209994352,
+      "value": 1119314,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 10500,
+      "maxTicket": 20499
+    },
+    {
+      "name": "Ghostwalker",
+      "id": 37816777,
+      "value": 1043436,
+      "chance": 9.5,
+      "color": "PURPLE",
+      "minTicket": 20500,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Masked Hood of the All Hallows Warlock",
+      "id": 64560136,
+      "value": 102157,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "The Riddling Skull",
+      "id": 4765718,
+      "value": 7418,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Not-so-friendly Ghost",
+      "id": 126719093,
+      "value": 625,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Evil Scarecrow",
+      "id": 17204534,
+      "value": 95,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "astra-dreams": [
+    {
+      "name": "Dominus Astra",
+      "id": 162067148,
+      "value": 14321557,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Archduke of the Federation",
+      "id": 293316452,
+      "value": 8008237,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 3499
+    },
+    {
+      "name": "CW Ultimate: Sapphire Serenity",
+      "id": 188888052,
+      "value": 749405,
+      "chance": 8,
+      "color": "BLUE",
+      "minTicket": 3500,
+      "maxTicket": 11499
+    },
+    {
+      "name": "): Purple Indy",
+      "id": 47697285,
+      "value": 623370,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 11500,
+      "maxTicket": 21499
+    },
+    {
+      "name": "Hooded Spacelord",
+      "id": 63692675,
+      "value": 290715,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 21500,
+      "maxTicket": 36499
+    },
+    {
+      "name": "Purple Queen of the Night",
+      "id": 553971858,
+      "value": 149213,
+      "chance": 28,
+      "color": "GRAY",
+      "minTicket": 36500,
+      "maxTicket": 64499
+    },
+    {
+      "name": "Beautiful Hair for Beautiful Space People",
+      "id": 564449640,
+      "value": 6593,
+      "chance": 35.5,
+      "color": "GRAY",
+      "minTicket": 64500,
+      "maxTicket": 99999
+    }
+  ],
+  "fedora-fiasco": [
+    {
+      "name": "Midnight Blue Sparkle Time Fedora",
+      "id": 119916949,
+      "value": 11328842,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Purple Sparkle Time Fedora",
+      "id": 63043890,
+      "value": 10888103,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2499
+    },
+    {
+      "name": "Black Sparkle Time Fedora",
+      "id": 259423244,
+      "value": 5814995,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 2500,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Green Sparkle Time Fedora",
+      "id": 100929604,
+      "value": 4927744,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 7999
+    },
+    {
+      "name": "Red Sparkle Time Fedora",
+      "id": 72082328,
+      "value": 4871499,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 8000,
+      "maxTicket": 10999
+    },
+    {
+      "name": "White Sparkle Time Fedora",
+      "id": 1016143686,
+      "value": 3012742,
+      "chance": 4,
+      "color": "PURPLE",
+      "minTicket": 11000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Sparkle Time Fedora",
+      "id": 1285307,
+      "value": 1645129,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Sinister Fedora",
+      "id": 60115635,
+      "value": 104383,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Rainbow Fedora",
+      "id": 82332012,
+      "value": 62630,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Cardinal Fedora",
+      "id": 63993237,
+      "value": 12864,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Striped Red Fedora",
+      "id": 119095672,
+      "value": 4533,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Perfectly Legitimate Business Hat",
+      "id": 19027209,
+      "value": 3954,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "sshf-flip": [
+    {
+      "name": "Super Super Happy Face",
+      "id": 494291269,
+      "value": 324596,
+      "chance": 50,
+      "color": "BLUE",
+      "minTicket": 0,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Gucci Dionysus Bag",
+      "id": 6803405665,
+      "value": 365,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Gucci Spiked Basketball Bag",
+      "id": 6803400584,
+      "value": 310,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Gucci Horsebit 1955 Shoulder Bag",
+      "id": 6807133411,
+      "value": 291,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Gucci Geometric Bag",
+      "id": 6803398976,
+      "value": 251,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 89999
+    },
+    {
+      "name": "Gucci GG Marmont Bag",
+      "id": 6803403781,
+      "value": 209,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 90000,
+      "maxTicket": 99999
+    }
+  ],
+  "budget-fedoras": [
+    {
+      "name": "Red Illusion Fedora",
+      "id": 113332841,
+      "value": 6500,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 499
+    },
+    {
+      "name": "Friendly Fedora",
+      "id": 241542424,
+      "value": 5018,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 999
+    },
+    {
+      "name": "Perfectly Legitimate Business Hat",
+      "id": 19027209,
+      "value": 3838,
+      "chance": 1.75,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2749
+    },
+    {
+      "name": "Kilty McJig's 8-Bit Fedora",
+      "id": 96079349,
+      "value": 2277,
+      "chance": 2.75,
+      "color": "YELLOW",
+      "minTicket": 2750,
+      "maxTicket": 5499
+    },
+    {
+      "name": "Rainbow Band Fedora",
+      "id": 120756198,
+      "value": 1452,
+      "chance": 3.75,
+      "color": "PURPLE",
+      "minTicket": 5500,
+      "maxTicket": 9249
+    },
+    {
+      "name": "Christmas Fedora",
+      "id": 139152348,
+      "value": 1039,
+      "chance": 40,
+      "color": "BLUE",
+      "minTicket": 9250,
+      "maxTicket": 49249
+    },
+    {
+      "name": "Wanwood Fedora",
+      "id": 135000157724236,
+      "value": 1,
+      "chance": 50.75,
+      "color": "GRAY",
+      "minTicket": 49250,
+      "maxTicket": 99999
+    }
+  ],
+  "lowroller-15": [
+    {
+      "name": "Catching Snowflakes",
+      "id": 1213472762,
+      "value": 27421,
+      "chance": 0.15,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 149
+    },
+    {
+      "name": "Adurite Antlers",
+      "id": 162066057,
+      "value": 15652,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 150,
+      "maxTicket": 399
+    },
+    {
+      "name": "Blue Wistful Wink",
+      "id": 583721561,
+      "value": 13066,
+      "chance": 0.3,
+      "color": "YELLOW",
+      "minTicket": 400,
+      "maxTicket": 699
+    },
+    {
+      "name": "Purple Wistful Wink",
+      "id": 583722710,
+      "value": 13018,
+      "chance": 0.3,
+      "color": "YELLOW",
+      "minTicket": 700,
+      "maxTicket": 999
+    },
+    {
+      "name": "Black Iron Antlers",
+      "id": 398674411,
+      "value": 11137,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 1499
+    },
+    {
+      "name": "Bighead",
+      "id": 1048037,
+      "value": 4079,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 1500,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Perfectly Legitimate Business Hat",
+      "id": 19027209,
+      "value": 3838,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 4000,
+      "maxTicket": 6999
+    },
+    {
+      "name": "Black Iron Commando",
+      "id": 928908332,
+      "value": 3364,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 7000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Shaggy",
+      "id": 20573078,
+      "value": 1447,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Shadow Dragon Horns",
+      "id": 122256610646478,
+      "value": 1,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Roblox Sunglasses",
+      "id": 18396858069,
+      "value": 1,
+      "chance": 45,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 99999
+    }
+  ],
+  "ruby-roll": [
+    {
+      "name": "CW Ultimate: Ruby Rapture",
+      "id": 583635712,
+      "value": 1668237,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Mystic Ruby",
+      "id": 461492845,
+      "value": 243921,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Ruby Starstone of the Federation",
+      "id": 568920079,
+      "value": 75014,
+      "chance": 3,
+      "color": "PURPLE",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Ruby Crystal Circlet",
+      "id": 323476069,
+      "value": 48162,
+      "chance": 4,
+      "color": "BLUE",
+      "minTicket": 6000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Ruby Eye",
+      "id": 16855096,
+      "value": 44425,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Ruby Faberg\u00e9 Egg of Sparkle Time",
+      "id": 153563851,
+      "value": 1335,
+      "chance": 85,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 99999
+    }
+  ],
+  "inferno-royale": [
+    {
+      "name": "Dominus Infernus",
+      "id": 31101391,
+      "value": 14973087,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Fiery Horns of the Netherworld",
+      "id": 215718515,
+      "value": 2329061,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 4000,
+      "maxTicket": 8999
+    },
+    {
+      "name": "CW Ultimate: Wulfinite Will",
+      "id": 286524947,
+      "value": 915998,
+      "chance": 6,
+      "color": "BLUE",
+      "minTicket": 9000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Firebrand",
+      "id": 81154592,
+      "value": 411327,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 21999
+    },
+    {
+      "name": "Mystic Sword of the Flames",
+      "id": 241511828,
+      "value": 31995,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 22000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Wings of Fire",
+      "id": 136758532,
+      "value": 750,
+      "chance": 70,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 99999
+    }
+  ],
+  "federation-case": [
+    {
+      "name": "Duke of the Federation",
+      "id": 128158708,
+      "value": 12469832,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 499
+    },
+    {
+      "name": "Archduke of the Federation",
+      "id": 293316452,
+      "value": 8008237,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 1499
+    },
+    {
+      "name": "Earl of the Federation",
+      "id": 146134358,
+      "value": 3222834,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 1500,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Disgraced Baron of the Federation",
+      "id": 1180419124,
+      "value": 2352361,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Countess of the Federation",
+      "id": 188003914,
+      "value": 2294176,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 7499
+    },
+    {
+      "name": "Duke of the Fallen Federation",
+      "id": 1340199684,
+      "value": 1402140,
+      "chance": 3,
+      "color": "PURPLE",
+      "minTicket": 7500,
+      "maxTicket": 10499
+    },
+    {
+      "name": "Disgraced Starstone of the Federation",
+      "id": 4390888537,
+      "value": 364985,
+      "chance": 39.5,
+      "color": "GRAY",
+      "minTicket": 10500,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Emerald Starstone of the Federation",
+      "id": 1513251995,
+      "value": 85343,
+      "chance": 50,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 99999
+    }
+  ],
+  "bluesteel-case": [
+    {
+      "name": "Tasteless Bluesteel Shades",
+      "id": 362080535,
+      "value": 108589,
+      "chance": 0.1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 99
+    },
+    {
+      "name": "The Bluesteel Bathelm",
+      "id": 1172161,
+      "value": 43711,
+      "chance": 0.3,
+      "color": "YELLOW",
+      "minTicket": 100,
+      "maxTicket": 399
+    },
+    {
+      "name": "Bluesteel Sombrero",
+      "id": 79402992,
+      "value": 35864,
+      "chance": 0.3,
+      "color": "YELLOW",
+      "minTicket": 400,
+      "maxTicket": 699
+    },
+    {
+      "name": "Bluesteel Bucket",
+      "id": 259423513,
+      "value": 35553,
+      "chance": 0.3,
+      "color": "YELLOW",
+      "minTicket": 700,
+      "maxTicket": 999
+    },
+    {
+      "name": "Bluesteel Katana",
+      "id": 243791145,
+      "value": 13935,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Bluesteel Crown",
+      "id": 106689991,
+      "value": 5000,
+      "chance": 15,
+      "color": "BLUE",
+      "minTicket": 5000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Bluesteel Egg of Genius",
+      "id": 1533893,
+      "value": 2731,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Bluesteel Shutter Shades",
+      "id": 190247659,
+      "value": 2175,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Bluesteel Warhelm of Rekt",
+      "id": 147144545,
+      "value": 400,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Wizard of the Bluesteel Order",
+      "id": 3612251915,
+      "value": 120,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "nosferatus-coffin": [
+    {
+      "name": "Playful Vampire",
+      "id": 2409285794,
+      "value": 112731,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "I'm Secretly A Vampire, The Hat",
+      "id": 16678098,
+      "value": 27010,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Accursed Vampire Bat Hand",
+      "id": 63721711,
+      "value": 7094,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 5000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Batty Shades",
+      "id": 63707964,
+      "value": 4199,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Vampire Queen Crown",
+      "id": 1117747684,
+      "value": 275,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Fanged Shades",
+      "id": 2463682386,
+      "value": 95,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Vampire Collar",
+      "id": 63717491,
+      "value": 100,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "chinatown": [
+    {
+      "name": "Dragon's Breath Potion",
+      "id": 70476435,
+      "value": 8009,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Tea Cup",
+      "id": 158066632,
+      "value": 4402,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Year of the Dragon Lantern",
+      "id": 70476451,
+      "value": 3734,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Bamboo Dart Blowgun",
+      "id": 51346271,
+      "value": 780,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Year of the Snake Lantern",
+      "id": 106064469,
+      "value": 375,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Fine China Ramen Bowl",
+      "id": 1609404722,
+      "value": 95,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Cup O' Soup",
+      "id": 69937581,
+      "value": 95,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "omega-rainbow": [
+    {
+      "name": "Omega Rainbow Sword",
+      "id": 287426148,
+      "value": 10693,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1499
+    },
+    {
+      "name": "Omega Rainbow Helmet",
+      "id": 158068502,
+      "value": 10335,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 1500,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Omega Rainbow Bowler",
+      "id": 283749923,
+      "value": 2507,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 3000,
+      "maxTicket": 7999
+    },
+    {
+      "name": "Omega Rainbow Fedora",
+      "id": 302281542,
+      "value": 2231,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 8000,
+      "maxTicket": 12999
+    },
+    {
+      "name": "Omega Rainbow Top Hat",
+      "id": 489176525,
+      "value": 1173,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 13000,
+      "maxTicket": 22999
+    },
+    {
+      "name": "Omega Rainbow Cape",
+      "id": 2705875296,
+      "value": 600,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 23000,
+      "maxTicket": 37999
+    },
+    {
+      "name": "Omega Rainbow Horns",
+      "id": 1241205162,
+      "value": 300,
+      "chance": 23,
+      "color": "GRAY",
+      "minTicket": 38000,
+      "maxTicket": 60999
+    },
+    {
+      "name": "Omega Rainbow Bow Tie",
+      "id": 928907217,
+      "value": 150,
+      "chance": 24,
+      "color": "GRAY",
+      "minTicket": 61000,
+      "maxTicket": 84999
+    },
+    {
+      "name": "Omega Rainbow Equinox",
+      "id": 321570467,
+      "value": 500,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 85000,
+      "maxTicket": 99999
+    }
+  ],
+  "tentacle-terror": [
+    {
+      "name": "8-Bit Mr. Tentacles",
+      "id": 507795810,
+      "value": 256366,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Santa Tentacles ",
+      "id": 1223107595,
+      "value": 147774,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Tentacles Junior",
+      "id": 15054210,
+      "value": 34551,
+      "chance": 6,
+      "color": "BLUE",
+      "minTicket": 4000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Mrs. Tentacles",
+      "id": 13416321,
+      "value": 26095,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Mr. Tentacles ",
+      "id": 11188696,
+      "value": 9090,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Cousin Tentacles",
+      "id": 271014536,
+      "value": 7000,
+      "chance": 60,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 99999
+    }
+  ],
+  "viridian-case": [
+    {
+      "name": "Viridian Domino Crown",
+      "id": 4390890198,
+      "value": 178169,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Viridian Headphones",
+      "id": 149599125,
+      "value": 95550,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 4000,
+      "maxTicket": 8999
+    },
+    {
+      "name": "Viridian Hood",
+      "id": 16954107,
+      "value": 35849,
+      "chance": 8,
+      "color": "PURPLE",
+      "minTicket": 9000,
+      "maxTicket": 16999
+    },
+    {
+      "name": "Viridian Crown",
+      "id": 2705878379,
+      "value": 5000,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 17000,
+      "maxTicket": 26999
+    },
+    {
+      "name": "Viridian Visor",
+      "id": 628783410,
+      "value": 1693,
+      "chance": 13,
+      "color": "GRAY",
+      "minTicket": 27000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Viridian Top Hat",
+      "id": 2163559635,
+      "value": 800,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Viridian Animal Hoodie",
+      "id": 928911381,
+      "value": 721,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Faux Viridian Fedora",
+      "id": 286525448,
+      "value": 300,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "call-of-the-savannah": [
+    {
+      "name": "Hungry Lion Friend",
+      "id": 91294485,
+      "value": 45085,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Dr. Elephant",
+      "id": 17173665,
+      "value": 21414,
+      "chance": 7,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Zebra Bow Tie",
+      "id": 135470796,
+      "value": 2277,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Leopard Fedora",
+      "id": 128159389,
+      "value": 1808,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Ms. Giraffe",
+      "id": 1016175408,
+      "value": 1000,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Instamatic Tent",
+      "id": 57229337,
+      "value": 300,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Inflatable Flamingo Shoulder Hanger",
+      "id": 2735499295,
+      "value": 275,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 61999
+    },
+    {
+      "name": "Suspicious Hippo",
+      "id": 391491029,
+      "value": 250,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 62000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Buffalo Tooth Necklace",
+      "id": 61899632,
+      "value": 95,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Roblox Camera",
+      "id": 80917533215993,
+      "value": 1,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "circus-maximus": [
+    {
+      "name": "Clown Face",
+      "id": 23644960,
+      "value": 394251,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "When Animals Attack: Elephant Aggression",
+      "id": 250394595,
+      "value": 30925,
+      "chance": 6,
+      "color": "BLUE",
+      "minTicket": 5000,
+      "maxTicket": 10999
+    },
+    {
+      "name": "Virtual BLOXcon Top Hat",
+      "id": 130106618,
+      "value": 8260,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 11000,
+      "maxTicket": 20999
+    },
+    {
+      "name": "The Masked Popcorn Enthusiast!",
+      "id": 16924470,
+      "value": 1722,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 21000,
+      "maxTicket": 30999
+    },
+    {
+      "name": "jmargh's Arm Cannon",
+      "id": 151311761,
+      "value": 650,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 31000,
+      "maxTicket": 42999
+    },
+    {
+      "name": "Horse with Cowboy Hat",
+      "id": 184743065,
+      "value": 200,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 43000,
+      "maxTicket": 57999
+    },
+    {
+      "name": "Clown Tie",
+      "id": 51353016,
+      "value": 100,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 58000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Circus Balloons",
+      "id": 6740391991,
+      "value": 1,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "midnight-ride": [
+    {
+      "name": "Sparkle Time Traffic Cone",
+      "id": 151784526,
+      "value": 229476,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Epic Duck Racer",
+      "id": 27309800,
+      "value": 9676,
+      "chance": 3,
+      "color": "PURPLE",
+      "minTicket": 1000,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Golden Gate Bridge",
+      "id": 17363660,
+      "value": 6767,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 4000,
+      "maxTicket": 8999
+    },
+    {
+      "name": "Traffic Cone",
+      "id": 1082932,
+      "value": 3806,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 9000,
+      "maxTicket": 18999
+    },
+    {
+      "name": "McLaren Racing Backpack ",
+      "id": 9063024415,
+      "value": 2427,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 19000,
+      "maxTicket": 33999
+    },
+    {
+      "name": "Blue Traffic Cone",
+      "id": 128195098605269,
+      "value": 1000,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 34000,
+      "maxTicket": 48999
+    },
+    {
+      "name": "Dusek Car",
+      "id": 42845684,
+      "value": 500,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 49000,
+      "maxTicket": 63999
+    },
+    {
+      "name": "Drifter Shades",
+      "id": 63654916,
+      "value": 100,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 64000,
+      "maxTicket": 81999
+    },
+    {
+      "name": "Traffic Cop",
+      "id": 20721308,
+      "value": 95,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 82000,
+      "maxTicket": 99999
+    }
+  ],
+  "cinco-de-mayo": [
+    {
+      "name": "Bluesteel Sombrero",
+      "id": 79402992,
+      "value": 35864,
+      "chance": 15,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Taco Launcher",
+      "id": 170903868,
+      "value": 9888,
+      "chance": 16,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 30999
+    },
+    {
+      "name": "The Riddling Skull",
+      "id": 4765718,
+      "value": 6190,
+      "chance": 13,
+      "color": "GRAY",
+      "minTicket": 31000,
+      "maxTicket": 43999
+    },
+    {
+      "name": "Reese's Mystery Pony Pinata",
+      "id": 25308989,
+      "value": 3676,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 44000,
+      "maxTicket": 53999
+    },
+    {
+      "name": "Aztec Golden Eagle",
+      "id": 34126856,
+      "value": 2385,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 54000,
+      "maxTicket": 62999
+    },
+    {
+      "name": "Pinata Mount",
+      "id": 1708354246,
+      "value": 600,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 63000,
+      "maxTicket": 70999
+    },
+    {
+      "name": "Mariachi Guitar",
+      "id": 26673760,
+      "value": 300,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 71000,
+      "maxTicket": 77999
+    },
+    {
+      "name": "Mariachi Back Guitar ",
+      "id": 1708337869,
+      "value": 250,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 78000,
+      "maxTicket": 82999
+    },
+    {
+      "name": "Catrina Dia de Muertos Mask",
+      "id": 2528067691,
+      "value": 181,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 83000,
+      "maxTicket": 87999
+    },
+    {
+      "name": "Aztec Bird",
+      "id": 97101188,
+      "value": 120,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 88000,
+      "maxTicket": 91999
+    },
+    {
+      "name": "Cactus Top Hat",
+      "id": 1427994647,
+      "value": 100,
+      "chance": 3,
+      "color": "GRAY",
+      "minTicket": 92000,
+      "maxTicket": 94999
+    },
+    {
+      "name": "Mariachi Sombrero",
+      "id": 3138460373,
+      "value": 95,
+      "chance": 2,
+      "color": "GRAY",
+      "minTicket": 95000,
+      "maxTicket": 96999
+    },
+    {
+      "name": "Tom's Beans",
+      "id": 103358098,
+      "value": 55,
+      "chance": 2,
+      "color": "GRAY",
+      "minTicket": 97000,
+      "maxTicket": 98999
+    },
+    {
+      "name": "Burrito Backpack",
+      "id": 8648140992,
+      "value": 1,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 99000,
+      "maxTicket": 99999
+    }
+  ],
+  "lab-accident": [
+    {
+      "name": "Atomic Neon Top Hat",
+      "id": 100928653,
+      "value": 10302,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Hazardous Waste Goggles",
+      "id": 100929831,
+      "value": 8814,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Chemistry Textbook",
+      "id": 1139753,
+      "value": 4723,
+      "chance": 15,
+      "color": "BLUE",
+      "minTicket": 20000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Exploding Lab Table",
+      "id": 154727201,
+      "value": 3671,
+      "chance": 15,
+      "color": "BLUE",
+      "minTicket": 35000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Dr. Atomic's New and Improved Quantodrome",
+      "id": 154818905,
+      "value": 1945,
+      "chance": 3,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 52999
+    },
+    {
+      "name": "Microscope Launcher",
+      "id": 2316759705,
+      "value": 500,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 53000,
+      "maxTicket": 56999
+    },
+    {
+      "name": "Head in a Test Tube",
+      "id": 1001651050,
+      "value": 200,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 57000,
+      "maxTicket": 60999
+    },
+    {
+      "name": "Microscope Vision",
+      "id": 503943932,
+      "value": 175,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 61000,
+      "maxTicket": 65999
+    },
+    {
+      "name": "Biohazard First Responder - Mask",
+      "id": 4927810562,
+      "value": 100,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 66000,
+      "maxTicket": 71999
+    },
+    {
+      "name": "Yellow Safety Goggles",
+      "id": 503941911,
+      "value": 95,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 72000,
+      "maxTicket": 78999
+    },
+    {
+      "name": "Biohazard Cap",
+      "id": 105343397,
+      "value": 95,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 79000,
+      "maxTicket": 87999
+    },
+    {
+      "name": "DNA Scarf",
+      "id": 3877628831,
+      "value": 75,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 88000,
+      "maxTicket": 99999
+    }
+  ],
+  "pixel-rush": [
+    {
+      "name": "8-Bit Dark Horns of Pwnage",
+      "id": 867827055,
+      "value": 67975,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 2999
+    },
+    {
+      "name": "8-Bit Royal Crown",
+      "id": 10159600649,
+      "value": 21186,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 7999
+    },
+    {
+      "name": "8-Bit HP Bar",
+      "id": 10159610478,
+      "value": 9347,
+      "chance": 6,
+      "color": "BLUE",
+      "minTicket": 8000,
+      "maxTicket": 13999
+    },
+    {
+      "name": "ROBLOX CS Headset",
+      "id": 54578891,
+      "value": 8162,
+      "chance": 7,
+      "color": "BLUE",
+      "minTicket": 14000,
+      "maxTicket": 20999
+    },
+    {
+      "name": "8-Bit SwordPack",
+      "id": 121925647,
+      "value": 7984,
+      "chance": 7,
+      "color": "BLUE",
+      "minTicket": 21000,
+      "maxTicket": 27999
+    },
+    {
+      "name": "8-Bit Extra Life",
+      "id": 10159606132,
+      "value": 4849,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 28000,
+      "maxTicket": 35999
+    },
+    {
+      "name": "Hyperlaser Gun",
+      "id": 130113146,
+      "value": 3936,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 36000,
+      "maxTicket": 43999
+    },
+    {
+      "name": "Sorcus' Chair",
+      "id": 96095042,
+      "value": 1843,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 44000,
+      "maxTicket": 53999
+    },
+    {
+      "name": "Grandpappy Computer",
+      "id": 1046282284,
+      "value": 300,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 54000,
+      "maxTicket": 65999
+    },
+    {
+      "name": "8-Bit Joystick Hat",
+      "id": 2041988125,
+      "value": 200,
+      "chance": 14,
+      "color": "GRAY",
+      "minTicket": 66000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Retro Arcade Game",
+      "id": 13989186521,
+      "value": 1,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "alien-invasion": [
+    {
+      "name": "Purple Galaxy Gaze",
+      "id": 440739240,
+      "value": 99248,
+      "chance": 22,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 21999
+    },
+    {
+      "name": "Alien Monarch",
+      "id": 97852159,
+      "value": 27607,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 22000,
+      "maxTicket": 31999
+    },
+    {
+      "name": "Tri-Laser 333",
+      "id": 139578207,
+      "value": 8380,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 32000,
+      "maxTicket": 35999
+    },
+    {
+      "name": "Beautiful Hair for Beautiful Space People",
+      "id": 564449640,
+      "value": 6593,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 36000,
+      "maxTicket": 40999
+    },
+    {
+      "name": "Wormhole Tunneler",
+      "id": 34870758,
+      "value": 5763,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 41000,
+      "maxTicket": 45999
+    },
+    {
+      "name": "Flying Meteor",
+      "id": 53466788,
+      "value": 4709,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 46000,
+      "maxTicket": 51999
+    },
+    {
+      "name": "Alien Parasite",
+      "id": 76170515,
+      "value": 600,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 52000,
+      "maxTicket": 57999
+    },
+    {
+      "name": "Deluxe Slime Ray",
+      "id": 503957703,
+      "value": 350,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 58000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "UFO",
+      "id": 17449374,
+      "value": 300,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 71999
+    },
+    {
+      "name": "Interplanetary Beauty",
+      "id": 972163809,
+      "value": 100,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 72000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Retro Gray Alien",
+      "id": 13837194,
+      "value": 95,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "100x-sombrero": [
+    {
+      "name": "Wanwood Sombrero",
+      "id": 156105465,
+      "value": 99248,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 499
+    },
+    {
+      "name": "Bluesteel Sombrero",
+      "id": 79402992,
+      "value": 35864,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 999
+    },
+    {
+      "name": "Fiesta Sombrero",
+      "id": 114693174,
+      "value": 1918,
+      "chance": 9,
+      "color": "BLUE",
+      "minTicket": 1000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Purple Fiesta Sombrero",
+      "id": 156095442,
+      "value": 1676,
+      "chance": 15,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "8-Bit Sombrero",
+      "id": 164204055,
+      "value": 888,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Vaquero Sombrero",
+      "id": 53901180,
+      "value": 550,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Pompom Sombrero",
+      "id": 1708345137,
+      "value": 400,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "american-dream": [
+    {
+      "name": "American Cowboy",
+      "id": 29715011,
+      "value": 1181139,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "American Commando",
+      "id": 121260018,
+      "value": 96906,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Masked Hood of the Patriot",
+      "id": 121260372,
+      "value": 8530,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 5000,
+      "maxTicket": 8999
+    },
+    {
+      "name": "True Patriot",
+      "id": 55271090,
+      "value": 7965,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 9000,
+      "maxTicket": 12999
+    },
+    {
+      "name": "Patriot Vision ",
+      "id": 64570331,
+      "value": 4733,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 13000,
+      "maxTicket": 17999
+    },
+    {
+      "name": "Gentleman Patriot",
+      "id": 29715001,
+      "value": 2263,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 18000,
+      "maxTicket": 22999
+    },
+    {
+      "name": "Patriothawk",
+      "id": 264986210,
+      "value": 250,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 23000,
+      "maxTicket": 37999
+    },
+    {
+      "name": "Patriot's Monster Truck",
+      "id": 161282711,
+      "value": 250,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 38000,
+      "maxTicket": 67999
+    },
+    {
+      "name": "American Flag Sunglasses",
+      "id": 264983709,
+      "value": 150,
+      "chance": 32,
+      "color": "GRAY",
+      "minTicket": 68000,
+      "maxTicket": 99999
+    }
+  ],
+  "rainbow-blast": [
+    {
+      "name": "Rainbow Periastron Omega",
+      "id": 159229806,
+      "value": 754741,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Rainbowrath: The Avenger",
+      "id": 346686597,
+      "value": 329495,
+      "chance": 9,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Rainbow Fedora",
+      "id": 82332012,
+      "value": 62630,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Neon Rainbow Phoenix",
+      "id": 261827192,
+      "value": 22415,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Rainbow Equinox",
+      "id": 82332313,
+      "value": 18270,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Rainbow Hatbot",
+      "id": 149594188,
+      "value": 22284,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Rainbow Katana",
+      "id": 158069071,
+      "value": 7185,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "adurite-case": [
+    {
+      "name": "Adurite King of the Night ",
+      "id": 439946101,
+      "value": 273098,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Adurite Fedora with Black Iron Accent",
+      "id": 162066176,
+      "value": 21184,
+      "chance": 7,
+      "color": "BLUE",
+      "minTicket": 4000,
+      "maxTicket": 10999
+    },
+    {
+      "name": "Adurite Antlers",
+      "id": 162066057,
+      "value": 15652,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 11000,
+      "maxTicket": 20999
+    },
+    {
+      "name": "Adurite Crown",
+      "id": 2163545468,
+      "value": 5000,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 21000,
+      "maxTicket": 32999
+    },
+    {
+      "name": "Adurite Shutter Shades",
+      "id": 556820828,
+      "value": 5000,
+      "chance": 14,
+      "color": "GRAY",
+      "minTicket": 33000,
+      "maxTicket": 46999
+    },
+    {
+      "name": "Adurite Bucket",
+      "id": 928910453,
+      "value": 2000,
+      "chance": 23,
+      "color": "GRAY",
+      "minTicket": 47000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Adurite Bowler",
+      "id": 628769409,
+      "value": 1086,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "cupid-arsenal": [
+    {
+      "name": "Immortal Sword: The Heartshaker",
+      "id": 1425150624,
+      "value": 219932,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Heart Balloon",
+      "id": 146071355,
+      "value": 158364,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Dr. Love",
+      "id": 22314719,
+      "value": 56652,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Heartbreaker",
+      "id": 72069888,
+      "value": 44303,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Cupid's Beloved Blade",
+      "id": 106064277,
+      "value": 24865,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "True Love Smile",
+      "id": 362051405,
+      "value": 13343,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Queen of Hearts",
+      "id": 22151828,
+      "value": 2195,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "high-voltage": [
+    {
+      "name": "Real Electric Stunnas",
+      "id": 1744051187,
+      "value": 636289,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Sorcus' Lightning Fedora",
+      "id": 169444030,
+      "value": 340201,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Golden Lightning Speaker",
+      "id": 66330231,
+      "value": 34824,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Helm of the Flashing Bolt",
+      "id": 6551281,
+      "value": 32471,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Lightning Tie",
+      "id": 60039346,
+      "value": 3788,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Warning Helmet",
+      "id": 113326628,
+      "value": 95,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "jungle-quest": [
+    {
+      "name": "Creepy Zombie Monkey",
+      "id": 71597072,
+      "value": 57885,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Enraged Monkey Droid",
+      "id": 19045610,
+      "value": 33216,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Sneaky Green-Eyed Snake",
+      "id": 334656353,
+      "value": 22459,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 6000,
+      "maxTicket": 10999
+    },
+    {
+      "name": "When Animals Attack: Tiger Tussle",
+      "id": 258183582,
+      "value": 17560,
+      "chance": 6,
+      "color": "PURPLE",
+      "minTicket": 11000,
+      "maxTicket": 16999
+    },
+    {
+      "name": "Butterfly",
+      "id": 24727929,
+      "value": 15817,
+      "chance": 7,
+      "color": "BLUE",
+      "minTicket": 17000,
+      "maxTicket": 23999
+    },
+    {
+      "name": "Jungle Commando",
+      "id": 16678138,
+      "value": 7769,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 24000,
+      "maxTicket": 31999
+    },
+    {
+      "name": "Spider Shoulder Friend",
+      "id": 64485985,
+      "value": 5289,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 32000,
+      "maxTicket": 40999
+    },
+    {
+      "name": "Snakepack",
+      "id": 493496072,
+      "value": 1230,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 41000,
+      "maxTicket": 47999
+    },
+    {
+      "name": "The Curious Monkey of Possible Fortune",
+      "id": 2042027813,
+      "value": 700,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 48000,
+      "maxTicket": 56999
+    },
+    {
+      "name": "Crocodile Hunter",
+      "id": 12466798,
+      "value": 476,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 57000,
+      "maxTicket": 65999
+    },
+    {
+      "name": "Vine Staff",
+      "id": 30847733,
+      "value": 275,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 66000,
+      "maxTicket": 75999
+    },
+    {
+      "name": "Toucan Beak",
+      "id": 125861278,
+      "value": 150,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 76000,
+      "maxTicket": 87999
+    },
+    {
+      "name": "Kaeru: The Hidden Frog",
+      "id": 2544540775,
+      "value": 75,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 88000,
+      "maxTicket": 99999
+    }
+  ],
+  "pharaohs-curse": [
+    {
+      "name": "Headdress of Aken-Aten, the Sun King",
+      "id": 18482398,
+      "value": 367205,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Bastet: The Cat Goddess",
+      "id": 55633111,
+      "value": 205310,
+      "chance": 8,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Metal Horus",
+      "id": 21802141,
+      "value": 36370,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Acursed Mummy Hand of Head Shot",
+      "id": 37347081,
+      "value": 22335,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Egyptian Queen",
+      "id": 177433125,
+      "value": 300,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Scepter of Pharoahs",
+      "id": 18482570,
+      "value": 135,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 46999
+    },
+    {
+      "name": "Camel Enamel Pin",
+      "id": 9723670648,
+      "value": 3,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 47000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Sarcophagus Noob Backpack",
+      "id": 16558177553,
+      "value": 2,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Pyramid Enamel Pin",
+      "id": 7243934855,
+      "value": 1,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Dory Hieroglyph ",
+      "id": 419240423,
+      "value": 1,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "dominus-bonanza": [
+    {
+      "name": "Dominus Aureus",
+      "id": 138932314,
+      "value": 6287191,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 249
+    },
+    {
+      "name": "Dominus Vespertilio",
+      "id": 96103379,
+      "value": 4309031,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 250,
+      "maxTicket": 499
+    },
+    {
+      "name": "Dominus Messor",
+      "id": 64444871,
+      "value": 4199307,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 999
+    },
+    {
+      "name": "Dominus Praefectus",
+      "id": 527365852,
+      "value": 970211,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 1499
+    },
+    {
+      "name": "Dominus Formidulosus",
+      "id": 4255053867,
+      "value": 180268,
+      "chance": 3.5,
+      "color": "PURPLE",
+      "minTicket": 1500,
+      "maxTicket": 4999
+    },
+    {
+      "name": "DIY Dominus Empyreus",
+      "id": 151789690,
+      "value": 14137,
+      "chance": 95,
+      "color": "GRAY",
+      "minTicket": 5000,
+      "maxTicket": 99999
+    }
+  ],
+  "paper-trail": [
+    {
+      "name": "Scroll of Sevenless",
+      "id": 125013830,
+      "value": 51702,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Paper Sword",
+      "id": 57229357,
+      "value": 10305,
+      "chance": 8,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Cardboard Dino",
+      "id": 51242846,
+      "value": 3968,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Explosive Spy Pen",
+      "id": 95258660,
+      "value": 750,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 27999
+    },
+    {
+      "name": "Quill of the President",
+      "id": 146047220,
+      "value": 300,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 28000,
+      "maxTicket": 36999
+    },
+    {
+      "name": "Paper Airplanes Aura",
+      "id": 12498717849,
+      "value": 250,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 37000,
+      "maxTicket": 46999
+    },
+    {
+      "name": "Paper Ninja Stars",
+      "id": 498752334,
+      "value": 150,
+      "chance": 17,
+      "color": "GRAY",
+      "minTicket": 47000,
+      "maxTicket": 63999
+    },
+    {
+      "name": "Cardboard Box",
+      "id": 28998419,
+      "value": 95,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 64000,
+      "maxTicket": 81999
+    },
+    {
+      "name": "Eco Grey Origami Boat Hat",
+      "id": 14205158682,
+      "value": 1,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 82000,
+      "maxTicket": 99999
+    }
+  ],
+  "one-percent-rap-rush": [
+    {
+      "name": "Blackvalk",
+      "id": 124730194,
+      "value": 6362612,
+      "chance": 0.1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 99
+    },
+    {
+      "name": "Red Domino Crown",
+      "id": 42211680,
+      "value": 3658985,
+      "chance": 0.1,
+      "color": "YELLOW",
+      "minTicket": 100,
+      "maxTicket": 199
+    },
+    {
+      "name": "The Void Star",
+      "id": 1125510,
+      "value": 3553720,
+      "chance": 0.2,
+      "color": "YELLOW",
+      "minTicket": 200,
+      "maxTicket": 399
+    },
+    {
+      "name": "Fiery Horns of the Netherworld",
+      "id": 215718515,
+      "value": 2259946,
+      "chance": 0.1,
+      "color": "YELLOW",
+      "minTicket": 400,
+      "maxTicket": 499
+    },
+    {
+      "name": "Clockwork's Shades",
+      "id": 11748356,
+      "value": 2185185,
+      "chance": 0.1,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 599
+    },
+    {
+      "name": "WC Ultimates: Pink Diamond Distraction",
+      "id": 315549204,
+      "value": 1942925,
+      "chance": 0.1,
+      "color": "YELLOW",
+      "minTicket": 600,
+      "maxTicket": 699
+    },
+    {
+      "name": "Clockwork Heardphones",
+      "id": 1235488,
+      "value": 1042628,
+      "chance": 0.3,
+      "color": "YELLOW",
+      "minTicket": 700,
+      "maxTicket": 999
+    },
+    {
+      "name": "Shaggy",
+      "id": 20573078,
+      "value": 1486,
+      "chance": 99,
+      "color": "GRAY",
+      "minTicket": 1000,
+      "maxTicket": 99999
+    }
+  ],
+  "sparkle-time-supreme": [
+    {
+      "name": "Sparkle Time Happy Time Magic Flower Hat",
+      "id": 439985494,
+      "value": 324285,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 249
+    },
+    {
+      "name": "Sparkle Time Traffic Cone",
+      "id": 151784526,
+      "value": 239476,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 250,
+      "maxTicket": 499
+    },
+    {
+      "name": "Stickmasterluke's Peanut Butter Sparkle Time",
+      "id": 169444294,
+      "value": 106486,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 2499
+    },
+    {
+      "name": "Blue Sparkle Time Bandana",
+      "id": 2316714645,
+      "value": 30124,
+      "chance": 70.5,
+      "color": "BLUE",
+      "minTicket": 2500,
+      "maxTicket": 72999
+    },
+    {
+      "name": "Sparkle Time Amethyst Bow Tie",
+      "id": 147180013,
+      "value": 1,
+      "chance": 27,
+      "color": "GRAY",
+      "minTicket": 73000,
+      "maxTicket": 99999
+    }
+  ],
+  "blood-trail": [
+    {
+      "name": "Crimsonwrath: The Red Wrath",
+      "id": 402304782,
+      "value": 320023,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Red Fang",
+      "id": 16722419,
+      "value": 139497,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Colossal Blade",
+      "id": 83704154,
+      "value": 40257,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "The Tormentor's Axe",
+      "id": 61459718,
+      "value": 22015,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "The Moon",
+      "id": 7319168,
+      "value": 1320,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Skull",
+      "id": 36883367,
+      "value": 250,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Pet Vulture - Twenty One Pilots",
+      "id": 7389782741,
+      "value": 100,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Candle",
+      "id": 12230051,
+      "value": 1,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "kawaii-case": [
+    {
+      "name": "From the Vault: Kawaii Cat ",
+      "id": 292969932,
+      "value": 125602,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "From the Vault: Alpaca Plushie",
+      "id": 292969139,
+      "value": 64998,
+      "chance": 7,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 11999
+    },
+    {
+      "name": "From the Vault: Alligator Plushie",
+      "id": 292969458,
+      "value": 45362,
+      "chance": 8,
+      "color": "PURPLE",
+      "minTicket": 12000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "From the Vault: Dozens of Dinosaurs",
+      "id": 292970740,
+      "value": 39977,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Tokyokhaos Elephant",
+      "id": 493495651,
+      "value": 110,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Beary Cute",
+      "id": 28998435,
+      "value": 95,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "From the Vault: Bandit Dog ",
+      "id": 292971046,
+      "value": 1,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "steampunk-case": [
+    {
+      "name": "Steampunk Bobbie",
+      "id": 140484519,
+      "value": 1154157,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 499
+    },
+    {
+      "name": "Steampunk Aetherspectacles",
+      "id": 12908119,
+      "value": 897200,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 999
+    },
+    {
+      "name": "Steampunkoneer",
+      "id": 40893128,
+      "value": 524088,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2499
+    },
+    {
+      "name": "Copper Steampunk Top Hat",
+      "id": 244160357,
+      "value": 191343,
+      "chance": 5.5,
+      "color": "YELLOW",
+      "minTicket": 2500,
+      "maxTicket": 7999
+    },
+    {
+      "name": "Steampunk Samurai",
+      "id": 30391731,
+      "value": 11093,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 8000,
+      "maxTicket": 12999
+    },
+    {
+      "name": "Steampunk Bunny",
+      "id": 233609363,
+      "value": 3290,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 13000,
+      "maxTicket": 22999
+    },
+    {
+      "name": "Steampunk Santa",
+      "id": 190786095,
+      "value": 2048,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 23000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Steampunk Steam Gun",
+      "id": 356212933,
+      "value": 750,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Steampunk Jetpack",
+      "id": 157205831,
+      "value": 725,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Officer Steampunk",
+      "id": 125862364,
+      "value": 125,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "odins-legacy": [
+    {
+      "name": "Helm of the Frozen North",
+      "id": 1323367,
+      "value": 225742,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Frost Guardian of the Frozen North",
+      "id": 102627528,
+      "value": 28312,
+      "chance": 4,
+      "color": "PURPLE",
+      "minTicket": 2000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "The Raven",
+      "id": 20945145,
+      "value": 22582,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 6000,
+      "maxTicket": 10999
+    },
+    {
+      "name": "Mo' horns Helmet",
+      "id": 71484109,
+      "value": 18378,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 11000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Daring Blonde Beard Face",
+      "id": 323191430,
+      "value": 5562,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 16000,
+      "maxTicket": 23999
+    },
+    {
+      "name": "White Wolf of the North",
+      "id": 55702704,
+      "value": 4190,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 24000,
+      "maxTicket": 33999
+    },
+    {
+      "name": "Redcliff Battleaxe ",
+      "id": 903199054,
+      "value": 1000,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 34000,
+      "maxTicket": 43999
+    },
+    {
+      "name": "Ghost Ship",
+      "id": 155662051,
+      "value": 700,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 44000,
+      "maxTicket": 53999
+    },
+    {
+      "name": "Korblox Berserker",
+      "id": 156485928,
+      "value": 275,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 54000,
+      "maxTicket": 65999
+    },
+    {
+      "name": "Fried Chicken Egg",
+      "id": 4786883113,
+      "value": 187,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 66000,
+      "maxTicket": 80999
+    },
+    {
+      "name": "Wolven Footsoldier",
+      "id": 21070133,
+      "value": 120,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 81000,
+      "maxTicket": 92999
+    },
+    {
+      "name": "Stylish Chainmail with Beard",
+      "id": 291996808,
+      "value": 1,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 93000,
+      "maxTicket": 99999
+    }
+  ],
+  "sakura-bloom": [
+    {
+      "name": "Stone Samurai",
+      "id": 88777059,
+      "value": 135165,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "The Red King",
+      "id": 34818900,
+      "value": 40473,
+      "chance": 15,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Ocean Samurai",
+      "id": 23306097,
+      "value": 7622,
+      "chance": 3,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 27999
+    },
+    {
+      "name": "Emerald Crescent Samurai",
+      "id": 52454955,
+      "value": 2500,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 28000,
+      "maxTicket": 31999
+    },
+    {
+      "name": "Sushi Scooter",
+      "id": 271017031,
+      "value": 625,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 32000,
+      "maxTicket": 37999
+    },
+    {
+      "name": "Kitsune Mask",
+      "id": 3210207381,
+      "value": 250,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 38000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Year of the Monkey Lantern",
+      "id": 359179463,
+      "value": 250,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 52999
+    },
+    {
+      "name": "Origami Hat Of Folded Fury",
+      "id": 340624333,
+      "value": 100,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 53000,
+      "maxTicket": 61999
+    },
+    {
+      "name": "Ramen Bowl",
+      "id": 19400471,
+      "value": 95,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 62000,
+      "maxTicket": 71999
+    },
+    {
+      "name": "Salmon Roe Sushi Hat",
+      "id": 6308513340,
+      "value": 1,
+      "chance": 13,
+      "color": "GRAY",
+      "minTicket": 72000,
+      "maxTicket": 84999
+    },
+    {
+      "name": "Cherry Blossom Sword and Shield",
+      "id": 98898343018001,
+      "value": 1,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 85000,
+      "maxTicket": 99999
+    }
+  ],
+  "pirates-plunder": [
+    {
+      "name": "Pirate Vision",
+      "id": 43704842,
+      "value": 102619,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Cap'n James McSkulligan",
+      "id": 34394007,
+      "value": 32188,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Pirate Luv",
+      "id": 46839188,
+      "value": 17597,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "jmargh's Arm Cannon",
+      "id": 151311761,
+      "value": 650,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 23999
+    },
+    {
+      "name": "Deluxe Pirate Hook",
+      "id": 754869699,
+      "value": 500,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 24000,
+      "maxTicket": 28999
+    },
+    {
+      "name": "Skull and Crossbones",
+      "id": 16469756,
+      "value": 325,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 29000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Anchor Cannon",
+      "id": 155662087,
+      "value": 300,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 42999
+    },
+    {
+      "name": "Pirate Cutlass",
+      "id": 10910681,
+      "value": 250,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 43000,
+      "maxTicket": 51999
+    },
+    {
+      "name": "Treasure Trick",
+      "id": 90994086,
+      "value": 150,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 52000,
+      "maxTicket": 61999
+    },
+    {
+      "name": "True Pirate Parrot",
+      "id": 155675806,
+      "value": 125,
+      "chance": 11,
+      "color": "GRAY",
+      "minTicket": 62000,
+      "maxTicket": 72999
+    },
+    {
+      "name": "Compass",
+      "id": 14864611,
+      "value": 100,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 73000,
+      "maxTicket": 84999
+    },
+    {
+      "name": "Shade Palm Tree Hat",
+      "id": 7958791367,
+      "value": 1,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 85000,
+      "maxTicket": 99999
+    }
+  ],
+  "enchanted-vault": [
+    {
+      "name": "Magenta Crystal Circlet",
+      "id": 38858257,
+      "value": 134906,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Winter Fairy",
+      "id": 141742418,
+      "value": 104058,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Dark Spellbook of the Forgotten",
+      "id": 56561579,
+      "value": 90927,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Enchanted Ruler",
+      "id": 63653372,
+      "value": 41343,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Magical Merlin's Cap",
+      "id": 71499591,
+      "value": 13441,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Black Unicorn Helm",
+      "id": 1191150083,
+      "value": 141,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 45999
+    },
+    {
+      "name": "Mystical Griffin",
+      "id": 215448210,
+      "value": 500,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 46000,
+      "maxTicket": 55999
+    },
+    {
+      "name": "Spell Book of Ice Cold Revenge",
+      "id": 1241586091,
+      "value": 600,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 56000,
+      "maxTicket": 67999
+    },
+    {
+      "name": "Giant Flower Hat",
+      "id": 323419570,
+      "value": 100,
+      "chance": 14,
+      "color": "GRAY",
+      "minTicket": 68000,
+      "maxTicket": 81999
+    },
+    {
+      "name": "Crystal Ball Hat",
+      "id": 9468456252,
+      "value": 1,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 82000,
+      "maxTicket": 99999
+    }
+  ],
+  "mystic-bubbles": [
+    {
+      "name": "Mr. Bubbles",
+      "id": 31616411,
+      "value": 86048,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Blue Bubble Trouble",
+      "id": 330296924,
+      "value": 54914,
+      "chance": 30,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Puffy Puffer Fish",
+      "id": 13753760092,
+      "value": 946,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Narwhal Boba Drinkc",
+      "id": 104694880810749,
+      "value": 3,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 53999
+    },
+    {
+      "name": "Star Bubble Wand ",
+      "id": 102638120085837,
+      "value": 2,
+      "chance": 11,
+      "color": "GRAY",
+      "minTicket": 54000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Mouth Bubbles",
+      "id": 14204987796,
+      "value": 1,
+      "chance": 14,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 78999
+    },
+    {
+      "name": "Shower Cap",
+      "id": 13654585,
+      "value": 1,
+      "chance": 21,
+      "color": "GRAY",
+      "minTicket": 79000,
+      "maxTicket": 99999
+    }
+  ],
+  "primal-hunt": [
+    {
+      "name": "Caveman Cloak",
+      "id": 707981077,
+      "value": 43961,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Gork, Your Caveman Shoulder Friend",
+      "id": 33732371,
+      "value": 32640,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Mr. Mountain",
+      "id": 22157580,
+      "value": 24872,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 4000,
+      "maxTicket": 6999
+    },
+    {
+      "name": "Dark Wolf",
+      "id": 60674719,
+      "value": 5755,
+      "chance": 13,
+      "color": "BLUE",
+      "minTicket": 7000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Beast Claws",
+      "id": 105289761,
+      "value": 600,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Tribal Spear",
+      "id": 38326803,
+      "value": 475,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 30999
+    },
+    {
+      "name": "Skull and Crossbones",
+      "id": 16469756,
+      "value": 325,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 31000,
+      "maxTicket": 37999
+    },
+    {
+      "name": "Horned Velociraptor Skull",
+      "id": 14130172,
+      "value": 250,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 38000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Caveman Clubpack",
+      "id": 489174605,
+      "value": 200,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 52999
+    },
+    {
+      "name": "Thunderstorm Hat",
+      "id": 1098279,
+      "value": 95,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 53000,
+      "maxTicket": 62999
+    },
+    {
+      "name": "Tools of Axsuroth",
+      "id": 6532606175,
+      "value": 1,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 63000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Volcanic Island",
+      "id": 22157619,
+      "value": 1,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "prison-life": [
+    {
+      "name": "Police Sergeants Cap",
+      "id": 1081392,
+      "value": 16858,
+      "chance": 15,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Police Badge",
+      "id": 82358339,
+      "value": 7969,
+      "chance": 15,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Robot Guard Dog",
+      "id": 467935723,
+      "value": 600,
+      "chance": 3,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 32999
+    },
+    {
+      "name": "Prison Life Warden",
+      "id": 253159110,
+      "value": 125,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 33000,
+      "maxTicket": 38999
+    },
+    {
+      "name": "Flashlight",
+      "id": 116040770,
+      "value": 75,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 39000,
+      "maxTicket": 46999
+    },
+    {
+      "name": "Janitor's Key Ring",
+      "id": 2535471994,
+      "value": 2,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 47000,
+      "maxTicket": 61999
+    },
+    {
+      "name": "Janitor Mop Pack",
+      "id": 3690405723,
+      "value": 1,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 62000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Shoulder-Press",
+      "id": 11815255862,
+      "value": 1,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "knight-case": [
+    {
+      "name": "Sword of Light",
+      "id": 77443461,
+      "value": 211525,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 2499
+    },
+    {
+      "name": "Proud Knight",
+      "id": 91679561,
+      "value": 11222,
+      "chance": 3.5,
+      "color": "BLUE",
+      "minTicket": 2500,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Royal Crown",
+      "id": 11453654,
+      "value": 7000,
+      "chance": 4,
+      "color": "BLUE",
+      "minTicket": 6000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Redcliff Back Lance",
+      "id": 1587190669,
+      "value": 1000,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 17999
+    },
+    {
+      "name": "Rosy Horse Head",
+      "id": 3138459042,
+      "value": 200,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 18000,
+      "maxTicket": 27999
+    },
+    {
+      "name": "Dawnglare Jouster",
+      "id": 99855152,
+      "value": 95,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 28000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Clan Banner",
+      "id": 10648530350,
+      "value": 2,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Castle Tower Hat",
+      "id": 18757980260,
+      "value": 1,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Stylish Chainmail with Beard",
+      "id": 291996808,
+      "value": 1,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "hollywood-dreams": [
+    {
+      "name": "Classicx89's Stylin' Intern Shades",
+      "id": 15095717,
+      "value": 261706,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Bronze ROBLOX Music Video Award",
+      "id": 8795504,
+      "value": 59766,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Hollywood Sign",
+      "id": 17614445,
+      "value": 5246,
+      "chance": 2,
+      "color": "GRAY",
+      "minTicket": 5000,
+      "maxTicket": 6999
+    },
+    {
+      "name": "Noob Assist: Fearless Filmer",
+      "id": 1469827401,
+      "value": 1059,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 7000,
+      "maxTicket": 10999
+    },
+    {
+      "name": "Director's Clapboard",
+      "id": 1469850646,
+      "value": 800,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 11000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Golden Microphone - 24kGoldn",
+      "id": 9136261653,
+      "value": 140,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 16000,
+      "maxTicket": 21999
+    },
+    {
+      "name": "MTV Pin",
+      "id": 10558617252,
+      "value": 1,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 22000,
+      "maxTicket": 31999
+    },
+    {
+      "name": "Camera Head",
+      "id": 8906089041,
+      "value": 1,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 32000,
+      "maxTicket": 43999
+    },
+    {
+      "name": "Retro TV",
+      "id": 9648649681,
+      "value": 1,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 44000,
+      "maxTicket": 58999
+    },
+    {
+      "name": "Red Carpet Cape",
+      "id": 2758798961,
+      "value": 1,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 59000,
+      "maxTicket": 78999
+    },
+    {
+      "name": "Movie Popcorn Backpack",
+      "id": 16018161476,
+      "value": 1,
+      "chance": 21,
+      "color": "GRAY",
+      "minTicket": 79000,
+      "maxTicket": 99999
+    }
+  ],
+  "bone-breaker": [
+    {
+      "name": "Skeleton Lord",
+      "id": 96079550,
+      "value": 772231,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Skelefriend",
+      "id": 63253701,
+      "value": 98351,
+      "chance": 6,
+      "color": "PURPLE",
+      "minTicket": 4000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Dark Skeleton Crown",
+      "id": 306968119,
+      "value": 49089,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Spider Shoulder Friend",
+      "id": 64485985,
+      "value": 5373,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Skeletal Wings of Horror",
+      "id": 517259153,
+      "value": 1000,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 32999
+    },
+    {
+      "name": "Skull and Crossbones",
+      "id": 16469756,
+      "value": 325,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 33000,
+      "maxTicket": 47999
+    },
+    {
+      "name": "Bone Chilling Necklace",
+      "id": 39247184,
+      "value": 250,
+      "chance": 22,
+      "color": "GRAY",
+      "minTicket": 48000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Black Coffin Backpack",
+      "id": 7243879698,
+      "value": 1,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "redcliff-royalty": [
+    {
+      "name": "Knights of Redcliff: Bow and Arrow",
+      "id": 49929776,
+      "value": 2747,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Knights of Redcliff: Sword and Shield",
+      "id": 49929767,
+      "value": 750,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 4000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Knights of RedCliff: Battle Horn ",
+      "id": 114020505,
+      "value": 777,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Redcliff Back Shield",
+      "id": 2257540882,
+      "value": 600,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 6000,
+      "maxTicket": 6999
+    },
+    {
+      "name": "Redcliff Crossbow",
+      "id": 178076831,
+      "value": 600,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 7000,
+      "maxTicket": 7999
+    },
+    {
+      "name": "Knights of Redcliff: Morning Star",
+      "id": 49929746,
+      "value": 550,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 8000,
+      "maxTicket": 8999
+    },
+    {
+      "name": "Redcliff Guard",
+      "id": 156486177,
+      "value": 525,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 9000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Redcliff Hero Cape",
+      "id": 501959589,
+      "value": 2,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Redcliff Elite Knight Pauldrons",
+      "id": 483900585,
+      "value": 1,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "BotM: September Redcliff Bandana",
+      "id": 301933531,
+      "value": 1,
+      "chance": 35,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 99999
+    }
+  ],
+  "woodland-wars": [
+    {
+      "name": "Wanwood Antlers",
+      "id": 1272714,
+      "value": 181295,
+      "chance": 20,
+      "color": "PURPLE",
+      "minTicket": 0,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Xanwood Crown",
+      "id": 139618147,
+      "value": 74094,
+      "chance": 30,
+      "color": "BLUE",
+      "minTicket": 20000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Wanwood Autumn King Crown",
+      "id": 2705893733,
+      "value": 5503,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 56999
+    },
+    {
+      "name": "Xanwood Bunny Ears",
+      "id": 153962038,
+      "value": 5024,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 57000,
+      "maxTicket": 63999
+    },
+    {
+      "name": "Wanwood Egg of ZOMG!",
+      "id": 1532396,
+      "value": 2515,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 64000,
+      "maxTicket": 71999
+    },
+    {
+      "name": "Xanwood Back Guitar",
+      "id": 2705898346,
+      "value": 350,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 72000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Wanwood Back Guitar",
+      "id": 2163560825,
+      "value": 250,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 88999
+    },
+    {
+      "name": "Xanwood Katana",
+      "id": 489196923,
+      "value": 150,
+      "chance": 11,
+      "color": "GRAY",
+      "minTicket": 89000,
+      "maxTicket": 99999
+    }
+  ],
+  "sigma-case": [
+    {
+      "name": "Sleek Sunglasses",
+      "id": 51245241,
+      "value": 1500,
+      "chance": 7,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 6999
+    },
+    {
+      "name": "Mad Murderer Knife",
+      "id": 170897263,
+      "value": 500,
+      "chance": 7,
+      "color": "PURPLE",
+      "minTicket": 7000,
+      "maxTicket": 13999
+    },
+    {
+      "name": "ROBLOX U Handbook",
+      "id": 173784411,
+      "value": 300,
+      "chance": 7,
+      "color": "BLUE",
+      "minTicket": 14000,
+      "maxTicket": 20999
+    },
+    {
+      "name": "Moai",
+      "id": 15967519,
+      "value": 95,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 21000,
+      "maxTicket": 30999
+    },
+    {
+      "name": "50 KG Dumbbells",
+      "id": 7084494203,
+      "value": 65,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 31000,
+      "maxTicket": 40999
+    },
+    {
+      "name": "Briefcase full of Bux",
+      "id": 137365362048997,
+      "value": 1,
+      "chance": 11,
+      "color": "GRAY",
+      "minTicket": 41000,
+      "maxTicket": 51999
+    },
+    {
+      "name": "Laptop Hat",
+      "id": 8666492376,
+      "value": 1,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 52000,
+      "maxTicket": 63999
+    },
+    {
+      "name": "Moai Stone Head",
+      "id": 14291831890,
+      "value": 1,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 64000,
+      "maxTicket": 75999
+    },
+    {
+      "name": "Leather Jacket - Black",
+      "id": 7192549218,
+      "value": 1,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 76000,
+      "maxTicket": 87999
+    },
+    {
+      "name": "Red ROBLOX Racecar",
+      "id": 264290413,
+      "value": 1,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 88000,
+      "maxTicket": 99999
+    }
+  ],
+  "in-the-casino": [
+    {
+      "name": "Golden Shiny Teeth",
+      "id": 183648550594196,
+      "value": 83287,
+      "chance": 8,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 7999
+    },
+    {
+      "name": "Dice Crown",
+      "id": 1743932756,
+      "value": 34417,
+      "chance": 8,
+      "color": "BLUE",
+      "minTicket": 8000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Golden Roped",
+      "id": 361950795,
+      "value": 26755,
+      "chance": 50,
+      "color": "BLUE",
+      "minTicket": 16000,
+      "maxTicket": 65999
+    },
+    {
+      "name": "Sleek Sunglasses",
+      "id": 51245241,
+      "value": 1500,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 66000,
+      "maxTicket": 70999
+    },
+    {
+      "name": "Sorcus' Chair",
+      "id": 96095042,
+      "value": 1773,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 71000,
+      "maxTicket": 75999
+    },
+    {
+      "name": "Cowbell",
+      "id": 20373160,
+      "value": 122,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 76000,
+      "maxTicket": 81999
+    },
+    {
+      "name": "Sabacc Playing Cards",
+      "id": 1748603889,
+      "value": 1,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 82000,
+      "maxTicket": 87999
+    },
+    {
+      "name": "Backpack Of Cash",
+      "id": 10648302168,
+      "value": 1,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 88000,
+      "maxTicket": 93999
+    },
+    {
+      "name": "Joker's Wild Cardback",
+      "id": 12566121667,
+      "value": 1,
+      "chance": 6,
+      "color": "GRAY",
+      "minTicket": 94000,
+      "maxTicket": 99999
+    }
+  ],
+  "st-patricks-case": [
+    {
+      "name": "St Patrick's Day Fairy",
+      "id": 226189871,
+      "value": 185144,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 249
+    },
+    {
+      "name": "Dr. Shamrock",
+      "id": 48039359,
+      "value": 56787,
+      "chance": 0.25,
+      "color": "YELLOW",
+      "minTicket": 250,
+      "maxTicket": 499
+    },
+    {
+      "name": "St Patrick's Fedora",
+      "id": 48039287,
+      "value": 46751,
+      "chance": 0.5,
+      "color": "YELLOW",
+      "minTicket": 500,
+      "maxTicket": 999
+    },
+    {
+      "name": "The Luck O' the Irish",
+      "id": 74904413,
+      "value": 5046,
+      "chance": 9,
+      "color": "PURPLE",
+      "minTicket": 1000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Leprechaun Friend",
+      "id": 74972442,
+      "value": 5046,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Lucky Clover Necklace",
+      "id": 96680926,
+      "value": 1387,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Leprechaun Harp",
+      "id": 109583822,
+      "value": 65,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Shamrock Necklace",
+      "id": 380201966,
+      "value": 55,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Celtic Knot Shamrock Top Hat",
+      "id": 380202557,
+      "value": 1,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Pastel Rainbow Above Head",
+      "id": 14205122360,
+      "value": 1,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "wild-west-flip": [
+    {
+      "name": "New Sheriff in Town",
+      "id": 42847619,
+      "value": 23565,
+      "chance": 50,
+      "color": "BLUE",
+      "minTicket": 0,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Instant Campfire",
+      "id": 123234510,
+      "value": 500,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 57999
+    },
+    {
+      "name": "Moneybag",
+      "id": 16722267,
+      "value": 200,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 58000,
+      "maxTicket": 65999
+    },
+    {
+      "name": "Horse with Cowboy Hat",
+      "id": 184743065,
+      "value": 200,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 66000,
+      "maxTicket": 73999
+    },
+    {
+      "name": "Curtis Cactus",
+      "id": 100426197,
+      "value": 100,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 74000,
+      "maxTicket": 81999
+    },
+    {
+      "name": "Sorcus Stool",
+      "id": 110703943,
+      "value": 1,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 82000,
+      "maxTicket": 89999
+    },
+    {
+      "name": "Bang! Revolver",
+      "id": 10648347222,
+      "value": 1,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 90000,
+      "maxTicket": 99999
+    }
+  ],
+  "zombie-apocalypse": [
+    {
+      "name": "Zombie Doge",
+      "id": 304718708,
+      "value": 64695,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Green Drool Angry Zombie",
+      "id": 406001532,
+      "value": 50753,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Zombie Shedletsky",
+      "id": 133560053,
+      "value": 16739,
+      "chance": 15,
+      "color": "PURPLE",
+      "minTicket": 5000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Military Axe",
+      "id": 81847570,
+      "value": 500,
+      "chance": 7,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 26999
+    },
+    {
+      "name": "Brain",
+      "id": 28221685,
+      "value": 150,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 27000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Bandages",
+      "id": 26776790,
+      "value": 95,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 43999
+    },
+    {
+      "name": "Lane Boy Gas Mask - Twenty One Pilots",
+      "id": 7389829565,
+      "value": 95,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 44000,
+      "maxTicket": 53999
+    },
+    {
+      "name": "Flashlight",
+      "id": 116040770,
+      "value": 75,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 54000,
+      "maxTicket": 63999
+    },
+    {
+      "name": "Bazooka Bones Weapon",
+      "id": 3409830334,
+      "value": 1,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 64000,
+      "maxTicket": 75999
+    },
+    {
+      "name": "Open Gas Mask",
+      "id": 7243863794,
+      "value": 1,
+      "chance": 13,
+      "color": "GRAY",
+      "minTicket": 76000,
+      "maxTicket": 88999
+    },
+    {
+      "name": "Rifle",
+      "id": 12272169842,
+      "value": 1,
+      "chance": 11,
+      "color": "GRAY",
+      "minTicket": 89000,
+      "maxTicket": 99999
+    }
+  ],
+  "5percent-horns": [
+    {
+      "name": "Fiery Horns of the Netherworld",
+      "id": 215718515,
+      "value": 2483533,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Frozen Horns of the Frigid Planes",
+      "id": 74891470,
+      "value": 2250666,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Poisoned Horns of the Toxic Wasteland",
+      "id": 1744060292,
+      "value": 1769422,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Poison Horns",
+      "id": 62152671,
+      "value": 8666,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 6000,
+      "maxTicket": 25999
+    },
+    {
+      "name": "Red Iron Horns",
+      "id": 1360068971,
+      "value": 3495,
+      "chance": 22,
+      "color": "GRAY",
+      "minTicket": 26000,
+      "maxTicket": 47999
+    },
+    {
+      "name": "Mid-Summer Horns",
+      "id": 1744233582,
+      "value": 1737,
+      "chance": 24,
+      "color": "GRAY",
+      "minTicket": 48000,
+      "maxTicket": 71999
+    },
+    {
+      "name": "Horned Master of the Dragon Horde",
+      "id": 53061135,
+      "value": 795,
+      "chance": 28,
+      "color": "GRAY",
+      "minTicket": 72000,
+      "maxTicket": 99999
+    }
+  ],
+  "island-case": [
+    {
+      "name": "Hula Dog",
+      "id": 57983479,
+      "value": 84583,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Tropical Holiday Shoulder Bird",
+      "id": 67995863,
+      "value": 7667,
+      "chance": 2,
+      "color": "PURPLE",
+      "minTicket": 3000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Portrait of a Hero on a Tropical Vacation",
+      "id": 583651344,
+      "value": 6050,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Parrot Wings",
+      "id": 1016557158,
+      "value": 995,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Coconut Bowler",
+      "id": 3403869413,
+      "value": 145,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Tropical Blue Bucket Hat",
+      "id": 365630769,
+      "value": 90,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Tropical Island Getaway",
+      "id": 78640220,
+      "value": 1,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Long Island Snorkle",
+      "id": 125886071,
+      "value": 3,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "mogger": [
+    {
+      "name": "Bling",
+      "id": 25975243,
+      "value": 338034,
+      "chance": 15,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Disguise-to-Go Watch",
+      "id": 549915884,
+      "value": 87221,
+      "chance": 25,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Retro Shoulder Camera",
+      "id": 8906209463,
+      "value": 16050,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Money Roll",
+      "id": 2274745988,
+      "value": 5073,
+      "chance": 9,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 53999
+    },
+    {
+      "name": "Sprinter Boy Gym Bag",
+      "id": 5122255542,
+      "value": 3,
+      "chance": 11,
+      "color": "GRAY",
+      "minTicket": 54000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Metal Chomper Jaw",
+      "id": 5122325883,
+      "value": 2,
+      "chance": 14,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 78999
+    },
+    {
+      "name": "Gold Chomper Jaw",
+      "id": 5122389250,
+      "value": 1,
+      "chance": 21,
+      "color": "GRAY",
+      "minTicket": 79000,
+      "maxTicket": 99999
+    }
+  ],
+  "fish-flip": [
+    {
+      "name": "When Animals Attack : Shark Situations",
+      "id": 23551803,
+      "value": 39911,
+      "chance": 50,
+      "color": "BLUE",
+      "minTicket": 0,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Floppy Fish",
+      "id": 1082936,
+      "value": 15491,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Vicious Fishes",
+      "id": 57134043,
+      "value": 15357,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Slappy Salmon",
+      "id": 75906942,
+      "value": 2,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Koi Flag",
+      "id": 9296291842,
+      "value": 1,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 99999
+    }
+  ],
+  "holy-hair": [
+    {
+      "name": "Rainbow Shaggy",
+      "id": 64082730,
+      "value": 13928213,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Telamon Hair",
+      "id": 31312357,
+      "value": 2396670,
+      "chance": 7,
+      "color": "BLUE",
+      "minTicket": 5000,
+      "maxTicket": 11999
+    },
+    {
+      "name": "Tix Shaggy",
+      "id": 382881373,
+      "value": 2371588,
+      "chance": 8,
+      "color": "BLUE",
+      "minTicket": 12000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Pastel Rainbow Shaggy",
+      "id": 383605854,
+      "value": 1849022,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Fuchsia Fantastique",
+      "id": 20980138,
+      "value": 285503,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Midnight Blue Shaggy",
+      "id": 119916824,
+      "value": 190832,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Stickmasterluke's Peanut Butter Sparkle Time",
+      "id": 169444294,
+      "value": 106486,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "midas-touch": [
+    {
+      "name": "Bling $$ Necklace",
+      "id": 33171947,
+      "value": 10045444,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Dominus Aureus",
+      "id": 138932314,
+      "value": 6287191,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Dominus Pittacium",
+      "id": 335080779,
+      "value": 4536989,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "): Gold Ollie",
+      "id": 22546563,
+      "value": 2854081,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Golden Antlers",
+      "id": 193659065,
+      "value": 391171,
+      "chance": 22.5,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 32499
+    },
+    {
+      "name": "Gold King of the Night",
+      "id": 439945864,
+      "value": 271196,
+      "chance": 22.5,
+      "color": "GRAY",
+      "minTicket": 32500,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Grimgold Periastron Beta",
+      "id": 73829193,
+      "value": 212475,
+      "chance": 22.5,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 77499
+    },
+    {
+      "name": "Golden Crown of Warlords",
+      "id": 1743906481,
+      "value": 45603,
+      "chance": 22.5,
+      "color": "GRAY",
+      "minTicket": 77500,
+      "maxTicket": 99999
+    }
+  ],
+  "frostbite": [
+    {
+      "name": "The Ice Crown",
+      "id": 1323384,
+      "value": 1452647,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Real Ice Cold Stunnas",
+      "id": 100929295,
+      "value": 254947,
+      "chance": 1,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 10999
+    },
+    {
+      "name": "Immortal Sword: Endless Ice Slasher",
+      "id": 568920951,
+      "value": 225754,
+      "chance": 1.5,
+      "color": "BLUE",
+      "minTicket": 11000,
+      "maxTicket": 12499
+    },
+    {
+      "name": "ColdLika: Snowman",
+      "id": 568921483,
+      "value": 203575,
+      "chance": 2.5,
+      "color": "GRAY",
+      "minTicket": 12500,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Winter Conjurer",
+      "id": 193811031,
+      "value": 121417,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "The Ice Skull of Nevermoor",
+      "id": 6552254,
+      "value": 85779,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Snowflake Eyes",
+      "id": 259144677693420,
+      "value": 25493,
+      "chance": 55,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 99999
+    }
+  ],
+  "chicken-jockey": [
+    {
+      "name": "Telamon's Chicken Suit",
+      "id": 24112667,
+      "value": 910993,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Sparkle Time Chicken",
+      "id": 241671883,
+      "value": 17033,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Extremely Sparkly Sparkle Chicken",
+      "id": 12805007199,
+      "value": 9622,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Chicken Fried Sunglasses",
+      "id": 493489234,
+      "value": 7146,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 47999
+    },
+    {
+      "name": "Rubber Chicken Wand",
+      "id": 75550883,
+      "value": 3357,
+      "chance": 23,
+      "color": "GRAY",
+      "minTicket": 48000,
+      "maxTicket": 70999
+    },
+    {
+      "name": "Fried Chicken Hat",
+      "id": 386190257,
+      "value": 2,
+      "chance": 29,
+      "color": "GRAY",
+      "minTicket": 71000,
+      "maxTicket": 99999
+    }
+  ],
+  "pepe-case": [
+    {
+      "name": "Green Ice Crown",
+      "id": 116414971844146,
+      "value": 441845,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Green Queen of the Night",
+      "id": 553970961,
+      "value": 118913,
+      "chance": 6,
+      "color": "YELLOW",
+      "minTicket": 4000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Frog Beanie",
+      "id": 108829742,
+      "value": 14135,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Umbrella Froggie",
+      "id": 4823197889,
+      "value": 2476,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Lapel Frog",
+      "id": 1016592512,
+      "value": 1290,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Kaeru: The Hidden Frog",
+      "id": 2544540775,
+      "value": 70,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "holiday-magic": [
+    {
+      "name": "Festive Periastron Chi",
+      "id": 139577901,
+      "value": 97419,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Festive Domino Crown",
+      "id": 2606192523,
+      "value": 66766,
+      "chance": 7.5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 12499
+    },
+    {
+      "name": "Festive Bucket",
+      "id": 1241181482,
+      "value": 4579,
+      "chance": 2.5,
+      "color": "GRAY",
+      "minTicket": 12500,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Shooting Star",
+      "id": 119917015,
+      "value": 4393,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Festive Traffic Cone",
+      "id": 563291875,
+      "value": 4206,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Liberty Bell",
+      "id": 17981849,
+      "value": 4034,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Your Head, a Marshmallow Floating in Hot Chocolate",
+      "id": 19395368,
+      "value": 1232,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Jingle Bell Launcher",
+      "id": 2620452349,
+      "value": 400,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Purrfect Present Kitten",
+      "id": 2620454981,
+      "value": 95,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Santa",
+      "id": 19396450,
+      "value": 1,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "encore": [
+    {
+      "name": "Double Platinum DJ",
+      "id": 35292167,
+      "value": 3523054,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Crown of Tones",
+      "id": 152173424,
+      "value": 661152,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Silver ROBLOX Music Video Award",
+      "id": 8795516,
+      "value": 258708,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "4-String Roblocaster Premiere Guitar",
+      "id": 14492601,
+      "value": 135596,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 6000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Orbital Piano Strike",
+      "id": 113299590,
+      "value": 15591,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 16000,
+      "maxTicket": 55999
+    },
+    {
+      "name": "Music Note Speech Bubble",
+      "id": 8697875585,
+      "value": 70,
+      "chance": 44,
+      "color": "GRAY",
+      "minTicket": 56000,
+      "maxTicket": 99999
+    }
+  ],
+  "aether": [
+    {
+      "name": "Steampunk Aetherspectacles",
+      "id": 12908119,
+      "value": 2737201,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Mystic Ruby",
+      "id": 461492845,
+      "value": 243921,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 5000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Aether Adept",
+      "id": 99855478,
+      "value": 11810,
+      "chance": 4,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 18999
+    },
+    {
+      "name": "Staff of Celestial Light",
+      "id": 49491781,
+      "value": 6983,
+      "chance": 8,
+      "color": "GRAY",
+      "minTicket": 19000,
+      "maxTicket": 26999
+    },
+    {
+      "name": "Wizards of the Astral Isles: Pegasus",
+      "id": 106701659,
+      "value": 2000,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 27000,
+      "maxTicket": 38999
+    },
+    {
+      "name": "Celestial Wizard Hat",
+      "id": 2226790407,
+      "value": 795,
+      "chance": 16,
+      "color": "GRAY",
+      "minTicket": 39000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "Celestial Halo",
+      "id": 100928523,
+      "value": 245,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Celestial Helm",
+      "id": 15967848,
+      "value": 160,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "e-boy-case": [
+    {
+      "name": "Sky Blue Sparkle Time Fedora",
+      "id": 493476042,
+      "value": 12004176,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Black Iron King of the Night",
+      "id": 439946249,
+      "value": 7303279,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 6999
+    },
+    {
+      "name": "White Sparkle Time Fedora",
+      "id": 1016143686,
+      "value": 3410356,
+      "chance": 6,
+      "color": "PURPLE",
+      "minTicket": 7000,
+      "maxTicket": 12999
+    },
+    {
+      "name": "The Void Star",
+      "id": 1125510,
+      "value": 3255482,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 13000,
+      "maxTicket": 22999
+    },
+    {
+      "name": "Frozen Horns of the Frigid Planes",
+      "id": 74891470,
+      "value": 2250666,
+      "chance": 17,
+      "color": "BLUE",
+      "minTicket": 23000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Knee Busting Knife of Madness",
+      "id": 743687182,
+      "value": 1,
+      "chance": 60,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 99999
+    }
+  ],
+  "anime-case": [
+    {
+      "name": "Ornate Back Katana of Illusion",
+      "id": 2830463943,
+      "value": 776911,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 2999
+    },
+    {
+      "name": "From the Vault: Kawaii Cat",
+      "id": 292969932,
+      "value": 125602,
+      "chance": 7,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Steampunk Samurai",
+      "id": 30391731,
+      "value": 11093,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Vanishing Ninja Star",
+      "id": 129471170,
+      "value": 9230,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Sakuranantoka - Blossom Bow And Quiver",
+      "id": 3086927934,
+      "value": 795,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Chibi Puppy",
+      "id": 280659659,
+      "value": 165,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "neon-case": [
+    {
+      "name": "Neon Green Crazy Crown",
+      "id": 321346616,
+      "value": 372596,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 3999
+    },
+    {
+      "name": "Neon Pink Crazy Crown",
+      "id": 638087256,
+      "value": 181298,
+      "chance": 7,
+      "color": "YELLOW",
+      "minTicket": 4000,
+      "maxTicket": 10999
+    },
+    {
+      "name": "Neon Pink Top Hat",
+      "id": 376806474,
+      "value": 55602,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 11000,
+      "maxTicket": 20999
+    },
+    {
+      "name": "Neon Pink Shaggy",
+      "id": 215762773,
+      "value": 17132,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 21000,
+      "maxTicket": 32999
+    },
+    {
+      "name": "Neon Green Beautiful Hair",
+      "id": 151786902,
+      "value": 12049,
+      "chance": 14,
+      "color": "GRAY",
+      "minTicket": 33000,
+      "maxTicket": 46999
+    },
+    {
+      "name": "Neon Green Equinox",
+      "id": 212971414,
+      "value": 9085,
+      "chance": 23,
+      "color": "GRAY",
+      "minTicket": 47000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Neon Pink Party Mohawk",
+      "id": 6594622541,
+      "value": 1,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "azure-case": [
+    {
+      "name": "Eyes of Azurewrath",
+      "id": 17999992,
+      "value": 2608637,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Azurewrath, Lord of the Void",
+      "id": 17109706,
+      "value": 946992,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 5000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "The Azure Gate Bridge",
+      "id": 22946161,
+      "value": 401497,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Azure Dragon's Magic Slayer",
+      "id": 268586231,
+      "value": 371049,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Azure Periastron Alpha",
+      "id": 69499437,
+      "value": 334418,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Azurewrath Duke Of Demons",
+      "id": 82332418,
+      "value": 191640,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Son of Korblox: Azurewrath King",
+      "id": 243853512,
+      "value": 37200,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 99999
+    }
+  ],
+  "crimsonwraths-curse": [
+    {
+      "name": "Eyes of Crimsonwrath",
+      "id": 49493376,
+      "value": 2516278,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Crimson Thug Shades",
+      "id": 207207025,
+      "value": 1750371,
+      "chance": 5,
+      "color": "YELLOW",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Crimsonwrath: The Red Wrath",
+      "id": 402304782,
+      "value": 640019,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Crimson Periastron Mu",
+      "id": 99119240,
+      "value": 524542,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Crimsonwrath, Duke of Danger",
+      "id": 62718352,
+      "value": 280081,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Crimson Laser Vision",
+      "id": 45514606,
+      "value": 153753,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Dark Crimson Egg of Nemesis",
+      "id": 27398610,
+      "value": 3543,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 99999
+    }
+  ],
+  "tix-nostalgia": [
+    {
+      "name": "Dominus Pittacium",
+      "id": 335080779,
+      "value": 6829988,
+      "chance": 1.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1499
+    },
+    {
+      "name": "Lord of the Tixeration",
+      "id": 382880833,
+      "value": 1776922,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1500,
+      "maxTicket": 3499
+    },
+    {
+      "name": "Tix Shaggy",
+      "id": 382881373,
+      "value": 1674542,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 3500,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Tixvalk",
+      "id": 382881237,
+      "value": 1228429,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 6000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Tix Bling",
+      "id": 382881521,
+      "value": 54263,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Tixsplosion",
+      "id": 6512277,
+      "value": 1633,
+      "chance": 35,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Tickets Tie",
+      "id": 390972175,
+      "value": 561,
+      "chance": 50,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 99999
+    }
+  ],
+  "biograft-bonanza": [
+    {
+      "name": "Spec Epsilon Biograft Energy Sword",
+      "id": 23727705,
+      "value": 1236693,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Spec Beta Biograft Energy Sword",
+      "id": 14876573,
+      "value": 1143927,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Spec Omega Biograft Energy Sword",
+      "id": 98411325,
+      "value": 355944,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Spec Zeta Biograft Energy Sword",
+      "id": 66416579,
+      "value": 314557,
+      "chance": 4,
+      "color": "YELLOW",
+      "minTicket": 6000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Spec Gamma Biograft Energy Sword",
+      "id": 21416138,
+      "value": 225201,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Spec Chi Biograft Energy Sword",
+      "id": 139578571,
+      "value": 93358,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Spec Alpha Biograft Energy Sword",
+      "id": 11999235,
+      "value": 13451,
+      "chance": 80,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 99999
+    }
+  ],
+  "ultimate-5050": [
+    {
+      "name": "Steampunk Bobbie",
+      "id": 140484519,
+      "value": 1758699,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "A Dark Presence",
+      "id": 20908915,
+      "value": 1656993,
+      "chance": 10,
+      "color": "BLUE",
+      "minTicket": 5000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Hooded Spacelord",
+      "id": 63692675,
+      "value": 1559293,
+      "chance": 15,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Dark Assassin",
+      "id": 73791866,
+      "value": 1371499,
+      "chance": 20,
+      "color": "BLUE",
+      "minTicket": 30000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Gucci Dionysus Bag",
+      "id": 6803405665,
+      "value": 365,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Gucci Spiked Basketball Bag",
+      "id": 6807135859,
+      "value": 310,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Gucci Horsebit 1955 Shoulder Bag",
+      "id": 6807133411,
+      "value": 291,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Gucci Geometric Bag",
+      "id": 6807134749,
+      "value": 251,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 89999
+    },
+    {
+      "name": "Gucci GG Marmont Bag",
+      "id": 6803403781,
+      "value": 209,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 90000,
+      "maxTicket": 99999
+    }
+  ],
+  "max-volume": [
+    {
+      "name": "CW Ultimate: Ruby Rapture",
+      "id": 583635712,
+      "value": 5821413,
+      "chance": 4.5,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 4499
+    },
+    {
+      "name": "WC Ultimates: Pink Diamond Distraction",
+      "id": 315549204,
+      "value": 4538634,
+      "chance": 3.5,
+      "color": "YELLOW",
+      "minTicket": 4500,
+      "maxTicket": 7999
+    },
+    {
+      "name": "WC Ultimates: Aquamarine Attitude",
+      "id": 323417812,
+      "value": 4238634,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 8000,
+      "maxTicket": 10999
+    },
+    {
+      "name": "CW Ultimate: Emerald Entropy",
+      "id": 271015154,
+      "value": 3066503,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 11000,
+      "maxTicket": 13499
+    },
+    {
+      "name": "WC Ultimates - Garnet Gratitude",
+      "id": 2566024668,
+      "value": 2749043,
+      "chance": 2.5,
+      "color": "YELLOW",
+      "minTicket": 13500,
+      "maxTicket": 15999
+    },
+    {
+      "name": "CW Ultimate: Wulfinite Will",
+      "id": 286524947,
+      "value": 1915998,
+      "chance": 1.5,
+      "color": "PURPLE",
+      "minTicket": 16000,
+      "maxTicket": 17499
+    },
+    {
+      "name": "CW Ultimate: Rose Quartz Rebellion",
+      "id": 228449574,
+      "value": 1826221,
+      "chance": 1.5,
+      "color": "PURPLE",
+      "minTicket": 17500,
+      "maxTicket": 18999
+    },
+    {
+      "name": "CW Ultimate: Amethyst Addiction",
+      "id": 188004500,
+      "value": 1495703,
+      "chance": 1,
+      "color": "BLUE",
+      "minTicket": 19000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Blue Clockwork Headphones",
+      "id": 1743903423,
+      "value": 6079,
+      "chance": 80,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 99999
+    }
+  ],
+  "static-surge": [
+    {
+      "name": "Masked Hood of the Lightning Striker",
+      "id": 82331933,
+      "value": 261716,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Blizzard Striker",
+      "id": 280662903,
+      "value": 77023,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Helm of the Flashing Bolt",
+      "id": 6551281,
+      "value": 32471,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Zeus's Lightning Bolt Staff",
+      "id": 66416616,
+      "value": 26929,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Thunderdrone",
+      "id": 17238263,
+      "value": 3786,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Throwing Bolts",
+      "id": 1492225511,
+      "value": 3786,
+      "chance": 22.5,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 67499
+    },
+    {
+      "name": "Thunderstorm Hat",
+      "id": 1098279,
+      "value": 90,
+      "chance": 32.5,
+      "color": "GRAY",
+      "minTicket": 67500,
+      "maxTicket": 99999
+    }
+  ],
+  "hollow-depths": [
+    {
+      "name": "A Dark Presence",
+      "id": 20908915,
+      "value": 1652943,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Knight of the Stygian Abyss",
+      "id": 49048671,
+      "value": 660993,
+      "chance": 8,
+      "color": "YELLOW",
+      "minTicket": 2000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Knight of the Violet Abyss",
+      "id": 220248530,
+      "value": 302359,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Sword of the Eternal Abyss",
+      "id": 532254782,
+      "value": 17526,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 20000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Underworld Taskmaster",
+      "id": 51245932,
+      "value": 495,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Obsidian Skull Commando",
+      "id": 20298484,
+      "value": 200,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Ranger\u2019s Apprentice: The Ruins of Gorlan",
+      "id": 164017027,
+      "value": 3,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 40000,
+      "maxTicket": 54999
+    },
+    {
+      "name": "The Obsidian Egg",
+      "id": 241670831,
+      "value": 2,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 55000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "The Abyssal Egg",
+      "id": 116073524,
+      "value": 1,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "heros-gambit": [
+    {
+      "name": "Vault Swordpack",
+      "id": 16744155285,
+      "value": 65203,
+      "chance": 10,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Dragon Slayers Sword and Shield",
+      "id": 73232803,
+      "value": 31086,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Cape of Inspiration",
+      "id": 8835800486,
+      "value": 14605,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 15000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Dragon's Blaze Sword",
+      "id": 105351545,
+      "value": 11452,
+      "chance": 5,
+      "color": "BLUE",
+      "minTicket": 20000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Retro Super Villain Laser Gun",
+      "id": 268533563,
+      "value": 3786,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 34999
+    },
+    {
+      "name": "Superhero Potion",
+      "id": 76262706,
+      "value": 1250,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 35000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Generic Superhero Mask",
+      "id": 13844618,
+      "value": 90,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 50000,
+      "maxTicket": 74999
+    },
+    {
+      "name": "Ultra-Pup Sidekick",
+      "id": 90083765199052,
+      "value": 60,
+      "chance": 25,
+      "color": "GRAY",
+      "minTicket": 75000,
+      "maxTicket": 99999
+    }
+  ],
+  "bronze-case": [
+    {
+      "name": "Bronze Horus",
+      "id": 44500181,
+      "value": 673,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Bronze Khopesh",
+      "id": 18481407,
+      "value": 445,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Rusty Chrome Shades",
+      "id": 553707410,
+      "value": 221,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Sir Rustalot",
+      "id": 48155742,
+      "value": 19,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 6000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Rusty Egg of Magnetism",
+      "id": 24826787,
+      "value": 16,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 16000,
+      "maxTicket": 35999
+    },
+    {
+      "name": "Rusty Tetramino of Competence",
+      "id": 5785985,
+      "value": 10,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 36000,
+      "maxTicket": 55999
+    },
+    {
+      "name": "Orange Shades",
+      "id": 376527500,
+      "value": 2,
+      "chance": 44,
+      "color": "GRAY",
+      "minTicket": 56000,
+      "maxTicket": 99999
+    }
+  ],
+  "silver-case": [
+    {
+      "name": "Silverthorn Antlers",
+      "id": 9255011,
+      "value": 7947,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Opened Silver Sponsored Gift of Sponsoring",
+      "id": 329590965,
+      "value": 5251,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Silver Sentinel",
+      "id": 105342573,
+      "value": 2610,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Silver Braid Fedora",
+      "id": 113328346,
+      "value": 224,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 6000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Silver Mask of the Boy-King",
+      "id": 15364093,
+      "value": 192,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 16000,
+      "maxTicket": 35999
+    },
+    {
+      "name": "Silver Plumed Knight",
+      "id": 67239894,
+      "value": 120,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 36000,
+      "maxTicket": 55999
+    },
+    {
+      "name": "Silver Skull Shaped Eyepatch",
+      "id": 4657312799,
+      "value": 21,
+      "chance": 44,
+      "color": "GRAY",
+      "minTicket": 56000,
+      "maxTicket": 99999
+    }
+  ],
+  "gold-case": [
+    {
+      "name": "Golden Katana of the Unflinching Dawn",
+      "id": 18776718,
+      "value": 30268,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Gold 8-Bit Headphones",
+      "id": 383507353,
+      "value": 20001,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Golden Top Hat of Bling Bling",
+      "id": 6552812,
+      "value": 9940,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Noob Assist: Golden Shield Guardian",
+      "id": 833771311,
+      "value": 854,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 6000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Golden Super Fly Boombox",
+      "id": 212641536,
+      "value": 732,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 16000,
+      "maxTicket": 35999
+    },
+    {
+      "name": "Golden Magic Carpet",
+      "id": 1016183873,
+      "value": 458,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 36000,
+      "maxTicket": 55999
+    },
+    {
+      "name": "Goldrow",
+      "id": 3581868178,
+      "value": 79,
+      "chance": 44,
+      "color": "GRAY",
+      "minTicket": 56000,
+      "maxTicket": 99999
+    }
+  ],
+  "platinum-case": [
+    {
+      "name": "Platinum Domino Crown",
+      "id": 128304149850143,
+      "value": 74958,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Platinum Eye",
+      "id": 1225163762,
+      "value": 49532,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Platinum and Sapphire Circlet of the Elven King",
+      "id": 52550492,
+      "value": 24615,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Metal Horus",
+      "id": 21802141,
+      "value": 2115,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 6000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Stainless Steel Warrior",
+      "id": 71499542,
+      "value": 1812,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 16000,
+      "maxTicket": 35999
+    },
+    {
+      "name": "Metal Fists",
+      "id": 183355969,
+      "value": 1132,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 36000,
+      "maxTicket": 55999
+    },
+    {
+      "name": "Chrome Egg of Speeding Bullet",
+      "id": 24826640,
+      "value": 201,
+      "chance": 44,
+      "color": "GRAY",
+      "minTicket": 56000,
+      "maxTicket": 99999
+    }
+  ],
+  "diamond-case": [
+    {
+      "name": "Blue Queen of the Night",
+      "id": 553970606,
+      "value": 48826,
+      "chance": 1,
+      "color": "YELLOW",
+      "minTicket": 0,
+      "maxTicket": 999
+    },
+    {
+      "name": "Bluesteel Bucket",
+      "id": 259423513,
+      "value": 32264,
+      "chance": 2,
+      "color": "YELLOW",
+      "minTicket": 1000,
+      "maxTicket": 2999
+    },
+    {
+      "name": "Bluesteel Antlers",
+      "id": 136802923,
+      "value": 16033,
+      "chance": 3,
+      "color": "YELLOW",
+      "minTicket": 3000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Bluesteel Viking Helm of Infinite Pillage",
+      "id": 1483632,
+      "value": 1379,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 6000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Bluesteel Wings",
+      "id": 928909186,
+      "value": 1182,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 16000,
+      "maxTicket": 35999
+    },
+    {
+      "name": "Blue Chrome Glasses",
+      "id": 2316681099,
+      "value": 737,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 36000,
+      "maxTicket": 55999
+    },
+    {
+      "name": "Bluesteel Midas Hand",
+      "id": 163354553,
+      "value": 129,
+      "chance": 44,
+      "color": "GRAY",
+      "minTicket": 56000,
+      "maxTicket": 99999
+    }
+  ]
+}

@@ -1,0 +1,1152 @@
+[
+  {
+    "slug": "e-boy-case",
+    "name": "E-Boy Case",
+    "imageId": 104,
+    "image": "https://cdn.rostake.com/cases/104.webp",
+    "price": 1745735,
+    "bar": "#3b82f6",
+    "hue": 328,
+    "risk": "high"
+  },
+  {
+    "slug": "holy-hair",
+    "name": "Holy Hair",
+    "imageId": 96,
+    "image": "https://cdn.rostake.com/cases/96.webp",
+    "price": 1550336,
+    "bar": "#3b82f6",
+    "hue": 192,
+    "risk": "high"
+  },
+  {
+    "slug": "fedora-fiasco",
+    "name": "Fedora Fiasco",
+    "imageId": 40,
+    "image": "https://cdn.rostake.com/cases/40.webp",
+    "price": 1024461,
+    "bar": "#eab308",
+    "hue": 320,
+    "risk": "high"
+  },
+  {
+    "slug": "max-volume",
+    "name": "Max Volume",
+    "imageId": 112,
+    "image": "https://cdn.rostake.com/cases/112.webp",
+    "price": 884715,
+    "bar": "#3b82f6",
+    "hue": 104,
+    "risk": "high"
+  },
+  {
+    "slug": "inferno-royale",
+    "name": "Inferno Royale",
+    "imageId": 45,
+    "image": "https://cdn.rostake.com/cases/45.webp",
+    "price": 882435,
+    "bar": "#eab308",
+    "hue": 45,
+    "risk": "high"
+  },
+  {
+    "slug": "ultimate-5050",
+    "name": "Ultimate 50/50",
+    "imageId": 111,
+    "image": "https://cdn.rostake.com/cases/111.webp",
+    "price": 876266,
+    "bar": "#22c55e",
+    "hue": 87,
+    "risk": "high"
+  },
+  {
+    "slug": "midas-touch",
+    "name": "Midas Touch",
+    "imageId": 97,
+    "image": "https://cdn.rostake.com/cases/97.webp",
+    "price": 766754,
+    "bar": "#3b82f6",
+    "hue": 209,
+    "risk": "high"
+  },
+  {
+    "slug": "astra-dreams",
+    "name": "Astra Dreams",
+    "imageId": 39,
+    "image": "https://cdn.rostake.com/cases/39.webp",
+    "price": 608782,
+    "bar": "#eab308",
+    "hue": 303,
+    "risk": "high"
+  },
+  {
+    "slug": "federation-case",
+    "name": "Federation Case",
+    "imageId": 46,
+    "image": "https://cdn.rostake.com/cases/46.webp",
+    "price": 576488,
+    "bar": "#eab308",
+    "hue": 62,
+    "risk": "high"
+  },
+  {
+    "slug": "after-life",
+    "name": "After Life",
+    "imageId": 38,
+    "image": "https://cdn.rostake.com/cases/38.webp",
+    "price": 493861,
+    "bar": "#3b82f6",
+    "hue": 286,
+    "risk": "high"
+  },
+  {
+    "slug": "azure-case",
+    "name": "Azure Case",
+    "imageId": 107,
+    "image": "https://cdn.rostake.com/cases/107.webp",
+    "price": 442240,
+    "bar": "#3b82f6",
+    "hue": 19,
+    "risk": "high"
+  },
+  {
+    "slug": "crimsonwraths-curse",
+    "name": "Crimsonwrath\u2019s Curse",
+    "imageId": 108,
+    "image": "https://cdn.rostake.com/cases/108.webp",
+    "price": 402216,
+    "bar": "#3b82f6",
+    "hue": 36,
+    "risk": "high"
+  },
+  {
+    "slug": "mafia-case",
+    "name": "Mafia Case",
+    "imageId": 37,
+    "image": "https://cdn.rostake.com/cases/37.webp",
+    "price": 321359,
+    "bar": "#eab308",
+    "hue": 269,
+    "risk": "low"
+  },
+  {
+    "slug": "toxic-waste",
+    "name": "Toxic Waste",
+    "imageId": 36,
+    "image": "https://cdn.rostake.com/cases/36.webp",
+    "price": 317819,
+    "bar": "#eab308",
+    "hue": 252,
+    "risk": "low"
+  },
+  {
+    "slug": "tix-nostalgia",
+    "name": "Tix Nostalgia",
+    "imageId": 109,
+    "image": "https://cdn.rostake.com/cases/109.webp",
+    "price": 255810,
+    "bar": "#ef4444",
+    "hue": 53,
+    "risk": "low"
+  },
+  {
+    "slug": "frostbite",
+    "name": "Frostbite",
+    "imageId": 98,
+    "image": "https://cdn.rostake.com/cases/98.webp",
+    "price": 219569,
+    "bar": "#3b82f6",
+    "hue": 226,
+    "risk": "low"
+  },
+  {
+    "slug": "crystal-silence",
+    "name": "Crystal Silence",
+    "imageId": 35,
+    "image": "https://cdn.rostake.com/cases/35.webp",
+    "price": 208936,
+    "bar": "#eab308",
+    "hue": 235,
+    "risk": "low"
+  },
+  {
+    "slug": "aether",
+    "name": "Aether",
+    "imageId": 103,
+    "image": "https://cdn.rostake.com/cases/103.webp",
+    "price": 179013,
+    "bar": "#eab308",
+    "hue": 311,
+    "risk": "low"
+  },
+  {
+    "slug": "sshf-flip",
+    "name": "SSHF Flip",
+    "imageId": 41,
+    "image": "https://cdn.rostake.com/cases/41.webp",
+    "price": 178685,
+    "bar": "#22c55e",
+    "hue": 337,
+    "risk": "low"
+  },
+  {
+    "slug": "5percent-horns",
+    "name": "5% Horns",
+    "imageId": 92,
+    "image": "https://cdn.rostake.com/cases/92.webp",
+    "price": 138680,
+    "bar": "#ef4444",
+    "hue": 124,
+    "risk": "low"
+  },
+  {
+    "slug": "frenzy-faces",
+    "name": "Frenzy Faces",
+    "imageId": 34,
+    "image": "https://cdn.rostake.com/cases/34.webp",
+    "price": 134384,
+    "bar": "#eab308",
+    "hue": 218,
+    "risk": "low"
+  },
+  {
+    "slug": "hollow-depths",
+    "name": "Hollow Depths",
+    "imageId": 114,
+    "image": "https://cdn.rostake.com/cases/114.webp",
+    "price": 128806,
+    "bar": "#eab308",
+    "hue": 138,
+    "risk": "low"
+  },
+  {
+    "slug": "chicken-jockey",
+    "name": "Chicken Jockey",
+    "imageId": 99,
+    "image": "https://cdn.rostake.com/cases/99.webp",
+    "price": 105406,
+    "bar": "#eab308",
+    "hue": 243,
+    "risk": "low"
+  },
+  {
+    "slug": "bux-or-tix",
+    "name": "Bux Or Tix",
+    "imageId": 33,
+    "image": "https://cdn.rostake.com/cases/33.webp",
+    "price": 94589,
+    "bar": "#ef4444",
+    "hue": 201,
+    "risk": "low"
+  },
+  {
+    "slug": "biograft-bonanza",
+    "name": "Biograft Bonanza",
+    "imageId": 110,
+    "image": "https://cdn.rostake.com/cases/110.webp",
+    "price": 93714,
+    "bar": "#eab308",
+    "hue": 70,
+    "risk": "low"
+  },
+  {
+    "slug": "valk-volatility",
+    "name": "Valk Volatility",
+    "imageId": 32,
+    "image": "https://cdn.rostake.com/cases/32.webp",
+    "price": 88973,
+    "bar": "#ef4444",
+    "hue": 184,
+    "risk": "low"
+  },
+  {
+    "slug": "high-voltage",
+    "name": "High Voltage",
+    "imageId": 65,
+    "image": "https://cdn.rostake.com/cases/65.webp",
+    "price": 86375,
+    "bar": "#3b82f6",
+    "hue": 25,
+    "risk": "low"
+  },
+  {
+    "slug": "encore",
+    "name": "Encore",
+    "imageId": 102,
+    "image": "https://cdn.rostake.com/cases/102.webp",
+    "price": 83646,
+    "bar": "#ef4444",
+    "hue": 294,
+    "risk": "low"
+  },
+  {
+    "slug": "mogger",
+    "name": "Mogger",
+    "imageId": 94,
+    "image": "https://cdn.rostake.com/cases/94.webp",
+    "price": 81147,
+    "bar": "#3b82f6",
+    "hue": 158,
+    "risk": "low"
+  },
+  {
+    "slug": "dominus-bonanza",
+    "name": "Dominus Bonanza",
+    "imageId": 68,
+    "image": "https://cdn.rostake.com/cases/68.webp",
+    "price": 79285,
+    "bar": "#ef4444",
+    "hue": 76,
+    "risk": "low"
+  },
+  {
+    "slug": "stay-fresh",
+    "name": "Stay Fresh",
+    "imageId": 31,
+    "image": "https://cdn.rostake.com/cases/31.webp",
+    "price": 74280,
+    "bar": "#eab308",
+    "hue": 167,
+    "risk": "low"
+  },
+  {
+    "slug": "woodland-wars",
+    "name": "Woodland Wars",
+    "imageId": 86,
+    "image": "https://cdn.rostake.com/cases/86.webp",
+    "price": 65442,
+    "bar": "#22c55e",
+    "hue": 22,
+    "risk": "low"
+  },
+  {
+    "slug": "rainbow-blast",
+    "name": "Rainbow Blast",
+    "imageId": 62,
+    "image": "https://cdn.rostake.com/cases/62.webp",
+    "price": 64847,
+    "bar": "#3b82f6",
+    "hue": 334,
+    "risk": "low"
+  },
+  {
+    "slug": "bucket-bonanza",
+    "name": "Bucket Bonanza",
+    "imageId": 29,
+    "image": "https://cdn.rostake.com/cases/29.webp",
+    "price": 57166,
+    "bar": "#3b82f6",
+    "hue": 133,
+    "risk": "low"
+  },
+  {
+    "slug": "golden-opportunity",
+    "name": "Golden Opportunity",
+    "imageId": 30,
+    "image": "https://cdn.rostake.com/cases/30.webp",
+    "price": 56080,
+    "bar": "#ef4444",
+    "hue": 150,
+    "risk": "low"
+  },
+  {
+    "slug": "bone-breaker",
+    "name": "Bone Breaker",
+    "imageId": 84,
+    "image": "https://cdn.rostake.com/cases/84.webp",
+    "price": 46367,
+    "bar": "#eab308",
+    "hue": 348,
+    "risk": "low"
+  },
+  {
+    "slug": "neon-case",
+    "name": "Neon Case",
+    "imageId": 106,
+    "image": "https://cdn.rostake.com/cases/106.webp",
+    "price": 42886,
+    "bar": "#3b82f6",
+    "hue": 2,
+    "risk": "low"
+  },
+  {
+    "slug": "terracotta-bloom",
+    "name": "Terracotta Bloom",
+    "imageId": 28,
+    "image": "https://cdn.rostake.com/cases/28.webp",
+    "price": 41557,
+    "bar": "#ef4444",
+    "hue": 116,
+    "risk": "low"
+  },
+  {
+    "slug": "telamon-case",
+    "name": "Telamon's Case",
+    "imageId": 27,
+    "image": "https://cdn.rostake.com/cases/27.webp",
+    "price": 40272,
+    "bar": "#ef4444",
+    "hue": 99,
+    "risk": "low"
+  },
+  {
+    "slug": "static-surge",
+    "name": "Static Surge",
+    "imageId": 113,
+    "image": "https://cdn.rostake.com/cases/113.webp",
+    "price": 39367,
+    "bar": "#3b82f6",
+    "hue": 121,
+    "risk": "low"
+  },
+  {
+    "slug": "anime-case",
+    "name": "Anime Case",
+    "imageId": 105,
+    "image": "https://cdn.rostake.com/cases/105.webp",
+    "price": 38344,
+    "bar": "#ef4444",
+    "hue": 345,
+    "risk": "low"
+  },
+  {
+    "slug": "antler-alarm",
+    "name": "Antler Alarm",
+    "imageId": 25,
+    "image": "https://cdn.rostake.com/cases/25.webp",
+    "price": 36822,
+    "bar": "#3b82f6",
+    "hue": 65,
+    "risk": "low"
+  },
+  {
+    "slug": "cupid-arsenal",
+    "name": "Cupid's Arsenal",
+    "imageId": 64,
+    "image": "https://cdn.rostake.com/cases/64.webp",
+    "price": 36799,
+    "bar": "#3b82f6",
+    "hue": 8,
+    "risk": "low"
+  },
+  {
+    "slug": "pharaohs-curse",
+    "name": "Pharaoh's Curse",
+    "imageId": 67,
+    "image": "https://cdn.rostake.com/cases/67.webp",
+    "price": 33860,
+    "bar": "#eab308",
+    "hue": 59,
+    "risk": "low"
+  },
+  {
+    "slug": "steampunk-case",
+    "name": "Steampunk Case",
+    "imageId": 74,
+    "image": "https://cdn.rostake.com/cases/74.webp",
+    "price": 33073,
+    "bar": "#ef4444",
+    "hue": 178,
+    "risk": "low"
+  },
+  {
+    "slug": "ruby-roll",
+    "name": "Ruby Roll",
+    "imageId": 44,
+    "image": "https://cdn.rostake.com/cases/44.webp",
+    "price": 32003,
+    "bar": "#ef4444",
+    "hue": 28,
+    "risk": "low"
+  },
+  {
+    "slug": "hypebeast",
+    "name": "Hypebeast",
+    "imageId": 26,
+    "image": "https://cdn.rostake.com/cases/26.webp",
+    "price": 31297,
+    "bar": "#eab308",
+    "hue": 82,
+    "risk": "low"
+  },
+  {
+    "slug": "one-percent-rap-rush",
+    "name": "1% RAP Rush",
+    "imageId": 70,
+    "image": "https://cdn.rostake.com/cases/70.webp",
+    "price": 30928,
+    "bar": "#ef4444",
+    "hue": 110,
+    "risk": "low"
+  },
+  {
+    "slug": "pepe-case",
+    "name": "Pepe Case",
+    "imageId": 100,
+    "image": "https://cdn.rostake.com/cases/100.webp",
+    "price": 30544,
+    "bar": "#eab308",
+    "hue": 260,
+    "risk": "low"
+  },
+  {
+    "slug": "american-dream",
+    "name": "American Dream",
+    "imageId": 61,
+    "image": "https://cdn.rostake.com/cases/61.webp",
+    "price": 30470,
+    "bar": "#ef4444",
+    "hue": 317,
+    "risk": "low"
+  },
+  {
+    "slug": "alien-invasion",
+    "name": "Alien Invasion",
+    "imageId": 59,
+    "image": "https://cdn.rostake.com/cases/59.webp",
+    "price": 28533,
+    "bar": "#3b82f6",
+    "hue": 283,
+    "risk": "low"
+  },
+  {
+    "slug": "mystic-bubbles",
+    "name": "Mystic Bubbles",
+    "imageId": 79,
+    "image": "https://cdn.rostake.com/cases/79.webp",
+    "price": 27640,
+    "bar": "#3b82f6",
+    "hue": 263,
+    "risk": "low"
+  },
+  {
+    "slug": "sparkle-time-supreme",
+    "name": "Sparkle Time Supreme",
+    "imageId": 71,
+    "image": "https://cdn.rostake.com/cases/71.webp",
+    "price": 27254,
+    "bar": "#22c55e",
+    "hue": 127,
+    "risk": "low"
+  },
+  {
+    "slug": "emo-drip",
+    "name": "Emo Drip",
+    "imageId": 24,
+    "image": "https://cdn.rostake.com/cases/24.webp",
+    "price": 26590,
+    "bar": "#3b82f6",
+    "hue": 48,
+    "risk": "low"
+  },
+  {
+    "slug": "in-the-casino",
+    "name": "In the Casino",
+    "imageId": 88,
+    "image": "https://cdn.rostake.com/cases/88.webp",
+    "price": 25261,
+    "bar": "#22c55e",
+    "hue": 56,
+    "risk": "low"
+  },
+  {
+    "slug": "circus-maximus",
+    "name": "Circus Maximus",
+    "imageId": 54,
+    "image": "https://cdn.rostake.com/cases/54.webp",
+    "price": 24955,
+    "bar": "#ef4444",
+    "hue": 198,
+    "risk": "low"
+  },
+  {
+    "slug": "fish-flip",
+    "name": "Fish Flip",
+    "imageId": 95,
+    "image": "https://cdn.rostake.com/cases/95.webp",
+    "price": 24493,
+    "bar": "#22c55e",
+    "hue": 175,
+    "risk": "low"
+  },
+  {
+    "slug": "molten-core",
+    "name": "Molten Core",
+    "imageId": 23,
+    "image": "https://cdn.rostake.com/cases/23.webp",
+    "price": 24404,
+    "bar": "#eab308",
+    "hue": 31,
+    "risk": "low"
+  },
+  {
+    "slug": "sakura-bloom",
+    "name": "Sakura Bloom",
+    "imageId": 76,
+    "image": "https://cdn.rostake.com/cases/76.webp",
+    "price": 22011,
+    "bar": "#3b82f6",
+    "hue": 212,
+    "risk": "low"
+  },
+  {
+    "slug": "deep-sea",
+    "name": "Deep Sea",
+    "imageId": 22,
+    "image": "https://cdn.rostake.com/cases/22.webp",
+    "price": 20731,
+    "bar": "#3b82f6",
+    "hue": 14,
+    "risk": "low"
+  },
+  {
+    "slug": "tentacle-terror",
+    "name": "Tentacle Terror",
+    "imageId": 51,
+    "image": "https://cdn.rostake.com/cases/51.webp",
+    "price": 20662,
+    "bar": "#3b82f6",
+    "hue": 147,
+    "risk": "low"
+  },
+  {
+    "slug": "kawaii-case",
+    "name": "Kawaii Case",
+    "imageId": 73,
+    "image": "https://cdn.rostake.com/cases/73.webp",
+    "price": 20336,
+    "bar": "#3b82f6",
+    "hue": 161,
+    "risk": "low"
+  },
+  {
+    "slug": "enchanted-vault",
+    "name": "Enchanted Vault",
+    "imageId": 78,
+    "image": "https://cdn.rostake.com/cases/78.webp",
+    "price": 19067,
+    "bar": "#3b82f6",
+    "hue": 246,
+    "risk": "low"
+  },
+  {
+    "slug": "adurite-case",
+    "name": "Adurite Case",
+    "imageId": 63,
+    "image": "https://cdn.rostake.com/cases/63.webp",
+    "price": 17664,
+    "bar": "#eab308",
+    "hue": 351,
+    "risk": "low"
+  },
+  {
+    "slug": "viridian-case",
+    "name": "Viridian Case",
+    "imageId": 52,
+    "image": "https://cdn.rostake.com/cases/52.webp",
+    "price": 17442,
+    "bar": "#eab308",
+    "hue": 164,
+    "risk": "low"
+  },
+  {
+    "slug": "katana-flip",
+    "name": "Katana Flip",
+    "imageId": 20,
+    "image": "https://cdn.rostake.com/cases/20.webp",
+    "price": 15931,
+    "bar": "#22c55e",
+    "hue": 340,
+    "risk": "low"
+  },
+  {
+    "slug": "blood-trail",
+    "name": "Blood Trail",
+    "imageId": 72,
+    "image": "https://cdn.rostake.com/cases/72.webp",
+    "price": 14508,
+    "bar": "#eab308",
+    "hue": 144,
+    "risk": "low"
+  },
+  {
+    "slug": "pirates-plunder",
+    "name": "Pirate's Plunder",
+    "imageId": 77,
+    "image": "https://cdn.rostake.com/cases/77.webp",
+    "price": 14200,
+    "bar": "#eab308",
+    "hue": 229,
+    "risk": "low"
+  },
+  {
+    "slug": "monochrome",
+    "name": "Monochrome",
+    "imageId": 19,
+    "image": "https://cdn.rostake.com/cases/19.webp",
+    "price": 14146,
+    "bar": "#eab308",
+    "hue": 323,
+    "risk": "low"
+  },
+  {
+    "slug": "beach-case",
+    "name": "Beach Case",
+    "imageId": 21,
+    "image": "https://cdn.rostake.com/cases/21.webp",
+    "price": 13738,
+    "bar": "#3b82f6",
+    "hue": 357,
+    "risk": "low"
+  },
+  {
+    "slug": "lol-roulette",
+    "name": "LOL Roulette",
+    "imageId": 18,
+    "image": "https://cdn.rostake.com/cases/18.webp",
+    "price": 13488,
+    "bar": "#22c55e",
+    "hue": 306,
+    "risk": "low"
+  },
+  {
+    "slug": "wild-west-flip",
+    "name": "Wild West Flip",
+    "imageId": 90,
+    "image": "https://cdn.rostake.com/cases/90.webp",
+    "price": 13049,
+    "bar": "#22c55e",
+    "hue": 90,
+    "risk": "low"
+  },
+  {
+    "slug": "holiday-magic",
+    "name": "Holiday Magic",
+    "imageId": 101,
+    "image": "https://cdn.rostake.com/cases/101.webp",
+    "price": 11910,
+    "bar": "#eab308",
+    "hue": 277,
+    "risk": "low"
+  },
+  {
+    "slug": "heros-gambit",
+    "name": "Hero's Gambit",
+    "imageId": 115,
+    "image": "https://cdn.rostake.com/cases/115.webp",
+    "price": 10979,
+    "bar": "#3b82f6",
+    "hue": 155,
+    "risk": "low"
+  },
+  {
+    "slug": "pink-case",
+    "name": "Pink Case",
+    "imageId": 17,
+    "image": "https://cdn.rostake.com/cases/17.webp",
+    "price": 9999,
+    "bar": "#22c55e",
+    "hue": 289,
+    "risk": "low"
+  },
+  {
+    "slug": "odins-legacy",
+    "name": "Odin's Legacy",
+    "imageId": 75,
+    "image": "https://cdn.rostake.com/cases/75.webp",
+    "price": 9685,
+    "bar": "#eab308",
+    "hue": 195,
+    "risk": "low"
+  },
+  {
+    "slug": "overseer-case",
+    "name": "Overseer Case",
+    "imageId": 16,
+    "image": "https://cdn.rostake.com/cases/16.webp",
+    "price": 9377,
+    "bar": "#22c55e",
+    "hue": 272,
+    "risk": "low"
+  },
+  {
+    "slug": "cinco-de-mayo",
+    "name": "Cinco de Mayo",
+    "imageId": 56,
+    "image": "https://cdn.rostake.com/cases/56.webp",
+    "price": 9295,
+    "bar": "#3b82f6",
+    "hue": 232,
+    "risk": "low"
+  },
+  {
+    "slug": "sugar-rush",
+    "name": "Sugar Rush",
+    "imageId": 15,
+    "image": "https://cdn.rostake.com/cases/15.webp",
+    "price": 8748,
+    "bar": "#eab308",
+    "hue": 255,
+    "risk": "low"
+  },
+  {
+    "slug": "jungle-quest",
+    "name": "Jungle Quest",
+    "imageId": 66,
+    "image": "https://cdn.rostake.com/cases/66.webp",
+    "price": 8097,
+    "bar": "#3b82f6",
+    "hue": 42,
+    "risk": "low"
+  },
+  {
+    "slug": "hollywood-dreams",
+    "name": "Hollywood Dreams",
+    "imageId": 83,
+    "image": "https://cdn.rostake.com/cases/83.webp",
+    "price": 7946,
+    "bar": "#ef4444",
+    "hue": 331,
+    "risk": "low"
+  },
+  {
+    "slug": "knight-case",
+    "name": "Knight Case",
+    "imageId": 82,
+    "image": "https://cdn.rostake.com/cases/82.webp",
+    "price": 6680,
+    "bar": "#ef4444",
+    "hue": 314,
+    "risk": "low"
+  },
+  {
+    "slug": "pixel-rush",
+    "name": "Pixel Rush",
+    "imageId": 58,
+    "image": "https://cdn.rostake.com/cases/58.webp",
+    "price": 6315,
+    "bar": "#3b82f6",
+    "hue": 266,
+    "risk": "low"
+  },
+  {
+    "slug": "10-hat",
+    "name": "10% Hat",
+    "imageId": 14,
+    "image": "https://cdn.rostake.com/cases/14.webp",
+    "price": 5952,
+    "bar": "#eab308",
+    "hue": 238,
+    "risk": "low"
+  },
+  {
+    "slug": "zombie-apocalypse",
+    "name": "Zombie Apocalypse",
+    "imageId": 91,
+    "image": "https://cdn.rostake.com/cases/91.webp",
+    "price": 5940,
+    "bar": "#eab308",
+    "hue": 107,
+    "risk": "low"
+  },
+  {
+    "slug": "iced-out",
+    "name": "Iced Out",
+    "imageId": 13,
+    "image": "https://cdn.rostake.com/cases/13.webp",
+    "price": 5431,
+    "bar": "#ef4444",
+    "hue": 221,
+    "risk": "low"
+  },
+  {
+    "slug": "midnight-ride",
+    "name": "Midnight Ride",
+    "imageId": 55,
+    "image": "https://cdn.rostake.com/cases/55.webp",
+    "price": 4321,
+    "bar": "#ef4444",
+    "hue": 215,
+    "risk": "low"
+  },
+  {
+    "slug": "nosferatus-coffin",
+    "name": "Nosferatu's Coffin",
+    "imageId": 48,
+    "image": "https://cdn.rostake.com/cases/48.webp",
+    "price": 4232,
+    "bar": "#eab308",
+    "hue": 96,
+    "risk": "low"
+  },
+  {
+    "slug": "big-case",
+    "name": "BIG: Case",
+    "imageId": 12,
+    "image": "https://cdn.rostake.com/cases/12.webp",
+    "price": 4140,
+    "bar": "#eab308",
+    "hue": 204,
+    "risk": "low"
+  },
+  {
+    "slug": "prison-life",
+    "name": "Prison Life",
+    "imageId": 81,
+    "image": "https://cdn.rostake.com/cases/81.webp",
+    "price": 4132,
+    "bar": "#3b82f6",
+    "hue": 297,
+    "risk": "low"
+  },
+  {
+    "slug": "call-of-the-savannah",
+    "name": "Call of the Savannah",
+    "imageId": 53,
+    "image": "https://cdn.rostake.com/cases/53.webp",
+    "price": 3876,
+    "bar": "#eab308",
+    "hue": 181,
+    "risk": "low"
+  },
+  {
+    "slug": "lab-accident",
+    "name": "Lab Accident",
+    "imageId": 57,
+    "image": "https://cdn.rostake.com/cases/57.webp",
+    "price": 3626,
+    "bar": "#22c55e",
+    "hue": 249,
+    "risk": "low"
+  },
+  {
+    "slug": "primal-hunt",
+    "name": "Primal Hunt",
+    "imageId": 80,
+    "image": "https://cdn.rostake.com/cases/80.webp",
+    "price": 3466,
+    "bar": "#eab308",
+    "hue": 280,
+    "risk": "low"
+  },
+  {
+    "slug": "island-case",
+    "name": "Island Case",
+    "imageId": 93,
+    "image": "https://cdn.rostake.com/cases/93.webp",
+    "price": 3447,
+    "bar": "#ef4444",
+    "hue": 141,
+    "risk": "low"
+  },
+  {
+    "slug": "fruit-salad",
+    "name": "Fruit Salad",
+    "imageId": 11,
+    "image": "https://cdn.rostake.com/cases/11.webp",
+    "price": 3233,
+    "bar": "#3b82f6",
+    "hue": 187,
+    "risk": "low"
+  },
+  {
+    "slug": "bluesteel-case",
+    "name": "Bluesteel Case",
+    "imageId": 47,
+    "image": "https://cdn.rostake.com/cases/47.webp",
+    "price": 3131,
+    "bar": "#3b82f6",
+    "hue": 79,
+    "risk": "low"
+  },
+  {
+    "slug": "200-iq",
+    "name": "200 IQ",
+    "imageId": 10,
+    "image": "https://cdn.rostake.com/cases/10.webp",
+    "price": 3111,
+    "bar": "#22c55e",
+    "hue": 170,
+    "risk": "low"
+  },
+  {
+    "slug": "paper-trail",
+    "name": "Paper Trail",
+    "imageId": 69,
+    "image": "https://cdn.rostake.com/cases/69.webp",
+    "price": 2651,
+    "bar": "#eab308",
+    "hue": 93,
+    "risk": "low"
+  },
+  {
+    "slug": "st-patricks-case",
+    "name": "St Patrick\u2019s Case",
+    "imageId": 89,
+    "image": "https://cdn.rostake.com/cases/89.webp",
+    "price": 2146,
+    "bar": "#ef4444",
+    "hue": 73,
+    "risk": "low"
+  },
+  {
+    "slug": "chinatown",
+    "name": "Chinatown",
+    "imageId": 49,
+    "image": "https://cdn.rostake.com/cases/49.webp",
+    "price": 1955,
+    "bar": "#3b82f6",
+    "hue": 113,
+    "risk": "low"
+  },
+  {
+    "slug": "10-random",
+    "name": "10% Random",
+    "imageId": 9,
+    "image": "https://cdn.rostake.com/cases/9.webp",
+    "price": 1785,
+    "bar": "#eab308",
+    "hue": 153,
+    "risk": "low"
+  },
+  {
+    "slug": "100x-sombrero",
+    "name": "100x Sombrero",
+    "imageId": 60,
+    "image": "https://cdn.rostake.com/cases/60.webp",
+    "price": 1653,
+    "bar": "#ef4444",
+    "hue": 300,
+    "risk": "low"
+  },
+  {
+    "slug": "tie-trouble",
+    "name": "Tie Trouble",
+    "imageId": 8,
+    "image": "https://cdn.rostake.com/cases/8.webp",
+    "price": 1216,
+    "bar": "#eab308",
+    "hue": 136,
+    "risk": "low"
+  },
+  {
+    "slug": "omega-rainbow",
+    "name": "Omega Rainbow",
+    "imageId": 50,
+    "image": "https://cdn.rostake.com/cases/50.webp",
+    "price": 1034,
+    "bar": "#3b82f6",
+    "hue": 130,
+    "risk": "low"
+  },
+  {
+    "slug": "noob-case",
+    "name": "Noob Case",
+    "imageId": 7,
+    "image": "https://cdn.rostake.com/cases/7.webp",
+    "price": 910,
+    "bar": "#22c55e",
+    "hue": 119,
+    "risk": "low"
+  },
+  {
+    "slug": "cyber-case",
+    "name": "Cyber Case",
+    "imageId": 6,
+    "image": "https://cdn.rostake.com/cases/6.webp",
+    "price": 824,
+    "bar": "#3b82f6",
+    "hue": 102,
+    "risk": "low"
+  },
+  {
+    "slug": "budget-fedoras",
+    "name": "Budget Fedoras",
+    "imageId": 42,
+    "image": "https://cdn.rostake.com/cases/42.webp",
+    "price": 724,
+    "bar": "#3b82f6",
+    "hue": 354,
+    "risk": "low"
+  },
+  {
+    "slug": "lowroller-15",
+    "name": "Lowroller 15%",
+    "imageId": 43,
+    "image": "https://cdn.rostake.com/cases/43.webp",
+    "price": 666,
+    "bar": "#eab308",
+    "hue": 11,
+    "risk": "low"
+  },
+  {
+    "slug": "gucci-dream",
+    "name": "Gucci Dream",
+    "imageId": 5,
+    "image": "https://cdn.rostake.com/cases/5.webp",
+    "price": 399,
+    "bar": "#eab308",
+    "hue": 85,
+    "risk": "low"
+  },
+  {
+    "slug": "shaggy-please",
+    "name": "Shaggy Please",
+    "imageId": 4,
+    "image": "https://cdn.rostake.com/cases/4.webp",
+    "price": 228,
+    "bar": "#3b82f6",
+    "hue": 68,
+    "risk": "low"
+  },
+  {
+    "slug": "sigma-case",
+    "name": "Sigma Case",
+    "imageId": 87,
+    "image": "https://cdn.rostake.com/cases/87.webp",
+    "price": 195,
+    "bar": "#eab308",
+    "hue": 39,
+    "risk": "low"
+  },
+  {
+    "slug": "back-to-17",
+    "name": "Back To '17",
+    "imageId": 3,
+    "image": "https://cdn.rostake.com/cases/3.webp",
+    "price": 172,
+    "bar": "#22c55e",
+    "hue": 51,
+    "risk": "low"
+  },
+  {
+    "slug": "redcliff-royalty",
+    "name": "Redcliff Royalty",
+    "imageId": 85,
+    "image": "https://cdn.rostake.com/cases/85.webp",
+    "price": 164,
+    "bar": "#ef4444",
+    "hue": 5,
+    "risk": "low"
+  },
+  {
+    "slug": "cheap-meal",
+    "name": "Cheap Meal",
+    "imageId": 2,
+    "image": "https://cdn.rostake.com/cases/2.webp",
+    "price": 100,
+    "bar": "#22c55e",
+    "hue": 34,
+    "risk": "low"
+  },
+  {
+    "slug": "half-a-cola",
+    "name": "Half A Cola",
+    "imageId": 1,
+    "image": "https://cdn.rostake.com/cases/1.webp",
+    "price": 36,
+    "bar": "#22c55e",
+    "hue": 17,
+    "risk": "low"
+  }
+]

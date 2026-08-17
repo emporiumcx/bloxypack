@@ -88,7 +88,7 @@ export default function RewardsPage() {
           {RAKEBACK.map((r) => (
             <div
               key={r.name}
-              className="group relative w-full overflow-hidden rounded-12 border-2 border-[#2F353D] bg-grey-39 transition-transform duration-300 ease-out"
+              className="group relative w-full overflow-hidden rounded-12 border-2 border-[#3F454D] bg-grey-39 transition-transform duration-300 ease-out"
             >
               <div className="relative flex w-full items-center gap-16 p-8">
                 <div className="relative flex items-center justify-center pl-9">
@@ -140,7 +140,7 @@ export default function RewardsPage() {
           {RANK_CASES.map((rank) => (
             <div
               key={rank.name}
-              className="group relative w-full overflow-hidden rounded-12 border-2 border-[#2F353D] bg-grey-39 transition-transform duration-300 ease-out hover:scale-[1.01]"
+              className="group relative w-full overflow-hidden rounded-12 border-2 border-[#3F454D] bg-grey-39 transition-transform duration-300 ease-out hover:scale-[1.01]"
             >
               <div className="relative grid w-full grid-cols-1 gap-12 p-16">
                 <div className="relative flex w-full justify-center transition-all duration-300">

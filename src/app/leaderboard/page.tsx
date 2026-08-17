@@ -5,6 +5,7 @@ import { Bux } from "@/components/bux";
 import { Icons } from "@/components/icons";
 import { ItemBg } from "@/components/item-bg";
 import { LEADERBOARD } from "@/lib/catalog";
+import { avatarSrc } from "@/lib/avatars";
 
 const PRIZE_IMG: Record<number, string> = {
   1: "/img/leaderboard/prizes/ice_valkyrie.webp",
@@ -58,7 +59,7 @@ function PodiumCard({
                   >
                     <Icons.user className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-show text-grey-142" style={{ width: 40, height: 40 }} />
                   </div>
-                  <img alt="" className="relative rounded-full object-cover opacity-100" src="/cdn/avatars/default.webp" style={{ width: 80, height: 80 }} />
+                  <img alt="" className="relative rounded-full object-cover opacity-100" src={avatarSrc(undefined, user)} style={{ width: 80, height: 80 }} />
                 </div>
               </div>
             </div>
@@ -191,7 +192,7 @@ export default function LeaderboardPage() {
                             #{row.place}
                           </p>
                           <div className="mr-20 grid grid-cols-[auto_1fr] items-center gap-8" style={{ width: 180 }}>
-                            <img alt="" className="h-32 w-32 rounded-full object-cover" src="/cdn/avatars/default.webp" />
+                            <img alt="" className="h-32 w-32 rounded-full object-cover" src={avatarSrc(undefined, row.user)} />
                             <p className="truncate text-left text-14 text-white">{row.user}</p>
                           </div>
                           <div className="mr-20 flex justify-start" style={{ width: 100 }}>

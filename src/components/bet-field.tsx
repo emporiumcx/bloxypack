@@ -15,7 +15,7 @@ export function BetField({
 }) {
   return (
     <div className="grid w-full grid-cols-1 gap-8">
-      <h2 className="text-14 text-grey-142">{label}</h2>
+      <h2 className="ui-label text-12 text-grey-142">{label}</h2>
       <div className="relative flex h-40 w-full items-center rounded-8 border-2 border-transparent bg-grey-39 py-4 pl-6 pr-4">
         <BuxIcon className="text-green" />
         <input
@@ -31,16 +31,16 @@ export function BetField({
           <button
             type="button"
             onClick={() => onChange(0)}
-            className="flex h-32 items-center justify-center rounded-6 border-2 border-grey-58 bg-grey-39 px-6 text-14 text-grey-142 hover:bg-grey-47 active:bg-grey-47 sm:px-10"
+            className="flex h-32 items-center justify-center rounded-8 border-2 border-grey-58 bg-grey-39 px-8 text-12 text-grey-142 hover:bg-grey-47 active:bg-grey-47 sm:px-10"
           >
-            Clear
+            <span className="ui-btn-label">Clear</span>
           </button>
           <button
             type="button"
             onClick={() => onChange(max || value)}
-            className="flex h-32 items-center justify-center rounded-6 border-2 border-grey-58 bg-grey-39 px-6 text-14 text-grey-142 hover:bg-grey-47 active:bg-grey-47 sm:px-10"
+            className="flex h-32 items-center justify-center rounded-8 border-2 border-grey-58 bg-grey-39 px-8 text-12 text-grey-142 hover:bg-grey-47 active:bg-grey-47 sm:px-10"
           >
-            Max
+            <span className="ui-btn-label">Max</span>
           </button>
         </div>
       </div>
@@ -78,7 +78,7 @@ export function ChoiceBar({
                 : "border-grey-39 bg-grey-39 group-hover:bg-grey-47 group-active:bg-grey-47"
             }`}
           >
-            <p className={`text-14 transition-colors duration-300 ${value === o.id ? "text-white" : "text-grey-142"}`}>
+            <p className={`ui-btn-label text-12 transition-colors duration-300 ${value === o.id ? "text-white" : "text-grey-142"}`}>
               {o.label}
             </p>
           </div>

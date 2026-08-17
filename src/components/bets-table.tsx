@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Bux } from "./bux";
 import { Icons } from "./icons";
+import { avatarSrc } from "@/lib/avatars";
 
 type BetRow = {
   id: string;
@@ -16,14 +17,14 @@ type BetRow = {
 };
 
 const ALL: BetRow[] = [
-  { id: "e9783b7b-4f2f-4d57-a3fa-e15bd7edd4b6", game: "Mines", user: "R4ITH", avatar: "", time: "00:19", bet: 23, multi: 0, payout: 0 },
-  { id: "2d390018-79cc-4eb7-a38e-4dc5149fa7c5", game: "Blackjack", user: "Alpha_mil0", avatar: "19a7c851-db8b-4291-ae15-198453f1f6d2_0", time: "00:12", bet: 32, multi: 0, payout: 0 },
-  { id: "e79e29f4-fa3c-4401-898e-e733ca66301d", game: "Towers", user: "Vasky", avatar: "7e537d1d-ef2d-4c45-9745-c1018fa8f001_0", time: "22:22", bet: 2636, multi: 0, payout: 0 },
-  { id: "f4da6c3e-df75-4c12-9a11-0c0c0c0c0c0c", game: "Blackjack", user: "Joris67", avatar: "e2bfcfda-06a7-43e0-b008-90b2f0cc87b4_0", time: "22:08", bet: 1537, multi: 0, payout: 0 },
-  { id: "f9e119bd-3cf2-4a11-8b22-111111111111", game: "Towers", user: "Vasky", avatar: "7e537d1d-ef2d-4c45-9745-c1018fa8f001_0", time: "22:05", bet: 5424, multi: 0, payout: 0 },
-  { id: "af837a15-87ed-4b33-9c44-222222222222", game: "Towers", user: "Vasky", avatar: "7e537d1d-ef2d-4c45-9745-c1018fa8f001_0", time: "22:04", bet: 5424, multi: 2.02, payout: 10983 },
-  { id: "a2904fc6-6659-452c-a224-c13f0a6f5d21", game: "Mines", user: "monarch", avatar: "a2904fc6-6659-452c-a224-c13f0a6f5d21_0", time: "21:58", bet: 250, multi: 1.48, payout: 370 },
-  { id: "98f1b331-c849-43ae-af20-f1bf6a5dff03", game: "Dice", user: "voids", avatar: "98f1b331-c849-43ae-af20-f1bf6a5dff03_6", time: "21:51", bet: 1000, multi: 0, payout: 0 },
+  { id: "e9783b7b-4f2f-4d57-a3fa-e15bd7edd4b6", game: "Mines", user: "R4ITH", avatar: "red", time: "00:19", bet: 23, multi: 0, payout: 0 },
+  { id: "2d390018-79cc-4eb7-a38e-4dc5149fa7c5", game: "Blackjack", user: "Alpha_mil0", avatar: "blue", time: "00:12", bet: 32, multi: 0, payout: 0 },
+  { id: "e79e29f4-fa3c-4401-898e-e733ca66301d", game: "Towers", user: "Vasky", avatar: "green", time: "22:22", bet: 2636, multi: 0, payout: 0 },
+  { id: "f4da6c3e-df75-4c12-9a11-0c0c0c0c0c0c", game: "Blackjack", user: "Joris67", avatar: "orange", time: "22:08", bet: 1537, multi: 0, payout: 0 },
+  { id: "f9e119bd-3cf2-4a11-8b22-111111111111", game: "Towers", user: "Vasky", avatar: "green", time: "22:05", bet: 5424, multi: 0, payout: 0 },
+  { id: "af837a15-87ed-4b33-9c44-222222222222", game: "Towers", user: "Vasky", avatar: "green", time: "22:04", bet: 5424, multi: 2.02, payout: 10983 },
+  { id: "a2904fc6-6659-452c-a224-c13f0a6f5d21", game: "Mines", user: "monarch", avatar: "purple", time: "21:58", bet: 250, multi: 1.48, payout: 370 },
+  { id: "98f1b331-c849-43ae-af20-f1bf6a5dff03", game: "Dice", user: "voids", avatar: "pink", time: "21:51", bet: 1000, multi: 0, payout: 0 },
 ];
 
 const TABS = ["All Bets", "High Rollers", "Lucky Wins"] as const;
@@ -86,7 +87,7 @@ export function BetsTable() {
                       <div className="absolute inset-0 right-1/2 hidden animate-show bg-gradient-to-r from-green/10 to-transparent" />
                     ) : null}
                     <p
-                      className={`w-full truncate overflow-ellipsis text-center text-14 font-bold capitalize transition-colors duration-200 ${
+                      className={`w-full truncate overflow-ellipsis text-center text-13 font-bold uppercase tracking-[0.06em] transition-colors duration-200 ${
                         tab === t ? "text-white" : "text-grey-142 group-hover:text-white group-active:text-white"
                       }`}
                     >
@@ -103,22 +104,22 @@ export function BetsTable() {
         <div className="grid w-full grid-cols-1 items-start gap-6" style={{ minWidth: 780 }}>
           <div className="@sm/page:rounded-4 relative hidden h-18 w-full items-center justify-between px-12 @sm/page:flex">
             <button className="mr-20 flex items-center" aria-label="column" style={{ width: 150 }}>
-              <p className="text-12 text-grey-142">Game</p>
+              <p className="ui-label text-11 text-grey-142">Game</p>
             </button>
             <button className="mr-20 flex items-center" aria-label="column" style={{ width: 140 }}>
-              <p className="text-12 text-grey-142">User</p>
+              <p className="ui-label text-11 text-grey-142">User</p>
             </button>
             <button className="mr-20 flex items-center" aria-label="column" style={{ width: 60 }}>
-              <p className="text-12 text-grey-142">Time</p>
+              <p className="ui-label text-11 text-grey-142">Time</p>
             </button>
             <button className="mr-20 flex items-center" aria-label="column" style={{ width: 120 }}>
-              <p className="text-12 text-grey-142">Bet</p>
+              <p className="ui-label text-11 text-grey-142">Bet</p>
             </button>
             <button className="mr-20 flex items-center !justify-center" aria-label="column" style={{ width: 60 }}>
-              <p className="text-12 text-grey-142">Multi</p>
+              <p className="ui-label text-11 text-grey-142">Multi</p>
             </button>
             <button className="flex items-center justify-end" aria-label="column" style={{ width: 120 }}>
-              <p className="text-12 text-grey-142">Payout</p>
+              <p className="ui-label text-11 text-grey-142">Payout</p>
             </button>
           </div>
           <div className="w-full overflow-hidden" style={{ height: 310 }}>
@@ -160,7 +161,7 @@ export function BetsTable() {
                                         <img
                                           alt=""
                                           className="relative rounded-full object-cover opacity-100"
-                                          src={`https://cdn.rostake.com/avatars/${row.avatar}.webp`}
+                                          src={avatarSrc(row.avatar, row.user)}
                                           style={{ width: 32, height: 32 }}
                                         />
                                       ) : null}

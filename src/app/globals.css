@@ -13,23 +13,23 @@
   --color-green-222: #d4f98a;
   --color-purple-80: rgba(137, 94, 255, 0.16);
   --color-purple-96: rgba(137, 94, 255, 0.25);
-  --color-purple-46: color-mix(in srgb, rgb(137, 94, 255) 8%, rgb(22, 25, 30));
+  --color-purple-46: color-mix(in srgb, rgb(137, 94, 255) 8%, rgb(40, 44, 51));
   --color-red-dark: rgb(206, 41, 80);
   --color-red-206: rgb(206, 41, 80);
-  --color-grey-1: rgb(0, 10, 20);
+  --color-grey-1: rgb(24, 28, 34);
   --color-grey-28: rgb(13, 16, 19);
-  --color-grey-34: rgb(18, 21, 25);
-  --color-grey-39: rgb(22, 25, 30);
-  --color-grey-47: rgb(30, 34, 40);
-  --color-grey-58: rgb(40, 44, 51);
-  --color-grey-70: rgb(50, 54, 61);
-  --color-grey-112: rgb(112, 115, 118);
-  --color-grey-118: rgb(118, 121, 126);
-  --color-grey-142: rgb(142, 144, 147);
-  --color-grey-170: rgb(170, 170, 170);
-  --color-grey-183: rgb(183, 185, 190);
-  --color-grey-190: rgb(190, 190, 190);
-  --color-grey-246: rgb(246, 246, 246);
+  --color-grey-34: rgb(34, 38, 44);
+  --color-grey-39: rgb(40, 44, 51);
+  --color-grey-47: rgb(50, 54, 62);
+  --color-grey-58: rgb(62, 66, 74);
+  --color-grey-70: rgb(74, 78, 86);
+  --color-grey-112: rgb(132, 135, 138);
+  --color-grey-118: rgb(138, 141, 146);
+  --color-grey-142: rgb(162, 164, 167);
+  --color-grey-170: rgb(190, 190, 190);
+  --color-grey-183: rgb(203, 205, 210);
+  --color-grey-190: rgb(210, 210, 210);
+  --color-grey-246: rgb(250, 250, 250);
   --color-orange: rgb(247, 147, 26);
   --color-blue-98: rgb(98, 126, 234);
   --color-blue-40: rgb(40, 117, 202);
@@ -46,7 +46,7 @@
   --color-red-143: rgb(255, 143, 170);
   --color-yellow: rgb(245, 224, 67);
   --color-bronze: rgb(244, 180, 148);
-  --color-silver: rgb(246, 246, 246);
+  --color-silver: rgb(250, 250, 250);
   --color-gold: rgb(249, 229, 172);
   --color-rank-bronze: rgb(166, 108, 57);
   --color-rank-silver: rgb(176, 179, 214);
@@ -188,7 +188,24 @@ ul,
 select,
 label {
   font-family: var(--font-golden-smile), "Golden Smile", Arial, Helvetica, sans-serif;
-  font-weight: 400;
+}
+
+.ui-label {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ui-btn-label {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ui-num {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .font-chat,
@@ -325,6 +342,45 @@ a > * {
   animation: ticker 40s linear infinite;
 }
 
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(72px);
+    opacity: 0;
+  }
+}
+
+.animate-rain-fall {
+  animation: rain-fall 0.95s linear infinite;
+}
+
+@keyframes rain-coin {
+  0% {
+    transform: translateY(0) rotate(-18deg) scale(0.85);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(92px) rotate(160deg) scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-rain-coin {
+  animation: rain-coin 1.85s linear infinite;
+}
+
 @keyframes floaty {
   0% {
     filter: brightness(1) drop-shadow(0 0 #00000026);
@@ -427,6 +483,10 @@ a > * {
   animation: overlay-in 0.28s ease-out both;
 }
 
+.animate-overlay-out {
+  animation: overlay-out 0.22s ease-in both;
+}
+
 @keyframes overlay-in {
   from {
     opacity: 0;
@@ -436,8 +496,21 @@ a > * {
   }
 }
 
+@keyframes overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .animate-modal-in {
   animation: modal-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-modal-out {
+  animation: modal-out 0.22s cubic-bezier(0.55, 0, 0.78, 0.2) both;
 }
 
 @keyframes modal-in {
@@ -448,6 +521,17 @@ a > * {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modal-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
   }
 }
 
@@ -510,6 +594,28 @@ a > * {
 
 .animate-chat {
   animation: chat-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.chat-drawer {
+  transform: translateX(0);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.chat-drawer.is-closed {
+  transform: translateX(-100%);
+}
+
+.chat-toggle-icon {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease;
+}
+
+.chat-toggle-icon.is-closed {
+  transform: rotate(-180deg);
+}
+
+.page-shift {
+  transition: padding 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes glow {

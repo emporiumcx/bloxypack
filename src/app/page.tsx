@@ -9,6 +9,8 @@ import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
 import { ItemBg } from "@/components/item-bg";
 import { TICKER } from "@/lib/catalog";
+import { RainBanner } from "@/components/rain-banner";
+import { UserAvatar } from "@/components/user-avatar";
 import { rankIdFromLevel, xpProgress } from "@/lib/levels";
 
 const ORIGINALS = [
@@ -21,6 +23,10 @@ const ORIGINALS = [
   { href: "/roulette", label: "Roulette", img: "/img/home/roulette.webp", icon: Icons.roulette, scale: 3.5, soon: true },
   { href: "/crash", label: "Crash", img: "/img/home/crash.webp", icon: Icons.crash, scale: 0.538462, soon: true },
 ];
+
+function pad(n: number) {
+  return String(n).padStart(2, "0");
+}
 
 function TiltBanner({ href, src, external }: { href: string; src: string; external?: boolean }) {
   const ref = useRef<HTMLImageElement>(null);
@@ -78,11 +84,12 @@ function tickerName(name: string) {
 }
 
 export default function HomePage() {
-  const { openModal, user } = useStore();
+  const { openModal, user, rain } = useStore();
   const xpPct = user ? xpProgress(user.xp) : 0;
   const scroller = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(true);
+  const [now, setNow] = useState(Date.now());
 
   function updateArrows() {
     const el = scroller.current;
@@ -99,12 +106,21 @@ export default function HomePage() {
     return () => el.removeEventListener("scroll", updateArrows);
   }, []);
 
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  const remain = Math.max(0, rain.endsAt - now);
+  const mm = pad(Math.floor(remain / 60000));
+  const ss = pad(Math.floor((remain % 60000) / 1000));
+
   return (
     <div className="flex w-full justify-center">
     <div className="@sm/page:gap-24 @md/page:gap-32 grid w-full max-w-screen-xl grid-cols-1 gap-16">
       {user ? (
-        <div className="grid w-full grid-cols-[auto_1fr] items-center gap-12 rounded-8 bg-grey-28 p-12">
-          <img alt="" className="h-52 w-52 rounded-full object-cover" src="/cdn/avatars/default.webp" />
+        <div className="grid w-full grid-cols-[auto_1fr] items-center gap-12 rounded-8 bg-grey-34 p-12">
+          <UserAvatar avatar={user.avatar} seed={user.id || user.username} size={52} />
           <div className="grid w-full grid-cols-[1fr_auto] items-end gap-12">
             <div className="grid w-full grid-cols-1 gap-8">
               <p className="text-20 font-bold text-grey-190">
@@ -156,6 +172,13 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      <RainBanner
+        minutes={mm}
+        seconds={ss}
+        amount={rain.amount}
+        onJoin={() => openModal(user ? "rain" : "login")}
+      />
 
       <div className="@sm/page:grid-cols-2 @xl/page:grid-cols-3 grid w-full grid-cols-1 gap-12">
         <div className="relative aspect-[7.11/4]">

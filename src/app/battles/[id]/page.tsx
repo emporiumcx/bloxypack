@@ -115,9 +115,9 @@ export default function BattleDetailPage({ params }: { params: Promise<{ id: str
                       alert(err instanceof Error ? err.message : "Could not join.");
                     }
                   }}
-                  className={`mt-10 flex h-32 w-full items-center justify-center ${green3d} text-14 text-grey-28`}
+                  className={`mt-10 flex h-32 w-full items-center justify-center shadow-[0_2px_0_rgba(0,0,0,0.25)] ${green3d}`}
                 >
-                  Join
+                  <span className="ui-btn-label text-12 text-grey-28">Join</span>
                 </button>
               ) : rolling ? (
                 <p className="mt-8 text-12 text-grey-142">Rolling…</p>
@@ -144,9 +144,9 @@ export default function BattleDetailPage({ params }: { params: Promise<{ id: str
 
       {ended ? (
         <div className="flex justify-center">
-          <Link href="/battles" className={`flex h-40 items-center justify-center gap-6 px-20 ${green3d} text-14 text-grey-28`}>
-            <Icons.replay className="text-18" />
-            Back to battles
+          <Link href="/battles" className={`flex h-40 items-center justify-center gap-6 px-20 shadow-[0_2px_0_rgba(0,0,0,0.25)] ${green3d}`}>
+            <Icons.replay className="text-18 text-grey-28" />
+            <span className="ui-btn-label text-13 text-grey-28">Back to battles</span>
           </Link>
         </div>
       ) : game.state === "created" ? (

@@ -99,28 +99,28 @@ export function ModeTabs({
         type="button"
         aria-label="button"
         onClick={() => onChange?.("manual")}
-        className={`group/button relative flex h-40 cursor-pointer items-start justify-center rounded-6 border-1 opacity-100 transition-all duration-200 ${
+        className={`group/button relative flex h-40 cursor-pointer items-start justify-center rounded-8 border-1 opacity-100 transition-all duration-200 ${
           value === "manual"
             ? "border-transparent bg-grey-58 hover:bg-grey-70 active:bg-grey-70"
             : "border-grey-58 bg-grey-28"
         }`}
       >
         <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-16">
-          <p className={`transition-all duration-300 text-14 ${value === "manual" ? "text-white" : "text-grey-142"}`}>Manual</p>
+          <p className={`ui-btn-label text-13 transition-all duration-300 ${value === "manual" ? "text-white" : "text-grey-142"}`}>Manual</p>
         </div>
       </button>
       <button
         type="button"
         aria-label="button"
         onClick={() => onChange?.("auto")}
-        className={`group/button relative flex h-40 cursor-pointer items-start justify-center rounded-6 border-1 opacity-100 transition-all duration-200 ${
+        className={`group/button relative flex h-40 cursor-pointer items-start justify-center rounded-8 border-1 opacity-100 transition-all duration-200 ${
           value === "auto"
             ? "border-transparent bg-grey-58 hover:bg-grey-70 active:bg-grey-70"
             : "border-grey-58 bg-grey-28"
         }`}
       >
         <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-16">
-          <p className={`transition-all duration-300 text-14 ${value === "auto" ? "text-white" : "text-grey-142"}`}>Autobet</p>
+          <p className={`ui-btn-label text-13 transition-all duration-300 ${value === "auto" ? "text-white" : "text-grey-142"}`}>Autobet</p>
         </div>
       </button>
     </div>

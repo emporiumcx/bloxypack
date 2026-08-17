@@ -42,7 +42,7 @@ import { rankKeyFromLevel } from "@/lib/levels";
 
 export type User = AppUser;
 
-type Modal = "login" | "register" | "deposit" | "support" | "welcome" | "rain" | null;
+type Modal = "login" | "register" | "deposit" | "withdraw" | "support" | "welcome" | "rain" | "affiliate" | "promo" | null;
 
 type ChatMsg = {
   id: number | string;
@@ -142,7 +142,7 @@ function colorForRank(rank: string) {
   if (rank === "staff") return "#88FF55";
   if (rank === "gold") return "#F1C947";
   if (rank === "silver") return "#B0B3D6";
-  return "#BEBEBE";
+  return "#D2D2D2";
 }
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -191,6 +191,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
               color: colorForRank(m.rank),
               rank: m.rank,
               level: m.level,
+              avatar: m.avatar,
             },
           ].slice(-80),
         ),
@@ -203,6 +204,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             color: colorForRank(m.rank),
             rank: m.rank,
             level: m.level,
+            avatar: m.avatar,
           })),
         ),
       onRain: (amount) => setRain((r) => ({ ...r, amount })),

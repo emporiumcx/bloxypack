@@ -4,6 +4,7 @@ import { BattleSeat } from "@/components/battle-seat";
 import { GreenButton } from "@/components/green-button";
 import { useStore } from "@/components/providers";
 import { rankIdFromLevel, xpProgress } from "@/lib/levels";
+import { avatarSrc } from "@/lib/avatars";
 
 export default function ProfilePage() {
   const { user, openModal, logout } = useStore();
@@ -27,7 +28,7 @@ export default function ProfilePage() {
       </aside>
       <section className="rounded-12 bg-grey-28 p-20">
         <div className="flex items-center gap-14">
-          <BattleSeat name={user.username} filled />
+          <BattleSeat name={user.username} filled src={avatarSrc(user.avatar, user.id || user.username)} />
           <div>
             <p className="text-18 font-bold">{user.username}</p>
             <p className="text-13 text-grey-142">

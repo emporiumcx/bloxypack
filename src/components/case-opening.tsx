@@ -116,7 +116,7 @@ function buildStrip(drops: CaseDrop[], winner?: CaseDrop) {
 
 function HexGlow({ color }: { color: string }) {
   return (
-    <svg className="h-80 w-80" fill="#16191e7f" viewBox="0 0 108 122" xmlns="http://www.w3.org/2000/svg">
+    <svg className="h-80 w-80" fill="#282c337f" viewBox="0 0 108 122" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M49.0348 2.82894C52.1025 1.07598 55.8684 1.07599 58.9361 2.82894L102.265 27.5886C105.374 29.3651 107.293 32.6714 107.293 36.2522V85.594C107.293 89.1748 105.374 92.481 102.265 94.2576L58.9361 119.017C55.8684 120.77 52.1025 120.77 49.0348 119.017L5.70542 94.2576C2.59643 92.481 0.677734 89.1748 0.677734 85.594V36.2522C0.677734 32.6714 2.59643 29.3651 5.70543 27.5886L49.0348 2.82894Z"
         opacity="0.3"
@@ -666,11 +666,11 @@ export function CaseOpening({ item }: { item: CaseItem }) {
                 aria-label="button"
                 disabled={spinning}
                 onClick={() => open(false)}
-                className="group/button relative flex h-40 cursor-pointer items-start justify-center rounded-6 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green opacity-100 transition-all duration-200 active:border-green disabled:opacity-40"
+                className="group/button relative flex h-40 cursor-pointer items-start justify-center rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green shadow-[0_2px_0_rgba(0,0,0,0.25)] opacity-100 transition-all duration-200 active:translate-y-px active:border-green disabled:opacity-40"
               >
                 <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-16">
                   <div className="grid grid-cols-[auto_auto] items-center gap-4">
-                    <p className="text-nowrap text-14 text-grey-28">
+                    <p className="ui-btn-label text-nowrap text-12 text-grey-28">
                       Open {n} case{n > 1 ? "s" : ""} for
                     </p>
                     <Bux value={cost} tone="onGreen" />
@@ -682,10 +682,10 @@ export function CaseOpening({ item }: { item: CaseItem }) {
                 aria-label="button"
                 disabled={spinning}
                 onClick={() => open(true)}
-                className="group/button relative flex h-40 cursor-pointer items-start justify-center rounded-6 bg-grey-28 opacity-100 transition-all duration-200 disabled:opacity-40"
+                className="group/button relative flex h-40 cursor-pointer items-start justify-center rounded-8 border-b-2 border-t-2 border-b-black/40 border-t-white/10 bg-grey-28 opacity-100 transition-all duration-200 disabled:opacity-40"
               >
                 <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-16">
-                  <p className="text-14 text-grey-142 transition-all duration-300">Demo Spin</p>
+                  <p className="ui-btn-label text-13 text-grey-142 transition-all duration-300">Demo Spin</p>
                 </div>
               </button>
             </div>
@@ -696,7 +696,7 @@ export function CaseOpening({ item }: { item: CaseItem }) {
       <div className="w-full border-b-1 border-grey-47 transition-colors duration-200" />
 
       <div className="@sm/page:gap-24 grid w-full grid-cols-1 gap-16">
-        <h2 className="@sm/page:text-20 text-16 text-white">Possible drops</h2>
+        <h2 className="ui-label @sm/page:text-16 text-14 text-white">Possible drops</h2>
         <div className="@sm/page:grid-cols-3 @sm/page:gap-6 @md/page:grid-cols-4 @bt/page:grid-cols-5 @lg/page:grid-cols-6 @2xl/page:grid-cols-7 grid w-full grid-cols-2 gap-12">
           {drops.map((d) => (
             <DropCard key={d.id} d={d} />

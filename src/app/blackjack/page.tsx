@@ -60,7 +60,7 @@ function PlayingCard({ card, hidden, offset, deal, flip }: { card?: Card; hidden
         } ${flip ? "animate-card-flip" : ""}`}
       >
       {hidden || !card ? (
-        <div className="h-full w-full bg-[repeating-linear-gradient(135deg,#0d1013_0_8px,#1e2228_8px_16px)]" />
+        <div className="h-full w-full bg-[repeating-linear-gradient(135deg,#0d1013_0_8px,#32363e_8px_16px)]" />
       ) : (
         <div className={`flex h-full flex-col p-8 ${card.suit.red ? "text-red" : "text-grey-28"}`}>
           <p className="text-16 leading-none">{card.rank}</p>
@@ -277,7 +277,7 @@ export default function BlackjackPage() {
       }
       board={
         <>
-          <div className="@lg/page:top-40 @lg/page:right-40 @lg/page:bottom-40 @lg/page:left-40 absolute top-16 right-16 bottom-16 left-16 rounded-2xl border-3 border-[#2A2F36]" />
+          <div className="@lg/page:top-40 @lg/page:right-40 @lg/page:bottom-40 @lg/page:left-40 absolute top-16 right-16 bottom-16 left-16 rounded-2xl border-3 border-[#3A3F46]" />
           <div className="@lg/page:w-[300px] absolute top-0 left-1/2 h-full w-[170px] -translate-x-1/2 bg-grey-39" />
           <div className="@lg/page:right-80 @lg/page:h-[100px] @lg/page:w-[100px] absolute top-0 right-40 z-20 h-[60px] w-[60px] bg-gradient-to-b from-grey-39 to-transparent" />
           <div className="@lg/page:-top-74 @lg/page:right-80 @lg/page:w-[100px] absolute -top-40 right-40 w-[56px]">

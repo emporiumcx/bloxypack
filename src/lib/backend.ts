@@ -19,6 +19,7 @@ export type AppUser = {
   id: string;
   username: string;
   email: string;
+  avatar?: string;
   balance: number;
   xp: number;
   level: number;
@@ -42,6 +43,7 @@ export function mapUser(raw: ServerUser): AppUser {
     id: String(raw._id || ""),
     username: raw.username || "",
     email: raw.local?.email || "",
+    avatar: raw.avatar || "",
     balance: (raw.balance || 0) / 1000,
     xp: raw.xp || 0,
     level,
@@ -64,6 +66,7 @@ export function mergeUser(prev: AppUser | null, raw: ServerUser | null | undefin
     id: mapped.id || prev.id,
     username: mapped.username || prev.username,
     email: mapped.email || prev.email,
+    avatar: mapped.avatar || prev.avatar,
     balance: raw.balance != null ? mapped.balance : prev.balance,
     xp: raw.xp != null ? mapped.xp : prev.xp,
     level: raw.xp != null ? mapped.level : prev.level,
@@ -182,8 +185,8 @@ function ns(name: string) {
 
 export function connectSockets(handlers: {
   onUser?: (user: ServerUser) => void;
-  onChat?: (msg: { id: string; user: string; text: string; rank: string; level: number; time?: string }) => void;
-  onChatHistory?: (msgs: { id: string; user: string; text: string; rank: string; level: number }[]) => void;
+  onChat?: (msg: { id: string; user: string; text: string; rank: string; level: number; avatar?: string; time?: string }) => void;
+  onChatHistory?: (msgs: { id: string; user: string; text: string; rank: string; level: number; avatar?: string }[]) => void;
   onRain?: (amount: number) => void;
 }) {
   disconnectSockets();
@@ -198,15 +201,16 @@ export function connectSockets(handlers: {
   general.on("user", (payload: { user: ServerUser }) => {
     if (payload?.user) handlers.onUser?.(payload.user);
   });
-  general.on("chatMessage", (payload: { message: { _id: string; message: string; user?: { username: string; level?: number; rank?: string }; type: string } }) => {
+  general.on("chatMessage", (payload: { message: { _id: string; message: string; user?: { username: string; level?: number; rank?: string; avatar?: string }; type: string } }) => {
     const m = payload?.message;
     if (!m || m.type === "system") return;
     handlers.onChat?.({
       id: String(m._id),
       user: m.user?.username || "User",
-      text: m.message,
+      text: m.message || "",
       rank: m.user?.rank === "admin" ? "staff" : m.user?.level && m.user.level >= 41 ? "gold" : m.user?.level && m.user.level >= 21 ? "silver" : "bronze",
       level: m.user?.level || 1,
+      avatar: m.user?.avatar,
     });
   });
   general.on("rain", (payload: { rain?: { amount?: number } }) => {
@@ -214,16 +218,17 @@ export function connectSockets(handlers: {
   });
   general.on("init", (payload: { rains?: { site?: { amount?: number } } }) => {
     if (payload?.rains?.site?.amount != null) handlers.onRain?.(payload.rains.site.amount / 1000);
-    general?.emit("getChatMessages", { room: "en" }, (res: Ack<{ messages: { _id: string; message: string; user?: { username: string; level?: number; rank?: string }; type: string }[] }>) => {
+    general?.emit("getChatMessages", { room: "en" }, (res: Ack<{ messages: { _id: string; message: string; user?: { username: string; level?: number; rank?: string; avatar?: string }; type: string }[] }>) => {
       if (!res || res.success === false) return;
       const msgs = (res.messages || [])
         .filter((m) => m.type !== "system")
         .map((m) => ({
           id: String(m._id),
           user: m.user?.username || "User",
-          text: m.message,
+          text: m.message || "",
           rank: m.user?.rank === "admin" ? "staff" : m.user?.level && m.user.level >= 41 ? "gold" : m.user?.level && m.user.level >= 21 ? "silver" : "bronze",
           level: m.user?.level || 1,
+          avatar: m.user?.avatar,
         }));
       handlers.onChatHistory?.(msgs);
     });
@@ -245,6 +250,22 @@ export function disconnectSockets() {
 export async function sendChatMessage(message: string) {
   if (!general) throw new Error("Chat is not connected.");
   await emit(general, "sendChatMessage", { message });
+}
+
+export async function claimAffiliateCode(code: string) {
+  if (!general) throw new Error("Not connected.");
+  return emit<{ user: ServerUser }>(general, "sendAffiliateClaimCode", {
+    code: code.trim(),
+    captcha: "dev",
+  });
+}
+
+export async function claimPromoCode(code: string) {
+  if (!general) throw new Error("Not connected.");
+  return emit(general, "sendPromoClaim", {
+    code: code.trim(),
+    captcha: "dev",
+  });
 }
 
 export async function minesBet(amount: number, minesCount: number, grid: number) {

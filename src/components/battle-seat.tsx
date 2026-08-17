@@ -1,6 +1,6 @@
 import { Icons } from "./icons";
+import { avatarSrc } from "@/lib/avatars";
 
-const AVATARS = ["/cdn/avatars/default.webp", "/img/icon.png"];
 const RANKS = ["/img/rank/23.svg", "/img/rank/7.svg", "/img/rank/11.svg", "/img/rank/13.svg"];
 const RINGS = [
   "var(--color-rank-diamond)",
@@ -13,10 +13,12 @@ export function BattleSeat({
   name,
   filled,
   size = 40,
+  src,
 }: {
   name?: string;
   filled: boolean;
   size?: number;
+  src?: string;
 }) {
   const inner = Math.round(size * 0.925);
   const avatar = Math.round(size * 0.825);
@@ -43,7 +45,7 @@ export function BattleSeat({
             <img
               alt=""
               className="h-full w-full rounded-2 object-cover"
-              src={AVATARS[name ? name.length % AVATARS.length : 0]}
+              src={src || avatarSrc(undefined, name)}
             />
           ) : (
             <Icons.seat className="text-18 text-grey-190" />

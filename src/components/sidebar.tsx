@@ -56,7 +56,7 @@ function NavItem({
         </div>
         <div className="relative hidden w-full grid-cols-1 gap-2 xl:grid">
           <p
-            className={`text-left text-14 transition-colors duration-200 ${
+            className={`ui-label text-left text-12 transition-colors duration-200 ${
               active ? "text-white" : "text-grey-142 group-hover:text-white group-active:text-white"
             }`}
           >
@@ -102,7 +102,7 @@ export function Sidebar() {
         <div className="relative flex w-full flex-grow items-start overflow-auto p-12 xl:p-16">
           <div className="relative z-10 grid w-full grid-cols-1 gap-10 sm:gap-16">
             <div className="grid w-full grid-cols-1 gap-10">
-              <p className="w-full animate-nav-in text-center text-10 text-grey-142 xl:text-left xl:text-14">GAMES</p>
+              <p className="ui-label w-full animate-nav-in text-center text-10 text-grey-142 xl:text-left">GAMES</p>
               <div className="grid w-full grid-cols-1 gap-4">
                 {GAMES.map((item, i) => (
                   <NavItem key={item.href} {...item} delay={40 + i * 40} />
@@ -135,7 +135,7 @@ export function Sidebar() {
             </Link>
 
             <div className="grid w-full grid-cols-1 gap-10">
-              <p className="w-full animate-nav-in text-center text-10 text-grey-142 xl:text-left xl:text-14" style={{ animationDelay: "280ms" }}>
+              <p className="ui-label w-full animate-nav-in text-center text-10 text-grey-142 xl:text-left" style={{ animationDelay: "280ms" }}>
                 MORE
               </p>
               <div className="grid w-full grid-cols-1 gap-4">
@@ -159,7 +159,7 @@ export function Sidebar() {
               <div className="text-grey-142 transition-colors group-hover:text-white group-active:text-white xl:h-20 xl:w-20">
                 <Icons.discord className="text-20" />
               </div>
-              <p className="hidden text-14 text-white xl:block">Discord</p>
+              <p className="ui-btn-label hidden text-12 text-white xl:block">Discord</p>
             </div>
           </a>
           <a
@@ -172,7 +172,7 @@ export function Sidebar() {
               <div className="text-grey-142 transition-colors group-hover:text-white group-active:text-white xl:h-20 xl:w-20">
                 <Icons.twitter className="text-20" />
               </div>
-              <p className="hidden text-14 text-white xl:block">Twitter</p>
+              <p className="ui-btn-label hidden text-12 text-white xl:block">Twitter</p>
             </div>
           </a>
         </div>

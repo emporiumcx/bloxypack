@@ -109,8 +109,23 @@ export const Icons = {
     </svg>
   ),
   twitter: (p: IconProps) => (
-    <svg viewBox="0 0 512 512" {...EM} fill="currentColor" stroke="currentColor" strokeWidth="0" className={p.className} style={p.style} aria-hidden>
-      <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"  />
+    <svg viewBox="0 0 24 24" {...EM} fill="currentColor" className={p.className} style={p.style} aria-hidden>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
+    </svg>
+  ),
+  twitch: (p: IconProps) => (
+    <svg viewBox="0 0 24 24" {...EM} fill="currentColor" className={p.className} style={p.style} aria-hidden>
+      <path d="M4.3 2 2 6.2v13.6h4.6V22h2.5l2.4-2.2h3.7L21 15V2H4.3Zm15 12.1-2.8 2.6h-3.7l-2.4 2.2v-2.2H6.6V3.7h12.7v10.4ZM15.8 7h1.8v5.3h-1.8V7Zm-4.6 0H13v5.3h-1.8V7Z" />
+    </svg>
+  ),
+  kick: (p: IconProps) => (
+    <svg viewBox="0 0 24 24" {...EM} fill="currentColor" className={p.className} style={p.style} aria-hidden>
+      <path d="M4 3h6.2v6.1L14.5 3H21l-6.4 7.9L21 21h-6.6l-4.2-6.3V21H4V3Z" />
+    </svg>
+  ),
+  login: (p: IconProps) => (
+    <svg viewBox="0 -960 960 960" {...EM} fill="currentColor" className={p.className} style={p.style} aria-hidden>
+      <path d="M189-95q-39.05 0-66.53-27.47Q95-149.95 95-189v-582q0-39.46 27.47-67.23Q149.95-866 189-866h296v95H189v582h296v94H189Zm467-174-67-66 97-98H354v-94h330l-97-98 67-66 212 212-210 210Z" />
     </svg>
   ),
   menu: (p: IconProps) => (
@@ -272,6 +287,26 @@ export const Icons = {
   users: (p: IconProps) => (
     <svg viewBox="0 0 640 512" width="1em" height="1em" fill="currentColor" className={p.className} style={p.style} aria-hidden>
       <path d="M323.4 85.2l-96.8 78.4c-16.1 13-19.2 36.4-7 53.1c12.9 17.8 38 21.3 55.3 7.8l99.3-77.2c7-5.4 17-4.2 22.5 2.8s4.2 17-2.8 22.5l-20.9 16.2L550.2 352l41.8 0c26.5 0 48-21.5 48-48l0-128c0-26.5-21.5-48-48-48l-76 0-4 0-.7 0-3.9-2.5L434.8 79c-15.3-9.8-33.2-15-51.4-15c-21.8 0-43 7.5-60 21.2zm22.8 124.4l-51.7 40.2C263 274.4 217.3 268 193.7 235.6c-22.2-30.5-16.6-73.1 12.7-96.8l83.2-67.3c-11.6-4.9-24.1-7.4-36.8-7.4C234 64 215.7 69.6 200 80l-72 48-80 0c-26.5 0-48 21.5-48 48L0 304c0 26.5 21.5 48 48 48l108.2 0 91.4 83.4c19.6 17.9 49.9 16.5 67.8-3.1c5.5-6.1 9.2-13.2 11.1-20.6l17 15.6c19.5 17.9 49.9 16.6 67.8-2.9c4.5-4.9 7.8-10.6 9.9-16.5c19.4 13 45.8 10.3 62.1-7.5c17.9-19.5 16.6-49.9-2.9-67.8l-134.2-123z" />
+    </svg>
+  ),
+  home: (p: IconProps) => (
+    <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" className={p.className} style={p.style} aria-hidden>
+      <path d="M12 3.2 3 10.4V21h6.2v-6.5h5.6V21H21V10.4L12 3.2Z" />
+    </svg>
+  ),
+  games: (p: IconProps) => (
+    <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" className={p.className} style={p.style} aria-hidden>
+      <path d="M15 7.5V2H9v5.5l3 3 3-3ZM7.5 9H2v6h5.5l3-3-3-3ZM9 16.5V22h6v-5.5l-3-3-3 3ZM16.5 15H22V9h-5.5l-3 3 3 3Z" />
+    </svg>
+  ),
+  bell: (p: IconProps) => (
+    <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" className={p.className} style={p.style} aria-hidden>
+      <path d="M12 22a2.4 2.4 0 0 0 2.4-2.4h-4.8A2.4 2.4 0 0 0 12 22Zm8-6V11a8 8 0 0 0-6.4-7.8V2.4a1.6 1.6 0 1 0-3.2 0v.8A8 8 0 0 0 4 11v5l-2 2v1h20v-1l-2-2Z" />
+    </svg>
+  ),
+  cart: (p: IconProps) => (
+    <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" className={p.className} style={p.style} aria-hidden>
+      <path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3.2 4H1v2h1.6l3.1 9.6A2 2 0 0 0 7.6 17H18v-2H7.6l-.4-1.2h10.7a2 2 0 0 0 1.9-1.4L22 6H5.2L4.4 4H3.2Z" />
     </svg>
   ),
   people: (p: IconProps) => (

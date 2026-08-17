@@ -72,7 +72,7 @@ export function FieldBox({
   const bg = tone === "grey-28" ? "bg-grey-28" : "bg-grey-39";
   return (
     <div className="grid w-full grid-cols-1 gap-8">
-      <h2 className="text-14 text-grey-142 transition-colors duration-200">{label}</h2>
+      <h2 className="ui-label text-12 text-grey-142 transition-colors duration-200">{label}</h2>
       <div className={`relative flex h-40 w-full items-center rounded-8 border-2 border-transparent py-4 transition-colors duration-200 ${bg} ${pad}`}>
         {children}
       </div>

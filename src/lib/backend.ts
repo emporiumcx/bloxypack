@@ -19,6 +19,7 @@ export type AppUser = {
   id: string;
   username: string;
   email: string;
+  avatar?: string;
   balance: number;
   xp: number;
   level: number;
@@ -42,6 +43,7 @@ export function mapUser(raw: ServerUser): AppUser {
     id: String(raw._id || ""),
     username: raw.username || "",
     email: raw.local?.email || "",
+    avatar: raw.avatar || "",
     balance: (raw.balance || 0) / 1000,
     xp: raw.xp || 0,
     level,
@@ -64,6 +66,7 @@ export function mergeUser(prev: AppUser | null, raw: ServerUser | null | undefin
     id: mapped.id || prev.id,
     username: mapped.username || prev.username,
     email: mapped.email || prev.email,
+    avatar: mapped.avatar || prev.avatar,
     balance: raw.balance != null ? mapped.balance : prev.balance,
     xp: raw.xp != null ? mapped.xp : prev.xp,
     level: raw.xp != null ? mapped.level : prev.level,

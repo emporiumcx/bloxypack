@@ -42,7 +42,7 @@ import { rankKeyFromLevel } from "@/lib/levels";
 
 export type User = AppUser;
 
-type Modal = "login" | "register" | "deposit" | "support" | "welcome" | "rain" | null;
+type Modal = "login" | "register" | "deposit" | "withdraw" | "support" | "welcome" | "rain" | "affiliate" | "promo" | null;
 
 type ChatMsg = {
   id: number | string;

@@ -1163,3 +1163,41 @@ input.rs-range::-moz-range-track {
   }
 }
 
+.mm2-cases-spinner.is-battle .mm2-reels {
+  mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent);
+}
+
+.mm2-cases-spinner.is-battle .mm2-reel-track {
+  height: 100%;
+}
+
+.mm2-cases-spinner.is-battle .mm2-reel {
+  flex-direction: column;
+  height: auto;
+  left: 0;
+  top: 50%;
+  width: 100%;
+}
+
+.mm2-cases-spinner.is-battle .mm2-reel-slot {
+  height: var(--slot);
+  width: 100%;
+}
+
+.mm2-cases-spinner.is-battle:not(.is-landed) .mm2-reel-item {
+  opacity: 0.85;
+}
+
+.mm2-cases-spinner.is-battle.is-pre-spin .mm2-reel {
+  animation: none;
+}
+
+.mm2-cases-spinner.is-battle.is-pre-spin .mm2-reels {
+  filter: none;
+  opacity: 1;
+}
+
+.mm2-cases-spinner.is-battle.is-pre-spin .mm2-reel-item {
+  animation: none;
+}
+

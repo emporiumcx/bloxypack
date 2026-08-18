@@ -68,23 +68,67 @@ function NavChip({
   );
 }
 
+const DROP_EXIT_MS = 220;
+
 export function SiteHeader() {
   const { user, openModal, logout } = useStore();
   const [gamesOpen, setGamesOpen] = useState(false);
+  const [gamesLeaving, setGamesLeaving] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
+  const [userLeaving, setUserLeaving] = useState(false);
   const gamesRef = useRef<HTMLDivElement>(null);
   const userRef = useRef<HTMLDivElement>(null);
+  const gamesTimer = useRef(0);
+  const userTimer = useRef(0);
   const xpPct = user ? xpProgress(user.xp) : 0;
+
+  function closeGames() {
+    if (!gamesOpen || gamesLeaving) return;
+    setGamesLeaving(true);
+    window.clearTimeout(gamesTimer.current);
+    gamesTimer.current = window.setTimeout(() => {
+      setGamesOpen(false);
+      setGamesLeaving(false);
+    }, DROP_EXIT_MS);
+  }
+
+  function toggleGames() {
+    if (gamesOpen && !gamesLeaving) return closeGames();
+    window.clearTimeout(gamesTimer.current);
+    setGamesLeaving(false);
+    setGamesOpen(true);
+  }
+
+  function closeUser() {
+    if (!userOpen || userLeaving) return;
+    setUserLeaving(true);
+    window.clearTimeout(userTimer.current);
+    userTimer.current = window.setTimeout(() => {
+      setUserOpen(false);
+      setUserLeaving(false);
+    }, DROP_EXIT_MS);
+  }
+
+  function toggleUser() {
+    if (userOpen && !userLeaving) return closeUser();
+    window.clearTimeout(userTimer.current);
+    setUserLeaving(false);
+    setUserOpen(true);
+  }
 
   useEffect(() => {
     const onDoc = (e: PointerEvent) => {
       const t = e.target as Node;
-      if (!gamesRef.current?.contains(t)) setGamesOpen(false);
-      if (!userRef.current?.contains(t)) setUserOpen(false);
+      if (!gamesRef.current?.contains(t)) closeGames();
+      if (!userRef.current?.contains(t)) closeUser();
     };
     document.addEventListener("pointerdown", onDoc);
-    return () => document.removeEventListener("pointerdown", onDoc);
-  }, []);
+    return () => {
+      document.removeEventListener("pointerdown", onDoc);
+      window.clearTimeout(gamesTimer.current);
+      window.clearTimeout(userTimer.current);
+    };
+  }, [gamesOpen, gamesLeaving, userOpen, userLeaving]);
 
   return (
     <header className="sticky top-0 z-40 w-full">
@@ -143,19 +187,19 @@ export function SiteHeader() {
       <div className="relative flex h-64 items-center justify-between gap-10 border-b-1 border-grey-47 bg-grey-34 px-12 sm:px-16">
         <div className="flex min-w-0 items-center gap-8">
           <NavChip href="/" className="h-40 w-40 justify-center px-0">
-            <Icons.home className="text-18" />
+            <Icons.home className="text-18 text-grey-190" />
           </NavChip>
           <div ref={gamesRef} className="relative">
-            <NavChip onClick={() => setGamesOpen((v) => !v)}>
+            <NavChip onClick={toggleGames}>
               <Icons.games className="text-18 text-grey-190" />
               <span className="ui-btn-label hidden text-12 sm:inline">Games</span>
-              <Icons.chevron className={`text-14 text-grey-142 transition-transform ${gamesOpen ? "rotate-180" : ""}`} />
+              <Icons.chevron className={`text-14 text-grey-142 transition-transform ${gamesOpen && !gamesLeaving ? "rotate-180" : ""}`} />
             </NavChip>
             {gamesOpen ? (
-              <div className="absolute left-0 top-[52px] z-50 w-[min(92vw,760px)] animate-open-y rounded-16 border-1 border-grey-47 bg-grey-34 p-16 shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
+              <div className={`absolute left-0 top-[52px] z-50 w-[min(92vw,760px)] rounded-16 border-1 border-grey-47 bg-grey-34 p-16 shadow-[0_24px_80px_rgba(0,0,0,0.55)] ${gamesLeaving ? "animate-close-y" : "animate-open-y"}`}>
                 <div className="mb-10 flex items-center justify-between">
                   <p className="ui-label text-12 text-white">Games</p>
-                  <button type="button" onClick={() => setGamesOpen(false)} className="text-grey-142 hover:text-white">
+                  <button type="button" onClick={closeGames} className="text-grey-142 hover:text-white">
                     <Icons.close className="text-16" />
                   </button>
                 </div>
@@ -164,7 +208,7 @@ export function SiteHeader() {
                     <Link
                       key={g.href}
                       href={g.soon ? "/" : g.href}
-                      onClick={() => setGamesOpen(false)}
+                      onClick={closeGames}
                       className={`group relative overflow-hidden rounded-12 bg-grey-39 ${g.soon ? "pointer-events-none opacity-40" : ""}`}
                     >
                       <img alt="" src={g.img} className="h-88 w-full object-cover opacity-80 transition-transform duration-300 group-hover:scale-110" />
@@ -213,7 +257,7 @@ export function SiteHeader() {
               <div ref={userRef} className="relative">
                 <button
                   type="button"
-                  onClick={() => setUserOpen((v) => !v)}
+                  onClick={toggleUser}
                   className="flex h-44 items-center gap-8 rounded-10 border-b-2 border-t-2 border-b-black/40 border-t-white/10 bg-grey-39 py-4 pl-10 pr-6 shadow-[0_2px_0_rgba(0,0,0,0.2)] transition-colors hover:bg-grey-47"
                 >
                   <div className="hidden min-w-72 max-w-110 grid-cols-1 gap-4 sm:grid">
@@ -225,7 +269,7 @@ export function SiteHeader() {
                   <UserAvatar avatar={user.avatar} seed={user.id || user.username} size={32} rounded="8" />
                 </button>
                 {userOpen ? (
-                  <div className="absolute right-0 top-[52px] z-50 w-200 animate-open-y overflow-hidden rounded-12 border-1 border-grey-47 bg-grey-34 p-8">
+                  <div className={`absolute right-0 top-[52px] z-50 w-200 overflow-hidden rounded-12 border-1 border-grey-47 bg-grey-34 p-8 ${userLeaving ? "animate-close-y" : "animate-open-y"}`}>
                     {[
                       { href: "/profile", label: "Profile" },
                       { href: "/affiliate", label: "Affiliates" },
@@ -234,7 +278,7 @@ export function SiteHeader() {
                       <Link
                         key={item.href}
                         href={item.href}
-                        onClick={() => setUserOpen(false)}
+                        onClick={closeUser}
                         className="flex h-36 items-center rounded-8 px-10 text-13 text-grey-142 hover:bg-grey-39 hover:text-white"
                       >
                         {item.label}
@@ -243,7 +287,7 @@ export function SiteHeader() {
                     <button
                       type="button"
                       onClick={() => {
-                        setUserOpen(false);
+                        closeUser();
                         logout();
                       }}
                       className="flex h-36 w-full items-center rounded-8 px-10 text-13 text-grey-142 hover:bg-grey-39 hover:text-white"

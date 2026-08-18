@@ -31,7 +31,8 @@ const settingSchema = new mongoose.Schema({
         unbox: { enabled: { type: Boolean } },
         battles: { enabled: { type: Boolean } },
         upgrader: { enabled: { type: Boolean } },
-        dice: { enabled: { type: Boolean } }
+        dice: { enabled: { type: Boolean } },
+        roulette: { enabled: { type: Boolean } }
     },
     robux: {
         deposit: { enabled: { type: Boolean } },

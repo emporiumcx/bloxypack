@@ -28,14 +28,21 @@ export function avatarName(avatar?: string | null, seed?: string | null): Arctic
   return avatarFromSeed(seed || name || "user");
 }
 
+export function avatarSrc(avatar?: string | null, seed?: string | null) {
+  const raw = String(avatar || "").trim();
+  if (/^https?:\/\//i.test(raw) || raw.startsWith("/")) return raw;
+  return `/img/avatars/${avatarName(raw, seed)}.png`;
+}
+
 export function avatarRing(avatar?: string | null, seed?: string | null) {
   return AVATAR_RING[avatarName(avatar, seed)];
 }
 
-export function avatarSrc(avatar?: string | null, seed?: string | null) {
-  const raw = String(avatar || "").trim();
-  if (/^https?:\/\//i.test(raw) || (raw.startsWith("/img/") && !raw.startsWith("/img/avatars/"))) {
-    return raw;
-  }
-  return `/img/avatars/${avatarName(avatar, seed)}.png`;
+export function botAvatar(slot: number) {
+  const color = ARCTIC_AVATARS[Math.abs(slot) % ARCTIC_AVATARS.length];
+  return avatarSrc(color, `bot-${slot}-${color}`);
+}
+
+export function botName(slot: number) {
+  return `Bot ${slot + 1}`;
 }

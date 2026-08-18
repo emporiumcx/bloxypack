@@ -1,9 +1,9 @@
 const validator = require('validator');
 const crypto = require('crypto');
-const { battleJackpotFloat } = require('./fair');
 
 // Load database models
 const BattlesGame = require('../database/models/BattlesGame');
+const { battleTicket } = require('./fair');
 
 const battlesCheckGetGameDataData = (data) => {
     if(data === undefined || data === null) {
@@ -31,7 +31,7 @@ const battlesCheckSendCreateData = (data) => {
     } else if(data.levelMin === undefined || data.levelMin === null || isNaN(data.levelMin) === true || data.levelMin < 0 || data.levelMin > 100) {
         throw new Error('Your entered min level is invalid.');
     } else if(data.funding === undefined || data.funding === null || isNaN(data.funding) === true || data.funding < 0 || data.funding > 80) {
-        throw new Error('Your entered funding value is invalid. Maximum borrow is 80%.');
+        throw new Error('Your entered funding value is invalid.');
     } else if(data.private === undefined || data.private === null || typeof data.private !== 'boolean') {
         throw new Error('Your entered private value is invalid.');
     } else if(data.affiliateOnly === undefined || data.affiliateOnly === null || typeof data.affiliateOnly !== 'boolean') {
@@ -39,8 +39,8 @@ const battlesCheckSendCreateData = (data) => {
     } else if(data.cursed === undefined || data.cursed === null || typeof data.cursed !== 'boolean') {
         throw new Error('Your entered affiliate value is invalid.');
     } else if(data.terminal === undefined || data.terminal === null || typeof data.terminal !== 'boolean') {
-        throw new Error('Your entered terminal value is invalid.');
-    } else if(data.jackpot !== undefined && data.jackpot !== null && typeof data.jackpot !== 'boolean') {
+        throw new Error('Your entered affiliate value is invalid.');
+    } else if(data.jackpot === undefined || data.jackpot === null || typeof data.jackpot !== 'boolean') {
         throw new Error('Your entered jackpot value is invalid.');
     }
 }
@@ -268,50 +268,49 @@ const battlesGetOutcomeItem = ( items, outcome) => {
     return outcomeItem;
 }
 
-const battlesBetScore = (outcomes, terminal) => {
-    if (!outcomes.length) return 0;
-    return terminal === true ? outcomes[outcomes.length - 1] : outcomes.reduce((total, outcome) => total + outcome, 0);
+const battlesBetScore = (battlesGame, bet) => {
+    if (!bet?.outcomes?.length) return 0;
+    if (battlesGame.options.terminal === true) return bet.outcomes[bet.outcomes.length - 1] || 0;
+    return bet.outcomes.reduce((total, outcome) => total + outcome, 0);
 };
 
-const battlesJackpotWeights = (scores, cursed) => {
-    const values = scores.map((score) => Math.max(1, Math.floor(score) || 1));
-    if (cursed !== true) return values;
-    const max = Math.max(...values);
-    return values.map((score) => Math.max(1, max + 1 - score));
-};
-
-const battlesPickJackpotIndex = (weights, battlesGame) => {
-    const total = weights.reduce((sum, weight) => sum + weight, 0);
+const battlesJackpotRoll = (battlesGame, tickets) => {
+    const total = tickets.reduce((sum, value) => sum + value, 0);
     if (total <= 0) return 0;
-    const roll = battleJackpotFloat(battlesGame.fair.seedServer, battlesGame.fair.seedPublic || '');
-    const ticket = Math.floor(roll * total);
-    let acc = 0;
-    for (let i = 0; i < weights.length; i++) {
-        acc += weights[i];
-        if (ticket < acc) return i;
-    }
-    return weights.length - 1;
+    const seedPublic = battlesGame.fair?.seedPublic || battlesGame.fair?.hash || '';
+    return Math.floor((battleTicket(battlesGame.fair.seedServer, seedPublic, 99, 99) / 100000) * total);
 };
 
 const battlesGetWinnerBets = (battlesGame) => {
     const rounds = battlesGetRounds(battlesGame.boxes);
     const bets = battlesGame.bets.map((bet) => ({ ...bet, outcomes: bet.outcomes.map((outcome, index) => battlesGetOutcomeItem(rounds[index].box.items, outcome).amountFixed) }));
-    const terminal = battlesGame.options.terminal === true;
-    const cursed = battlesGame.options.cursed === true;
-    const jackpot = battlesGame.options.jackpot === true;
     let winners = [];
 
-    if (jackpot) {
-        const scores = bets.map((bet) => battlesBetScore(bet.outcomes, terminal));
+    if (battlesGame.options.jackpot === true) {
+        const invert = battlesGame.options.cursed === true;
         if (battlesGame.mode === 'team') {
-            const teamScores = [scores[0] + scores[1], scores[2] + scores[3]];
-            const weights = battlesJackpotWeights(teamScores, cursed);
-            winners = battlesPickJackpotIndex(weights, battlesGame) === 0
-                ? [battlesGame.bets[0], battlesGame.bets[1]]
-                : [battlesGame.bets[2], battlesGame.bets[3]];
+            const amountOne = battlesBetScore(battlesGame, bets[0]) + battlesBetScore(battlesGame, bets[1]);
+            const amountTwo = battlesBetScore(battlesGame, bets[2]) + battlesBetScore(battlesGame, bets[3]);
+            const max = Math.max(amountOne, amountTwo);
+            const tickets = invert
+                ? [Math.max(1, max - amountOne + 1), Math.max(1, max - amountTwo + 1)]
+                : [Math.max(1, amountOne), Math.max(1, amountTwo)];
+            const roll = battlesJackpotRoll(battlesGame, tickets);
+            winners = roll < tickets[0] ? [battlesGame.bets[0], battlesGame.bets[1]] : [battlesGame.bets[2], battlesGame.bets[3]];
         } else {
-            const weights = battlesJackpotWeights(scores, cursed);
-            winners = [battlesGame.bets[battlesPickJackpotIndex(weights, battlesGame)]];
+            const scores = bets.map((bet) => battlesBetScore(battlesGame, bet));
+            const max = Math.max(0, ...scores);
+            const tickets = scores.map((score) => invert ? Math.max(1, max - score + 1) : Math.max(1, score));
+            const roll = battlesJackpotRoll(battlesGame, tickets);
+            let cursor = 0;
+            for (let i = 0; i < tickets.length; i++) {
+                cursor += tickets[i];
+                if (roll < cursor) {
+                    winners = [battlesGame.bets[i]];
+                    break;
+                }
+            }
+            if (!winners.length) winners = [battlesGame.bets[bets.length - 1]];
         }
         return winners;
     }
@@ -319,27 +318,39 @@ const battlesGetWinnerBets = (battlesGame) => {
     if(battlesGame.mode === 'group') {
         winners = battlesGame.bets;
     } else if(battlesGame.mode === 'team') {
-        const amountOne = terminal ? 
-                            Math.floor(bets[0].outcomes[bets[0].outcomes.length - 1] + bets[1].outcomes[bets[1].outcomes.length - 1]) :
-                            [...bets[0].outcomes, ...bets[1].outcomes].reduce((total, outcome) => total + outcome, 0);
-        const amountTwo = terminal ? 
-                            Math.floor(bets[2].outcomes[bets[2].outcomes.length - 1] + bets[3].outcomes[bets[3].outcomes.length - 1]) :
-                            [...bets[2].outcomes, ...bets[3].outcomes].reduce((total, outcome) => total + outcome, 0);
+        const amountOne = battlesBetScore(battlesGame, bets[0]) + battlesBetScore(battlesGame, bets[1]);
+        const amountTwo = battlesBetScore(battlesGame, bets[2]) + battlesBetScore(battlesGame, bets[3]);
 
         if(amountOne === amountTwo) { winners = battlesGame.bets; }
-        else if((cursed === false && amountOne > amountTwo) || (cursed === true && amountOne < amountTwo)) { winners = [battlesGame.bets[0], battlesGame.bets[1]]; }
+        else if((battlesGame.options.cursed === false && amountOne > amountTwo) || (battlesGame.options.cursed === true && amountOne < amountTwo)) { winners = [battlesGame.bets[0], battlesGame.bets[1]]; }
         else { winners = [battlesGame.bets[2], battlesGame.bets[3]]; }
     } else {
-        const amounts = bets.map((bet) => battlesBetScore(bet.outcomes, terminal));
-        const amountWin = cursed === false ? Math.max(...amounts) : Math.min(...amounts);
+        const amounts = bets.map((bet) => battlesBetScore(battlesGame, bet));
+        const amountWin = battlesGame.options.cursed === false ? Math.max(...amounts) : Math.min(...amounts);
 
-        for(const [index, bet] of bets.entries()) { 
-            if(amountWin === amounts[index]) { winners.push(battlesGame.bets[index]); } 
+        for(const [index, bet] of bets.entries()) {
+            if(amountWin === battlesBetScore(battlesGame, bet)) { winners.push(battlesGame.bets[index]); }
         }
     }
 
     return winners;
 }
+
+const battlesSanitizeBetUser = (bet) => {
+    if (bet.bot === true || !bet.user) return {};
+    const rakeback = bet.user.rakeback;
+    return {
+        _id: bet.user._id,
+        roblox: bet.user.roblox,
+        username: bet.user.username,
+        avatar: bet.user.avatar,
+        rank: bet.user.rank,
+        level: bet.user.level,
+        rakeback: rakeback && typeof rakeback === 'object' ? rakeback.name : rakeback,
+        stats: bet.user.stats,
+        createdAt: bet.user.createdAt
+    };
+};
 
 const battlesSanitizeGames = (games) => {
     let sanitized = [];
@@ -349,24 +360,14 @@ const battlesSanitizeGames = (games) => {
             game = JSON.parse(JSON.stringify(game));
 
             // Sanitize game fair property
-            if(game.state !== 'completed') { game.fair = { hash: game.fair.hash }; }
+            if(game.state !== 'completed') { game.fair = { hash: game.fair?.hash }; }
 
             // Sanitize game boxes
-            for(let box of game.boxes) { box.box.items = []; }
+            for(let box of game.boxes || []) { if (box.box) box.box.items = []; }
             
             // Sanitize game bets user property
-            for(let bet of game.bets) { 
-                bet.user = bet.bot === true ? {} : {
-                    _id: bet.user._id, 
-                    roblox: bet.user.roblox, 
-                    username: bet.user.username, 
-                    avatar: bet.user.avatar, 
-                    rank: bet.user.rank,
-                    level: bet.user.level,
-                    rakeback: bet.user.rakeback.name,
-                    stats: bet.user.stats,
-                    createdAt: bet.user.createdAt
-                };
+            for(let bet of game.bets || []) { 
+                bet.user = battlesSanitizeBetUser(bet);
             }
 
             // Add sanitized game to sanitized list
@@ -381,24 +382,14 @@ const battlesSanitizeGame = (game, all) => {
     let sanitized = JSON.parse(JSON.stringify(game));
 
     // Sanitize game fair property
-    if(sanitized.state !== 'completed') { sanitized.fair = { hash: sanitized.fair.hash }; }
+    if(sanitized.state !== 'completed') { sanitized.fair = { hash: sanitized.fair?.hash }; }
 
     // Sanitize game boxes if all not true
-    if(all !== true) { for(let box of sanitized.boxes) { box.box.items = []; }  }
+    if(all !== true) { for(let box of sanitized.boxes || []) { if (box.box) box.box.items = []; }  }
 
     // Sanitize game bets user property
-    for(let bet of sanitized.bets) {
-        bet.user = bet.bot === true ? {} : {
-            _id: bet.user._id, 
-            roblox: bet.user.roblox, 
-            username: bet.user.username, 
-            avatar: bet.user.avatar, 
-            rank: bet.user.rank,
-            level: bet.user.level,
-            rakeback: bet.user.rakeback.name,
-            stats: bet.user.stats,
-            createdAt: bet.user.createdAt
-        };
+    for(let bet of sanitized.bets || []) {
+        bet.user = battlesSanitizeBetUser(bet);
     }
 
     return sanitized;

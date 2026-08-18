@@ -12,6 +12,7 @@ let socketActiveConnections = {
     battles: [],
     upgrader: [],
     dice: [],
+    roulette: [],
     cashier: [],
     admin: []
 };

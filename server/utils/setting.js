@@ -40,7 +40,8 @@ const settingInitDatabase = async() => {
                     unbox: { enabled: true },
                     battles: { enabled: true },
                     upgrader: { enabled: true },
-                    dice: { enabled: true }
+                    dice: { enabled: true },
+                    roulette: { enabled: true }
                 },
                 robux: {
                     deposit: { enabled: false },

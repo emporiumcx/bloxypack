@@ -1,6 +1,6 @@
-import { botName } from "./bots";
 import { getCase, type Battle } from "./catalog";
 import type { BattleGame } from "./backend";
+import { botAvatar, botName } from "./avatars";
 
 export function mapBattleGame(game: BattleGame): Battle {
   const cases: string[] = [];
@@ -16,7 +16,8 @@ export function mapBattleGame(game: BattleGame): Battle {
       name: bet.bot ? botName(slot) : bet.user?.username || "Player",
       bot: Boolean(bet.bot),
       team: slot,
-      slot,
+      level: bet.user?.level || 1,
+      avatar: bet.bot ? botAvatar(slot) : bet.user?.avatar,
     };
   }).filter(Boolean) as Battle["players"];
 
@@ -40,7 +41,6 @@ export function mapBattleGame(game: BattleGame): Battle {
     teams,
     status: game.state === "completed" ? "ended" : "active",
     unboxed: (game.bets?.[0]?.outcomes || []).length,
-    funding: game.options?.funding || 0,
     jackpot: Boolean(game.options?.jackpot),
     crazy: Boolean(game.options?.cursed),
     terminal: Boolean(game.options?.terminal),

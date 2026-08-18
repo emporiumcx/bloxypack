@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { AddCaseModal } from "@/components/add-case-modal";
 import { Bux } from "@/components/bux";
 import { GreenButton } from "@/components/green-button";
+import { FairnessControl } from "@/components/fairness";
 import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
 import { subscribeBattles } from "@/lib/backend";
@@ -96,14 +97,14 @@ export default function CreateBattlePage() {
   const [fast, setFast] = useState(false);
   const [loop, setLoop] = useState(true);
   const [borrow, setBorrow] = useState(false);
-  const [borrowPct, setBorrowPct] = useState(80);
+  const [borrowPct, setBorrowPct] = useState(50);
   const [layoutId, setLayoutId] = useState("1v1");
   const [creating, setCreating] = useState(false);
   const layout = ALL.find((l) => l.id === layoutId) ?? ALL[0];
   const cost = picked.reduce((s, c) => s + c.price, 0);
-  const funding = borrow ? Math.min(80, Math.max(0, Math.round(borrowPct))) : 0;
-  const createCost = cost + (cost * layout.slots * funding) / 100;
-  const joinCost = cost * (1 - funding / 100);
+  const funding = borrow ? Math.min(80, Math.max(0, borrowPct)) : 0;
+  const creatorCost = cost + (cost * layout.slots * funding) / 100;
+  const joinerCost = cost * (1 - funding / 100);
 
   useEffect(() => {
     return subscribeBattles((state) => {
@@ -116,15 +117,15 @@ export default function CreateBattlePage() {
   const create = async () => {
     if (!user) return openModal("login");
     if (!picked.length) return;
-    if (user.balance < createCost) return openModal("deposit");
-    const boxes = picked.map((c) => {
-      const id = boxIds[c.slug];
-      if (!id) throw new Error(`Case ${c.name} is not seeded on the server.`);
-      return { _id: id, count: 1 };
-    });
-    const mode = TEAM.some((m) => m.id === layoutId) ? "team" : GROUP.some((m) => m.id === layoutId) ? "group" : "standard";
+    if (user.balance < creatorCost) return openModal("deposit");
     setCreating(true);
     try {
+      const boxes = picked.map((c) => {
+        const id = boxIds[c.slug];
+        if (!id) throw new Error(`Case ${c.name} is not seeded on the server.`);
+        return { _id: id, count: 1 };
+      });
+      const mode = TEAM.some((m) => m.id === layoutId) ? "team" : GROUP.some((m) => m.id === layoutId) ? "group" : "standard";
       const res = await battlesCreate({
         playerCount: layout.slots,
         mode,
@@ -138,6 +139,7 @@ export default function CreateBattlePage() {
         levelMin: 0,
       });
       if (res.user) applyUser(res.user);
+      if (!res.game?._id) throw new Error("Battle was created but no game id was returned.");
       router.push(`/battles/${res.game._id}`);
     } catch (err) {
       alert(err instanceof Error ? err.message : "Could not create battle.");
@@ -150,7 +152,7 @@ export default function CreateBattlePage() {
     <div className="flex w-full justify-center">
       <div className="@xl/page:gap-32 @bt/page:gap-24 grid w-full max-w-screen-lg grid-cols-1 gap-16">
         <div className="grid w-full grid-cols-1 gap-24">
-          <div className="flex w-full">
+          <div className="flex w-full items-center justify-between gap-12">
             <Link
               href="/battles"
               aria-label="link"
@@ -163,10 +165,19 @@ export default function CreateBattlePage() {
                 <p className="transition-all duration-300 text-14 text-grey-142">Back to battles</p>
               </div>
             </Link>
+            <FairnessControl
+              game="Battles"
+              fields={[
+                { label: "Server Seed", placeholder: "Revealed after the battle" },
+                { label: "Server Seed (Hashed)", placeholder: "Shown once the battle is created" },
+                { label: "Block Number", placeholder: "Set from the EOS head block when the battle starts" },
+                { label: "Block Hash", placeholder: "Set from the EOS head block when the battle starts" },
+              ]}
+            />
           </div>
 
           <div className="@lg/page:grid-cols-[1fr_auto] grid w-full grid-cols-1 items-center gap-10">
-            <h1 className="@sm/page:text-20 @md/page:text-24 font-display w-full text-28 uppercase leading-[125%] text-cream transition-colors duration-200">
+            <h1 className="@sm/page:text-20 @md/page:text-24 w-full text-18 font-bold leading-[125%] text-white transition-colors duration-200">
               Create battle
             </h1>
             <div className="@sm/page:grid-cols-[repeat(6,auto)] @sm/page:gap-16 grid grid-cols-2 items-center justify-start gap-10">
@@ -328,29 +339,22 @@ export default function CreateBattlePage() {
           <div className="@sm/page:flex w-full">
             <div className="@sm/page:w-auto grid w-full grid-cols-[auto_auto_1fr]">
               <div className="grid grid-cols-1 gap-6">
-                <p className="text-12 text-grey-142">Battle cost</p>
+                <p className="text-12 text-grey-142">{funding > 0 ? "You pay" : "Battle cost"}</p>
                 <div className="flex">
-                  <Bux value={cost} />
+                  <Bux value={creatorCost} />
                 </div>
               </div>
               <div className="mx-16 h-full border-l-1 border-grey-47" />
               <div className="grid grid-cols-1 gap-6">
-                <p className="text-12 text-grey-142">{funding > 0 ? "Your cost" : "Case amount"}</p>
+                <p className="text-12 text-grey-142">{funding > 0 ? "Others pay" : "Case amount"}</p>
                 {funding > 0 ? (
-                  <Bux value={createCost} />
+                  <div className="flex">
+                    <Bux value={joinerCost} />
+                  </div>
                 ) : (
                   <p className="text-14 text-white">{picked.length}</p>
                 )}
               </div>
-              {funding > 0 ? (
-                <>
-                  <div className="mx-16 h-full border-l-1 border-grey-47" />
-                  <div className="grid grid-cols-1 gap-6">
-                    <p className="text-12 text-grey-142">Join cost</p>
-                    <Bux value={joinCost} />
-                  </div>
-                </>
-              ) : null}
             </div>
           </div>
           <div className="grid w-full grid-cols-1 items-center gap-12 sm:grid-cols-[auto_auto]">
@@ -358,12 +362,7 @@ export default function CreateBattlePage() {
               <div className="group relative flex h-40 min-w-[200px] justify-center rounded-6 border-2 border-grey-47 bg-grey-47 px-12 transition-colors hover:border-grey-190 hover:bg-grey-58 active:border-grey-190 active:bg-grey-58">
                 <Switch
                   on={borrow}
-                  onClick={() => {
-                    setBorrow((v) => {
-                      if (!v) setBorrowPct((p) => (p <= 0 ? 80 : Math.min(80, p)));
-                      return !v;
-                    });
-                  }}
+                  onClick={() => setBorrow((v) => !v)}
                   icon={<div className="text-18 text-green" />}
                   label={
                     <p className="text-14 text-grey-190">
@@ -377,11 +376,11 @@ export default function CreateBattlePage() {
                   <input
                     className="rs-range w-full"
                     type="range"
-                    min={1}
+                    min={0}
                     max={80}
                     step={1}
-                    value={funding}
-                    onChange={(e) => setBorrowPct(Math.min(80, Math.max(1, Number(e.target.value))))}
+                    value={Math.min(80, borrowPct)}
+                    onChange={(e) => setBorrowPct(Math.min(80, Number(e.target.value)))}
                   />
                 </div>
               ) : null}

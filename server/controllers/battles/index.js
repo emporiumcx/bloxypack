@@ -158,7 +158,7 @@ const battlesSendCreateSocket = async(io, socket, user, data, callback) => {
                     
                 },
                 updatedAt: new Date().getTime()
-            }, { new: true }).select('balance xp stats rakeback mute ban verifiedAt updatedAt').lean(),
+            }, { new: true }).select('username avatar rank balance xp stats local.email rakeback mute ban verifiedAt updatedAt').lean(),
             BattlesBet.create({
                 amount: amountUser,
                 outcomes: [],
@@ -196,13 +196,15 @@ const battlesSendCreateSocket = async(io, socket, user, data, callback) => {
         // Add battles game to battles game array
         battlesGames.push(battlesGame);
 
+        const sanitizedGame = battlesSanitizeGame(battlesGame);
+
         // Send updated user to frontend
         io.of('/general').to(user._id.toString()).emit('user', { user: dataDatabase[0] });
 
         // Send battles game to frontend if not private game
-        if(battlesGame.options.private === false) { io.of('/battles').emit('game', { game: battlesSanitizeGame(battlesGame) }); }
+        if(battlesGame.options.private === false) { io.of('/battles').emit('game', { game: sanitizedGame }); }
 
-        callback({ success: true, game: battlesSanitizeGame(battlesGame) });
+        callback({ success: true, user: dataDatabase[0], game: sanitizedGame });
 
         socketRemoveAntiSpam(user._id);
     } catch(err) {
@@ -315,7 +317,7 @@ const battlesSendJoinSocket = async(io, socket, user, data, callback) => {
                         'stats.bet': amountGameBet
                     },
                     updatedAt: new Date().getTime()
-                }, { new: true }).select('balance xp stats rakeback mute ban verifiedAt updatedAt').lean(),
+                }, { new: true }).select('username avatar rank balance xp stats local.email rakeback mute ban verifiedAt updatedAt').lean(),
                 BattlesBet.create({
                     amount: amountGameBet,
                     outcomes: [],
@@ -363,7 +365,7 @@ const battlesSendJoinSocket = async(io, socket, user, data, callback) => {
                 battlesGameCountdown(io, battlesGames[battlesGetGameIndex(battlesGames, data.gameId)]);
             }
 
-            callback({ success: true });
+            callback({ success: true, user: dataDatabase[0], game: battlesSanitizeGame(battlesGames[battlesGetGameIndex(battlesGames, data.gameId)]) });
 
             // Remove game id from game block array
             battlesBlockJoin.splice(battlesBlockJoin.indexOf(battlesGames[battlesGetGameIndex(battlesGames, data.gameId)]._id.toString()), 1);
@@ -389,14 +391,49 @@ const battlesSendCancelSocket = async(io, socket, user, data, callback) => {
         battlesCheckSendCancelGame(user, battlesGames[battlesGetGameIndex(battlesGames, data.gameId)], battlesBlockJoin, battlesBlockGame);
 
         try {
-            // Add game id to cancel block array
             battlesBlockGame.push(data.gameId.toString());
 
-            callback({ success: true });
+            const battlesGame = battlesGames[battlesGetGameIndex(battlesGames, data.gameId)];
+            const refunds = [];
+            for (const bet of battlesGame.bets) {
+                if (bet.bot === true || !bet.user || !bet.user._id) continue;
+                refunds.push(
+                    User.findByIdAndUpdate(bet.user._id, {
+                        $inc: {
+                            balance: bet.amount,
+                            'stats.bet': -bet.amount
+                        },
+                        updatedAt: new Date().getTime()
+                    }, { new: true }).select('username avatar rank balance xp stats local.email rakeback mute ban verifiedAt updatedAt').lean()
+                );
+            }
 
-            // Remove game id from cancel block array
+            const usersDatabase = await Promise.all(refunds);
+            await Promise.all([
+                BattlesBet.deleteMany({ game: battlesGame._id }),
+                BattlesGame.findByIdAndDelete(battlesGame._id)
+            ]);
+
+            battlesGames.splice(battlesGetGameIndex(battlesGames, battlesGame._id), 1);
+
+            const cancelled = battlesSanitizeGame({ ...battlesGame, state: 'cancelled' });
+            if (battlesGame.options.private === true) {
+                for (const bet of battlesGame.bets) {
+                    if (bet.bot === false && bet.user && bet.user._id) {
+                        io.of('/battles').to(bet.user._id.toString()).emit('game', { game: cancelled });
+                    }
+                }
+            } else {
+                io.of('/battles').emit('game', { game: cancelled });
+            }
+
+            for (const refunded of usersDatabase) {
+                if (refunded && refunded._id) io.of('/general').to(refunded._id.toString()).emit('user', { user: refunded });
+            }
+
+            callback({ success: true, user: usersDatabase[0], game: cancelled });
+
             battlesBlockGame.splice(battlesBlockGame.indexOf(data.gameId.toString()), 1);
-
             socketRemoveAntiSpam(user._id);
         } catch(err) {
             socketRemoveAntiSpam(socket.decoded._id);
@@ -469,11 +506,9 @@ const battlesGameRoll = async(io, battlesGame) => {
             setTimeout(() => {
                 for(let slot = 0; slot < battlesGame.bets.length; slot++) {
                     const outcome = battleTicket(battlesGame.fair.seedServer, battlesGame.fair.seedPublic, slot, index);
-    
-                    // Add round payout amount to bet
-                    battlesGame.bets[slot].payout = battlesGame.bets[slot].payout + battlesGetOutcomeItem(round.box.items, outcome).amountFixed;
-    
-                    // Add roll outcome to bet
+                    const pulled = battlesGetOutcomeItem(round.box.items, outcome);
+                    battlesGame.bets[slot].payout = Math.floor((battlesGame.bets[slot].payout || 0) + (pulled && pulled.amountFixed ? pulled.amountFixed : 0));
+                    if (!Array.isArray(battlesGame.bets[slot].outcomes)) battlesGame.bets[slot].outcomes = [];
                     battlesGame.bets[slot].outcomes.push(outcome);
                 }
     
@@ -556,7 +591,7 @@ const battlesGameComplete = async(io, battlesGame) => {
                             'rakeback.available': amountRakeback
                         },
                         updatedAt: new Date().getTime()
-                    }, { new: true }).select('balance xp stats rakeback mute ban verifiedAt updatedAt').lean()
+                    }, { new: true }).select('username avatar rank balance xp stats local.email rakeback mute ban verifiedAt updatedAt').lean()
                 );
 
                 // Add update users referrer query to affiliates promises array if available and affiliate amount is bigger then zero 

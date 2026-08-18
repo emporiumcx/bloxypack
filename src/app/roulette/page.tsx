@@ -1,5 +1,7 @@
-import { ComingSoon } from "@/components/coming-soon";
+"use client";
+
+import { RouletteGame } from "@/components/roulette-game";
 
 export default function RoulettePage() {
-  return <ComingSoon title="Roulette" img="/img/home/roulette.webp" />;
+  return <RouletteGame />;
 }

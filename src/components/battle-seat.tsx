@@ -1,35 +1,26 @@
 import { Icons } from "./icons";
-import { botAvatar, botRing } from "@/lib/bots";
-
-const AVATARS = ["/cdn/avatars/default.webp", "/img/icon.png"];
-const RANKS = ["/img/rank/23.svg", "/img/rank/7.svg", "/img/rank/11.svg", "/img/rank/13.svg"];
-const RINGS = [
-  "var(--color-rank-diamond)",
-  "var(--color-rank-gold)",
-  "var(--color-rank-platinum)",
-  "var(--color-rank-silver)",
-];
+import { avatarSrc } from "@/lib/avatars";
+import { rankIconFromLevel, rankLevelRange, rankRingFromLevel } from "@/lib/levels";
 
 export function BattleSeat({
   name,
   filled,
   size = 40,
   src,
-  bot = false,
-  slot = 0,
+  level = 1,
 }: {
   name?: string;
   filled: boolean;
   size?: number;
   src?: string;
-  bot?: boolean;
-  slot?: number;
+  level?: number;
 }) {
   const inner = Math.round(size * 0.925);
   const avatar = Math.round(size * 0.825);
-  const ring = bot ? botRing(slot) : name ? RINGS[name.length % RINGS.length] : "var(--color-grey-58)";
-  const rank = name ? RANKS[name.length % RANKS.length] : "/img/rank/7.svg";
-  const image = src || (bot ? botAvatar(slot) : AVATARS[name ? name.length % AVATARS.length : 0]);
+  const lvl = Math.max(1, level || 1);
+  const ring = filled ? rankRingFromLevel(lvl) : "var(--color-grey-58)";
+  const rank = rankIconFromLevel(lvl);
+  const range = rankLevelRange(lvl);
   return (
     <div
       className="group relative h-40 w-40 rounded-full p-2 transition-opacity duration-200"
@@ -48,7 +39,11 @@ export function BattleSeat({
           style={{ width: avatar, height: avatar }}
         >
           {filled ? (
-            <img alt="" className="h-full w-full rounded-2 object-cover" src={image} />
+            <img
+              alt=""
+              className="h-full w-full rounded-2 object-cover"
+              src={src || avatarSrc(undefined, name)}
+            />
           ) : (
             <Icons.seat className="text-18 text-grey-190" />
           )}
@@ -61,7 +56,9 @@ export function BattleSeat({
               <img alt="" className="absolute left-1/2 top-0 max-w-none -translate-x-1/2" src={rank} style={{ height: 15 }} />
               <div className="absolute top-1/2 z-10 -right-8 flex h-20 -translate-y-1/2 translate-x-[100%] items-center rounded-4 bg-grey-190 px-6 opacity-0 scale-90 transition-all duration-150 group-hover/rank:opacity-100 group-hover/rank:scale-100">
                 <div className="absolute top-1/2 left-0 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-1 bg-grey-190" />
-                <p className="whitespace-nowrap text-12 text-grey-28">Level 89-998</p>
+                <p className="whitespace-nowrap text-12 text-grey-28">
+                  Level {range.min}-{range.max}
+                </p>
               </div>
             </div>
           </div>
@@ -80,6 +77,37 @@ export function BattleVs() {
           <Icons.battles className="text-grey-142" style={{ marginLeft: 0, scale: 1 }} />
         </div>
       </div>
+    </div>
+  );
+}
+
+export function BattleModeIcons({
+  jackpot,
+  crazy,
+  terminal,
+}: {
+  jackpot?: boolean;
+  crazy?: boolean;
+  terminal?: boolean;
+}) {
+  if (!jackpot && !crazy && !terminal) return null;
+  return (
+    <div className="flex items-center justify-center gap-6">
+      {jackpot ? (
+        <span className="text-[#FE963B]" title="Jackpot">
+          <Icons.jackpot />
+        </span>
+      ) : null}
+      {crazy ? (
+        <span className="text-pink-231" title="Crazy">
+          <Icons.wild />
+        </span>
+      ) : null}
+      {terminal ? (
+        <span className="text-red" title="Terminal">
+          <Icons.terminal />
+        </span>
+      ) : null}
     </div>
   );
 }

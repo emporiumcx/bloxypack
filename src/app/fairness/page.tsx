@@ -9,12 +9,13 @@ export default function FairnessPage() {
       </p>
       <p>
         Floats are generated from HMAC(serverSeed, clientSeed:nonce:round) four bytes at a time. Mines and Towers pick
-        mine tiles by splicing those floats through the remaining tiles. Dice rolls float × 10,000. Cases and battles
-        roll float × 100,000 and match the ticket against each item&apos;s min–max range.
+        mine tiles by splicing those floats through the remaining tiles. Dice rolls float × 10,000. Roulette rolls
+        floor(float × 15): 0 is green (14x), 1–7 red (2x), 8–14 black (2x). Cases and battles roll float × 100,000 and
+        match the ticket against each item&apos;s min–max range.
       </p>
       <p>
         House edge matches RoStake: Mines 1% (0.99 × combinatorial multiplier), Towers 3% (0.97 × row ratio), Dice 10%
-        (90 / win chance).
+        (90 / win chance), Roulette 6.67% (14/15 return on every color).
       </p>
       <p>
         Rotate your client seed from profile fairness after a session to reveal the previous server seed and verify past

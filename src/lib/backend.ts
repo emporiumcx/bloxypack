@@ -5,12 +5,13 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5050
 const TOKEN_KEY = "wildpvp-token";
 
 export type ServerUser = {
-  _id: string;
-  username: string;
+  _id?: string;
+  id?: string;
+  username?: string;
   avatar?: string;
-  rank: string;
-  balance: number;
-  xp: number;
+  rank?: string;
+  balance?: number;
+  xp?: number;
   local?: { email?: string };
   stats?: { bet?: number; won?: number; deposit?: number; withdraw?: number };
 };
@@ -37,10 +38,16 @@ export function setToken(value: string | null) {
   else localStorage.removeItem(TOKEN_KEY);
 }
 
+function rawUserId(raw: ServerUser) {
+  const id = raw._id ?? raw.id;
+  if (id && typeof id === "object" && id !== null && "$oid" in id) return String((id as { $oid: string }).$oid);
+  return id != null ? String(id) : "";
+}
+
 export function mapUser(raw: ServerUser): AppUser {
-  const level = Math.max(1, xpToLevel(raw.xp));
+  const level = Math.max(1, xpToLevel(raw.xp || 0));
   return {
-    id: String(raw._id || ""),
+    id: rawUserId(raw),
     username: raw.username || "",
     email: raw.local?.email || "",
     avatar: raw.avatar || "",
@@ -60,7 +67,21 @@ export function mapUser(raw: ServerUser): AppUser {
 export function mergeUser(prev: AppUser | null, raw: ServerUser | null | undefined): AppUser | null {
   if (!raw || typeof raw !== "object") return prev;
   const mapped = mapUser(raw);
-  if (!prev) return mapped.id || mapped.username ? mapped : prev;
+  // Balance-only socket payloads omit username. Never replace a logged-in
+  // session with a blank profile, and never create one from incomplete data.
+  if (!mapped.username) {
+    if (!prev) return prev;
+    if (mapped.id && prev.id && mapped.id !== prev.id) return prev;
+    return {
+      ...prev,
+      balance: raw.balance != null ? mapped.balance : prev.balance,
+      xp: raw.xp != null ? mapped.xp : prev.xp,
+      level: raw.xp != null ? mapped.level : prev.level,
+      stats: raw.stats ? mapped.stats : prev.stats,
+    };
+  }
+  if (!prev) return mapped.id ? mapped : prev;
+  if (mapped.id && prev.id && mapped.id !== prev.id) return prev;
   return {
     ...prev,
     id: mapped.id || prev.id,
@@ -140,18 +161,48 @@ let dice: Socket | null = null;
 let unbox: Socket | null = null;
 let battles: Socket | null = null;
 let blackjack: Socket | null = null;
+let roulette: Socket | null = null;
 
 export type BattleBox = { _id: string; slug: string; name: string; amount: number };
+export type BattleItem = {
+  name?: string;
+  image?: string;
+  amountFixed?: number;
+  color?: string;
+  dropId?: number;
+  minTicket?: number;
+  maxTicket?: number;
+  tickets?: number;
+  item?: { name?: string; image?: string; amountFixed?: number; color?: string };
+};
+
 export type BattleGame = {
   _id: string;
   amount: number;
   playerCount: number;
   mode: "standard" | "team" | "group";
   state: string;
-  boxes: { box: { _id: string; slug: string; name: string; amount: number; items?: { name: string; image: string; amountFixed: number; color?: string; dropId?: number }[] }; count: number }[];
-  bets: { slot: number; bot: boolean; payout?: number; outcomes?: number[]; user?: { username?: string; _id?: string; level?: number; avatar?: string } }[];
+  updatedAt?: number | string;
+  boxes: {
+    box: {
+      _id?: string;
+      slug: string;
+      name: string;
+      amount: number;
+      items?: BattleItem[];
+    };
+    count: number;
+  }[];
+  bets: {
+    slot: number;
+    bot: boolean;
+    payout?: number;
+    amount?: number;
+    outcomes?: number[];
+    user?: { username?: string; _id?: string; level?: number; avatar?: string };
+  }[];
   options?: { private?: boolean; cursed?: boolean; terminal?: boolean; jackpot?: boolean; funding?: number };
-  fair?: { seedServer?: string; hash?: string; blockId?: number; seedPublic?: string };
+  fair?: { hash?: string; seedServer?: string; seedPublic?: string; blockId?: string | number };
 };
 
 type BattleState = { boxes: BattleBox[]; games: BattleGame[] };
@@ -163,9 +214,34 @@ function setBattleState(next: Partial<BattleState>) {
   battleSubs.forEach((fn) => fn(battleState));
 }
 
+function mergeBattleGame(prev: BattleGame | undefined, next: BattleGame): BattleGame {
+  if (!prev) return next;
+  const boxes = (next.boxes || []).map((box, i) => {
+    const prevBox = prev.boxes?.[i];
+    const items = box.box?.items?.length ? box.box.items : prevBox?.box?.items;
+    return { ...box, box: { ...prevBox?.box, ...box.box, items: items || box.box?.items || [] } };
+  });
+  const bets = (next.bets || []).map((bet) => {
+    const prevBet = prev.bets?.find((b) => b.slot === bet.slot);
+    const user = bet.user && Object.keys(bet.user).length ? { ...prevBet?.user, ...bet.user } : prevBet?.user;
+    return {
+      ...prevBet,
+      ...bet,
+      user,
+      outcomes: bet.outcomes?.length ? bet.outcomes : prevBet?.outcomes,
+    };
+  });
+  return { ...prev, ...next, boxes: boxes.length ? boxes : prev.boxes, bets: bets.length ? bets : prev.bets };
+}
+
 function upsertBattle(game: BattleGame) {
-  const games = battleState.games.filter((g) => g._id !== game._id);
-  setBattleState({ games: [game, ...games] });
+  if (game.state === "cancelled") {
+    setBattleState({ games: battleState.games.filter((g) => g._id !== game._id) });
+    return;
+  }
+  const prev = battleState.games.find((g) => g._id === game._id);
+  const merged = mergeBattleGame(prev, game);
+  setBattleState({ games: [merged, ...battleState.games.filter((g) => g._id !== game._id)] });
 }
 
 export function subscribeBattles(fn: (state: BattleState) => void) {
@@ -176,9 +252,55 @@ export function subscribeBattles(fn: (state: BattleState) => void) {
   };
 }
 
+export type RouletteColor = "red" | "black" | "green";
+
+export type RouletteGame = {
+  _id: string;
+  state: "created" | "rolling" | "completed";
+  createdAt?: string;
+  endsAt?: number;
+  outcome?: number;
+  color?: RouletteColor;
+  fair?: { hash?: string; seedPublic?: string; seedServer?: string };
+};
+
+export type RouletteBetRow = {
+  _id: string;
+  amount: number;
+  payout?: number;
+  color: RouletteColor;
+  multiplier: number;
+  user: { _id?: string; username?: string; avatar?: string; rank?: string; level?: number };
+};
+
+export type RouletteState = {
+  game: RouletteGame | null;
+  bets: RouletteBetRow[];
+  history: { _id?: string; outcome: number; color: RouletteColor }[];
+};
+
+let rouletteState: RouletteState = { game: null, bets: [], history: [] };
+const rouletteSubs = new Set<(state: RouletteState) => void>();
+
+function setRouletteState(next: Partial<RouletteState>) {
+  rouletteState = { ...rouletteState, ...next };
+  rouletteSubs.forEach((fn) => fn(rouletteState));
+}
+
+export function subscribeRoulette(fn: (state: RouletteState) => void) {
+  rouletteSubs.add(fn);
+  fn(rouletteState);
+  return () => {
+    rouletteSubs.delete(fn);
+  };
+}
+
 function ns(name: string) {
   return io(`${API_URL}${name}`, {
-    auth: { token: token() || "" },
+    auth: (cb: (data: { token?: string }) => void) => {
+      const t = token();
+      cb(t ? { token: t } : {});
+    },
     transports: ["websocket", "polling"],
     withCredentials: true,
   });
@@ -186,8 +308,8 @@ function ns(name: string) {
 
 export function connectSockets(handlers: {
   onUser?: (user: ServerUser) => void;
-  onChat?: (msg: { id: string; user: string; text: string; rank: string; level: number; time?: string }) => void;
-  onChatHistory?: (msgs: { id: string; user: string; text: string; rank: string; level: number }[]) => void;
+  onChat?: (msg: { id: string; user: string; text: string; rank: string; level: number; avatar?: string; time?: string }) => void;
+  onChatHistory?: (msgs: { id: string; user: string; text: string; rank: string; level: number; avatar?: string }[]) => void;
   onRain?: (amount: number) => void;
 }) {
   disconnectSockets();
@@ -198,19 +320,22 @@ export function connectSockets(handlers: {
   unbox = ns("/unbox");
   battles = ns("/battles");
   blackjack = ns("/blackjack");
+  roulette = ns("/roulette");
 
-  general.on("user", (payload: { user: ServerUser }) => {
-    if (payload?.user) handlers.onUser?.(payload.user);
+  general.on("user", (payload: { user?: ServerUser } | ServerUser) => {
+    const raw = payload && typeof payload === "object" && "user" in payload ? payload.user : payload;
+    if (raw && typeof raw === "object") handlers.onUser?.(raw as ServerUser);
   });
-  general.on("chatMessage", (payload: { message: { _id: string; message: string; user?: { username: string; level?: number; rank?: string }; type: string } }) => {
+  general.on("chatMessage", (payload: { message: { _id: string; message: string; user?: { username: string; level?: number; rank?: string; avatar?: string }; type: string } }) => {
     const m = payload?.message;
-    if (!m || m.type === "system") return;
+    if (!m || m.type !== "user" || !m.user?.username || !String(m.message || "").trim()) return;
     handlers.onChat?.({
       id: String(m._id),
-      user: m.user?.username || "User",
-      text: m.message,
+      user: m.user.username,
+      text: m.message || "",
       rank: m.user?.rank === "admin" ? "staff" : m.user?.level && m.user.level >= 41 ? "gold" : m.user?.level && m.user.level >= 21 ? "silver" : "bronze",
       level: m.user?.level || 1,
+      avatar: m.user?.avatar,
     });
   });
   general.on("rain", (payload: { rain?: { amount?: number } }) => {
@@ -218,16 +343,17 @@ export function connectSockets(handlers: {
   });
   general.on("init", (payload: { rains?: { site?: { amount?: number } } }) => {
     if (payload?.rains?.site?.amount != null) handlers.onRain?.(payload.rains.site.amount / 1000);
-    general?.emit("getChatMessages", { room: "en" }, (res: Ack<{ messages: { _id: string; message: string; user?: { username: string; level?: number; rank?: string }; type: string }[] }>) => {
+    general?.emit("getChatMessages", { room: "en" }, (res: Ack<{ messages: { _id: string; message: string; user?: { username: string; level?: number; rank?: string; avatar?: string }; type: string }[] }>) => {
       if (!res || res.success === false) return;
       const msgs = (res.messages || [])
-        .filter((m) => m.type !== "system")
+        .filter((m) => m.type === "user" && m.user?.username && String(m.message || "").trim())
         .map((m) => ({
           id: String(m._id),
-          user: m.user?.username || "User",
-          text: m.message,
+          user: m.user!.username,
+          text: m.message || "",
           rank: m.user?.rank === "admin" ? "staff" : m.user?.level && m.user.level >= 41 ? "gold" : m.user?.level && m.user.level >= 21 ? "silver" : "bronze",
           level: m.user?.level || 1,
+          avatar: m.user?.avatar,
         }));
       handlers.onChatHistory?.(msgs);
     });
@@ -239,16 +365,44 @@ export function connectSockets(handlers: {
   battles.on("game", (payload: { game?: BattleGame }) => {
     if (payload?.game) upsertBattle(payload.game);
   });
+
+  roulette.on("init", (payload: RouletteState) => setRouletteState(payload));
+  roulette.on("game", (payload: Partial<RouletteState>) => {
+    setRouletteState({
+      game: payload.game ?? rouletteState.game,
+      bets: payload.bets ?? (payload.game && payload.game.state === "created" ? [] : rouletteState.bets),
+      history: payload.history ?? rouletteState.history,
+    });
+  });
+  roulette.on("bet", (payload: { bet?: RouletteBetRow }) => {
+    if (payload?.bet) setRouletteState({ bets: [...rouletteState.bets.filter((b) => b._id !== payload.bet!._id), payload.bet] });
+  });
 }
 
 export function disconnectSockets() {
-  for (const s of [general, mines, towers, dice, unbox, battles, blackjack]) s?.disconnect();
-  general = mines = towers = dice = unbox = battles = blackjack = null;
+  for (const s of [general, mines, towers, dice, unbox, battles, blackjack, roulette]) s?.disconnect();
+  general = mines = towers = dice = unbox = battles = blackjack = roulette = null;
 }
 
 export async function sendChatMessage(message: string) {
   if (!general) throw new Error("Chat is not connected.");
   await emit(general, "sendChatMessage", { message });
+}
+
+export async function claimAffiliateCode(code: string) {
+  if (!general) throw new Error("Not connected.");
+  return emit<{ user: ServerUser }>(general, "sendAffiliateClaimCode", {
+    code: code.trim(),
+    captcha: "dev",
+  });
+}
+
+export async function claimPromoCode(code: string) {
+  if (!general) throw new Error("Not connected.");
+  return emit(general, "sendPromoClaim", {
+    code: code.trim(),
+    captcha: "dev",
+  });
 }
 
 export async function minesBet(amount: number, minesCount: number, grid: number) {
@@ -334,7 +488,7 @@ export async function battlesCreate(data: {
     mode: data.mode,
     boxes: data.boxes,
     levelMin: data.levelMin ?? 0,
-    funding: Math.min(80, Math.max(0, Math.round(data.funding ?? 0))),
+    funding: data.funding ?? 0,
     private: data.private ?? false,
     affiliateOnly: data.affiliateOnly ?? false,
     cursed: data.cursed ?? false,
@@ -347,12 +501,21 @@ export async function battlesCreate(data: {
 
 export async function battlesJoin(gameId: string, slot: number) {
   if (!battles) throw new Error("Not connected.");
-  return emit<{ user?: ServerUser }>(battles, "sendJoin", { gameId, slot });
+  const res = await emit<{ user?: ServerUser; game?: BattleGame }>(battles, "sendJoin", { gameId, slot });
+  if (res.game) upsertBattle(res.game);
+  return res;
 }
 
 export async function battlesBot(gameId: string) {
   if (!battles) throw new Error("Not connected.");
   return emit<Record<string, never>>(battles, "sendBot", { gameId });
+}
+
+export async function battlesCancel(gameId: string) {
+  if (!battles) throw new Error("Not connected.");
+  const res = await emit<{ user?: ServerUser; game?: BattleGame }>(battles, "sendCancel", { gameId });
+  if (res.game) upsertBattle(res.game);
+  return res;
 }
 
 export async function battlesGame(gameId: string) {
@@ -398,4 +561,24 @@ export async function blackjackDouble() {
     "sendSoloDouble",
     {},
   );
+}
+
+export async function rouletteBet(amount: number, color: RouletteColor) {
+  if (!roulette) throw new Error("Not connected.");
+  return emit<{ user: ServerUser }>(roulette, "sendBet", {
+    amount: Math.round(amount * 1000),
+    color,
+  });
+}
+
+export type UserSeedInfo = {
+  seedClient?: string;
+  hash?: string;
+  nonce?: number;
+  seedServer?: string;
+};
+
+export async function getUserSeed() {
+  if (!general) throw new Error("Not connected.");
+  return emit<{ seed: UserSeedInfo; seedNext: UserSeedInfo }>(general, "getUserSeed", {});
 }

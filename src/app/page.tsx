@@ -21,7 +21,7 @@ const ORIGINALS = [
   { href: "/mines", label: "Hidden Mines", img: "/img/home/mines.webp", icon: Icons.mines, tag: "", tagColor: "#ff969f", underline: "#ff969f" },
   { href: "/towers", label: "Towers", img: "/img/home/towers.webp", icon: Icons.towers, tag: "", tagColor: "#f5c487", underline: "#f5c487" },
   { href: "/dice", label: "Dice", img: "/img/home/dice.webp", icon: Icons.dice, tag: "", tagColor: "#ffeb69", underline: "#ffeb69" },
-  { href: "/roulette", label: "Roulette", img: "/img/home/roulette.webp", icon: Icons.roulette, tag: "", tagColor: "#ffeb69", underline: "#ffeb69", soon: true },
+  { href: "/roulette", label: "Roulette", img: "/img/home/roulette.webp", icon: Icons.roulette, tag: "new", tagColor: "#ffeb69", underline: "#ffeb69" },
   { href: "/crash", label: "Crash", img: "/img/home/crash.webp", icon: Icons.crash, tag: "new", tagColor: "#ff969f", underline: "#ff969f", soon: true },
 ];
 

@@ -9,6 +9,7 @@ module.exports = (io) => {
     require('./towers')(io);
     require('./unbox')(io);
     require('./dice')(io);
+    require('./roulette')(io);
     require('./battles')(io);
     require('./upgrader')(io);
     require('./cashier')(io);

@@ -8,10 +8,14 @@ const connectDB = async() => {
     try {
         // Use a default MongoDB URI if not provided in environment
         const dbUri = process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/wildpvp';
-        
+        if (!process.env.DATABASE_URI) {
+            console.warn('DATABASE_URI is not set. Falling back to mongodb://127.0.0.1:27017/wildpvp');
+        }
+
         const conn = await mongoose.connect(dbUri, {
             useUnifiedTopology: true,
-            useNewUrlParser: true
+            useNewUrlParser: true,
+            serverSelectionTimeoutMS: 15000
         });
 
         console.log(`MongoDB Connected: ${conn.connection.host}`);

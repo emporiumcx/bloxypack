@@ -6,15 +6,12 @@ const cors = require('cors');
 const socket = require('socket.io');
 require('dotenv').config();
 
-// Default frontend URL if not specified in environment
 const frontendUrl = process.env.SERVER_FRONTEND_URL || 'http://localhost:3000';
 const frontendUrls = frontendUrl.includes(',') ? frontendUrl.split(',') : [frontendUrl];
 
-// Init express app & create http server
 const app = express();
 const server = http.createServer(app);
 
-// Create socket server
 const io = socket(server, {
     transports: ['websocket', 'polling'],
     maxHttpBufferSize: 1e8,
@@ -25,36 +22,34 @@ const io = socket(server, {
     }
 });
 
-// Load database
-require('./database')();
+async function start() {
+    await require('./database')();
+    await require('./utils/setting').settingInitDatabase();
 
-// Init page settings
-require('./utils/setting').settingInitDatabase();
+    app.set('trust proxy', 1);
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+    app.use(hpp());
+    app.use(cors({
+        origin: frontendUrls,
+        credentials: true
+    }));
 
-// Enable if you are behind a reverse proxy
-app.set('trust proxy', 1);
+    app.set('view engine', 'ejs');
+    app.set('views', path.join(__dirname, '/views'));
 
-// Set other middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(hpp());
-app.use(cors({
-    origin: frontendUrls,
-    credentials: true
-}));
+    app.use('/', require('./routes')(io));
+    app.use('/public', express.static(path.join(__dirname, '/public')));
 
-// Set view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '/views'));
+    require('./sockets')(io);
 
-// Mount routes
-app.use('/', require('./routes')(io));
-app.use('/public', express.static(path.join(__dirname, 'public')));
+    const PORT = Number(process.env.PORT || process.env.SERVER_PORT || 5000);
+    server.listen(PORT, '0.0.0.0', () => {
+        console.log(`WildPVP server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}. URLS: ${frontendUrls.join(', ')}`);
+    });
+}
 
-// Mount sockets
-require('./sockets')(io);
-
-// Set app port
-const PORT = process.env.SERVER_PORT || 5000;
-
-server.listen(PORT, () => console.log(`WildPVP server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}. URLS: ${frontendUrls.join(', ')}`));
+start().catch((err) => {
+    console.error(`Failed to start: ${err.message}`);
+    process.exit(1);
+});

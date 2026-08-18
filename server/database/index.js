@@ -1,15 +1,28 @@
 const mongoose = require('mongoose');
 
-// Set mongoose mode to strict and deactive auto indexing
 mongoose.set('strictQuery', true);
 mongoose.set('autoIndex', false);
 
+function mongoUri() {
+    return (
+        process.env.DATABASE_URI ||
+        process.env.DATABASE_URL ||
+        process.env.MONGODB_URI ||
+        process.env.MONGO_URL ||
+        ''
+    ).trim();
+}
+
 const connectDB = async() => {
     try {
-        // Use a default MongoDB URI if not provided in environment
-        const dbUri = process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/wildpvp';
-        if (!process.env.DATABASE_URI) {
-            console.warn('DATABASE_URI is not set. Falling back to mongodb://127.0.0.1:27017/wildpvp');
+        const dbUri = mongoUri() || (process.env.NODE_ENV === 'production' ? '' : 'mongodb://127.0.0.1:27017/wildpvp');
+        if (!dbUri) {
+            throw new Error(
+                'DATABASE_URI is missing on this Railway service. Open alluring-adventure → Variables → add DATABASE_URI = your mongodb+srv://... Atlas URL, then Redeploy. Shared/frontend variables do not apply here.'
+            );
+        }
+        if (dbUri.includes('127.0.0.1') || dbUri.includes('localhost')) {
+            console.warn('Mongo is pointed at localhost. That will not work on Railway.');
         }
 
         const conn = await mongoose.connect(dbUri, {

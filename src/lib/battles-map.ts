@@ -16,6 +16,7 @@ export function mapBattleGame(game: BattleGame): Battle {
       name: bet.bot ? botName(slot) : bet.user?.username || "Player",
       bot: Boolean(bet.bot),
       team: slot,
+      slot,
       level: bet.user?.level || 1,
       avatar: bet.bot ? botAvatar(slot) : bet.user?.avatar,
     };
@@ -44,6 +45,7 @@ export function mapBattleGame(game: BattleGame): Battle {
     jackpot: Boolean(game.options?.jackpot),
     crazy: Boolean(game.options?.cursed),
     terminal: Boolean(game.options?.terminal),
+    funding: Math.min(80, Math.max(0, game.options?.funding || 0)),
   };
 }
 

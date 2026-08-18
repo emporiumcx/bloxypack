@@ -311,14 +311,13 @@ function CasesSpinner({
   const reelsRef = useRef<HTMLDivElement>(null);
   const showHits = phase !== "idle";
   const startPct = -18;
-  const axis = "X";
 
   useEffect(() => {
     const root = reelsRef.current;
     if (!root) return;
     const reels = [...root.querySelectorAll<HTMLElement>(".mm2-reel")];
     const apply = (el: HTMLElement, pct: number) => {
-      el.style.transform = axis === "Y" ? `translate3d(0px, ${pct}%, 0px)` : `translate3d(${pct}%, 0px, 0px)`;
+      el.style.transform = `translate3d(${pct}%, 0px, 0px)`;
     };
     if (phase !== "spinning" || spinKey === 0) {
       const rest = phase === "landed" ? -86 : startPct;
@@ -390,7 +389,7 @@ function CasesSpinner({
       rafs.forEach((id) => cancelAnimationFrame(id));
       timers.forEach((id) => window.clearTimeout(id));
     };
-  }, [spinKey, duration, axis, startPct, spinTo, phase]);
+  }, [spinKey, duration, startPct, spinTo, phase]);
 
   return (
     <div

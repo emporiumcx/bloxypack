@@ -61,7 +61,7 @@ export type Battle = {
   id: string;
   cost: number;
   cases: string[];
-  players: { name: string; bot?: boolean; team: number; level?: number; avatar?: string }[];
+  players: { name: string; bot?: boolean; team: number; level?: number; avatar?: string; slot?: number }[];
   slots: number;
   teams: string;
   status: "active" | "ended";
@@ -69,6 +69,7 @@ export type Battle = {
   jackpot?: boolean;
   crazy?: boolean;
   terminal?: boolean;
+  funding?: number;
 };
 
 export const BATTLES: Battle[] = [

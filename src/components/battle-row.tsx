@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCase, type Battle } from "@/lib/catalog";
+import { botAvatar } from "@/lib/avatars";
 import { BattleSeat, BattleVs } from "./battle-seat";
 import { Bux } from "./bux";
 import { GreenButton } from "./green-button";
@@ -80,8 +81,8 @@ export function BattleRow({ battle: b, compact = false }: { battle: Battle; comp
                         name={p?.name}
                         filled={Boolean(p)}
                         size={compact ? 32 : 40}
-                        bot={Boolean(p?.bot)}
-                        slot={p?.slot ?? pi}
+                        src={p?.bot ? botAvatar(p.slot ?? pi) : p?.avatar}
+                        level={p?.level}
                       />
                     ))}
                   </div>

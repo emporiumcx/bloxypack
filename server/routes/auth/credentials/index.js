@@ -33,9 +33,6 @@ const {
     authGenerateJwtToken,
 } = require('../../../utils/auth');
 const {
-    pickRandomAvatar
-} = require('../../../utils/avatar');
-const {
     authCheckPostCredentialsData,
     authCheckPostCredentialsUser,
     authCheckPostCredentialsRegisterData,
@@ -75,7 +72,7 @@ module.exports = () => {
                     { 'local.email': loginInfo },
                     { 'username': loginInfo }
                 ]
-            }).select('local ips avatar').lean();
+            }).select('local ips').lean();
 
             // Compare password
             const isMatch = await bcrypt.compare(password, (userDatabase !== null && userDatabase.local !== undefined ? userDatabase.local.password : ''));
@@ -93,14 +90,10 @@ module.exports = () => {
             userDatabase.ips.unshift({ address: userIp });
 
             // Update user in database
-            const loginUpdates = {
-                ips: userDatabase.ips.slice(0, 25),
-                updatedAt: new Date().getTime()
-            };
-            if (!userDatabase.avatar) {
-                loginUpdates.avatar = pickRandomAvatar();
-            }
-            userDatabase = await User.findByIdAndUpdate(userDatabase._id, loginUpdates, { new: true }).select('local.email local.emailVerified roblox.id discord.id username avatar rank balance xp vault stats rakeback fair anonymous mute ban verifiedAt updatedAt createdAt').lean();
+            userDatabase = await User.findByIdAndUpdate(userDatabase._id, { 
+                ips: userDatabase.ips.slice(0, 25), 
+                updatedAt: new Date().getTime() 
+            }).select('local.email local.emailVerified roblox.id discord.id username avatar rank balance xp vault stats rakeback fair anonymous mute ban verifiedAt updatedAt createdAt').lean();
             
             // Get settings
             let settings = settingGet();
@@ -183,7 +176,6 @@ module.exports = () => {
                 User.create({
                     _id: userId,
                     username: username,
-                    avatar: pickRandomAvatar(),
                     local: {
                         email: req.body.email,
                         password: password

@@ -57,15 +57,25 @@ export function pickDrop(drops: CaseDrop[]) {
   return drops.find((d) => ticket >= d.minTicket && ticket <= d.maxTicket) ?? drops[drops.length - 1];
 }
 
+export function dropFromTicket(slug: string, ticket: number) {
+  const drops = dropsForCase(slug);
+  if (!drops.length) return null;
+  return drops.find((d) => ticket >= d.minTicket && ticket <= d.maxTicket) ?? drops[drops.length - 1] ?? null;
+}
+
 export type Battle = {
   id: string;
   cost: number;
   cases: string[];
-  players: { name: string; bot?: boolean; team: number }[];
+  players: { name: string; bot?: boolean; team: number; slot?: number }[];
   slots: number;
   teams: string;
   status: "active" | "ended";
   unboxed: number;
+  funding?: number;
+  jackpot?: boolean;
+  crazy?: boolean;
+  terminal?: boolean;
 };
 
 export const BATTLES: Battle[] = [
@@ -74,12 +84,12 @@ export const BATTLES: Battle[] = [
     cost: 188312,
     cases: ["neon-case", "astra-dreams", "midas-touch", "fedora-fiasco"],
     players: [
-      { name: "imtrynamaxwin", team: 0 },
-      { name: "Bot", bot: true, team: 0 },
-      { name: "Bot", bot: true, team: 1 },
-      { name: "Bot", bot: true, team: 1 },
-      { name: "Bot", bot: true, team: 2 },
-      { name: "Bot", bot: true, team: 2 },
+      { name: "imtrynamaxwin", team: 0, slot: 0 },
+      { name: "Bot Alpha", bot: true, team: 0, slot: 1 },
+      { name: "Bot Bravo", bot: true, team: 1, slot: 2 },
+      { name: "Bot Charlie", bot: true, team: 1, slot: 3 },
+      { name: "Bot Delta", bot: true, team: 2, slot: 4 },
+      { name: "Bot Echo", bot: true, team: 2, slot: 5 },
     ],
     slots: 6,
     teams: "2v2v2 Team",
@@ -114,9 +124,9 @@ export const BATTLES: Battle[] = [
     cost: 18420,
     cases: ["cheap-meal", "noob-case", "bone-breaker", "10-random"],
     players: [
-      { name: "Alpha_mil0", team: 0 },
-      { name: "Bot", bot: true, team: 1 },
-      { name: "voids", team: 2 },
+      { name: "Alpha_mil0", team: 0, slot: 0 },
+      { name: "Bot Bravo", bot: true, team: 1, slot: 1 },
+      { name: "voids", team: 2, slot: 2 },
     ],
     slots: 4,
     teams: "FFA",
@@ -128,8 +138,8 @@ export const BATTLES: Battle[] = [
     cost: 410900,
     cases: ["dominus-bonanza", "golden-opportunity", "mogger"],
     players: [
-      { name: "Anonymous", team: 0 },
-      { name: "Bot", bot: true, team: 1 },
+      { name: "Anonymous", team: 0, slot: 0 },
+      { name: "Bot Bravo", bot: true, team: 1, slot: 1 },
     ],
     slots: 2,
     teams: "1v1",
@@ -177,8 +187,8 @@ export const BATTLES: Battle[] = [
     cost: 4132,
     cases: ["e-boy-case"],
     players: [
-      { name: "WILD", team: 0 },
-      { name: "Bot", bot: true, team: 1 },
+      { name: "WILD", team: 0, slot: 0 },
+      { name: "Bot Bravo", bot: true, team: 1, slot: 1 },
     ],
     slots: 2,
     teams: "1v1",

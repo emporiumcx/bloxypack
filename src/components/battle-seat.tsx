@@ -1,6 +1,7 @@
 import { Icons } from "./icons";
-import { avatarSrc } from "@/lib/avatars";
+import { botAvatar, botRing } from "@/lib/bots";
 
+const AVATARS = ["/cdn/avatars/default.webp", "/img/icon.png"];
 const RANKS = ["/img/rank/23.svg", "/img/rank/7.svg", "/img/rank/11.svg", "/img/rank/13.svg"];
 const RINGS = [
   "var(--color-rank-diamond)",
@@ -14,16 +15,21 @@ export function BattleSeat({
   filled,
   size = 40,
   src,
+  bot = false,
+  slot = 0,
 }: {
   name?: string;
   filled: boolean;
   size?: number;
   src?: string;
+  bot?: boolean;
+  slot?: number;
 }) {
   const inner = Math.round(size * 0.925);
   const avatar = Math.round(size * 0.825);
-  const ring = name ? RINGS[name.length % RINGS.length] : "var(--color-grey-58)";
+  const ring = bot ? botRing(slot) : name ? RINGS[name.length % RINGS.length] : "var(--color-grey-58)";
   const rank = name ? RANKS[name.length % RANKS.length] : "/img/rank/7.svg";
+  const image = src || (bot ? botAvatar(slot) : AVATARS[name ? name.length % AVATARS.length : 0]);
   return (
     <div
       className="group relative h-40 w-40 rounded-full p-2 transition-opacity duration-200"
@@ -42,11 +48,7 @@ export function BattleSeat({
           style={{ width: avatar, height: avatar }}
         >
           {filled ? (
-            <img
-              alt=""
-              className="h-full w-full rounded-2 object-cover"
-              src={src || avatarSrc(undefined, name)}
-            />
+            <img alt="" className="h-full w-full rounded-2 object-cover" src={image} />
           ) : (
             <Icons.seat className="text-18 text-grey-190" />
           )}

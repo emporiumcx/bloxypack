@@ -28,10 +28,11 @@ export function Bux({
   value: number;
   className?: string;
   tone?: keyof typeof TONE;
-  size?: "md" | "sm";
+  size?: "md" | "sm" | "xs";
   amount?: "white" | "green" | "muted" | "onGreen";
 }) {
   const sm = size === "sm";
+  const xs = size === "xs";
   const amountClass =
     amount === "muted" || tone === "muted"
       ? "text-grey-142"
@@ -44,12 +45,12 @@ export function Bux({
         <div className="flex items-center justify-center">
           <BuxGlyph
             className={tone === "muted" ? "opacity-50" : undefined}
-            style={sm ? { width: 16, height: 16 } : { width: 20, height: 20 }}
+            style={xs ? { width: 14, height: 14 } : sm ? { width: 16, height: 16 } : { width: 18, height: 18 }}
           />
         </div>
       </div>
       <div className={`relative flex items-center ${amountClass}`}>
-        <p className={`ui-num ${sm ? "text-13" : "text-16"}`}>{formatBux(value)}</p>
+        <p className={`font-semibold ${xs ? "text-11" : sm ? "text-12" : "text-14"}`}>{formatBux(value)}</p>
       </div>
     </div>
   );

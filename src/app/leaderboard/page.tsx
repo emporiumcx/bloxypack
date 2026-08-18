@@ -141,7 +141,7 @@ export default function LeaderboardPage() {
                 <div className="relative">
                   <div className="absolute -left-10 top-1/2 h-2 w-60 -translate-x-full -translate-y-1/2 bg-gradient-to-r from-transparent to-green" />
                   <div className="absolute -right-10 top-1/2 h-2 w-60 -translate-y-1/2 translate-x-full bg-gradient-to-l from-transparent to-green" />
-                  <p className="@lg/page:text-42 @md/page:text-32 relative text-24 font-black text-white">LEADERBOARD</p>
+                  <p className="@lg/page:text-42 @md/page:text-32 font-display relative text-32 uppercase text-cream">LEADERBOARD</p>
                 </div>
               </div>
               <div className="flex w-full justify-center">

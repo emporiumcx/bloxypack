@@ -90,17 +90,20 @@ export default function CreateBattlePage() {
   const [boxIds, setBoxIds] = useState<Record<string, string>>({});
   const [adding, setAdding] = useState(false);
   const [jackpot, setJackpot] = useState(false);
-  const [wild, setWild] = useState(false);
+  const [crazy, setCrazy] = useState(false);
   const [terminal, setTerminal] = useState(false);
   const [priv, setPriv] = useState(false);
   const [fast, setFast] = useState(false);
   const [loop, setLoop] = useState(true);
   const [borrow, setBorrow] = useState(false);
-  const [borrowPct, setBorrowPct] = useState(0);
+  const [borrowPct, setBorrowPct] = useState(80);
   const [layoutId, setLayoutId] = useState("1v1");
   const [creating, setCreating] = useState(false);
   const layout = ALL.find((l) => l.id === layoutId) ?? ALL[0];
   const cost = picked.reduce((s, c) => s + c.price, 0);
+  const funding = borrow ? Math.min(80, Math.max(0, Math.round(borrowPct))) : 0;
+  const createCost = cost + (cost * layout.slots * funding) / 100;
+  const joinCost = cost * (1 - funding / 100);
 
   useEffect(() => {
     return subscribeBattles((state) => {
@@ -113,7 +116,7 @@ export default function CreateBattlePage() {
   const create = async () => {
     if (!user) return openModal("login");
     if (!picked.length) return;
-    if (user.balance < cost) return openModal("deposit");
+    if (user.balance < createCost) return openModal("deposit");
     const boxes = picked.map((c) => {
       const id = boxIds[c.slug];
       if (!id) throw new Error(`Case ${c.name} is not seeded on the server.`);
@@ -126,10 +129,11 @@ export default function CreateBattlePage() {
         playerCount: layout.slots,
         mode,
         boxes,
-        funding: borrow ? borrowPct : 0,
+        funding,
         private: priv,
-        cursed: wild,
+        cursed: crazy,
         terminal,
+        jackpot,
         affiliateOnly: false,
         levelMin: 0,
       });
@@ -162,7 +166,7 @@ export default function CreateBattlePage() {
           </div>
 
           <div className="@lg/page:grid-cols-[1fr_auto] grid w-full grid-cols-1 items-center gap-10">
-            <h1 className="@sm/page:text-20 @md/page:text-24 w-full text-18 font-bold leading-[125%] text-white transition-colors duration-200">
+            <h1 className="@sm/page:text-20 @md/page:text-24 font-display w-full text-28 uppercase leading-[125%] text-cream transition-colors duration-200">
               Create battle
             </h1>
             <div className="@sm/page:grid-cols-[repeat(6,auto)] @sm/page:gap-16 grid grid-cols-2 items-center justify-start gap-10">
@@ -177,14 +181,14 @@ export default function CreateBattlePage() {
                 label={<p className="ml-6 text-14 text-grey-190">Jackpot</p>}
               />
               <Switch
-                on={wild}
-                onClick={() => setWild((v) => !v)}
+                on={crazy}
+                onClick={() => setCrazy((v) => !v)}
                 icon={
                   <div className="text-18 text-pink-231">
                     <Icons.wild />
                   </div>
                 }
-                label={<p className="ml-6 text-14 text-grey-190">Wild</p>}
+                label={<p className="ml-6 text-14 text-grey-190">Crazy</p>}
               />
               <Switch
                 on={terminal}
@@ -331,9 +335,22 @@ export default function CreateBattlePage() {
               </div>
               <div className="mx-16 h-full border-l-1 border-grey-47" />
               <div className="grid grid-cols-1 gap-6">
-                <p className="text-12 text-grey-142">Case amount</p>
-                <p className="text-14 text-white">{picked.length}</p>
+                <p className="text-12 text-grey-142">{funding > 0 ? "Your cost" : "Case amount"}</p>
+                {funding > 0 ? (
+                  <Bux value={createCost} />
+                ) : (
+                  <p className="text-14 text-white">{picked.length}</p>
+                )}
               </div>
+              {funding > 0 ? (
+                <>
+                  <div className="mx-16 h-full border-l-1 border-grey-47" />
+                  <div className="grid grid-cols-1 gap-6">
+                    <p className="text-12 text-grey-142">Join cost</p>
+                    <Bux value={joinCost} />
+                  </div>
+                </>
+              ) : null}
             </div>
           </div>
           <div className="grid w-full grid-cols-1 items-center gap-12 sm:grid-cols-[auto_auto]">
@@ -341,11 +358,16 @@ export default function CreateBattlePage() {
               <div className="group relative flex h-40 min-w-[200px] justify-center rounded-6 border-2 border-grey-47 bg-grey-47 px-12 transition-colors hover:border-grey-190 hover:bg-grey-58 active:border-grey-190 active:bg-grey-58">
                 <Switch
                   on={borrow}
-                  onClick={() => setBorrow((v) => !v)}
+                  onClick={() => {
+                    setBorrow((v) => {
+                      if (!v) setBorrowPct((p) => (p <= 0 ? 80 : Math.min(80, p)));
+                      return !v;
+                    });
+                  }}
                   icon={<div className="text-18 text-green" />}
                   label={
                     <p className="text-14 text-grey-190">
-                      Borrow Mode <span className="text-14 text-grey-190">{borrow ? borrowPct : 0}%</span>
+                      Borrow Mode <span className="text-14 text-grey-190">{funding}%</span>
                     </p>
                   }
                 />
@@ -355,11 +377,11 @@ export default function CreateBattlePage() {
                   <input
                     className="rs-range w-full"
                     type="range"
-                    min={0}
-                    max={100}
+                    min={1}
+                    max={80}
                     step={1}
-                    value={borrowPct}
-                    onChange={(e) => setBorrowPct(Number(e.target.value))}
+                    value={funding}
+                    onChange={(e) => setBorrowPct(Math.min(80, Math.max(1, Number(e.target.value))))}
                   />
                 </div>
               ) : null}

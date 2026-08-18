@@ -1,5 +1,6 @@
 const validator = require('validator');
 const crypto = require('crypto');
+const { battleJackpotFloat } = require('./fair');
 
 // Load database models
 const BattlesGame = require('../database/models/BattlesGame');
@@ -29,8 +30,8 @@ const battlesCheckSendCreateData = (data) => {
         throw new Error('Your entered boxes are invalid.');
     } else if(data.levelMin === undefined || data.levelMin === null || isNaN(data.levelMin) === true || data.levelMin < 0 || data.levelMin > 100) {
         throw new Error('Your entered min level is invalid.');
-    } else if(data.funding === undefined || data.funding === null || isNaN(data.funding) === true || data.funding < 0 || data.funding > 100) {
-        throw new Error('Your entered funding value is invalid.');
+    } else if(data.funding === undefined || data.funding === null || isNaN(data.funding) === true || data.funding < 0 || data.funding > 80) {
+        throw new Error('Your entered funding value is invalid. Maximum borrow is 80%.');
     } else if(data.private === undefined || data.private === null || typeof data.private !== 'boolean') {
         throw new Error('Your entered private value is invalid.');
     } else if(data.affiliateOnly === undefined || data.affiliateOnly === null || typeof data.affiliateOnly !== 'boolean') {
@@ -38,7 +39,9 @@ const battlesCheckSendCreateData = (data) => {
     } else if(data.cursed === undefined || data.cursed === null || typeof data.cursed !== 'boolean') {
         throw new Error('Your entered affiliate value is invalid.');
     } else if(data.terminal === undefined || data.terminal === null || typeof data.terminal !== 'boolean') {
-        throw new Error('Your entered affiliate value is invalid.');
+        throw new Error('Your entered terminal value is invalid.');
+    } else if(data.jackpot !== undefined && data.jackpot !== null && typeof data.jackpot !== 'boolean') {
+        throw new Error('Your entered jackpot value is invalid.');
     }
 }
 
@@ -149,9 +152,10 @@ const battlesGenerateGame = (data, amount, boxes) => {
                 boxes: boxes,
                 options: {
                     levelMin: Math.floor(data.levelMin),
-                    funding: Math.floor(data.funding),
+                    funding: Math.min(80, Math.max(0, Math.floor(data.funding))),
                     cursed: data.cursed,
                     terminal: data.terminal,
+                    jackpot: data.jackpot === true,
                     private: data.private,
                     affiliateOnly: data.affiliateOnly
                 },
@@ -264,30 +268,73 @@ const battlesGetOutcomeItem = ( items, outcome) => {
     return outcomeItem;
 }
 
+const battlesBetScore = (outcomes, terminal) => {
+    if (!outcomes.length) return 0;
+    return terminal === true ? outcomes[outcomes.length - 1] : outcomes.reduce((total, outcome) => total + outcome, 0);
+};
+
+const battlesJackpotWeights = (scores, cursed) => {
+    const values = scores.map((score) => Math.max(1, Math.floor(score) || 1));
+    if (cursed !== true) return values;
+    const max = Math.max(...values);
+    return values.map((score) => Math.max(1, max + 1 - score));
+};
+
+const battlesPickJackpotIndex = (weights, battlesGame) => {
+    const total = weights.reduce((sum, weight) => sum + weight, 0);
+    if (total <= 0) return 0;
+    const roll = battleJackpotFloat(battlesGame.fair.seedServer, battlesGame.fair.seedPublic || '');
+    const ticket = Math.floor(roll * total);
+    let acc = 0;
+    for (let i = 0; i < weights.length; i++) {
+        acc += weights[i];
+        if (ticket < acc) return i;
+    }
+    return weights.length - 1;
+};
+
 const battlesGetWinnerBets = (battlesGame) => {
     const rounds = battlesGetRounds(battlesGame.boxes);
     const bets = battlesGame.bets.map((bet) => ({ ...bet, outcomes: bet.outcomes.map((outcome, index) => battlesGetOutcomeItem(rounds[index].box.items, outcome).amountFixed) }));
+    const terminal = battlesGame.options.terminal === true;
+    const cursed = battlesGame.options.cursed === true;
+    const jackpot = battlesGame.options.jackpot === true;
     let winners = [];
+
+    if (jackpot) {
+        const scores = bets.map((bet) => battlesBetScore(bet.outcomes, terminal));
+        if (battlesGame.mode === 'team') {
+            const teamScores = [scores[0] + scores[1], scores[2] + scores[3]];
+            const weights = battlesJackpotWeights(teamScores, cursed);
+            winners = battlesPickJackpotIndex(weights, battlesGame) === 0
+                ? [battlesGame.bets[0], battlesGame.bets[1]]
+                : [battlesGame.bets[2], battlesGame.bets[3]];
+        } else {
+            const weights = battlesJackpotWeights(scores, cursed);
+            winners = [battlesGame.bets[battlesPickJackpotIndex(weights, battlesGame)]];
+        }
+        return winners;
+    }
 
     if(battlesGame.mode === 'group') {
         winners = battlesGame.bets;
     } else if(battlesGame.mode === 'team') {
-        const amountOne = battlesGame.options.terminal === false ? 
-                            [...bets[0].outcomes, ...bets[1].outcomes].reduce((total, outcome) => total + outcome, 0) : Math.floor(bets[0].outcomes[bets[0].outcomes.length - 1] + bets[1].outcomes[bets[1].outcomes.length - 1]);
-        const amountTwo = battlesGame.options.terminal === false ? 
-                            [...bets[2].outcomes, ...bets[3].outcomes].reduce((total, outcome) => total + outcome, 0) : Math.floor(bets[2].outcomes[bets[2].outcomes.length - 1] + bets[3].outcomes[bets[3].outcomes.length - 1]);
+        const amountOne = terminal ? 
+                            Math.floor(bets[0].outcomes[bets[0].outcomes.length - 1] + bets[1].outcomes[bets[1].outcomes.length - 1]) :
+                            [...bets[0].outcomes, ...bets[1].outcomes].reduce((total, outcome) => total + outcome, 0);
+        const amountTwo = terminal ? 
+                            Math.floor(bets[2].outcomes[bets[2].outcomes.length - 1] + bets[3].outcomes[bets[3].outcomes.length - 1]) :
+                            [...bets[2].outcomes, ...bets[3].outcomes].reduce((total, outcome) => total + outcome, 0);
 
         if(amountOne === amountTwo) { winners = battlesGame.bets; }
-        else if((battlesGame.options.cursed === false && amountOne > amountTwo) || (battlesGame.options.cursed === true && amountOne < amountTwo)) { winners = [battlesGame.bets[0], battlesGame.bets[1]]; }
+        else if((cursed === false && amountOne > amountTwo) || (cursed === true && amountOne < amountTwo)) { winners = [battlesGame.bets[0], battlesGame.bets[1]]; }
         else { winners = [battlesGame.bets[2], battlesGame.bets[3]]; }
     } else {
-        const amounts = bets.map((bet) => battlesGame.options.terminal === false ? bet.outcomes.reduce((total, outcome) => total + outcome, 0) : bet.outcomes[bet.outcomes.length - 1]);
-        const amountWin = battlesGame.options.cursed === false ? Math.max(...amounts) : Math.min(...amounts);
+        const amounts = bets.map((bet) => battlesBetScore(bet.outcomes, terminal));
+        const amountWin = cursed === false ? Math.max(...amounts) : Math.min(...amounts);
 
         for(const [index, bet] of bets.entries()) { 
-            const amountBet = battlesGame.options.terminal === false ? bet.outcomes.reduce((total, outcome) => total + outcome, 0) : bet.outcomes[bet.outcomes.length - 1];
-
-            if(amountWin === amountBet) { winners.push(battlesGame.bets[index]); } 
+            if(amountWin === amounts[index]) { winners.push(battlesGame.bets[index]); } 
         }
     }
 

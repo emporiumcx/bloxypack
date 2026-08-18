@@ -74,7 +74,7 @@ export default function RewardsPage() {
       <div className="grid w-full grid-cols-[1fr_auto] items-center gap-16">
         <div className="grid w-full grid-cols-[auto_1fr] items-center gap-12">
           <img alt="" className="-mt-16 w-24" src="/img/rewards/gift.svg" />
-          <h2 className="@sm/page:text-24 text-18 text-white">Rewards</h2>
+          <h2 className="@sm/page:text-24 font-display text-28 uppercase text-cream">Rewards</h2>
         </div>
         <div className="relative h-30 w-[220px]">
           <img alt="" className="absolute -bottom-32 right-0 w-full" src="/img/rewards/cases.webp" />

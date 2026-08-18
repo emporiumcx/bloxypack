@@ -186,7 +186,7 @@ export default function MinesPage() {
                       className={`@sm/page:rounded-6 @md/page:rounded-10 absolute inset-0 flex items-center justify-center rounded-3 border-b-3 border-t-3 ${
                         isMine
                           ? "border-b-red border-t-red-143 bg-red"
-                          : "border-b-green-95 border-t-green-202 bg-green"
+                          : "btn-gold"
                       }`}
                     >
                       <img

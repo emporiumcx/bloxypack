@@ -185,7 +185,7 @@ export default function TowersPage() {
                     className={`tr absolute inset-0 flex items-center justify-center rounded-12 border-b-3 border-t-3 ${
                       hit || isBomb
                         ? "border-b-red border-t-red-143 bg-red"
-                        : "border-b-green-95 border-t-green-222 bg-green"
+                        : "btn-gold"
                     } ${open ? "animate-minescontent opacity-100" : "pointer-events-none opacity-0"}`}
                   >
                     {hit || isBomb ? (

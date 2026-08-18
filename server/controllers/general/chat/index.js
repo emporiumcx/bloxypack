@@ -3,7 +3,6 @@ const validator = require('validator');
 
 // Load database models
 const FilterPhrase = require('../../../database/models/FilterPhrase');
-const User = require('../../../database/models/User');
 
 // Load utils
 const {
@@ -60,19 +59,7 @@ const generalGetChatMessagesSocket = async(io, socket, user, data, callback) => 
         const onlineData = await generalGetChatOnlineCount(io);
         io.of('/general').emit('chatOnline', { online: onlineData });
 
-        const messages = generalChatMessages[data.room] || [];
-        const userIds = [...new Set(messages.map((m) => m.user && m.user._id).filter(Boolean))];
-        if (userIds.length > 0) {
-            const users = await User.find({ _id: { $in: userIds } }).select('avatar').lean();
-            const avatars = Object.fromEntries(users.map((u) => [String(u._id), u.avatar]));
-            for (const message of messages) {
-                if (!message.user || !message.user._id) continue;
-                const avatar = avatars[String(message.user._id)];
-                if (avatar) message.user.avatar = avatar;
-            }
-        }
-
-        callback({ success: true, messages: messages });
+        callback({ success: true, messages: generalChatMessages[data.room] });
     } catch(err) {
         callback({ success: false, error: { type: 'error', message: err.message } });
     }

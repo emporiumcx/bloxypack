@@ -10,7 +10,7 @@ export default function AffiliatePage() {
     return (
       <div className="grid min-h-[60vh] place-items-center text-center">
         <div>
-          <h1 className="@sm/page:text-20 @md/page:text-24 text-18 font-bold leading-[125%]">Affiliate</h1>
+          <h1 className="@sm/page:text-20 @md/page:text-24 font-display text-28 uppercase leading-[125%] text-cream">Affiliate</h1>
           <p className="mt-8 max-w-[420px] text-14 text-grey-190">
             Sign in to get your referral code, track wagered users, and claim affiliate earnings.
           </p>
@@ -27,7 +27,7 @@ export default function AffiliatePage() {
 
   return (
     <div className="grid w-full grid-cols-1 gap-16">
-      <h1 className="@sm/page:text-20 @md/page:text-24 text-18 font-bold leading-[125%]">Affiliate</h1>
+      <h1 className="@sm/page:text-20 @md/page:text-24 font-display text-28 uppercase leading-[125%] text-cream">Affiliate</h1>
       <div className="grid gap-10 md:grid-cols-3">
         {[
           ["Your code", code],

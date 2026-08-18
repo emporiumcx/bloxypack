@@ -5,7 +5,7 @@ import { Icons } from "@/components/icons";
 export default function MarketplacePage() {
   return (
     <div className="@xl/page:gap-32 @bt/page:gap-24 grid w-full grid-cols-1 gap-16">
-      <h1 className="@sm/page:text-20 @md/page:text-24 w-full text-18 font-bold text-white">Marketplace</h1>
+      <h1 className="@sm/page:text-20 @md/page:text-24 font-display w-full text-28 uppercase text-cream">Marketplace</h1>
       <div className="relative flex h-40 w-full max-w-[420px] items-center rounded-8 border-2 border-transparent bg-grey-39 px-12">
         <Icons.search className="mr-2 text-20 text-grey-142" />
         <input

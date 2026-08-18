@@ -15,6 +15,7 @@ const battlesGameSchema = new mongoose.Schema({
         funding: { type: Number },
         cursed: { type: Boolean },
         terminal: { type: Boolean },
+        jackpot: { type: Boolean },
         private: { type: Boolean },
         affiliateOnly: { type: Boolean }
     },

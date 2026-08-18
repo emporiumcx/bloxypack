@@ -1,59 +1,144 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { Bux } from "./bux";
 import { ChatPanel } from "./chat";
 import { SiteFooter } from "./footer";
 import { Icons } from "./icons";
 import { Modals } from "./modals";
 import { useStore } from "./providers";
-import { SiteHeader } from "./site-header";
+import { GamesMenu, Sidebar } from "./sidebar";
+
+function HeaderBalance({ value }: { value: number }) {
+  const prev = useRef(value);
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    if (prev.current === value) return;
+    prev.current = value;
+    setTick((n) => n + 1);
+  }, [value]);
+  return (
+    <div key={tick} className={tick ? "animate-pop" : undefined}>
+      <Bux value={value} />
+    </div>
+  );
+}
 
 export function Shell({ children }: { children: React.ReactNode }) {
-  const { chatOpen, toggleChat, openModal } = useStore();
+  const { chatOpen, user, openModal, toggleSidebar, toggleChat } = useStore();
   const pathname = usePathname();
+  const [gamesOpen, setGamesOpen] = useState(false);
+
+  useEffect(() => {
+    setGamesOpen(false);
+  }, [pathname]);
 
   return (
-    <div className="light relative min-h-full w-full min-w-[330px] bg-grey-28">
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center opacity-[0.28]"
-        style={{ backgroundImage: "url(/img/landscape.webp)" }}
-      />
-      <ChatPanel />
-      <div className={`page-shift relative z-10 min-h-full ${chatOpen ? "lg:pl-[300px]" : ""}`}>
-        <SiteHeader />
-        <div className="@container/page relative w-full overflow-x-hidden overflow-y-visible">
-          <div className="relative flex min-h-[calc(100vh-100px)] w-full justify-center">
-            <div className="flex w-full justify-center p-16 sm:p-20 md:p-24 lg:p-32">
-              <div key={pathname} className="grid w-full max-w-screen-xl animate-page-in grid-cols-1 items-start gap-20 sm:gap-30 md:gap-40">
-                {children}
-              </div>
+    <div className="relative flex h-screen min-h-0 w-full min-w-[330px] overflow-hidden bg-grey-34">
+      <div className="relative flex min-w-0 flex-1 flex-col overflow-hidden">
+        <header className="relative z-40 flex h-[62px] w-full shrink-0 items-center bg-grey-28 bg-scratches">
+          <div className="flex h-full w-full items-center gap-8 px-12 sm:px-16">
+            <button
+              type="button"
+              aria-label="menu"
+              onClick={toggleSidebar}
+              className="flex h-38 w-38 items-center justify-center rounded-8 bg-grey-47 text-cream xl:hidden"
+            >
+              <Icons.menu className="text-20" />
+            </button>
+
+            <Link href="/" aria-label="home" className="group relative mr-6 flex h-full items-center">
+              <div className="pointer-events-none absolute left-1/2 top-1/2 h-70 w-70 -translate-x-1/2 -translate-y-1/2 bg-hex-net opacity-90" />
+              <div className="pointer-events-none absolute bottom-0 left-24 h-2 w-30 bg-gradient-to-r from-green to-transparent md:left-auto md:w-40" />
+              <img alt="WildPVP" className="relative hidden h-32 w-auto object-contain sm:block" src="/img/logo.png" />
+              <img alt="WildPVP" className="relative h-32 w-auto object-contain sm:hidden" src="/img/icon.png" />
+            </Link>
+
+            <div className="hidden items-center gap-8 xl:flex">
+              <button
+                type="button"
+                onClick={() => setGamesOpen((v) => !v)}
+                className="nav-pill nav-pill-games bg-button-net relative flex h-38 items-center gap-6 px-12 text-14 font-black capitalize"
+              >
+                <Icons.cases className="text-16 text-cream" />
+                Games
+                <Icons.chevron className={`text-16 transition-transform ${gamesOpen ? "rotate-180" : ""}`} />
+              </button>
+              <Link href="/rewards" className="nav-pill nav-pill-rewards bg-button-net flex h-38 items-center gap-6 px-14 text-14 font-black capitalize">
+                <Icons.rewards className="text-16 text-cream" />
+                Rewards
+              </Link>
+              <Link href="/leaderboard" className="nav-pill nav-pill-more bg-button-net flex h-38 items-center gap-6 px-14 text-14 font-black capitalize">
+                <Icons.trophy className="text-16 text-cream" />
+                Challenges
+              </Link>
+            </div>
+
+            <div className="ml-auto flex items-center gap-8">
+              <Link href="/rewards" className="nav-pill nav-pill-free hidden h-38 items-center gap-6 px-14 text-14 font-black capitalize md:flex">
+                <Icons.cases className="text-16 text-cream" />
+                Free Cases
+              </Link>
+              <Link href="/leaderboard" className="nav-pill nav-pill-rush hidden h-38 items-center gap-6 px-14 text-14 font-black capitalize lg:flex">
+                <Icons.podium className="text-16 text-cream" />
+                Gold Rush
+              </Link>
+
+              {user ? (
+                <div className="flex h-38 items-center gap-8 rounded-8 bg-grey-39 py-2 pl-12 pr-4">
+                  <HeaderBalance value={user.balance} />
+                  <button
+                    type="button"
+                    onClick={() => openModal("deposit")}
+                    className="btn-gold relative flex h-32 items-center justify-center rounded-6 px-10"
+                  >
+                    <Icons.plus className="text-16 text-gold-deep" />
+                    <p className="ml-4 hidden text-14 font-extrabold uppercase text-gold-deep sm:block">Deposit</p>
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => openModal("login")}
+                  className="btn-gold flex h-38 items-center rounded-6 px-16"
+                >
+                  <p className="text-14 font-extrabold uppercase text-gold-deep">Sign In</p>
+                </button>
+              )}
+
+              <button
+                type="button"
+                aria-label="Toggle chat"
+                onClick={toggleChat}
+                className={`flex h-38 w-38 items-center justify-center rounded-8 border-1 border-grey-58 bg-grey-47 ${
+                  chatOpen ? "text-green" : "text-grey-142"
+                }`}
+              >
+                <Icons.chat className="text-18" />
+              </button>
             </div>
           </div>
-          <SiteFooter />
+        </header>
+
+        <GamesMenu open={gamesOpen} onClose={() => setGamesOpen(false)} />
+        <Sidebar />
+
+        <div className="relative min-h-0 flex-1 overflow-hidden bg-theme-pattern">
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-theme-net opacity-80" />
+          <div className="relative h-full overflow-x-hidden overflow-y-auto">
+            <div className="mx-auto flex w-11/12 max-w-[92rem] flex-col items-center gap-56 py-20 sm:w-10/12 lg:w-9/12">
+              <div key={pathname} className="@container/page grid w-full animate-page-in grid-cols-1 items-start">
+                {children}
+              </div>
+              <SiteFooter />
+            </div>
+          </div>
         </div>
       </div>
 
-      {!chatOpen ? (
-        <button
-          type="button"
-          aria-label="open chat"
-          onClick={toggleChat}
-          className="fixed bottom-16 left-16 z-50 flex h-48 w-48 items-center justify-center rounded-12 border-1 border-grey-47 bg-grey-34 text-grey-142 shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-colors hover:bg-grey-39 hover:text-white"
-        >
-          <Icons.chat className="text-22" />
-        </button>
-      ) : null}
-
-      <button
-        type="button"
-        aria-label="support"
-        onClick={() => openModal("support")}
-        className="fixed bottom-16 right-16 z-50 flex h-48 w-48 items-center justify-center rounded-full border-1 border-grey-47 bg-grey-34 text-grey-142 shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-colors hover:bg-grey-39 hover:text-white"
-      >
-        <Icons.support className="text-20" />
-      </button>
-
+      <ChatPanel />
       <Modals />
     </div>
   );

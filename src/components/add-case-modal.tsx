@@ -8,8 +8,6 @@ import { Icons } from "./icons";
 import { ItemBg } from "./item-bg";
 import { CASES, type CaseItem } from "@/lib/catalog";
 
-const MODAL_EXIT_MS = 220;
-
 export function AddCaseModal({
   onClose,
   onAdd,
@@ -20,7 +18,6 @@ export function AddCaseModal({
   const [q, setQ] = useState("");
   const [risk, setRisk] = useState("all");
   const [sort, setSort] = useState("high");
-  const [leaving, setLeaving] = useState(false);
 
   const list = useMemo(() => {
     return CASES.filter((c) => {
@@ -30,16 +27,10 @@ export function AddCaseModal({
     }).sort((a, b) => (sort === "high" ? b.price - a.price : a.price - b.price));
   }, [q, risk, sort]);
 
-  const requestClose = () => {
-    if (leaving) return;
-    setLeaving(true);
-    window.setTimeout(onClose, MODAL_EXIT_MS);
-  };
-
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center p-12 sm:p-24 ${leaving ? "pointer-events-none" : ""}`}>
-      <button type="button" aria-label="close overlay" className={`${leaving ? "animate-overlay-out" : "animate-overlay-in"} absolute inset-0 bg-black/70`} onClick={leaving ? undefined : requestClose} />
-      <div className={`relative z-10 flex h-[min(860px,calc(100vh-48px))] w-full max-w-[1100px] ${leaving ? "animate-modal-out" : "animate-modal-in"} flex-col overflow-hidden rounded-12 bg-grey-34 shadow-[0_24px_80px_rgba(0,0,0,0.55)]`}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-12 sm:p-24">
+      <button type="button" aria-label="close overlay" className="animate-overlay-in absolute inset-0 bg-black/70" onClick={onClose} />
+      <div className="relative z-10 flex h-[min(860px,calc(100vh-48px))] w-full max-w-[1100px] animate-modal-in flex-col overflow-hidden rounded-12 bg-grey-34 shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
         <div className="flex items-center justify-between border-b-1 border-grey-47 px-16 py-14 sm:px-24">
           <div>
             <p className="text-18 font-bold text-white sm:text-20">Add case</p>
@@ -48,7 +39,7 @@ export function AddCaseModal({
           <button
             type="button"
             aria-label="close"
-            onClick={requestClose}
+            onClick={onClose}
             className="flex h-36 w-36 items-center justify-center rounded-8 bg-grey-28 text-grey-142 hover:bg-grey-47 hover:text-white"
           >
             <Icons.close className="text-18" />
@@ -113,8 +104,8 @@ export function AddCaseModal({
                   <div className="flex w-full justify-center">
                     <Bux value={item.price} />
                   </div>
-                  <div className="flex h-32 items-center justify-center rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green shadow-[0_2px_0_rgba(0,0,0,0.25)]">
-                    <span className="ui-btn-label text-12 text-grey-28">Add case</span>
+                  <div className="btn-gold flex h-32 items-center justify-center rounded-6 text-13 font-bold text-gold-deep">
+                    Add case
                   </div>
                 </div>
               </button>

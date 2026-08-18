@@ -1,73 +1,17 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import { claimAffiliateCode, claimPromoCode } from "@/lib/backend";
 import { GreenButton, green3d } from "./green-button";
 import { Icons } from "./icons";
 import { useStore } from "./providers";
 import { Bux, BuxIcon } from "./bux";
 
-const FEATURED_AFFILIATE_CODE = "WILDPVP";
-const BUX_USD = 0.002;
-const WITHDRAW_FEE = 0.02;
-
-type CashierCoin = {
-  name: string;
-  ticker: string;
-  price: number;
-  img: string;
-};
-
-const FIAT_METHODS = [
-  { name: "Credit card", sub: "Credit cards", img: "/img/payment/paypal.webp" },
-  { name: "Paypal", sub: "Kinguin", img: "/img/payment/paypal.webp" },
-];
-
-const DEPOSIT_CRYPTO: CashierCoin[] = [
-  { name: "Bitcoin", ticker: "BTC", price: 64311, img: "/img/payment/btc.webp" },
-  { name: "Ethereum", ticker: "ETH", price: 1907.86, img: "/img/payment/eth.webp" },
-  { name: "Litecoin", ticker: "LTC", price: 44.48, img: "/img/payment/ltc.webp" },
-  { name: "USDT", ticker: "USDT", price: 1, img: "/img/payment/tether.webp" },
-  { name: "USDC", ticker: "USDC", price: 1, img: "/img/payment/usdc.webp" },
-  { name: "Solana", ticker: "SOL", price: 75.84, img: "/img/payment/sol.webp" },
-  { name: "Ripple", ticker: "XRP", price: 1, img: "/img/payment/xrp.webp" },
-  { name: "Tron", ticker: "TRX", price: 0.33, img: "/img/payment/tron.webp" },
-  { name: "BNB", ticker: "BNB", price: 60, img: "/img/payment/bnb.webp" },
-  { name: "BTC Cash", ticker: "BCH", price: 210.1, img: "/img/payment/btc.webp" },
-  { name: "DAI", ticker: "DAI", price: 1, img: "/img/payment/dai.webp" },
-  { name: "Toncoin", ticker: "TON", price: 1.39, img: "/img/payment/ton.webp" },
-];
-
-const WITHDRAW_CRYPTO: CashierCoin[] = [
-  { name: "Ethereum", ticker: "ETH", price: 1907.53, img: "/img/payment/eth.webp" },
-  { name: "Litecoin", ticker: "LTC", price: 44.48, img: "/img/payment/ltc.webp" },
-  { name: "Solana", ticker: "SOL", price: 75.81, img: "/img/payment/sol.webp" },
-];
-
-function formatUsd(n: number) {
-  if (Number.isInteger(n)) return `$${n.toLocaleString("en-US")}`;
-  return `$${n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-}
-
-function demoAddress(ticker: string) {
-  if (ticker === "SOL") return "7k2Hq9pL3mR8sW4nY6cT1vB5xJ0dF8aQ3uP9eH2kL6mN";
-  if (ticker === "BTC" || ticker === "BCH") return "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
-  if (ticker === "LTC") return "ltc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
-  if (ticker === "TRX") return "TXYZopqrstuvwxyz1234567890abcdef";
-  if (ticker === "TON") return "UQBvI0aFLnw2QbZcq8YpxlrdQ8mW0z9p7example";
-  return "0x71C7656EC7ab88b098defB751B7401B5f6d8976F";
-}
-
-const MODAL_EXIT_MS = 220;
-
 function Overlay({
   children,
   onClose,
-  leaving = false,
 }: {
   children: React.ReactNode;
   onClose: () => void;
-  leaving?: boolean;
 }) {
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -80,13 +24,13 @@ function Overlay({
   }, []);
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center overflow-y-auto ${leaving ? "pointer-events-none" : ""}`}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto">
       <button
-        className={`${leaving ? "animate-overlay-out" : "animate-overlay-in"} absolute inset-0 bg-black/60 backdrop-blur-sm`}
+        className="animate-overlay-in absolute inset-0 bg-black/60 backdrop-blur-sm"
         aria-label="close overlay"
-        onClick={leaving ? undefined : onClose}
+        onClick={onClose}
       />
-      <div className={`relative z-10 my-24 ${leaving ? "animate-modal-out" : "animate-modal-in"}`}>{children}</div>
+      <div className="relative z-10 my-24 animate-modal-in">{children}</div>
     </div>
   );
 }
@@ -95,14 +39,10 @@ function ModalFrame({
   width,
   onClose,
   children,
-  banner,
-  leaving = false,
 }: {
   width: number;
   onClose: () => void;
   children: ReactNode;
-  banner?: string;
-  leaving?: boolean;
 }) {
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -116,36 +56,20 @@ function ModalFrame({
 
   return (
     <div
-      className={`fixed inset-0 flex w-full min-w-[330px] items-center overflow-hidden p-10 sm:p-12 sm:p-20 md:p-24 lg:p-30 ${leaving ? "pointer-events-none" : ""}`}
+      className="fixed inset-0 flex w-full min-w-[330px] items-center overflow-hidden p-10 sm:p-12 sm:p-20 md:p-24 lg:p-30"
       style={{ zIndex: 80 }}
     >
       <div className="relative flex max-h-full w-full overflow-y-auto rounded-4 sm:rounded-4">
         <button
           type="button"
           aria-label="close"
-          className={`${leaving ? "animate-overlay-out" : "animate-overlay-in"} fixed top-0 left-0 h-full w-screen min-w-[330px] bg-black/40 backdrop-blur-[4px] backdrop-filter`}
-          onClick={leaving ? undefined : onClose}
+          className="animate-overlay-in fixed top-0 left-0 h-full w-screen min-w-[330px] bg-black/40 backdrop-blur-[4px] backdrop-filter"
+          onClick={onClose}
         />
-        <div className={`absolute top-0 bottom-0 left-1/2 -translate-x-1/2 relative xs:w-auto ${leaving ? "animate-modal-out" : "animate-modal-in"}`}>
-          <div
-            className={`relative z-50 overflow-hidden rounded-12 bg-grey-34 ${
-              banner ? "w-[min(92vw,480px)] sm:w-[min(92vw,740px)]" : "!max-w-full"
-            }`}
-            style={banner ? undefined : { width }}
-          >
-            <div className="relative flex h-full w-full">
-              {banner ? (
-                <div className="relative hidden w-[260px] shrink-0 self-stretch overflow-hidden sm:block">
-                  <img
-                    src={banner}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover object-center"
-                  />
-                </div>
-              ) : null}
-              <div className="relative flex min-w-0 flex-1 flex-col overflow-y-auto bg-grey-34">
-                {children}
-              </div>
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 animate-modal-in relative xs:w-auto">
+          <div className="relative z-50 grid !max-w-full rounded-8 bg-grey-39 @sm/page:rounded-12" style={{ width }}>
+            <div className="relative flex h-full w-full flex-col overflow-y-auto rounded-8 bg-grey-39 @sm/page:h-auto @sm/page:rounded-12">
+              {children}
             </div>
           </div>
         </div>
@@ -154,96 +78,22 @@ function ModalFrame({
   );
 }
 
-function CashierHeader({
-  title,
-  onClose,
-  onBack,
-}: {
-  title: string;
-  onClose: () => void;
-  onBack?: () => void;
-}) {
-  return (
-    <div className="@sm/page:p-24 @sm/page:pb-0 relative z-10 grid w-full items-center gap-10 p-16 pb-0">
-      <div className="grid w-full grid-cols-[1fr_auto] items-center">
-        {onBack ? (
-          <button type="button" onClick={onBack} className="flex min-w-0 items-center gap-8 text-left">
-            <Icons.chevronLeft className="text-20 text-grey-142" />
-            <h1 className="text-white/90">{title}</h1>
-          </button>
-        ) : (
-          <h1 className="text-white/90">{title}</h1>
-        )}
-        <button type="button" aria-label="close" className="group flex h-20 w-20 items-center justify-center" onClick={onClose}>
-          <Icons.close className="text-22 text-grey-142 transition-colors group-hover:text-white group-active:text-white" />
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function MethodLabel({ children }: { children: ReactNode }) {
-  return <p className="mb-10 text-13 text-grey-142">{children}</p>;
-}
-
-function FiatCard({
-  name,
-  sub,
-  img,
-  onClick,
-}: {
-  name: string;
-  sub: string;
-  img: string;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="flex items-center gap-12 rounded-8 bg-grey-28 p-12 text-left transition-colors duration-200 hover:bg-grey-39"
-    >
-      <img src={img} alt="" className="h-40 w-40 rounded-8 object-contain" />
-      <span>
-        <span className="block text-14 text-white">{name}</span>
-        <span className="text-12 text-grey-142">{sub}</span>
-      </span>
-    </button>
-  );
-}
-
-function CryptoCard({ coin, onClick }: { coin: CashierCoin; onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="grid w-full grid-cols-1 gap-8 rounded-8 bg-grey-28 p-12 text-left transition-colors duration-200 hover:bg-grey-39"
-    >
-      <img src={coin.img} alt="" className="h-28 w-28 object-contain" />
-      <span className="block text-13 text-white">{coin.name}</span>
-      <span className="text-12 text-grey-142">{formatUsd(coin.price)}</span>
-    </button>
-  );
-}
-
 function AuthShell({
   title,
   onClose,
   children,
-  leaving = false,
 }: {
   title: string;
   onClose: () => void;
   children: ReactNode;
-  leaving?: boolean;
 }) {
   return (
-    <ModalFrame width={480} onClose={onClose} banner="/img/auth-banner.jpg" leaving={leaving}>
+    <ModalFrame width={480} onClose={onClose}>
       <div className="@sm/page:gap-24 @sm/page:p-24 grid w-full grid-cols-1 gap-14 p-16">
         <div className="grid w-full grid-cols-[1fr_auto] items-center">
           <div className="flex w-full">
             <div>
-              <h1 className="text-white/90">{title}</h1>
+              <h1 className="font-display text-28 uppercase text-cream">{title}</h1>
             </div>
           </div>
           <button
@@ -339,52 +189,20 @@ export function Modals() {
     addRain,
     spend,
     rain,
-    applyUser,
   } = useStore();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [amount, setAmount] = useState("");
-  const [affiliateCode, setAffiliateCode] = useState("");
-  const [promoCode, setPromoCode] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [agreed, setAgreed] = useState(false);
-  const [saving, setSaving] = useState(false);
-  const [cashierPick, setCashierPick] = useState<CashierCoin | "card" | "paypal" | null>(null);
-  const [withdrawAddress, setWithdrawAddress] = useState("");
-  const [withdrawUsd, setWithdrawUsd] = useState("");
-  const [withdrawBux, setWithdrawBux] = useState("");
-  const [copied, setCopied] = useState(false);
-  const [shown, setShown] = useState(modal);
 
-  useEffect(() => {
-    if (modal) {
-      setShown(modal);
-      return;
-    }
-    const t = window.setTimeout(() => setShown(null), MODAL_EXIT_MS);
-    return () => window.clearTimeout(t);
-  }, [modal]);
+  if (!modal) return null;
 
-  useEffect(() => {
-    if (modal === "deposit" || modal === "withdraw") return;
-    if (shown === "deposit" || shown === "withdraw") return;
-    setCashierPick(null);
-    setWithdrawAddress("");
-    setWithdrawUsd("");
-    setWithdrawBux("");
-    setCopied(false);
-    setError("");
-  }, [modal, shown]);
-
-  const view = modal ?? shown;
-  const leaving = !modal && !!shown;
-  if (!view) return null;
-
-  if (view === "welcome") {
+  if (modal === "welcome") {
     return (
-      <Overlay onClose={closeModal} leaving={leaving}>
+      <Overlay onClose={closeModal}>
         <div className="grid w-[520px] max-w-[92vw] justify-items-center gap-16 text-center">
           <span className="rounded-full bg-green px-12 py-4 text-12 font-bold tracking-wide text-grey-1">
             WELCOME TO
@@ -397,9 +215,9 @@ export function Modals() {
     );
   }
 
-  if (view === "login") {
+  if (modal === "login") {
     return (
-      <AuthShell title="Log in" onClose={closeModal} leaving={leaving}>
+      <AuthShell title="Log in" onClose={closeModal}>
         <form
           className="contents"
           onSubmit={async (e) => {
@@ -456,9 +274,9 @@ export function Modals() {
     );
   }
 
-  if (view === "register") {
+  if (modal === "register") {
     return (
-      <AuthShell title="Register" onClose={closeModal} leaving={leaving}>
+      <AuthShell title="Register" onClose={closeModal}>
         <form
           className="contents"
           onSubmit={async (e) => {
@@ -471,23 +289,21 @@ export function Modals() {
             setError(err ?? "");
           }}
         >
-          <div className="grid w-full grid-cols-1 gap-12">
-            <div className="grid w-full grid-cols-1 gap-12 sm:grid-cols-2">
-              <AuthField
-                label="Username"
-                name="username"
-                value={username}
-                onChange={setUsername}
-                icon={<Icons.user className="text-18 text-grey-190" />}
-              />
-              <AuthField
-                label="Email"
-                name="email"
-                value={email}
-                onChange={setEmail}
-                icon={<Icons.mail className="text-18 text-grey-190" />}
-              />
-            </div>
+          <div className="grid w-full grid-cols-1 gap-16">
+            <AuthField
+              label="Username"
+              name="username"
+              value={username}
+              onChange={setUsername}
+              icon={<Icons.user className="text-18 text-grey-190" />}
+            />
+            <AuthField
+              label="Email"
+              name="email"
+              value={email}
+              onChange={setEmail}
+              icon={<Icons.mail className="text-18 text-grey-190" />}
+            />
             <div className="relative w-full">
               <AuthField
                 label="Password"
@@ -507,19 +323,22 @@ export function Modals() {
             onClick={() => setAgreed((v) => !v)}
           >
             <div
-              className={`flex h-18 w-18 shrink-0 items-center justify-center rounded-4 border-2 transition-colors duration-200 ${
+              className={`flex h-20 w-20 items-center justify-center rounded-6 border-2 transition-colors duration-200 ${
                 agreed
                   ? "border-green bg-green"
                   : "border-grey-47 bg-transparent hover:border-grey-190 active:border-grey-190"
               }`}
             >
               <Icons.check
-                className={`text-14 text-grey-28 transition-opacity duration-200 ${agreed ? "opacity-100" : "opacity-0"}`}
+                className={`text-18 text-grey-28 transition-opacity duration-200 ${agreed ? "opacity-100" : "opacity-0"}`}
               />
             </div>
-            <p className="w-full text-left text-12 leading-snug text-grey-190">
-              I am 18+ and agree to the Terms & Privacy Policy.
-            </p>
+            <div className="grid w-full grid-cols-1 gap-4">
+              <p className="w-full text-left text-14 text-grey-190">
+                By checking this box and signing in, You confirm that you are of legal age (18+) and agree to our Terms of
+                Service and Privacy Policy.
+              </p>
+            </div>
           </button>
           {error ? <p className="text-14 text-red">{error}</p> : null}
           <div className="grid w-full grid-cols-1 gap-16">
@@ -546,212 +365,84 @@ export function Modals() {
     );
   }
 
-  if (view === "deposit" || view === "withdraw") {
-    const isWithdraw = view === "withdraw";
-    const pickCoin = cashierPick && typeof cashierPick === "object" ? cashierPick : null;
-    const backToMethods = () => {
-      setCashierPick(null);
-      setWithdrawAddress("");
-      setWithdrawUsd("");
-      setWithdrawBux("");
-      setCopied(false);
-      setError("");
-    };
-    const requireUser = (next: () => void) => {
-      if (!user) return openModal("login");
-      next();
-    };
-    const setUsd = (value: string) => {
-      setWithdrawUsd(value);
-      const n = Number(value);
-      setWithdrawBux(Number.isFinite(n) && value.trim() ? String(Math.round((n / BUX_USD) * 100) / 100) : "");
-    };
-    const setBux = (value: string) => {
-      setWithdrawBux(value);
-      const n = Number(value);
-      setWithdrawUsd(Number.isFinite(n) && value.trim() ? String(Math.round(n * BUX_USD * 100) / 100) : "");
-    };
-    const usdValue = Number(withdrawUsd) || 0;
-    const buxValue = Number(withdrawBux) || 0;
-    const receivedCrypto = pickCoin && usdValue > 0 ? (usdValue / pickCoin.price) * (1 - WITHDRAW_FEE) : 0;
-
-    if (pickCoin && isWithdraw) {
-      return (
-        <ModalFrame width={560} onClose={closeModal} leaving={leaving}>
-          <CashierHeader title="Back to methods" onClose={closeModal} onBack={backToMethods} />
-          <div className="@sm/page:p-24 flex w-full flex-grow flex-col p-16">
-            <div className="grid w-full grid-cols-1 gap-16">
-              <div className="flex items-center gap-12">
-                <img src={pickCoin.img} alt="" className="h-36 w-36 object-contain" />
-                <h2 className="text-18 text-white">{pickCoin.name}</h2>
-              </div>
-              <p className="text-13 text-grey-142">
-                You will receive crypto after requesting {pickCoin.ticker} to the address entered below.
-              </p>
-              <div className="grid w-full grid-cols-1 gap-8">
-                <p className="text-13 text-grey-142">{pickCoin.ticker} address</p>
-                <div className="relative flex h-44 w-full items-center rounded-8 border-2 border-transparent bg-grey-28 px-14 transition-colors duration-200 focus-within:border-grey-47">
-                  <input
-                    autoComplete="off"
-                    className="h-full w-full bg-transparent text-14 text-white outline-none placeholder:text-grey-142"
-                    placeholder={`${pickCoin.ticker} address`}
-                    value={withdrawAddress}
-                    onChange={(e) => setWithdrawAddress(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div className="grid w-full grid-cols-1 gap-8">
-                <p className="text-13 text-grey-142">Amount in USD = Amount in BUX</p>
-                <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-8">
-                  <div className="relative flex h-44 items-center rounded-8 border-2 border-transparent bg-grey-28 px-14 focus-within:border-grey-47">
-                    <span className="mr-8 text-13 text-grey-142">$</span>
-                    <input
-                      autoComplete="off"
-                      className="h-full w-full bg-transparent text-14 text-white outline-none"
-                      placeholder="0.00"
-                      type="number"
-                      value={withdrawUsd}
-                      onChange={(e) => setUsd(e.target.value)}
-                    />
-                  </div>
-                  <Icons.swap className="text-16 text-grey-142" />
-                  <div className="relative flex h-44 items-center rounded-8 border-2 border-transparent bg-grey-28 px-10 focus-within:border-grey-47">
-                    <BuxIcon />
-                    <input
-                      autoComplete="off"
-                      className="h-full w-full bg-transparent px-8 text-14 text-white outline-none"
-                      placeholder="0.00"
-                      type="number"
-                      value={withdrawBux}
-                      onChange={(e) => setBux(e.target.value)}
-                    />
-                  </div>
-                </div>
-              </div>
-              <p className="text-13 text-grey-142">
-                You will receive {receivedCrypto > 0 ? receivedCrypto.toFixed(5) : "0"} {pickCoin.ticker} after fees.
-              </p>
-              {error ? <p className="text-13 text-red">{error}</p> : null}
-              <GreenButton
+  if (modal === "deposit") {
+    const fiat = [
+      { name: "Credit card", sub: "Credit cards", img: "/img/payment/paypal.webp" },
+      { name: "Paypal", sub: "Kinguin", img: "/img/payment/paypal.webp" },
+    ];
+    const crypto = [
+      ["Bitcoin", "$63,658", "/img/payment/btc.webp"],
+      ["Ethereum", "$3,887.09", "/img/payment/eth.webp"],
+      ["Litecoin", "$85.03", "/img/payment/ltc.webp"],
+      ["USDT", "$1", "/img/payment/tether.webp"],
+      ["USDC", "$1", "/img/payment/usdc.webp"],
+      ["Solana", "$172.94", "/img/payment/sol.webp"],
+      ["Ripple", "$0.57", "/img/payment/xrp.webp"],
+      ["Tron", "$0.12", "/img/payment/tron.webp"],
+      ["BNB", "$587.28", "/img/payment/bnb.webp"],
+      ["BTC Cash", "$210.10", "/img/payment/btc.webp"],
+      ["DAI", "$1", "/img/payment/dai.webp"],
+      ["Toncoin", "$1.39", "/img/payment/ton.webp"],
+    ] as const;
+    return (
+      <Overlay onClose={closeModal}>
+        <div className="max-h-[86vh] w-[720px] max-w-[94vw] overflow-y-auto rounded-12 bg-grey-34 p-24">
+          <div className="mb-18 flex items-center justify-between">
+            <h2 className="flex items-center gap-8 text-20 font-semibold">
+              <span className="text-green">↓</span> Deposit
+            </h2>
+            <button onClick={closeModal} className="text-grey-142 hover:text-white">
+              ✕
+            </button>
+          </div>
+          <p className="mb-10 text-13 text-grey-142">Fiat methods</p>
+          <div className="mb-18 grid grid-cols-2 gap-10">
+            {fiat.map((m) => (
+              <button
+                key={m.name}
+                type="button"
                 onClick={() => {
                   if (!user) return openModal("login");
-                  if (!withdrawAddress.trim()) return setError("Enter a destination address.");
-                  if (buxValue <= 0) return setError("Enter an amount.");
-                  if (buxValue > user.balance) return setError("Not enough balance.");
-                  if (spend(buxValue)) closeModal();
+                  addBalance(10000);
+                  closeModal();
                 }}
+                className="flex items-center gap-12 rounded-8 bg-grey-28 p-14 text-left hover:bg-grey-39"
               >
-                Initiate withdrawal
-              </GreenButton>
-            </div>
+                <img src={m.img} alt="" className="h-40 w-40 rounded-8 object-contain" />
+                <span>
+                  <span className="block text-15">{m.name}</span>
+                  <span className="text-12 text-grey-142">{m.sub}</span>
+                </span>
+              </button>
+            ))}
           </div>
-        </ModalFrame>
-      );
-    }
-
-    if (pickCoin && !isWithdraw) {
-      const address = demoAddress(pickCoin.ticker);
-      return (
-        <ModalFrame width={560} onClose={closeModal} leaving={leaving}>
-          <CashierHeader title="Back to methods" onClose={closeModal} onBack={backToMethods} />
-          <div className="@sm/page:p-24 flex w-full flex-grow flex-col p-16">
-            <div className="grid w-full grid-cols-1 gap-16">
-              <div className="flex items-center gap-12">
-                <img src={pickCoin.img} alt="" className="h-36 w-36 object-contain" />
-                <h2 className="text-18 text-white">{pickCoin.name}</h2>
-              </div>
-              <p className="text-13 text-grey-142">
-                Send {pickCoin.ticker} to the address below. Deposits are credited after network confirmation.
-              </p>
-              <div className="grid w-full grid-cols-1 gap-8">
-                <p className="text-13 text-grey-142">{pickCoin.ticker} address</p>
-                <div className="flex h-44 items-center gap-8 rounded-8 bg-grey-28 py-4 pl-14 pr-6">
-                  <input readOnly value={address} className="h-full min-w-0 flex-1 bg-transparent text-13 text-white outline-none" />
-                  <GreenButton
-                    size="sm"
-                    wide={false}
-                    className="w-72"
-                    onClick={() => {
-                      void navigator.clipboard.writeText(address);
-                      setCopied(true);
-                    }}
-                  >
-                    {copied ? "Copied" : "Copy"}
-                  </GreenButton>
-                </div>
-              </div>
-            </div>
+          <p className="mb-10 text-13 text-grey-142">Crypto methods</p>
+          <div className="grid grid-cols-4 gap-10">
+            {crypto.map(([name, price, icon]) => (
+              <button
+                key={name}
+                type="button"
+                onClick={() => {
+                  if (!user) return openModal("login");
+                  addBalance(25000);
+                  closeModal();
+                }}
+                className="rounded-8 bg-grey-28 p-12 text-left hover:bg-grey-39"
+              >
+                <img src={icon} alt="" className="mb-8 h-28 w-28 object-contain" />
+                <span className="block text-13">{name}</span>
+                <span className="text-12 text-grey-142">{price}</span>
+              </button>
+            ))}
           </div>
-        </ModalFrame>
-      );
-    }
-
-    if (cashierPick === "card" || cashierPick === "paypal") {
-      return (
-        <ModalFrame width={560} onClose={closeModal} leaving={leaving}>
-          <CashierHeader title="Back to methods" onClose={closeModal} onBack={backToMethods} />
-          <div className="@sm/page:p-24 flex w-full flex-grow flex-col gap-16 p-16">
-            <h2 className="text-18 text-white">{cashierPick === "card" ? "Credit card" : "Paypal"}</h2>
-            <p className="text-13 text-grey-142">
-              You will be redirected to our payment partner to complete this deposit.
-            </p>
-            <GreenButton
-              onClick={() => {
-                if (!user) return openModal("login");
-                addBalance(10000);
-                closeModal();
-              }}
-            >
-              Continue
-            </GreenButton>
-          </div>
-        </ModalFrame>
-      );
-    }
-
-    return (
-      <ModalFrame width={560} onClose={closeModal} leaving={leaving}>
-        <CashierHeader title={isWithdraw ? "Withdraw" : "Deposit"} onClose={closeModal} />
-        <div className="flex w-full flex-grow flex-col p-16 sm:p-24">
-          {isWithdraw ? (
-            <>
-              <MethodLabel>Crypto methods</MethodLabel>
-              <div className="grid grid-cols-3 gap-8">
-                {WITHDRAW_CRYPTO.map((coin) => (
-                  <CryptoCard key={coin.ticker} coin={coin} onClick={() => requireUser(() => setCashierPick(coin))} />
-                ))}
-              </div>
-            </>
-          ) : (
-            <>
-              <MethodLabel>Fiat methods</MethodLabel>
-              <div className="mb-18 grid grid-cols-2 gap-8">
-                {FIAT_METHODS.map((m) => (
-                  <FiatCard
-                    key={m.name}
-                    name={m.name}
-                    sub={m.sub}
-                    img={m.img}
-                    onClick={() => requireUser(() => setCashierPick(m.name === "Paypal" ? "paypal" : "card"))}
-                  />
-                ))}
-              </div>
-              <MethodLabel>Crypto methods</MethodLabel>
-              <div className="grid grid-cols-3 gap-8 sm:grid-cols-4">
-                {DEPOSIT_CRYPTO.map((coin) => (
-                  <CryptoCard key={coin.ticker} coin={coin} onClick={() => requireUser(() => setCashierPick(coin))} />
-                ))}
-              </div>
-            </>
-          )}
         </div>
-      </ModalFrame>
+      </Overlay>
     );
   }
 
-  if (view === "support") {
+  if (modal === "support") {
     return (
-      <Overlay onClose={closeModal} leaving={leaving}>
+      <Overlay onClose={closeModal}>
         <div className="w-[420px] max-w-[92vw] rounded-12 bg-grey-34 p-24">
           <h2 className="mb-8 text-20 font-semibold">Support</h2>
           <p className="mb-16 text-14 text-grey-190">
@@ -761,170 +452,16 @@ export function Modals() {
             href="https://discord.gg/rostake"
             target="_blank"
             rel="noreferrer"
-            className={`flex h-40 w-full items-center justify-center px-16 shadow-[0_2px_0_rgba(0,0,0,0.25)] ${green3d}`}
+            className={`flex h-40 w-full items-center justify-center px-16 text-14 font-bold uppercase text-gold-deep ${green3d}`}
           >
-            <span className="ui-btn-label text-13 text-grey-28">Open Discord</span>
+            Open Discord
           </a>
         </div>
       </Overlay>
     );
   }
 
-  if (view === "affiliate") {
-    const submitCode = async () => {
-      const code = affiliateCode.trim();
-      if (!code) {
-        setError("Enter an affiliate code.");
-        return;
-      }
-      setSaving(true);
-      setError("");
-      try {
-        const res = await claimAffiliateCode(code);
-        if (res.user) applyUser(res.user);
-        closeModal();
-        setAffiliateCode("");
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Could not redeem code.");
-      } finally {
-        setSaving(false);
-      }
-    };
-    return (
-      <ModalFrame width={360} onClose={closeModal} leaving={leaving}>
-        <div className="flex min-h-[294px] w-full flex-col p-20 sm:p-24">
-          <div className="grid w-full grid-cols-[1fr_auto] items-start gap-12">
-            <div className="grid gap-8">
-              <h1 className="text-20 font-semibold text-white">Redeem a Code</h1>
-              <p className="text-13 text-grey-142">
-                Or use code{" "}
-                <button
-                  type="button"
-                  className="font-semibold text-green hover:underline"
-                  onClick={() => setAffiliateCode(FEATURED_AFFILIATE_CODE)}
-                >
-                  &quot;{FEATURED_AFFILIATE_CODE}&quot;
-                </button>
-              </p>
-            </div>
-            <button type="button" aria-label="close" className="group flex h-20 w-20 items-center justify-center" onClick={closeModal}>
-              <Icons.close className="text-22 text-grey-142 transition-colors group-hover:text-white group-active:text-white" />
-            </button>
-          </div>
-          <form
-            className="mt-auto grid w-full grid-cols-1 gap-16 pt-24"
-            onSubmit={(e) => {
-              e.preventDefault();
-              void submitCode();
-            }}
-          >
-            <div className="relative flex h-44 w-full items-center rounded-8 border-2 border-transparent bg-grey-28 px-14 py-4 transition-colors duration-200 focus-within:border-grey-47">
-              <input
-                autoComplete="off"
-                autoFocus
-                className="flex h-full w-full items-center bg-transparent text-14 text-white outline-none placeholder:text-grey-142"
-                placeholder="Affiliate Code"
-                name="affiliate-code"
-                value={affiliateCode}
-                onChange={(e) => {
-                  setAffiliateCode(e.target.value);
-                  if (error) setError("");
-                }}
-              />
-            </div>
-            {error ? <p className="text-13 text-red">{error}</p> : null}
-            <GreenButton type="submit" loading={saving}>
-              Update Code
-            </GreenButton>
-          </form>
-        </div>
-      </ModalFrame>
-    );
-  }
-
-  if (view === "promo") {
-    const submitPromo = async () => {
-      const code = promoCode.trim();
-      if (!code) {
-        setError("Enter a promo code.");
-        return;
-      }
-      setSaving(true);
-      setError("");
-      try {
-        await claimPromoCode(code);
-        closeModal();
-        setPromoCode("");
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Could not redeem code.");
-      } finally {
-        setSaving(false);
-      }
-    };
-    return (
-      <ModalFrame width={360} onClose={closeModal} leaving={leaving}>
-        <div className="flex min-h-[316px] w-full flex-col p-20 sm:p-24">
-          <div className="grid w-full grid-cols-[1fr_auto] items-start gap-12">
-            <div className="grid gap-8">
-              <h1 className="text-20 font-semibold text-white">Redeem a Code</h1>
-              <p className="text-13 leading-[18px] text-grey-142">
-                Join our{" "}
-                <a
-                  href="https://discord.gg/rostake"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-semibold text-green hover:underline"
-                >
-                  Discord
-                </a>{" "}
-                server or check our{" "}
-                <a
-                  href="https://x.com/rostakedotcom"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-semibold text-green hover:underline"
-                >
-                  Twitter
-                </a>{" "}
-                for regular promo codes!
-              </p>
-            </div>
-            <button type="button" aria-label="close" className="group flex h-20 w-20 items-center justify-center" onClick={closeModal}>
-              <Icons.close className="text-22 text-grey-142 transition-colors group-hover:text-white group-active:text-white" />
-            </button>
-          </div>
-          <form
-            className="mt-auto grid w-full grid-cols-1 gap-16 pt-24"
-            onSubmit={(e) => {
-              e.preventDefault();
-              void submitPromo();
-            }}
-          >
-            <div className="relative flex h-44 w-full items-center rounded-8 border-2 border-transparent bg-grey-28 px-14 py-4 transition-colors duration-200 focus-within:border-grey-47">
-              <input
-                autoComplete="off"
-                autoFocus
-                className="flex h-full w-full items-center bg-transparent text-14 text-white outline-none placeholder:text-grey-142"
-                placeholder="Promo Code"
-                name="promo-code"
-                value={promoCode}
-                onChange={(e) => {
-                  setPromoCode(e.target.value);
-                  if (error) setError("");
-                }}
-              />
-            </div>
-            {error ? <p className="text-13 text-red">{error}</p> : null}
-            <GreenButton type="submit" loading={saving}>
-              Redeem Code
-            </GreenButton>
-          </form>
-        </div>
-      </ModalFrame>
-    );
-  }
-
-  if (view === "rain") {
+  if (modal === "rain") {
     const remain = Math.max(0, rain.endsAt - Date.now());
     const pct = Math.min(100, Math.max(0, (remain / (15 * 60 * 1000)) * 100));
     const sendTip = () => {
@@ -936,7 +473,7 @@ export function Modals() {
       closeModal();
     };
     return (
-      <ModalFrame width={380} onClose={closeModal} leaving={leaving}>
+      <ModalFrame width={380} onClose={closeModal}>
         <div className="absolute top-24 right-24 z-10">
           <button type="button" aria-label="close" className="group flex h-20 w-20 items-center justify-center" onClick={closeModal}>
             <Icons.close className="text-22 text-grey-142 transition-colors group-hover:text-white group-active:text-white" />
@@ -986,10 +523,10 @@ export function Modals() {
                           type="button"
                           aria-label="button"
                           onClick={sendTip}
-                          className="group/button relative flex h-32 cursor-pointer items-start justify-center rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green shadow-[0_2px_0_rgba(0,0,0,0.25)] opacity-100 transition-all duration-200 active:translate-y-px active:border-green"
+                          className="btn-gold group/button relative flex h-32 cursor-pointer items-center justify-center rounded-6 opacity-100 transition-all duration-200"
                         >
                           <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-6 @sm/page:px-10">
-                            <p className="ui-btn-label text-12 text-grey-28 transition-all duration-300">Send tip</p>
+                            <p className="transition-all duration-300 text-14 text-grey-28">Send tip</p>
                           </div>
                         </button>
                       </div>

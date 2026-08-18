@@ -7,6 +7,28 @@ export function rankIdFromLevel(level: number) {
   return Math.min(25, Math.max(1, Math.ceil(Math.max(1, level) / 4)));
 }
 
+export function rankIconFromLevel(level: number) {
+  return `/img/rank/${rankIdFromLevel(level)}.svg`;
+}
+
+const RANK_RING = [
+  "var(--color-rank-bronze)",
+  "var(--color-rank-silver)",
+  "var(--color-rank-gold)",
+  "var(--color-rank-platinum)",
+  "var(--color-rank-diamond)",
+] as const;
+
+export function rankRingFromLevel(level: number) {
+  const id = rankIdFromLevel(level);
+  return RANK_RING[Math.min(4, Math.floor((id - 1) / 5))];
+}
+
+export function rankLevelRange(level: number) {
+  const id = rankIdFromLevel(level);
+  return { min: (id - 1) * 4 + 1, max: Math.min(100, id * 4) };
+}
+
 const TIERS = ["Bronze", "Silver", "Gold", "Platinum", "Diamond"] as const;
 const ROMAN = ["I", "II", "III", "IV", "V"] as const;
 

@@ -16,7 +16,8 @@ type Props = {
   href?: string;
 };
 
-export const green3d = "rounded-6 btn-gold";
+export const green3d =
+  "rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green";
 
 export function GreenButton({
   children,
@@ -30,19 +31,19 @@ export function GreenButton({
   size = "md",
   href,
 }: Props) {
-  const cls = `group/button btn-gold relative flex ${href ? "items-center" : "cursor-pointer items-center"} justify-center rounded-6 opacity-100 transition-all duration-200 disabled:opacity-40 ${
+  const cls = `group/button relative flex ${href ? "items-center" : "cursor-pointer items-start"} justify-center rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green opacity-100 shadow-[0_2px_0_rgba(0,0,0,0.25)] transition-all duration-200 active:translate-y-px active:border-green disabled:opacity-40 ${
     size === "sm" ? "h-32" : "h-40"
   } ${className}`;
   const inner = (
-    <div className={`tr relative flex h-full items-center justify-center gap-4 ${wide ? "w-full px-16" : "w-full px-10"}`}>
+    <div className={`tr relative flex h-full items-center justify-center gap-6 ${wide ? "w-full px-16" : "w-full px-10"}`}>
       {loading ? (
-        <div className="text-18 text-gold-deep">
+        <div className="text-18 text-grey-28">
           <Icons.spinner />
         </div>
       ) : icon ? (
-        <div className="-ml-2 text-gold-deep">{icon}</div>
+        <div className="-ml-2 text-grey-28">{icon}</div>
       ) : null}
-      <p className="text-14 font-bold uppercase tracking-wide text-gold-deep transition-all duration-300">{children}</p>
+      <p className="ui-btn-label text-13 text-grey-28 transition-all duration-300">{children}</p>
     </div>
   );
   if (href) {
@@ -69,10 +70,10 @@ export function GreyButton({
     <button
       type={type}
       onClick={onClick}
-      className={`group/button relative flex h-40 cursor-pointer items-center justify-center rounded-6 border-1 border-grey-70 bg-grey-58 opacity-100 transition-all duration-200 hover:bg-grey-70 active:bg-grey-70 ${className}`}
+      className={`group/button relative flex h-40 cursor-pointer items-start justify-center rounded-8 border-b-2 border-t-2 border-b-black/40 border-t-white/10 bg-grey-39 opacity-100 shadow-[0_2px_0_rgba(0,0,0,0.2)] transition-all duration-200 hover:bg-grey-47 active:translate-y-px active:bg-grey-47 ${className}`}
     >
       <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-16">
-        <p className="text-14 font-bold uppercase tracking-wide text-cream transition-all duration-300">{children}</p>
+        <p className="ui-btn-label text-13 text-grey-142 transition-all duration-300 group-hover:text-white">{children}</p>
       </div>
     </button>
   );

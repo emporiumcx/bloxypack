@@ -5,7 +5,6 @@ import { BetField } from "@/components/bet-field";
 import { Dropdown, ModeTabs } from "@/components/dropdown";
 import { AutobetFields, GameShell, GameSidebar } from "@/components/game-shell";
 import { GreenButton } from "@/components/green-button";
-import { BuxGlyph } from "@/components/icons";
 import { useStore } from "@/components/providers";
 
 const DIFF = {
@@ -111,6 +110,7 @@ export default function TowersPage() {
 
   return (
     <GameShell
+      fairness="Towers"
       boardClassName="@lg/page:p-40 @sm/page:p-30 relative flex w-full justify-center p-20"
       sidebar={
         <GameSidebar
@@ -131,7 +131,7 @@ export default function TowersPage() {
               <AutobetFields />
             ) : (
               <div className="grid w-full grid-cols-1 gap-8">
-                <h1 className="text-14 text-grey-142">Difficulty</h1>
+                <h2 className="ui-label text-12 text-grey-142">Difficulty</h2>
                 <Dropdown
                   value={diff}
                   onChange={(id) => {
@@ -179,20 +179,20 @@ export default function TowersPage() {
                       open ? "animate-minescover pointer-events-none" : "opacity-100"
                     } ${active ? "bg-grey-70" : ""}`}
                   >
-                    <img alt="" className={`h-34 w-34 ${pulsing ? "animate-tower-pulse" : ""}`} src="/img/robux_dark.webp" />
+                    <img alt="" className={`h-34 w-34 object-contain ${pulsing ? "animate-tower-pulse" : ""}`} src="/img/lion_shadow.png" />
                   </div>
                   <div
                     className={`tr absolute inset-0 flex items-center justify-center rounded-12 border-b-3 border-t-3 ${
                       hit || isBomb
                         ? "border-b-red border-t-red-143 bg-red"
-                        : "btn-gold"
+                        : "border-b-green-95 border-t-green-222 bg-green"
                     } ${open ? "animate-minescontent opacity-100" : "pointer-events-none opacity-0"}`}
                   >
                     {hit || isBomb ? (
                       <img alt="" className="h-28 w-28 object-contain" src="/img/bomb.webp" />
                     ) : (
                       <div className="flex items-center gap-4">
-                        <BuxGlyph style={{ width: 16, height: 16 }} />
+                        <img alt="" className="h-18 w-18 object-contain" src="/img/lion_dark.png" />
                         <p className="text-13 font-semibold text-grey-28">{payoutForRow[r].toLocaleString("en-US")}</p>
                       </div>
                     )}

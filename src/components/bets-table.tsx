@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Bux } from "./bux";
 import { Icons } from "./icons";
+import { avatarSrc } from "@/lib/avatars";
 
 type BetRow = {
   id: string;
@@ -16,17 +17,17 @@ type BetRow = {
 };
 
 const ALL: BetRow[] = [
-  { id: "e9783b7b-4f2f-4d57-a3fa-e15bd7edd4b6", game: "Mines", user: "R4ITH", avatar: "", time: "00:19", bet: 23, multi: 0, payout: 0 },
-  { id: "2d390018-79cc-4eb7-a38e-4dc5149fa7c5", game: "Blackjack", user: "Alpha_mil0", avatar: "19a7c851-db8b-4291-ae15-198453f1f6d2_0", time: "00:12", bet: 32, multi: 0, payout: 0 },
-  { id: "e79e29f4-fa3c-4401-898e-e733ca66301d", game: "Towers", user: "Vasky", avatar: "7e537d1d-ef2d-4c45-9745-c1018fa8f001_0", time: "22:22", bet: 2636, multi: 0, payout: 0 },
-  { id: "f4da6c3e-df75-4c12-9a11-0c0c0c0c0c0c", game: "Blackjack", user: "Joris67", avatar: "e2bfcfda-06a7-43e0-b008-90b2f0cc87b4_0", time: "22:08", bet: 1537, multi: 0, payout: 0 },
-  { id: "f9e119bd-3cf2-4a11-8b22-111111111111", game: "Towers", user: "Vasky", avatar: "7e537d1d-ef2d-4c45-9745-c1018fa8f001_0", time: "22:05", bet: 5424, multi: 0, payout: 0 },
-  { id: "af837a15-87ed-4b33-9c44-222222222222", game: "Towers", user: "Vasky", avatar: "7e537d1d-ef2d-4c45-9745-c1018fa8f001_0", time: "22:04", bet: 5424, multi: 2.02, payout: 10983 },
-  { id: "a2904fc6-6659-452c-a224-c13f0a6f5d21", game: "Mines", user: "monarch", avatar: "a2904fc6-6659-452c-a224-c13f0a6f5d21_0", time: "21:58", bet: 250, multi: 1.48, payout: 370 },
-  { id: "98f1b331-c849-43ae-af20-f1bf6a5dff03", game: "Dice", user: "voids", avatar: "98f1b331-c849-43ae-af20-f1bf6a5dff03_6", time: "21:51", bet: 1000, multi: 0, payout: 0 },
+  { id: "e9783b7b-4f2f-4d57-a3fa-e15bd7edd4b6", game: "Mines", user: "R4ITH", avatar: "red", time: "00:19", bet: 23, multi: 0, payout: 0 },
+  { id: "2d390018-79cc-4eb7-a38e-4dc5149fa7c5", game: "Blackjack", user: "Alpha_mil0", avatar: "blue", time: "00:12", bet: 32, multi: 0, payout: 0 },
+  { id: "e79e29f4-fa3c-4401-898e-e733ca66301d", game: "Towers", user: "Vasky", avatar: "green", time: "22:22", bet: 2636, multi: 0, payout: 0 },
+  { id: "f4da6c3e-df75-4c12-9a11-0c0c0c0c0c0c", game: "Blackjack", user: "Joris67", avatar: "orange", time: "22:08", bet: 1537, multi: 0, payout: 0 },
+  { id: "f9e119bd-3cf2-4a11-8b22-111111111111", game: "Towers", user: "Vasky", avatar: "green", time: "22:05", bet: 5424, multi: 0, payout: 0 },
+  { id: "af837a15-87ed-4b33-9c44-222222222222", game: "Towers", user: "Vasky", avatar: "green", time: "22:04", bet: 5424, multi: 2.02, payout: 10983 },
+  { id: "a2904fc6-6659-452c-a224-c13f0a6f5d21", game: "Mines", user: "monarch", avatar: "purple", time: "21:58", bet: 250, multi: 1.48, payout: 370 },
+  { id: "98f1b331-c849-43ae-af20-f1bf6a5dff03", game: "Dice", user: "voids", avatar: "pink", time: "21:51", bet: 1000, multi: 0, payout: 0 },
 ];
 
-const TABS = ["all", "big", "lucky", "my"] as const;
+const TABS = ["All Bets", "High Rollers", "Lucky Wins"] as const;
 
 const GAME_ICON: Record<BetRow["game"], keyof typeof Icons> = {
   Towers: "towers",
@@ -51,15 +52,12 @@ function MultiBadge({ multi }: { multi: number }) {
 }
 
 export function BetsTable() {
-  const [tab, setTab] = useState<(typeof TABS)[number]>("all");
+  const [tab, setTab] = useState<(typeof TABS)[number]>("All Bets");
   const rows =
-    tab === "lucky" ? ALL.filter((r) => r.multi >= 2) : tab === "big" ? [...ALL].sort((a, b) => b.bet - a.bet) : tab === "my" ? [] : ALL;
+    tab === "Lucky Wins" ? ALL.filter((r) => r.multi >= 2) : tab === "High Rollers" ? [...ALL].sort((a, b) => b.bet - a.bet) : ALL;
 
   return (
     <div className="@sm/page:gap-24 relative grid w-full grid-cols-1 gap-12">
-      <div className="flex items-end justify-between">
-        <h2 className="font-display text-32 uppercase text-cream">live bets</h2>
-      </div>
       <div className="@sm/page:pt-0 flex w-full pt-24">
         <div className="grid grid-cols-1">
           <div className="relative flex w-full justify-start">
@@ -73,7 +71,7 @@ export function BetsTable() {
             </button>
             <div
               className="relative grid w-full min-w-[120px] items-center justify-start overflow-hidden rounded-6 bg-transparent p-0 transition-colors duration-200"
-              style={{ gridTemplateColumns: "repeat(4, auto)" }}
+              style={{ gridTemplateColumns: "repeat(3, auto)" }}
             >
               {TABS.map((t) => (
                 <div key={t} className="@lg/page:w-auto group grid h-36 w-full grid-cols-1 overflow-hidden bg-grey-28">
@@ -89,7 +87,7 @@ export function BetsTable() {
                       <div className="absolute inset-0 right-1/2 hidden animate-show bg-gradient-to-r from-green/10 to-transparent" />
                     ) : null}
                     <p
-                      className={`w-full truncate overflow-ellipsis text-center text-14 font-bold capitalize transition-colors duration-200 ${
+                      className={`w-full truncate overflow-ellipsis text-center text-13 font-bold uppercase tracking-[0.06em] transition-colors duration-200 ${
                         tab === t ? "text-white" : "text-grey-142 group-hover:text-white group-active:text-white"
                       }`}
                     >
@@ -106,22 +104,22 @@ export function BetsTable() {
         <div className="grid w-full grid-cols-1 items-start gap-6" style={{ minWidth: 780 }}>
           <div className="@sm/page:rounded-4 relative hidden h-18 w-full items-center justify-between px-12 @sm/page:flex">
             <button className="mr-20 flex items-center" aria-label="column" style={{ width: 150 }}>
-              <p className="text-12 text-grey-142">game</p>
+              <p className="ui-label text-11 text-grey-142">Game</p>
             </button>
             <button className="mr-20 flex items-center" aria-label="column" style={{ width: 140 }}>
-              <p className="text-12 text-grey-142">user</p>
+              <p className="ui-label text-11 text-grey-142">User</p>
             </button>
             <button className="mr-20 flex items-center" aria-label="column" style={{ width: 60 }}>
-              <p className="text-12 text-grey-142">time</p>
+              <p className="ui-label text-11 text-grey-142">Time</p>
             </button>
             <button className="mr-20 flex items-center" aria-label="column" style={{ width: 120 }}>
-              <p className="text-12 text-grey-142">bet</p>
+              <p className="ui-label text-11 text-grey-142">Bet</p>
             </button>
             <button className="mr-20 flex items-center !justify-center" aria-label="column" style={{ width: 60 }}>
-              <p className="text-12 text-grey-142">x</p>
+              <p className="ui-label text-11 text-grey-142">Multi</p>
             </button>
             <button className="flex items-center justify-end" aria-label="column" style={{ width: 120 }}>
-              <p className="text-12 text-grey-142">profit</p>
+              <p className="ui-label text-11 text-grey-142">Payout</p>
             </button>
           </div>
           <div className="w-full overflow-hidden" style={{ height: 310 }}>
@@ -163,7 +161,7 @@ export function BetsTable() {
                                         <img
                                           alt=""
                                           className="relative rounded-full object-cover opacity-100"
-                                          src={`https://cdn.rostake.com/avatars/${row.avatar}.webp`}
+                                          src={avatarSrc(row.avatar, row.user)}
                                           style={{ width: 32, height: 32 }}
                                         />
                                       ) : null}

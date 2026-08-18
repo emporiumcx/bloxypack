@@ -30,6 +30,7 @@ import {
   battlesCreate,
   battlesJoin,
   battlesBot,
+  battlesCancel,
   battlesGame,
   blackjackStart,
   blackjackHit,
@@ -89,6 +90,7 @@ type Store = {
   battlesCreate: typeof battlesCreate;
   battlesJoin: typeof battlesJoin;
   battlesBot: typeof battlesBot;
+  battlesCancel: typeof battlesCancel;
   battlesGame: typeof battlesGame;
   blackjackStart: typeof blackjackStart;
   blackjackHit: typeof blackjackHit;
@@ -142,7 +144,7 @@ function colorForRank(rank: string) {
   if (rank === "staff") return "#88FF55";
   if (rank === "gold") return "#F1C947";
   if (rank === "silver") return "#B0B3D6";
-  return "#BEBEBE";
+  return "#D2D2D2";
 }
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -151,13 +153,15 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const [modal, setModal] = useState<Modal>(null);
   const [chat, setChat] = useState<ChatMsg[]>([]);
   const [rain, setRain] = useState({ amount: 0, endsAt: Date.now() + 17 * 60 * 1000 });
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [chatOpen, setChatOpen] = useState(true);
   const holdRef = useRef(0);
   const pendingUserRef = useRef<ServerUser | null>(null);
 
   const applyUserNow = useCallback((raw?: ServerUser | null) => {
-    if (!raw || typeof raw !== "object" || !("_id" in raw)) return;
+    if (!raw || typeof raw !== "object") return;
+    const id = raw._id ?? raw.id;
+    if (id == null || id === "") return;
     if (holdRef.current > 0) {
       pendingUserRef.current = raw;
       return;
@@ -191,6 +195,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
               color: colorForRank(m.rank),
               rank: m.rank,
               level: m.level,
+              avatar: m.avatar,
             },
           ].slice(-80),
         ),
@@ -203,6 +208,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             color: colorForRank(m.rank),
             rank: m.rank,
             level: m.level,
+            avatar: m.avatar,
           })),
         ),
       onRain: (amount) => setRain((r) => ({ ...r, amount })),
@@ -345,6 +351,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       battlesCreate,
       battlesJoin,
       battlesBot,
+      battlesCancel,
       battlesGame,
       blackjackStart,
       blackjackHit,

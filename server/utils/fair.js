@@ -84,20 +84,11 @@ function battleTicket(serverSeed, eosId, seat, round) {
   return Math.floor(float * 100000);
 }
 
-function battleJackpotFloat(serverSeed, eosId) {
-  const buffer = hmacBytes(serverSeed, `${eosId}:jackpot`);
-  let float = 0;
-  const dividers = [256 ** 1, 256 ** 2, 256 ** 3, 256 ** 4];
-  for (let j = 0; j < 4; j++) float += buffer[j] / dividers[j];
-  return float;
-}
-
 module.exports = {
   fairGetData,
   hmacBytes,
   generateFloats,
   pickIndices,
   hashServerSeed,
-  battleTicket,
-  battleJackpotFloat
+  battleTicket
 };

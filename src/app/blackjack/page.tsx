@@ -251,6 +251,7 @@ export default function BlackjackPage() {
 
   return (
     <GameShell
+      fairness="Blackjack"
       tall
       boardClassName="@lg/page:p-40 @sm/page:p-30 @lg/page:h-full relative flex h-[350px] w-full flex-col items-center justify-between overflow-hidden p-20 md:h-[420px]"
       sidebar={

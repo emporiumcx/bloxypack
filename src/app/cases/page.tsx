@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Bux } from "@/components/bux";
 import { ChoiceBar } from "@/components/bet-field";
 import { Dropdown } from "@/components/dropdown";
+import { FairnessControl } from "@/components/fairness";
 import { Icons } from "@/components/icons";
 import { ItemBg } from "@/components/item-bg";
 import { CASES } from "@/lib/catalog";
@@ -25,7 +26,10 @@ export default function CasesPage() {
   return (
     <div className="@xl/page:gap-32 @bt/page:gap-24 grid w-full grid-cols-1 gap-16">
       <div className="grid w-full grid-cols-1 gap-16">
-            <h1 className="@sm/page:text-20 @md/page:text-24 font-display w-full text-28 uppercase leading-[125%] text-cream">Cases</h1>
+        <div className="flex w-full items-center justify-between gap-12">
+          <h1 className="@sm/page:text-20 @md/page:text-24 text-18 font-bold leading-[125%] text-white">Cases</h1>
+          <FairnessControl game="Cases" userSeeds />
+        </div>
         <div className="@lg/page:grid-cols-[auto_1fr_auto] @sm/page:grid-cols-[1fr_auto] @sm/page:gap-16 grid w-full grid-cols-1 items-center gap-10">
           <div className="@lg/page:col-span-1 @lg/page:w-[300px] @sm/page:col-span-2 col-span-1 w-full">
             <div className="relative flex h-40 w-full items-center rounded-8 border-2 border-transparent bg-grey-39 px-12 py-4">
@@ -71,16 +75,11 @@ export default function CasesPage() {
           <Link
             key={item.slug}
             href={`/cases/${item.slug}`}
-            className="@sm/page:rounded-12 group relative w-full overflow-hidden rounded-8 border-1 border-grey-58 bg-grey-39 p-16 transition-transform duration-300 hover:-translate-y-4 hover:scale-[1.02] active:-translate-y-4 active:scale-[1.02] animate-show"
+            className="@sm/page:rounded-12 group relative w-full overflow-hidden rounded-8 bg-grey-39 p-16 transition-transform duration-300 hover:-translate-y-4 hover:scale-[1.02] active:-translate-y-4 active:scale-[1.02] animate-show"
             style={{ animationDelay: `${(i % 20) * 20}ms` }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-grey-39" />
-            {i < 8 ? (
-              <span className="absolute right-8 top-8 z-10 rounded-4 bg-[#4a83ff22] px-6 py-2 text-10 font-extrabold uppercase text-[#4a83ff]">
-                new
-              </span>
-            ) : null}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green/8 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100" />
             <div className="relative grid w-full grid-cols-1 gap-16">
               <div className="relative flex w-full pt-[81%]">
                 <ItemBg className="inset-[8%] opacity-40" />

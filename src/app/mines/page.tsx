@@ -82,6 +82,7 @@ export default function MinesPage() {
 
   return (
     <GameShell
+      fairness="Mines"
       boardClassName="@lg/page:p-40 @sm/page:p-30 @xs/page:p-20 relative w-full p-14"
       sidebar={
         <GameSidebar
@@ -104,7 +105,7 @@ export default function MinesPage() {
           ) : (
             <>
               <div className="grid w-full grid-cols-1 gap-8">
-                <p className="text-14 text-grey-142">Grid</p>
+                <p className="ui-label text-12 text-grey-142">Grid</p>
                 <ChoiceBar
                   value={size}
                   onChange={(id) => {
@@ -170,7 +171,7 @@ export default function MinesPage() {
                     open ? "animate-minescover" : "opacity-100"
                   }`}
                 >
-                  <img alt="" className="w-[70%]" src="/img/robux_shadow.webp" />
+                  <img alt="" className="w-[70%] object-contain opacity-80" src="/img/lion_shadow.png" />
                 </div>
                 <div
                   className={`tr @sm/page:rounded-8 @md/page:rounded-12 absolute inset-0 flex h-auto w-auto items-center justify-center rounded-5 bg-grey-39 ${
@@ -186,13 +187,13 @@ export default function MinesPage() {
                       className={`@sm/page:rounded-6 @md/page:rounded-10 absolute inset-0 flex items-center justify-center rounded-3 border-b-3 border-t-3 ${
                         isMine
                           ? "border-b-red border-t-red-143 bg-red"
-                          : "btn-gold"
+                          : "border-b-green-95 border-t-green-202 bg-green"
                       }`}
                     >
                       <img
                         className="tr absolute top-1/2 left-1/2 w-[80%] -translate-x-1/2 -translate-y-1/2 object-contain"
                         alt=""
-                        src="/img/robux_shadow_dark.webp"
+                        src="/img/lion_dark.png"
                         style={{ height: "75%", opacity: isMine ? 0 : 1 }}
                       />
                       <img

@@ -7,42 +7,61 @@ export function BetField({
   onChange,
   max = 0,
   label = "Bet amount",
+  tone = "grey-39",
 }: {
   value: number;
   onChange: (n: number) => void;
   max?: number;
   label?: string;
+  tone?: "grey-39" | "grey-28";
 }) {
+  const well = tone === "grey-28";
+  const bg = well ? "bg-grey-28" : "bg-grey-39";
+  const border = well ? "border-grey-47 focus-within:border-grey-58" : "border-transparent";
   return (
-    <div className="grid w-full grid-cols-1 gap-8">
-      <h2 className="ui-label text-12 text-grey-142">{label}</h2>
-      <div className="relative flex h-40 w-full items-center rounded-8 border-2 border-transparent bg-grey-39 py-4 pl-6 pr-4">
-        <BuxIcon className="text-green" />
+    <div className="grid w-full min-w-0 grid-cols-1 gap-6">
+      <h2 className="ui-label text-11 text-grey-142">{label}</h2>
+      <div className={`relative flex h-36 w-full min-w-0 items-center rounded-8 border-2 py-4 pl-8 pr-8 ${bg} ${border}`}>
+        <BuxIcon className="shrink-0 text-green" />
         <input
           autoComplete="off"
-          className="flex h-full w-full items-center bg-grey-39 px-10 text-14 text-white outline-none"
+          className="h-full min-w-0 flex-1 bg-transparent px-8 text-14 text-white outline-none"
           placeholder="Enter amount"
           type="number"
-          value={value}
+          value={Number.isFinite(value) ? value : ""}
           name="bet_amount"
-          onChange={(e) => onChange(Number(e.target.value))}
+          onChange={(e) => onChange(e.target.value === "" ? 0 : Number(e.target.value))}
         />
-        <div className="ml-4 grid grid-cols-[auto_auto] gap-4">
-          <button
-            type="button"
-            onClick={() => onChange(0)}
-            className="flex h-32 items-center justify-center rounded-8 border-2 border-grey-58 bg-grey-39 px-8 text-12 text-grey-142 hover:bg-grey-47 active:bg-grey-47 sm:px-10"
-          >
-            <span className="ui-btn-label">Clear</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => onChange(max || value)}
-            className="flex h-32 items-center justify-center rounded-8 border-2 border-grey-58 bg-grey-39 px-8 text-12 text-grey-142 hover:bg-grey-47 active:bg-grey-47 sm:px-10"
-          >
-            <span className="ui-btn-label">Max</span>
-          </button>
-        </div>
+      </div>
+      <div className="grid grid-cols-4 gap-4">
+        <button
+          type="button"
+          onClick={() => onChange(Number((Math.max(0, value) / 2).toFixed(2)))}
+          className="flex h-28 items-center justify-center rounded-6 bg-grey-39 text-11 text-grey-142 hover:bg-grey-47"
+        >
+          <span className="ui-btn-label">1/2</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => onChange(Number((Math.max(0, value) * 2).toFixed(2)))}
+          className="flex h-28 items-center justify-center rounded-6 bg-grey-39 text-11 text-grey-142 hover:bg-grey-47"
+        >
+          <span className="ui-btn-label">2x</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => onChange(0)}
+          className="flex h-28 items-center justify-center rounded-6 bg-grey-39 text-11 text-grey-142 hover:bg-grey-47"
+        >
+          <span className="ui-btn-label">Clear</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => onChange(max)}
+          className="flex h-28 items-center justify-center rounded-6 bg-grey-39 text-11 text-grey-142 hover:bg-grey-47"
+        >
+          <span className="ui-btn-label">Max</span>
+        </button>
       </div>
     </div>
   );

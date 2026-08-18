@@ -39,7 +39,7 @@ export function Dropdown({
         onClick={() => setOpen((v) => !v)}
         className={`group/dropdown relative flex h-40 w-full items-start rounded-8 ${tone === "58" ? "bg-grey-58" : "bg-grey-39"}`}
       >
-        <div className={`tr group-hover/dropdown:border-grey-47 group-hover/dropdown:bg-purple-80 relative grid h-full w-full grid-cols-[1fr_auto] items-center gap-8 rounded-8 border-2 px-14 ${surface}`}>
+        <div className={`tr group-hover/dropdown:border-grey-47 group-hover/dropdown:bg-grey-47 relative grid h-full w-full grid-cols-[1fr_auto] items-center gap-8 rounded-8 border-2 px-14 ${surface}`}>
           <div className="flex items-center">
             {prefix ? (
               <div className="mr-6">
@@ -48,7 +48,7 @@ export function Dropdown({
             ) : null}
             <p className="text-14 text-white">{current}</p>
           </div>
-          <div className="bg-purple-96 flex h-16 w-18 items-center justify-center rounded-8">
+          <div className="flex h-16 w-18 items-center justify-center rounded-8 bg-grey-58">
             <Icons.chevron className={`tr text-18 text-grey-142 ${open ? "rotate-180" : ""}`} />
           </div>
         </div>
@@ -99,7 +99,7 @@ export function ModeTabs({
         type="button"
         aria-label="button"
         onClick={() => onChange?.("manual")}
-        className={`group/button relative flex h-40 cursor-pointer items-start justify-center rounded-8 border-1 opacity-100 transition-all duration-200 ${
+        className={`group/button relative flex h-36 cursor-pointer items-start justify-center rounded-8 border-1 opacity-100 transition-all duration-200 ${
           value === "manual"
             ? "border-transparent bg-grey-58 hover:bg-grey-70 active:bg-grey-70"
             : "border-grey-58 bg-grey-28"
@@ -113,7 +113,7 @@ export function ModeTabs({
         type="button"
         aria-label="button"
         onClick={() => onChange?.("auto")}
-        className={`group/button relative flex h-40 cursor-pointer items-start justify-center rounded-8 border-1 opacity-100 transition-all duration-200 ${
+        className={`group/button relative flex h-36 cursor-pointer items-start justify-center rounded-8 border-1 opacity-100 transition-all duration-200 ${
           value === "auto"
             ? "border-transparent bg-grey-58 hover:bg-grey-70 active:bg-grey-70"
             : "border-grey-58 bg-grey-28"

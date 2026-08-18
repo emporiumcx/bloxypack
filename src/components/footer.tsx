@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Icons } from "./icons";
-import { useStore } from "./providers";
 
 const PAYMENTS = [
   { src: "/img/payment/btc.webp", border: "border-orange", bg: "bg-orange" },
@@ -23,7 +22,7 @@ const LINK =
 function ColHead({ label, accent }: { label: string; accent?: boolean }) {
   return (
     <button type="button" className="flex w-full items-center justify-start">
-      <p className={`text-left text-12 font-extrabold uppercase tracking-[0.14em] ${accent ? "text-green" : "text-grey-112"}`}>{label}</p>
+      <p className={`text-left text-12 font-bold uppercase ${accent ? "text-green" : "text-grey-70"}`}>{label}</p>
       <div className="@sm/page:hidden ml-4">
         <Icons.chevron className="text-20 text-green transition-transform duration-300 ease-in-out" />
       </div>
@@ -32,12 +31,10 @@ function ColHead({ label, accent }: { label: string; accent?: boolean }) {
 }
 
 export function SiteFooter() {
-  const { openModal } = useStore();
   return (
     <div className="relative grid w-full grid-cols-1">
-      <div className="@lg/page:grid-cols-[1fr_auto] @sm/page:p-24 @md/page:px-70 @md/page:py-56 relative grid w-full grid-cols-1 gap-30 overflow-hidden border-t-1 border-grey-47 bg-grey-28 p-24">
-        <div className="pointer-events-none absolute inset-0 bg-theme-pattern opacity-40" />
-        <div className="relative z-10 flex w-full justify-start">
+      <div className="@lg/page:grid-cols-[1fr_auto] @sm/page:p-24 @md/page:px-70 @md/page:py-56 grid w-full grid-cols-1 gap-30 border-t-1 border-grey-47 p-24">
+        <div className="flex w-full justify-start">
           <div className="grid w-[450px] max-w-full grid-cols-1 gap-16 sm:gap-26">
             <Link aria-label="home" className="relative flex h-full w-full items-center justify-start" href="/">
               <img alt="WildPVP" className="relative h-36 w-auto object-contain" src="/img/logo.png" />
@@ -78,98 +75,87 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="relative z-10 flex w-full items-start justify-start">
-          <div className="@lg/page:w-auto @md/page:grid-cols-[auto_auto_auto_auto_auto] @sm/page:gap-40 grid w-full max-w-full grid-cols-2 items-start gap-24">
+        <div className="flex w-full items-start justify-start">
+          <div className="@lg/page:w-auto @md/page:grid-cols-[auto_auto_auto_auto] @sm/page:gap-40 grid w-full max-w-full grid-cols-2 items-start gap-24">
             <div className="grid w-full grid-cols-1 gap-16">
-              <ColHead label="Our Games" accent />
+              <ColHead label="Play" accent />
               <div className="grid w-full grid-cols-1 gap-8">
                 <Link aria-label="link" className={LINK} href="/battles">
-                  Case Battles
+                  Battles
                 </Link>
                 <Link aria-label="link" className={LINK} href="/cases">
-                  Case Opening
-                </Link>
-                <Link aria-label="link" className={LINK} href="/blackjack">
-                  Blackjack
-                </Link>
-                <Link aria-label="link" className={LINK} href="/mines">
-                  Hidden Mines
-                </Link>
-                <Link aria-label="link" className={LINK} href="/towers">
-                  Towers
+                  Cases
                 </Link>
                 <Link aria-label="link" className={LINK} href="/dice">
                   Dice
                 </Link>
+                <Link aria-label="link" className={LINK} href="/mines">
+                  Mines
+                </Link>
+                <Link aria-label="link" className={LINK} href="/towers">
+                  Towers
+                </Link>
+                <Link aria-label="link" className={LINK} href="/blackjack">
+                  Blackjack
+                </Link>
               </div>
             </div>
             <div className="grid w-full grid-cols-1 gap-16">
-              <ColHead label="Help Center" />
+              <ColHead label="Features" />
               <div className="grid w-full grid-cols-1 gap-8">
-                <Link aria-label="link" className={LINK} href="/faq">
-                  FAQ
-                </Link>
-                <Link aria-label="link" className={LINK} href="/fairness">
-                  Fairness
-                </Link>
-                <button type="button" className={LINK} onClick={() => openModal("support")}>
-                  Live Support
-                </button>
-                <a aria-label="link" className={LINK} target="_blank" rel="noreferrer" href="https://discord.gg/rostake">
-                  Discord
-                </a>
-              </div>
-            </div>
-            <div className="grid w-full grid-cols-1 gap-16">
-              <ColHead label="Rewards" />
-              <div className="grid w-full grid-cols-1 gap-8">
-                <Link aria-label="link" className={LINK} href="/rewards">
-                  Rewards
+                <Link aria-label="link" className={LINK} href="/affiliate">
+                  Affiliates
                 </Link>
                 <Link aria-label="link" className={LINK} href="/leaderboard">
                   Leaderboard
                 </Link>
-                <Link aria-label="link" className={LINK} href="/leaderboard">
-                  Challenges
+                <Link aria-label="link" className={LINK} href="/marketplace">
+                  Marketplace
                 </Link>
-                <Link aria-label="link" className={LINK} href="/affiliate">
-                  Affiliates
-                </Link>
-              </div>
-            </div>
-            <div className="grid w-full grid-cols-1 gap-16">
-              <ColHead label="Cashier" />
-              <div className="grid w-full grid-cols-1 gap-8">
-                <button type="button" className={LINK} onClick={() => openModal("deposit")}>
-                  Deposit
-                </button>
-                <button type="button" className={LINK} onClick={() => openModal("deposit")}>
-                  Withdraw
-                </button>
-                <Link aria-label="link" className={LINK} href="/profile">
-                  Vault
+                <Link aria-label="link" className={LINK} href="/rewards">
+                  Rewards
                 </Link>
               </div>
             </div>
             <div className="grid w-full grid-cols-1 gap-16">
-              <ColHead label="About Us" />
+              <ColHead label="Info" />
               <div className="grid w-full grid-cols-1 gap-8">
+                <Link aria-label="link" className={LINK} href="/support">
+                  Support
+                </Link>
+                <Link aria-label="link" className={LINK} href="/faq">
+                  FAQ
+                </Link>
                 <Link aria-label="link" className={LINK} href="/terms">
-                  Terms & Conditions
-                </Link>
-                <Link aria-label="link" className={LINK} href="/privacy">
-                  Privacy Policy
+                  TOS
                 </Link>
                 <Link aria-label="link" className={LINK} href="/aml">
-                  AML Policy
+                  AML
                 </Link>
+                <Link aria-label="link" className={LINK} href="/privacy">
+                  Privacy
+                </Link>
+                <Link aria-label="link" className={LINK} href="/fairness">
+                  Fairness
+                </Link>
+              </div>
+            </div>
+            <div className="grid w-full grid-cols-1 gap-16">
+              <ColHead label="Socials" />
+              <div className="grid w-full grid-cols-1 gap-8">
+                <a aria-label="link" className={LINK} target="_blank" rel="noreferrer" href="https://x.com/rostakedotcom">
+                  Twitter/X
+                </a>
+                <a aria-label="link" className={LINK} target="_blank" rel="noreferrer" href="https://discord.gg/rostake">
+                  Discord
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="w-full bg-grey-28 p-14">
-        <h2 className="text-center text-12 text-grey-142">© 2026 WILDPVP | ALL RIGHTS RESERVED</h2>
+        <h2 className="text-center text-12 text-grey-142">© 2026 WildPVP.com All rights reserved.</h2>
       </div>
     </div>
   );

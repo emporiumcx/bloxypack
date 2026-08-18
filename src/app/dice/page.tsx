@@ -96,6 +96,7 @@ export default function DicePage() {
 
   return (
     <GameShell
+      fairness="Dice"
       boardClassName="@lg/page:p-40 @sm/page:p-30 relative grid w-full grid-cols-1 justify-center p-20"
       sidebar={
         <GameSidebar action={<GreenButton onClick={play} disabled={rolling} loading={rolling}>Start game</GreenButton>}>
@@ -105,33 +106,27 @@ export default function DicePage() {
             {mode === "auto" ? (
               <AutobetFields />
             ) : (
-              <>
-                <div className="group relative w-full">
-                  <FieldBox label={rollUnder ? "Roll under" : "Roll over"}>
+              <div className="grid grid-cols-2 gap-10">
+                <div className="group relative min-w-0">
+                  <FieldBox label={rollUnder ? "Roll under" : "Roll over"} pad="pl-6 pr-2">
                     <FieldInput value={target} name="range" placeholder="Enter range" readOnly />
-                    <div className="ml-4 flex items-center">
-                      <div className="px-6">
-                        <Icons.swap className="text-16 text-grey-190 transition-colors group-hover:text-green group-active:text-green" />
-                      </div>
-                    </div>
+                    <Icons.swap className="mr-4 shrink-0 text-14 text-grey-190 transition-colors group-hover:text-green" />
                   </FieldBox>
                   <button type="button" className="absolute inset-0" onClick={() => setRollUnder((v) => !v)} aria-label="swap" />
                 </div>
-                <FieldBox label="Multiplier">
-                  <FieldInput value={multiplier.toFixed(2)} name="multiplier" placeholder="Enter multiplier" onChange={(v) => setMulti(Number(v) || 1.01)} />
-                  <div className="ml-4 px-8 text-14 font-bold text-grey-190">X</div>
+                <FieldBox label="Multiplier" pad="pl-6 pr-2">
+                  <FieldInput value={multiplier.toFixed(2)} name="multiplier" placeholder="0" onChange={(v) => setMulti(Number(v) || 1.01)} />
+                  <span className="mr-6 shrink-0 text-12 font-bold text-grey-190">X</span>
                 </FieldBox>
-                <FieldBox label="Win chance">
-                  <FieldInput value={Number(chance.toFixed(2))} name="chance" placeholder="Enter chance" onChange={(v) => setChance(Number(v) || 2)} />
-                  <div className="ml-4">
-                    <span className="px-8 text-14 text-grey-190">%</span>
-                  </div>
+                <FieldBox label="Win chance" pad="pl-6 pr-2">
+                  <FieldInput value={Number(chance.toFixed(2))} name="chance" placeholder="0" onChange={(v) => setChance(Number(v) || 2)} />
+                  <span className="mr-6 shrink-0 text-12 text-grey-190">%</span>
                 </FieldBox>
-                <FieldBox label="Profit on win" pad="px-12">
-                  <BuxIcon className="text-green" />
-                  <FieldInput value={profit} name="profit" placeholder="Enter profit on win" readOnly />
+                <FieldBox label="Profit on win" pad="pl-8 pr-6">
+                  <BuxIcon className="shrink-0 text-green" />
+                  <FieldInput value={profit} name="profit" placeholder="0" readOnly />
                 </FieldBox>
-              </>
+              </div>
             )}
           </div>
         </GameSidebar>
@@ -207,7 +202,7 @@ export default function DicePage() {
                 </div>
               </div>
             </div>
-            <div className="@md/page:grid hidden w-full grid-cols-3 gap-12">{stats}</div>
+            <div className="@md/page:hidden grid w-full grid-cols-3 gap-10">{stats}</div>
           </div>
         </div>
       }

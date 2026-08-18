@@ -45,12 +45,12 @@ export function Bux({
         <div className="flex items-center justify-center">
           <BuxGlyph
             className={tone === "muted" ? "opacity-50" : undefined}
-            style={xs ? { width: 14, height: 14 } : sm ? { width: 16, height: 16 } : { width: 18, height: 18 }}
+            style={xs ? { width: 14, height: 14 } : sm ? { width: 16, height: 16 } : { width: 20, height: 20 }}
           />
         </div>
       </div>
       <div className={`relative flex items-center ${amountClass}`}>
-        <p className={`font-semibold ${xs ? "text-11" : sm ? "text-12" : "text-14"}`}>{formatBux(value)}</p>
+        <p className={`ui-num ${xs ? "text-12" : sm ? "text-13" : "text-16"}`}>{formatBux(value)}</p>
       </div>
     </div>
   );

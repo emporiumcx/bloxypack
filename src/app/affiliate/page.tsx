@@ -23,7 +23,7 @@ export default function AffiliatePage() {
   }
 
   const code = `${user.username.toLowerCase()}`;
-  const link = `https://wildpvp.com/r/${code}`;
+  const link = `https://bloxywild.com/r/${code}`;
 
   return (
     <div className="grid w-full grid-cols-1 gap-16">

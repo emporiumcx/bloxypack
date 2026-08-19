@@ -2,7 +2,7 @@ import { io, type Socket } from "socket.io-client";
 import { rankNameFromLevel, xpToLevel } from "./levels";
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5050";
-const TOKEN_KEY = "wildpvp-token";
+const TOKEN_KEY = "bloxywild-token";
 
 export type ServerUser = {
   _id?: string;

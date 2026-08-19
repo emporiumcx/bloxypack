@@ -24,7 +24,7 @@ const skranji = Skranji({
 });
 
 export const metadata: Metadata = {
-  title: "WildPVP | Premium Case Opening Site",
+  title: "BloxyWild | Premium Case Opening Site",
   description: "Crack cases. Win limiteds. Cash out crypto.",
   icons: { icon: "/img/icon.png" },
 };

@@ -100,8 +100,8 @@ type Store = {
 
 const Ctx = createContext<Store | null>(null);
 
-const WELCOME_SESSION_KEY = "wildpvp-welcome-session";
-const WELCOME_UNTIL_KEY = "wildpvp-welcome-until";
+const WELCOME_SESSION_KEY = "bloxywild-welcome-session";
+const WELCOME_UNTIL_KEY = "bloxywild-welcome-until";
 const WELCOME_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 
 function storageGet(storage: Storage, key: string) {

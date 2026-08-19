@@ -85,7 +85,7 @@ export function ChatPanel() {
         <img alt="" src="/img/chat-banner.png" className="absolute inset-0 h-full w-full scale-110 object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/45" />
         <Link href="/" aria-label="home" className="relative z-10 flex h-full w-full items-center justify-center px-16">
-          <img alt="WildPVP" className="h-42 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.75)]" src="/img/logo.png" />
+          <img alt="BloxyWild" className="h-42 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.75)]" src="/img/logo.png" />
         </Link>
       </div>
       <div className="flex h-44 shrink-0 items-center justify-between gap-10 border-b-1 border-grey-47 px-12">
@@ -154,7 +154,7 @@ export function ChatPanel() {
                         submit();
                       }
                     }}
-                    name="chat_message_wildpvp"
+                    name="chat_message_bloxywild"
                   />
                   <button
                     type="button"

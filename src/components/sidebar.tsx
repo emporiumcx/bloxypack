@@ -94,8 +94,7 @@ export function Sidebar() {
     >
       <div className="relative z-10 h-64 w-full overflow-hidden border-b-1 border-grey-47 p-10 transition-colors hover:bg-grey-34 active:bg-grey-34">
         <Link href="/" aria-label="home" className="relative flex h-full w-full items-center justify-center">
-          <img alt="WildPVP" className="relative hidden h-full w-auto max-w-full object-contain xl:block" src="/img/logo.png" />
-          <img alt="WildPVP" className="relative h-full w-auto object-contain xl:hidden" src="/img/icon.png" />
+          <img alt="BloxyWild" className="relative h-full w-auto max-w-full object-contain" src="/img/logo.png" />
         </Link>
       </div>
 

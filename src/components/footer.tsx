@@ -37,16 +37,16 @@ export function SiteFooter() {
         <div className="flex w-full justify-start">
           <div className="grid w-[450px] max-w-full grid-cols-1 gap-16 sm:gap-26">
             <Link aria-label="home" className="relative flex h-full w-full items-center justify-start" href="/">
-              <img alt="WildPVP" className="relative h-36 w-auto object-contain" src="/img/logo.png" />
+              <img alt="BloxyWild" className="relative h-36 w-auto object-contain" src="/img/logo.png" />
             </Link>
             <div className="grid w-full grid-cols-1 gap-16">
               <p className="text-left text-12 text-grey-142">
-                WildPVP is an entirely independent platform. It has no association, partnership, or endorsement from
+                BloxyWild is an entirely independent platform. It has no association, partnership, or endorsement from
                 Roblox Corporation or any of its subsidiaries or affiliates. Roblox accounts cannot be used to access
                 our site, and Robux is not accepted or exchangeable here.
               </p>
               <p className="text-left text-12 text-grey-142">
-                WildPVP is a service provided by D.G.P. SOFTWORKS LTD, registered at Themistokli Dervi 48, 306, 1066
+                BloxyWild is a service provided by D.G.P. SOFTWORKS LTD, registered at Themistokli Dervi 48, 306, 1066
                 Nicosia, Cyprus.
               </p>
             </div>
@@ -155,7 +155,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="w-full bg-grey-28 p-14">
-        <h2 className="text-center text-12 text-grey-142">© 2026 WildPVP.com All rights reserved.</h2>
+        <h2 className="text-center text-12 text-grey-142">© 2026 BloxyWild.com All rights reserved.</h2>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ function mongoUri() {
 
 const connectDB = async() => {
     try {
-        const dbUri = mongoUri() || (process.env.NODE_ENV === 'production' ? '' : 'mongodb://127.0.0.1:27017/wildpvp');
+        const dbUri = mongoUri() || (process.env.NODE_ENV === 'production' ? '' : 'mongodb://127.0.0.1:27017/bloxywild');
         if (!dbUri) {
             throw new Error(
                 'DATABASE_URI is missing on this Railway service. Open alluring-adventure → Variables → add DATABASE_URI = your mongodb+srv://... Atlas URL, then Redeploy. Shared/frontend variables do not apply here.'

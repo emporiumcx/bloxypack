@@ -7,7 +7,7 @@ const cases = require('../data/cases-data.json');
 const drops = require('../data/drops-data.json');
 
 async function run() {
-  const uri = process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/wildpvp';
+  const uri = process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/bloxywild';
   await mongoose.connect(uri);
   console.log('Connected', uri);
 

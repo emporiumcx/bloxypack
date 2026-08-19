@@ -1,6 +1,6 @@
 import { BATTLES, type Battle } from "./catalog";
 
-const KEY = "wildpvp-battles";
+const KEY = "bloxywild-battles";
 
 export function loadLocalBattles(): Battle[] {
   if (typeof window === "undefined") return [];

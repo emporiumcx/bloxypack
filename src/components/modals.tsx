@@ -7,7 +7,7 @@ import { Icons } from "./icons";
 import { useStore } from "./providers";
 import { Bux, BuxIcon } from "./bux";
 
-const FEATURED_AFFILIATE_CODE = "WILDPVP";
+const FEATURED_AFFILIATE_CODE = "BLOXYWILD";
 const BUX_USD = 0.002;
 const WITHDRAW_FEE = 0.02;
 
@@ -139,7 +139,7 @@ function ModalFrame({
                   <img
                     src={banner}
                     alt=""
-                    className="absolute inset-0 h-full w-full object-cover object-center"
+                    className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
                   />
                 </div>
               ) : null}
@@ -238,7 +238,7 @@ function AuthShell({
   leaving?: boolean;
 }) {
   return (
-    <ModalFrame width={480} onClose={onClose} banner="/img/auth-banner.jpg" leaving={leaving}>
+    <ModalFrame width={480} onClose={onClose} banner="/img/auth-banner.png" leaving={leaving}>
       <div className="@sm/page:gap-24 @sm/page:p-24 grid w-full grid-cols-1 gap-14 p-16">
         <div className="grid w-full grid-cols-[1fr_auto] items-center">
           <div className="flex w-full">
@@ -462,9 +462,9 @@ export function Modals() {
           <span className="rounded-full bg-green px-12 py-4 text-12 font-bold tracking-wide text-grey-1">
             WELCOME TO
           </span>
-          <img src="/img/logo.png" alt="WildPVP" className="h-48 object-contain" />
+          <img src="/img/logo.png" alt="BloxyWild" className="h-48 object-contain" />
           <p className="text-16 text-grey-190">Welcome to the #1 Roblox Case Opening Site!</p>
-          <GreenButton onClick={dismissWelcome}>Continue to WildPVP →</GreenButton>
+          <GreenButton onClick={dismissWelcome}>Continue to BloxyWild →</GreenButton>
         </div>
       </Overlay>
     );

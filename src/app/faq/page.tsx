@@ -1,7 +1,7 @@
 const FAQS = [
   {
-    q: "What is WildPVP?",
-    a: "WildPVP is an independent case-opening and original games site. It is not affiliated with Roblox Corporation.",
+    q: "What is BloxyWild?",
+    a: "BloxyWild is an independent case-opening and original games site. It is not affiliated with Roblox Corporation.",
   },
   {
     q: "How do deposits work?",

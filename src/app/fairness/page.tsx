@@ -3,7 +3,7 @@ export default function FairnessPage() {
     <article className="mx-auto max-w-[720px] space-y-12 text-14 leading-7 text-grey-190">
       <h1 className="text-24 font-semibold text-white">Provably Fair</h1>
       <p>
-        WildPVP uses the same HMAC-SHA256 system as RoStake. Before you play, the server commits to a hidden server
+        BloxyWild uses the same HMAC-SHA256 system as RoStake. Before you play, the server commits to a hidden server
         seed and shows you its SHA-256 hash. Your client seed and a nonce are mixed in so the house cannot change the
         result after you bet.
       </p>

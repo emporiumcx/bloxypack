@@ -12,7 +12,7 @@ import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
 import { ItemBg } from "@/components/item-bg";
-import { getCase, type Battle } from "@/lib/catalog";
+import { caseImage, getCase, type Battle } from "@/lib/catalog";
 import { subscribeBattles } from "@/lib/backend";
 import { mapBattleGame } from "@/lib/battles-map";
 
@@ -167,7 +167,7 @@ export default function BattlesPage() {
                                       <ItemBg className="inset-4 opacity-35" />
                                       <img
                                         alt=""
-                                        src={c.image ?? `/cdn/cases/${c.imageId}.webp`}
+                                        src={caseImage(c)}
                                         className="@sm/page:h-72 @sm/page:w-72 relative h-48 w-48 object-contain"
                                       />
                                     </>

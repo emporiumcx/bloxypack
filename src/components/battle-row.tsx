@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getCase, type Battle } from "@/lib/catalog";
+import { caseImage, getCase, type Battle } from "@/lib/catalog";
 import { botAvatar } from "@/lib/avatars";
 import { BattleSeat, BattleVs } from "./battle-seat";
 import { Bux } from "./bux";
@@ -108,7 +108,7 @@ export function BattleRow({ battle: b, compact = false }: { battle: Battle; comp
                         <ItemBg className="inset-6 opacity-30" />
                         <img
                           alt=""
-                          src={c.image ?? `/cdn/cases/${c.imageId}.webp`}
+                          src={caseImage(c)}
                           className="relative h-56 w-56 object-contain"
                         />
                       </>

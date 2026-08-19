@@ -8,7 +8,7 @@ import { Dropdown } from "@/components/dropdown";
 import { FairnessControl } from "@/components/fairness";
 import { Icons } from "@/components/icons";
 import { ItemBg } from "@/components/item-bg";
-import { CASES } from "@/lib/catalog";
+import { CASES, caseImage } from "@/lib/catalog";
 
 export default function CasesPage() {
   const [q, setQ] = useState("");
@@ -86,7 +86,7 @@ export default function CasesPage() {
                 <img
                   className="absolute inset-0 w-full scale-100 object-contain transition-transform duration-300 group-hover:rotate-[5deg] group-hover:scale-[1.1] group-active:rotate-[5deg] group-active:scale-[1.1]"
                   alt=""
-                  src={`/cdn/cases/${item.imageId}.webp`}
+                  src={caseImage(item)}
                 />
               </div>
               <div className="grid w-full grid-cols-1 gap-8">

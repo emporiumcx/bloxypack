@@ -10,7 +10,7 @@ import { FairnessControl } from "@/components/fairness";
 import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
 import { subscribeBattles } from "@/lib/backend";
-import { type CaseItem } from "@/lib/catalog";
+import { caseImage, type CaseItem } from "@/lib/catalog";
 
 const NORMAL = [
   { id: "1v1", label: "1V1", slots: 2, teams: "1v1" },
@@ -303,7 +303,7 @@ export default function CreateBattlePage() {
                 >
                   <img
                     alt=""
-                    src={c.image ?? `/cdn/cases/${c.imageId}.webp`}
+                    src={caseImage(c)}
                     className="h-[140px] w-[140px] object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                   <p className="mt-12 truncate text-center text-14 text-grey-190">{c.name}</p>

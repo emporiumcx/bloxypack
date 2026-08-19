@@ -1,7 +1,7 @@
-import type { CaseItem } from "@/lib/catalog";
+import { caseImage, type CaseItem } from "@/lib/catalog";
 
 export function CaseArt({ item, className = "" }: { item: CaseItem; className?: string }) {
-  const src = item.imageId ? `/cdn/cases/${item.imageId}.webp` : item.image ?? "";
+  const src = caseImage(item);
   return (
     <div className={`relative overflow-hidden rounded-8 bg-grey-28 ${className}`}>
       {src ? (

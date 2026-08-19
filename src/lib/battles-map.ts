@@ -1,4 +1,4 @@
-import { getCase, type Battle } from "./catalog";
+import { caseImage, getCase, type Battle } from "./catalog";
 import type { BattleGame } from "./backend";
 import { botAvatar, botName } from "./avatars";
 
@@ -50,7 +50,5 @@ export function mapBattleGame(game: BattleGame): Battle {
 }
 
 export function battleCaseImage(slug: string) {
-  const c = getCase(slug);
-  if (!c) return "/img/home/cases.webp";
-  return c.image ?? `/cdn/cases/${c.imageId}.webp`;
+  return caseImage(getCase(slug));
 }

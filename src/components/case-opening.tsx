@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Bux } from "./bux";
 import { ChoiceBar } from "./bet-field";
@@ -8,7 +7,7 @@ import { FairnessControl } from "@/components/fairness";
 import { Icons } from "./icons";
 import { ItemBg } from "./item-bg";
 import { useStore, useBalanceHold } from "./providers";
-import { dropsForCase, pickDrop, type CaseDrop, type CaseItem, type DropColor } from "@/lib/catalog";
+import { caseImage, dropsForCase, pickDrop, type CaseDrop, type CaseItem, type DropColor } from "@/lib/catalog";
 
 const RARITY: Record<DropColor, string> = {
   YELLOW: "rgb(228, 174, 57)",
@@ -233,6 +232,10 @@ function BorderRipple({
   );
 }
 
+function formatChance(n: number) {
+  return String(Number(n.toFixed(2)));
+}
+
 function DropCard({ d }: { d: CaseDrop }) {
   const color = RARITY[d.color] ?? RARITY.GRAY;
   return (
@@ -248,7 +251,7 @@ function DropCard({ d }: { d: CaseDrop }) {
         </p>
       </div>
       <div className="absolute right-12 top-12 z-10 transition-opacity group-hover:opacity-0 group-active:opacity-0">
-        <p className="relative text-12 text-grey-142">{d.chance}%</p>
+        <p className="relative text-12 text-grey-142">{formatChance(d.chance)}%</p>
       </div>
       <div className="relative grid w-full grid-cols-1 gap-16">
         <div className="flex h-[108px] w-full justify-center">
@@ -523,6 +526,11 @@ export function CaseOpening({ item }: { item: CaseItem }) {
   const [phase, setPhase] = useState<"idle" | "spinning" | "landed">("idle");
   const [spinKey, setSpinKey] = useState(0);
   const drops = useMemo(() => dropsForCase(item.slug), [item.slug]);
+  const listed = useMemo(() => {
+    if (!drops.length) return [];
+    const [front, ...rest] = drops;
+    return [front, ...rest.sort((a, b) => b.value - a.value || a.minTicket - b.minTicket)];
+  }, [drops]);
   const n = Number(qty);
   const cfg = spinConfig(n, fast);
   const [rows, setRows] = useState<RowState[]>(() => {
@@ -531,7 +539,7 @@ export function CaseOpening({ item }: { item: CaseItem }) {
   });
   const cost = item.price * n;
   const duration = cfg.duration;
-  const caseImg = item.imageId ? `/cdn/cases/${item.imageId}.webp` : item.image ?? "";
+  const caseImg = caseImage(item);
   const spinning = phase === "spinning";
   const rowsRef = useRef(rows);
   rowsRef.current = rows;
@@ -628,9 +636,9 @@ export function CaseOpening({ item }: { item: CaseItem }) {
       <div className="@sm/page:px-0 @sm/page:py-0 relative w-full py-24">
         <div className="@sm/page:grid-cols-[auto_1fr] grid w-full grid-cols-[1fr_auto_auto] gap-10">
           <div className="flex justify-start">
-            <Link
+            <a
               href="/cases"
-              aria-label="link"
+              aria-label="Back to cases"
               className="group/button relative flex h-32 items-center justify-center rounded-6 bg-grey-39 opacity-100 transition-all duration-200 hover:bg-grey-47 active:bg-grey-47"
             >
               <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-10">
@@ -639,7 +647,7 @@ export function CaseOpening({ item }: { item: CaseItem }) {
                 </div>
                 <p className="text-14 text-grey-142 transition-all duration-300">Back to cases</p>
               </div>
-            </Link>
+            </a>
           </div>
           <div className="col-span-1 col-start-2 flex w-full justify-end">
             <div className="@sm/page:w-auto grid w-full grid-cols-[auto_auto_auto_auto] items-center gap-8">
@@ -716,7 +724,7 @@ export function CaseOpening({ item }: { item: CaseItem }) {
       <div className="@sm/page:gap-24 grid w-full grid-cols-1 gap-16">
         <h2 className="ui-label @sm/page:text-16 text-14 text-white">Possible drops</h2>
         <div className="@sm/page:grid-cols-3 @sm/page:gap-6 @md/page:grid-cols-4 @bt/page:grid-cols-5 @lg/page:grid-cols-6 @2xl/page:grid-cols-7 grid w-full grid-cols-2 gap-12">
-          {drops.map((d) => (
+          {listed.map((d) => (
             <DropCard key={d.id} d={d} />
           ))}
         </div>

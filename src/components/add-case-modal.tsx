@@ -6,7 +6,7 @@ import { ChoiceBar } from "./bet-field";
 import { Dropdown } from "./dropdown";
 import { Icons } from "./icons";
 import { ItemBg } from "./item-bg";
-import { CASES, type CaseItem } from "@/lib/catalog";
+import { CASES, caseImage, type CaseItem } from "@/lib/catalog";
 
 const MODAL_EXIT_MS = 220;
 
@@ -106,7 +106,7 @@ export function AddCaseModal({
                     <img
                       className="absolute inset-0 w-full object-contain transition-transform duration-300 group-hover:rotate-[5deg] group-hover:scale-[1.1]"
                       alt=""
-                      src={item.image ?? `/cdn/cases/${item.imageId}.webp`}
+                      src={caseImage(item)}
                     />
                   </div>
                   <p className="truncate text-center text-14 text-white">{item.name}</p>

@@ -26,6 +26,13 @@ export function getCase(slug: string) {
   return CASES.find((c) => c.slug === slug) ?? REWARD_CASES.find((c) => c.slug === slug);
 }
 
+export function caseImage(item: Pick<CaseItem, "image" | "imageId"> | undefined | null) {
+  if (!item) return "/img/home/cases.webp";
+  if (item.image) return item.image;
+  if (item.imageId != null) return `/cdn/cases/${item.imageId}.webp`;
+  return "/img/home/cases.webp";
+}
+
 export type DropColor = "YELLOW" | "PURPLE" | "BLUE" | "GRAY";
 
 export type CaseDrop = {
@@ -76,7 +83,7 @@ export const BATTLES: Battle[] = [
   {
     id: "neon-6man",
     cost: 188312,
-    cases: ["neon-case", "astra-dreams", "midas-touch", "fedora-fiasco"],
+    cases: ["star-case", "fedora-case", "through-the-flames", "50-50"],
     players: [
       { name: "imtrynamaxwin", team: 0 },
       { name: "Bot", bot: true, team: 0 },
@@ -93,7 +100,7 @@ export const BATTLES: Battle[] = [
   {
     id: "telamon-team",
     cost: 36244,
-    cases: Array(9).fill("telamon-case"),
+    cases: Array(9).fill("creator-case"),
     players: [{ name: "Joris67", team: 0 }],
     slots: 4,
     teams: "2v2 Team",
@@ -103,7 +110,7 @@ export const BATTLES: Battle[] = [
   {
     id: "valk-duel",
     cost: 92440,
-    cases: ["valk-volatility", "inferno-royale"],
+    cases: ["risky-valk", "through-the-flames"],
     players: [
       { name: "Joris67", team: 0 },
       { name: "monarch", team: 1 },
@@ -116,7 +123,7 @@ export const BATTLES: Battle[] = [
   {
     id: "budget-4",
     cost: 18420,
-    cases: ["cheap-meal", "noob-case", "bone-breaker", "10-random"],
+    cases: ["budget-case", "the-grind", "creepy-case", "70-random"],
     players: [
       { name: "Alpha_mil0", team: 0 },
       { name: "Bot", bot: true, team: 1 },
@@ -130,7 +137,7 @@ export const BATTLES: Battle[] = [
   {
     id: "gold-rush",
     cost: 410900,
-    cases: ["dominus-bonanza", "golden-opportunity", "mogger"],
+    cases: ["dominus-domination", "golden-case", "bling-case"],
     players: [
       { name: "Anonymous", team: 0 },
       { name: "Bot", bot: true, team: 1 },
@@ -143,7 +150,7 @@ export const BATTLES: Battle[] = [
   {
     id: "mid-duel",
     cost: 48220,
-    cases: ["midas-touch", "cheap-meal"],
+    cases: ["golden-case", "budget-flip"],
     players: [{ name: "OMEGA51", team: 0 }],
     slots: 2,
     teams: "1v1",
@@ -153,7 +160,7 @@ export const BATTLES: Battle[] = [
   {
     id: "fedora-ffa",
     cost: 22140,
-    cases: ["fedora-fiasco", "10-random", "noob-case"],
+    cases: ["fedora-case", "70-random", "the-grind"],
     players: [
       { name: "przfnn", team: 0 },
       { name: "Vasky", team: 1 },
@@ -166,7 +173,7 @@ export const BATTLES: Battle[] = [
   {
     id: "inferno-ended",
     cost: 110400,
-    cases: ["inferno-royale", "valk-volatility", "neon-case"],
+    cases: ["through-the-flames", "risky-valk", "star-case"],
     players: [
       { name: "Joris67", team: 0 },
       { name: "monarch", team: 1 },
@@ -179,7 +186,7 @@ export const BATTLES: Battle[] = [
   {
     id: "wild-duel",
     cost: 4132,
-    cases: ["e-boy-case"],
+    cases: ["crazy-hair-case"],
     players: [
       { name: "WILD", team: 0 },
       { name: "Bot", bot: true, team: 1 },

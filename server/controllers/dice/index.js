@@ -2,6 +2,7 @@ const User = require('../../database/models/User');
 const UserSeed = require('../../database/models/UserSeed');
 const Leaderboard = require('../../database/models/Leaderboard');
 const Rain = require('../../database/models/Rain');
+const DiceBet = require('../../database/models/DiceBet');
 const { socketRemoveAntiSpam } = require('../../utils/socket');
 const { settingGet } = require('../../utils/setting');
 const { diceCheckSendBetData, diceMultiplier, diceRoll } = require('../../utils/dice');
@@ -37,6 +38,7 @@ const diceSendBetSocket = async (io, socket, user, data, callback) => {
                 $inc: {
                     balance: payout - amount,
                     xp: user.limits.blockSponsor !== true ? Math.floor(amount * settings.general.reward.multiplier) : 0,
+                    'rewards.bonusXp': user.limits.blockSponsor !== true ? Math.floor(amount * settings.general.reward.multiplier) : 0,
                     'stats.bet': amount,
                     'stats.won': payout,
                     'leaderboard.points': leaderboardDatabase !== null && user.limits.blockSponsor !== true && user.limits.blockLeaderboard !== true ? amount : 0,
@@ -51,7 +53,13 @@ const diceSendBetSocket = async (io, socket, user, data, callback) => {
                 { type: 'site', $or: [{ state: 'created' }, { state: 'pending' }, { state: 'running' }] },
                 { $inc: { amount: Math.floor(amount * 0.001) } },
                 { new: true }
-            )
+            ),
+            DiceBet.create({
+                amount,
+                payout,
+                multiplier: won ? multiplier : 0,
+                user: user._id
+            })
         ]);
 
         const bet = {

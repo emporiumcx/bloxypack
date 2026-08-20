@@ -251,7 +251,7 @@ export default function CreateBattlePage() {
             <p className="text-14 text-grey-190">Select game modes and amount of players</p>
           </div>
           <div className="@bt/page:grid-cols-3 grid w-full grid-cols-1 gap-12">
-            <section className="relative grid w-full grid-cols-1 gap-12 rounded-12 bg-grey-39 p-16">
+            <section className="panel-outline relative grid w-full grid-cols-1 gap-12 rounded-12 bg-grey-39 p-16">
               <div className="grid w-full grid-cols-[auto_1fr] items-center gap-6">
                 <div className="flex items-center justify-center" style={{ width: 20, height: 20 }}>
                   <Icons.battles className="text-grey-190" style={{ marginLeft: 0, scale: 1 }} />
@@ -264,7 +264,7 @@ export default function CreateBattlePage() {
                 ))}
               </div>
             </section>
-            <section className="relative grid w-full grid-cols-1 gap-12 rounded-12 bg-grey-39 p-16">
+            <section className="panel-outline relative grid w-full grid-cols-1 gap-12 rounded-12 bg-grey-39 p-16">
               <div className="grid w-full grid-cols-[auto_1fr] items-center gap-6">
                 <Icons.users className="text-20 text-blue" />
                 <p className="text-14 uppercase text-white">Team mode</p>
@@ -275,7 +275,7 @@ export default function CreateBattlePage() {
                 ))}
               </div>
             </section>
-            <section className="relative grid w-full grid-cols-1 gap-12 rounded-12 bg-grey-39 p-16">
+            <section className="panel-outline relative grid w-full grid-cols-1 gap-12 rounded-12 bg-grey-39 p-16">
               <div className="grid w-full grid-cols-[auto_1fr] items-center gap-6">
                 <Icons.people className="text-20 text-green" />
                 <p className="text-14 uppercase text-white">Group mode</p>
@@ -299,7 +299,7 @@ export default function CreateBattlePage() {
               {picked.map((c, i) => (
                 <div
                   key={`${c.slug}-${i}`}
-                  className="group relative flex h-full min-h-[270.8px] w-full flex-col items-center justify-center rounded-12 bg-grey-39 p-16 transition-colors hover:bg-grey-47 active:bg-grey-47 animate-show"
+                  className="panel-outline group relative flex h-full min-h-[270.8px] w-full flex-col items-center justify-center rounded-12 bg-grey-39 p-16 transition-colors hover:bg-grey-47 active:bg-grey-47 animate-show"
                 >
                   <img
                     alt=""
@@ -320,7 +320,7 @@ export default function CreateBattlePage() {
                   </button>
                 </div>
               ))}
-              <div className="group relative flex h-full min-h-[270.8px] w-full items-center justify-center rounded-12 bg-grey-39 transition-colors hover:bg-grey-47 active:bg-grey-47">
+              <div className="panel-outline group relative flex h-full min-h-[270.8px] w-full items-center justify-center rounded-12 bg-grey-39 transition-colors hover:bg-grey-47 active:bg-grey-47">
                 <div className="grid grid-cols-1 gap-12">
                   <div className="flex w-full justify-center">
                     <div className="flex h-48 w-48 items-center justify-center rounded-full border-2 border-grey-58">
@@ -335,7 +335,7 @@ export default function CreateBattlePage() {
           </div>
         </div>
 
-        <div className="@sm/page:grid-cols-[1fr_auto] relative grid w-full grid-cols-1 gap-12 rounded-12 bg-grey-39 p-16 transition-colors hover:bg-grey-47 active:bg-grey-47">
+        <div className="panel-outline @sm/page:grid-cols-[1fr_auto] relative grid w-full grid-cols-1 gap-12 rounded-12 bg-grey-39 p-16 transition-colors hover:bg-grey-47 active:bg-grey-47">
           <div className="@sm/page:flex w-full">
             <div className="@sm/page:w-auto grid w-full grid-cols-[auto_auto_1fr]">
               <div className="grid grid-cols-1 gap-6">

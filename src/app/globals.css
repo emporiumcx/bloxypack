@@ -44,10 +44,13 @@
   --color-purple: rgb(137, 94, 255);
   --color-red: rgb(255, 85, 98);
   --color-red-143: rgb(255, 143, 170);
-  --color-yellow: rgb(245, 224, 67);
+  --color-yellow: #f2c338;
   --color-bronze: rgb(244, 180, 148);
   --color-silver: rgb(250, 250, 250);
   --color-gold: rgb(249, 229, 172);
+  --color-gold-btn: #f2c338;
+  --color-gold-hi: #ffe28a;
+  --color-gold-lo: #9a5c08;
   --color-rank-bronze: rgb(166, 108, 57);
   --color-rank-silver: rgb(176, 179, 214);
   --color-rank-gold: rgb(241, 201, 71);
@@ -107,6 +110,9 @@
   --color-bronze: var(--color-bronze);
   --color-silver: var(--color-silver);
   --color-gold: var(--color-gold);
+  --color-gold-btn: var(--color-gold-btn);
+  --color-gold-hi: var(--color-gold-hi);
+  --color-gold-lo: var(--color-gold-lo);
   --color-rank-bronze: var(--color-rank-bronze);
   --color-rank-silver: var(--color-rank-silver);
   --color-rank-platinum: var(--color-rank-platinum);
@@ -299,6 +305,71 @@ a > * {
   animation: light-sweep 2.5s linear infinite;
 }
 
+@keyframes btn-shine {
+  0%,
+  62% {
+    transform: translateX(-20%);
+    opacity: 0;
+  }
+  68% {
+    opacity: 1;
+  }
+  82% {
+    transform: translateX(220%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(220%);
+    opacity: 0;
+  }
+}
+
+.animate-btn-shine {
+  animation: btn-shine 4.8s ease-in-out infinite;
+}
+
+@keyframes rarity-gold-sheen {
+  0% {
+    transform: translateX(-130%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(160%);
+    opacity: 0;
+  }
+}
+
+.animate-rarity-gold-sheen {
+  animation: rarity-gold-sheen 6s ease-in-out infinite;
+}
+
+@keyframes rarity-gold-glow {
+  0%,
+  100% {
+    opacity: 0.14;
+  }
+  50% {
+    opacity: 0.24;
+  }
+}
+
+.animate-rarity-gold-glow {
+  animation: rarity-gold-glow 4s ease-in-out infinite;
+}
+
+@keyframes rarity-rainbow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rarity-rainbow {
+  animation: rarity-rainbow 28s linear infinite;
+}
+
 @keyframes border-glow {
   0%,
   100% {
@@ -358,6 +429,26 @@ a > * {
 
 .animate-rain-fall {
   animation: rain-fall 0.95s linear infinite;
+}
+
+@keyframes logo-ember {
+  0% {
+    transform: translate3d(0, 4px, 0) scale(0.7);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(var(--ember-drift), -108px, 0) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.animate-logo-ember {
+  opacity: 0;
+  animation: logo-ember var(--ember-dur) ease-out infinite backwards;
+  animation-delay: var(--ember-delay);
 }
 
 @keyframes rain-coin {
@@ -461,6 +552,7 @@ a > * {
 }
 
 .animate-close-y {
+  pointer-events: none;
   animation: close-y 0.22s cubic-bezier(0.55, 0, 0.78, 0.2) both;
 }
 
@@ -481,6 +573,21 @@ a > * {
 
 .animate-page-in {
   animation: page-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes bets-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-bets-in {
+  animation: bets-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes page-in {
@@ -1471,4 +1578,27 @@ input.rs-range::-moz-range-track {
 
 .mm2-cases-spinner.is-battle.is-pre-spin .mm2-reel-item {
   animation: none;
+}
+
+.pay-ticker {
+  mask-image: linear-gradient(90deg, transparent, #000 48px, #000 calc(100% - 48px), transparent);
+}
+
+@keyframes pay-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.pay-marquee {
+  width: max-content;
+  animation: pay-marquee 42s linear infinite;
+}
+
+
+.panel-outline {
+  border: 2px solid #3f454d;
 }

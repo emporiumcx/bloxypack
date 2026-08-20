@@ -4,7 +4,8 @@ const rainSchema = new mongoose.Schema({
     amount: { type: Number },
     participants: [
         {
-            user: { type: mongoose.Schema.ObjectId, ref: 'User' }
+            user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+            wager: { type: Number, default: 0 }
         }
     ],
     creator: { type: mongoose.Schema.ObjectId, ref: 'User' },

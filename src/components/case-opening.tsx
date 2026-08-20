@@ -8,20 +8,33 @@ import { Icons } from "./icons";
 import { ItemBg } from "./item-bg";
 import { useStore, useBalanceHold } from "./providers";
 import { caseImage, dropsForCase, pickDrop, type CaseDrop, type CaseItem, type DropColor } from "@/lib/catalog";
+import { isRewardSlug } from "@/lib/rewards";
+import { sendRewardOpen } from "@/lib/backend";
 
 const RARITY: Record<DropColor, string> = {
-  YELLOW: "rgb(228, 174, 57)",
-  PURPLE: "rgb(136, 71, 255)",
-  BLUE: "rgb(94, 152, 217)",
-  GRAY: "rgb(176, 195, 217)",
+  RAINBOW: "#ff6ec7",
+  GOLD: "rgb(232, 178, 62)",
+  RED: "rgb(232, 68, 82)",
+  PURPLE: "rgb(158, 92, 255)",
+  GREEN: "rgb(52, 186, 118)",
+  GRAY: "rgb(142, 158, 176)",
+  YELLOW: "rgb(232, 178, 62)",
+  BLUE: "rgb(86, 150, 214)",
 };
 
 const RARITY_LABEL: Record<DropColor, string> = {
-  YELLOW: "Unique",
-  PURPLE: "Epic",
-  BLUE: "Rare",
+  RAINBOW: "Rainbow",
+  GOLD: "Gold",
+  RED: "Red",
+  PURPLE: "Purple",
+  GREEN: "Green",
   GRAY: "Common",
+  YELLOW: "Gold",
+  BLUE: "Rare",
 };
+
+const RAINBOW_GLOW =
+  "conic-gradient(from 90deg, #e85a5a, #e8c24a, #4ad48a, #4ab8e8, #b06ae8, #e85a5a)";
 
 const SLOT = 160;
 const STRIP_LEN = 25;
@@ -238,13 +251,30 @@ function formatChance(n: number) {
 
 function DropCard({ d }: { d: CaseDrop }) {
   const color = RARITY[d.color] ?? RARITY.GRAY;
+  const rainbow = d.color === "RAINBOW";
+  const gold = d.color === "GOLD" || d.color === "YELLOW";
   return (
-    <div className="@sm/page:rounded-12 group relative w-full overflow-hidden rounded-8 bg-grey-39 p-16">
-      <div className="@sm/page:rounded-12 absolute inset-0 rounded-8 bg-gradient-to-b from-transparent to-grey-39" />
-      <div
-        className="absolute bottom-0 left-0 h-1/2 w-full opacity-15"
-        style={{ background: `linear-gradient(0deg, ${color} 0%, rgba(0, 0, 0, 0) 100%)` }}
+    <div className="panel-outline @sm/page:rounded-12 group relative w-full overflow-hidden rounded-8 bg-grey-39 p-16">
+      {rainbow ? (
+        <div className="pointer-events-none absolute -inset-[55%] opacity-[0.14]">
+          <div className="animate-rarity-rainbow h-full w-full" style={{ background: RAINBOW_GLOW }} />
+        </div>
+      ) : (
+        <div
+          className={`pointer-events-none absolute inset-0 ${gold ? "animate-rarity-gold-glow" : "opacity-[0.16]"}`}
+          style={{ background: `radial-gradient(75% 58% at 50% 22%, ${color} 0%, transparent 70%)` }}
+        />
+      )}
+      <ItemBg
+        className="left-1/2 top-14 h-[136px] w-[136px] -translate-x-1/2 opacity-[0.22]"
+        color={rainbow ? RAINBOW_GLOW : color}
       />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/24 to-black/32" />
+      {gold ? (
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="animate-rarity-gold-sheen absolute inset-y-0 -left-1/3 w-1/2 bg-gradient-to-r from-transparent via-white/18 to-transparent" />
+        </div>
+      ) : null}
       <div className="absolute right-12 top-12 z-10 opacity-0 transition-opacity group-hover:opacity-100 group-active:opacity-100">
         <p className="relative text-12 text-grey-142">
           {d.minTicket + 1}-{d.maxTicket + 1}
@@ -256,11 +286,6 @@ function DropCard({ d }: { d: CaseDrop }) {
       <div className="relative grid w-full grid-cols-1 gap-16">
         <div className="flex h-[108px] w-full justify-center">
           <div className="relative h-108 w-108">
-            <div
-              className="absolute left-1/4 top-1/4 h-1/2 w-1/2 rounded opacity-80 blur-[40px] transition-all group-hover:scale-110 group-active:scale-110"
-              style={{ backgroundColor: color }}
-            />
-            <ItemBg className="inset-10 h-88 w-88 opacity-55" />
             <img
               alt=""
               className="relative h-[108px] w-full object-contain transition-all group-hover:-translate-y-6 group-hover:scale-110 group-active:-translate-y-6 group-active:scale-110"
@@ -531,7 +556,8 @@ export function CaseOpening({ item }: { item: CaseItem }) {
     const [front, ...rest] = drops;
     return [front, ...rest.sort((a, b) => b.value - a.value || a.minTicket - b.minTicket)];
   }, [drops]);
-  const n = Number(qty);
+  const reward = isRewardSlug(item.slug);
+  const n = reward ? 1 : Number(qty);
   const cfg = spinConfig(n, fast);
   const [rows, setRows] = useState<RowState[]>(() => {
     const start = spinConfig(1, false);
@@ -589,7 +615,7 @@ export function CaseOpening({ item }: { item: CaseItem }) {
   async function open(demo: boolean) {
     if (spinning) return;
     if (!demo && !user) return openModal("login");
-    if (!demo && user && user.balance < cost) return openModal("deposit");
+    if (!demo && !reward && user && user.balance < cost) return openModal("deposit");
     if (!drops.length) return;
 
     const next: RowState[] = [];
@@ -605,8 +631,8 @@ export function CaseOpening({ item }: { item: CaseItem }) {
     } else {
       holdBalance();
       try {
-        const res = await unboxBet(item.slug, n);
-        addBalance(-cost);
+        const res = reward ? await sendRewardOpen(item.slug) : await unboxBet(item.slug, n);
+        if (!reward) addBalance(-cost);
         applyUser(res.user);
         for (const game of res.games) {
           const hit =
@@ -637,15 +663,15 @@ export function CaseOpening({ item }: { item: CaseItem }) {
         <div className="@sm/page:grid-cols-[auto_1fr] grid w-full grid-cols-[1fr_auto_auto] gap-10">
           <div className="flex justify-start">
             <a
-              href="/cases"
-              aria-label="Back to cases"
+              href={reward ? "/rewards" : "/cases"}
+              aria-label={reward ? "Back to rewards" : "Back to cases"}
               className="group/button relative flex h-32 items-center justify-center rounded-6 bg-grey-39 opacity-100 transition-all duration-200 hover:bg-grey-47 active:bg-grey-47"
             >
               <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-10">
                 <div className="-ml-2 text-grey-142">
                   <Icons.chevronLeft className="text-22" />
                 </div>
-                <p className="text-14 text-grey-142 transition-all duration-300">Back to cases</p>
+                <p className="text-14 text-grey-142 transition-all duration-300">{reward ? "Back to rewards" : "Back to cases"}</p>
               </div>
             </a>
           </div>
@@ -677,15 +703,17 @@ export function CaseOpening({ item }: { item: CaseItem }) {
 
         <div className="mt-16 flex w-full justify-center">
           <div className="@lg/page:grid-cols-[auto_1fr] grid max-w-full grid-cols-1 gap-12">
-            <ChoiceBar
-              value={qty}
-              onChange={(id) => {
-                if (spinning) return;
-                setQty(id);
-                if (phase === "landed") setPhase("idle");
-              }}
-              options={QTY}
-            />
+            {reward ? null : (
+              <ChoiceBar
+                value={qty}
+                onChange={(id) => {
+                  if (spinning) return;
+                  setQty(id);
+                  if (phase === "landed") setPhase("idle");
+                }}
+                options={QTY}
+              />
+            )}
             <div className="@sm/page:grid-cols-[230px_160px] grid w-full grid-cols-1 gap-12">
               <button
                 type="button"
@@ -695,12 +723,16 @@ export function CaseOpening({ item }: { item: CaseItem }) {
                 className="group/button relative flex h-40 cursor-pointer items-start justify-center rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green shadow-[0_2px_0_rgba(0,0,0,0.25)] opacity-100 transition-all duration-200 active:translate-y-px active:border-green disabled:opacity-40"
               >
                 <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-16">
-                  <div className="grid grid-cols-[auto_auto] items-center gap-4">
-                    <p className="ui-btn-label text-nowrap text-12 text-grey-28">
-                      Open {n} case{n > 1 ? "s" : ""} for
-                    </p>
-                    <Bux value={cost} tone="onGreen" size="xs" />
-                  </div>
+                  {reward ? (
+                    <p className="ui-btn-label text-nowrap text-12 text-grey-28">Open case</p>
+                  ) : (
+                    <div className="grid grid-cols-[auto_auto] items-center gap-4">
+                      <p className="ui-btn-label text-nowrap text-12 text-grey-28">
+                        Open {n} case{n > 1 ? "s" : ""} for
+                      </p>
+                      <Bux value={cost} tone="onGreen" size="xs" />
+                    </div>
+                  )}
                 </div>
               </button>
               <button

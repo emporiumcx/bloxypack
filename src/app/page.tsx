@@ -4,13 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { BetsTable } from "@/components/bets-table";
 import { Bux } from "@/components/bux";
-import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
 import { ItemBg } from "@/components/item-bg";
 import { TICKER } from "@/lib/catalog";
-import { RainBanner } from "@/components/rain-banner";
 import { UserAvatar } from "@/components/user-avatar";
+import { ExploreRewards, PaymentTicker } from "@/components/home-explore";
 import { rankIdFromLevel, xpProgress } from "@/lib/levels";
 
 const ORIGINALS: { href: string; label: string; img: string; icon: typeof Icons.battles; scale: number; soon?: boolean }[] = [
@@ -24,11 +23,19 @@ const ORIGINALS: { href: string; label: string; img: string; icon: typeof Icons.
   { href: "/crash", label: "Crash", img: "/img/home/crash.webp", icon: Icons.crash, scale: 0.538462, soon: true },
 ];
 
-function pad(n: number) {
-  return String(n).padStart(2, "0");
-}
-
-function TiltBanner({ href, src, external }: { href: string; src: string; external?: boolean }) {
+function TiltBanner({
+  href,
+  src,
+  external,
+  glow,
+  glow2,
+}: {
+  href: string;
+  src: string;
+  external?: boolean;
+  glow: string;
+  glow2?: string;
+}) {
   const ref = useRef<HTMLImageElement>(null);
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -41,38 +48,54 @@ function TiltBanner({ href, src, external }: { href: string; src: string; extern
   };
 
   const inner = (
-    <div
-      className="group relative select-none [perspective:600px]"
-      role="img"
-      onMouseMove={onMove}
-      onMouseLeave={() => {
-        if (ref.current) ref.current.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0px)";
-      }}
-    >
-      <img
-        ref={ref}
-        className="block h-full w-full rounded-2xl object-cover shadow-xl transition-transform duration-150 ease-out will-change-transform [transform-style:preserve-3d] group-hover:scale-[1.03]"
-        alt=""
-        draggable={false}
-        src={src}
-        style={{ transform: "rotateX(0deg) rotateY(0deg) translateZ(0px)" }}
+    <div className="group relative h-full w-full overflow-hidden rounded-2xl">
+      <div
+        className="pointer-events-none absolute -inset-px rounded-[18px] opacity-20 blur-[4px] transition-opacity duration-300 group-hover:opacity-30"
+        style={{
+          background: glow2
+            ? `linear-gradient(118deg, ${glow} 0%, ${glow2} 100%)`
+            : glow,
+        }}
       />
       <div
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-60 mix-blend-screen transition-opacity duration-300"
-        style={{ background: "radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 60%)" }}
-      />
+        className="relative h-full overflow-hidden rounded-2xl border-0 select-none [perspective:600px]"
+        role="img"
+        onMouseMove={onMove}
+        onMouseLeave={() => {
+          if (ref.current) ref.current.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0px)";
+        }}
+        style={{
+          boxShadow: glow2
+            ? `0 0 6px ${glow}22, 0 0 10px ${glow2}14`
+            : `0 0 6px ${glow}22, 0 0 10px ${glow}14`,
+        }}
+      >
+        <img
+          ref={ref}
+          className="block h-full w-full rounded-2xl object-cover transition-transform duration-150 ease-out group-hover:scale-[1.03]"
+          alt=""
+          draggable={false}
+          src={src}
+          style={{ transform: "rotateX(0deg) rotateY(0deg) translateZ(0px)" }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 rounded-2xl opacity-35 mix-blend-screen transition-opacity duration-300"
+          style={{ background: "radial-gradient(circle, rgba(255, 255, 255, 0.14), transparent 55%)" }}
+        />
+      </div>
     </div>
   );
 
+  const wrap = "relative block h-full w-full opacity-90 transition-opacity hover:opacity-100 active:opacity-100";
   if (external) {
     return (
-      <a className="opacity-90 transition-opacity hover:opacity-100 active:opacity-100" target="_blank" rel="noreferrer" href={href}>
+      <a className={wrap} target="_blank" rel="noreferrer" href={href}>
         {inner}
       </a>
     );
   }
   return (
-    <Link className="opacity-90 transition-opacity hover:opacity-100 active:opacity-100" href={href}>
+    <Link className={wrap} href={href}>
       {inner}
     </Link>
   );
@@ -84,12 +107,11 @@ function tickerName(name: string) {
 }
 
 export default function HomePage() {
-  const { openModal, user, rain } = useStore();
+  const { user } = useStore();
   const xpPct = user ? xpProgress(user.xp) : 0;
   const scroller = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(true);
-  const [now, setNow] = useState(Date.now());
 
   function updateArrows() {
     const el = scroller.current;
@@ -106,22 +128,20 @@ export default function HomePage() {
     return () => el.removeEventListener("scroll", updateArrows);
   }, []);
 
-  useEffect(() => {
-    const t = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(t);
-  }, []);
-
-  const remain = Math.max(0, rain.endsAt - now);
-  const mm = pad(Math.floor(remain / 60000));
-  const ss = pad(Math.floor((remain % 60000) / 1000));
-
   return (
     <div className="flex w-full justify-center">
     <div className="@sm/page:gap-24 @md/page:gap-32 grid w-full max-w-screen-xl grid-cols-1 gap-16">
       {user ? (
-        <div className="grid w-full grid-cols-[auto_1fr] items-center gap-12 rounded-8 bg-grey-34 p-12">
-          <UserAvatar avatar={user.avatar} seed={user.id || user.username} size={52} />
-          <div className="grid w-full grid-cols-[1fr_auto] items-end gap-12">
+        <div className="panel-outline relative grid w-full grid-cols-[auto_1fr] items-center gap-12 overflow-hidden rounded-8 bg-grey-34 p-12">
+          <img
+            alt=""
+            src="/img/home/leaf.png"
+            className="pointer-events-none absolute right-0 top-0 z-0 h-[200px] w-[200px] max-w-none object-contain object-right-top"
+          />
+          <div className="relative z-10">
+            <UserAvatar avatar={user.avatar} seed={user.id || user.username} size={52} level={user.level} />
+          </div>
+          <div className="relative z-10 grid w-full grid-cols-[1fr_auto] items-end gap-12">
             <div className="grid w-full grid-cols-1 gap-8">
               <p className="text-20 font-bold text-grey-190">
                 Welcome back, <span className="text-20 font-bold text-white">{user.username}</span>
@@ -143,7 +163,7 @@ export default function HomePage() {
             <div className="flex w-max pt-16">
               {TICKER.map((item, i) => (
                 <div key={`${item.id}-${i}`} className="group relative mr-12 h-64">
-                  <div className="group grid h-full grid-cols-[auto_auto] items-center overflow-hidden rounded-8 bg-grey-39 p-8 pr-12">
+                  <div className="panel-outline group grid h-full grid-cols-[auto_auto] items-center overflow-hidden rounded-8 bg-grey-39 p-8 pr-12">
                     <div className="relative mr-8 flex h-48 w-48 items-center justify-center">
                       <div
                         className="absolute inset-10 scale-100 blur-[34px] transition-transform group-hover:scale-150 group-active:scale-150"
@@ -173,22 +193,15 @@ export default function HomePage() {
         </div>
       </div>
 
-      <RainBanner
-        minutes={mm}
-        seconds={ss}
-        amount={rain.amount}
-        onJoin={() => openModal(user ? "rain" : "login")}
-      />
-
       <div className="@sm/page:grid-cols-2 @xl/page:grid-cols-3 grid w-full grid-cols-1 gap-12">
         <div className="relative aspect-[7.11/4]">
-          <TiltBanner href="/leaderboard" src="/img/banners/lb.webp" />
+          <TiltBanner href="/leaderboard" src="/img/banners/wager-lb.png" glow="#f4de5a" glow2="#7ef25a" />
         </div>
         <div className="relative aspect-[7.11/4]">
-          <TiltBanner href="https://discord.gg/rostake" src="/img/banners/discord_3.webp" external />
+          <TiltBanner href="https://discord.gg/rostake" src="/img/banners/discord.png" glow="#8aa6ff" external />
         </div>
         <div className="@xl/page:block relative hidden aspect-[7.11/4]">
-          <TiltBanner href="https://kick.com/rostakedotcom" src="/img/banners/kick.webp" external />
+          <TiltBanner href="https://kick.com/rostakedotcom" src="/img/banners/kick.png" glow="#53fc18" external />
         </div>
       </div>
 
@@ -220,7 +233,7 @@ export default function HomePage() {
               <Link
                 key={g.label}
                 href={g.href}
-                className={`duration-600 group relative mr-12 h-[240px] min-w-[190px] rounded-8 bg-grey-39 transition-all last:mr-0 ${
+                className={`panel-outline duration-600 group relative mr-12 h-[240px] min-w-[190px] rounded-8 bg-grey-39 transition-all last:mr-0 ${
                   g.soon ? "cursor-default opacity-25" : ""
                 }`}
               >
@@ -284,33 +297,10 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-        <BetsTable />
       </div>
-
-      <div className="w-full border-b-1 border-grey-47" />
-      <div className="grid w-full grid-cols-[1fr_auto] items-center gap-16 py-16">
-        <div className="grid w-full grid-cols-1 gap-24">
-          <div className="grid w-full grid-cols-1 gap-8">
-            <h2 className="@sm/page:text-20 text-16 text-white">Payment methods</h2>
-            <div className="flex w-full">
-              <p className="w-[500px] max-w-full text-14 text-grey-190">
-                You can make payments using <span className="text-14 text-white">gift cards, credit cards</span> or{" "}
-                <span className="text-14 text-white">crypto</span>. Deposit & withdraw instantly using any of our available methods.
-              </p>
-            </div>
-          </div>
-          <div className="flex">
-            <GreenButton onClick={() => openModal("deposit")}>Deposit now</GreenButton>
-          </div>
-        </div>
-        <div className="relative h-[150px] w-[150px]">
-          <img
-            alt=""
-            className="absolute left-1/2 top-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 animate-float2 object-contain"
-            src="/img/home/home_payments.webp"
-          />
-        </div>
-      </div>
+      <ExploreRewards />
+      <PaymentTicker />
+      <BetsTable />
     </div>
     </div>
   );

@@ -22,7 +22,7 @@ export default function FaqPage() {
     <article className="mx-auto grid w-full max-w-[720px] gap-16">
       <h1 className="text-24 font-semibold text-white">FAQ</h1>
       {FAQS.map((item) => (
-        <div key={item.q} className="grid gap-6 rounded-12 bg-grey-39 p-16">
+        <div key={item.q} className="panel-outline grid gap-6 rounded-12 bg-grey-39 p-16">
           <h2 className="text-16 text-white">{item.q}</h2>
           <p className="text-14 leading-7 text-grey-190">{item.a}</p>
         </div>

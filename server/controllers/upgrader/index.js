@@ -123,6 +123,7 @@ const upgraderSendBetSocket = async(io, socket, user, data, callback) => {
                 $inc: {
                     balance: Math.floor(amountPayout - amount),
                     xp: user.limits.blockSponsor !== true ? Math.floor(amount * settings.general.reward.multiplier) : 0,
+                    'rewards.bonusXp': user.limits.blockSponsor !== true ? Math.floor(amount * settings.general.reward.multiplier) : 0,
                     'stats.bet': amount,
                     'stats.won': amountPayout,
                     'limits.betToWithdraw': Math.floor(user.limits.betToWithdraw - amount) <= 0 ? -user.limits.betToWithdraw : -amount,

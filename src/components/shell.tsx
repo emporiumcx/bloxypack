@@ -34,24 +34,24 @@ export function Shell({ children }: { children: React.ReactNode }) {
         </div>
       </div>
 
-      {!chatOpen ? (
-        <button
-          type="button"
-          aria-label="open chat"
-          onClick={toggleChat}
-          className="fixed bottom-16 left-16 z-50 flex h-48 w-48 items-center justify-center rounded-12 border-1 border-grey-47 bg-grey-34 text-grey-142 shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-colors hover:bg-grey-39 hover:text-white"
-        >
-          <Icons.chat className="text-22" />
-        </button>
-      ) : null}
+      <button
+        type="button"
+        aria-label={chatOpen ? "close chat" : "open chat"}
+        onClick={toggleChat}
+        className={`fixed bottom-16 z-50 flex h-40 w-40 items-center justify-center rounded-10 border-1 border-grey-47 bg-grey-34 text-grey-142 shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-colors hover:bg-grey-39 hover:text-white ${
+          chatOpen ? "left-[316px]" : "left-16"
+        }`}
+      >
+        <Icons.chat className="text-18" />
+      </button>
 
       <button
         type="button"
         aria-label="support"
         onClick={() => openModal("support")}
-        className="fixed bottom-16 right-16 z-50 flex h-48 w-48 items-center justify-center rounded-full border-1 border-grey-47 bg-grey-34 text-grey-142 shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-colors hover:bg-grey-39 hover:text-white"
+        className="fixed bottom-16 right-16 z-50 flex h-40 w-40 items-center justify-center rounded-10 border-1 border-grey-47 bg-grey-34 text-grey-142 shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-colors hover:bg-grey-39 hover:text-white"
       >
-        <Icons.support className="text-20" />
+        <Icons.support className="text-18" />
       </button>
 
       <Modals />

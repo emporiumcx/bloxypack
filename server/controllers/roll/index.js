@@ -238,6 +238,7 @@ const rollGameComplete = async(io) => {
                         $inc: {
                             balance: amountPayout,
                             xp: bet.user.limits.blockSponsor !== true ? Math.floor(bet.amount * settings.general.reward.multiplier) : 0,
+                            'rewards.bonusXp': bet.user.limits.blockSponsor !== true ? Math.floor(bet.amount * settings.general.reward.multiplier) : 0,
                             'stats.won': amountPayout,
                             'leaderboard.points': dataDatabase !== null && bet.user.limits.blockSponsor !== true && bet.user.limits.blockLeaderboard !== true ? bet.amount : 0,
                             'limits.betToWithdraw': Math.floor(bet.user.limits.betToWithdraw - amountLimits) <= 0 ? -bet.user.limits.betToWithdraw : -amountLimits,

@@ -33,6 +33,7 @@ const {
     authGenerateJwtToken,
 } = require('../../../utils/auth');
 const {
+    ARCTIC_AVATARS,
     pickRandomAvatar
 } = require('../../../utils/avatar');
 const {
@@ -100,7 +101,7 @@ module.exports = () => {
             if (!userDatabase.avatar) {
                 loginUpdates.avatar = pickRandomAvatar();
             }
-            userDatabase = await User.findByIdAndUpdate(userDatabase._id, loginUpdates, { new: true }).select('local.email local.emailVerified roblox.id discord.id username avatar rank balance xp vault stats rakeback fair anonymous mute ban verifiedAt updatedAt createdAt').lean();
+            userDatabase = await User.findByIdAndUpdate(userDatabase._id, loginUpdates, { new: true }).select('local.email local.emailVerified roblox.id discord.id username avatar rank balance xp vault stats rakeback rewards fair anonymous mute ban verifiedAt updatedAt createdAt').lean();
             
             // Get settings
             let settings = settingGet();
@@ -367,6 +368,51 @@ module.exports = () => {
                 User.findByIdAndUpdate(tokenDatabase.user, { 'local.password': password }, {})
             ]);
 
+            res.status(200).json({ success: true });
+        } catch(err) {
+            res.status(500).json({ success: false, error: { type: 'error', message: err.message } });
+        }
+    });
+
+    const ME_SELECT = 'local.email local.emailVerified roblox.id discord.id username avatar rank balance xp vault stats rakeback rewards fair anonymous mute ban verifiedAt updatedAt createdAt';
+
+    // @desc    Update user avatar
+    // @route   POST /auth/credentials/avatar
+    // @access  Private
+    router.post('/avatar', [rateLimiterStrictMiddleware, authorizeUser(true)], async(req, res) => {
+        try {
+            const avatar = String(req.body.avatar || '').trim().toLowerCase();
+            if (!ARCTIC_AVATARS.includes(avatar)) {
+                return res.status(400).json({ success: false, error: { type: 'error', message: 'That avatar is invalid.' } });
+            }
+            const userDatabase = await User.findByIdAndUpdate(req.user._id, { avatar, updatedAt: new Date() }, { new: true }).select(ME_SELECT).lean();
+            res.status(200).json({ success: true, user: userDatabase });
+        } catch(err) {
+            res.status(500).json({ success: false, error: { type: 'error', message: err.message } });
+        }
+    });
+
+    // @desc    Change user password
+    // @route   POST /auth/credentials/password
+    // @access  Private
+    router.post('/password', [rateLimiterStrictMiddleware, authorizeUser(true)], async(req, res) => {
+        try {
+            const current = String(req.body.current || '').trim();
+            const next = String(req.body.password || '').trim();
+            if (next.length < 6) {
+                return res.status(400).json({ success: false, error: { type: 'error', message: 'Your new password must be at least 6 characters.' } });
+            }
+            const userDatabase = await User.findById(req.user._id).select('local.password').lean();
+            if (!userDatabase || !userDatabase.local || !userDatabase.local.password) {
+                return res.status(400).json({ success: false, error: { type: 'error', message: 'This account cannot change password.' } });
+            }
+            const isMatch = await bcrypt.compare(current, userDatabase.local.password);
+            if (!isMatch) {
+                return res.status(400).json({ success: false, error: { type: 'error', message: 'Your current password is incorrect.' } });
+            }
+            const salt = await bcrypt.genSalt(10);
+            const hashed = await bcrypt.hash(next, salt);
+            await User.findByIdAndUpdate(req.user._id, { 'local.password': hashed, updatedAt: new Date() });
             res.status(200).json({ success: true });
         } catch(err) {
             res.status(500).json({ success: false, error: { type: 'error', message: err.message } });

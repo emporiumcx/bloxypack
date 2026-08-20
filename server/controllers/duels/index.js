@@ -481,6 +481,7 @@ const duelsGameComplete = async(io, duelsGame) => {
                         $inc: {
                             balance: amountPayout,
                             xp: bet.user.limits.blockSponsor !== true ? Math.floor(bet.amount * settings.general.reward.multiplier) : 0,
+                            'rewards.bonusXp': bet.user.limits.blockSponsor !== true ? Math.floor(bet.amount * settings.general.reward.multiplier) : 0,
                             'stats.won': amountPayout,
                             'limits.betToWithdraw': bet.user.limits.betToWithdraw <= bet.amount ? -bet.user.limits.betToWithdraw : -bet.amount,
                             'limits.betToRain': bet.user.limits.betToRain <= bet.amount ? -bet.user.limits.betToRain : -bet.amount,

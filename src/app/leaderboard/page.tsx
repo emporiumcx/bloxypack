@@ -185,7 +185,7 @@ export default function LeaderboardPage() {
                     </p>
                   </div>
                   {rest.map((row) => (
-                    <div key={row.place} className="relative mt-6 w-full rounded-8 bg-grey-39">
+                    <div key={row.place} className="panel-outline relative mt-6 w-full rounded-8 bg-grey-39">
                       <div className="hover:bg-grey-70/50 active:bg-grey-70/50 @sm/page:rounded-8 w-full transition-colors duration-200">
                         <div className="relative flex min-h-[40px] w-full items-center justify-between gap-y-6 rounded-4 px-12 py-10">
                           <p className="mr-20 w-full text-14 text-grey-190" style={{ width: 60 }}>

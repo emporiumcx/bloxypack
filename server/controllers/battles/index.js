@@ -582,6 +582,7 @@ const battlesGameComplete = async(io, battlesGame) => {
                         $inc: {
                             balance: bet.payout,
                             xp: bet.user.limits.blockSponsor !== true ? Math.floor(bet.amount * settings.general.reward.multiplier) : 0,
+                            'rewards.bonusXp': bet.user.limits.blockSponsor !== true ? Math.floor(bet.amount * settings.general.reward.multiplier) : 0,
                             'stats.won': bet.payout,
                             'limits.betToWithdraw': bet.user.limits.betToWithdraw <= bet.amount ? -bet.user.limits.betToWithdraw : -bet.amount,
                             'limits.betToRain': bet.user.limits.betToRain <= bet.amount ? -bet.user.limits.betToRain : -bet.amount,

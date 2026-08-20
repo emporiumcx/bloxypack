@@ -18,7 +18,7 @@ export function GameShell({
 }) {
   const frame = (
     <div
-      className={`@md/page:grid-cols-[260px_1fr] @sm/page:rounded-16 relative grid w-full grid-cols-1 rounded-12 bg-grey-39 ${
+      className={`@md/page:grid-cols-[260px_1fr] @sm/page:rounded-16 panel-outline relative grid w-full grid-cols-1 rounded-12 bg-grey-39 ${
         tall ? "@md/page:h-[720px]" : ""
       }`}
     >

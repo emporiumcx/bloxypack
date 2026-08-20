@@ -10,66 +10,6 @@
     "risk": "high"
   },
   {
-    "slug": "dominus-domination",
-    "name": "Dominus Domination",
-    "imageId": 22,
-    "image": "/cdn/cases/22.webp",
-    "price": 6362000,
-    "bar": "#ef4444",
-    "hue": 76,
-    "risk": "high"
-  },
-  {
-    "slug": "demonic-case",
-    "name": "Demonic Case",
-    "imageId": 9,
-    "image": "/cdn/cases/9.webp",
-    "price": 5417000,
-    "bar": "#3b82f6",
-    "hue": 36,
-    "risk": "high"
-  },
-  {
-    "slug": "crazy-hair-case",
-    "name": "Crazy Hair Case",
-    "imageId": 1,
-    "image": "/cdn/cases/1.webp",
-    "price": 2868000,
-    "bar": "#3b82f6",
-    "hue": 192,
-    "risk": "high"
-  },
-  {
-    "slug": "bling-case",
-    "name": "Bling Case",
-    "imageId": 65,
-    "image": "/cdn/cases/65.webp",
-    "price": 2694000,
-    "bar": "#ef4444",
-    "hue": 221,
-    "risk": "high"
-  },
-  {
-    "slug": "purple-power",
-    "name": "Purple Power",
-    "imageId": 42,
-    "image": "/cdn/cases/42.webp",
-    "price": 1797000,
-    "bar": "#a855f7",
-    "hue": 278,
-    "risk": "high"
-  },
-  {
-    "slug": "pink-case",
-    "name": "Pink Case",
-    "imageId": 55,
-    "image": "/cdn/cases/55.webp",
-    "price": 1441000,
-    "bar": "#22c55e",
-    "hue": 289,
-    "risk": "high"
-  },
-  {
     "slug": "flashback-case",
     "name": "Flashback Case",
     "imageId": 11,
@@ -90,26 +30,6 @@
     "risk": "high"
   },
   {
-    "slug": "gold-shades",
-    "name": "Gold Shades",
-    "imageId": 38,
-    "image": "/cdn/cases/38.webp",
-    "price": 719000,
-    "bar": "#22c55e",
-    "hue": 127,
-    "risk": "high"
-  },
-  {
-    "slug": "through-the-flames",
-    "name": "Through The Flames",
-    "imageId": 4,
-    "image": "/cdn/cases/4.webp",
-    "price": 582000,
-    "bar": "#eab308",
-    "hue": 45,
-    "risk": "high"
-  },
-  {
     "slug": "halloween-case",
     "name": "Halloween Case",
     "imageId": 64,
@@ -117,46 +37,6 @@
     "price": 540000,
     "bar": "#eab308",
     "hue": 107,
-    "risk": "high"
-  },
-  {
-    "slug": "circlet-case",
-    "name": "Circlet Case",
-    "imageId": 45,
-    "image": "/cdn/cases/45.webp",
-    "price": 524000,
-    "bar": "#fbbf24",
-    "hue": 46,
-    "risk": "high"
-  },
-  {
-    "slug": "ice-case",
-    "name": "Ice Case",
-    "imageId": 12,
-    "image": "/cdn/cases/12.webp",
-    "price": 517000,
-    "bar": "#3b82f6",
-    "hue": 226,
-    "risk": "high"
-  },
-  {
-    "slug": "derek-case",
-    "name": "Derek Case",
-    "imageId": 66,
-    "image": "/cdn/cases/66.webp",
-    "price": 449000,
-    "bar": "#fb7185",
-    "hue": 18,
-    "risk": "high"
-  },
-  {
-    "slug": "high-stakes-case",
-    "name": "High Stakes Case",
-    "imageId": 20,
-    "image": "/cdn/cases/20.webp",
-    "price": 443500,
-    "bar": "#3b82f6",
-    "hue": 25,
     "risk": "high"
   },
   {
@@ -180,16 +60,6 @@
     "risk": "medium"
   },
   {
-    "slug": "star-case",
-    "name": "Star Case",
-    "imageId": 6,
-    "image": "/cdn/cases/6.webp",
-    "price": 282000,
-    "bar": "#eab308",
-    "hue": 303,
-    "risk": "high"
-  },
-  {
     "slug": "madness",
     "name": "Madness",
     "imageId": 60,
@@ -197,86 +67,6 @@
     "price": 270500,
     "bar": "#7c3aed",
     "hue": 270,
-    "risk": "high"
-  },
-  {
-    "slug": "evil-case",
-    "name": "Evil Case",
-    "imageId": 71,
-    "image": "/cdn/cases/71.webp",
-    "price": 251000,
-    "bar": "#22c55e",
-    "hue": 249,
-    "risk": "high"
-  },
-  {
-    "slug": "risky-valk",
-    "name": "Risky Valk",
-    "imageId": 19,
-    "image": "/cdn/cases/19.webp",
-    "price": 223500,
-    "bar": "#ef4444",
-    "hue": 184,
-    "risk": "high"
-  },
-  {
-    "slug": "forever-blue-case",
-    "name": "Forever Blue Case",
-    "imageId": 8,
-    "image": "/cdn/cases/8.webp",
-    "price": 201500,
-    "bar": "#3b82f6",
-    "hue": 19,
-    "risk": "high"
-  },
-  {
-    "slug": "dark-horns",
-    "name": "Dark Horns",
-    "imageId": 15,
-    "image": "/cdn/cases/15.webp",
-    "price": 198500,
-    "bar": "#ef4444",
-    "hue": 124,
-    "risk": "high"
-  },
-  {
-    "slug": "like-clock-work",
-    "name": "Like Clockwork",
-    "imageId": 29,
-    "image": "/cdn/cases/29.webp",
-    "price": 172000,
-    "bar": "#d97706",
-    "hue": 32,
-    "risk": "high"
-  },
-  {
-    "slug": "music-case",
-    "name": "Music Case",
-    "imageId": 3,
-    "image": "/cdn/cases/3.webp",
-    "price": 167000,
-    "bar": "#3b82f6",
-    "hue": 104,
-    "risk": "high"
-  },
-  {
-    "slug": "steampunk-case",
-    "name": "Steampunk Case",
-    "imageId": 33,
-    "image": "/cdn/cases/33.webp",
-    "price": 151000,
-    "bar": "#ef4444",
-    "hue": 178,
-    "risk": "high"
-  },
-  {
-    "slug": "the-equalizer",
-    "name": "The Equalizer",
-    "imageId": 26,
-    "image": "/cdn/cases/26.webp",
-    "price": 120000,
-    "bar": "#34d399",
-    "hue": 160,
     "risk": "high"
   },
   {
@@ -290,43 +80,43 @@
     "risk": "high"
   },
   {
-    "slug": "headphone-case",
-    "name": "Headphone Case",
-    "imageId": 21,
-    "image": "/cdn/cases/21.webp",
-    "price": 93600,
-    "bar": "#ef4444",
-    "hue": 294,
-    "risk": "high"
-  },
-  {
-    "slug": "green-case",
-    "name": "Green Case",
-    "imageId": 44,
-    "image": "/cdn/cases/44.webp",
-    "price": 93000,
-    "bar": "#eab308",
-    "hue": 164,
-    "risk": "high"
-  },
-  {
     "slug": "risky-case",
     "name": "Risky Case",
     "imageId": 36,
     "image": "/cdn/cases/36.webp",
-    "price": 90600,
+    "price": 78192,
     "bar": "#ef4444",
     "hue": 0,
     "risk": "high"
   },
   {
-    "slug": "vengeance-case",
-    "name": "Vengeance Case",
-    "imageId": 47,
-    "image": "/cdn/cases/47.webp",
-    "price": 52500,
-    "bar": "#eab308",
-    "hue": 144,
+    "slug": "valk-case",
+    "name": "Valk Case",
+    "imageId": 27,
+    "image": "/cdn/cases/27.webp",
+    "price": 67804,
+    "bar": "#22d3ee",
+    "hue": 188,
+    "risk": "high"
+  },
+  {
+    "slug": "ice-case",
+    "name": "Ice Case",
+    "imageId": 12,
+    "image": "/cdn/cases/12.webp",
+    "price": 57954,
+    "bar": "#3b82f6",
+    "hue": 226,
+    "risk": "high"
+  },
+  {
+    "slug": "fall-case",
+    "name": "Fall Case",
+    "imageId": 23,
+    "image": "/cdn/cases/23.webp",
+    "price": 48506,
+    "bar": "#22c55e",
+    "hue": 22,
     "risk": "high"
   },
   {
@@ -337,6 +127,16 @@
     "price": 48400,
     "bar": "#ef4444",
     "hue": 99,
+    "risk": "high"
+  },
+  {
+    "slug": "star-case",
+    "name": "Star Case",
+    "imageId": 6,
+    "image": "/cdn/cases/6.webp",
+    "price": 43446,
+    "bar": "#eab308",
+    "hue": 303,
     "risk": "high"
   },
   {
@@ -360,13 +160,13 @@
     "risk": "high"
   },
   {
-    "slug": "mrblox-case",
-    "name": "MrBlox Case",
-    "imageId": 57,
-    "image": "/cdn/cases/57.webp",
-    "price": 38300,
-    "bar": "#0ea5e9",
-    "hue": 205,
+    "slug": "derek-case",
+    "name": "Derek Case",
+    "imageId": 66,
+    "image": "/cdn/cases/66.webp",
+    "price": 37812,
+    "bar": "#fb7185",
+    "hue": 18,
     "risk": "high"
   },
   {
@@ -380,6 +180,16 @@
     "risk": "high"
   },
   {
+    "slug": "music-case",
+    "name": "Music Case",
+    "imageId": 3,
+    "image": "/cdn/cases/3.webp",
+    "price": 36916,
+    "bar": "#3b82f6",
+    "hue": 104,
+    "risk": "high"
+  },
+  {
     "slug": "egg-hunter",
     "name": "Egg Hunter",
     "imageId": 73,
@@ -387,16 +197,6 @@
     "price": 35900,
     "bar": "#3b82f6",
     "hue": 187,
-    "risk": "high"
-  },
-  {
-    "slug": "antler-case",
-    "name": "Antler Case",
-    "imageId": 31,
-    "image": "/cdn/cases/31.webp",
-    "price": 35400,
-    "bar": "#3b82f6",
-    "hue": 65,
     "risk": "high"
   },
   {
@@ -410,13 +210,13 @@
     "risk": "high"
   },
   {
-    "slug": "rags-2-riches",
-    "name": "Rags 2 Riches",
-    "imageId": 84,
-    "image": "/cdn/cases/84.webp",
-    "price": 34100,
-    "bar": "#eab308",
-    "hue": 42,
+    "slug": "antler-case",
+    "name": "Antler Case",
+    "imageId": 31,
+    "image": "/cdn/cases/31.webp",
+    "price": 34545,
+    "bar": "#3b82f6",
+    "hue": 65,
     "risk": "high"
   },
   {
@@ -430,23 +230,33 @@
     "risk": "high"
   },
   {
-    "slug": "fall-case",
-    "name": "Fall Case",
-    "imageId": 23,
-    "image": "/cdn/cases/23.webp",
-    "price": 31300,
-    "bar": "#22c55e",
-    "hue": 22,
+    "slug": "green-case",
+    "name": "Green Case",
+    "imageId": 44,
+    "image": "/cdn/cases/44.webp",
+    "price": 24856,
+    "bar": "#eab308",
+    "hue": 164,
     "risk": "high"
   },
   {
-    "slug": "valk-case",
-    "name": "Valk Case",
-    "imageId": 27,
-    "image": "/cdn/cases/27.webp",
-    "price": 31300,
-    "bar": "#22d3ee",
-    "hue": 188,
+    "slug": "dominus-domination",
+    "name": "Dominus Domination",
+    "imageId": 22,
+    "image": "/cdn/cases/22.webp",
+    "price": 24269,
+    "bar": "#ef4444",
+    "hue": 76,
+    "risk": "high"
+  },
+  {
+    "slug": "dark-horns",
+    "name": "Dark Horns",
+    "imageId": 15,
+    "image": "/cdn/cases/15.webp",
+    "price": 23137,
+    "bar": "#ef4444",
+    "hue": 124,
     "risk": "high"
   },
   {
@@ -460,43 +270,63 @@
     "risk": "high"
   },
   {
-    "slug": "spooky-flip",
-    "name": "Spooky Flip",
-    "imageId": 75,
-    "image": "/cdn/cases/75.webp",
-    "price": 18100,
-    "bar": "#f97316",
-    "hue": 28,
-    "risk": "high"
-  },
-  {
-    "slug": "the-fancy-case",
-    "name": "The Fancy Case",
-    "imageId": 59,
-    "image": "/cdn/cases/59.webp",
-    "price": 17400,
+    "slug": "bling-case",
+    "name": "Bling Case",
+    "imageId": 65,
+    "image": "/cdn/cases/65.webp",
+    "price": 20293,
     "bar": "#ef4444",
-    "hue": 331,
+    "hue": 221,
     "risk": "high"
   },
   {
-    "slug": "rozone-case",
-    "name": "Rozone Case",
-    "imageId": 52,
-    "image": "/cdn/cases/52.webp",
-    "price": 16150,
-    "bar": "#22c55e",
-    "hue": 142,
+    "slug": "demonic-case",
+    "name": "Demonic Case",
+    "imageId": 9,
+    "image": "/cdn/cases/9.webp",
+    "price": 20031,
+    "bar": "#3b82f6",
+    "hue": 36,
     "risk": "high"
   },
   {
-    "slug": "wild-case",
-    "name": "Wild Case",
-    "imageId": 51,
-    "image": "/cdn/cases/51.webp",
-    "price": 16150,
-    "bar": "#22c55e",
-    "hue": 90,
+    "slug": "risky-valk",
+    "name": "Risky Valk",
+    "imageId": 19,
+    "image": "/cdn/cases/19.webp",
+    "price": 19621,
+    "bar": "#ef4444",
+    "hue": 184,
+    "risk": "high"
+  },
+  {
+    "slug": "vampire-case",
+    "name": "Vampire Case",
+    "imageId": 68,
+    "image": "/cdn/cases/68.webp",
+    "price": 16542,
+    "bar": "#eab308",
+    "hue": 96,
+    "risk": "high"
+  },
+  {
+    "slug": "high-stakes-case",
+    "name": "High Stakes Case",
+    "imageId": 20,
+    "image": "/cdn/cases/20.webp",
+    "price": 16518,
+    "bar": "#3b82f6",
+    "hue": 25,
+    "risk": "high"
+  },
+  {
+    "slug": "like-clock-work",
+    "name": "Like Clockwork",
+    "imageId": 29,
+    "image": "/cdn/cases/29.webp",
+    "price": 15549,
+    "bar": "#d97706",
+    "hue": 32,
     "risk": "high"
   },
   {
@@ -520,6 +350,26 @@
     "risk": "high"
   },
   {
+    "slug": "pink-case",
+    "name": "Pink Case",
+    "imageId": 55,
+    "image": "/cdn/cases/55.webp",
+    "price": 13953,
+    "bar": "#22c55e",
+    "hue": 289,
+    "risk": "high"
+  },
+  {
+    "slug": "executed-case",
+    "name": "Executed Case",
+    "imageId": 70,
+    "image": "/cdn/cases/70.webp",
+    "price": 13703,
+    "bar": "#3b82f6",
+    "hue": 297,
+    "risk": "high"
+  },
+  {
     "slug": "captain-doge-case",
     "name": "Captain Doge Case",
     "imageId": 35,
@@ -530,26 +380,6 @@
     "risk": "high"
   },
   {
-    "slug": "crazy-case",
-    "name": "Crazy Case",
-    "imageId": 61,
-    "image": "/cdn/cases/61.webp",
-    "price": 13100,
-    "bar": "#e879f9",
-    "hue": 312,
-    "risk": "high"
-  },
-  {
-    "slug": "spin-2-win",
-    "name": "Spin 2 Win",
-    "imageId": 50,
-    "image": "/cdn/cases/50.webp",
-    "price": 12050,
-    "bar": "#22c55e",
-    "hue": 306,
-    "risk": "medium"
-  },
-  {
     "slug": "winter-case",
     "name": "Winter Case",
     "imageId": 53,
@@ -557,16 +387,6 @@
     "price": 9600,
     "bar": "#eab308",
     "hue": 277,
-    "risk": "high"
-  },
-  {
-    "slug": "face-case",
-    "name": "Face Case",
-    "imageId": 16,
-    "image": "/cdn/cases/16.webp",
-    "price": 7600,
-    "bar": "#eab308",
-    "hue": 218,
     "risk": "high"
   },
   {
@@ -580,26 +400,6 @@
     "risk": "high"
   },
   {
-    "slug": "the-kungfu-case",
-    "name": "The Kungfu Case",
-    "imageId": 46,
-    "image": "/cdn/cases/46.webp",
-    "price": 7600,
-    "bar": "#22c55e",
-    "hue": 340,
-    "risk": "high"
-  },
-  {
-    "slug": "top-hat-case",
-    "name": "Top Hat Case",
-    "imageId": 63,
-    "image": "/cdn/cases/63.webp",
-    "price": 6100,
-    "bar": "#eab308",
-    "hue": 238,
-    "risk": "high"
-  },
-  {
     "slug": "horn-case",
     "name": "Horn Case",
     "imageId": 32,
@@ -610,23 +410,63 @@
     "risk": "high"
   },
   {
-    "slug": "low-cost-king",
-    "name": "Low Cost King",
-    "imageId": 81,
-    "image": "/cdn/cases/81.webp",
-    "price": 5200,
+    "slug": "face-case",
+    "name": "Face Case",
+    "imageId": 16,
+    "image": "/cdn/cases/16.webp",
+    "price": 6037,
     "bar": "#eab308",
-    "hue": 11,
+    "hue": 218,
     "risk": "high"
   },
   {
-    "slug": "switch-it-up",
-    "name": "Switch It Up",
-    "imageId": 72,
-    "image": "/cdn/cases/72.webp",
-    "price": 4425,
-    "bar": "#a855f7",
-    "hue": 280,
+    "slug": "gold-shades",
+    "name": "Gold Shades",
+    "imageId": 38,
+    "image": "/cdn/cases/38.webp",
+    "price": 5376,
+    "bar": "#22c55e",
+    "hue": 127,
+    "risk": "high"
+  },
+  {
+    "slug": "rozone-case",
+    "name": "Rozone Case",
+    "imageId": 52,
+    "image": "/cdn/cases/52.webp",
+    "price": 4638,
+    "bar": "#22c55e",
+    "hue": 142,
+    "risk": "high"
+  },
+  {
+    "slug": "blackout-boogaloo",
+    "name": "Blackout Boogaloo",
+    "imageId": 49,
+    "image": "/cdn/cases/49.webp",
+    "price": 4131,
+    "bar": "#eab308",
+    "hue": 323,
+    "risk": "high"
+  },
+  {
+    "slug": "crazy-hair-case",
+    "name": "Crazy Hair Case",
+    "imageId": 1,
+    "image": "/cdn/cases/1.webp",
+    "price": 4109,
+    "bar": "#3b82f6",
+    "hue": 192,
+    "risk": "high"
+  },
+  {
+    "slug": "headphone-case",
+    "name": "Headphone Case",
+    "imageId": 21,
+    "image": "/cdn/cases/21.webp",
+    "price": 3676,
+    "bar": "#ef4444",
+    "hue": 294,
     "risk": "high"
   },
   {
@@ -640,23 +480,43 @@
     "risk": "high"
   },
   {
-    "slug": "creepy-case",
-    "name": "Creepy Case",
-    "imageId": 28,
-    "image": "/cdn/cases/28.webp",
-    "price": 3425,
+    "slug": "top-hat-case",
+    "name": "Top Hat Case",
+    "imageId": 63,
+    "image": "/cdn/cases/63.webp",
+    "price": 3497,
     "bar": "#eab308",
-    "hue": 348,
+    "hue": 238,
     "risk": "high"
   },
   {
-    "slug": "vampire-case",
-    "name": "Vampire Case",
-    "imageId": 68,
-    "image": "/cdn/cases/68.webp",
-    "price": 3175,
-    "bar": "#eab308",
-    "hue": 96,
+    "slug": "evil-case",
+    "name": "Evil Case",
+    "imageId": 71,
+    "image": "/cdn/cases/71.webp",
+    "price": 3349,
+    "bar": "#22c55e",
+    "hue": 249,
+    "risk": "high"
+  },
+  {
+    "slug": "purple-power",
+    "name": "Purple Power",
+    "imageId": 42,
+    "image": "/cdn/cases/42.webp",
+    "price": 3287,
+    "bar": "#a855f7",
+    "hue": 278,
+    "risk": "high"
+  },
+  {
+    "slug": "the-kungfu-case",
+    "name": "The Kungfu Case",
+    "imageId": 46,
+    "image": "/cdn/cases/46.webp",
+    "price": 3075,
+    "bar": "#22c55e",
+    "hue": 340,
     "risk": "high"
   },
   {
@@ -670,6 +530,26 @@
     "risk": "high"
   },
   {
+    "slug": "steampunk-case",
+    "name": "Steampunk Case",
+    "imageId": 33,
+    "image": "/cdn/cases/33.webp",
+    "price": 2984,
+    "bar": "#ef4444",
+    "hue": 178,
+    "risk": "high"
+  },
+  {
+    "slug": "wild-case",
+    "name": "Wild Case",
+    "imageId": 51,
+    "image": "/cdn/cases/51.webp",
+    "price": 2979,
+    "bar": "#22c55e",
+    "hue": 90,
+    "risk": "high"
+  },
+  {
     "slug": "zeus-case",
     "name": "Zeus Case",
     "imageId": 56,
@@ -680,13 +560,13 @@
     "risk": "high"
   },
   {
-    "slug": "the-gucci-sampler",
-    "name": "The Gucci Sampler",
-    "imageId": 83,
-    "image": "/cdn/cases/83.webp",
-    "price": 2250,
+    "slug": "wacky-case",
+    "name": "Wacky Case",
+    "imageId": 18,
+    "image": "/cdn/cases/18.webp",
+    "price": 2425,
     "bar": "#eab308",
-    "hue": 85,
+    "hue": 243,
     "risk": "high"
   },
   {
@@ -700,6 +580,46 @@
     "risk": "high"
   },
   {
+    "slug": "forever-blue-case",
+    "name": "Forever Blue Case",
+    "imageId": 8,
+    "image": "/cdn/cases/8.webp",
+    "price": 2074,
+    "bar": "#3b82f6",
+    "hue": 19,
+    "risk": "high"
+  },
+  {
+    "slug": "mrblox-case",
+    "name": "MrBlox Case",
+    "imageId": 57,
+    "image": "/cdn/cases/57.webp",
+    "price": 2056,
+    "bar": "#0ea5e9",
+    "hue": 205,
+    "risk": "high"
+  },
+  {
+    "slug": "creepy-case",
+    "name": "Creepy Case",
+    "imageId": 28,
+    "image": "/cdn/cases/28.webp",
+    "price": 1653,
+    "bar": "#eab308",
+    "hue": 348,
+    "risk": "high"
+  },
+  {
+    "slug": "through-the-flames",
+    "name": "Through The Flames",
+    "imageId": 4,
+    "image": "/cdn/cases/4.webp",
+    "price": 1627,
+    "bar": "#eab308",
+    "hue": 45,
+    "risk": "high"
+  },
+  {
     "slug": "craft-it-case",
     "name": "Craft It Case",
     "imageId": 77,
@@ -707,6 +627,16 @@
     "price": 1625,
     "bar": "#f59e0b",
     "hue": 32,
+    "risk": "high"
+  },
+  {
+    "slug": "the-fancy-case",
+    "name": "The Fancy Case",
+    "imageId": 59,
+    "image": "/cdn/cases/59.webp",
+    "price": 1564,
+    "bar": "#ef4444",
+    "hue": 331,
     "risk": "high"
   },
   {
@@ -720,14 +650,14 @@
     "risk": "high"
   },
   {
-    "slug": "the-grind",
-    "name": "The Grind",
-    "imageId": 82,
-    "image": "/cdn/cases/82.webp",
-    "price": 1475,
-    "bar": "#64748b",
-    "hue": 210,
-    "risk": "medium"
+    "slug": "circlet-case",
+    "name": "Circlet Case",
+    "imageId": 45,
+    "image": "/cdn/cases/45.webp",
+    "price": 1515,
+    "bar": "#fbbf24",
+    "hue": 46,
+    "risk": "high"
   },
   {
     "slug": "8-bit-case",
@@ -740,33 +670,63 @@
     "risk": "high"
   },
   {
-    "slug": "blackout-boogaloo",
-    "name": "Blackout Boogaloo",
-    "imageId": 49,
-    "image": "/cdn/cases/49.webp",
-    "price": 710,
-    "bar": "#eab308",
-    "hue": 323,
+    "slug": "the-grind",
+    "name": "The Grind",
+    "imageId": 82,
+    "image": "/cdn/cases/82.webp",
+    "price": 1067,
+    "bar": "#64748b",
+    "hue": 210,
+    "risk": "medium"
+  },
+  {
+    "slug": "spooky-flip",
+    "name": "Spooky Flip",
+    "imageId": 75,
+    "image": "/cdn/cases/75.webp",
+    "price": 952,
+    "bar": "#f97316",
+    "hue": 28,
     "risk": "high"
   },
   {
-    "slug": "wacky-case",
-    "name": "Wacky Case",
-    "imageId": 18,
-    "image": "/cdn/cases/18.webp",
-    "price": 170,
+    "slug": "the-gucci-sampler",
+    "name": "The Gucci Sampler",
+    "imageId": 83,
+    "image": "/cdn/cases/83.webp",
+    "price": 864,
     "bar": "#eab308",
-    "hue": 243,
+    "hue": 85,
     "risk": "high"
   },
   {
-    "slug": "budget-case",
-    "name": "Budget Case",
-    "imageId": 80,
-    "image": "/cdn/cases/80.webp",
-    "price": 160,
-    "bar": "#3b82f6",
-    "hue": 354,
+    "slug": "rags-2-riches",
+    "name": "Rags 2 Riches",
+    "imageId": 84,
+    "image": "/cdn/cases/84.webp",
+    "price": 783,
+    "bar": "#eab308",
+    "hue": 42,
+    "risk": "high"
+  },
+  {
+    "slug": "vengeance-case",
+    "name": "Vengeance Case",
+    "imageId": 47,
+    "image": "/cdn/cases/47.webp",
+    "price": 615,
+    "bar": "#eab308",
+    "hue": 144,
+    "risk": "high"
+  },
+  {
+    "slug": "switch-it-up",
+    "name": "Switch It Up",
+    "imageId": 72,
+    "image": "/cdn/cases/72.webp",
+    "price": 190,
+    "bar": "#a855f7",
+    "hue": 280,
     "risk": "high"
   },
   {
@@ -780,13 +740,53 @@
     "risk": "high"
   },
   {
-    "slug": "executed-case",
-    "name": "Executed Case",
-    "imageId": 70,
-    "image": "/cdn/cases/70.webp",
-    "price": 13,
+    "slug": "spin-2-win",
+    "name": "Spin 2 Win",
+    "imageId": 50,
+    "image": "/cdn/cases/50.webp",
+    "price": 125,
+    "bar": "#22c55e",
+    "hue": 306,
+    "risk": "medium"
+  },
+  {
+    "slug": "low-cost-king",
+    "name": "Low Cost King",
+    "imageId": 81,
+    "image": "/cdn/cases/81.webp",
+    "price": 75,
+    "bar": "#eab308",
+    "hue": 11,
+    "risk": "high"
+  },
+  {
+    "slug": "budget-case",
+    "name": "Budget Case",
+    "imageId": 80,
+    "image": "/cdn/cases/80.webp",
+    "price": 47,
     "bar": "#3b82f6",
-    "hue": 297,
+    "hue": 354,
+    "risk": "high"
+  },
+  {
+    "slug": "crazy-case",
+    "name": "Crazy Case",
+    "imageId": 61,
+    "image": "/cdn/cases/61.webp",
+    "price": 45,
+    "bar": "#e879f9",
+    "hue": 312,
+    "risk": "high"
+  },
+  {
+    "slug": "the-equalizer",
+    "name": "The Equalizer",
+    "imageId": 26,
+    "image": "/cdn/cases/26.webp",
+    "price": 44,
+    "bar": "#34d399",
+    "hue": 160,
     "risk": "high"
   },
   {

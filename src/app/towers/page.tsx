@@ -111,7 +111,7 @@ export default function TowersPage() {
   return (
     <GameShell
       fairness="Towers"
-      boardClassName="@lg/page:p-40 @sm/page:p-30 relative flex w-full justify-center p-20"
+      boardClassName="@lg/page:p-32 @sm/page:p-20 relative flex w-full min-h-0 items-center justify-center overflow-hidden p-12"
       sidebar={
         <GameSidebar
           action={
@@ -151,8 +151,12 @@ export default function TowersPage() {
             <img alt="" className="h-full w-full object-cover opacity-80 grayscale" src="/img/games/bg_mines.webp" />
           </div>
           <div
-            className="@xl/page:gap-10 @xl/page:w-[480px] relative grid h-full w-[406px] max-w-full gap-6 rounded-16 bg-grey-28/90 p-12"
-            style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
+            className="@xl/page:max-w-[480px] relative grid w-full max-w-[min(406px,100%)] gap-3 rounded-16 bg-grey-28/90 p-8 @sm/page:gap-6 @sm/page:p-12 @xl/page:gap-8"
+            style={{
+              gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+              gridTemplateRows: `repeat(${ROWS}, minmax(0, 1fr))`,
+              height: "min(520px, calc(100dvh - 220px))",
+            }}
           >
             {Array.from({ length: ROWS * cols }).map((_, i) => {
               const r = Math.floor(i / cols);
@@ -170,30 +174,30 @@ export default function TowersPage() {
                   type="button"
                   disabled={!active}
                   onClick={() => pick(r, c)}
-                  className={`@xl/page:h-52 relative flex h-44 w-full items-center justify-center overflow-hidden rounded-12 ${
+                  className={`relative flex min-h-0 w-full items-center justify-center overflow-hidden rounded-8 @sm/page:rounded-12 ${
                     active ? "cursor-pointer" : "cursor-default"
                   } ${dim ? "opacity-45" : "opacity-100"}`}
                 >
                   <div
-                    className={`tr absolute inset-0 flex items-center justify-center rounded-12 border-b-3 border-t-3 border-b-black/25 border-t-white/15 bg-grey-58 ${
+                    className={`tr absolute inset-0 flex items-center justify-center rounded-8 border-b-3 border-t-3 border-b-black/25 border-t-white/15 bg-grey-58 @sm/page:rounded-12 ${
                       open ? "animate-minescover pointer-events-none" : "opacity-100"
                     } ${active ? "bg-grey-70" : ""}`}
                   >
-                    <img alt="" className={`h-34 w-34 object-contain ${pulsing ? "animate-tower-pulse" : ""}`} src="/img/lion_shadow.png" />
+                    <img alt="" className={`h-[58%] w-[58%] max-h-34 max-w-34 object-contain ${pulsing ? "animate-tower-pulse" : ""}`} src="/img/lion_shadow.png" />
                   </div>
                   <div
-                    className={`tr absolute inset-0 flex items-center justify-center rounded-12 border-b-3 border-t-3 ${
+                    className={`tr absolute inset-0 flex items-center justify-center rounded-8 border-b-3 border-t-3 @sm/page:rounded-12 ${
                       hit || isBomb
                         ? "border-b-red border-t-red-143 bg-red"
                         : "border-b-green-95 border-t-green-222 bg-green"
                     } ${open ? "animate-minescontent opacity-100" : "pointer-events-none opacity-0"}`}
                   >
                     {hit || isBomb ? (
-                      <img alt="" className="h-28 w-28 object-contain" src="/img/bomb.webp" />
+                      <img alt="" className="h-[62%] w-[62%] max-h-28 max-w-28 object-contain" src="/img/bomb.webp" />
                     ) : (
-                      <div className="flex items-center gap-4">
-                        <img alt="" className="h-18 w-18 object-contain" src="/img/lion_dark.png" />
-                        <p className="text-13 font-semibold text-grey-28">{payoutForRow[r].toLocaleString("en-US")}</p>
+                      <div className="flex min-w-0 items-center gap-3 px-4 @sm/page:gap-4">
+                        <img alt="" className="h-14 w-14 shrink-0 object-contain @sm/page:h-18 @sm/page:w-18" src="/img/lion_dark.png" />
+                        <p className="truncate text-11 font-semibold text-grey-28 @sm/page:text-13">{payoutForRow[r].toLocaleString("en-US")}</p>
                       </div>
                     )}
                   </div>

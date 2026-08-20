@@ -121,7 +121,7 @@ export function RouletteGame() {
             ]}
           />
         </div>
-        <div className="overflow-hidden rounded-12 bg-grey-39">
+        <div className="panel-outline overflow-hidden rounded-12 bg-grey-39">
           <div className="flex items-center justify-between gap-12 border-b-1 border-grey-47 px-16 py-12">
             <div className="flex min-w-0 items-center gap-8 overflow-x-auto">
               {history.slice(0, 16).map((h, i) => (
@@ -205,8 +205,8 @@ export function RouletteGame() {
                         <p className="px-4 py-8 text-12 text-grey-112">No bets yet</p>
                       ) : (
                         list.map((b) => (
-                          <div key={b._id} className="flex items-center gap-8 rounded-8 bg-grey-39 px-8 py-6">
-                            <UserAvatar avatar={b.user?.avatar} seed={b.user?._id || b.user?.username} size={22} rounded="8" />
+                          <div key={b._id} className="panel-outline flex items-center gap-8 rounded-8 bg-grey-39 px-8 py-6">
+                            <UserAvatar avatar={b.user?.avatar} seed={b.user?._id || b.user?.username} size={22} rounded="8" level={b.user?.level} rank={b.user?.rank} />
                             <p className="min-w-0 flex-1 truncate text-12 text-white">{b.user?.username || "Player"}</p>
                             <Bux value={b.amount / 1000} />
                           </div>

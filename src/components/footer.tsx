@@ -37,9 +37,9 @@ export function SiteFooter() {
         <div className="flex w-full justify-start">
           <div className="grid w-[450px] max-w-full grid-cols-1 gap-16 sm:gap-26">
             <Link aria-label="home" className="relative flex h-full w-full items-center justify-start" href="/">
-              <img alt="BloxyWild" className="relative h-36 w-auto object-contain" src="/img/logo.png" />
+              <img alt="BloxyWild" className="relative h-64 w-auto object-contain" src="/img/logo.png" />
             </Link>
-            <div className="grid w-full grid-cols-1 gap-16">
+            <div className="font-chat grid w-full grid-cols-1 gap-16">
               <p className="text-left text-12 text-grey-142">
                 BloxyWild is an entirely independent platform. It has no association, partnership, or endorsement from
                 Roblox Corporation or any of its subsidiaries or affiliates. Roblox accounts cannot be used to access

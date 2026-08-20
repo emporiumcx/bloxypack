@@ -170,6 +170,7 @@ const rouletteGameComplete = async (io) => {
                     $inc: {
                         balance: payout,
                         xp: bet.user.limits && bet.user.limits.blockSponsor !== true ? Math.floor(bet.amount * settings.general.reward.multiplier) : 0,
+                        'rewards.bonusXp': bet.user.limits && bet.user.limits.blockSponsor !== true ? Math.floor(bet.amount * settings.general.reward.multiplier) : 0,
                         'stats.won': payout,
                         'leaderboard.points': leaderboard && bet.user.limits && bet.user.limits.blockSponsor !== true && bet.user.limits.blockLeaderboard !== true ? bet.amount : 0,
                         'rakeback.earned': amountRakeback,

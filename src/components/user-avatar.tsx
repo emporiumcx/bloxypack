@@ -1,6 +1,7 @@
 "use client";
 
 import { avatarRing, avatarSrc } from "@/lib/avatars";
+import { rankRingFromLevel } from "@/lib/levels";
 
 export function UserAvatar({
   avatar,
@@ -8,14 +9,23 @@ export function UserAvatar({
   size = 52,
   className = "",
   rounded = "full",
+  level,
+  rank,
 }: {
   avatar?: string | null;
   seed?: string | null;
   size?: number;
   className?: string;
   rounded?: "full" | "8";
+  level?: number | null;
+  rank?: string | null;
 }) {
-  const ring = avatarRing(avatar, seed);
+  const staff = rank === "staff" || rank === "admin";
+  const ring = staff
+    ? "#88FF55"
+    : level != null && Number.isFinite(level)
+      ? rankRingFromLevel(level)
+      : avatarRing(avatar, seed);
   const radius = rounded === "full" ? "999px" : "8px";
   return (
     <div

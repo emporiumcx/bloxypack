@@ -153,6 +153,7 @@ const unboxSendBetSocket = async(io, socket, user, data, callback) => {
                 $inc: {
                     balance: Math.floor(amountPayout - amountBetTotal),
                     xp: user.limits.blockSponsor !== true ? Math.floor(amountBetTotal * settings.general.reward.multiplier) : 0,
+                    'rewards.bonusXp': user.limits.blockSponsor !== true ? Math.floor(amountBetTotal * settings.general.reward.multiplier) : 0,
                     'stats.bet': amountBetTotal,
                     'stats.won': amountPayout,
                     'limits.betToWithdraw': Math.floor(user.limits.betToWithdraw - amountBetTotal) <= 0 ? -user.limits.betToWithdraw : -amountBetTotal,

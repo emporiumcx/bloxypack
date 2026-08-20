@@ -128,6 +128,11 @@ export const Icons = {
       <path d="M189-95q-39.05 0-66.53-27.47Q95-149.95 95-189v-582q0-39.46 27.47-67.23Q149.95-866 189-866h296v95H189v582h296v94H189Zm467-174-67-66 97-98H354v-94h330l-97-98 67-66 212 212-210 210Z" />
     </svg>
   ),
+  logout: (p: IconProps) => (
+    <svg viewBox="0 -960 960 960" {...EM} fill="currentColor" className={p.className} style={p.style} aria-hidden>
+      <path d="M186.67-120q-27 0-46.84-19.83Q120-159.67 120-186.67v-586.66q0-27 19.83-46.84Q159.67-840 186.67-840h292.66v66.67H186.67v586.66h292.66V-120H186.67Zm470.66-176.67-47-48 102-102H360v-66.66h351l-102-102 47-48 184 184-184 183.99Z" />
+    </svg>
+  ),
   menu: (p: IconProps) => (
     <svg viewBox="0 0 24 24" {...EM} fill="currentColor" stroke="currentColor" strokeWidth="0" className={p.className} style={p.style} aria-hidden>
       <path fill="none" d="M0 0h24v24H0V0z"  /><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"  />
@@ -155,8 +160,8 @@ export const Icons = {
     </svg>
   ),
   clock: (p: IconProps) => (
-    <svg viewBox="0 0 512 512" {...EM} fill="currentColor" stroke="currentColor" strokeWidth="0" className={p.className} style={p.style} aria-hidden>
-      <path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"  />
+    <svg viewBox="0 0 512 512" {...EM} fill="currentColor" fillRule="evenodd" stroke="currentColor" strokeWidth="0" className={p.className} style={p.style} aria-hidden>
+      <path d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm96 240h-96a16 16 0 0 1-16-16V128a16 16 0 0 1 32 0v128h80a16 16 0 0 1 0 32z" />
     </svg>
   ),
   user: (p: IconProps) => (
@@ -188,8 +193,8 @@ export const Icons = {
     </svg>
   ),
   send: (p: IconProps) => (
-    <svg viewBox="0 0 24 24" {...EM} fill="currentColor" stroke="currentColor" strokeWidth="0" className={p.className} style={p.style} aria-hidden>
-      <path fill="none" d="M0 0h24v24H0z"  /><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM8.5 8c.83 0 1.5.67 1.5 1.5S9.33 11 8.5 11 7 10.33 7 9.5 7.67 8 8.5 8zM12 18c-2.28 0-4.22-1.66-5-4h10c-.78 2.34-2.72 4-5 4zm3.5-7c-.83 0-1.5-.67-1.5-1.5S14.67 8 15.5 8s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"  />
+    <svg viewBox="0 0 24 24" {...EM} fill="currentColor" className={p.className} style={p.style} aria-hidden>
+      <path d="M3.4 20.4 21.2 12.6c.8-.35.8-1.48 0-1.83L3.4 2.97c-.84-.37-1.73.46-1.5 1.4L4.2 11l8.05 1L4.2 13.02 1.9 19c-.23.94.66 1.77 1.5 1.4Z" />
     </svg>
   ),
   refresh: (p: IconProps) => (
@@ -298,7 +303,7 @@ export const Icons = {
   ),
   home: (p: IconProps) => (
     <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" className={p.className} style={p.style} aria-hidden>
-      <path d="M12 2.7c.28 0 .55.1.75.28l7.92 7.4c.4.37.63.9.63 1.45v8.22c0 .97-.79 1.75-1.75 1.75h-5.05v-3.45a2.5 2.5 0 0 0-5 0v3.45H4.45A1.75 1.75 0 0 1 2.7 20.05v-8.22c0-.55.23-1.08.63-1.45l7.92-7.4c.2-.18.47-.28.75-.28Z" />
+      <path d="M12 2.15q.9 0 1.5.6l8.65 8.9q.55.55 0 1.05H19.9v7.25q0 1.6-1.6 1.6h-4.02V14.8H9.72v6.75H5.7q-1.6 0-1.6-1.6V12.7H1.85q-.55-.5 0-1.05L10.5 2.75q.6-.6 1.5-.6Z" />
     </svg>
   ),
   games: (p: IconProps) => (

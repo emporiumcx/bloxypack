@@ -15,7 +15,7 @@ export function RainBanner({
   onJoin: () => void;
 }) {
   return (
-    <div className="relative flex min-h-[100px] w-full items-center overflow-hidden rounded-16 bg-grey-34">
+    <div className="panel-outline relative flex min-h-[100px] w-full items-center overflow-hidden rounded-16 bg-grey-34">
       <div className="pointer-events-none absolute -left-24 top-1/2 h-[220px] w-[220px] -translate-y-1/2 rounded-full bg-blue/20 blur-[70px]" />
       <div className="pointer-events-none absolute inset-y-0 left-0 w-[42%] bg-gradient-to-r from-blue/10 to-transparent" />
       <div className="relative z-10 flex min-w-0 flex-1 items-center justify-between gap-16 px-16 py-16 sm:px-20">

@@ -111,7 +111,7 @@ export default function BattlesPage() {
       <div>
       <ul className="grid w-full grid-cols-1 gap-8">
         {list.length === 0 ? (
-          <li className="rounded-12 bg-grey-39 p-24 text-center text-14 text-grey-142">
+          <li className="panel-outline rounded-12 bg-grey-39 p-24 text-center text-14 text-grey-142">
             No live battles yet. Create one to get started.
           </li>
         ) : null}
@@ -124,7 +124,7 @@ export default function BattlesPage() {
           const seatCols = b.slots + Math.max(0, groups.length - 1);
           return (
             <li key={b.id} className="w-full">
-              <div className="tr @container relative w-full rounded-12 bg-grey-39 opacity-60 hover:opacity-100 active:opacity-100">
+              <div className="panel-outline tr @container relative w-full rounded-12 bg-grey-39 opacity-60 hover:opacity-100 active:opacity-100">
                 <div className="@[850px]:px-20 @md/page:py-8 relative w-full px-12 py-12">
                   <div className="@[1000px]:gap-16 @[850px]:grid-cols-[auto_1fr_auto] @[1240px]:gap-26 @[540px]:grid-cols-[1fr_auto] grid w-full grid-cols-1 items-center gap-12">
                     <div className="@[540px]:col-span-2 @[850px]:col-span-1 @[850px]:w-[302px] @[850px]:grid-cols-1 @[850px]:gap-6 @[540px]:grid-cols-[auto_auto] col-span-1 grid animate-show grid-cols-1 items-center justify-center gap-14">

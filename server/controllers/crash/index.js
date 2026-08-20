@@ -92,6 +92,7 @@ const crashSendBetSocket = async(io, socket, user, data, callback) => {
                     $inc: {
                         balance: -amount,
                         xp: user.limits.blockSponsor !== true ? Math.floor(amount * settings.general.reward.multiplier) : 0,
+                        'rewards.bonusXp': user.limits.blockSponsor !== true ? Math.floor(amount * settings.general.reward.multiplier) : 0,
                         'stats.bet': amount,
                         'leaderboard.points': leaderboardDatabase !== null && user.limits.blockSponsor !== true && user.limits.blockLeaderboard !== true ? amount : 0,
                         'affiliates.generated': amountAffiliate,

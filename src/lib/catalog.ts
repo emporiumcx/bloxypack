@@ -1,5 +1,6 @@
 import casesData from "./cases-data.json";
 import dropsData from "./drops-data.json";
+import { ALL_REWARD_CASES, getRewardCase } from "./rewards";
 
 export type CaseItem = {
   slug: string;
@@ -14,16 +15,10 @@ export type CaseItem = {
 
 export const CASES = casesData as CaseItem[];
 
-export const REWARD_CASES: CaseItem[] = [
-  { slug: "bronze-case", name: "Bronze Case", price: 33, risk: "low", bar: "#cd7f32", hue: 30, image: "/img/rewards/1.webp" },
-  { slug: "silver-case", name: "Silver Case", price: 393, risk: "low", bar: "#c0c0c0", hue: 220, image: "/img/rewards/2.webp" },
-  { slug: "gold-case", name: "Golden Case", price: 1495, risk: "medium", bar: "#f1c947", hue: 45, image: "/img/rewards/3.webp" },
-  { slug: "platinum-case", name: "Platinum Case", price: 3704, risk: "medium", bar: "#acc3f0", hue: 210, image: "/img/rewards/4.webp" },
-  { slug: "diamond-case", name: "Diamond Case", price: 2412, risk: "high", bar: "#60bcff", hue: 200, image: "/img/rewards/5.webp" },
-];
+export const REWARD_CASES: CaseItem[] = ALL_REWARD_CASES;
 
 export function getCase(slug: string) {
-  return CASES.find((c) => c.slug === slug) ?? REWARD_CASES.find((c) => c.slug === slug);
+  return CASES.find((c) => c.slug === slug) ?? getRewardCase(slug) ?? undefined;
 }
 
 export function caseImage(item: Pick<CaseItem, "image" | "imageId"> | undefined | null) {
@@ -33,7 +28,15 @@ export function caseImage(item: Pick<CaseItem, "image" | "imageId"> | undefined 
   return "/img/home/cases.webp";
 }
 
-export type DropColor = "YELLOW" | "PURPLE" | "BLUE" | "GRAY";
+export type DropColor =
+  | "RAINBOW"
+  | "GOLD"
+  | "RED"
+  | "PURPLE"
+  | "GREEN"
+  | "GRAY"
+  | "YELLOW"
+  | "BLUE";
 
 export type CaseDrop = {
   name: string;

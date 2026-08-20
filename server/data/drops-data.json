@@ -330,7 +330,7 @@
       "id": 162067148,
       "value": 60000000,
       "chance": 1,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 999
     },
@@ -348,7 +348,7 @@
       "id": 21070012,
       "value": 30000000,
       "chance": 5,
-      "color": "PURPLE",
+      "color": "GOLD",
       "minTicket": 3500,
       "maxTicket": 8501
     },
@@ -357,7 +357,7 @@
       "id": 250395631,
       "value": 16800000,
       "chance": 9,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 8502,
       "maxTicket": 17501
     },
@@ -366,7 +366,7 @@
       "id": 4390888537,
       "value": 9408000,
       "chance": 15,
-      "color": "BLUE",
+      "color": "PURPLE",
       "minTicket": 17502,
       "maxTicket": 32501
     },
@@ -375,7 +375,7 @@
       "id": 334656546,
       "value": 5268480,
       "chance": 25,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 32502,
       "maxTicket": 57501
     },
@@ -384,7 +384,7 @@
       "id": 69486761,
       "value": 2950349,
       "chance": 0,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 57502,
       "maxTicket": 57502
     },
@@ -418,93 +418,66 @@
   ],
   "dominus-domination": [
     {
-      "name": "Dominus Infernus",
-      "id": 31101391,
-      "value": 70000000,
-      "chance": 0.9,
-      "color": "YELLOW",
-      "minTicket": 0,
-      "maxTicket": 899
-    },
-    {
-      "name": "Dominus Messor",
-      "id": 64444871,
-      "value": 4400000,
-      "chance": 1.8,
-      "color": "BLUE",
-      "minTicket": 900,
-      "maxTicket": 2699
-    },
-    {
       "name": "Dominus Empyreus",
       "id": 21070012,
-      "value": 35000000,
-      "chance": 3.5,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6200
-    },
-    {
-      "name": "Dominus Frigidus",
-      "id": 48545806,
-      "value": 19600000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6201,
-      "maxTicket": 11700
-    },
-    {
-      "name": "Dominus Pittacium",
-      "id": 335080779,
-      "value": 10976000,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11701,
-      "maxTicket": 19700
-    },
-    {
-      "name": "Dominus Aureus",
-      "id": 138932314,
-      "value": 6146560,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19701,
-      "maxTicket": 30700
+      "value": 7419144,
+      "chance": 0.01,
+      "color": "RAINBOW",
+      "minTicket": 0,
+      "maxTicket": 9
     },
     {
       "name": "Dominus Rex",
       "id": 250395631,
-      "value": 3442074,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30701,
-      "maxTicket": 44700
+      "value": 1538205,
+      "chance": 0.2,
+      "color": "GOLD",
+      "minTicket": 10,
+      "maxTicket": 209
+    },
+    {
+      "name": "Dominus Messor",
+      "id": 64444871,
+      "value": 1264458,
+      "chance": 0.3,
+      "color": "RED",
+      "minTicket": 210,
+      "maxTicket": 509
     },
     {
       "name": "Dominus Vespertilio",
       "id": 96103379,
-      "value": 1927561,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44701,
-      "maxTicket": 62700
+      "value": 597165,
+      "chance": 0.4,
+      "color": "PURPLE",
+      "minTicket": 510,
+      "maxTicket": 909
+    },
+    {
+      "name": "Dominus Praefectus",
+      "id": 527365852,
+      "value": 369917,
+      "chance": 0.5,
+      "color": "GREEN",
+      "minTicket": 910,
+      "maxTicket": 1409
     },
     {
       "name": "Dominus Formidulosus",
       "id": 4255053867,
-      "value": 1079434,
-      "chance": 22,
+      "value": 84413,
+      "chance": 1,
       "color": "GRAY",
-      "minTicket": 62701,
-      "maxTicket": 84700
+      "minTicket": 1410,
+      "maxTicket": 2409
     },
     {
-      "name": "DIY Dominus Empyreus",
-      "id": 151789690,
-      "value": 604483,
-      "chance": 15.3,
+      "name": "??",
+      "id": 66416602,
+      "value": 15,
+      "chance": 97.59,
       "color": "GRAY",
-      "minTicket": 84701,
+      "minTicket": 2410,
       "maxTicket": 99999
     }
   ],
@@ -514,7 +487,7 @@
       "id": 162067148,
       "value": 60000000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -532,7 +505,7 @@
       "id": 21070012,
       "value": 30000000,
       "chance": 3.5,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6201
     },
@@ -541,7 +514,7 @@
       "id": 31101391,
       "value": 16800000,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6202,
       "maxTicket": 11701
     },
@@ -559,7 +532,7 @@
       "id": 250395631,
       "value": 5268480,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 19702,
       "maxTicket": 30701
     },
@@ -568,7 +541,7 @@
       "id": 1125510,
       "value": 2950349,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30702,
       "maxTicket": 44701
     },
@@ -602,93 +575,57 @@
   ],
   "crazy-hair-case": [
     {
-      "name": "Rainbow Shaggy",
-      "id": 64082730,
-      "value": 32000000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Stickmasterluke's Peanut Butter Sparkle Time",
+      "id": 169444294,
+      "value": 53465,
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
       "name": "Beautiful Hair for Beautiful Space People",
       "id": 564449640,
-      "value": 7000,
-      "chance": 1.8,
-      "color": "GRAY",
-      "minTicket": 900,
-      "maxTicket": 2699
-    },
-    {
-      "name": "Telamon Hair",
-      "id": 31312357,
-      "value": 16000000,
-      "chance": 3.5,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6199
-    },
-    {
-      "name": "Midnight Blue Shaggy",
-      "id": 119916824,
-      "value": 8960000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6200,
-      "maxTicket": 11699
-    },
-    {
-      "name": "Red, White, and Shaggy",
-      "id": 121260153,
-      "value": 5017600,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11700,
-      "maxTicket": 19699
-    },
-    {
-      "name": "Crimson Shaggy",
-      "id": 293316320,
-      "value": 2809856,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19700,
-      "maxTicket": 30699
-    },
-    {
-      "name": "Knife-Haired Monster",
-      "id": 23301644,
-      "value": 1573519,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30700,
-      "maxTicket": 44699
+      "value": 8777,
+      "chance": 5,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 9999
     },
     {
       "name": "Lost Boy of Summer Hair",
       "id": 295456141,
-      "value": 881171,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44700,
-      "maxTicket": 62699
+      "value": 2975,
+      "chance": 10,
+      "color": "RED",
+      "minTicket": 10000,
+      "maxTicket": 19999
     },
     {
-      "name": "Noob Attack: Bad Hair Day",
-      "id": 30390398,
-      "value": 493456,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62700,
-      "maxTicket": 84699
+      "name": "Xtreme Monochrome Hair",
+      "id": 186957762,
+      "value": 2765,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 20000,
+      "maxTicket": 29999
     },
     {
-      "name": "DIY Rainbow Shaggy",
-      "id": 493482011,
-      "value": 276335,
-      "chance": 15.3,
+      "name": "Beautiful Hair for Beautiful People",
+      "id": 7000000008,
+      "value": 95,
+      "chance": 30,
+      "color": "GREEN",
+      "minTicket": 30000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Shadowed Head",
+      "id": 7000000005,
+      "value": 50,
+      "chance": 40,
       "color": "GRAY",
-      "minTicket": 84700,
+      "minTicket": 60000,
       "maxTicket": 99999
     }
   ],
@@ -696,183 +633,129 @@
     {
       "name": "Bling $$ Necklace",
       "id": 33171947,
-      "value": 30000000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "value": 939382,
+      "chance": 0.5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 499
     },
     {
-      "name": "Bling",
-      "id": 25975243,
-      "value": 270000,
-      "chance": 1.8,
-      "color": "GRAY",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "The Golden Robloxian",
+      "id": 2799053,
+      "value": 653698,
+      "chance": 0.5,
+      "color": "GOLD",
+      "minTicket": 500,
+      "maxTicket": 999
     },
     {
       "name": "Bluesteel Bling $$ Necklace",
       "id": 489196035,
-      "value": 15000000,
-      "chance": 3.5,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6199
+      "value": 341171,
+      "chance": 1,
+      "color": "RED",
+      "minTicket": 1000,
+      "maxTicket": 1999
     },
     {
-      "name": "GoldLika: Troll",
-      "id": 398674241,
-      "value": 8400000,
-      "chance": 5.5,
+      "name": "): Gold Ollie",
+      "id": 22546563,
+      "value": 260090,
+      "chance": 0.5,
       "color": "PURPLE",
-      "minTicket": 6200,
-      "maxTicket": 11699
+      "minTicket": 2000,
+      "maxTicket": 2499
     },
     {
-      "name": "Donald P Sullivan - Gold Edition",
-      "id": 114385354,
-      "value": 4704000,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11700,
-      "maxTicket": 19699
+      "name": "GoldLika: Boss",
+      "id": 362029620,
+      "value": 175468,
+      "chance": 0.5,
+      "color": "GREEN",
+      "minTicket": 2500,
+      "maxTicket": 2999
     },
     {
-      "name": "Golden Lightning Speaker",
-      "id": 66330231,
-      "value": 2634240,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19700,
-      "maxTicket": 30699
-    },
-    {
-      "name": "Conductor's Gold Pocket Watch",
-      "id": 101081225,
-      "value": 1475174,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30700,
-      "maxTicket": 44699
-    },
-    {
-      "name": "Gold Mechaknight Mantle",
-      "id": 557059780,
-      "value": 826098,
-      "chance": 18,
+      "name": "Bling Boy's Raiment",
+      "id": 52458643,
+      "value": 100398,
+      "chance": 1,
       "color": "GRAY",
-      "minTicket": 44700,
-      "maxTicket": 62699
+      "minTicket": 3000,
+      "maxTicket": 3999
     },
     {
-      "name": "Forever 21 Magic 24k Gold Forever Beanie",
-      "id": 11700927610,
-      "value": 462615,
-      "chance": 22,
+      "name": "??",
+      "id": 66416602,
+      "value": 15,
+      "chance": 96,
       "color": "GRAY",
-      "minTicket": 62700,
-      "maxTicket": 84699
-    },
-    {
-      "name": "Goldlika: Genius",
-      "id": 1230406650,
-      "value": 259064,
-      "chance": 15.3,
-      "color": "GRAY",
-      "minTicket": 84700,
+      "minTicket": 4000,
       "maxTicket": 99999
     }
   ],
   "purple-power": [
     {
-      "name": "Purple Sparkle Time Fedora",
-      "id": 63043890,
-      "value": 20000000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Beautiful Hair for Beautiful Space People",
+      "id": 564449640,
+      "value": 8777,
+      "chance": 15,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 14999
     },
     {
-      "name": "Knight of the Violet Abyss",
-      "id": 220248530,
-      "value": 170000,
-      "chance": 1.8,
-      "color": "GRAY",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Purple Starface",
+      "id": 119812765,
+      "value": 8141,
+      "chance": 10,
+      "color": "GOLD",
+      "minTicket": 15000,
+      "maxTicket": 24999
     },
     {
-      "name": "): Purple Indy",
-      "id": 47697285,
-      "value": 10000000,
-      "chance": 3.5,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6202
+      "name": "Fancy Purple Hat",
+      "id": 243773554,
+      "value": 3187,
+      "chance": 10,
+      "color": "RED",
+      "minTicket": 25000,
+      "maxTicket": 34999
     },
     {
-      "name": "Purple Queen of the Night",
-      "id": 553971858,
-      "value": 5600000,
-      "chance": 5.5,
+      "name": "Purple Steampunk Robin Hood",
+      "id": 244160118,
+      "value": 1275,
+      "chance": 20,
       "color": "PURPLE",
-      "minTicket": 6203,
-      "maxTicket": 11702
-    },
-    {
-      "name": "Violet Fang",
-      "id": 362051899,
-      "value": 3136000,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11703,
-      "maxTicket": 19702
-    },
-    {
-      "name": "So Super Excited - Purple",
-      "id": 2568804274,
-      "value": 1756160,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19703,
-      "maxTicket": 30702
-    },
-    {
-      "name": "Violet Sneaking Slytherer",
-      "id": 51245277,
-      "value": 983450,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30703,
-      "maxTicket": 44702
-    },
-    {
-      "name": "Purple Wistful Wink",
-      "id": 583722710,
-      "value": 550732,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44703,
-      "maxTicket": 62702
-    },
-    {
-      "name": "Purple Bowler",
-      "id": 356210196,
-      "value": 308410,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62703,
-      "maxTicket": 84702
+      "minTicket": 35000,
+      "maxTicket": 54999
     },
     {
       "name": "Purple Crazy Glasses",
       "id": 243854130,
-      "value": 172709,
-      "chance": 15.3,
+      "value": 935,
+      "chance": 30,
+      "color": "GREEN",
+      "minTicket": 55000,
+      "maxTicket": 84999
+    },
+    {
+      "name": "Rainbow Flame Aura - Top",
+      "id": 7000000002,
+      "value": 25,
+      "chance": 5,
       "color": "GRAY",
-      "minTicket": 84703,
+      "minTicket": 85000,
+      "maxTicket": 89999
+    },
+    {
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 90000,
       "maxTicket": 99999
     }
   ],
@@ -880,91 +763,109 @@
     {
       "name": "Pink Sparkle Time Fedora",
       "id": 334663683,
-      "value": 16000000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "value": 2057684,
+      "chance": 0.05,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
-    },
-    {
-      "name": "Fuchsia Fantastique",
-      "id": 20980138,
-      "value": 270000,
-      "chance": 1.8,
-      "color": "GRAY",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "maxTicket": 49
     },
     {
       "name": "WC Ultimates: Pink Diamond Distraction",
       "id": 315549204,
-      "value": 8000000,
-      "chance": 3.51,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6208
+      "value": 154794,
+      "chance": 1,
+      "color": "GOLD",
+      "minTicket": 50,
+      "maxTicket": 1049
     },
     {
-      "name": "Glorious Pink Party Queen",
-      "id": 323419816,
-      "value": 4480000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6209,
-      "maxTicket": 11708
+      "name": "Neon Pink Crazy Crown",
+      "id": 638087256,
+      "value": 139714,
+      "chance": 2,
+      "color": "RED",
+      "minTicket": 1050,
+      "maxTicket": 3049
     },
     {
       "name": "Pink Galaxy Gaze",
       "id": 440738448,
-      "value": 2508800,
-      "chance": 8,
+      "value": 58732,
+      "chance": 7.95,
       "color": "PURPLE",
-      "minTicket": 11709,
-      "maxTicket": 19708
+      "minTicket": 3050,
+      "maxTicket": 10999
     },
     {
-      "name": "Neon Pink Pirate Patch",
-      "id": 317590827,
-      "value": 1404928,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19709,
-      "maxTicket": 30708
+      "name": "Glorious Pink Party Queen",
+      "id": 323419816,
+      "value": 31352,
+      "chance": 2,
+      "color": "GREEN",
+      "minTicket": 11000,
+      "maxTicket": 12999
     },
     {
-      "name": "Neon Pink Trihawk",
-      "id": 262399119,
-      "value": 786760,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30709,
-      "maxTicket": 44708
+      "name": "Neon Pink Top Hat",
+      "id": 376806474,
+      "value": 22205,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 13000,
+      "maxTicket": 13999
+    },
+    {
+      "name": "Ultimate Pink Victory",
+      "id": 435115571,
+      "value": 21854,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 14000,
+      "maxTicket": 23999
+    },
+    {
+      "name": "Pink Mermaid Princess",
+      "id": 1428418448,
+      "value": 21808,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 24000,
+      "maxTicket": 33999
+    },
+    {
+      "name": "Pinky The Cyclops",
+      "id": 25555262,
+      "value": 16067,
+      "chance": 12,
+      "color": "GRAY",
+      "minTicket": 34000,
+      "maxTicket": 45999
+    },
+    {
+      "name": "Neon Pink Shaggy",
+      "id": 215762773,
+      "value": 5934,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 46000,
+      "maxTicket": 63999
+    },
+    {
+      "name": "Pink Winter Cap",
+      "id": 1279019,
+      "value": 5485,
+      "chance": 18,
+      "color": "GRAY",
+      "minTicket": 64000,
+      "maxTicket": 81999
     },
     {
       "name": "So Super Excited - Pink",
       "id": 2568801198,
-      "value": 440585,
+      "value": 5423,
       "chance": 18,
       "color": "GRAY",
-      "minTicket": 44709,
-      "maxTicket": 62708
-    },
-    {
-      "name": "Violently Pink Egg of Violent Opinions",
-      "id": 24826771,
-      "value": 246728,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62709,
-      "maxTicket": 84708
-    },
-    {
-      "name": "Pink Penguin",
-      "id": 16985920,
-      "value": 138168,
-      "chance": 15.29,
-      "color": "GRAY",
-      "minTicket": 84709,
+      "minTicket": 82000,
       "maxTicket": 99999
     }
   ],
@@ -974,7 +875,7 @@
       "id": 124730194,
       "value": 12000000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -983,7 +884,7 @@
       "id": 382881237,
       "value": 1850000,
       "chance": 1.8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -992,7 +893,7 @@
       "id": 2830437685,
       "value": 6000000,
       "chance": 3.51,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6207
     },
@@ -1001,7 +902,7 @@
       "id": 1180433861,
       "value": 3360000,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6208,
       "maxTicket": 11707
     },
@@ -1019,7 +920,7 @@
       "id": 382881373,
       "value": 1053696,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19708,
       "maxTicket": 30707
     },
@@ -1028,7 +929,7 @@
       "id": 1365767,
       "value": 590070,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30708,
       "maxTicket": 44707
     },
@@ -1066,7 +967,7 @@
       "id": 17449820,
       "value": 7500000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -1084,7 +985,7 @@
       "id": 439985494,
       "value": 3750000,
       "chance": 3.51,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6205
     },
@@ -1093,7 +994,7 @@
       "id": 5162497,
       "value": 2100000,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6206,
       "maxTicket": 11705
     },
@@ -1102,7 +1003,7 @@
       "id": 17138062,
       "value": 1176000,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11706,
       "maxTicket": 19705
     },
@@ -1111,7 +1012,7 @@
       "id": 116043052,
       "value": 658560,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19706,
       "maxTicket": 30705
     },
@@ -1120,7 +1021,7 @@
       "id": 835095880,
       "value": 368794,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30706,
       "maxTicket": 44705
     },
@@ -1145,185 +1046,113 @@
   ],
   "gold-shades": [
     {
-      "name": "Sparkle Time Valkyrie",
-      "id": 1180433861,
-      "value": 8000000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Gold Emperor of the Night",
+      "id": 878895806,
+      "value": 45387,
+      "chance": 3,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 2999
     },
     {
       "name": "Blackvalk Shades",
       "id": 175134718,
-      "value": 50000,
-      "chance": 1.8,
-      "color": "GRAY",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "value": 35573,
+      "chance": 5,
+      "color": "GOLD",
+      "minTicket": 3000,
+      "maxTicket": 7999
     },
     {
-      "name": "Emerald Valkyrie",
-      "id": 2830437685,
-      "value": 4000000,
-      "chance": 3.5,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6201
+      "name": "Rubber Duckie",
+      "id": 9254254,
+      "value": 7701,
+      "chance": 10,
+      "color": "RED",
+      "minTicket": 8000,
+      "maxTicket": 17999
     },
     {
-      "name": "Ice Valkyrie",
-      "id": 4390891467,
-      "value": 2240000,
-      "chance": 5.5,
+      "name": "Exploding Lab Table",
+      "id": 154727201,
+      "value": 4033,
+      "chance": 12,
       "color": "PURPLE",
-      "minTicket": 6202,
-      "maxTicket": 11701
+      "minTicket": 18000,
+      "maxTicket": 29999
     },
     {
-      "name": "Donald P Sullivan - Gold Edition",
-      "id": 114385354,
-      "value": 1254400,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11702,
-      "maxTicket": 19701
+      "name": "Gucci Diamond-Framed Sunglasses",
+      "id": 6803412842,
+      "value": 709,
+      "chance": 40,
+      "color": "GREEN",
+      "minTicket": 30000,
+      "maxTicket": 69999
     },
     {
-      "name": "Heartbreaker Shades",
-      "id": 46158937,
-      "value": 702464,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19702,
-      "maxTicket": 30701
-    },
-    {
-      "name": "2014 Shades",
-      "id": 140469106,
-      "value": 393380,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30702,
-      "maxTicket": 44701
-    },
-    {
-      "name": "Golden Egg of Kings",
-      "id": 1532387,
-      "value": 220293,
-      "chance": 18,
+      "name": "Gucci Guitar Case",
+      "id": 6803395856,
+      "value": 695,
+      "chance": 30,
       "color": "GRAY",
-      "minTicket": 44702,
-      "maxTicket": 62701
-    },
-    {
-      "name": "Retro Pattern Shades",
-      "id": 117410734,
-      "value": 123364,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62702,
-      "maxTicket": 84701
-    },
-    {
-      "name": "Wanwood Round Shades",
-      "id": 628803591,
-      "value": 69084,
-      "chance": 15.3,
-      "color": "GRAY",
-      "minTicket": 84702,
+      "minTicket": 70000,
       "maxTicket": 99999
     }
   ],
   "through-the-flames": [
     {
-      "name": "Eerie Pumpkin Head",
-      "id": 1158416,
-      "value": 6000000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Sinister S.",
+      "id": 37819478,
+      "value": 25378,
+      "chance": 0.7,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 699
     },
     {
-      "name": "Fiery Horns of the Netherworld",
-      "id": 215718515,
-      "value": 2200000,
-      "chance": 1.8,
-      "color": "PURPLE",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Sinister P.",
+      "id": 17450053,
+      "value": 6132,
+      "chance": 5,
+      "color": "GOLD",
+      "minTicket": 700,
+      "maxTicket": 5699
     },
     {
-      "name": "Hooded Firelord",
-      "id": 144507154,
-      "value": 3000000,
-      "chance": 3.51,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6207
-    },
-    {
-      "name": "Fire Flash Shades",
-      "id": 346675875,
-      "value": 1680000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6208,
-      "maxTicket": 11707
-    },
-    {
-      "name": "Fire Fighter",
-      "id": 60674654,
-      "value": 940800,
+      "name": "Dr. Spooks Magic Top Hat",
+      "id": 132123882,
+      "value": 3016,
       "chance": 8,
+      "color": "RED",
+      "minTicket": 5700,
+      "maxTicket": 13699
+    },
+    {
+      "name": "Sinister Branches",
+      "id": 71484026,
+      "value": 1973,
+      "chance": 15,
       "color": "PURPLE",
-      "minTicket": 11708,
-      "maxTicket": 19707
+      "minTicket": 13700,
+      "maxTicket": 28699
     },
     {
-      "name": "Firebrand Wings",
-      "id": 128160626,
-      "value": 526848,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19708,
-      "maxTicket": 30707
+      "name": "Bat Tie",
+      "id": 63239668,
+      "value": 1099,
+      "chance": 35,
+      "color": "GREEN",
+      "minTicket": 28700,
+      "maxTicket": 63699
     },
     {
-      "name": "Pumpkin Bucket",
-      "id": 17527923,
-      "value": 295035,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30708,
-      "maxTicket": 44707
-    },
-    {
-      "name": "Scary Bloxxing Pumpkin",
-      "id": 181644522,
-      "value": 165220,
-      "chance": 18,
+      "name": "Zombie Pumpkin",
+      "id": 7000000017,
+      "value": 200,
+      "chance": 36.3,
       "color": "GRAY",
-      "minTicket": 44708,
-      "maxTicket": 62707
-    },
-    {
-      "name": "Powerface: Extreme Fire",
-      "id": 100932509,
-      "value": 92523,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62708,
-      "maxTicket": 84707
-    },
-    {
-      "name": "Pumpkin Piephones",
-      "id": 187483689,
-      "value": 51813,
-      "chance": 15.29,
-      "color": "GRAY",
-      "minTicket": 84708,
+      "minTicket": 63700,
       "maxTicket": 99999
     }
   ],
@@ -1333,7 +1162,7 @@
       "id": 1158416,
       "value": 6000000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -1351,7 +1180,7 @@
       "id": 96079550,
       "value": 3000000,
       "chance": 3.52,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6222
     },
@@ -1360,7 +1189,7 @@
       "id": 36883448,
       "value": 1680000,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6223,
       "maxTicket": 11722
     },
@@ -1378,7 +1207,7 @@
       "id": 17527923,
       "value": 526848,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 19723,
       "maxTicket": 30722
     },
@@ -1387,7 +1216,7 @@
       "id": 37747682,
       "value": 295035,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30723,
       "maxTicket": 44722
     },
@@ -1421,93 +1250,48 @@
   ],
   "circlet-case": [
     {
-      "name": "Red Domino Crown",
-      "id": 42211680,
-      "value": 5800000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Purple Crystal Circlet",
+      "id": 151327351,
+      "value": 5757,
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
-      "name": "Sapphire Crystal Circlet",
-      "id": 293318274,
-      "value": 115000,
-      "chance": 1.8,
-      "color": "GRAY",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Diamond Crystal Circlet",
+      "id": 4390875496,
+      "value": 4378,
+      "chance": 5,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 9999
     },
     {
-      "name": "Domino Crown",
-      "id": 1031429,
-      "value": 2900000,
-      "chance": 3.53,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6228
+      "name": "HotThoth's Voodoo Doll",
+      "id": 53130896,
+      "value": 2009,
+      "chance": 12,
+      "color": "RED",
+      "minTicket": 10000,
+      "maxTicket": 21999
     },
     {
-      "name": "Bluesteel Domino Crown",
-      "id": 68258723,
-      "value": 1624000,
-      "chance": 5.5,
+      "name": "Gucci Bloom Perfume",
+      "id": 6803407328,
+      "value": 854,
+      "chance": 38,
       "color": "PURPLE",
-      "minTicket": 6229,
-      "maxTicket": 11728
+      "minTicket": 22000,
+      "maxTicket": 59999
     },
     {
-      "name": "Green Ice Crown",
-      "id": 193696233,
-      "value": 909440,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11729,
-      "maxTicket": 19728
-    },
-    {
-      "name": "The Crown of Warlords",
-      "id": 2264398,
-      "value": 509286,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19729,
-      "maxTicket": 30728
-    },
-    {
-      "name": "8-Bit Royal Crown",
-      "id": 10159600649,
-      "value": 285200,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30729,
-      "maxTicket": 44728
-    },
-    {
-      "name": "Honored Redcliff Crown",
-      "id": 2257539462,
-      "value": 159712,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44729,
-      "maxTicket": 62728
-    },
-    {
-      "name": "Bacon Crown",
-      "id": 166896278,
-      "value": 89439,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62729,
-      "maxTicket": 84728
-    },
-    {
-      "name": "Super Bowl LVI Crown",
-      "id": 8763364938,
-      "value": 50086,
-      "chance": 15.27,
-      "color": "GRAY",
-      "minTicket": 84729,
+      "name": "Specular Egg of Red, No Blue",
+      "id": 24826800,
+      "value": 760,
+      "chance": 40,
+      "color": "GREEN",
+      "minTicket": 60000,
       "maxTicket": 99999
     }
   ],
@@ -1517,7 +1301,7 @@
       "id": 74891470,
       "value": 2000000,
       "chance": 10,
-      "color": "PURPLE",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 9999
     },
@@ -1526,7 +1310,7 @@
       "id": 4390891467,
       "value": 390000,
       "chance": 10,
-      "color": "BLUE",
+      "color": "PURPLE",
       "minTicket": 10000,
       "maxTicket": 19999
     },
@@ -1535,7 +1319,7 @@
       "id": 1323384,
       "value": 1000000,
       "chance": 10.03,
-      "color": "PURPLE",
+      "color": "GOLD",
       "minTicket": 20000,
       "maxTicket": 30033
     },
@@ -1544,7 +1328,7 @@
       "id": 1323367,
       "value": 560000,
       "chance": 10,
-      "color": "BLUE",
+      "color": "RED",
       "minTicket": 30034,
       "maxTicket": 40033
     },
@@ -1553,7 +1337,7 @@
       "id": 106689944,
       "value": 313600,
       "chance": 10,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 40034,
       "maxTicket": 50033
     },
@@ -1605,93 +1389,120 @@
   ],
   "derek-case": [
     {
-      "name": "Telamon Hair",
-      "id": 31312357,
-      "value": 5000000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Fiery Horns of the Netherworld",
+      "id": 215718515,
+      "value": 324023,
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
-      "name": "Shaggy",
-      "id": 20573078,
-      "value": 1603,
-      "chance": 1.8,
-      "color": "GRAY",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Frozen Horns of the Frigid Planes",
+      "id": 74891470,
+      "value": 275438,
+      "chance": 2,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 6999
     },
     {
-      "name": "Rainbow Shaggy",
-      "id": 64082730,
-      "value": 2500000,
-      "chance": 3.51,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6213
+      "name": "Duke of the Fallen Federation",
+      "id": 1340199684,
+      "value": 190215,
+      "chance": 1,
+      "color": "RED",
+      "minTicket": 7000,
+      "maxTicket": 7999
     },
     {
-      "name": "Telamon's Chicken Suit",
-      "id": 24112667,
-      "value": 1400000,
-      "chance": 5.5,
+      "name": "Red Balloon",
+      "id": 27477255,
+      "value": 139965,
+      "chance": 1,
       "color": "PURPLE",
-      "minTicket": 6214,
-      "maxTicket": 11713
+      "minTicket": 8000,
+      "maxTicket": 8999
     },
     {
-      "name": "Telamon's Foe Hammer",
-      "id": 53623350,
-      "value": 784000,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11714,
-      "maxTicket": 19713
+      "name": "Red Ice Crown",
+      "id": 193696583,
+      "value": 98991,
+      "chance": 1,
+      "color": "GREEN",
+      "minTicket": 9000,
+      "maxTicket": 9999
     },
     {
-      "name": "Crimson Shaggy",
-      "id": 293316320,
-      "value": 439040,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19714,
-      "maxTicket": 30713
-    },
-    {
-      "name": "Knife-Haired Monster",
-      "id": 23301644,
-      "value": 245862,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30714,
-      "maxTicket": 44713
-    },
-    {
-      "name": "Lost Boy of Summer Hair",
-      "id": 295456141,
-      "value": 137683,
-      "chance": 18,
+      "name": "Agonizingly Red Bucket of Cheer",
+      "id": 102605392,
+      "value": 96709,
+      "chance": 1,
       "color": "GRAY",
-      "minTicket": 44714,
-      "maxTicket": 62713
+      "minTicket": 10000,
+      "maxTicket": 10999
     },
     {
-      "name": "Telamon's Crafting Jewel",
-      "id": 24389601,
-      "value": 77102,
-      "chance": 22,
+      "name": "Red RAWR",
+      "id": 66330295,
+      "value": 69204,
+      "chance": 1,
       "color": "GRAY",
-      "minTicket": 62714,
-      "maxTicket": 84713
+      "minTicket": 11000,
+      "maxTicket": 11999
     },
     {
-      "name": "DIY Rainbow Shaggy",
-      "id": 493482011,
-      "value": 43177,
-      "chance": 15.29,
+      "name": "Red Fang",
+      "id": 16722419,
+      "value": 48962,
+      "chance": 1,
       "color": "GRAY",
-      "minTicket": 84714,
+      "minTicket": 12000,
+      "maxTicket": 12999
+    },
+    {
+      "name": "Black Iron Horns",
+      "id": 628771505,
+      "value": 48595,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 13000,
+      "maxTicket": 13999
+    },
+    {
+      "name": "Red Crown of Ozymandias",
+      "id": 9465511,
+      "value": 45833,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 14000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Redspybot",
+      "id": 114385498,
+      "value": 41022,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 15000,
+      "maxTicket": 15999
+    },
+    {
+      "name": "Crimsonwrath: The Red Wrath",
+      "id": 402304782,
+      "value": 30153,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 16000,
+      "maxTicket": 16999
+    },
+    {
+      "name": "??",
+      "id": 66416602,
+      "value": 15,
+      "chance": 83,
+      "color": "GRAY",
+      "minTicket": 17000,
       "maxTicket": 99999
     }
   ],
@@ -1701,7 +1512,7 @@
       "id": 315549204,
       "value": 4500000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -1710,7 +1521,7 @@
       "id": 228449574,
       "value": 2000000,
       "chance": 1.8,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -1719,7 +1530,7 @@
       "id": 323417812,
       "value": 2250000,
       "chance": 3.51,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6207
     },
@@ -1737,7 +1548,7 @@
       "id": 2222720521,
       "value": 705600,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11708,
       "maxTicket": 19707
     },
@@ -1746,7 +1557,7 @@
       "id": 51243486,
       "value": 395136,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19708,
       "maxTicket": 30707
     },
@@ -1755,7 +1566,7 @@
       "id": 46355702,
       "value": 221276,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30708,
       "maxTicket": 44707
     },
@@ -1793,7 +1604,7 @@
       "id": 183468963,
       "value": 3300000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -1811,7 +1622,7 @@
       "id": 37816777,
       "value": 1650000,
       "chance": 3.53,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6225
     },
@@ -1820,7 +1631,7 @@
       "id": 63997108,
       "value": 924000,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6226,
       "maxTicket": 11725
     },
@@ -1829,7 +1640,7 @@
       "id": 16678095,
       "value": 517440,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11726,
       "maxTicket": 19725
     },
@@ -1838,7 +1649,7 @@
       "id": 105341547,
       "value": 289766,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19726,
       "maxTicket": 30725
     },
@@ -1847,7 +1658,7 @@
       "id": 64160547,
       "value": 162269,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30726,
       "maxTicket": 44725
     },
@@ -1883,138 +1694,147 @@
     {
       "name": "Poisoned Horns of the Toxic Wasteland",
       "id": 1744060292,
-      "value": 1450000,
-      "chance": 0.9,
-      "color": "PURPLE",
+      "value": 327178,
+      "chance": 1,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 999
     },
     {
-      "name": "Radioactive Beast Mode",
-      "id": 2225761296,
-      "value": 28000,
-      "chance": 1.8,
-      "color": "GRAY",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Green Bubble Trouble",
+      "id": 380754227,
+      "value": 31798,
+      "chance": 9,
+      "color": "GOLD",
+      "minTicket": 1000,
+      "maxTicket": 9999
     },
     {
-      "name": "Toxic Waste Cap",
-      "id": 362080690,
-      "value": 725000,
-      "chance": 3.57,
+      "name": "Green Wistful Wink",
+      "id": 583722932,
+      "value": 15375,
+      "chance": 5,
+      "color": "RED",
+      "minTicket": 10000,
+      "maxTicket": 14999
+    },
+    {
+      "name": "Lime Green Shaggy",
+      "id": 135470963,
+      "value": 14991,
+      "chance": 5,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6265
+      "minTicket": 15000,
+      "maxTicket": 19999
     },
     {
-      "name": "Poison Horns",
-      "id": 62152671,
-      "value": 406000,
-      "chance": 5.5,
-      "color": "BLUE",
-      "minTicket": 6266,
-      "maxTicket": 11765
+      "name": "Greenbot",
+      "id": 22023239,
+      "value": 3019,
+      "chance": 10,
+      "color": "GREEN",
+      "minTicket": 20000,
+      "maxTicket": 29999
     },
     {
-      "name": "Toxic Urchin",
-      "id": 116073602,
-      "value": 227360,
-      "chance": 88.23,
-      "color": "BLUE",
-      "minTicket": 11766,
+      "name": "Putrid Green Head in A Jar",
+      "id": 503947022,
+      "value": 2920,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 44999
+    },
+    {
+      "name": "Color Changing Tophat - Red to Black",
+      "id": 7000000003,
+      "value": 50,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 45000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Rainbow Flame Aura - Top",
+      "id": 7000000002,
+      "value": 25,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 79999
+    },
+    {
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
       "maxTicket": 99999
     }
   ],
   "star-case": [
     {
-      "name": "The Void Star",
-      "id": 1125510,
-      "value": 2800000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Black Iron King of the Night",
+      "id": 439946249,
+      "value": 437499,
+      "chance": 2,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 1999
     },
     {
-      "name": "Dominus Astra",
-      "id": 162067148,
-      "value": 1540000,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Yellow Glowing Eyes",
+      "id": 416846000,
+      "value": 338341,
+      "chance": 1,
+      "color": "GOLD",
+      "minTicket": 2000,
+      "maxTicket": 2999
     },
     {
-      "name": "): Star Tailslide",
-      "id": 26011378,
-      "value": 1400000,
-      "chance": 3.52,
+      "name": "Bluesteel Domino Crown",
+      "id": 68258723,
+      "value": 335743,
+      "chance": 0.5,
+      "color": "RED",
+      "minTicket": 3000,
+      "maxTicket": 3499
+    },
+    {
+      "name": "Poisoned Horns of the Toxic Wasteland",
+      "id": 1744060292,
+      "value": 327178,
+      "chance": 0.25,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6215
+      "minTicket": 3500,
+      "maxTicket": 3749
     },
     {
-      "name": "Voidwrath",
-      "id": 562478132,
-      "value": 784000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6216,
-      "maxTicket": 11715
+      "name": "): Purple Indy",
+      "id": 47697285,
+      "value": 316498,
+      "chance": 0.25,
+      "color": "GREEN",
+      "minTicket": 3750,
+      "maxTicket": 3999
     },
     {
-      "name": "Red Rock Star Smile",
-      "id": 376809691,
-      "value": 439040,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11716,
-      "maxTicket": 19715
-    },
-    {
-      "name": "Seeing Stars",
-      "id": 27599954,
-      "value": 245862,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19716,
-      "maxTicket": 30715
-    },
-    {
-      "name": "Starry Eyed Shades",
-      "id": 55224996,
-      "value": 137683,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30716,
-      "maxTicket": 44715
-    },
-    {
-      "name": "Violet Starry Sight",
-      "id": 2222775930,
-      "value": 77102,
-      "chance": 18,
+      "name": "Countess of the Federation",
+      "id": 188003914,
+      "value": 296718,
+      "chance": 1,
       "color": "GRAY",
-      "minTicket": 44716,
-      "maxTicket": 62715
+      "minTicket": 4000,
+      "maxTicket": 4999
     },
     {
-      "name": "Yellow Starface",
-      "id": 162200696,
-      "value": 43177,
-      "chance": 22,
+      "name": "??",
+      "id": 66416602,
+      "value": 15,
+      "chance": 95,
       "color": "GRAY",
-      "minTicket": 62716,
-      "maxTicket": 84715
-    },
-    {
-      "name": "Starry Egg of the Wild Ride",
-      "id": 31151864,
-      "value": 24179,
-      "chance": 15.28,
-      "color": "GRAY",
-      "minTicket": 84716,
+      "minTicket": 5000,
       "maxTicket": 99999
     }
   ],
@@ -2024,7 +1844,7 @@
       "id": 1125510,
       "value": 2800000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -2033,7 +1853,7 @@
       "id": 638087256,
       "value": 950000,
       "chance": 1.8,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -2042,7 +1862,7 @@
       "id": 1191135761,
       "value": 1400000,
       "chance": 3.51,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6204
     },
@@ -2060,7 +1880,7 @@
       "id": 16646369,
       "value": 439040,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11705,
       "maxTicket": 19704
     },
@@ -2069,7 +1889,7 @@
       "id": 376805769,
       "value": 245862,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19705,
       "maxTicket": 30704
     },
@@ -2078,7 +1898,7 @@
       "id": 105340931,
       "value": 137683,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30705,
       "maxTicket": 44704
     },
@@ -2112,205 +1932,178 @@
   ],
   "evil-case": [
     {
-      "name": "Eyes of Crimsonwrath",
-      "id": 49493376,
-      "value": 2500000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Dominus Praefectus",
+      "id": 527365852,
+      "value": 369917,
+      "chance": 0.01,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 9
     },
     {
-      "name": "Dark Assassin",
-      "id": 73791866,
-      "value": 1300000,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Sad Clown",
+      "id": 250654457,
+      "value": 30583,
+      "chance": 4.99,
+      "color": "GOLD",
+      "minTicket": 10,
+      "maxTicket": 4999
     },
     {
-      "name": "Crimson Thug Shades",
-      "id": 207207025,
-      "value": 1250000,
-      "chance": 3.53,
+      "name": "Purple Alien",
+      "id": 323192193,
+      "value": 8087,
+      "chance": 5,
+      "color": "RED",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Overseer Collar",
+      "id": 343585127,
+      "value": 5023,
+      "chance": 10,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6233
+      "minTicket": 10000,
+      "maxTicket": 19999
     },
     {
-      "name": "Crimsonwrath, Duke of Danger",
-      "id": 62718352,
-      "value": 700000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6234,
-      "maxTicket": 11733
+      "name": "Ornate Creature Horns",
+      "id": 2830432345,
+      "value": 1082,
+      "chance": 10,
+      "color": "GREEN",
+      "minTicket": 20000,
+      "maxTicket": 29999
     },
     {
-      "name": "Even Eviler Jester",
-      "id": 40893465,
-      "value": 392000,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11734,
-      "maxTicket": 19733
-    },
-    {
-      "name": "Crimson Double Threat",
-      "id": 22787189,
-      "value": 219520,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19734,
-      "maxTicket": 30733
-    },
-    {
-      "name": "Crimsonpunk",
-      "id": 118280164,
-      "value": 122931,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30734,
-      "maxTicket": 44733
-    },
-    {
-      "name": "1337 Cyber Assassin",
-      "id": 81688937,
-      "value": 68841,
-      "chance": 18,
+      "name": "Casual Sunglasses Pocket",
+      "id": 1744198126,
+      "value": 1003,
+      "chance": 10,
       "color": "GRAY",
-      "minTicket": 44734,
-      "maxTicket": 62733
+      "minTicket": 30000,
+      "maxTicket": 39999
     },
     {
-      "name": "Golden Evil Eye",
-      "id": 1016185809,
-      "value": 38551,
-      "chance": 22,
+      "name": "Gucci Horsebit 1955 Shoulder Bag",
+      "id": 6803397504,
+      "value": 655,
+      "chance": 15,
       "color": "GRAY",
-      "minTicket": 62734,
-      "maxTicket": 84733
+      "minTicket": 40000,
+      "maxTicket": 54999
     },
     {
-      "name": "Evil Skeptic Face",
-      "id": 110288865,
-      "value": 21589,
-      "chance": 15.27,
+      "name": "Gucci Geometric Bag",
+      "id": 6807134749,
+      "value": 630,
+      "chance": 15,
       "color": "GRAY",
-      "minTicket": 84734,
+      "minTicket": 55000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "GucciGhost Bag",
+      "id": 6807139994,
+      "value": 593,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 70000,
+      "maxTicket": 84999
+    },
+    {
+      "name": "Gucci Spiked Basketball Bag",
+      "id": 6807135859,
+      "value": 556,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 85000,
       "maxTicket": 99999
     }
   ],
   "risky-valk": [
     {
-      "name": "Ice Valkyrie",
-      "id": 4390891467,
-      "value": 390000,
-      "chance": 47.03,
-      "color": "PURPLE",
+      "name": "Valkyrie Helm",
+      "id": 1365767,
+      "value": 229730,
+      "chance": 50,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 47032
+      "maxTicket": 49999
     },
     {
-      "name": "Ornate Valkyrie",
-      "id": 23634704,
-      "value": 33453,
-      "chance": 52.97,
-      "color": "GRAY",
-      "minTicket": 47033,
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 50,
+      "color": "GOLD",
+      "minTicket": 50000,
       "maxTicket": 99999
     }
   ],
   "forever-blue-case": [
     {
-      "name": "Frozen Horns of the Frigid Planes",
-      "id": 74891470,
-      "value": 2000000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Arctic Commando",
+      "id": 39247498,
+      "value": 146325,
+      "chance": 0.1,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 99
     },
     {
-      "name": "The Ice Crown",
-      "id": 1323384,
-      "value": 1100000,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Blue Snipers Visor",
+      "id": 1086814,
+      "value": 9215,
+      "chance": 4.9,
+      "color": "GOLD",
+      "minTicket": 100,
+      "maxTicket": 4999
     },
     {
-      "name": "Eyes of Azurewrath",
-      "id": 17999992,
-      "value": 1000000,
-      "chance": 3.52,
+      "name": "Bluesteel Bathysphere",
+      "id": 116786719,
+      "value": 1982,
+      "chance": 15,
+      "color": "RED",
+      "minTicket": 5000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Blue Pocket Pal",
+      "id": 658757624,
+      "value": 1616,
+      "chance": 20,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6222
+      "minTicket": 20000,
+      "maxTicket": 39999
     },
     {
-      "name": "The Azure Gate Bridge",
-      "id": 22946161,
-      "value": 560000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6223,
-      "maxTicket": 11722
+      "name": "Torque the Blue Orc",
+      "id": 2830496106,
+      "value": 1453,
+      "chance": 20,
+      "color": "GREEN",
+      "minTicket": 40000,
+      "maxTicket": 59999
     },
     {
-      "name": "Azurewrath: Lord of the Frost",
-      "id": 62720062,
-      "value": 313600,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11723,
-      "maxTicket": 19722
-    },
-    {
-      "name": "Son of Korblox: Azurewrath King",
-      "id": 243853512,
-      "value": 175616,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19723,
-      "maxTicket": 30722
-    },
-    {
-      "name": "Frozen Swordpack Crown of the Northern Tundra",
-      "id": 330295337,
-      "value": 98345,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30723,
-      "maxTicket": 44722
-    },
-    {
-      "name": "Icy Blue Viking Helm of Frozen Victory",
-      "id": 327318111,
-      "value": 55073,
-      "chance": 18,
+      "name": "Bluesteel Egg of Genius",
+      "id": 1533893,
+      "value": 1118,
+      "chance": 20,
       "color": "GRAY",
-      "minTicket": 44723,
-      "maxTicket": 62722
+      "minTicket": 60000,
+      "maxTicket": 79999
     },
     {
-      "name": "Forever 21 Magic 24k Gold Forever Beanie",
-      "id": 11700927610,
-      "value": 30841,
-      "chance": 22,
+      "name": "Specular Egg of Red, No Blue",
+      "id": 24826800,
+      "value": 760,
+      "chance": 20,
       "color": "GRAY",
-      "minTicket": 62723,
-      "maxTicket": 84722
-    },
-    {
-      "name": "Extinct Egg of Dino On Ice",
-      "id": 31156903,
-      "value": 17271,
-      "chance": 15.28,
-      "color": "GRAY",
-      "minTicket": 84723,
+      "minTicket": 80000,
       "maxTicket": 99999
     }
   ],
@@ -2320,7 +2113,7 @@
       "id": 215718515,
       "value": 2200000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -2338,7 +2131,7 @@
       "id": 74891470,
       "value": 1100000,
       "chance": 3.51,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6211
     },
@@ -2347,7 +2140,7 @@
       "id": 114020505,
       "value": 616000,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6212,
       "maxTicket": 11711
     },
@@ -2365,7 +2158,7 @@
       "id": 51243190,
       "value": 193178,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 19712,
       "maxTicket": 30711
     },
@@ -2374,7 +2167,7 @@
       "id": 48159678,
       "value": 108179,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30712,
       "maxTicket": 44711
     },
@@ -2411,276 +2204,231 @@
       "name": "Clockwork's Shades",
       "id": 11748356,
       "value": 1600000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
       "name": "Clockwork's Headphones",
       "id": 1235488,
-      "value": 930000,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
-    },
-    {
-      "name": "Bombastic Clockwork Shades",
-      "id": 286524574,
-      "value": 800000,
-      "chance": 3.51,
-      "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6213
-    },
-    {
-      "name": "Blue Clockwork Headphones",
-      "id": 1743903423,
-      "value": 448000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6214,
-      "maxTicket": 11713
-    },
-    {
-      "name": "Bling Clock",
-      "id": 30380922,
-      "value": 250880,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11714,
-      "maxTicket": 19713
+      "value": 521690,
+      "chance": 5,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 9999
     },
     {
       "name": "\"Like Clockwork\" Top Hat",
       "id": 58809024,
-      "value": 140493,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19714,
-      "maxTicket": 30713
+      "value": 21068,
+      "chance": 20,
+      "color": "RED",
+      "minTicket": 10000,
+      "maxTicket": 29999
     },
     {
       "name": "DIY Clockwork",
       "id": 232492903,
-      "value": 78676,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30714,
-      "maxTicket": 44713
+      "value": 2059,
+      "chance": 20,
+      "color": "PURPLE",
+      "minTicket": 30000,
+      "maxTicket": 49999
     },
     {
-      "name": "Vans x Stranger Things Grandfather Clock",
-      "id": 11401257331,
-      "value": 44059,
-      "chance": 55.29,
-      "color": "GRAY",
-      "minTicket": 44714,
+      "name": "Paper Hat",
+      "id": 10476359,
+      "value": 95,
+      "chance": 50,
+      "color": "GREEN",
+      "minTicket": 50000,
       "maxTicket": 99999
     }
   ],
   "music-case": [
     {
-      "name": "Retro 80s Headphones",
-      "id": 29844011,
-      "value": 1650000,
-      "chance": 0.9,
-      "color": "YELLOW",
-      "minTicket": 0,
-      "maxTicket": 899
-    },
-    {
       "name": "Clockwork's Headphones",
       "id": 1235488,
-      "value": 930000,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "value": 521690,
+      "chance": 1,
+      "color": "RAINBOW",
+      "minTicket": 0,
+      "maxTicket": 999
     },
     {
-      "name": "Blue Clockwork Headphones",
-      "id": 1743903423,
-      "value": 825000,
-      "chance": 3.5,
+      "name": "Yum!",
+      "id": 26019070,
+      "value": 345801,
+      "chance": 1,
+      "color": "GOLD",
+      "minTicket": 1000,
+      "maxTicket": 1999
+    },
+    {
+      "name": "Retro 80s Headphones",
+      "id": 29844011,
+      "value": 94609,
+      "chance": 5,
+      "color": "RED",
+      "minTicket": 2000,
+      "maxTicket": 6999
+    },
+    {
+      "name": "Viridian Headphones",
+      "id": 149599125,
+      "value": 55888,
+      "chance": 25,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6203
+      "minTicket": 7000,
+      "maxTicket": 31999
     },
     {
-      "name": "Gold 8-Bit Headphones",
-      "id": 383507353,
-      "value": 462000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6204,
-      "maxTicket": 11703
+      "name": "Recycled Cardboard Headphones",
+      "id": 154415221,
+      "value": 50646,
+      "chance": 5,
+      "color": "GREEN",
+      "minTicket": 32000,
+      "maxTicket": 36999
     },
     {
-      "name": "Halloween Headphones",
-      "id": 63997108,
-      "value": 258720,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11704,
-      "maxTicket": 19703
-    },
-    {
-      "name": "Lady Liberty Headphones",
-      "id": 417456880,
-      "value": 144883,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19704,
-      "maxTicket": 30703
-    },
-    {
-      "name": "McBrighteyes Shamrockin' Headphones",
-      "id": 48078122,
-      "value": 81135,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30704,
-      "maxTicket": 44703
-    },
-    {
-      "name": "Black Headphones",
-      "id": 10467314620,
-      "value": 45435,
-      "chance": 18,
+      "name": "Death Metal Headphones",
+      "id": 182509980,
+      "value": 32621,
+      "chance": 5,
       "color": "GRAY",
-      "minTicket": 44704,
-      "maxTicket": 62703
+      "minTicket": 37000,
+      "maxTicket": 41999
     },
     {
-      "name": "Gold Rose Headphones",
-      "id": 2566017817,
-      "value": 25444,
-      "chance": 22,
+      "name": "Golden Headphones",
+      "id": 29051524,
+      "value": 8000,
+      "chance": 58,
       "color": "GRAY",
-      "minTicket": 62704,
-      "maxTicket": 84703
-    },
-    {
-      "name": "Spider Headphones",
-      "id": 2470988571,
-      "value": 14249,
-      "chance": 15.3,
-      "color": "GRAY",
-      "minTicket": 84704,
+      "minTicket": 42000,
       "maxTicket": 99999
     }
   ],
   "steampunk-case": [
     {
-      "name": "Steampunkoneer",
-      "id": 40893128,
-      "value": 1500000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "The Maker Fedora",
+      "id": 115363212,
+      "value": 200000,
+      "chance": 0.5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 499
     },
     {
-      "name": "Steampunk Bobbie",
-      "id": 140484519,
-      "value": 825000,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Crimsonwrath, Lord of the Magma",
+      "id": 116786741,
+      "value": 50537,
+      "chance": 1,
+      "color": "GOLD",
+      "minTicket": 500,
+      "maxTicket": 1499
     },
     {
-      "name": "Steampunk Aetherspectacles",
-      "id": 12908119,
-      "value": 750000,
-      "chance": 3.51,
+      "name": "Metal Cthulhu Minion",
+      "id": 62682888,
+      "value": 6723,
+      "chance": 5,
+      "color": "RED",
+      "minTicket": 1500,
+      "maxTicket": 6499
+    },
+    {
+      "name": "Gearloose Goggles",
+      "id": 16984917,
+      "value": 5648,
+      "chance": 5,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6207
+      "minTicket": 6500,
+      "maxTicket": 11499
     },
     {
-      "name": "Steampunk Samurai",
-      "id": 30391731,
-      "value": 420000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6208,
-      "maxTicket": 11707
+      "name": "Labor Day 2009 Gear Goggles",
+      "id": 15595872,
+      "value": 3141,
+      "chance": 5,
+      "color": "GREEN",
+      "minTicket": 11500,
+      "maxTicket": 16499
     },
     {
-      "name": "Steampunk Lincoln",
-      "id": 51245739,
-      "value": 235200,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11708,
-      "maxTicket": 19707
-    },
-    {
-      "name": "Steampunk Cadet",
-      "id": 44522568,
-      "value": 131712,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19708,
-      "maxTicket": 30707
-    },
-    {
-      "name": "Steampunk Pirate Captain",
-      "id": 236399087,
-      "value": 73759,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30708,
-      "maxTicket": 44707
-    },
-    {
-      "name": "Steampunk Bunny",
-      "id": 233609363,
-      "value": 41305,
-      "chance": 18,
+      "name": "Metal Feathers of Fate",
+      "id": 413199286,
+      "value": 2059,
+      "chance": 5,
       "color": "GRAY",
-      "minTicket": 44708,
-      "maxTicket": 62707
+      "minTicket": 16500,
+      "maxTicket": 21499
     },
     {
-      "name": "Purple Steampunk Robin Hood",
-      "id": 244160118,
-      "value": 23131,
-      "chance": 22,
+      "name": "??",
+      "id": 66416602,
+      "value": 15,
+      "chance": 78.5,
       "color": "GRAY",
-      "minTicket": 62708,
-      "maxTicket": 84707
-    },
-    {
-      "name": "Steampunk Headphones",
-      "id": 120757139,
-      "value": 12953,
-      "chance": 15.29,
-      "color": "GRAY",
-      "minTicket": 84708,
+      "minTicket": 21500,
       "maxTicket": 99999
     }
   ],
   "the-equalizer": [
     {
-      "name": "Sinister Fedora",
-      "id": 60115635,
-      "value": 210000,
-      "chance": 47,
-      "color": "PURPLE",
+      "name": "Laughing Fun",
+      "id": 7000000006,
+      "value": 100,
+      "chance": 10,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 46999
+      "maxTicket": 9999
     },
     {
-      "name": "London BLOXcon Black Fedora",
-      "id": 110892321,
-      "value": 17545,
-      "chance": 53,
+      "name": "Color Changing Tophat - Red to Black",
+      "id": 7000000003,
+      "value": 50,
+      "chance": 20,
+      "color": "GOLD",
+      "minTicket": 10000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Color Changing Tophat - Blue to Black",
+      "id": 7000000004,
+      "value": 50,
+      "chance": 10,
+      "color": "RED",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Oversized Deal With It Shades",
+      "id": 7000000007,
+      "value": 50,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 40000,
+      "maxTicket": 49999
+    },
+    {
+      "name": "Rainbow Flame Aura - Top",
+      "id": 7000000002,
+      "value": 25,
+      "chance": 20,
+      "color": "GREEN",
+      "minTicket": 50000,
+      "maxTicket": 69999
+    },
+    {
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 30,
       "color": "GRAY",
-      "minTicket": 47000,
+      "minTicket": 70000,
       "maxTicket": 99999
     }
   ],
@@ -2690,7 +2438,7 @@
       "id": 73791866,
       "value": 1300000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -2708,7 +2456,7 @@
       "id": 39247441,
       "value": 650000,
       "chance": 3.56,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6255
     },
@@ -2717,7 +2465,7 @@
       "id": 76063110,
       "value": 364000,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6256,
       "maxTicket": 11755
     },
@@ -2735,7 +2483,7 @@
       "id": 16733641790,
       "value": 114150,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 19756,
       "maxTicket": 30755
     },
@@ -2744,7 +2492,7 @@
       "id": 69434624,
       "value": 63924,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30756,
       "maxTicket": 44755
     },
@@ -2778,185 +2526,221 @@
   ],
   "headphone-case": [
     {
-      "name": "Clockwork's Headphones",
-      "id": 1235488,
-      "value": 930000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Platinum Pirate Headphones",
+      "id": 158068446,
+      "value": 12965,
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
-      "name": "Retro 80s Headphones",
-      "id": 29844011,
-      "value": 511500,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Roblox Headphones",
+      "id": 27171229,
+      "value": 4298,
+      "chance": 15,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 19999
     },
     {
-      "name": "Clockwork's Shades",
-      "id": 11748356,
-      "value": 465000,
-      "chance": 3.5,
+      "name": "ROBLOX Hexagon Headphones",
+      "id": 118279832,
+      "value": 3295,
+      "chance": 20,
+      "color": "RED",
+      "minTicket": 20000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Redcliff Headphones",
+      "id": 120756377,
+      "value": 3287,
+      "chance": 20,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6203
+      "minTicket": 40000,
+      "maxTicket": 59999
     },
     {
-      "name": "Death Metal Headphones",
-      "id": 182509980,
-      "value": 260400,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6204,
-      "maxTicket": 11703
-    },
-    {
-      "name": "Golden Headphones",
-      "id": 29051524,
-      "value": 145824,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11704,
-      "maxTicket": 19703
-    },
-    {
-      "name": "Virtual BLOXcon Headphones",
-      "id": 130106467,
-      "value": 81661,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19704,
-      "maxTicket": 30703
-    },
-    {
-      "name": "McBrighteyes Shamrockin' Headphones",
-      "id": 48078122,
-      "value": 45730,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30704,
-      "maxTicket": 44703
-    },
-    {
-      "name": "Black Headphones",
-      "id": 10467314620,
-      "value": 25609,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44704,
-      "maxTicket": 62703
-    },
-    {
-      "name": "Gold Rose Headphones",
-      "id": 2566017817,
-      "value": 14341,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62704,
-      "maxTicket": 84703
-    },
-    {
-      "name": "Spider Headphones",
-      "id": 2470988571,
-      "value": 8031,
-      "chance": 15.3,
-      "color": "GRAY",
-      "minTicket": 84704,
+      "name": "Star Player Headphones",
+      "id": 161265873,
+      "value": 1327,
+      "chance": 40,
+      "color": "GREEN",
+      "minTicket": 60000,
       "maxTicket": 99999
     }
   ],
   "green-case": [
     {
+      "name": "Red Glowing Eyes",
+      "id": 180660043,
+      "value": 520913,
+      "chance": 0.25,
+      "color": "RAINBOW",
+      "minTicket": 0,
+      "maxTicket": 249
+    },
+    {
+      "name": "Green Glowing Eyes",
+      "id": 398676450,
+      "value": 349991,
+      "chance": 0.25,
+      "color": "GOLD",
+      "minTicket": 250,
+      "maxTicket": 499
+    },
+    {
+      "name": "Yellow Glowing Eyes",
+      "id": 416846000,
+      "value": 338341,
+      "chance": 0.25,
+      "color": "RED",
+      "minTicket": 500,
+      "maxTicket": 749
+    },
+    {
+      "name": "Eyes of Crimsonwrath",
+      "id": 49493376,
+      "value": 274060,
+      "chance": 0.25,
+      "color": "PURPLE",
+      "minTicket": 750,
+      "maxTicket": 999
+    },
+    {
+      "name": "Eyes of Azurewrath",
+      "id": 17999992,
+      "value": 226729,
+      "chance": 1,
+      "color": "GREEN",
+      "minTicket": 1000,
+      "maxTicket": 1999
+    },
+    {
       "name": "Eyes of Emeraldwrath",
       "id": 209994352,
-      "value": 1000000,
-      "chance": 0.9,
-      "color": "YELLOW",
-      "minTicket": 0,
-      "maxTicket": 899
-    },
-    {
-      "name": "Viridian Domino Crown",
-      "id": 4390890198,
-      "value": 160000,
-      "chance": 1.8,
-      "color": "PURPLE",
-      "minTicket": 900,
-      "maxTicket": 2699
-    },
-    {
-      "name": "Green Sparkle Time Fedora",
-      "id": 100929604,
-      "value": 500000,
-      "chance": 3.52,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6214
-    },
-    {
-      "name": "Emerald Starstone of the Federation",
-      "id": 1513251995,
-      "value": 280000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6215,
-      "maxTicket": 11714
-    },
-    {
-      "name": "Emerald Archfey Visage",
-      "id": 2830499980,
-      "value": 156800,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11715,
-      "maxTicket": 19714
-    },
-    {
-      "name": "Captain Greenshanks the Lucky",
-      "id": 74938783,
-      "value": 87808,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19715,
-      "maxTicket": 30714
-    },
-    {
-      "name": "Neon Green Equinox",
-      "id": 212971414,
-      "value": 49172,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30715,
-      "maxTicket": 44714
-    },
-    {
-      "name": "Green Amazeface",
-      "id": 835094544,
-      "value": 27537,
-      "chance": 18,
+      "value": 176170,
+      "chance": 1,
       "color": "GRAY",
-      "minTicket": 44715,
-      "maxTicket": 62714
+      "minTicket": 2000,
+      "maxTicket": 2999
     },
     {
-      "name": "Green Goof",
-      "id": 1191162539,
-      "value": 15420,
-      "chance": 22,
+      "name": "): Green Sidewinder",
+      "id": 250394771,
+      "value": 151918,
+      "chance": 2.5,
       "color": "GRAY",
-      "minTicket": 62715,
-      "maxTicket": 84714
+      "minTicket": 3000,
+      "maxTicket": 5499
     },
     {
-      "name": "Sparkle Time Emerald Top Hat",
-      "id": 628778816,
-      "value": 8635,
-      "chance": 15.29,
+      "name": "Green Galaxy Gaze",
+      "id": 440739783,
+      "value": 106910,
+      "chance": 2.5,
       "color": "GRAY",
-      "minTicket": 84715,
+      "minTicket": 5500,
+      "maxTicket": 7999
+    },
+    {
+      "name": "Brighteyes' Bloxy Cola Hat",
+      "id": 24114402,
+      "value": 102799,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 8000,
+      "maxTicket": 8999
+    },
+    {
+      "name": "Green Ice Crown",
+      "id": 193696233,
+      "value": 68035,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 9000,
+      "maxTicket": 13999
+    },
+    {
+      "name": "Green Bubble Trouble",
+      "id": 380754227,
+      "value": 31798,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 14000,
+      "maxTicket": 18999
+    },
+    {
+      "name": "Green Laurel Wreath",
+      "id": 20721173,
+      "value": 27306,
+      "chance": 5,
+      "color": "GRAY",
+      "minTicket": 19000,
+      "maxTicket": 23999
+    },
+    {
+      "name": "Green Drool Angry Zombie",
+      "id": 406001532,
+      "value": 19887,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 24000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Green Wistful Wink",
+      "id": 583722932,
+      "value": 15375,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 25000,
+      "maxTicket": 25999
+    },
+    {
+      "name": "Lime Green Shaggy",
+      "id": 135470963,
+      "value": 14991,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 26000,
+      "maxTicket": 26999
+    },
+    {
+      "name": "Green Banded Top Hat",
+      "id": 1563352,
+      "value": 11352,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 27000,
+      "maxTicket": 27999
+    },
+    {
+      "name": "Green-eyed Awesome Face",
+      "id": 66330144,
+      "value": 10647,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 28000,
+      "maxTicket": 28999
+    },
+    {
+      "name": "Green Super Happy Joy",
+      "id": 323191596,
+      "value": 10485,
+      "chance": 1,
+      "color": "GRAY",
+      "minTicket": 29000,
+      "maxTicket": 29999
+    },
+    {
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 70,
+      "color": "GRAY",
+      "minTicket": 30000,
       "maxTicket": 99999
     }
   ],
@@ -2966,7 +2750,7 @@
       "id": 527365852,
       "value": 900000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -2975,7 +2759,7 @@
       "id": 124730194,
       "value": 495000,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -2984,7 +2768,7 @@
       "id": 21070012,
       "value": 450000,
       "chance": 3.51,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6207
     },
@@ -3002,7 +2786,7 @@
       "id": 335080779,
       "value": 141120,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11708,
       "maxTicket": 19707
     },
@@ -3011,7 +2795,7 @@
       "id": 138932314,
       "value": 79027,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19708,
       "maxTicket": 30707
     },
@@ -3020,7 +2804,7 @@
       "id": 96103379,
       "value": 44255,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30708,
       "maxTicket": 44707
     },
@@ -3054,185 +2838,158 @@
   ],
   "vengeance-case": [
     {
-      "name": "Crimsonwrath: The Red Wrath",
-      "id": 402304782,
-      "value": 520000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Friday the 13th Top Hat",
+      "id": 129533515,
+      "value": 3568,
+      "chance": 10,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 9999
     },
     {
-      "name": "Eyes of Crimsonwrath",
-      "id": 49493376,
-      "value": 286000,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "GucciGhost Bag",
+      "id": 6807139994,
+      "value": 593,
+      "chance": 10,
+      "color": "GOLD",
+      "minTicket": 10000,
+      "maxTicket": 19999
     },
     {
-      "name": "Crimson Thug Shades",
-      "id": 207207025,
-      "value": 260000,
-      "chance": 3.53,
+      "name": "Electromagnetic Goggles",
+      "id": 7000000015,
+      "value": 350,
+      "chance": 10,
+      "color": "RED",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Queen of Hearts",
+      "id": 22151828,
+      "value": 330,
+      "chance": 10,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6227
+      "minTicket": 30000,
+      "maxTicket": 39999
     },
     {
-      "name": "Crimson Warlord",
-      "id": 28676186,
-      "value": 145600,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6228,
-      "maxTicket": 11727
+      "name": "Bone Collector's Crown",
+      "id": 7000000012,
+      "value": 300,
+      "chance": 10,
+      "color": "GREEN",
+      "minTicket": 40000,
+      "maxTicket": 49999
     },
     {
-      "name": "Crimson Laser Vision",
-      "id": 45514606,
-      "value": 81536,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11728,
-      "maxTicket": 19727
-    },
-    {
-      "name": "Crimsonwrath",
-      "id": 64559537,
-      "value": 45660,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19728,
-      "maxTicket": 30727
-    },
-    {
-      "name": "Crimson Starface",
-      "id": 162200633,
-      "value": 25570,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30728,
-      "maxTicket": 44727
-    },
-    {
-      "name": "Noob Attack: Venomshank Vengeance",
-      "id": 164204164,
-      "value": 14319,
-      "chance": 18,
+      "name": "Banana Wizard",
+      "id": 7000000013,
+      "value": 300,
+      "chance": 10,
       "color": "GRAY",
-      "minTicket": 44728,
-      "maxTicket": 62727
+      "minTicket": 50000,
+      "maxTicket": 59999
     },
     {
-      "name": "Crimsonwrath Guardia",
-      "id": 243854211,
-      "value": 8019,
-      "chance": 22,
+      "name": "Color Changing Tophat - Red to Black",
+      "id": 7000000003,
+      "value": 50,
+      "chance": 10,
       "color": "GRAY",
-      "minTicket": 62728,
-      "maxTicket": 84727
+      "minTicket": 60000,
+      "maxTicket": 69999
     },
     {
-      "name": "Crimson Bloom Pauldrons",
-      "id": 2830411358,
-      "value": 4490,
-      "chance": 15.27,
+      "name": "Color Changing Tophat - Blue to Black",
+      "id": 7000000004,
+      "value": 50,
+      "chance": 10,
       "color": "GRAY",
-      "minTicket": 84728,
+      "minTicket": 70000,
+      "maxTicket": 79999
+    },
+    {
+      "name": "Rainbow Flame Aura - Top",
+      "id": 7000000002,
+      "value": 25,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 80000,
+      "maxTicket": 89999
+    },
+    {
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 10,
+      "color": "GRAY",
+      "minTicket": 90000,
       "maxTicket": 99999
     }
   ],
   "creator-case": [
     {
-      "name": "Copper Steampunk Top Hat",
-      "id": 244160357,
-      "value": 480000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Bay Area Maker Top Hat 2014",
+      "id": 154818967,
+      "value": 244478,
+      "chance": 1,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 999
     },
     {
-      "name": "Steampunk Aetherspectacles",
-      "id": 12908119,
-      "value": 264000,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Dark Knight Helmet",
+      "id": 76059498,
+      "value": 50000,
+      "chance": 1,
+      "color": "GOLD",
+      "minTicket": 1000,
+      "maxTicket": 1999
     },
     {
-      "name": "Telamon Hair",
-      "id": 31312357,
-      "value": 240000,
-      "chance": 3.5,
+      "name": "Silver Cyborg Face Gear",
+      "id": 467134564,
+      "value": 10844,
+      "chance": 5,
+      "color": "RED",
+      "minTicket": 2000,
+      "maxTicket": 6999
+    },
+    {
+      "name": "Gearloose Goggles",
+      "id": 16984917,
+      "value": 5648,
+      "chance": 15,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6200
+      "minTicket": 7000,
+      "maxTicket": 21999
     },
     {
-      "name": "Telamon's Chicken Suit",
-      "id": 24112667,
-      "value": 134400,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6201,
-      "maxTicket": 11700
-    },
-    {
-      "name": "Steampunkometer",
-      "id": 26424059,
-      "value": 75264,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11701,
-      "maxTicket": 19700
-    },
-    {
-      "name": "Steampunk Sniper",
-      "id": 39247220,
-      "value": 42148,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19701,
-      "maxTicket": 30700
-    },
-    {
-      "name": "Steampunk Pirate Captain",
-      "id": 236399087,
-      "value": 23603,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30701,
-      "maxTicket": 44700
-    },
-    {
-      "name": "Steampunk Bunny",
-      "id": 233609363,
-      "value": 13218,
+      "name": "Sharp Looking Hat - the Gear",
+      "id": 100472063,
+      "value": 2575,
       "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44701,
-      "maxTicket": 62700
+      "color": "GREEN",
+      "minTicket": 22000,
+      "maxTicket": 39999
     },
     {
-      "name": "Steampunk Santa",
-      "id": 190786095,
-      "value": 7402,
-      "chance": 22,
+      "name": "Noob Attack: Gearworks Grapple",
+      "id": 1380767576,
+      "value": 1109,
+      "chance": 25,
       "color": "GRAY",
-      "minTicket": 62701,
-      "maxTicket": 84700
+      "minTicket": 40000,
+      "maxTicket": 64999
     },
     {
-      "name": "Steampunk Headphones",
-      "id": 120757139,
-      "value": 4145,
-      "chance": 15.3,
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 35,
       "color": "GRAY",
-      "minTicket": 84701,
+      "minTicket": 65000,
       "maxTicket": 99999
     }
   ],
@@ -3242,7 +2999,7 @@
       "id": 494291269,
       "value": 75000,
       "chance": 47.08,
-      "color": "PURPLE",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 47081
     },
@@ -3251,7 +3008,7 @@
       "id": 110207471,
       "value": 5894,
       "chance": 52.92,
-      "color": "GRAY",
+      "color": "GOLD",
       "minTicket": 47082,
       "maxTicket": 99999
     }
@@ -3262,7 +3019,7 @@
       "id": 193659065,
       "value": 390000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -3271,7 +3028,7 @@
       "id": 2799053,
       "value": 214500,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -3280,7 +3037,7 @@
       "id": 22546563,
       "value": 195000,
       "chance": 3.53,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6227
     },
@@ -3298,7 +3055,7 @@
       "id": 47597760,
       "value": 61152,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11728,
       "maxTicket": 19727
     },
@@ -3307,7 +3064,7 @@
       "id": 20011840,
       "value": 34245,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19728,
       "maxTicket": 30727
     },
@@ -3316,7 +3073,7 @@
       "id": 1191136166,
       "value": 19177,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30728,
       "maxTicket": 44727
     },
@@ -3354,7 +3111,7 @@
       "id": 1029025,
       "value": 380000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -3363,7 +3120,7 @@
       "id": 31312357,
       "value": 209000,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -3372,7 +3129,7 @@
       "id": 72082328,
       "value": 190000,
       "chance": 3.53,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6230
     },
@@ -3390,7 +3147,7 @@
       "id": 108147416,
       "value": 59584,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11731,
       "maxTicket": 19730
     },
@@ -3399,7 +3156,7 @@
       "id": 31107926,
       "value": 33367,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19731,
       "maxTicket": 30730
     },
@@ -3408,7 +3165,7 @@
       "id": 116040828,
       "value": 18686,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30731,
       "maxTicket": 44730
     },
@@ -3446,7 +3203,7 @@
       "id": 102605392,
       "value": 370000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -3455,7 +3212,7 @@
       "id": 128159108,
       "value": 203500,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -3464,7 +3221,7 @@
       "id": 102604869,
       "value": 185000,
       "chance": 3.54,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6234
     },
@@ -3482,7 +3239,7 @@
       "id": 1286490,
       "value": 58016,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11735,
       "maxTicket": 19734
     },
@@ -3491,7 +3248,7 @@
       "id": 259423513,
       "value": 32489,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19735,
       "maxTicket": 30734
     },
@@ -3500,7 +3257,7 @@
       "id": 17527923,
       "value": 18194,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30735,
       "maxTicket": 44734
     },
@@ -3538,7 +3295,7 @@
       "id": 24826823,
       "value": 400000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -3556,7 +3313,7 @@
       "id": 24826614,
       "value": 200000,
       "chance": 3.52,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6220
     },
@@ -3565,7 +3322,7 @@
       "id": 24832637,
       "value": 112000,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6221,
       "maxTicket": 11720
     },
@@ -3583,7 +3340,7 @@
       "id": 380566976,
       "value": 35123,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 19721,
       "maxTicket": 30720
     },
@@ -3592,7 +3349,7 @@
       "id": 27345567,
       "value": 19669,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30721,
       "maxTicket": 44720
     },
@@ -3630,7 +3387,7 @@
       "id": 193659065,
       "value": 390000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -3639,7 +3396,7 @@
       "id": 162066057,
       "value": 15000,
       "chance": 1.8,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -3648,7 +3405,7 @@
       "id": 148791559,
       "value": 195000,
       "chance": 3.52,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6222
     },
@@ -3657,7 +3414,7 @@
       "id": 1272714,
       "value": 109200,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6223,
       "maxTicket": 11722
     },
@@ -3675,7 +3432,7 @@
       "id": 147144571,
       "value": 34245,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 19723,
       "maxTicket": 30722
     },
@@ -3684,7 +3441,7 @@
       "id": 398674411,
       "value": 19177,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30723,
       "maxTicket": 44722
     },
@@ -3722,7 +3479,7 @@
       "id": 1029025,
       "value": 380000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -3731,7 +3488,7 @@
       "id": 65417235,
       "value": 55000,
       "chance": 1.8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -3740,7 +3497,7 @@
       "id": 72082328,
       "value": 190000,
       "chance": 3.52,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6221
     },
@@ -3749,7 +3506,7 @@
       "id": 215751161,
       "value": 106400,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6222,
       "maxTicket": 11721
     },
@@ -3767,7 +3524,7 @@
       "id": 63993237,
       "value": 33367,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19722,
       "maxTicket": 30721
     },
@@ -3776,7 +3533,7 @@
       "id": 125378514,
       "value": 18686,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30722,
       "maxTicket": 44721
     },
@@ -3810,93 +3567,39 @@
   ],
   "rags-2-riches": [
     {
-      "name": "The Classic ROBLOX Fedora",
-      "id": 1029025,
-      "value": 380000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Dominus Formidulosus",
+      "id": 4255053867,
+      "value": 84413,
+      "chance": 0.05,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 49
     },
     {
-      "name": "Bloxy Cola",
-      "id": 10472779,
-      "value": 50,
-      "chance": 1.8,
-      "color": "GRAY",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Gold Emperor of the Night",
+      "id": 878895806,
+      "value": 45387,
+      "chance": 0.1,
+      "color": "GOLD",
+      "minTicket": 50,
+      "maxTicket": 149
     },
     {
-      "name": "Red Sparkle Time Fedora",
-      "id": 72082328,
-      "value": 190000,
-      "chance": 3.52,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6219
+      "name": "Gucci Headband",
+      "id": 6803423284,
+      "value": 711,
+      "chance": 49.8,
+      "color": "RED",
+      "minTicket": 150,
+      "maxTicket": 49949
     },
     {
-      "name": "Orange Sparkle Time Fedora",
-      "id": 215751161,
-      "value": 106400,
-      "chance": 5.5,
+      "name": "Gucci Geometric Bag",
+      "id": 6807134749,
+      "value": 537,
+      "chance": 50.05,
       "color": "PURPLE",
-      "minTicket": 6220,
-      "maxTicket": 11719
-    },
-    {
-      "name": "Bunny Ear Fedora",
-      "id": 108147416,
-      "value": 59584,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11720,
-      "maxTicket": 19719
-    },
-    {
-      "name": "Adurite Fedora with Black Iron Accent",
-      "id": 162066176,
-      "value": 33367,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19720,
-      "maxTicket": 30719
-    },
-    {
-      "name": "Silver Snake Fedora",
-      "id": 125378514,
-      "value": 18686,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30720,
-      "maxTicket": 44719
-    },
-    {
-      "name": "Thrift Shop Fedora",
-      "id": 113329705,
-      "value": 10464,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44720,
-      "maxTicket": 62719
-    },
-    {
-      "name": "Omega Rainbow Fedora",
-      "id": 302281542,
-      "value": 5860,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62720,
-      "maxTicket": 84719
-    },
-    {
-      "name": "Leopard Fedora",
-      "id": 90994970,
-      "value": 3281,
-      "chance": 15.28,
-      "color": "GRAY",
-      "minTicket": 84720,
+      "minTicket": 49950,
       "maxTicket": 99999
     }
   ],
@@ -3906,7 +3609,7 @@
       "id": 1272714,
       "value": 310000,
       "chance": 1.5,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 1499
     },
@@ -3924,7 +3627,7 @@
       "id": 169444515,
       "value": 155000,
       "chance": 6.02,
-      "color": "PURPLE",
+      "color": "GOLD",
       "minTicket": 5000,
       "maxTicket": 11022
     },
@@ -3933,7 +3636,7 @@
       "id": 147144571,
       "value": 86800,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 11023,
       "maxTicket": 19022
     },
@@ -3942,7 +3645,7 @@
       "id": 1032641,
       "value": 48608,
       "chance": 10,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 19023,
       "maxTicket": 29022
     },
@@ -3951,7 +3654,7 @@
       "id": 20044845,
       "value": 27220,
       "chance": 0,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 29023,
       "maxTicket": 29023
     },
@@ -3960,7 +3663,7 @@
       "id": 16853477,
       "value": 15243,
       "chance": 0,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 29024,
       "maxTicket": 29024
     },
@@ -3994,158 +3697,131 @@
   ],
   "fall-case": [
     {
-      "name": "Wanwood Antlers",
-      "id": 1272714,
-      "value": 310000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "The Void Star",
+      "id": 1125510,
+      "value": 765207,
+      "chance": 0.5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 499
     },
     {
-      "name": "Arborist's Verdant Egg of Leafyness",
-      "id": 24826823,
-      "value": 170500,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Azurewrath, Lord of the Void",
+      "id": 17109706,
+      "value": 216788,
+      "chance": 0.5,
+      "color": "GOLD",
+      "minTicket": 500,
+      "maxTicket": 999
     },
     {
-      "name": "The Wanwood Crown",
-      "id": 9910070,
-      "value": 155000,
-      "chance": 3.51,
+      "name": "Emperor",
+      "id": 25267538,
+      "value": 175330,
+      "chance": 5,
+      "color": "RED",
+      "minTicket": 1000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "Voidwrath",
+      "id": 562478132,
+      "value": 158231,
+      "chance": 4,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6205
+      "minTicket": 6000,
+      "maxTicket": 9999
     },
     {
-      "name": "Wanwood Sombrero",
-      "id": 156105465,
-      "value": 86800,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6206,
-      "maxTicket": 11705
+      "name": "Silver Punk Face",
+      "id": 387256603,
+      "value": 151166,
+      "chance": 1,
+      "color": "GREEN",
+      "minTicket": 10000,
+      "maxTicket": 10999
     },
     {
-      "name": "Crown of Autumn Laurels",
-      "id": 63990268,
-      "value": 48608,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11706,
-      "maxTicket": 19705
-    },
-    {
-      "name": "Korblox - Fallen's Spine Blade",
-      "id": 114020557,
-      "value": 27220,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19706,
-      "maxTicket": 30705
-    },
-    {
-      "name": "Green Leaf Scarf",
-      "id": 727321432,
-      "value": 15243,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30706,
-      "maxTicket": 44705
-    },
-    {
-      "name": "Wanwood Autumn King Crown",
-      "id": 2705893733,
-      "value": 8536,
-      "chance": 18,
+      "name": "Antenna Antlers",
+      "id": 148791559,
+      "value": 145650,
+      "chance": 1,
       "color": "GRAY",
-      "minTicket": 44706,
-      "maxTicket": 62705
+      "minTicket": 11000,
+      "maxTicket": 11999
     },
     {
-      "name": "Wanwood Visor",
-      "id": 168167114,
-      "value": 4780,
-      "chance": 22,
+      "name": "??",
+      "id": 66416602,
+      "value": 15,
+      "chance": 88,
       "color": "GRAY",
-      "minTicket": 62706,
-      "maxTicket": 84705
-    },
-    {
-      "name": "Wanwood Round Shades",
-      "id": 628803591,
-      "value": 2677,
-      "chance": 15.29,
-      "color": "GRAY",
-      "minTicket": 84706,
+      "minTicket": 12000,
       "maxTicket": 99999
     }
   ],
   "valk-case": [
     {
-      "name": "Valkyrie Helm",
-      "id": 1365767,
-      "value": 260000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Blackvalk",
+      "id": 124730194,
+      "value": 3258507,
+      "chance": 0.5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
-    },
-    {
-      "name": "Ice Valkyrie",
-      "id": 4390891467,
-      "value": 143000,
-      "chance": 1.8,
-      "color": "PURPLE",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "maxTicket": 499
     },
     {
       "name": "Emerald Valkyrie",
       "id": 2830437685,
-      "value": 130000,
-      "chance": 3.56,
-      "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6257
+      "value": 1768372,
+      "chance": 0.5,
+      "color": "GOLD",
+      "minTicket": 500,
+      "maxTicket": 999
     },
     {
-      "name": "Sparkle Time Valkyrie",
-      "id": 1180433861,
-      "value": 72800,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6258,
-      "maxTicket": 11757
+      "name": "Ice Valkyrie",
+      "id": 4390891467,
+      "value": 251011,
+      "chance": 4,
+      "color": "RED",
+      "minTicket": 1000,
+      "maxTicket": 4999
     },
     {
-      "name": "Ornate Valkyrie",
-      "id": 23634704,
-      "value": 40768,
-      "chance": 8,
-      "color": "BLUE",
-      "minTicket": 11758,
-      "maxTicket": 19757
+      "name": "Valkyrie Helm",
+      "id": 1365767,
+      "value": 229730,
+      "chance": 5,
+      "color": "PURPLE",
+      "minTicket": 5000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Blackvalk Shades",
+      "id": 175134718,
+      "value": 35573,
+      "chance": 20,
+      "color": "GREEN",
+      "minTicket": 10000,
+      "maxTicket": 29999
     },
     {
       "name": "Valkyrie 3000",
       "id": 74214775,
-      "value": 22830,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19758,
-      "maxTicket": 30757
+      "value": 11656,
+      "chance": 30,
+      "color": "GRAY",
+      "minTicket": 30000,
+      "maxTicket": 59999
     },
     {
-      "name": "Emerald Valk Shades",
-      "id": 3210243135,
-      "value": 12785,
-      "chance": 69.24,
-      "color": "BLUE",
-      "minTicket": 30758,
+      "name": "Sparkle Time Valkyrie",
+      "id": 1180433861,
+      "value": 8000,
+      "chance": 40,
+      "color": "GRAY",
+      "minTicket": 60000,
       "maxTicket": 99999
     }
   ],
@@ -4155,7 +3831,7 @@
       "id": 60115635,
       "value": 210000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -4164,7 +3840,7 @@
       "id": 20908915,
       "value": 115500,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -4173,7 +3849,7 @@
       "id": 40497339,
       "value": 105000,
       "chance": 3.53,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6224
     },
@@ -4191,7 +3867,7 @@
       "id": 182640918,
       "value": 32928,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11725,
       "maxTicket": 19724
     },
@@ -4200,7 +3876,7 @@
       "id": 34394424,
       "value": 18440,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19725,
       "maxTicket": 30724
     },
@@ -4209,7 +3885,7 @@
       "id": 37819478,
       "value": 10326,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30725,
       "maxTicket": 44724
     },
@@ -4234,113 +3910,77 @@
   ],
   "spooky-flip": [
     {
-      "name": "Playful Vampire",
-      "id": 2409285794,
-      "value": 32000,
-      "chance": 47.1,
-      "color": "PURPLE",
+      "name": "Bat Tie",
+      "id": 63239668,
+      "value": 1099,
+      "chance": 50,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 47100
+      "maxTicket": 49999
     },
     {
-      "name": "Skull of Robloxians Past",
-      "id": 181354245,
-      "value": 2302,
-      "chance": 52.9,
-      "color": "GRAY",
-      "minTicket": 47101,
+      "name": "Gucci Geometric Bag",
+      "id": 6807134749,
+      "value": 630,
+      "chance": 50,
+      "color": "GOLD",
+      "minTicket": 50000,
       "maxTicket": 99999
     }
   ],
   "the-fancy-case": [
     {
-      "name": "JJ5x5's White Top Hat",
-      "id": 1073690,
-      "value": 180000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Purple Crystal Circlet",
+      "id": 151327351,
+      "value": 5757,
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
-      "name": "Brighteyes' Top Hat",
-      "id": 169454280,
-      "value": 60000,
-      "chance": 1.8,
-      "color": "PURPLE",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Diamond Crystal Circlet",
+      "id": 4390875496,
+      "value": 4378,
+      "chance": 7,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 11999
     },
     {
-      "name": "Rbadam's Smokestack Top Hat",
-      "id": 169444515,
-      "value": 90000,
-      "chance": 3.52,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6218
-    },
-    {
-      "name": "Mr. Fancy Skeleton",
-      "id": 183834914,
-      "value": 50400,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6219,
-      "maxTicket": 11718
-    },
-    {
-      "name": "Bright Star Top Hat",
-      "id": 236398601,
-      "value": 28224,
+      "name": "Blue Mardi Gras Mask",
+      "id": 22432792,
+      "value": 3004,
       "chance": 8,
+      "color": "RED",
+      "minTicket": 12000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Gucci Bloom Perfume",
+      "id": 6803407328,
+      "value": 854,
+      "chance": 25,
       "color": "PURPLE",
-      "minTicket": 11719,
-      "maxTicket": 19718
+      "minTicket": 20000,
+      "maxTicket": 44999
     },
     {
-      "name": "Atomic Neon Top Hat",
-      "id": 100928653,
-      "value": 15805,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19719,
-      "maxTicket": 30718
+      "name": "Specular Egg of Red, No Blue",
+      "id": 24826800,
+      "value": 760,
+      "chance": 20,
+      "color": "GREEN",
+      "minTicket": 45000,
+      "maxTicket": 64999
     },
     {
-      "name": "Unlucky Top Hat",
-      "id": 413196934,
-      "value": 8851,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30719,
-      "maxTicket": 44718
-    },
-    {
-      "name": "Fancy Purple Hat",
-      "id": 243773554,
-      "value": 4957,
-      "chance": 18,
+      "name": "Gucci Geometric Bag",
+      "id": 6807134749,
+      "value": 630,
+      "chance": 35,
       "color": "GRAY",
-      "minTicket": 44719,
-      "maxTicket": 62718
-    },
-    {
-      "name": "Glitz and Glitter Heart Top Hat",
-      "id": 1402319378,
-      "value": 2776,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62719,
-      "maxTicket": 84718
-    },
-    {
-      "name": "Sparkle Time Emerald Top Hat",
-      "id": 628778816,
-      "value": 1554,
-      "chance": 15.28,
-      "color": "GRAY",
-      "minTicket": 84719,
+      "minTicket": 65000,
       "maxTicket": 99999
     }
   ],
@@ -4350,7 +3990,7 @@
       "id": 4390890198,
       "value": 160000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -4359,7 +3999,7 @@
       "id": 102604869,
       "value": 88000,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -4368,7 +4008,7 @@
       "id": 100929604,
       "value": 80000,
       "chance": 3.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6200
     },
@@ -4386,7 +4026,7 @@
       "id": 406001532,
       "value": 25088,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11701,
       "maxTicket": 19700
     },
@@ -4395,7 +4035,7 @@
       "id": 16954107,
       "value": 14049,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19701,
       "maxTicket": 30700
     },
@@ -4404,7 +4044,7 @@
       "id": 212971414,
       "value": 7868,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30701,
       "maxTicket": 44700
     },
@@ -4438,93 +4078,48 @@
   ],
   "wild-case": [
     {
-      "name": "Yum!",
-      "id": 26019070,
-      "value": 160000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Jungle Commando",
+      "id": 16678138,
+      "value": 7533,
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
-      "name": "American Cowboy",
-      "id": 29715011,
-      "value": 88000,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Green Trance",
+      "id": 260303894,
+      "value": 6962,
+      "chance": 5,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 9999
     },
     {
-      "name": "Sheriff Wilson",
-      "id": 62332732,
-      "value": 80000,
-      "chance": 3.5,
+      "name": "Putrid Green Head in A Jar",
+      "id": 503947022,
+      "value": 2920,
+      "chance": 20,
+      "color": "RED",
+      "minTicket": 10000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Torque the Green Orc",
+      "id": 2830497827,
+      "value": 2893,
+      "chance": 20,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6200
+      "minTicket": 30000,
+      "maxTicket": 49999
     },
     {
-      "name": "The Devil's Cowboy",
-      "id": 70437291,
-      "value": 44800,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6201,
-      "maxTicket": 11700
-    },
-    {
-      "name": "Space Cowboy",
-      "id": 29532260,
-      "value": 25088,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11701,
-      "maxTicket": 19700
-    },
-    {
-      "name": "Wildcard",
-      "id": 38322996,
-      "value": 14049,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19701,
-      "maxTicket": 30700
-    },
-    {
-      "name": "Skull Bandit",
-      "id": 31252891,
-      "value": 7868,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30701,
-      "maxTicket": 44700
-    },
-    {
-      "name": "Earth Day Cowboy",
-      "id": 154414843,
-      "value": 4406,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44701,
-      "maxTicket": 62700
-    },
-    {
-      "name": "Wild West Santa",
-      "id": 19296155,
-      "value": 2467,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62701,
-      "maxTicket": 84700
-    },
-    {
-      "name": "Starry Egg of the Wild Ride",
-      "id": 31151864,
-      "value": 1382,
-      "chance": 15.3,
-      "color": "GRAY",
-      "minTicket": 84701,
+      "name": "Green Ultimate Dragon Face",
+      "id": 1772531407,
+      "value": 1641,
+      "chance": 50,
+      "color": "GREEN",
+      "minTicket": 50000,
       "maxTicket": 99999
     }
   ],
@@ -4534,7 +4129,7 @@
       "id": 26019070,
       "value": 160000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -4552,7 +4147,7 @@
       "id": 74891367,
       "value": 80000,
       "chance": 3.5,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6203
     },
@@ -4561,7 +4156,7 @@
       "id": 113329638,
       "value": 44800,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6204,
       "maxTicket": 11703
     },
@@ -4579,7 +4174,7 @@
       "id": 569676258,
       "value": 14049,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 19704,
       "maxTicket": 30703
     },
@@ -4588,7 +4183,7 @@
       "id": 19395368,
       "value": 7868,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30704,
       "maxTicket": 44703
     },
@@ -4626,7 +4221,7 @@
       "id": 304718708,
       "value": 140000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -4635,7 +4230,7 @@
       "id": 24123795,
       "value": 77000,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -4644,7 +4239,7 @@
       "id": 61895706,
       "value": 70000,
       "chance": 3.52,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6216
     },
@@ -4662,7 +4257,7 @@
       "id": 163491813,
       "value": 21952,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11717,
       "maxTicket": 19716
     },
@@ -4671,7 +4266,7 @@
       "id": 58339489,
       "value": 12293,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19717,
       "maxTicket": 30716
     },
@@ -4680,7 +4275,7 @@
       "id": 23306097,
       "value": 6884,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30717,
       "maxTicket": 44716
     },
@@ -4718,7 +4313,7 @@
       "id": 304718708,
       "value": 140000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -4736,7 +4331,7 @@
       "id": 43704842,
       "value": 70000,
       "chance": 3.51,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6212
     },
@@ -4745,7 +4340,7 @@
       "id": 46839188,
       "value": 39200,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6213,
       "maxTicket": 11712
     },
@@ -4754,7 +4349,7 @@
       "id": 215724072,
       "value": 21952,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11713,
       "maxTicket": 19712
     },
@@ -4763,7 +4358,7 @@
       "id": 192562352,
       "value": 12293,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19713,
       "maxTicket": 30712
     },
@@ -4772,7 +4367,7 @@
       "id": 317590827,
       "value": 6884,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30713,
       "maxTicket": 44712
     },
@@ -4806,131 +4401,131 @@
   ],
   "crazy-case": [
     {
-      "name": "Clown Face",
-      "id": 23644960,
-      "value": 130000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Explosive Egg of Kaboom!",
+      "id": 24826755,
+      "value": 735,
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
-      "name": "Neon Purple Crazy Crown",
-      "id": 376805769,
-      "value": 71500,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Gucci GG Marmont Bag",
+      "id": 6803403781,
+      "value": 733,
+      "chance": 5,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 9999
     },
     {
-      "name": "Neon Green Crazy Crown",
-      "id": 321346616,
-      "value": 65000,
-      "chance": 3.53,
+      "name": "Boxing Gloves - KSI",
+      "id": 7212273948,
+      "value": 579,
+      "chance": 10,
+      "color": "RED",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Gucci Spiked Basketball Bag",
+      "id": 6807135859,
+      "value": 556,
+      "chance": 10,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6226
+      "minTicket": 20000,
+      "maxTicket": 29999
     },
     {
-      "name": "Neon Pink Crazy Crown",
-      "id": 638087256,
-      "value": 36400,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6227,
-      "maxTicket": 11726
+      "name": "Electromagnetic Goggles",
+      "id": 7000000015,
+      "value": 350,
+      "chance": 20,
+      "color": "GREEN",
+      "minTicket": 30000,
+      "maxTicket": 49999
     },
     {
-      "name": "Crazy Crown",
-      "id": 69344107,
-      "value": 20384,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11727,
-      "maxTicket": 19726
-    },
-    {
-      "name": "Sad Clown",
-      "id": 250654457,
-      "value": 11415,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19727,
-      "maxTicket": 30726
-    },
-    {
-      "name": "Clown School Dropout",
-      "id": 21392863,
-      "value": 6392,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30727,
-      "maxTicket": 44726
-    },
-    {
-      "name": "Dr. Crazybot",
-      "id": 114384958,
-      "value": 3580,
-      "chance": 18,
+      "name": "Ocherous Helm of the Setting Sun",
+      "id": 7000000014,
+      "value": 330,
+      "chance": 20,
       "color": "GRAY",
-      "minTicket": 44727,
-      "maxTicket": 62726
+      "minTicket": 50000,
+      "maxTicket": 69999
     },
     {
-      "name": "Crazybot 10000",
-      "id": 554650579,
-      "value": 2005,
-      "chance": 22,
+      "name": "Banana Wizard",
+      "id": 7000000013,
+      "value": 300,
+      "chance": 15,
       "color": "GRAY",
-      "minTicket": 62727,
-      "maxTicket": 84726
+      "minTicket": 70000,
+      "maxTicket": 84999
     },
     {
-      "name": "Purple Crazy Glasses",
-      "id": 243854130,
-      "value": 1123,
-      "chance": 15.27,
+      "name": "Queen of Hearts",
+      "id": 22151828,
+      "value": 300,
+      "chance": 15,
       "color": "GRAY",
-      "minTicket": 84727,
+      "minTicket": 85000,
       "maxTicket": 99999
     }
   ],
   "spin-2-win": [
     {
-      "name": "Dice Crown",
-      "id": 1743932756,
-      "value": 36221,
-      "chance": 0.9,
-      "color": "PURPLE",
+      "name": "Fearsome Phones",
+      "id": 7000000010,
+      "value": 500,
+      "chance": 10,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 9999
     },
     {
-      "name": "Rainbow Fedora",
-      "id": 82332012,
-      "value": 19921,
-      "chance": 1.8,
+      "name": "Yellow Dragon Plush Cap",
+      "id": 7000000016,
+      "value": 150,
+      "chance": 20,
+      "color": "GOLD",
+      "minTicket": 10000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "A Frosty Friend",
+      "id": 7000000011,
+      "value": 125,
+      "chance": 10,
+      "color": "RED",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Laughing Fun",
+      "id": 7000000006,
+      "value": 100,
+      "chance": 10,
       "color": "PURPLE",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "minTicket": 40000,
+      "maxTicket": 49999
     },
     {
-      "name": "Korblox - Fallen's Spine Blade",
-      "id": 114020557,
-      "value": 18110,
-      "chance": 3.67,
-      "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6367
+      "name": "Rainbow Flame Aura - Top",
+      "id": 7000000002,
+      "value": 25,
+      "chance": 30,
+      "color": "GREEN",
+      "minTicket": 50000,
+      "maxTicket": 79999
     },
     {
-      "name": "Greyson the Spiny Forked",
-      "id": 102619387,
-      "value": 10142,
-      "chance": 93.63,
-      "color": "BLUE",
-      "minTicket": 6368,
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
       "maxTicket": 99999
     }
   ],
@@ -4940,7 +4535,7 @@
       "id": 6552254,
       "value": 95000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -4949,7 +4544,7 @@
       "id": 568921483,
       "value": 52250,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -4958,7 +4553,7 @@
       "id": 1323384,
       "value": 47500,
       "chance": 3.58,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6278
     },
@@ -4976,7 +4571,7 @@
       "id": 41452381,
       "value": 14896,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11779,
       "maxTicket": 19778
     },
@@ -4985,7 +4580,7 @@
       "id": 22587828,
       "value": 8342,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19779,
       "maxTicket": 30778
     },
@@ -4994,7 +4589,7 @@
       "id": 2588169261,
       "value": 4671,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30779,
       "maxTicket": 44778
     },
@@ -5030,91 +4625,55 @@
     {
       "name": "Super Super Happy Face",
       "id": 494291269,
-      "value": 75000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "value": 94077,
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
-      "name": "Yum!",
-      "id": 26019070,
-      "value": 41250,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Green Starface",
+      "id": 119812738,
+      "value": 3123,
+      "chance": 15,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 19999
     },
     {
-      "name": "Clown Face",
-      "id": 23644960,
-      "value": 37500,
-      "chance": 3.51,
+      "name": "Powerface: Wretched Wind",
+      "id": 553878047,
+      "value": 1030,
+      "chance": 20,
+      "color": "RED",
+      "minTicket": 20000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Red Serious Scar Face",
+      "id": 406000421,
+      "value": 400,
+      "chance": 25,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6208
+      "minTicket": 40000,
+      "maxTicket": 64999
     },
     {
-      "name": "Skeleton King's Face Mask",
-      "id": 102612531,
-      "value": 21000,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6209,
-      "maxTicket": 11708
+      "name": "Laughing Fun",
+      "id": 7000000006,
+      "value": 100,
+      "chance": 5,
+      "color": "GREEN",
+      "minTicket": 65000,
+      "maxTicket": 69999
     },
     {
-      "name": "Fawkes Face",
-      "id": 134522901,
-      "value": 11760,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11709,
-      "maxTicket": 19708
-    },
-    {
-      "name": "The Darkest Archmage Faceplate",
-      "id": 89609550,
-      "value": 6586,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19709,
-      "maxTicket": 30708
-    },
-    {
-      "name": "Rosey Smile",
-      "id": 116043052,
-      "value": 3688,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30709,
-      "maxTicket": 44708
-    },
-    {
-      "name": "Snow Queen Smile",
-      "id": 2569005011,
-      "value": 2065,
-      "chance": 18,
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 30,
       "color": "GRAY",
-      "minTicket": 44709,
-      "maxTicket": 62708
-    },
-    {
-      "name": "Green Ultimate Dragon Face",
-      "id": 1772531407,
-      "value": 1157,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62709,
-      "maxTicket": 84708
-    },
-    {
-      "name": "Evil Skeptic Face",
-      "id": 110288865,
-      "value": 648,
-      "chance": 15.29,
-      "color": "GRAY",
-      "minTicket": 84709,
+      "minTicket": 70000,
       "maxTicket": 99999
     }
   ],
@@ -5124,7 +4683,7 @@
       "id": 494291269,
       "value": 75000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -5133,7 +4692,7 @@
       "id": 23644960,
       "value": 41250,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -5142,7 +4701,7 @@
       "id": 439985494,
       "value": 37500,
       "chance": 3.51,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6208
     },
@@ -5160,7 +4719,7 @@
       "id": 33384642,
       "value": 11760,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11709,
       "maxTicket": 19708
     },
@@ -5169,7 +4728,7 @@
       "id": 376812961,
       "value": 6586,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19709,
       "maxTicket": 30708
     },
@@ -5178,7 +4737,7 @@
       "id": 238983270,
       "value": 3688,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30709,
       "maxTicket": 44708
     },
@@ -5212,185 +4771,140 @@
   ],
   "the-kungfu-case": [
     {
-      "name": "Crimson Katana of the Unsetting Sun",
-      "id": 18017365,
-      "value": 69205,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Orange Ninja Headband of All Earth's Fire",
+      "id": 11297766,
+      "value": 68220,
+      "chance": 1,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 999
     },
     {
-      "name": "Blue Katana of One Thousand Tears",
-      "id": 20577851,
-      "value": 65153,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Ninja Master: Dojo of Doom",
+      "id": 71427264,
+      "value": 17424,
+      "chance": 1,
+      "color": "GOLD",
+      "minTicket": 1000,
+      "maxTicket": 1999
     },
     {
-      "name": "Ornate Back Katana of Illusion",
-      "id": 2830463943,
-      "value": 34602,
-      "chance": 3.62,
+      "name": "Orange Shaggy",
+      "id": 439941904,
+      "value": 12387,
+      "chance": 3,
+      "color": "RED",
+      "minTicket": 2000,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Orange Goggles",
+      "id": 19399000,
+      "value": 7833,
+      "chance": 5,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6318
+      "minTicket": 5000,
+      "maxTicket": 9999
     },
     {
-      "name": "Iris Katana of Goldengrove Unleaving",
-      "id": 22787168,
-      "value": 19377,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6319,
-      "maxTicket": 11818
+      "name": "Orange Starface",
+      "id": 162200666,
+      "value": 6691,
+      "chance": 10,
+      "color": "GREEN",
+      "minTicket": 10000,
+      "maxTicket": 19999
     },
     {
-      "name": "Jade Katana of the Darkest Forest",
-      "id": 21294489,
-      "value": 10851,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11819,
-      "maxTicket": 19818
-    },
-    {
-      "name": "Katana of the Golden Snake",
-      "id": 435116927,
-      "value": 6077,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19819,
-      "maxTicket": 30818
-    },
-    {
-      "name": "Dual Katanas of the DarkAge Clan",
-      "id": 86494914,
-      "value": 3403,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30819,
-      "maxTicket": 44818
-    },
-    {
-      "name": "Rainbow Katana",
-      "id": 158069071,
-      "value": 1906,
-      "chance": 18,
+      "name": "Ninja Bandolier",
+      "id": 340623941,
+      "value": 2444,
+      "chance": 15,
       "color": "GRAY",
-      "minTicket": 44819,
-      "maxTicket": 62818
+      "minTicket": 20000,
+      "maxTicket": 34999
     },
     {
-      "name": "Noob Attack: Katana Khaos",
-      "id": 28998459,
-      "value": 1067,
-      "chance": 22,
+      "name": "White Ninja Headband of the Unimpeachable Soul",
+      "id": 11297746,
+      "value": 1228,
+      "chance": 10,
       "color": "GRAY",
-      "minTicket": 62819,
-      "maxTicket": 84818
+      "minTicket": 35000,
+      "maxTicket": 44999
     },
     {
-      "name": "Katana Traveling Pack",
-      "id": 398673908,
-      "value": 598,
-      "chance": 15.18,
+      "name": "Shadowed Head",
+      "id": 7000000005,
+      "value": 50,
+      "chance": 20,
       "color": "GRAY",
-      "minTicket": 84819,
+      "minTicket": 45000,
+      "maxTicket": 64999
+    },
+    {
+      "name": "Rainbow Flame Aura - Top",
+      "id": 7000000002,
+      "value": 25,
+      "chance": 15,
+      "color": "GRAY",
+      "minTicket": 65000,
+      "maxTicket": 79999
+    },
+    {
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
       "maxTicket": 99999
     }
   ],
   "top-hat-case": [
     {
-      "name": "Brighteyes' Top Hat",
-      "id": 169454280,
-      "value": 60000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Collision Top Hat",
+      "id": 158068251,
+      "value": 40699,
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
-      "name": "JJ5x5's White Top Hat",
-      "id": 1073690,
-      "value": 33000,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Green Banded Top Hat",
+      "id": 1563352,
+      "value": 11352,
+      "chance": 5,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 9999
     },
     {
-      "name": "Rbadam's Smokestack Top Hat",
-      "id": 169444515,
-      "value": 30000,
-      "chance": 3.54,
+      "name": "Scare Mayor Top Hat",
+      "id": 131592484,
+      "value": 2705,
+      "chance": 20,
+      "color": "RED",
+      "minTicket": 10000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Color Changing Tophat - Red to Black",
+      "id": 7000000003,
+      "value": 50,
+      "chance": 35,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6239
+      "minTicket": 30000,
+      "maxTicket": 64999
     },
     {
-      "name": "2011 New Year's Top Hat",
-      "id": 42900229,
-      "value": 16800,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6240,
-      "maxTicket": 11739
-    },
-    {
-      "name": "Bright Star Top Hat",
-      "id": 236398601,
-      "value": 9408,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11740,
-      "maxTicket": 19739
-    },
-    {
-      "name": "Psychedelic Top Hat",
-      "id": 80293983,
-      "value": 5268,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19740,
-      "maxTicket": 30739
-    },
-    {
-      "name": "Steampunk Sweetheart Top Hat",
-      "id": 113329638,
-      "value": 2950,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30740,
-      "maxTicket": 44739
-    },
-    {
-      "name": "Core Magma Top Hat",
-      "id": 91676854,
-      "value": 1652,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44740,
-      "maxTicket": 62739
-    },
-    {
-      "name": "Halloween 2012 Top Hat",
-      "id": 96080771,
-      "value": 925,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62740,
-      "maxTicket": 84739
-    },
-    {
-      "name": "Sparkle Time Emerald Top Hat",
-      "id": 628778816,
-      "value": 518,
-      "chance": 15.26,
-      "color": "GRAY",
-      "minTicket": 84740,
+      "name": "Color Changing Tophat - Blue to Black",
+      "id": 7000000004,
+      "value": 50,
+      "chance": 35,
+      "color": "GREEN",
+      "minTicket": 65000,
       "maxTicket": 99999
     }
   ],
@@ -5400,7 +4914,7 @@
       "id": 867827055,
       "value": 59494,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -5409,7 +4923,7 @@
       "id": 1744068357,
       "value": 32721,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -5418,7 +4932,7 @@
       "id": 215718515,
       "value": 29747,
       "chance": 3.54,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6242
     },
@@ -5436,7 +4950,7 @@
       "id": 628771505,
       "value": 9329,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11743,
       "maxTicket": 19742
     },
@@ -5445,7 +4959,7 @@
       "id": 51243190,
       "value": 5224,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19743,
       "maxTicket": 30742
     },
@@ -5454,7 +4968,7 @@
       "id": 48159678,
       "value": 2925,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30743,
       "maxTicket": 44742
     },
@@ -5488,113 +5002,104 @@
   ],
   "low-cost-king": [
     {
-      "name": "The Red King",
-      "id": 34818900,
-      "value": 51667,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Laughing Fun",
+      "id": 7000000006,
+      "value": 100,
+      "chance": 20,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 19999
     },
     {
-      "name": "Golden Crown of Warlords",
-      "id": 1743906481,
-      "value": 28416,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Beautiful Hair for Beautiful People",
+      "id": 7000000008,
+      "value": 95,
+      "chance": 20,
+      "color": "GOLD",
+      "minTicket": 20000,
+      "maxTicket": 39999
     },
     {
-      "name": "Domino Crown",
-      "id": 1031429,
-      "value": 25834,
-      "chance": 3.5,
+      "name": "Yellow Toony Antlers",
+      "id": 7000000009,
+      "value": 79,
+      "chance": 20,
+      "color": "RED",
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Shadowed Head",
+      "id": 7000000005,
+      "value": 50,
+      "chance": 20,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6203
+      "minTicket": 60000,
+      "maxTicket": 79999
     },
     {
-      "name": "Headdress of Aken-Aten, the Sun King",
-      "id": 18482398,
-      "value": 14467,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6204,
-      "maxTicket": 11703
-    },
-    {
-      "name": "Gold King of the Night",
-      "id": 439945864,
-      "value": 8101,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11704,
-      "maxTicket": 19703
-    },
-    {
-      "name": "Korblox King",
-      "id": 52492417,
-      "value": 4537,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19704,
-      "maxTicket": 30703
-    },
-    {
-      "name": "Skeleton King's Face Mask",
-      "id": 102612531,
-      "value": 2541,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30704,
-      "maxTicket": 44703
-    },
-    {
-      "name": "Chartreuse Periastron Crown",
-      "id": 1744048439,
-      "value": 1423,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44704,
-      "maxTicket": 62703
-    },
-    {
-      "name": "Bacon Crown",
-      "id": 166896278,
-      "value": 797,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62704,
-      "maxTicket": 84703
-    },
-    {
-      "name": "Super Bowl LVI Crown",
-      "id": 8763364938,
-      "value": 446,
-      "chance": 15.3,
-      "color": "GRAY",
-      "minTicket": 84704,
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 20,
+      "color": "GREEN",
+      "minTicket": 80000,
       "maxTicket": 99999
     }
   ],
   "switch-it-up": [
     {
-      "name": "Red Illusion Fedora",
-      "id": 113332841,
-      "value": 7837,
-      "chance": 47.3,
-      "color": "PURPLE",
+      "name": "Gucci Geometric Bag",
+      "id": 6807134749,
+      "value": 630,
+      "chance": 10,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 47299
+      "maxTicket": 9999
     },
     {
-      "name": "Shiny Gold Egg of Switcheroo",
-      "id": 24826693,
-      "value": 523,
-      "chance": 52.7,
+      "name": "GucciGhost Bag",
+      "id": 6807139994,
+      "value": 593,
+      "chance": 10,
+      "color": "GOLD",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Laughing Fun",
+      "id": 7000000006,
+      "value": 100,
+      "chance": 10,
+      "color": "RED",
+      "minTicket": 20000,
+      "maxTicket": 29999
+    },
+    {
+      "name": "Beautiful Hair for Beautiful People",
+      "id": 7000000008,
+      "value": 95,
+      "chance": 10,
+      "color": "PURPLE",
+      "minTicket": 30000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Color Changing Tophat - Red to Black",
+      "id": 7000000003,
+      "value": 50,
+      "chance": 30,
+      "color": "GREEN",
+      "minTicket": 40000,
+      "maxTicket": 69999
+    },
+    {
+      "name": "Color Changing Tophat - Blue to Black",
+      "id": 7000000004,
+      "value": 50,
+      "chance": 30,
       "color": "GRAY",
-      "minTicket": 47300,
+      "minTicket": 70000,
       "maxTicket": 99999
     }
   ],
@@ -5604,7 +5109,7 @@
       "id": 1743932756,
       "value": 36221,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -5613,7 +5118,7 @@
       "id": 1073690,
       "value": 19921,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -5622,7 +5127,7 @@
       "id": 1323384,
       "value": 18110,
       "chance": 3.53,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6227
     },
@@ -5640,7 +5145,7 @@
       "id": 66896601,
       "value": 5679,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11728,
       "maxTicket": 19727
     },
@@ -5649,7 +5154,7 @@
       "id": 43245104,
       "value": 3180,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19728,
       "maxTicket": 30727
     },
@@ -5658,7 +5163,7 @@
       "id": 67319708,
       "value": 1781,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30728,
       "maxTicket": 44727
     },
@@ -5692,167 +5197,158 @@
   ],
   "creepy-case": [
     {
-      "name": "Playful Vampire",
-      "id": 2409285794,
-      "value": 32000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Miss Scarlet",
+      "id": 334656210,
+      "value": 38899,
+      "chance": 1,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 999
     },
     {
-      "name": "I'm Secretly A Vampire, The Hat",
-      "id": 16678098,
-      "value": 17600,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Orange Starface",
+      "id": 162200666,
+      "value": 6691,
+      "chance": 9,
+      "color": "GOLD",
+      "minTicket": 1000,
+      "maxTicket": 9999
     },
     {
-      "name": "Vampire Sunglasses",
-      "id": 306969564,
-      "value": 16000,
-      "chance": 3.55,
+      "name": "Powerface: Extreme Fire",
+      "id": 100932509,
+      "value": 2253,
+      "chance": 10,
+      "color": "RED",
+      "minTicket": 10000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Green Ultimate Dragon Face",
+      "id": 1772531407,
+      "value": 1641,
+      "chance": 10,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6244
+      "minTicket": 20000,
+      "maxTicket": 29999
     },
     {
-      "name": "Glorious Vampire Party Queen",
-      "id": 2397732794,
-      "value": 8960,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6245,
-      "maxTicket": 11744
+      "name": "Powerface: Wretched Wind",
+      "id": 553878047,
+      "value": 1030,
+      "chance": 10,
+      "color": "GREEN",
+      "minTicket": 30000,
+      "maxTicket": 39999
     },
     {
-      "name": "Creepy Zombie Monkey",
-      "id": 71597072,
-      "value": 5018,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11745,
-      "maxTicket": 19744
-    },
-    {
-      "name": "Wanderer Vampire Slayer",
-      "id": 71499731,
-      "value": 2810,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19745,
-      "maxTicket": 30744
-    },
-    {
-      "name": "Accursed Vampire Bat Hand",
-      "id": 63721711,
-      "value": 1574,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30745,
-      "maxTicket": 44744
-    },
-    {
-      "name": "Vampire Queen Crown",
-      "id": 1117747684,
-      "value": 881,
-      "chance": 55.26,
+      "name": "Color Changing Tophat - Red to Black",
+      "id": 7000000003,
+      "value": 50,
+      "chance": 20,
       "color": "GRAY",
-      "minTicket": 44745,
+      "minTicket": 40000,
+      "maxTicket": 59999
+    },
+    {
+      "name": "Rainbow Flame Aura - Top",
+      "id": 7000000002,
+      "value": 25,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 60000,
+      "maxTicket": 79999
+    },
+    {
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
       "maxTicket": 99999
     }
   ],
   "vampire-case": [
     {
-      "name": "Playful Vampire",
-      "id": 2409285794,
-      "value": 32000,
-      "chance": 0.9,
-      "color": "YELLOW",
-      "minTicket": 0,
-      "maxTicket": 899
-    },
-    {
-      "name": "Accursed Vampire Bat Hand",
-      "id": 63721711,
-      "value": 14864,
-      "chance": 1.8,
-      "color": "PURPLE",
-      "minTicket": 900,
-      "maxTicket": 2699
-    },
-    {
-      "name": "Bat Knight Bat Sword",
-      "id": 17680660,
-      "value": 16000,
-      "chance": 3.56,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6256
-    },
-    {
       "name": "Vampire Sunglasses",
       "id": 306969564,
-      "value": 8960,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6257,
-      "maxTicket": 11756
+      "value": 69799,
+      "chance": 5,
+      "color": "RAINBOW",
+      "minTicket": 0,
+      "maxTicket": 4999
+    },
+    {
+      "name": "Playful Vampire",
+      "id": 2409285794,
+      "value": 57814,
+      "chance": 15,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 19999
+    },
+    {
+      "name": "Glorious Vampire Party Queen",
+      "id": 2397732794,
+      "value": 29333,
+      "chance": 5,
+      "color": "RED",
+      "minTicket": 20000,
+      "maxTicket": 24999
     },
     {
       "name": "I'm Secretly A Vampire, The Hat",
       "id": 16678098,
-      "value": 5018,
-      "chance": 8,
+      "value": 21697,
+      "chance": 5,
       "color": "PURPLE",
-      "minTicket": 11757,
-      "maxTicket": 19756
+      "minTicket": 25000,
+      "maxTicket": 29999
     },
     {
       "name": "Wanderer Vampire Slayer",
       "id": 71499731,
-      "value": 2810,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19757,
-      "maxTicket": 30756
+      "value": 3858,
+      "chance": 5,
+      "color": "GREEN",
+      "minTicket": 30000,
+      "maxTicket": 34999
     },
     {
-      "name": "Enchanted Bat Flying Potion",
-      "id": 63721732,
-      "value": 1574,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30757,
-      "maxTicket": 44756
-    },
-    {
-      "name": "Halloween Bat Shades",
-      "id": 63990657,
-      "value": 881,
-      "chance": 18,
+      "name": "Accursed Vampire Bat Hand",
+      "id": 63721711,
+      "value": 2431,
+      "chance": 5,
       "color": "GRAY",
-      "minTicket": 44757,
-      "maxTicket": 62756
+      "minTicket": 35000,
+      "maxTicket": 39999
     },
     {
-      "name": "Bat Tie",
-      "id": 63239668,
-      "value": 493,
-      "chance": 22,
+      "name": "Color Changing Tophat - Red to Black",
+      "id": 7000000003,
+      "value": 50,
+      "chance": 20,
       "color": "GRAY",
-      "minTicket": 62757,
-      "maxTicket": 84756
+      "minTicket": 40000,
+      "maxTicket": 59999
     },
     {
-      "name": "Vampire Queen Crown",
-      "id": 1117747684,
-      "value": 276,
-      "chance": 15.24,
+      "name": "Rainbow Flame Aura - Top",
+      "id": 7000000002,
+      "value": 25,
+      "chance": 20,
       "color": "GRAY",
-      "minTicket": 84757,
+      "minTicket": 60000,
+      "maxTicket": 79999
+    },
+    {
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 20,
+      "color": "GRAY",
+      "minTicket": 80000,
       "maxTicket": 99999
     }
   ],
@@ -5862,7 +5358,7 @@
       "id": 1609401184,
       "value": 30000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -5871,7 +5367,7 @@
       "id": 1279019,
       "value": 15584,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -5880,7 +5376,7 @@
       "id": 493476042,
       "value": 15000,
       "chance": 3.65,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6350
     },
@@ -5898,7 +5394,7 @@
       "id": 7636350,
       "value": 4704,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11851,
       "maxTicket": 19850
     },
@@ -5907,7 +5403,7 @@
       "id": 128160626,
       "value": 2634,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19851,
       "maxTicket": 30850
     },
@@ -5916,7 +5412,7 @@
       "id": 1974902858,
       "value": 1475,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30851,
       "maxTicket": 44850
     },
@@ -5954,7 +5450,7 @@
       "id": 66416616,
       "value": 26609,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -5963,7 +5459,7 @@
       "id": 82331933,
       "value": 14634,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -5972,7 +5468,7 @@
       "id": 13793866,
       "value": 13304,
       "chance": 3.66,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6356
     },
@@ -5990,7 +5486,7 @@
       "id": 66330231,
       "value": 4172,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11857,
       "maxTicket": 19856
     },
@@ -5999,7 +5495,7 @@
       "id": 402303026,
       "value": 2336,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19857,
       "maxTicket": 30856
     },
@@ -6008,7 +5504,7 @@
       "id": 60039346,
       "value": 1308,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30857,
       "maxTicket": 44856
     },
@@ -6043,92 +5539,56 @@
   "the-gucci-sampler": [
     {
       "name": "Gucci Dionysus Bag with Bee",
-      "id": 6803402872,
-      "value": 25024,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "id": 6807137300,
+      "value": 16935,
+      "chance": 1,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 999
     },
     {
-      "name": "Gucci Spiked Basketball Bag",
-      "id": 6803400584,
-      "value": 297,
-      "chance": 1.8,
-      "color": "GRAY",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Gucci Diamond-Framed Sunglasses",
+      "id": 6803412842,
+      "value": 709,
+      "chance": 15,
+      "color": "GOLD",
+      "minTicket": 1000,
+      "maxTicket": 15999
     },
     {
-      "name": "Gucci Saint Francis Cloak x Achille Lauro (1.0)",
-      "id": 8853093338,
-      "value": 12512,
-      "chance": 3.51,
-      "color": "YELLOW",
-      "minTicket": 2700,
-      "maxTicket": 6210
+      "name": "Gucci Horsebit 1955 Shoulder Bag",
+      "id": 6803397504,
+      "value": 655,
+      "chance": 20,
+      "color": "RED",
+      "minTicket": 16000,
+      "maxTicket": 35999
     },
     {
-      "name": "Emerald Gucci Blondie Bag (3.0)",
-      "id": 9838318899,
-      "value": 7007,
-      "chance": 5.5,
+      "name": "Gucci Geometric Bag",
+      "id": 6807134749,
+      "value": 630,
+      "chance": 20,
       "color": "PURPLE",
-      "minTicket": 6211,
-      "maxTicket": 11710
-    },
-    {
-      "name": "Gucci Queen Elizabeth Gorget x Achille Lauro (1.0)",
-      "id": 8853117992,
-      "value": 3924,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11711,
-      "maxTicket": 19710
-    },
-    {
-      "name": "Gucci Headband",
-      "id": 6803423284,
-      "value": 2197,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19711,
-      "maxTicket": 30710
-    },
-    {
-      "name": "Gucci Horsebit 1955 Shoulder Bag 3.0",
-      "id": 6807133411,
-      "value": 1230,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30711,
-      "maxTicket": 44710
-    },
-    {
-      "name": "Gucci GG Marmont Bag",
-      "id": 6803403781,
-      "value": 689,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 44711,
-      "maxTicket": 62710
-    },
-    {
-      "name": "Brown Gucci Blondie Bag (1.0)",
-      "id": 9731852643,
-      "value": 386,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62711,
-      "maxTicket": 84710
+      "minTicket": 36000,
+      "maxTicket": 55999
     },
     {
       "name": "GucciGhost Bag",
-      "id": 6803404717,
-      "value": 216,
-      "chance": 15.29,
+      "id": 6807139994,
+      "value": 593,
+      "chance": 20,
+      "color": "GREEN",
+      "minTicket": 56000,
+      "maxTicket": 75999
+    },
+    {
+      "name": "Gucci Spiked Basketball Bag",
+      "id": 6807135859,
+      "value": 556,
+      "chance": 24,
       "color": "GRAY",
-      "minTicket": 84711,
+      "minTicket": 76000,
       "maxTicket": 99999
     }
   ],
@@ -6138,7 +5598,7 @@
       "id": 51352999,
       "value": 22797,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -6156,7 +5616,7 @@
       "id": 16598513,
       "value": 11398,
       "chance": 3.52,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6217
     },
@@ -6165,7 +5625,7 @@
       "id": 31107926,
       "value": 6383,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6218,
       "maxTicket": 11717
     },
@@ -6174,7 +5634,7 @@
       "id": 63646305,
       "value": 3575,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11718,
       "maxTicket": 19717
     },
@@ -6183,7 +5643,7 @@
       "id": 28502997,
       "value": 2002,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19718,
       "maxTicket": 30717
     },
@@ -6192,7 +5652,7 @@
       "id": 375820845,
       "value": 1121,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30718,
       "maxTicket": 44717
     },
@@ -6230,7 +5690,7 @@
       "id": 151789690,
       "value": 16752,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -6239,7 +5699,7 @@
       "id": 51242846,
       "value": 5187,
       "chance": 1.8,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -6248,7 +5708,7 @@
       "id": 154415221,
       "value": 8376,
       "chance": 3.72,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6417
     },
@@ -6266,7 +5726,7 @@
       "id": 57229357,
       "value": 2627,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 11918,
       "maxTicket": 19917
     },
@@ -6275,7 +5735,7 @@
       "id": 24389601,
       "value": 1471,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 19918,
       "maxTicket": 30917
     },
@@ -6284,7 +5744,7 @@
       "id": 113325603,
       "value": 824,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30918,
       "maxTicket": 44917
     },
@@ -6322,7 +5782,7 @@
       "id": 151789690,
       "value": 16752,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -6340,7 +5800,7 @@
       "id": 154415221,
       "value": 8376,
       "chance": 3.73,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 2700,
       "maxTicket": 6427
     },
@@ -6349,7 +5809,7 @@
       "id": 113325481,
       "value": 4691,
       "chance": 5.5,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 6428,
       "maxTicket": 11927
     },
@@ -6367,7 +5827,7 @@
       "id": 154414805,
       "value": 1471,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 19928,
       "maxTicket": 30927
     },
@@ -6376,7 +5836,7 @@
       "id": 113325603,
       "value": 824,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 30928,
       "maxTicket": 44927
     },
@@ -6410,93 +5870,48 @@
   ],
   "the-grind": [
     {
-      "name": "Emerald Valk Shades",
-      "id": 3210243135,
-      "value": 5841,
-      "chance": 2.5,
-      "color": "PURPLE",
+      "name": "Red Grind Skateboard",
+      "id": 163355211,
+      "value": 4620,
+      "chance": 1,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 2499
+      "maxTicket": 999
     },
     {
-      "name": "Rainbow Band Fedora",
-      "id": 120756198,
-      "value": 3138,
-      "chance": 6,
+      "name": "Ruby Archfey Visage",
+      "id": 2830505884,
+      "value": 3371,
+      "chance": 5,
+      "color": "GOLD",
+      "minTicket": 1000,
+      "maxTicket": 5999
+    },
+    {
+      "name": "DJ Remix's Goldphones",
+      "id": 102618797,
+      "value": 3354,
+      "chance": 4,
+      "color": "RED",
+      "minTicket": 6000,
+      "maxTicket": 9999
+    },
+    {
+      "name": "Agonizingly Ugly Egg of Screensplat",
+      "id": 24826811,
+      "value": 765,
+      "chance": 40,
       "color": "PURPLE",
-      "minTicket": 2500,
-      "maxTicket": 8499
+      "minTicket": 10000,
+      "maxTicket": 49999
     },
     {
-      "name": "Red Sparkle Time Fedora",
-      "id": 72082328,
-      "value": 2920,
-      "chance": 12.1,
-      "color": "PURPLE",
-      "minTicket": 8500,
-      "maxTicket": 20599
-    },
-    {
-      "name": "JJ5x5's White Top Hat",
-      "id": 1073690,
-      "value": 1635,
-      "chance": 18,
-      "color": "BLUE",
-      "minTicket": 20600,
-      "maxTicket": 38599
-    },
-    {
-      "name": "Furry Rock Star Hat",
-      "id": 163496075,
-      "value": 916,
-      "chance": 22,
-      "color": "BLUE",
-      "minTicket": 38600,
-      "maxTicket": 60599
-    },
-    {
-      "name": "Yellow Bucket Hat",
-      "id": 93723594,
-      "value": 513,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 60600,
-      "maxTicket": 82599
-    },
-    {
-      "name": "Silver Snake Fedora",
-      "id": 125378514,
-      "value": 287,
-      "chance": 0,
-      "color": "GRAY",
-      "minTicket": 82600,
-      "maxTicket": 82600
-    },
-    {
-      "name": "Slimy Eye Ball Top Hat",
-      "id": 182774977,
-      "value": 161,
-      "chance": 0,
-      "color": "GRAY",
-      "minTicket": 82601,
-      "maxTicket": 82601
-    },
-    {
-      "name": "Breakfast Top Hat",
-      "id": 158066152,
-      "value": 90,
-      "chance": 0,
-      "color": "GRAY",
-      "minTicket": 82602,
-      "maxTicket": 82602
-    },
-    {
-      "name": "Sparkle Time Emerald Top Hat",
-      "id": 628778816,
-      "value": 50,
-      "chance": 17.4,
-      "color": "GRAY",
-      "minTicket": 82603,
+      "name": "Gucci Geometric Bag",
+      "id": 6807134749,
+      "value": 630,
+      "chance": 50,
+      "color": "GREEN",
+      "minTicket": 50000,
       "maxTicket": 99999
     }
   ],
@@ -6506,7 +5921,7 @@
       "id": 10159610478,
       "value": 11000,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -6515,7 +5930,7 @@
       "id": 867827055,
       "value": 6050,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -6524,7 +5939,7 @@
       "id": 507795810,
       "value": 5500,
       "chance": 3.8,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6500
     },
@@ -6542,7 +5957,7 @@
       "id": 67995931,
       "value": 1725,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 12001,
       "maxTicket": 20000
     },
@@ -6551,7 +5966,7 @@
       "id": 10159617728,
       "value": 966,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 20001,
       "maxTicket": 31000
     },
@@ -6560,7 +5975,7 @@
       "id": 10159622004,
       "value": 541,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 31001,
       "maxTicket": 45000
     },
@@ -6594,277 +6009,160 @@
   ],
   "blackout-boogaloo": [
     {
-      "name": "Silverthorn Antlers",
-      "id": 9255011,
-      "value": 7000,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Black Iron Horns",
+      "id": 628771505,
+      "value": 48595,
+      "chance": 5,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 4999
     },
     {
-      "name": "Black Iron Antlers",
-      "id": 398674411,
-      "value": 3850,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Black Paintball Mask",
+      "id": 9254521,
+      "value": 5087,
+      "chance": 10,
+      "color": "GOLD",
+      "minTicket": 5000,
+      "maxTicket": 14999
     },
     {
-      "name": "Antenna Antlers",
-      "id": 148791559,
-      "value": 3500,
-      "chance": 3.65,
+      "name": "Black Lightning",
+      "id": 29532225,
+      "value": 3230,
+      "chance": 10,
+      "color": "RED",
+      "minTicket": 15000,
+      "maxTicket": 24999
+    },
+    {
+      "name": "Black Iron Commando",
+      "id": 928908332,
+      "value": 3088,
+      "chance": 15,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6346
+      "minTicket": 25000,
+      "maxTicket": 39999
     },
     {
-      "name": "Golden Antlers",
-      "id": 193659065,
-      "value": 1960,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6347,
-      "maxTicket": 11846
+      "name": "Color Changing Tophat - Red to Black",
+      "id": 7000000003,
+      "value": 50,
+      "chance": 30,
+      "color": "GREEN",
+      "minTicket": 40000,
+      "maxTicket": 69999
     },
     {
-      "name": "Wanwood Antlers",
-      "id": 1272714,
-      "value": 1098,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11847,
-      "maxTicket": 19846
-    },
-    {
-      "name": "BIG: Silverthorn Antlers",
-      "id": 477860473,
-      "value": 615,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19847,
-      "maxTicket": 30846
-    },
-    {
-      "name": "Bombastic Antlers",
-      "id": 147144571,
-      "value": 344,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30847,
-      "maxTicket": 44846
-    },
-    {
-      "name": "Adurite Antlers",
-      "id": 162066057,
-      "value": 193,
-      "chance": 18,
+      "name": "Color Changing Tophat - Blue to Black",
+      "id": 7000000004,
+      "value": 50,
+      "chance": 30,
       "color": "GRAY",
-      "minTicket": 44847,
-      "maxTicket": 62846
-    },
-    {
-      "name": "Blue 8-Bit Antlers",
-      "id": 507783603,
-      "value": 108,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62847,
-      "maxTicket": 84846
-    },
-    {
-      "name": "Spider Antlers",
-      "id": 2470988022,
-      "value": 60,
-      "chance": 15.15,
-      "color": "GRAY",
-      "minTicket": 84847,
+      "minTicket": 70000,
       "maxTicket": 99999
     }
   ],
   "wacky-case": [
     {
-      "name": "Omega Rainbow Top Hat",
-      "id": 489176525,
-      "value": 1668,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Rainbow Hatbot",
+      "id": 149594188,
+      "value": 10977,
+      "chance": 10,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 9999
     },
     {
-      "name": "Rainbow Fedora",
-      "id": 82332012,
-      "value": 917,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Halloween Santa Hat",
+      "id": 1173851,
+      "value": 2989,
+      "chance": 15,
+      "color": "GOLD",
+      "minTicket": 10000,
+      "maxTicket": 24999
     },
     {
-      "name": "Rainbow Shaggy",
-      "id": 64082730,
-      "value": 834,
-      "chance": 3.74,
+      "name": "Target Hat",
+      "id": 1051578,
+      "value": 2441,
+      "chance": 15,
+      "color": "RED",
+      "minTicket": 25000,
+      "maxTicket": 39999
+    },
+    {
+      "name": "Vans Checkerboard Bucket Hat",
+      "id": 7592004548,
+      "value": 1009,
+      "chance": 20,
       "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6438
+      "minTicket": 40000,
+      "maxTicket": 59999
     },
     {
-      "name": "Rainbow Periastron Omega",
-      "id": 159229806,
-      "value": 467,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6439,
-      "maxTicket": 11938
+      "name": "Gucci Wide Brim Felt Hat",
+      "id": 6803410579,
+      "value": 749,
+      "chance": 10,
+      "color": "GREEN",
+      "minTicket": 60000,
+      "maxTicket": 69999
     },
     {
-      "name": "Neon Rainbow Phoenix",
-      "id": 261827192,
-      "value": 262,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 11939,
-      "maxTicket": 19938
-    },
-    {
-      "name": "White Beanie with Rainbow Hair",
-      "id": 321570597,
-      "value": 146,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 19939,
-      "maxTicket": 30938
-    },
-    {
-      "name": "Rainbow Lost Boy",
-      "id": 362082707,
-      "value": 82,
-      "chance": 14,
-      "color": "BLUE",
-      "minTicket": 30939,
-      "maxTicket": 44938
-    },
-    {
-      "name": "Rainbow Band Fedora",
-      "id": 120756198,
-      "value": 46,
-      "chance": 18,
+      "name": "Color Changing Tophat - Red to Black",
+      "id": 7000000003,
+      "value": 50,
+      "chance": 30,
       "color": "GRAY",
-      "minTicket": 44939,
-      "maxTicket": 62938
-    },
-    {
-      "name": "DIY Rainbow Shaggy",
-      "id": 493482011,
-      "value": 26,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 62939,
-      "maxTicket": 84938
-    },
-    {
-      "name": "Omega Rainbow Bow Tie",
-      "id": 928907217,
-      "value": 14,
-      "chance": 15.06,
-      "color": "GRAY",
-      "minTicket": 84939,
+      "minTicket": 70000,
       "maxTicket": 99999
     }
   ],
   "budget-case": [
     {
-      "name": "Sleek Sunglasses",
-      "id": 51245241,
-      "value": 1500,
-      "chance": 0.9,
-      "color": "YELLOW",
+      "name": "Casual Sunglasses Pocket",
+      "id": 1744198126,
+      "value": 1003,
+      "chance": 1,
+      "color": "RAINBOW",
       "minTicket": 0,
-      "maxTicket": 899
+      "maxTicket": 999
     },
     {
-      "name": "Classicx89's Stylin' Intern Shades",
-      "id": 15095717,
-      "value": 825,
-      "chance": 1.8,
-      "color": "YELLOW",
-      "minTicket": 900,
-      "maxTicket": 2699
+      "name": "Color Changing Tophat - Red to Black",
+      "id": 7000000003,
+      "value": 50,
+      "chance": 25,
+      "color": "GOLD",
+      "minTicket": 1000,
+      "maxTicket": 25999
     },
     {
-      "name": "Tasteless Shades",
-      "id": 33337038,
-      "value": 750,
-      "chance": 4,
-      "color": "PURPLE",
-      "minTicket": 2700,
-      "maxTicket": 6700
-    },
-    {
-      "name": "Snowflake Shutter Shades",
-      "id": 67201161,
-      "value": 420,
-      "chance": 5.5,
-      "color": "PURPLE",
-      "minTicket": 6701,
-      "maxTicket": 12200
-    },
-    {
-      "name": "Tracer Shades",
-      "id": 93119240,
-      "value": 235,
-      "chance": 8,
-      "color": "PURPLE",
-      "minTicket": 12201,
-      "maxTicket": 20200
-    },
-    {
-      "name": "Extraterrestrial Sunglasses",
-      "id": 60062169,
-      "value": 132,
-      "chance": 11,
-      "color": "BLUE",
-      "minTicket": 20201,
-      "maxTicket": 31200
-    },
-    {
-      "name": "Rock 'n Shades",
-      "id": 112609138,
-      "value": 74,
+      "name": "Color Changing Tophat - Blue to Black",
+      "id": 7000000004,
+      "value": 50,
       "chance": 14,
-      "color": "BLUE",
-      "minTicket": 31201,
-      "maxTicket": 45200
+      "color": "RED",
+      "minTicket": 26000,
+      "maxTicket": 39999
     },
     {
-      "name": "Cool Moon Shades",
-      "id": 119916848,
-      "value": 41,
-      "chance": 18,
-      "color": "GRAY",
-      "minTicket": 45201,
-      "maxTicket": 63200
+      "name": "Rainbow Flame Aura - Top",
+      "id": 7000000002,
+      "value": 25,
+      "chance": 30,
+      "color": "PURPLE",
+      "minTicket": 40000,
+      "maxTicket": 69999
     },
     {
-      "name": "Spiky Halloween Shades",
-      "id": 96079422,
-      "value": 23,
-      "chance": 22,
-      "color": "GRAY",
-      "minTicket": 63201,
-      "maxTicket": 85200
-    },
-    {
-      "name": "Wanwood Round Shades",
-      "id": 628803591,
-      "value": 13,
-      "chance": 14.8,
-      "color": "GRAY",
-      "minTicket": 85201,
+      "name": ":]",
+      "id": 7000000001,
+      "value": 15,
+      "chance": 30,
+      "color": "GREEN",
+      "minTicket": 70000,
       "maxTicket": 99999
     }
   ],
@@ -6874,7 +6172,7 @@
       "id": 286525448,
       "value": 300,
       "chance": 47.83,
-      "color": "PURPLE",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 47825
     },
@@ -6883,7 +6181,7 @@
       "id": 90994970,
       "value": 1,
       "chance": 52.17,
-      "color": "GRAY",
+      "color": "GOLD",
       "minTicket": 47826,
       "maxTicket": 99999
     }
@@ -6894,7 +6192,7 @@
       "id": 253159110,
       "value": 125,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -6903,7 +6201,7 @@
       "id": 178076831,
       "value": 68,
       "chance": 1.8,
-      "color": "YELLOW",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -6912,7 +6210,7 @@
       "id": 114020505,
       "value": 62,
       "chance": 4.03,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 6732
     },
@@ -6930,7 +6228,7 @@
       "id": 2257539462,
       "value": 20,
       "chance": 8,
-      "color": "PURPLE",
+      "color": "GREEN",
       "minTicket": 12233,
       "maxTicket": 20232
     },
@@ -6939,7 +6237,7 @@
       "id": 321345425,
       "value": 11,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 20233,
       "maxTicket": 31232
     },
@@ -6948,7 +6246,7 @@
       "id": 82358339,
       "value": 6,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 31233,
       "maxTicket": 45232
     },
@@ -6977,7 +6275,7 @@
       "id": 27814348,
       "value": 85,
       "chance": 0.9,
-      "color": "YELLOW",
+      "color": "RAINBOW",
       "minTicket": 0,
       "maxTicket": 899
     },
@@ -6986,7 +6284,7 @@
       "id": 1533893,
       "value": 46,
       "chance": 1.8,
-      "color": "PURPLE",
+      "color": "GOLD",
       "minTicket": 900,
       "maxTicket": 2699
     },
@@ -6995,7 +6293,7 @@
       "id": 182774911,
       "value": 42,
       "chance": 7.19,
-      "color": "PURPLE",
+      "color": "RED",
       "minTicket": 2700,
       "maxTicket": 9891
     },
@@ -7013,7 +6311,7 @@
       "id": 90821356,
       "value": 13,
       "chance": 8,
-      "color": "BLUE",
+      "color": "GREEN",
       "minTicket": 15392,
       "maxTicket": 23391
     },
@@ -7022,7 +6320,7 @@
       "id": 24727799,
       "value": 7,
       "chance": 11,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 23392,
       "maxTicket": 34391
     },
@@ -7031,7 +6329,7 @@
       "id": 49939692,
       "value": 4,
       "chance": 14,
-      "color": "BLUE",
+      "color": "GRAY",
       "minTicket": 34392,
       "maxTicket": 48391
     },

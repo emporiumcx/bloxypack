@@ -80,9 +80,9 @@ function Overlay({
   }, []);
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center overflow-y-auto ${leaving ? "pointer-events-none" : ""}`}>
+    <div className={`fixed inset-0 z-[100] isolate flex items-center justify-center overflow-y-auto ${leaving ? "pointer-events-none" : ""}`}>
       <button
-        className={`${leaving ? "animate-overlay-out" : "animate-overlay-in"} absolute inset-0 bg-black/60 backdrop-blur-sm`}
+        className={`${leaving ? "animate-overlay-out" : "animate-overlay-in"} absolute inset-0 bg-black/55 backdrop-blur-[8px]`}
         aria-label="close overlay"
         onClick={leaving ? undefined : onClose}
       />
@@ -116,17 +116,19 @@ function ModalFrame({
 
   return (
     <div
-      className={`fixed inset-0 flex w-full min-w-[330px] items-center overflow-hidden p-10 sm:p-12 sm:p-20 md:p-24 lg:p-30 ${leaving ? "pointer-events-none" : ""}`}
-      style={{ zIndex: 80 }}
+      className={`fixed inset-0 isolate flex w-full min-w-[330px] items-center overflow-hidden p-10 sm:p-12 sm:p-20 md:p-24 lg:p-30 ${
+        leaving ? "pointer-events-none" : ""
+      }`}
+      style={{ zIndex: 100 }}
     >
       <div className="relative flex max-h-full w-full overflow-y-auto rounded-4 sm:rounded-4">
         <button
           type="button"
           aria-label="close"
-          className={`${leaving ? "animate-overlay-out" : "animate-overlay-in"} fixed top-0 left-0 h-full w-screen min-w-[330px] bg-black/40 backdrop-blur-[4px] backdrop-filter`}
+          className={`${leaving ? "animate-overlay-out" : "animate-overlay-in"} fixed inset-0 bg-black/55 backdrop-blur-[8px]`}
           onClick={leaving ? undefined : onClose}
         />
-        <div className={`absolute top-0 bottom-0 left-1/2 -translate-x-1/2 relative xs:w-auto ${leaving ? "animate-modal-out" : "animate-modal-in"}`}>
+        <div className={`relative left-1/2 -translate-x-1/2 xs:w-auto ${leaving ? "animate-modal-out" : "animate-modal-in"}`}>
           <div
             className={`relative z-50 overflow-hidden rounded-12 bg-grey-34 ${
               banner ? "w-[min(92vw,480px)] sm:w-[min(92vw,740px)]" : "!max-w-full"
@@ -409,8 +411,7 @@ export function Modals() {
     register,
     user,
     addBalance,
-    addRain,
-    spend,
+    tipRain,
     rain,
     applyUser,
   } = useStore();
@@ -968,12 +969,19 @@ export function Modals() {
 
   if (view === "rain") {
     const remain = Math.max(0, rain.endsAt - Date.now());
-    const pct = Math.min(100, Math.max(0, (remain / (15 * 60 * 1000)) * 100));
-    const sendTip = () => {
+    const pct = Math.min(100, Math.max(0, (remain / (60 * 60 * 1000)) * 100));
+    const sendTip = async () => {
       const n = Number(amount);
       if (!user) return openModal("login");
       if (!Number.isFinite(n) || n <= 0) return;
-      if (spend(n)) addRain(n);
+      setSaving(true);
+      setError("");
+      const err = await tipRain(n);
+      setSaving(false);
+      if (err) {
+        setError(err);
+        return;
+      }
       setAmount("");
       closeModal();
     };
@@ -1040,7 +1048,7 @@ export function Modals() {
                 </div>
               </div>
             </div>
-            <p className="text-center text-16 font-semibold text-grey-190">The tipped amount will be added to the Rain Pool</p>
+            {error ? <p className="text-center text-14 text-[#FF5562]">{error}</p> : <p className="text-center text-16 font-semibold text-grey-190">The tipped amount will be added to the Rain Pool</p>}
           </div>
         </div>
       </ModalFrame>

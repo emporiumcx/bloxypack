@@ -80,6 +80,13 @@ const userSchema = new mongoose.Schema({
         expire: { type: Date },
         reason: { type: String }
     },
+    rewards: {
+        bonusXp: { type: Number, default: 0 },
+        dailyDate: { type: String, default: '' },
+        dailyOpened: { type: [String], default: [] },
+        rankKeys: { type: mongoose.Schema.Types.Mixed, default: {} },
+        rankGranted: { type: [String], default: [] }
+    },
     verifiedAt: { type: Date },
     updatedAt: { type: Date, default: Date.now },
     createdAt: { type: Date, default: Date.now }

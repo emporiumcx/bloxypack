@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { BetField } from "@/components/bet-field";
-import { GameShell } from "@/components/game-shell";
+import { GameShell, GameSidebar } from "@/components/game-shell";
 import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { useStore, useBalanceHold } from "@/components/providers";
@@ -53,19 +53,19 @@ function total(cards: Card[]) {
 
 function PlayingCard({ card, hidden, offset, deal, flip }: { card?: Card; hidden?: boolean; offset: number; deal?: boolean; flip?: boolean }) {
   return (
-    <div className="absolute top-0" style={{ width: 72, height: 100, left: offset, marginTop: offset ? -3 : 0 }}>
+    <div className="absolute top-0 h-[72px] w-[52px] @sm/page:h-[84px] @sm/page:w-[60px] @md/page:h-[92px] @md/page:w-[66px]" style={{ left: offset, marginTop: offset ? -2 : 0 }}>
       <div
-        className={`h-full w-full overflow-hidden rounded-[8px] border-1 border-black/20 bg-white shadow-[0_10px_22px_rgba(0,0,0,0.4)] ${
+        className={`h-full w-full overflow-hidden rounded-[7px] border-1 border-black/20 bg-white shadow-[0_8px_18px_rgba(0,0,0,0.4)] ${
           deal ? "animate-card-deal" : ""
         } ${flip ? "animate-card-flip" : ""}`}
       >
       {hidden || !card ? (
         <div className="h-full w-full bg-[repeating-linear-gradient(135deg,#0d1013_0_8px,#32363e_8px_16px)]" />
       ) : (
-        <div className={`flex h-full flex-col p-8 ${card.suit.red ? "text-red" : "text-grey-28"}`}>
-          <p className="text-16 leading-none">{card.rank}</p>
-          <p className="mt-4 text-22 leading-none">{card.suit.mark}</p>
-          <p className="mt-auto self-end rotate-180 text-16 leading-none">{card.rank}</p>
+        <div className={`flex h-full flex-col p-6 ${card.suit.red ? "text-red" : "text-grey-28"}`}>
+          <p className="text-13 leading-none @sm/page:text-14">{card.rank}</p>
+          <p className="mt-2 text-18 leading-none @sm/page:mt-3 @sm/page:text-20">{card.suit.mark}</p>
+          <p className="mt-auto self-end rotate-180 text-13 leading-none @sm/page:text-14">{card.rank}</p>
         </div>
       )}
       </div>
@@ -84,26 +84,26 @@ function Hand({
   score?: number;
   dealFrom?: number;
 }) {
-  const width = Math.max(72, 72 + Math.max(0, cards.length - 1) * 36);
+  const width = Math.max(66, 66 + Math.max(0, cards.length - 1) * 32);
   return (
-    <div className="@lg/page:py-40 relative flex justify-center py-20">
-      <div className="relative" style={{ width, height: 100 }}>
+    <div className="relative flex justify-center py-8 @sm/page:py-10 @md/page:py-12">
+      <div className="relative h-[72px] @sm/page:h-[84px] @md/page:h-[92px]" style={{ width }}>
         {cards.map((c, i) => (
           <PlayingCard
             key={`${c.rank}${c.suit.mark}${i}`}
             card={c}
             hidden={hideHole && i === 1}
-            offset={i * 36}
+            offset={i * 32}
             deal={dealFrom != null && i >= dealFrom}
             flip={!hideHole && i === 1}
           />
         ))}
         {score != null ? (
           <div
-            className="@lg/page:-bottom-48 absolute left-1/2 -bottom-32 flex h-24 min-w-32 -translate-x-1/2 items-center justify-center rounded-6 bg-grey-28 px-8"
+            className="absolute left-1/2 -bottom-28 flex h-22 min-w-28 -translate-x-1/2 items-center justify-center rounded-6 bg-grey-28 px-8 @md/page:-bottom-32"
             style={{ opacity: cards.length ? 1 : 0 }}
           >
-            <p className="text-14 text-white">{score}</p>
+            <p className="text-13 text-white">{score}</p>
           </div>
         ) : null}
       </div>
@@ -252,37 +252,31 @@ export default function BlackjackPage() {
   return (
     <GameShell
       fairness="Blackjack"
-      tall
-      boardClassName="@lg/page:p-40 @sm/page:p-30 @lg/page:h-full relative flex h-[350px] w-full flex-col items-center justify-between overflow-hidden p-20 md:h-[420px]"
+      boardClassName="relative flex h-[min(280px,calc(100dvh-260px))] w-full min-h-[240px] flex-col items-center justify-between overflow-hidden p-12 @sm/page:h-[min(340px,calc(100dvh-230px))] @sm/page:p-16 @md/page:h-[min(400px,calc(100dvh-210px))] @md/page:p-20 @lg/page:h-[min(420px,calc(100dvh-200px))] @lg/page:p-24"
       sidebar={
-        <>
-          <div className="flex items-start">
-            <div className="@sm/page:gap-20 grid w-full grid-cols-1 gap-16">
-              <div className="grid w-full grid-cols-1 gap-12">
-                <BetField value={bet} onChange={setBet} max={user?.balance ?? 10} />
-              </div>
-              <div className="grid w-full grid-cols-1 items-center gap-8">
-                <div className="grid grid-cols-2 gap-8">
-                  <Action label="Hit" icon={<Icons.hit />} enabled={canAct} onClick={hit} />
-                  <Action label="Stand" icon={<Icons.stand />} enabled={canAct} onClick={stand} />
-                  <Action label="Split" icon={<Icons.split />} enabled={canSplit} />
-                  <Action label="Double" icon={<Icons.double />} enabled={canDouble} onClick={doubleDown} />
-                </div>
-              </div>
-            </div>
+        <GameSidebar
+          action={
+            <GreenButton onClick={deal} disabled={live || dealing} loading={dealing}>
+              Bet
+            </GreenButton>
+          }
+        >
+          <BetField value={bet} onChange={setBet} max={user?.balance ?? 10} />
+          <div className="grid grid-cols-2 gap-8">
+            <Action label="Hit" icon={<Icons.hit />} enabled={canAct} onClick={hit} />
+            <Action label="Stand" icon={<Icons.stand />} enabled={canAct} onClick={stand} />
+            <Action label="Split" icon={<Icons.split />} enabled={canSplit} />
+            <Action label="Double" icon={<Icons.double />} enabled={canDouble} onClick={doubleDown} />
           </div>
-          <GreenButton onClick={deal} disabled={live || dealing} loading={dealing}>
-            Bet
-          </GreenButton>
-        </>
+        </GameSidebar>
       }
       board={
         <>
-          <div className="@lg/page:top-40 @lg/page:right-40 @lg/page:bottom-40 @lg/page:left-40 absolute top-16 right-16 bottom-16 left-16 rounded-2xl border-3 border-[#3A3F46]" />
-          <div className="@lg/page:w-[300px] absolute top-0 left-1/2 h-full w-[170px] -translate-x-1/2 bg-grey-39" />
-          <div className="@lg/page:right-80 @lg/page:h-[100px] @lg/page:w-[100px] absolute top-0 right-40 z-20 h-[60px] w-[60px] bg-gradient-to-b from-grey-39 to-transparent" />
-          <div className="@lg/page:-top-74 @lg/page:right-80 @lg/page:w-[100px] absolute -top-40 right-40 w-[56px]">
-            <img alt="shoe" width={100} height={150} className="@lg/page:w-[100px] w-[56px]" src="/img/blackjack/stacked-cards.svg" />
+          <div className="absolute inset-12 rounded-2xl border-3 border-[#3A3F46] @sm/page:inset-16 @md/page:inset-20 @lg/page:inset-24" />
+          <div className="absolute top-0 left-1/2 h-full w-[110px] -translate-x-1/2 bg-grey-39 @sm/page:w-[140px] @md/page:w-[170px] @lg/page:w-[190px]" />
+          <div className="absolute top-0 right-20 z-20 h-[44px] w-[44px] bg-gradient-to-b from-grey-39 to-transparent @md/page:right-28 @md/page:h-[64px] @md/page:w-[64px]" />
+          <div className="absolute -top-28 right-20 z-20 w-[40px] @sm/page:-top-32 @sm/page:w-[48px] @md/page:right-28 @md/page:w-[56px]">
+            <img alt="shoe" className="h-auto w-full" src="/img/blackjack/stacked-cards.svg" />
           </div>
           <div className="relative z-20">
             <Hand
@@ -294,9 +288,7 @@ export default function BlackjackPage() {
           </div>
           <img
             alt="board"
-            width={294}
-            height={100}
-            className="@lg/page:block @lg/page:h-[100px] absolute top-1/2 z-10 h-[50px] -translate-y-1/2"
+            className="absolute top-1/2 left-1/2 z-10 h-[36px] w-auto max-w-[58%] -translate-x-1/2 -translate-y-1/2 object-contain @sm/page:h-[48px] @md/page:h-[56px] @lg/page:h-[64px]"
             src="/img/blackjack/board.svg"
           />
           <div className="relative z-20">

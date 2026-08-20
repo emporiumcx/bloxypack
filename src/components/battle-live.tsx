@@ -16,10 +16,14 @@ import { botAvatar, botName } from "@/lib/avatars";
 import { dropsForCase, type CaseDrop, type DropColor } from "@/lib/catalog";
 
 const RARITY: Record<DropColor, string> = {
-  YELLOW: "rgb(228, 174, 57)",
+  RAINBOW: "#ff4ecd",
+  GOLD: "rgb(255, 200, 50)",
+  RED: "rgb(255, 64, 80)",
   PURPLE: "rgb(136, 71, 255)",
-  BLUE: "rgb(94, 152, 217)",
+  GREEN: "rgb(46, 204, 113)",
   GRAY: "rgb(176, 195, 217)",
+  YELLOW: "rgb(255, 200, 50)",
+  BLUE: "rgb(94, 152, 217)",
 };
 
 const STRIP_LEN = 25;
@@ -43,8 +47,11 @@ function itemSrc(id?: number, image?: string) {
 
 function asColor(raw?: string): DropColor {
   const c = String(raw || "").toUpperCase();
-  if (c === "YELLOW" || c.includes("GOLD") || c.includes("228, 174") || c.includes("#E4AE")) return "YELLOW";
+  if (c === "RAINBOW" || c.includes("FF4ECD") || c.includes("#FF4E")) return "RAINBOW";
+  if (c === "GOLD" || c === "YELLOW" || c.includes("GOLD") || c.includes("228, 174") || c.includes("#E4AE") || c.includes("255, 200")) return "GOLD";
+  if (c === "RED" || c.includes("255, 64") || c.includes("#FF40")) return "RED";
   if (c === "PURPLE" || c.includes("136, 71") || c.includes("#8847")) return "PURPLE";
+  if (c === "GREEN" || c.includes("46, 204") || c.includes("#2ECC")) return "GREEN";
   if (c === "BLUE" || c.includes("94, 152") || c.includes("#5E98")) return "BLUE";
   return "GRAY";
 }
@@ -536,7 +543,7 @@ export function BattleLive({ id }: { id: string }) {
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-12 bg-grey-39 px-12 py-12 md:px-20">
+        <div className="panel-outline relative overflow-hidden rounded-12 bg-grey-39 px-12 py-12 md:px-20">
           <div className="grid w-full grid-cols-1 items-center gap-16 md:grid-cols-[auto_1fr_auto]">
             <div>
               <p className="text-12 uppercase text-grey-142">{funding > 0 ? "Join cost" : "Battle cost"}</p>
@@ -584,7 +591,7 @@ export function BattleLive({ id }: { id: string }) {
               return (
                 <div
                   key={i}
-                  className={`flex min-w-0 flex-col rounded-12 bg-grey-39 p-12 ${won ? "ring-2 ring-green" : ""} ${lost ? "opacity-70" : ""}`}
+                  className={`panel-outline flex min-w-0 flex-col rounded-12 bg-grey-39 p-12 ${won ? "ring-2 ring-green" : ""} ${lost ? "opacity-70" : ""}`}
                 >
                   <div className="flex items-center justify-between gap-8">
                     <div className="flex min-w-0 items-center gap-8">
@@ -643,12 +650,14 @@ export function BattleLive({ id }: { id: string }) {
                         key={`${item.id}-${ri}`}
                         className="relative flex items-center gap-8 overflow-hidden rounded-8 bg-grey-28 px-8 py-6"
                         style={{
-                          ...(item.color === "YELLOW" ? { boxShadow: "inset 0 0 0 1px rgba(228, 174, 57, 0.5)" } : undefined),
+                          ...(item.color === "RAINBOW" || item.color === "GOLD" || item.color === "YELLOW"
+                            ? { boxShadow: `inset 0 0 0 1px ${RARITY[item.color] ?? "rgba(228, 174, 57, 0.5)"}` }
+                            : undefined),
                           opacity: game.options?.terminal && ri < seatPulled.length - 1 && !ended ? 0.45 : 1,
                         }}
                       >
                         <div className="relative h-36 w-36 shrink-0">
-                          <ItemBg className="inset-0 h-full w-full opacity-40" />
+                          <ItemBg className="inset-0 h-full w-full opacity-40" color={RARITY[item.color] ?? RARITY.GRAY} />
                           <img alt="" src={itemSrc(item.id, item.image)} className="relative h-36 w-36 object-contain" />
                         </div>
                         <p className="min-w-0 flex-1 truncate text-12 text-white">{item.name}</p>

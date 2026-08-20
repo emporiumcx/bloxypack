@@ -69,6 +69,7 @@ module.exports = (io) => {
         require('./vault')(io, socket);
         require('./affiliate')(io, socket);
         require('./rakeback')(io, socket);
+        require('./rewards')(io, socket);
         require('./promo')(io, socket);
         require('./rain')(io, socket);
         require('./leaderboard')(io, socket);

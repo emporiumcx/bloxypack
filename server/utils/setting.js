@@ -19,7 +19,7 @@ const settingInitDatabase = async() => {
                     reward: { multiplier: 1 }
                 },
                 chat: {
-                    mode: 'normal',
+                    mode: 'slow',
                     enabled: true,
                     rooms: {
                         en: { enabled: true },

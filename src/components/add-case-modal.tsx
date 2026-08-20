@@ -95,7 +95,7 @@ export function AddCaseModal({
                 key={item.slug}
                 type="button"
                 onClick={() => onAdd(item)}
-                className="group relative w-full overflow-hidden rounded-12 bg-grey-39 p-14 text-left transition-transform duration-300 hover:-translate-y-4 hover:bg-grey-47 hover:scale-[1.02] active:scale-[1.02] animate-show"
+                className="panel-outline group relative w-full overflow-hidden rounded-12 bg-grey-39 p-14 text-left transition-transform duration-300 hover:-translate-y-4 hover:bg-grey-47 hover:scale-[1.02] active:scale-[1.02] animate-show"
                 style={{ animationDelay: `${(i % 20) * 16}ms` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-grey-39" />

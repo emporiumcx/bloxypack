@@ -35,7 +35,7 @@ export function BattleRow({ battle: b, compact = false }: { battle: Battle; comp
   const round = `${Math.min(b.unboxed || 0, b.cases.length)}/${b.cases.length}`;
 
   return (
-    <div className="tr @container relative w-full overflow-hidden rounded-12 bg-grey-39">
+    <div className="panel-outline tr @container relative w-full overflow-hidden rounded-12 bg-grey-39">
       <div className={`relative w-full ${compact ? "px-12 py-10" : "@[850px]:px-20 @md/page:py-8 px-12 py-12"}`}>
         <div className="@[1000px]:gap-16 @[850px]:grid-cols-[auto_1fr_auto] @[540px]:grid-cols-[1fr_auto] grid w-full grid-cols-1 items-center gap-12">
           <div className="@[850px]:w-[220px] grid grid-cols-[auto_1fr] items-center gap-12">

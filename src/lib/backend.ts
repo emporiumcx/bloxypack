@@ -12,8 +12,11 @@ export type ServerUser = {
   rank?: string;
   balance?: number;
   xp?: number;
+  anonymous?: boolean;
   local?: { email?: string };
   stats?: { bet?: number; won?: number; deposit?: number; withdraw?: number };
+  rakeback?: { available?: number; earned?: number };
+  rewards?: { bonusXp?: number; dailyDate?: string; dailyOpened?: string[]; rankKeys?: Record<string, number> };
 };
 
 export type AppUser = {
@@ -25,7 +28,10 @@ export type AppUser = {
   xp: number;
   level: number;
   rank: string;
+  anonymous: boolean;
   stats: { bet: number; won: number; deposit: number; withdraw: number };
+  rakebackAvailable: number;
+  bonusXp: number;
 };
 
 export function token() {
@@ -55,12 +61,15 @@ export function mapUser(raw: ServerUser): AppUser {
     xp: raw.xp || 0,
     level,
     rank: rankNameFromLevel(level),
+    anonymous: Boolean(raw.anonymous),
     stats: {
       bet: (raw.stats?.bet || 0) / 1000,
       won: (raw.stats?.won || 0) / 1000,
       deposit: (raw.stats?.deposit || 0) / 1000,
       withdraw: (raw.stats?.withdraw || 0) / 1000,
     },
+    rakebackAvailable: (raw.rakeback?.available || 0) / 1000,
+    bonusXp: Math.floor((raw.rewards?.bonusXp || 0) / 1000),
   };
 }
 
@@ -78,6 +87,9 @@ export function mergeUser(prev: AppUser | null, raw: ServerUser | null | undefin
       xp: raw.xp != null ? mapped.xp : prev.xp,
       level: raw.xp != null ? mapped.level : prev.level,
       stats: raw.stats ? mapped.stats : prev.stats,
+      anonymous: raw.anonymous != null ? mapped.anonymous : prev.anonymous,
+      rakebackAvailable: raw.rakeback?.available != null ? mapped.rakebackAvailable : prev.rakebackAvailable,
+      bonusXp: raw.rewards?.bonusXp != null ? mapped.bonusXp : prev.bonusXp,
     };
   }
   if (!prev) return mapped.id ? mapped : prev;
@@ -93,6 +105,9 @@ export function mergeUser(prev: AppUser | null, raw: ServerUser | null | undefin
     level: raw.xp != null ? mapped.level : prev.level,
     rank: mapped.username ? mapped.rank : prev.rank,
     stats: raw.stats ? mapped.stats : prev.stats,
+    anonymous: raw.anonymous != null ? mapped.anonymous : prev.anonymous,
+    rakebackAvailable: raw.rakeback?.available != null ? mapped.rakebackAvailable : prev.rakebackAvailable,
+    bonusXp: raw.rewards?.bonusXp != null ? mapped.bonusXp : prev.bonusXp,
   };
 }
 
@@ -306,11 +321,47 @@ function ns(name: string) {
   });
 }
 
+export type ServerRain = {
+  _id?: string;
+  amount?: number;
+  endsAt?: number;
+  updatedAt?: string | number;
+  type?: string;
+  state?: string;
+  participants?: { user?: string | { _id?: string } }[];
+};
+
+export type RainInfo = {
+  amount: number;
+  endsAt: number;
+  participants: string[];
+};
+
+const RAIN_SITE_MS = 60 * 60 * 1000;
+
+function participantId(user: string | { _id?: string } | undefined) {
+  if (!user) return "";
+  if (typeof user === "string") return user;
+  return user._id ? String(user._id) : "";
+}
+
+export function parseRain(raw?: ServerRain | null): RainInfo | null {
+  if (!raw || raw.amount == null) return null;
+  const duration = raw.type === "user" ? 2 * 60 * 1000 : RAIN_SITE_MS;
+  const start = raw.updatedAt != null ? Date.parse(String(raw.updatedAt)) : 0;
+  const endsAt = raw.endsAt || (start ? start + duration : 0);
+  return {
+    amount: raw.amount / 1000,
+    endsAt,
+    participants: (raw.participants || []).map((p) => participantId(p.user)).filter(Boolean),
+  };
+}
+
 export function connectSockets(handlers: {
   onUser?: (user: ServerUser) => void;
   onChat?: (msg: { id: string; user: string; text: string; rank: string; level: number; avatar?: string; time?: string }) => void;
   onChatHistory?: (msgs: { id: string; user: string; text: string; rank: string; level: number; avatar?: string }[]) => void;
-  onRain?: (amount: number) => void;
+  onRain?: (rain: RainInfo) => void;
 }) {
   disconnectSockets();
   general = ns("/general");
@@ -338,11 +389,14 @@ export function connectSockets(handlers: {
       avatar: m.user?.avatar,
     });
   });
-  general.on("rain", (payload: { rain?: { amount?: number } }) => {
-    if (payload?.rain?.amount != null) handlers.onRain?.(payload.rain.amount / 1000);
+  general.on("rain", (payload: { rain?: ServerRain }) => {
+    if (payload?.rain?.type === "user") return;
+    const parsed = parseRain(payload?.rain);
+    if (parsed) handlers.onRain?.(parsed);
   });
-  general.on("init", (payload: { rains?: { site?: { amount?: number } } }) => {
-    if (payload?.rains?.site?.amount != null) handlers.onRain?.(payload.rains.site.amount / 1000);
+  general.on("init", (payload: { rains?: { site?: ServerRain } }) => {
+    const parsed = parseRain(payload?.rains?.site);
+    if (parsed) handlers.onRain?.(parsed);
     general?.emit("getChatMessages", { room: "en" }, (res: Ack<{ messages: { _id: string; message: string; user?: { username: string; level?: number; rank?: string; avatar?: string }; type: string }[] }>) => {
       if (!res || res.success === false) return;
       const msgs = (res.messages || [])
@@ -387,6 +441,16 @@ export function disconnectSockets() {
 export async function sendChatMessage(message: string) {
   if (!general) throw new Error("Chat is not connected.");
   await emit(general, "sendChatMessage", { message });
+}
+
+export async function sendRainTip(amount: number) {
+  if (!general) throw new Error("Not connected.");
+  return emit(general, "sendRainTip", { amount: Math.round(amount * 1000) });
+}
+
+export async function sendRainJoin() {
+  if (!general) throw new Error("Not connected.");
+  return emit(general, "sendRainJoin", {});
 }
 
 export async function claimAffiliateCode(code: string) {
@@ -468,6 +532,36 @@ export async function unboxBet(slug: string, unboxCount: number) {
       item: { name: string; image: string; amountFixed: number; color: string; dropId: number };
     }[];
   }>(unbox, "sendBet", { slug, unboxCount });
+}
+
+export type RewardsInfo = {
+  bonusXp: number;
+  dailyDate: string;
+  dailyOpened: string[];
+  rankKeys: Record<string, number>;
+  rakeback: number;
+};
+
+export async function getRewardsData() {
+  if (!general) throw new Error("Not connected.");
+  return emit<{ user?: ServerUser; rewards: RewardsInfo }>(general, "getRewardsData", {});
+}
+
+export async function sendRewardOpen(slug: string) {
+  if (!general) throw new Error("Not connected.");
+  return emit<{
+    user: ServerUser;
+    rewards: RewardsInfo;
+    games: {
+      ticket: number;
+      item: { name: string; image: string; amountFixed: number; color: string; dropId: number };
+    }[];
+  }>(general, "sendRewardOpen", { slug });
+}
+
+export async function sendRakebackClaim() {
+  if (!general) throw new Error("Not connected.");
+  return emit<{ user: ServerUser }>(general, "sendRakebackClaim", {});
 }
 
 export async function battlesCreate(data: {
@@ -581,4 +675,57 @@ export type UserSeedInfo = {
 export async function getUserSeed() {
   if (!general) throw new Error("Not connected.");
   return emit<{ seed: UserSeedInfo; seedNext: UserSeedInfo }>(general, "getUserSeed", {});
+}
+
+export async function sendUserSeed(seedClient: string) {
+  if (!general) throw new Error("Not connected.");
+  return emit<{ seed: UserSeedInfo; seedNext: UserSeedInfo }>(general, "sendUserSeed", { seedClient });
+}
+
+export async function sendUserAnonymous(anonymous: boolean) {
+  if (!general) throw new Error("Not connected.");
+  return emit<{ anonymous: boolean }>(general, "sendUserAnonymous", { anonymous });
+}
+
+export type ProfileBet = {
+  _id: string;
+  method: string;
+  amount: number;
+  payout?: number;
+  multiplier?: number;
+  createdAt?: string;
+};
+
+export type ProfileTransaction = {
+  _id: string;
+  method: string;
+  amount: number;
+  type?: string;
+  state?: string;
+  createdAt?: string;
+};
+
+export async function getUserBets(page = 1) {
+  if (!general) throw new Error("Not connected.");
+  return emit<{ count: number; bets: ProfileBet[] }>(general, "getUserBets", { page });
+}
+
+export async function getUserTransactions(page = 1) {
+  if (!general) throw new Error("Not connected.");
+  return emit<{ count: number; transactions: ProfileTransaction[] }>(general, "getUserTransactions", { page });
+}
+
+export async function updateUserAvatar(avatar: string) {
+  const body = await api<{ user: ServerUser }>("/auth/credentials/avatar", {
+    method: "POST",
+    body: JSON.stringify({ avatar }),
+  });
+  return body.user;
+}
+
+export async function changeUserPassword(current: string, password: string) {
+  await api("/auth/credentials/password", {
+    method: "POST",
+    body: JSON.stringify({ current, password }),
+  });
 }

@@ -21,6 +21,8 @@ import {
   minesReveal,
   registerRequest,
   sendChatMessage,
+  sendRainJoin,
+  sendRainTip,
   setToken,
   token,
   towersBet,
@@ -37,6 +39,7 @@ import {
   blackjackStand,
   blackjackDouble,
   type AppUser,
+  type RainInfo,
   type ServerUser,
 } from "@/lib/backend";
 import { rankKeyFromLevel } from "@/lib/levels";
@@ -73,8 +76,10 @@ type Store = {
   dismissWelcome: () => void;
   chat: ChatMsg[];
   sendChat: (text: string) => void;
-  rain: { amount: number; endsAt: number };
+  rain: RainInfo;
   addRain: (n: number) => void;
+  joinRain: () => Promise<string | null>;
+  tipRain: (amount: number) => Promise<string | null>;
   sidebarOpen: boolean;
   chatOpen: boolean;
   toggleSidebar: () => void;
@@ -152,7 +157,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
   const [modal, setModal] = useState<Modal>(null);
   const [chat, setChat] = useState<ChatMsg[]>([]);
-  const [rain, setRain] = useState({ amount: 0, endsAt: Date.now() + 17 * 60 * 1000 });
+  const [rain, setRain] = useState<RainInfo>({ amount: 0, endsAt: 0, participants: [] });
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [chatOpen, setChatOpen] = useState(true);
   const holdRef = useRef(0);
@@ -211,7 +216,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             avatar: m.avatar,
           })),
         ),
-      onRain: (amount) => setRain((r) => ({ ...r, amount })),
+      onRain: (next) => setRain(next),
     });
   }, [applyUserNow]);
 
@@ -303,6 +308,24 @@ export function Providers({ children }: { children: React.ReactNode }) {
     setRain((r) => ({ ...r, amount: r.amount + n }));
   }, []);
 
+  const joinRain = useCallback(async () => {
+    try {
+      await sendRainJoin();
+      return null;
+    } catch (err) {
+      return err instanceof Error ? err.message : "Could not join rain.";
+    }
+  }, []);
+
+  const tipRain = useCallback(async (amount: number) => {
+    try {
+      await sendRainTip(amount);
+      return null;
+    } catch (err) {
+      return err instanceof Error ? err.message : "Could not tip rain.";
+    }
+  }, []);
+
   const openModal = useCallback((m: Modal) => {
     setModal(m);
   }, []);
@@ -336,6 +359,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
       sendChat,
       rain,
       addRain,
+      joinRain,
+      tipRain,
       sidebarOpen,
       chatOpen,
       toggleSidebar: () => setSidebarOpen((s) => !s),
@@ -358,7 +383,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       blackjackStand,
       blackjackDouble,
     }),
-    [user, ready, login, logout, register, applyUserNow, holdUser, flushUser, addBalance, spend, modal, openModal, closeModal, dismissWelcome, chat, sendChat, rain, addRain, sidebarOpen, chatOpen],
+    [user, ready, login, logout, register, applyUserNow, holdUser, flushUser, addBalance, spend, modal, openModal, closeModal, dismissWelcome, chat, sendChat, rain, addRain, joinRain, tipRain, sidebarOpen, chatOpen],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

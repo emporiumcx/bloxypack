@@ -411,6 +411,7 @@ export function Modals() {
     register,
     user,
     addBalance,
+    spend,
     tipRain,
     rain,
     applyUser,

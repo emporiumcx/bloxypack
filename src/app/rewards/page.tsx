@@ -14,9 +14,9 @@ import { BONUS_CASES, DAILY_CASES, bonusProgress, bonusTierForXp } from "@/lib/r
 const HEADER_CASES = ["halloween-case", "haunted-case", "golden-case"] as const;
 
 const RAKEBACK = [
-  { name: "Daily Rakeback", kind: "daily" as const, img: "/img/rewards/rakeback/daily_rakeback_fixed.svg" },
-  { name: "Weekly Rakeback", kind: "weekly" as const, img: "/img/rewards/rakeback/weekly_rakeback.svg" },
-  { name: "Monthly Rakeback", kind: "monthly" as const, img: "/img/rewards/rakeback/monthly_rakeback.svg" },
+  { name: "Daily Rakeback", kind: "daily" as const, img: "/img/rewards/rakeback/daily.png" },
+  { name: "Weekly Rakeback", kind: "weekly" as const, img: "/img/rewards/rakeback/weekly.png" },
+  { name: "Monthly Rakeback", kind: "monthly" as const, img: "/img/rewards/rakeback/monthly.png" },
 ];
 
 function pad(n: number) {
@@ -165,13 +165,13 @@ export default function RewardsPage() {
 
   return (
     <div className="@md/page:gap-32 @md/page:py-10 grid w-full grid-cols-1 gap-24">
-      <div className="relative overflow-hidden border-b-1 border-grey-47">
+      <div className="relative border-b-1 border-grey-47">
         <div className="grid w-full grid-cols-[1fr_auto] items-center gap-16">
           <div className="grid w-full grid-cols-[auto_1fr] items-center gap-12">
-            <img alt="" className="-mt-16 w-24" src="/img/rewards/gift.svg" />
+            <img alt="" className="animate-floaty -mt-16 w-24" src="/img/rewards/gift.svg" />
             <h2 className="@sm/page:text-24 text-18 text-white">Rewards</h2>
           </div>
-          <div className="relative hidden h-[120px] w-[280px] sm:block">
+          <div className="relative hidden h-[120px] w-[280px] overflow-hidden sm:block">
             <div className="absolute -bottom-28 right-0 flex h-[148px] w-[280px] items-end justify-center">
               {HEADER_CASES.map((slug, i) => {
                 const item = getCase(slug);
@@ -202,8 +202,8 @@ export default function RewardsPage() {
             return (
               <div key={r.name} className="group relative w-full overflow-hidden rounded-12 border-2 border-[#3F454D] bg-grey-39 transition-transform duration-300 ease-out">
                 <div className="relative flex w-full items-center gap-16 p-8">
-                  <div className="relative flex w-[92px] shrink-0 items-center justify-center pl-9">
-                    <img alt="" className={`h-auto w-full object-contain transition-all duration-300 ${claimable ? "" : "grayscale"}`} src={r.img} />
+                  <div className="relative flex h-[92px] w-[92px] shrink-0 items-center justify-center">
+                    <img alt="" className={`h-full w-full object-contain drop-shadow-[0_6px_10px_rgba(0,0,0,0.45)] transition-all duration-300 ${claimable ? "" : "grayscale"}`} src={r.img} />
                   </div>
                   <div className="flex flex-1 flex-col gap-8">
                     <h4 className="text-balance text-14 text-white">{r.name}</h4>

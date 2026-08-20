@@ -65,47 +65,64 @@ function BetAmount({ value, win }: { value: number; win?: boolean }) {
 
 export function BetsTable() {
   const [tab, setTab] = useState<(typeof TABS)[number]>("All Bets");
+  const barRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const [pill, setPill] = useState({ left: 0, width: 0 });
+  const [pill, setPill] = useState({ left: 0, width: 0, ready: false });
   const rows =
     tab === "Lucky Wins" ? ALL.filter((r) => r.multi >= 2) : tab === "High Rollers" ? [...ALL].sort((a, b) => b.bet - a.bet) : ALL;
 
   useLayoutEffect(() => {
+    const bar = barRef.current;
     const el = tabRefs.current[TABS.indexOf(tab)];
-    if (!el) return;
-    setPill({ left: el.offsetLeft, width: el.offsetWidth });
+    if (!bar || !el) return;
+
+    const place = () => {
+      const barBox = bar.getBoundingClientRect();
+      const box = el.getBoundingClientRect();
+      setPill({ left: box.left - barBox.left, width: box.width, ready: true });
+    };
+
+    place();
+    const ro = new ResizeObserver(place);
+    ro.observe(bar);
+    window.addEventListener("resize", place);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", place);
+    };
   }, [tab]);
 
   return (
     <div className="@sm/page:gap-24 relative grid w-full min-w-0 grid-cols-1 gap-12">
       <div className="@sm/page:pt-0 flex w-full pt-24">
         <div className="relative flex w-full justify-start">
-          <div className="relative flex min-w-[120px] items-center justify-start rounded-6 bg-transparent">
+          <div ref={barRef} className="relative flex min-w-[120px] items-center justify-start rounded-6 bg-transparent">
             <div
-              className="absolute top-0 h-36 rounded-6 bg-green-8 ring-1 ring-inset ring-green transition-all duration-300 ease-out @sm/page:h-40"
-              style={{ left: pill.left, width: pill.width }}
+              className={`bets-tab-pill h-36 rounded-6 bg-green-8 ring-1 ring-inset ring-green @sm/page:h-40 ${
+                pill.ready ? "is-ready" : "opacity-0"
+              }`}
+              style={{ width: pill.width, ["--pill-x" as string]: `${pill.left}px` }}
             />
             {TABS.map((t, i) => (
-              <div key={t} className="group relative z-10 grid h-36 w-auto grid-cols-1 @sm/page:h-40">
-                <button
-                  type="button"
-                  ref={(el) => {
-                    tabRefs.current[i] = el;
-                  }}
-                  onClick={() => setTab(t)}
-                  className={`relative flex h-full w-full items-center justify-center rounded-6 px-12 transition-colors ${
-                    tab === t ? "" : "hover:bg-grey-39"
+              <button
+                key={t}
+                type="button"
+                ref={(el) => {
+                  tabRefs.current[i] = el;
+                }}
+                onClick={() => setTab(t)}
+                className={`group relative z-10 flex h-36 w-auto items-center justify-center rounded-6 px-12 transition-colors @sm/page:h-40 ${
+                  tab === t ? "" : "hover:bg-grey-39"
+                }`}
+              >
+                <p
+                  className={`relative whitespace-nowrap text-center text-11 font-bold uppercase tracking-[0.04em] transition-colors duration-200 @sm/page:text-13 @sm/page:tracking-[0.06em] ${
+                    tab === t ? "text-white" : "text-grey-142 group-hover:text-white"
                   }`}
                 >
-                  <p
-                    className={`relative whitespace-nowrap text-center text-11 font-bold uppercase tracking-[0.04em] transition-colors duration-200 @sm/page:text-13 @sm/page:tracking-[0.06em] ${
-                      tab === t ? "text-white" : "text-grey-142 group-hover:text-white"
-                    }`}
-                  >
-                    {t}
-                  </p>
-                </button>
-              </div>
+                  {t}
+                </p>
+              </button>
             ))}
           </div>
         </div>

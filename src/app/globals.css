@@ -590,6 +590,20 @@ a > * {
   animation: bets-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+.bets-tab-pill {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  translate: var(--pill-x, 0px) 0;
+}
+
+.bets-tab-pill.is-ready {
+  transition:
+    translate 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @keyframes page-in {
   from {
     opacity: 0;

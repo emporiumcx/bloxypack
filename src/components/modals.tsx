@@ -464,7 +464,7 @@ export function Modals() {
           <span className="rounded-full bg-green px-12 py-4 text-12 font-bold tracking-wide text-grey-1">
             WELCOME TO
           </span>
-          <img src="/img/logo.png" alt="BloxyWild" className="h-48 object-contain" />
+          <img src="/img/logo.png" alt="BloxyPack" className="h-48 object-contain" />
           <p className="text-16 text-grey-190">Welcome to the #1 Roblox Case Opening Site!</p>
           <GreenButton onClick={dismissWelcome}>Continue to BloxyWild →</GreenButton>
         </div>
@@ -836,9 +836,9 @@ export function Modals() {
             href="https://discord.gg/rostake"
             target="_blank"
             rel="noreferrer"
-            className={`flex h-40 w-full items-center justify-center px-16 shadow-[0_2px_0_rgba(0,0,0,0.25)] ${green3d}`}
+            className={`flex h-40 w-full items-center justify-center px-16 ${green3d}`}
           >
-            <span className="ui-btn-label text-13 text-grey-28">Open Discord</span>
+            <span className="ui-btn-label text-13 text-grey-190">Open Discord</span>
           </a>
         </div>
       </Overlay>
@@ -1037,10 +1037,10 @@ export function Modals() {
                           type="button"
                           aria-label="button"
                           onClick={sendTip}
-                          className="group/button relative flex h-32 cursor-pointer items-start justify-center rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green shadow-[0_2px_0_rgba(0,0,0,0.25)] opacity-100 transition-all duration-200 active:translate-y-px active:border-green"
+                          className="group/button relative flex h-32 cursor-pointer items-start justify-center rounded-6 bg-gradient-to-b from-green to-green-2 opacity-100 transition-all duration-200 hover:brightness-110 active:brightness-95"
                         >
                           <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-6 @sm/page:px-10">
-                            <p className="ui-btn-label text-12 text-grey-28 transition-all duration-300">Send tip</p>
+                            <p className="ui-btn-label text-12 text-grey-190 transition-all duration-300">Send tip</p>
                           </div>
                         </button>
                       </div>

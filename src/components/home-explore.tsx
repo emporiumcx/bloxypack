@@ -61,7 +61,7 @@ function RewardCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="group relative overflow-visible rounded-12 border-2 border-[#3F454D] bg-grey-39 px-14 pb-14 pt-72 transition-transform duration-300 ease-out hover:scale-[1.01]">
+    <div className="group relative overflow-visible rounded-12 border-2 border-grey-58 bg-grey-39 px-14 pb-14 pt-72 transition-transform duration-300 ease-out hover:scale-[1.01]">
       <div className={`pointer-events-none absolute inset-x-0 top-0 h-80 rounded-t-[10px] ${glow}`} />
       <img alt="" draggable={false} src={img} className={`pointer-events-none absolute left-1/2 -translate-x-1/2 object-contain ${imgClass}`} />
       <div className="relative grid gap-10">{children}</div>
@@ -122,7 +122,7 @@ export function ExploreRewards() {
       <RewardCard
         img="/img/home/daily-case.webp"
         imgClass="top-[-64px] h-[136px] w-[136px]"
-        glow="bg-[radial-gradient(circle_at_50%_80%,rgba(144,239,48,0.18),transparent_70%)]"
+        glow="bg-[radial-gradient(circle_at_50%_80%,rgba(82,181,255,0.18),transparent_70%)]"
       >
         <div className="grid gap-4">
           <p className="text-12 text-grey-142">Free Daily Case</p>

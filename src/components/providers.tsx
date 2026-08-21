@@ -109,6 +109,18 @@ const WELCOME_SESSION_KEY = "bloxywild-welcome-session";
 const WELCOME_UNTIL_KEY = "bloxywild-welcome-until";
 const WELCOME_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
 
+function useMediaQuery(query: string, initial: boolean) {
+  const [matches, setMatches] = useState(initial);
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const apply = () => setMatches(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, [query]);
+  return matches;
+}
+
 function storageGet(storage: Storage, key: string) {
   try {
     return storage.getItem(key);
@@ -146,7 +158,7 @@ function shouldShowWelcome() {
 }
 
 function colorForRank(rank: string) {
-  if (rank === "staff") return "#88FF55";
+  if (rank === "staff") return "#52B5FF";
   if (rank === "gold") return "#F1C947";
   if (rank === "silver") return "#B0B3D6";
   return "#D2D2D2";
@@ -158,8 +170,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const [modal, setModal] = useState<Modal>(null);
   const [chat, setChat] = useState<ChatMsg[]>([]);
   const [rain, setRain] = useState<RainInfo>({ amount: 0, endsAt: 0, participants: [] });
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [chatOpen, setChatOpen] = useState(true);
+  const [sidebarPinned, setSidebarPinned] = useState<boolean | null>(null);
+  const [chatPinned, setChatPinned] = useState<boolean | null>(null);
+  const sidebarFits = useMediaQuery("(min-width: 1024px)", true);
+  const chatFits = useMediaQuery("(min-width: 1024px)", true);
+  const sidebarOpen = sidebarPinned ?? sidebarFits;
+  const chatOpen = chatPinned ?? chatFits;
   const holdRef = useRef(0);
   const pendingUserRef = useRef<ServerUser | null>(null);
 
@@ -363,8 +379,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
       tipRain,
       sidebarOpen,
       chatOpen,
-      toggleSidebar: () => setSidebarOpen((s) => !s),
-      toggleChat: () => setChatOpen((s) => !s),
+      toggleSidebar: () => setSidebarPinned((p) => !(p ?? sidebarFits)),
+      toggleChat: () => setChatPinned((p) => !(p ?? chatFits)),
       minesBet,
       minesReveal,
       minesCashout,
@@ -383,7 +399,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       blackjackStand,
       blackjackDouble,
     }),
-    [user, ready, login, logout, register, applyUserNow, holdUser, flushUser, addBalance, spend, modal, openModal, closeModal, dismissWelcome, chat, sendChat, rain, addRain, joinRain, tipRain, sidebarOpen, chatOpen],
+    [user, ready, login, logout, register, applyUserNow, holdUser, flushUser, addBalance, spend, modal, openModal, closeModal, dismissWelcome, chat, sendChat, rain, addRain, joinRain, tipRain, sidebarOpen, chatOpen, sidebarFits, chatFits],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

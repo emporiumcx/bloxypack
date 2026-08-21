@@ -24,14 +24,20 @@ export function mapBattleGame(game: BattleGame): Battle {
 
   const teams =
     game.mode === "team"
-      ? "2v2 Team"
+      ? game.playerCount === 6
+        ? "2v2v2 Team"
+        : "2v2 Team"
       : game.mode === "group"
         ? `${game.playerCount}P Group`
-        : game.playerCount === 4
-          ? "1v1v1v1"
-          : game.playerCount === 3
-            ? "1v1v1"
-            : "1v1";
+        : game.playerCount === 6
+          ? "1v1v1v1v1v1"
+          : game.playerCount === 4
+            ? "1v1v1v1"
+            : game.playerCount === 3
+              ? "1v1v1"
+              : "1v1";
+
+  const opened = Math.max(0, ...(game.bets || []).map((b) => b.outcomes?.length || 0), 0);
 
   return {
     id: game._id,
@@ -41,11 +47,13 @@ export function mapBattleGame(game: BattleGame): Battle {
     slots: game.playerCount,
     teams,
     status: game.state === "completed" ? "ended" : "active",
-    unboxed: (game.bets?.[0]?.outcomes || []).length,
+    unboxed: (game.bets || []).reduce((sum, bet) => sum + (bet.payout || 0), 0) / 1000,
+    opened,
     jackpot: Boolean(game.options?.jackpot),
     crazy: Boolean(game.options?.cursed),
     terminal: Boolean(game.options?.terminal),
     funding: Math.min(80, Math.max(0, game.options?.funding || 0)),
+    createdAt: game.updatedAt ? new Date(game.updatedAt).getTime() : 0,
   };
 }
 

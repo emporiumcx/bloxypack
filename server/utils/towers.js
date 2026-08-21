@@ -74,11 +74,11 @@ const towersGenerateDeck = (risk, seedDatabase) => {
         serverSeed: seedDatabase.seedServer,
         clientSeed: seedDatabase.seedClient,
         nonce: seedDatabase.nonce,
-        count: 10 * config.mines
+        count: 9 * config.mines
     });
 
     const deck = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 9; i++) {
         const rowFloats = floats.slice(i * config.mines, (i + 1) * config.mines);
         const mineTiles = pickIndices(rowFloats, config.tiles);
         const row = Array.from({ length: config.tiles }, () => 'coin');

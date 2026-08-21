@@ -22,7 +22,7 @@ export function UserAvatar({
 }) {
   const staff = rank === "staff" || rank === "admin";
   const ring = staff
-    ? "#88FF55"
+    ? "#52B5FF"
     : level != null && Number.isFinite(level)
       ? rankRingFromLevel(level)
       : avatarRing(avatar, seed);

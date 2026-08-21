@@ -1,241 +1,170 @@
 "use client";
 
-import Link from "next/link";
+import { useMemo, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
-import { BattleModeIcons, BattleSeat, BattleVs } from "@/components/battle-seat";
-import { Bux } from "@/components/bux";
-import { ChoiceBar } from "@/components/bet-field";
+import { BattleRow } from "@/components/battle-row";
 import { Dropdown } from "@/components/dropdown";
-import { FairnessControl } from "@/components/fairness";
 import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
-import { ItemBg } from "@/components/item-bg";
-import { caseImage, getCase, type Battle } from "@/lib/catalog";
+import { BATTLES, type Battle } from "@/lib/catalog";
 import { subscribeBattles } from "@/lib/backend";
 import { mapBattleGame } from "@/lib/battles-map";
+import { battleKind } from "@/components/battle-modes";
+
+const TABS = [
+  { id: "active", label: "Active Battles" },
+  { id: "weekly", label: "Top Weekly" },
+  { id: "mine", label: "My Battles" },
+] as const;
+
+const TYPES = [
+  { id: "all", label: "Battle Type" },
+  { id: "normal", label: "Normal" },
+  { id: "jackpot", label: "Jackpot" },
+  { id: "group", label: "Group" },
+];
+
+const MODES = [
+  { id: "all", label: "Battle Mode" },
+  { id: "crazy", label: "Crazy" },
+  { id: "terminal", label: "Terminal" },
+];
 
 const SORTS = [
-  { id: "high", label: "Price High-Low" },
-  { id: "low", label: "Price Low-High" },
+  { id: "high", label: "Price Descending" },
+  { id: "low", label: "Price Ascending" },
   { id: "new", label: "Newest" },
   { id: "old", label: "Oldest" },
 ];
 
-function seatGroups(b: Battle) {
-  const filled = Array.from({ length: b.slots }, (_, i) => b.players[i] ?? null);
-  const nums = b.teams.match(/\d+/g)?.map(Number);
-  if (nums && nums.length >= 2 && nums.reduce((a, n) => a + n, 0) === b.slots) {
-    const groups: (typeof filled)[] = [];
-    let i = 0;
-    for (const n of nums) {
-      groups.push(filled.slice(i, i + n));
-      i += n;
-    }
-    return groups;
-  }
-  return filled.map((p) => [p]);
+function sortBattles(list: Battle[], sort: string) {
+  return [...list].sort((a, b) => {
+    if (sort === "high") return b.cost - a.cost;
+    if (sort === "low") return a.cost - b.cost;
+    if (sort === "new") return (b.createdAt || 0) - (a.createdAt || 0) || b.id.localeCompare(a.id);
+    return (a.createdAt || 0) - (b.createdAt || 0) || a.id.localeCompare(b.id);
+  });
+}
+
+function applyFilters(list: Battle[], type: string, mode: string) {
+  return list.filter((b) => {
+    if (type !== "all" && battleKind(b) !== type) return false;
+    if (mode === "crazy" && !b.crazy) return false;
+    if (mode === "terminal" && !b.terminal) return false;
+    return true;
+  });
 }
 
 export default function BattlesPage() {
   const router = useRouter();
   const { user, openModal } = useStore();
+  const [tab, setTab] = useState<(typeof TABS)[number]["id"]>("active");
+  const [type, setType] = useState("all");
+  const [mode, setMode] = useState("all");
   const [sort, setSort] = useState("high");
-  const [activeOnly, setActiveOnly] = useState("all");
   const [live, setLive] = useState<Battle[]>([]);
 
   useEffect(() => {
     return subscribeBattles((state) => {
-      setLive(state.games.filter((g) => g.state !== "completed" && g.state !== "cancelled").map(mapBattleGame));
+      setLive(state.games.filter((g) => g.state !== "cancelled").map(mapBattleGame));
     });
   }, []);
 
+  const pool = live.length ? live : BATTLES;
+  const active = pool.filter((b) => b.status === "active");
+  const ended = pool.filter((b) => b.status === "ended");
+
   const list = useMemo(() => {
-    const filtered = live.filter((b) => (activeOnly === "active" ? b.status === "active" : true));
-    return filtered.sort((a, b) => {
-      if (sort === "high") return b.cost - a.cost;
-      if (sort === "low") return a.cost - b.cost;
-      if (sort === "new") return b.id.localeCompare(a.id);
-      return a.id.localeCompare(b.id);
-    });
-  }, [sort, activeOnly, live]);
+    let rows = tab === "active" ? active : tab === "weekly" ? ended : pool.filter((b) => user && b.players.some((p) => p.name === user.username));
+    rows = applyFilters(rows, type, mode);
+    return sortBattles(rows, sort);
+  }, [tab, type, mode, sort, active, ended, pool, user]);
+
+  const dailyTop = useMemo(() => sortBattles(ended, "high").slice(0, 6), [ended]);
+
+  const create = () => {
+    if (!user) return openModal("login");
+    router.push("/battles/create");
+  };
 
   return (
-    <div className="flex w-full justify-center">
-    <div className="@xl/page:gap-32 @bt/page:gap-24 grid w-full grid-cols-1 gap-16">
-      <div className="flex w-full items-center justify-between gap-12">
-        <h1 className="@sm/page:text-20 @md/page:text-24 text-18 font-bold leading-[125%] text-white">Battles</h1>
-        <FairnessControl game="Battles" userSeeds={false} fields={[
-          { label: "Server Seed", placeholder: "Shown on each battle after it finishes" },
-          { label: "Server Seed (Hashed)", placeholder: "Open a battle to view its hash" },
-          { label: "Block Number", placeholder: "Set from the EOS head block when a battle starts" },
-          { label: "Block Hash", placeholder: "Set from the EOS head block when a battle starts" },
-        ]} />
-      </div>
-
-      <div className="@md/page:grid-cols-[1fr_auto] grid w-full grid-cols-1 items-center gap-10">
-        <div className="@md/page:justify-between @md/page:flex @sm/page:grid-cols-[auto_1fr] grid w-full grid-cols-1 items-center gap-10">
-          <ChoiceBar
-            value={activeOnly}
-            onChange={(id) => setActiveOnly(id === activeOnly ? "all" : id)}
-            options={[{ id: "active", label: "Active" }]}
-          />
-          <Dropdown value={sort} options={SORTS} onChange={setSort} className="md:w-[220px]" />
+    <div className="w-full max-w-full">
+      <div className="flex w-full items-center gap-10">
+        <div className="flex items-center justify-start gap-10">
+          <div className="flex size-40 shrink-0 items-center justify-center rounded-6 bg-green/15 text-green">
+            <Icons.battles className="text-16" />
+          </div>
+          <div className="flex min-w-0 flex-col gap-2">
+            <h1 className="ui-label text-start text-16 text-white">Battles</h1>
+            <span className="text-start text-12 text-grey-142">Discover live battles and compete!</span>
+          </div>
         </div>
-
-        <div className="grid grid-cols-[1fr_40px] items-center gap-10">
-          <GreenButton
-            icon={<Icons.plus className="text-18" />}
-            onClick={() => {
-              if (!user) return openModal("login");
-              router.push("/battles/create");
-            }}
-          >
-            Create Battle
+        <div className="ml-auto xl:hidden">
+          <GreenButton size="sm" icon={<Icons.plus className="text-14" />} onClick={create}>
+            Create New Battle
           </GreenButton>
-          <button
-            type="button"
-            aria-label="refresh"
-            onClick={() => {
-              /* live list is socket-driven */
-            }}
-            className="group/button relative flex h-40 w-40 cursor-pointer items-center justify-center rounded-6 bg-grey-28"
-          >
-            <Icons.refresh className="text-20 text-grey-142 transition-transform duration-500 group-hover/button:rotate-[360deg]" />
-          </button>
         </div>
       </div>
 
-      <div className="grid w-full grid-cols-1 gap-12">
-      <div>
-      <ul className="grid w-full grid-cols-1 gap-8">
+      <div className="mt-16 flex w-full flex-col items-end gap-16 md:flex-row md:flex-wrap md:items-center">
+        <div className="inline-flex w-full gap-4 rounded-8 border border-grey-58 bg-grey-28 p-4 md:w-auto">
+          {TABS.map((t) => {
+            const on = tab === t.id;
+            const count = t.id === "active" ? active.length : undefined;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setTab(t.id)}
+                className={`h-26 flex-1 truncate rounded-6 px-10 text-12 font-medium md:flex-initial ${
+                  on ? "bg-gradient-to-b from-green to-green-2 text-white" : "text-grey-142 hover:bg-white/5"
+                }`}
+              >
+                {t.label}
+                {count != null ? ` (${count})` : ""}
+              </button>
+            );
+          })}
+        </div>
+        <Dropdown value={type} options={TYPES} onChange={setType} size="sm" className="w-full md:w-140" />
+        <Dropdown value={mode} options={MODES} onChange={setMode} size="sm" className="w-full md:w-148" />
+        <Dropdown value={sort} options={SORTS} onChange={setSort} size="sm" className="w-full md:w-176" />
+        <div className="hidden xl:ml-auto xl:block">
+          <GreenButton size="sm" icon={<Icons.plus className="text-14" />} onClick={create}>
+            Create New Battle
+          </GreenButton>
+        </div>
+      </div>
+
+      <div className="mt-16 flex min-h-[50vh] w-full flex-col gap-8 md:gap-16">
         {list.length === 0 ? (
-          <li className="panel-outline rounded-12 bg-grey-39 p-24 text-center text-14 text-grey-142">
-            No live battles yet. Create one to get started.
-          </li>
-        ) : null}
-        {list.map((b) => {
-          const ended = b.status === "ended";
-          const groups = seatGroups(b);
-          const action = ended ? "Replay" : b.players.length < b.slots ? "Join" : "Watch";
-          const href = `/battles/${b.id}`;
-          const mode = /team/i.test(b.teams) ? "team" : "normal";
-          const seatCols = b.slots + Math.max(0, groups.length - 1);
-          return (
-            <li key={b.id} className="w-full">
-              <div className="panel-outline tr @container relative w-full rounded-12 bg-grey-39 opacity-60 hover:opacity-100 active:opacity-100">
-                <div className="@[850px]:px-20 @md/page:py-8 relative w-full px-12 py-12">
-                  <div className="@[1000px]:gap-16 @[850px]:grid-cols-[auto_1fr_auto] @[1240px]:gap-26 @[540px]:grid-cols-[1fr_auto] grid w-full grid-cols-1 items-center gap-12">
-                    <div className="@[540px]:col-span-2 @[850px]:col-span-1 @[850px]:w-[302px] @[850px]:grid-cols-1 @[850px]:gap-6 @[540px]:grid-cols-[auto_auto] col-span-1 grid animate-show grid-cols-1 items-center justify-center gap-14">
-                      <div className="flex w-full flex-col items-center justify-center gap-6">
-                        <p className="w-full text-center text-14 uppercase text-grey-190">{mode}</p>
-                        <BattleModeIcons jackpot={b.jackpot} crazy={b.crazy} terminal={b.terminal} />
-                      </div>
-                      <div className="flex items-center justify-center">
-                        <div
-                          className="@sm/page:gap-8 grid items-center gap-4"
-                          style={{ gridTemplateColumns: `repeat(${seatCols}, auto)` }}
-                        >
-                          {groups.map((g, gi) => (
-                            <div key={gi} className="contents">
-                              {gi > 0 ? <BattleVs /> : null}
-                              {g.map((p, pi) => (
-                                <BattleSeat key={pi} name={p?.name} filled={Boolean(p)} level={p?.level} src={p?.avatar} />
-                              ))}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="@sm/page:h-80 @sm/page:rounded-8 relative h-56 w-full rounded-4 bg-grey-28">
-                      <div className="@sm/page:rounded-8 grid h-full w-full grid-cols-1 overflow-hidden rounded-4 bg-grey-28">
-                        <div className="relative h-full w-full overflow-hidden">
-                          <div className="@sm/page:h-[80px] absolute left-0 top-0 flex h-[56px] w-max overflow-hidden">
-                            {b.cases.map((slug, ci) => {
-                              const c = getCase(slug);
-                              return (
-                                <button
-                                  key={`${slug}-${ci}`}
-                                  type="button"
-                                  aria-label="open"
-                                  className="group/case @sm/page:h-80 @sm/page:w-84 relative flex h-56 w-56 items-center justify-center opacity-100"
-                                >
-                                  {c ? (
-                                    <>
-                                      <ItemBg className="inset-4 opacity-35" />
-                                      <img
-                                        alt=""
-                                        src={caseImage(c)}
-                                        className="@sm/page:h-72 @sm/page:w-72 relative h-48 w-48 object-contain"
-                                      />
-                                    </>
-                                  ) : null}
-                                </button>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="absolute right-8 top-8 opacity-[1] transition-opacity duration-200">
-                        <div className="h-24 rounded-5 bg-grey-39">
-                          <div className="relative flex h-full w-full items-center justify-center rounded-5 px-8">
-                            <div className="relative flex items-center">
-                              <div className="flex items-center justify-center" style={{ width: 16, height: 16 }}>
-                                <Icons.cases className="text-white" style={{ marginLeft: -2, scale: 0.8 }} />
-                              </div>
-                              <p className="ml-4 flex text-12 text-white">
-                                {b.cases.length}
-                                <span className="text-12 text-grey-142">/{b.cases.length}</span>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="@[540px]:w-[285px] grid w-full grid-cols-1 items-center gap-12 pt-4">
-                      <div className="@xs/page:grid-cols-[1fr_auto] grid w-full animate-show grid-cols-1 items-center gap-10">
-                        <div className="grid w-full grid-cols-1 gap-4">
-                          <GreenButton href={href} size="sm" wide={false} icon={ended ? <Icons.replay /> : undefined}>
-                            {action}
-                          </GreenButton>
-                          {ended ? (
-                            <div className="flex w-full justify-center">
-                              <div className="@sm/page:px-6 grid grid-cols-[auto_1fr] items-center justify-center gap-4">
-                                <p className="text-12 text-grey-142">Unboxed:</p>
-                                <Bux value={b.unboxed} />
-                              </div>
-                            </div>
-                          ) : null}
-                        </div>
-                        <div className="@xs/page:w-120 grid w-full grid-cols-1 items-center gap-12 @[540px]:gap-6 @[1240px]:gap-12">
-                          <div className="grid w-full grid-cols-1 gap-4">
-                            <Link href={href} className="flex h-32 w-full items-start rounded-8 bg-grey-28">
-                              <div className="flex h-full w-full items-center justify-center rounded-8 bg-grey-28 px-10">
-                                <div className="flex w-full justify-center">
-                                  <Bux value={b.cost} />
-                                </div>
-                              </div>
-                            </Link>
-                            <div className="flex h-18 items-center justify-center">
-                              <p className="text-12 text-grey-190">Battle cost</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+          <div className="rounded-8 bg-grey-39 p-24 text-center text-14 text-grey-142">
+            {tab === "mine" ? "You haven’t joined any battles yet." : "No live battles yet. Create one to get started."}
+          </div>
+        ) : (
+          list.map((b) => <BattleRow key={b.id} battle={b} />)
+        )}
       </div>
-      </div>
-    </div>
+
+      {tab === "active" && dailyTop.length > 0 ? (
+        <div className="mt-24 flex flex-col gap-12">
+          <div className="flex items-center justify-start gap-10">
+            <div className="flex size-40 shrink-0 items-center justify-center rounded-6 bg-green/15 text-green">
+              <Icons.trophy className="text-16" />
+            </div>
+            <div className="flex min-w-0 flex-col gap-2">
+              <h2 className="ui-label text-start text-16 text-white">Daily Top Battles</h2>
+              <span className="text-start text-12 text-grey-142">Today’s biggest battles to replay</span>
+            </div>
+          </div>
+          <div className="flex flex-col gap-8 md:gap-16">
+            {dailyTop.map((b) => (
+              <BattleRow key={`top-${b.id}`} battle={b} />
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

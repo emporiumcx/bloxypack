@@ -8,12 +8,16 @@ export function BattleSeat({
   size = 40,
   src,
   level = 1,
+  empty = "seat",
+  interactive = true,
 }: {
   name?: string;
   filled: boolean;
   size?: number;
   src?: string;
   level?: number;
+  empty?: "seat" | "x";
+  interactive?: boolean;
 }) {
   const inner = Math.round(size * 0.925);
   const avatar = Math.round(size * 0.825);
@@ -44,6 +48,8 @@ export function BattleSeat({
               className="h-full w-full rounded-2 object-cover"
               src={src || avatarSrc(undefined, name)}
             />
+          ) : empty === "x" ? (
+            <Icons.close className="text-12 text-grey-112" />
           ) : (
             <Icons.seat className="text-18 text-grey-190" />
           )}
@@ -64,7 +70,7 @@ export function BattleSeat({
           </div>
         </div>
       ) : null}
-      <button type="button" className="absolute inset-0" />
+      {interactive ? <button type="button" className="absolute inset-0" /> : null}
     </div>
   );
 }

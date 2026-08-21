@@ -113,8 +113,8 @@ export function AddCaseModal({
                   <div className="flex w-full justify-center">
                     <Bux value={item.price} />
                   </div>
-                  <div className="flex h-32 items-center justify-center rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green shadow-[0_2px_0_rgba(0,0,0,0.25)]">
-                    <span className="ui-btn-label text-12 text-grey-28">Add case</span>
+                  <div className="flex h-32 items-center justify-center rounded-6 bg-gradient-to-b from-green to-green-2">
+                    <span className="ui-btn-label text-12 text-grey-190">Add case</span>
                   </div>
                 </div>
               </button>

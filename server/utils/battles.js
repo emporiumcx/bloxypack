@@ -22,7 +22,7 @@ const battlesCheckGetGameDataGame = (battlesGame) => {
 const battlesCheckSendCreateData = (data) => {
     if(data === undefined || data === null) {
         throw new Error('Something went wrong. Please try again in a few seconds.');
-    } else if(data.playerCount === undefined || data.playerCount === null || isNaN(data.playerCount) === true || Math.floor(data.playerCount) < 2 || Math.floor(data.playerCount) > 4) {
+    } else if(data.playerCount === undefined || data.playerCount === null || isNaN(data.playerCount) === true || Math.floor(data.playerCount) < 2 || Math.floor(data.playerCount) > 6) {
         throw new Error('Your entered mode is invalid.');
     } else if(data.mode === undefined || data.mode === null || typeof data.mode !== 'string' || ['standard', 'team', 'group'].includes(data.mode) !== true) {
         throw new Error('Your entered mode is invalid.');

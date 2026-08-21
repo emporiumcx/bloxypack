@@ -720,14 +720,14 @@ export function CaseOpening({ item }: { item: CaseItem }) {
                 aria-label="button"
                 disabled={spinning}
                 onClick={() => open(false)}
-                className="group/button relative flex h-40 cursor-pointer items-start justify-center rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green shadow-[0_2px_0_rgba(0,0,0,0.25)] opacity-100 transition-all duration-200 active:translate-y-px active:border-green disabled:opacity-40"
+                className="group/button relative flex h-40 cursor-pointer items-start justify-center rounded-6 bg-gradient-to-b from-green to-green-2 opacity-100 transition-all duration-200 hover:brightness-110 active:brightness-95 disabled:opacity-40"
               >
                 <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-16">
                   {reward ? (
-                    <p className="ui-btn-label text-nowrap text-12 text-grey-28">Open case</p>
+                    <p className="ui-btn-label text-nowrap text-12 text-grey-190">Open case</p>
                   ) : (
                     <div className="grid grid-cols-[auto_auto] items-center gap-4">
-                      <p className="ui-btn-label text-nowrap text-12 text-grey-28">
+                      <p className="ui-btn-label text-nowrap text-12 text-grey-190">
                         Open {n} case{n > 1 ? "s" : ""} for
                       </p>
                       <Bux value={cost} tone="onGreen" size="xs" />

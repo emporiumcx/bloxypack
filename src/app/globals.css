@@ -2,45 +2,52 @@
 
 :root {
   --color-blue: rgb(82, 181, 255);
-  --color-green: #90ef30;
-  --color-green-2: #15ef4b;
-  --color-green-8: rgba(144, 239, 48, 0.08);
-  --color-green-20: rgba(21, 239, 75, 0.2);
-  --color-green-95: #0e9a32;
-  --color-green-136: #90ef30;
-  --color-green-184: #6ef05a;
-  --color-green-202: #b6f56a;
-  --color-green-222: #d4f98a;
+  --color-green: #52b5ff;
+  --color-green-2: #1e7dff;
+  --color-green-8: rgba(82, 181, 255, 0.08);
+  --color-green-20: rgba(30, 125, 255, 0.2);
+  --color-green-95: #0d5cb8;
+  --color-green-136: #52b5ff;
+  --color-green-184: #3aa3f5;
+  --color-green-202: #7ccfff;
+  --color-green-222: #c4ebff;
   --color-purple-80: rgba(137, 94, 255, 0.16);
   --color-purple-96: rgba(137, 94, 255, 0.25);
-  --color-purple-46: color-mix(in srgb, rgb(137, 94, 255) 8%, rgb(40, 44, 51));
+  --color-purple-46: color-mix(in srgb, rgb(137, 94, 255) 8%, #111520);
   --color-red-dark: rgb(206, 41, 80);
   --color-red-206: rgb(206, 41, 80);
-  --color-grey-1: rgb(24, 28, 34);
-  --color-grey-28: rgb(13, 16, 19);
-  --color-grey-34: rgb(34, 38, 44);
-  --color-grey-39: rgb(40, 44, 51);
-  --color-grey-47: rgb(50, 54, 62);
-  --color-grey-58: rgb(62, 66, 74);
-  --color-grey-70: rgb(74, 78, 86);
-  --color-grey-112: rgb(132, 135, 138);
-  --color-grey-118: rgb(138, 141, 146);
-  --color-grey-142: rgb(162, 164, 167);
-  --color-grey-170: rgb(190, 190, 190);
-  --color-grey-183: rgb(203, 205, 210);
-  --color-grey-190: rgb(210, 210, 210);
-  --color-grey-246: rgb(250, 250, 250);
+  --color-grey-1: #0e111a;
+  --color-grey-28: #04060b;
+  --color-grey-34: #0e111a;
+  --color-grey-39: #111520;
+  --color-grey-47: #171c29;
+  --color-grey-58: #1e2837;
+  --color-grey-70: #283548;
+  --color-grey-112: #536a7e;
+  --color-icons-secondary: #425f68;
+  --color-grey-118: #5d8694;
+  --color-grey-142: #8ba4ba;
+  --color-grey-170: #a8c0d4;
+  --color-grey-183: #c9eff6;
+  --color-grey-190: #e4fbff;
+  --color-grey-246: #f4ffff;
   --color-orange: rgb(247, 147, 26);
   --color-blue-98: rgb(98, 126, 234);
   --color-blue-40: rgb(40, 117, 202);
   --color-blue-170: rgb(0, 170, 228);
   --color-green-83: rgb(83, 174, 148);
+  --color-success: #0aff7c;
   --color-purple-153: rgb(153, 70, 255);
   --color-red-19: rgb(255, 0, 19);
   --color-yellow-241: rgb(241, 185, 10);
   --color-yellow-244: rgb(244, 172, 55);
   --color-pink: rgb(215, 120, 255);
   --color-pink-231: rgb(231, 120, 255);
+  --color-battle-jackpot: #01a540;
+  --color-battle-crazy: #d32ce6;
+  --color-battle-normal: #5e98d9;
+  --color-battle-group: #8847ff;
+  --color-battle-terminal: #e8b923;
   --color-purple: rgb(137, 94, 255);
   --color-red: rgb(255, 85, 98);
   --color-red-143: rgb(255, 143, 170);
@@ -56,8 +63,8 @@
   --color-rank-gold: rgb(241, 201, 71);
   --color-rank-platinum: rgb(172, 195, 240);
   --color-rank-diamond: rgb(96, 188, 255);
-  --background: rgb(13, 16, 19);
-  --foreground: #fff;
+  --background: #04060b;
+  --foreground: #e4fbff;
 }
 
 @theme inline {
@@ -85,6 +92,7 @@
   --color-grey-58: var(--color-grey-58);
   --color-grey-70: var(--color-grey-70);
   --color-grey-112: var(--color-grey-112);
+  --color-icons-secondary: #425f68;
   --color-grey-118: var(--color-grey-118);
   --color-grey-142: var(--color-grey-142);
   --color-grey-170: var(--color-grey-170);
@@ -97,12 +105,18 @@
   --color-blue-40: var(--color-blue-40);
   --color-blue-170: var(--color-blue-170);
   --color-green-83: var(--color-green-83);
+  --color-success: #0aff7c;
   --color-purple-153: var(--color-purple-153);
   --color-red-19: var(--color-red-19);
   --color-yellow-241: var(--color-yellow-241);
   --color-yellow-244: var(--color-yellow-244);
   --color-pink: var(--color-pink);
   --color-pink-231: var(--color-pink-231);
+  --color-battle-jackpot: var(--color-battle-jackpot);
+  --color-battle-crazy: var(--color-battle-crazy);
+  --color-battle-normal: var(--color-battle-normal);
+  --color-battle-group: var(--color-battle-group);
+  --color-battle-terminal: var(--color-battle-terminal);
   --color-purple: var(--color-purple);
   --color-red: var(--color-red);
   --color-red-143: var(--color-red-143);
@@ -118,8 +132,9 @@
   --color-rank-platinum: var(--color-rank-platinum);
   --color-rank-diamond: var(--color-rank-diamond);
   --color-rank-gold: var(--color-rank-gold);
-  --font-sans: var(--font-golden-smile), "Golden Smile", Arial, Helvetica, sans-serif;
-  --font-chat: var(--font-skranji), Skranji, cursive;
+  --font-sans: var(--font-geologica), "Geologica Fallback", Arial, Helvetica, sans-serif;
+  --font-tactic: var(--font-tactic-sans), "tacticSans Fallback", Arial, Helvetica, sans-serif;
+  --font-chat: var(--font-sans);
   --spacing: 0.0625rem;
   --text-10: 0.625rem;
   --text-11: 0.6875rem;
@@ -160,6 +175,45 @@
   --container-2xl: 1500px;
   --container-3xl: 1600px;
   --container-bt: 850px;
+  --max-width-340: 85rem;
+}
+
+@font-face {
+  font-family: "Geologica Fallback";
+  src: local("Arial");
+  ascent-override: 90.18%;
+  descent-override: 25.43%;
+  line-gap-override: 0%;
+  size-adjust: 108.12%;
+}
+
+@font-face {
+  font-family: "tacticSans Fallback";
+  src: local("Arial");
+  ascent-override: 65.89%;
+  descent-override: 15.06%;
+  line-gap-override: 16.19%;
+  size-adjust: 123.53%;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 17.5px;
+  }
+}
+
+:root {
+  --header-h: 3.25rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 4.75rem;
+  }
 }
 
 html,
@@ -167,8 +221,8 @@ body {
   min-height: 100%;
   height: auto;
   background: var(--color-grey-28);
-  color: #fff;
-  font-family: var(--font-golden-smile), "Golden Smile", Arial, Helvetica, sans-serif;
+  color: var(--foreground);
+  font-family: var(--font-sans);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -193,17 +247,19 @@ textarea,
 ul,
 select,
 label {
-  font-family: var(--font-golden-smile), "Golden Smile", Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
 
 .ui-label {
-  font-weight: 700;
+  font-family: var(--font-tactic);
+  font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .ui-btn-label {
-  font-weight: 700;
+  font-family: var(--font-tactic);
+  font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -222,7 +278,14 @@ label {
 .font-chat input,
 .font-chat textarea,
 .font-chat label {
-  font-family: var(--font-skranji), Skranji, cursive;
+  font-family: var(--font-sans);
+}
+
+.font-tactic,
+.font-tactic p,
+.font-tactic span,
+.font-tactic button {
+  font-family: var(--font-tactic);
 }
 
 h1,
@@ -269,13 +332,72 @@ body {
   scrollbar-color: var(--color-grey-58) transparent;
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes live-drop-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-live-drop-in {
+  animation: live-drop-in 0.35s ease-out both;
+}
+
+.header-logo-dots {
+  opacity: 0.15;
+  background-image: radial-gradient(circle, #fff 1.2px, transparent 1.3px);
+  background-size: 10px 10px;
+  mask-image: radial-gradient(ellipse 30% 15% at 50% 0%, #000 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 30% 15% at 50% 0%, #000 0%, transparent 100%);
+}
+
+.btn-glass {
+  border-radius: 0.375rem;
+  border: 1px solid rgba(228, 251, 255, 0.1);
+  background-image: linear-gradient(to bottom, rgba(228, 251, 255, 0.05), rgba(228, 251, 255, 0.1));
+  color: var(--color-grey-142);
+  transition: color 0.15s ease, background-image 0.15s ease, filter 0.15s ease;
+}
+
+.btn-glass:hover {
+  background-image: linear-gradient(to bottom, rgba(228, 251, 255, 0.1), rgba(228, 251, 255, 0.18));
+  color: var(--color-grey-190);
+}
+
 button {
   cursor: pointer;
 }
 
 .bg-green {
-  background-color: #90ef30;
-  background-image: radial-gradient(circle at 50% 50%, #90ef30 0%, #15ef4b 100%);
+  background-color: var(--color-green);
+  background-image: radial-gradient(circle at 50% 50%, var(--color-green-202) 0%, var(--color-green-2) 100%);
+}
+
+.text-gold-btn,
+.text-yellow {
+  display: inline-block;
+  background-image: linear-gradient(180deg, #fff6c8 0%, #ffe28a 32%, #f2c338 68%, #c49214 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-fill,
+.bg-gradient-to-b.from-gold-hi.to-gold-btn {
+  background-color: var(--color-gold-btn);
+  background-image: linear-gradient(180deg, #fff3b0 0%, #ffe28a 18%, #f2c338 58%, #c49214 100%);
 }
 
 a,
@@ -373,10 +495,10 @@ a > * {
 @keyframes border-glow {
   0%,
   100% {
-    box-shadow: 0 0 10px rgba(0, 255, 100, 0.3);
+    box-shadow: 0 0 10px rgba(82, 181, 255, 0.35);
   }
   50% {
-    box-shadow: 0 0 25px rgba(0, 255, 150, 0.5);
+    box-shadow: 0 0 25px rgba(30, 125, 255, 0.55);
   }
 }
 
@@ -489,6 +611,20 @@ a > * {
 
 .animate-floaty {
   animation: floaty 5s ease-in-out infinite;
+}
+
+@keyframes float-rotate {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(4deg);
+  }
+}
+
+.animate-float-rotate {
+  animation: float-rotate 2s ease-in-out infinite;
 }
 
 @keyframes show {
@@ -717,7 +853,7 @@ a > * {
 @keyframes chat-in {
   0% {
     opacity: 0;
-    transform: translate(-80px);
+    transform: translate(80px);
   }
   50% {
     opacity: 1;
@@ -739,15 +875,7 @@ a > * {
 }
 
 .chat-drawer.is-closed {
-  transform: translateX(-100%);
-}
-
-.chat-toggle-icon {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease;
-}
-
-.chat-toggle-icon.is-closed {
-  transform: rotate(-180deg);
+  transform: translateX(100%);
 }
 
 .page-shift {
@@ -1397,7 +1525,7 @@ input.rs-range::-moz-range-track {
 }
 
 .mm2-circle-ripple-inner-color {
-  background: linear-gradient(0deg, rgb(13 16 19 / 0.75), rgb(13 16 19 / 0.75)), var(--circle-color, currentcolor);
+  background: linear-gradient(0deg, rgb(4 6 11 / 0.75), rgb(4 6 11 / 0.75)), var(--circle-color, currentcolor);
   border-radius: 50%;
   inset: 2px;
   position: absolute;
@@ -1614,5 +1742,5 @@ input.rs-range::-moz-range-track {
 
 
 .panel-outline {
-  border: 2px solid #3f454d;
+  border: 1px solid var(--color-grey-58);
 }

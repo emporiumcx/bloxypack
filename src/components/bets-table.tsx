@@ -140,9 +140,9 @@ export function BetsTable() {
           <svg width="0" height="0" className="absolute" aria-hidden>
             <defs>
               <linearGradient id="bet-icon-green" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#d4f98a" />
-                <stop offset="42%" stopColor="#90ef30" />
-                <stop offset="100%" stopColor="#0e9a32" />
+                <stop offset="0%" stopColor="#c4ebff" />
+                <stop offset="42%" stopColor="#52b5ff" />
+                <stop offset="100%" stopColor="#0d5cb8" />
               </linearGradient>
             </defs>
           </svg>

@@ -3,14 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { BetsTable } from "@/components/bets-table";
-import { Bux } from "@/components/bux";
 import { Icons } from "@/components/icons";
+import { LiveDrops } from "@/components/live-drops";
 import { useStore } from "@/components/providers";
-import { ItemBg } from "@/components/item-bg";
-import { TICKER } from "@/lib/catalog";
-import { UserAvatar } from "@/components/user-avatar";
 import { ExploreRewards, PaymentTicker } from "@/components/home-explore";
-import { rankIdFromLevel, xpProgress } from "@/lib/levels";
+import { HomeFaq } from "@/components/home-faq";
 
 const ORIGINALS: { href: string; label: string; img: string; icon: typeof Icons.battles; scale: number; soon?: boolean }[] = [
   { href: "/battles", label: "Battles", img: "/img/home/battles.webp", icon: Icons.battles, scale: 3.5 },
@@ -23,92 +20,68 @@ const ORIGINALS: { href: string; label: string; img: string; icon: typeof Icons.
   { href: "/crash", label: "Crash", img: "/img/home/crash.webp", icon: Icons.crash, scale: 0.538462, soon: true },
 ];
 
-function TiltBanner({
-  href,
-  src,
-  external,
-  glow,
-  glow2,
-}: {
-  href: string;
-  src: string;
-  external?: boolean;
-  glow: string;
-  glow2?: string;
-}) {
-  const ref = useRef<HTMLImageElement>(null);
-
-  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - el.left) / el.width - 0.5;
-    const y = (e.clientY - el.top) / el.height - 0.5;
-    if (ref.current) {
-      ref.current.style.transform = `rotateX(${(-y * 8).toFixed(2)}deg) rotateY(${(x * 10).toFixed(2)}deg) translateZ(0px)`;
-    }
-  };
-
-  const inner = (
-    <div className="group relative h-full w-full overflow-hidden rounded-2xl">
-      <div
-        className="pointer-events-none absolute -inset-px rounded-[18px] opacity-20 blur-[4px] transition-opacity duration-300 group-hover:opacity-30"
-        style={{
-          background: glow2
-            ? `linear-gradient(118deg, ${glow} 0%, ${glow2} 100%)`
-            : glow,
-        }}
-      />
-      <div
-        className="relative h-full overflow-hidden rounded-2xl border-0 select-none [perspective:600px]"
-        role="img"
-        onMouseMove={onMove}
-        onMouseLeave={() => {
-          if (ref.current) ref.current.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0px)";
-        }}
-        style={{
-          boxShadow: glow2
-            ? `0 0 6px ${glow}22, 0 0 10px ${glow2}14`
-            : `0 0 6px ${glow}22, 0 0 10px ${glow}14`,
-        }}
-      >
+function HomeHero() {
+  const { user, openModal } = useStore();
+  return (
+    <div className="relative flex min-h-224 w-full overflow-hidden rounded-12 bg-grey-34 sm:min-h-288">
+      <div className="relative z-10 flex max-w-600 flex-1 flex-col items-start gap-12 p-24 pl-32 sm:p-28 sm:pl-40">
+        <h2 className="font-tactic text-32 font-black uppercase leading-[0.92] tracking-tight text-white sm:text-[3.25rem]">
+          Open Cases
+          <br />
+          Win Real Items
+        </h2>
+        <p className="max-w-300 text-12 leading-[0.875rem] text-grey-142">Start your opening journey by claiming your 3 free cases now!</p>
+        <div className="mt-auto flex w-full max-w-332 flex-col gap-8">
+          {user ? (
+            <Link
+              href="/rewards"
+              className="flex h-40 w-full items-center justify-center rounded-8 bg-gradient-to-b from-green to-green-2 px-14 text-14 font-medium text-white transition-all duration-200 hover:brightness-110 active:brightness-95"
+            >
+              Claim 3 Cases for FREE!
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={() => openModal("register")}
+              className="flex h-40 w-full items-center justify-center rounded-8 bg-gradient-to-b from-green to-green-2 px-14 text-14 font-medium text-white transition-all duration-200 hover:brightness-110 active:brightness-95"
+            >
+              Claim 3 Cases for FREE!
+            </button>
+          )}
+          <div className="flex w-full gap-8">
+            <a
+              href="https://discord.gg/rostake"
+              target="_blank"
+              rel="noreferrer"
+              className="flex h-40 flex-1 items-center justify-center gap-8 rounded-6 bg-grey-39 text-14 font-medium text-white transition-colors hover:bg-grey-47"
+            >
+              <Icons.discord className="text-16" />
+              Discord
+            </a>
+            <button
+              type="button"
+              onClick={() => openModal("login")}
+              className="flex h-40 flex-1 items-center justify-center gap-8 rounded-6 bg-grey-39 text-14 font-medium text-white transition-colors hover:bg-grey-47"
+            >
+              <Icons.google className="text-16" />
+              Google
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="pointer-events-none relative hidden w-260 shrink-0 items-center justify-center lg:flex xl:w-320">
+        <div className="absolute left-1/2 top-1/2 h-140 w-140 -translate-x-1/2 -translate-y-1/2 rounded-full bg-green/25 blur-[50px]" />
         <img
-          ref={ref}
-          className="block h-full w-full rounded-2xl object-cover transition-transform duration-150 ease-out group-hover:scale-[1.03]"
           alt=""
-          draggable={false}
-          src={src}
-          style={{ transform: "rotateX(0deg) rotateY(0deg) translateZ(0px)" }}
-        />
-        <div
-          className="pointer-events-none absolute inset-0 rounded-2xl opacity-35 mix-blend-screen transition-opacity duration-300"
-          style={{ background: "radial-gradient(circle, rgba(255, 255, 255, 0.14), transparent 55%)" }}
+          src="/img/home/chest-character.webp"
+          className="relative h-200 w-auto object-contain mix-blend-lighten xl:h-240"
         />
       </div>
     </div>
   );
-
-  const wrap = "relative block h-full w-full opacity-90 transition-opacity hover:opacity-100 active:opacity-100";
-  if (external) {
-    return (
-      <a className={wrap} target="_blank" rel="noreferrer" href={href}>
-        {inner}
-      </a>
-    );
-  }
-  return (
-    <Link className={wrap} href={href}>
-      {inner}
-    </Link>
-  );
-}
-
-function tickerName(name: string) {
-  if (name.length <= 25) return name;
-  return `${name.slice(0, 24)}...`;
 }
 
 export default function HomePage() {
-  const { user } = useStore();
-  const xpPct = user ? xpProgress(user.xp) : 0;
   const scroller = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(true);
@@ -129,81 +102,9 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="flex w-full justify-center">
-    <div className="@sm/page:gap-24 @md/page:gap-32 grid w-full max-w-screen-xl grid-cols-1 gap-16">
-      {user ? (
-        <div className="panel-outline relative grid w-full grid-cols-[auto_1fr] items-center gap-12 overflow-hidden rounded-8 bg-grey-34 p-12">
-          <img
-            alt=""
-            src="/img/home/leaf.png"
-            className="pointer-events-none absolute right-0 top-0 z-0 h-[200px] w-[200px] max-w-none object-contain object-right-top"
-          />
-          <div className="relative z-10">
-            <UserAvatar avatar={user.avatar} seed={user.id || user.username} size={52} level={user.level} />
-          </div>
-          <div className="relative z-10 grid w-full grid-cols-[1fr_auto] items-end gap-12">
-            <div className="grid w-full grid-cols-1 gap-8">
-              <p className="text-20 font-bold text-grey-190">
-                Welcome back, <span className="text-20 font-bold text-white">{user.username}</span>
-              </p>
-              <div className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-14">
-                <img alt="" src={`/img/rank/${rankIdFromLevel(user.level)}.svg`} className="h-24" />
-                <div className="relative h-8 w-full rounded-full bg-grey-28">
-                  <div className="absolute left-0 top-0 h-8 rounded-full bg-green" style={{ width: `${xpPct}%` }} />
-                </div>
-                <p className="text-12 text-grey-142">{xpPct}% XP</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
-      <div className="w-full">
-        <div className="relative w-full">
-          <div className="relative w-full overflow-x-auto" style={{ scrollbarWidth: "none" }}>
-            <div className="flex w-max pt-16">
-              {TICKER.map((item, i) => (
-                <div key={`${item.id}-${i}`} className="group relative mr-12 h-64">
-                  <div className="panel-outline group grid h-full grid-cols-[auto_auto] items-center overflow-hidden rounded-8 bg-grey-39 p-8 pr-12">
-                    <div className="relative mr-8 flex h-48 w-48 items-center justify-center">
-                      <div
-                        className="absolute inset-10 scale-100 blur-[34px] transition-transform group-hover:scale-150 group-active:scale-150"
-                        style={{ background: item.glow }}
-                      />
-                      <ItemBg className="inset-0 h-full w-full opacity-50" />
-                      <img
-                        alt=""
-                        className="relative h-full w-full scale-100 object-contain transition-transform group-hover:-translate-y-2 group-hover:scale-125 group-active:-translate-y-2 group-active:scale-125"
-                        src={`https://cdn.rostake.com/items_centered/${item.id}.webp`}
-                        onError={(e) => {
-                          e.currentTarget.src = `/cdn/items/${item.id}.webp`;
-                        }}
-                      />
-                    </div>
-                    <div className="relative grid w-max grid-cols-1 gap-4">
-                      <p className="text-12 text-grey-190">{tickerName(item.name)}</p>
-                      <div className="flex">
-                        <Bux value={item.value} size="sm" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="@sm/page:grid-cols-2 @xl/page:grid-cols-3 grid w-full grid-cols-1 gap-12">
-        <div className="relative aspect-[7.11/4]">
-          <TiltBanner href="/leaderboard" src="/img/banners/wager-lb.png" glow="#f4de5a" glow2="#7ef25a" />
-        </div>
-        <div className="relative aspect-[7.11/4]">
-          <TiltBanner href="https://discord.gg/rostake" src="/img/banners/discord.png" glow="#8aa6ff" external />
-        </div>
-        <div className="@xl/page:block relative hidden aspect-[7.11/4]">
-          <TiltBanner href="https://kick.com/rostakedotcom" src="/img/banners/kick.png" glow="#53fc18" external />
-        </div>
-      </div>
+    <div className="flex w-full flex-col gap-32">
+      <LiveDrops />
+      <HomeHero />
 
       <div className="@sm/page:gap-20 @sm/page:py-0 grid w-full grid-cols-1 gap-12 py-24">
         <div className="grid w-full grid-cols-[1fr_auto] items-center gap-10">
@@ -301,7 +202,7 @@ export default function HomePage() {
       <ExploreRewards />
       <PaymentTicker />
       <BetsTable />
-    </div>
+      <HomeFaq />
     </div>
   );
 }

@@ -88,7 +88,7 @@ function CaseCard({
     <button
       type="button"
       onClick={onOpen}
-      className="group relative w-full overflow-hidden rounded-12 border-2 border-[#3F454D] bg-grey-39 text-left transition-transform duration-300 ease-out hover:scale-[1.01]"
+      className="group relative w-full overflow-hidden rounded-12 border-2 border-grey-58 bg-grey-39 text-left transition-transform duration-300 ease-out hover:scale-[1.01]"
     >
       <div className="relative grid w-full grid-cols-1 gap-12 p-16">
         <div className="relative flex w-full justify-center transition-all duration-300">
@@ -200,7 +200,7 @@ export default function RewardsPage() {
           {RAKEBACK.map((r) => {
             const claimable = r.kind === "daily" && rakeback > 0;
             return (
-              <div key={r.name} className="group relative w-full overflow-hidden rounded-12 border-2 border-[#3F454D] bg-grey-39 transition-transform duration-300 ease-out">
+              <div key={r.name} className="group relative w-full overflow-hidden rounded-12 border-2 border-grey-58 bg-grey-39 transition-transform duration-300 ease-out">
                 <div className="relative flex w-full items-center gap-16 p-8">
                   <div className="relative flex h-[92px] w-[92px] shrink-0 items-center justify-center">
                     <img alt="" className={`h-full w-full object-contain drop-shadow-[0_6px_10px_rgba(0,0,0,0.45)] transition-all duration-300 ${claimable ? "" : "grayscale"}`} src={r.img} />
@@ -256,8 +256,8 @@ export default function RewardsPage() {
               </div>
             </div>
             {canOpenFeatured ? (
-              <div className="group/button relative flex h-40 items-center justify-center rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green px-16 shadow-[0_2px_0_rgba(0,0,0,0.25)]">
-                <p className="ui-btn-label text-13 text-grey-28">Open bonus case</p>
+              <div className="group/button relative flex h-40 items-center justify-center rounded-6 bg-gradient-to-b from-green to-green-2 px-16">
+                <p className="ui-btn-label text-13 text-grey-190">Open bonus case</p>
               </div>
             ) : (
               <div className="relative flex h-40 items-center justify-center rounded-6 bg-grey-28 px-16">

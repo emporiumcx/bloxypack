@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Icons } from "./icons";
 import { useStore } from "./providers";
+import { SocialIconButton } from "./social-icon";
+import { SIDEBAR_SOCIALS } from "@/lib/socials";
 
 const GAMES = [
   { href: "/battles", label: "Battles", icon: Icons.battles },
@@ -13,179 +15,95 @@ const GAMES = [
   { href: "/towers", label: "Towers", icon: Icons.towers },
   { href: "/dice", label: "Dice", icon: Icons.dice },
   { href: "/blackjack", label: "Blackjack", icon: Icons.blackjack },
-  { href: "/roulette", label: "Roulette", icon: Icons.roulette },
+  { href: "/roulette", label: "Roulette", icon: Icons.roulette, isNew: true },
+  { href: "/crash", label: "Crash", icon: Icons.crash, soon: true },
 ];
 
 const MORE = [
+  { href: "/profile", label: "Profile", icon: Icons.user },
   { href: "/rewards", label: "Rewards", icon: Icons.rewards },
-  { href: "/marketplace", label: "Marketplace", icon: Icons.cases },
   { href: "/affiliate", label: "Affiliate", icon: Icons.affiliate },
-  { href: "/leaderboard", label: "Leaderboard", icon: Icons.leaderboard },
 ];
 
 function NavItem({
   href,
   label,
   icon: Icon,
-  onClick,
-  delay = 0,
+  soon = false,
+  isNew = false,
 }: {
-  href?: string;
+  href: string;
   label: string;
-  icon: (p: { className?: string; style?: CSSProperties }) => React.ReactNode;
-  onClick?: () => void;
-  delay?: number;
+  icon: (p: { className?: string; style?: CSSProperties }) => ReactNode;
+  soon?: boolean;
+  isNew?: boolean;
 }) {
   const pathname = usePathname();
-  const active = href ? pathname === href || pathname.startsWith(href + "/") : false;
-  const inner = (
-    <>
-      {active ? (
-        <div className="absolute inset-0 rounded-8 bg-grey-39">
-          <div className="absolute inset-0 rounded-8 bg-green/10 from-green/10 via-green/0 to-transparent xl:bg-transparent xl:bg-gradient-to-r" />
-        </div>
-      ) : null}
-      <div className="relative grid h-full w-full grid-cols-1 items-center justify-center gap-8 px-10 xl:grid-cols-[auto_1fr_auto] xl:px-12">
-        <div
-          className={`relative transition-colors duration-200 ${
-            active ? "text-green" : "text-grey-142 group-hover:text-white group-active:text-white"
-          }`}
-        >
-          <div className="flex items-center justify-center" style={{ width: 20, height: 20 }}>
-            <Icon style={{ marginLeft: 0, scale: 1 }} />
-          </div>
-        </div>
-        <div className="relative hidden w-full grid-cols-1 gap-2 xl:grid">
-          <p
-            className={`ui-label text-left text-12 transition-colors duration-200 ${
-              active ? "text-white" : "text-grey-142 group-hover:text-white group-active:text-white"
-            }`}
-          >
-            {label}
-          </p>
-        </div>
-      </div>
-    </>
-  );
-  const cls = "group relative flex h-44 animate-nav-in rounded-8 bg-grey-34 xl:bg-transparent";
-  const style = { animationDelay: `${delay}ms` };
-  if (onClick) {
-    return (
-      <button type="button" aria-label={label.toLowerCase()} className={cls} style={style} onClick={onClick}>
-        {inner}
-      </button>
-    );
-  }
+  const active = !soon && (pathname === href || pathname.startsWith(`${href}/`));
   return (
-    <Link href={href!} aria-label={label.toLowerCase()} className={cls} style={style}>
-      {inner}
+    <Link
+      href={soon ? "/" : href}
+      aria-label={label.toLowerCase()}
+      title={label}
+      className={`group relative z-1 flex w-full cursor-pointer items-center gap-8 overflow-hidden whitespace-nowrap rounded-6 px-12 py-8 text-[0.8rem] font-normal leading-none ${
+        active ? "bg-green/10 text-white" : "bg-grey-34 text-grey-142 hover:bg-green/10 hover:text-white"
+      } ${soon ? "pointer-events-none opacity-60" : ""}`}
+    >
+      <span className={`relative flex h-16 w-16 shrink-0 items-center justify-center [&>svg]:h-16 [&>svg]:w-16 ${active ? "text-green" : "text-icons-secondary group-hover:text-green"}`}>
+        <Icon />
+      </span>
+      <span className="relative min-w-0 flex-1 truncate text-left font-normal leading-none">
+        {label}
+      </span>
+      {isNew ? (
+        <span className="animate-float-rotate relative inline-flex w-40 shrink-0 items-center justify-center rounded-2 bg-green text-[0.65rem] leading-none font-normal uppercase text-white">
+          New
+        </span>
+      ) : null}
+      {soon ? <span className="relative shrink-0 text-10 font-bold uppercase tracking-wide text-green">Soon</span> : null}
     </Link>
   );
 }
 
 export function Sidebar() {
-  const { openModal, sidebarOpen, toggleSidebar } = useStore();
+  const { sidebarOpen } = useStore();
+  const collapsed = !sidebarOpen;
 
   return (
     <aside
-      className={`fixed bottom-0 left-0 top-0 z-40 flex w-64 flex-col border-r-1 border-grey-47 bg-grey-28 transition-transform duration-300 ease-in-out xl:w-[300px] ${
-        sidebarOpen ? "translate-x-0" : "-translate-x-full"
+      className={`no-scrollbar fixed bottom-0 left-0 top-[var(--header-h)] z-30 hidden overflow-x-hidden overflow-y-auto border-r-1 border-grey-58 bg-grey-28 p-12 pt-10 transition-[width] duration-400 ease-in-out md:flex md:flex-col ${
+        collapsed ? "w-64" : "w-208"
       }`}
     >
-      <div className="relative z-10 h-64 w-full overflow-hidden border-b-1 border-grey-47 p-10 transition-colors hover:bg-grey-34 active:bg-grey-34">
-        <Link href="/" aria-label="home" className="relative flex h-full w-full items-center justify-center">
-          <img alt="BloxyWild" className="relative h-full w-auto max-w-full object-contain" src="/img/logo.png" />
-        </Link>
-      </div>
-
-      <div className="relative z-10 flex h-[calc(100vh-64px)] w-full flex-grow flex-col">
-        <div className="relative flex w-full flex-grow items-start overflow-auto p-12 xl:p-16">
-          <div className="relative z-10 grid w-full grid-cols-1 gap-10 sm:gap-16">
-            <div className="grid w-full grid-cols-1 gap-10">
-              <p className="ui-label w-full animate-nav-in text-center text-10 text-grey-142 xl:text-left">GAMES</p>
-              <div className="grid w-full grid-cols-1 gap-4">
-                {GAMES.map((item, i) => (
-                  <NavItem key={item.href} {...item} delay={40 + i * 40} />
-                ))}
-              </div>
+      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+        <div className={`grid w-full grid-cols-1 ${collapsed ? "gap-8" : "gap-16"}`}>
+          <div className={`grid w-full grid-cols-1 ${collapsed ? "gap-4" : "gap-8"}`}>
+            {collapsed ? null : <p className="px-4 text-10 font-semibold uppercase tracking-wide text-grey-142">Games</p>}
+            <div className="grid w-full grid-cols-1 gap-4">
+              {GAMES.map((item) => (
+                <NavItem key={item.href} {...item} />
+              ))}
             </div>
-
-            <Link href="/leaderboard" className="relative hidden h-64 w-full animate-nav-in rounded-12 xl:block" style={{ animationDelay: "260ms" }}>
-              <img
-                alt=""
-                className="absolute h-full w-full rounded-12 object-cover"
-                src="/img/leaderboard/leaderboard_banner.webp"
-              />
-              <div className="absolute inset-0 rounded-12 bg-gradient-to-r from-green to-yellow opacity-20 bg-blend-luminosity" />
-              <div className="absolute inset-0 p-[1.5px]">
-                <div className="relative h-full w-full overflow-hidden rounded-[10.5px]">
-                  <div className="absolute -inset-[1.5px]">
-                    <img alt="" className="h-full w-full object-cover" src="/img/leaderboard/leaderboard_banner.webp" />
-                  </div>
-                </div>
-              </div>
-              <div className="relative flex h-full w-full items-center gap-6 px-14">
-                <img alt="" className="h-44 object-contain" src="/img/leaderboard/leaderboard_nav.webp" />
-              </div>
-              <img
-                alt=""
-                className="absolute bottom-0 right-16 h-74 animate-floaty"
-                src="/img/leaderboard/leaderboard_person.webp"
-              />
-            </Link>
-
-            <div className="grid w-full grid-cols-1 gap-10">
-              <p className="ui-label w-full animate-nav-in text-center text-10 text-grey-142 xl:text-left" style={{ animationDelay: "280ms" }}>
-                MORE
-              </p>
-              <div className="grid w-full grid-cols-1 gap-4">
-                {MORE.map((item, i) => (
-                  <NavItem key={item.href} {...item} delay={300 + i * 40} />
-                ))}
-                <NavItem label="Support" icon={Icons.support} delay={460} onClick={() => openModal("support")} />
-              </div>
+          </div>
+          <div className={`grid w-full grid-cols-1 ${collapsed ? "gap-4" : "gap-8"}`}>
+            {collapsed ? null : <p className="px-4 text-10 font-semibold uppercase tracking-wide text-grey-142">More</p>}
+            <div className="grid w-full grid-cols-1 gap-4">
+              {MORE.map((item) => (
+                <NavItem key={item.href} {...item} />
+              ))}
             </div>
           </div>
         </div>
-
-        <div className="relative z-10 mt-12 grid w-full grid-cols-1 gap-12 px-12 pb-12 sm:mt-16 xl:grid-cols-2 xl:px-16 xl:pb-16">
-          <a
-            className="group flex h-40 w-full items-center justify-center rounded-8 bg-grey-39 px-10 py-6 transition-colors hover:bg-grey-47 active:bg-grey-47 xl:h-44"
-            target="_blank"
-            rel="noreferrer"
-            href="https://discord.gg/rostake"
-          >
-            <div className="grid grid-cols-1 items-center justify-center gap-6 xl:grid-cols-[auto_1fr]">
-              <div className="text-grey-142 transition-colors group-hover:text-white group-active:text-white xl:h-20 xl:w-20">
-                <Icons.discord className="text-20" />
-              </div>
-              <p className="ui-btn-label hidden text-12 text-white xl:block">Discord</p>
-            </div>
-          </a>
-          <a
-            className="group flex h-40 w-full items-center justify-center rounded-8 bg-grey-39 px-10 py-6 transition-colors hover:bg-grey-47 active:bg-grey-47 xl:h-44"
-            target="_blank"
-            rel="noreferrer"
-            href="https://x.com/rostakedotcom"
-          >
-            <div className="grid grid-cols-1 items-center justify-center gap-6 xl:grid-cols-[auto_1fr]">
-              <div className="text-grey-142 transition-colors group-hover:text-white group-active:text-white xl:h-20 xl:w-20">
-                <Icons.twitter className="text-20" />
-              </div>
-              <p className="ui-btn-label hidden text-12 text-white xl:block">Twitter</p>
-            </div>
-          </a>
-        </div>
       </div>
-
-      <button
-        type="button"
-        aria-label="nav_toggle"
-        onClick={toggleSidebar}
-        className="group absolute bottom-16 right-0 z-30 flex h-40 w-40 translate-x-[100%] items-center justify-center rounded-r-12 border-1 border-grey-47 bg-grey-28 transition-colors duration-200 hover:bg-grey-1 active:bg-grey-1"
-      >
-        <Icons.menu className="tr text-20 text-grey-142 group-hover:text-white group-active:text-white" />
-      </button>
+      {collapsed ? null : (
+        <div className="mt-auto flex flex-wrap gap-8 border-t-1 border-grey-58 pt-12">
+          {SIDEBAR_SOCIALS.map((s) => (
+            <SocialIconButton key={s.label} href={s.href} label={s.label}>
+              <s.icon />
+            </SocialIconButton>
+          ))}
+        </div>
+      )}
     </aside>
   );
 }

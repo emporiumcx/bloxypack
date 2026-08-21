@@ -157,9 +157,9 @@ export function RewardCaseModal({
                 type="button"
                 disabled={busy || !canOpen}
                 onClick={onUnbox}
-                className="flex h-40 items-center justify-center rounded-8 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green px-16 shadow-[0_2px_0_rgba(0,0,0,0.25)] disabled:opacity-40"
+                className="flex h-40 items-center justify-center rounded-6 bg-gradient-to-b from-green to-green-2 px-16 disabled:opacity-40"
               >
-                <span className="ui-btn-label text-13 text-grey-28">{busy ? "..." : "Unbox for free"}</span>
+                <span className="ui-btn-label text-13 text-grey-190">{busy ? "..." : "Unbox for free"}</span>
               </button>
             </div>
 

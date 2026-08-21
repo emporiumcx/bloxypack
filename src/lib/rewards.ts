@@ -5,9 +5,9 @@ export type DailyCase = CaseItem & { kind: "daily"; level: number };
 export type RankCase = CaseItem & { kind: "rank"; rank: number; level: number };
 
 export const BONUS_CASES: BonusCase[] = [
-  { kind: "bonus", tier: 1, xp: 10_000, slug: "bonus-1", name: "Tier 1 Bonus Case", price: 0, risk: "low", bar: "#90ef30", hue: 90, image: "/img/home/bonus-case.webp" },
-  { kind: "bonus", tier: 2, xp: 25_000, slug: "bonus-2", name: "Tier 2 Bonus Case", price: 0, risk: "low", bar: "#7ef25a", hue: 110, image: "/img/home/bonus-case.webp" },
-  { kind: "bonus", tier: 3, xp: 50_000, slug: "bonus-3", name: "Tier 3 Bonus Case", price: 0, risk: "low", bar: "#53fc18", hue: 130, image: "/img/home/bonus-case.webp" },
+  { kind: "bonus", tier: 1, xp: 10_000, slug: "bonus-1", name: "Tier 1 Bonus Case", price: 0, risk: "low", bar: "#52b5ff", hue: 205, image: "/img/home/bonus-case.webp" },
+  { kind: "bonus", tier: 2, xp: 25_000, slug: "bonus-2", name: "Tier 2 Bonus Case", price: 0, risk: "low", bar: "#3aa3f5", hue: 210, image: "/img/home/bonus-case.webp" },
+  { kind: "bonus", tier: 3, xp: 50_000, slug: "bonus-3", name: "Tier 3 Bonus Case", price: 0, risk: "low", bar: "#1e7dff", hue: 220, image: "/img/home/bonus-case.webp" },
   { kind: "bonus", tier: 4, xp: 100_000, slug: "bonus-4", name: "Tier 4 Bonus Case", price: 0, risk: "medium", bar: "#8aa6ff", hue: 220, image: "/img/home/bonus-case.webp" },
   { kind: "bonus", tier: 5, xp: 250_000, slug: "bonus-5", name: "Tier 5 Bonus Case", price: 0, risk: "medium", bar: "#62c0ea", hue: 200, image: "/img/home/bonus-case.webp" },
   { kind: "bonus", tier: 6, xp: 500_000, slug: "bonus-6", name: "Tier 6 Bonus Case", price: 0, risk: "medium", bar: "#9e5cff", hue: 270, image: "/img/home/bonus-case.webp" },
@@ -20,9 +20,9 @@ export const BONUS_CASES: BonusCase[] = [
 ];
 
 export const DAILY_CASES: DailyCase[] = [
-  { kind: "daily", level: 10, slug: "daily-1", name: "Daily Case I", price: 0, risk: "low", bar: "#90ef30", hue: 90, image: "/img/home/daily-case.webp" },
-  { kind: "daily", level: 20, slug: "daily-2", name: "Daily Case II", price: 0, risk: "low", bar: "#7ef25a", hue: 110, image: "/img/home/daily-case.webp" },
-  { kind: "daily", level: 30, slug: "daily-3", name: "Daily Case III", price: 0, risk: "low", bar: "#53fc18", hue: 130, image: "/img/home/daily-case.webp" },
+  { kind: "daily", level: 10, slug: "daily-1", name: "Daily Case I", price: 0, risk: "low", bar: "#52b5ff", hue: 205, image: "/img/home/daily-case.webp" },
+  { kind: "daily", level: 20, slug: "daily-2", name: "Daily Case II", price: 0, risk: "low", bar: "#3aa3f5", hue: 210, image: "/img/home/daily-case.webp" },
+  { kind: "daily", level: 30, slug: "daily-3", name: "Daily Case III", price: 0, risk: "low", bar: "#1e7dff", hue: 220, image: "/img/home/daily-case.webp" },
   { kind: "daily", level: 40, slug: "daily-4", name: "Daily Case IV", price: 0, risk: "medium", bar: "#8aa6ff", hue: 220, image: "/img/home/daily-case.webp" },
   { kind: "daily", level: 50, slug: "daily-5", name: "Daily Case V", price: 0, risk: "medium", bar: "#62c0ea", hue: 200, image: "/img/home/daily-case.webp" },
   { kind: "daily", level: 60, slug: "daily-6", name: "Daily Case VI", price: 0, risk: "medium", bar: "#9e5cff", hue: 270, image: "/img/home/daily-case.webp" },

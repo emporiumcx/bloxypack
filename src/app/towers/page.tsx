@@ -1,10 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { BetField } from "@/components/bet-field";
-import { Dropdown, ModeTabs } from "@/components/dropdown";
-import { AutobetFields, GameShell, GameSidebar } from "@/components/game-shell";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { BuxIcon } from "@/components/bux";
+import { AutobetFields } from "@/components/game-shell";
+import { FairnessControl } from "@/components/fairness";
+import { GameWins } from "@/components/game-wins";
 import { GreenButton } from "@/components/green-button";
+import { GotQuestions, TOWER_FAQS } from "@/components/home-faq";
+import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
 
 const DIFF = {
@@ -14,7 +17,7 @@ const DIFF = {
   Expert: { cols: 3, mines: 2 },
 } as const;
 
-const ROWS = 10;
+const ROWS = 9;
 
 function rowMulti(diff: keyof typeof DIFF, steps: number) {
   const { cols, mines } = DIFF[diff];
@@ -22,24 +25,126 @@ function rowMulti(diff: keyof typeof DIFF, steps: number) {
   return Number((0.97 * p ** steps).toFixed(2));
 }
 
+function DiffPips({ cols, mines }: { cols: number; mines: number }) {
+  const safe = cols - mines;
+  return (
+    <span className="inline-flex items-center gap-2">
+      {Array.from({ length: safe }).map((_, i) => (
+        <span key={`s${i}`} className="size-14 rounded-3 bg-green" />
+      ))}
+      {Array.from({ length: mines }).map((_, i) => (
+        <span key={`m${i}`} className="size-14 rounded-3 bg-red" />
+      ))}
+    </span>
+  );
+}
+
+function DifficultySelect({
+  value,
+  disabled,
+  onChange,
+}: {
+  value: keyof typeof DIFF;
+  disabled?: boolean;
+  onChange: (id: keyof typeof DIFF) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const current = DIFF[value];
+
+  useEffect(() => {
+    const onDoc = (e: MouseEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, []);
+
+  return (
+    <div ref={ref} className={`relative w-full ${open ? "z-50" : ""}`}>
+      <button
+        type="button"
+        disabled={disabled}
+        onClick={() => setOpen((v) => !v)}
+        className="flex h-36 w-full items-center justify-between gap-8 rounded-6 border border-grey-58 bg-grey-28 px-12 text-13 text-white disabled:opacity-50"
+      >
+        <span className="flex items-center gap-8">
+          <DiffPips cols={current.cols} mines={current.mines} />
+          <span>{value}</span>
+        </span>
+        <Icons.chevron className={`text-14 text-grey-142 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open ? (
+        <div
+          className="absolute top-40 z-50 w-full overflow-hidden rounded-8 border border-grey-58 bg-grey-28 p-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
+          onMouseDown={(e) => e.stopPropagation()}
+        >
+          {(Object.keys(DIFF) as (keyof typeof DIFF)[]).map((id) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => {
+                onChange(id);
+                setOpen(false);
+              }}
+              className={`flex h-36 w-full items-center gap-8 rounded-6 px-8 text-13 ${
+                value === id ? "bg-green text-white" : "text-white hover:bg-grey-39"
+              }`}
+            >
+              <DiffPips cols={DIFF[id].cols} mines={DIFF[id].mines} />
+              {id}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function HowToPlay({ open, onClose }: { open: boolean; onClose: () => void }) {
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-16" onClick={onClose}>
+      <div
+        className="w-full max-w-420 rounded-12 border border-grey-58 bg-grey-39 p-20"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="mb-12 flex items-center justify-between">
+          <h2 className="ui-label text-14 text-white">How to play</h2>
+          <button type="button" onClick={onClose} className="text-14 text-grey-142 hover:text-white">
+            Close
+          </button>
+        </div>
+        <div className="grid gap-10 text-13 leading-relaxed text-grey-142">
+          <p>Place your bet and pick a tile on the bottom row. A safe pick lets you advance with a higher multiplier; a bomb ends the run.</p>
+          <p>Keep climbing for bigger rewards and cash out whenever you want. Harder difficulties hide more bombs per row.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function TowersPage() {
   const { user, openModal, applyUser, towersBet, towersReveal, towersCashout } = useStore();
   const [mode, setMode] = useState<"manual" | "auto">("manual");
-  const [bet, setBet] = useState(10);
-  const [diff, setDiff] = useState<keyof typeof DIFF>("Medium");
+  const [bet, setBet] = useState(0);
+  const [diff, setDiff] = useState<keyof typeof DIFF>("Easy");
   const [row, setRow] = useState(ROWS);
   const [started, setStarted] = useState(false);
   const [dead, setDead] = useState<{ r: number; c: number } | null>(null);
   const [cleared, setCleared] = useState<Record<number, number>>({});
   const [bombs, setBombs] = useState<Record<number, number[]>>({});
   const [picking, setPicking] = useState<{ r: number; c: number } | null>(null);
+  const [soundOn, setSoundOn] = useState(true);
+  const [turbo, setTurbo] = useState(false);
+  const [howTo, setHowTo] = useState(false);
   const cols = DIFF[diff].cols;
   const climbed = ROWS - row;
   const multi = climbed > 0 ? rowMulti(diff, climbed) : 1;
 
   async function start() {
     if (!user) return openModal("login");
-    if (user.balance < bet) return openModal("deposit");
+    if (user.balance < bet || bet <= 0) return openModal("deposit");
     try {
       const res = await towersBet(bet, diff.toLowerCase());
       applyUser(res.user);
@@ -104,109 +209,221 @@ export default function TowersPage() {
     }
   }
 
-  const payoutForRow = useMemo(() => {
-    return Array.from({ length: ROWS }, (_, r) => Math.round(bet * rowMulti(diff, ROWS - r)));
-  }, [bet, diff]);
+  const multipliers = useMemo(
+    () => Array.from({ length: ROWS }, (_, r) => rowMulti(diff, ROWS - r)),
+    [diff],
+  );
 
   return (
-    <GameShell
-      fairness="Towers"
-      boardClassName="@lg/page:p-32 @sm/page:p-20 relative flex w-full min-h-0 items-center justify-center overflow-hidden p-12"
-      sidebar={
-        <GameSidebar
-          action={
-            started ? (
+    <>
+      <div className="flex w-full flex-col gap-12">
+        <div className="flex min-h-0 flex-col-reverse gap-12 lg:flex-row">
+          <aside className="flex w-full min-w-0 shrink-0 flex-col gap-16 overflow-visible self-start rounded-12 border border-grey-58 bg-grey-28 p-16 lg:w-320">
+            <div className="flex items-center gap-8">
+              <div className="flex size-32 shrink-0 items-center justify-center rounded-6 bg-green/15 text-green">
+                <Icons.towers className="text-12" />
+              </div>
+              <div className="flex min-w-0 flex-col gap-2">
+                <span className="ui-label text-13 text-white">Tower</span>
+                <span className="text-12 text-grey-142">Climb the tower and cash out in time</span>
+              </div>
+            </div>
+
+            <div className="flex w-full gap-4 rounded-8 border border-grey-58 bg-grey-39 p-4">
+              {(["manual", "auto"] as const).map((id) => (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => setMode(id)}
+                  className={`flex h-28 flex-1 items-center justify-center rounded-6 text-12 font-medium capitalize transition-colors ${
+                    mode === id ? "bg-gradient-to-b from-green to-green-2 text-white" : "text-white hover:bg-white/5"
+                  }`}
+                >
+                  {id === "auto" ? "Auto" : "Manual"}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-12">
+              <div className="grid gap-6">
+                <p className="text-11 text-grey-142">Total Value</p>
+                <div className="flex h-40 w-full min-w-0 items-center gap-4 rounded-6 border border-grey-58 bg-grey-39 py-4 pl-8 pr-4">
+                  <BuxIcon className="shrink-0 text-green" />
+                  <input
+                    autoComplete="off"
+                    className="h-full min-w-0 flex-1 bg-transparent px-6 text-14 text-white outline-none"
+                    placeholder="0.00"
+                    inputMode="decimal"
+                    type="text"
+                    name="bet_amount"
+                    disabled={started}
+                    value={bet === 0 ? "0.00" : String(bet)}
+                    onChange={(e) => {
+                      const next = e.target.value.replace(/[^\d.]/g, "");
+                      setBet(next === "" ? 0 : Number(next));
+                    }}
+                  />
+                  <button
+                    type="button"
+                    disabled={started}
+                    onClick={() => setBet(Number((Math.max(0, bet) / 2).toFixed(2)))}
+                    className="flex h-32 shrink-0 items-center justify-center rounded-6 border border-grey-58 bg-grey-47 px-8 text-11 text-white hover:bg-green disabled:opacity-50"
+                  >
+                    1/2
+                  </button>
+                  <button
+                    type="button"
+                    disabled={started}
+                    onClick={() => setBet(Number((Math.max(0, bet) * 2).toFixed(2)))}
+                    className="flex h-32 shrink-0 items-center justify-center rounded-6 border border-grey-58 bg-grey-47 px-8 text-11 text-white hover:bg-green disabled:opacity-50"
+                  >
+                    x2
+                  </button>
+                  <button
+                    type="button"
+                    disabled={started}
+                    onClick={() => setBet(user?.balance ?? 0)}
+                    className="flex h-32 shrink-0 items-center justify-center rounded-6 border border-grey-58 bg-grey-47 px-8 text-11 text-white hover:bg-green disabled:opacity-50"
+                  >
+                    Max
+                  </button>
+                </div>
+              </div>
+
+              {mode === "auto" ? <AutobetFields /> : null}
+
+              <div className="grid gap-6">
+                <p className="text-11 text-grey-142">Difficulty</p>
+                <DifficultySelect value={diff} disabled={started} onChange={setDiff} />
+              </div>
+            </div>
+
+            {started ? (
               <GreenButton onClick={cashout} disabled={climbed === 0 || Boolean(picking)}>
                 Cashout {climbed > 0 ? `${multi.toFixed(2)}x` : ""}
               </GreenButton>
             ) : (
-              <GreenButton onClick={start}>Start game</GreenButton>
-            )
-          }
-        >
-          <div className="grid w-full grid-cols-1 gap-12">
-            <ModeTabs value={mode} onChange={setMode} />
-            <BetField value={bet} onChange={setBet} max={user?.balance ?? 10} />
-            {mode === "auto" ? (
-              <AutobetFields />
-            ) : (
-              <div className="grid w-full grid-cols-1 gap-8">
-                <h2 className="ui-label text-12 text-grey-142">Difficulty</h2>
-                <Dropdown
-                  value={diff}
-                  onChange={(id) => {
-                    if (started) return;
-                    setDiff(id as keyof typeof DIFF);
-                  }}
-                  options={Object.keys(DIFF).map((d) => ({ id: d, label: d }))}
-                />
-              </div>
+              <GreenButton onClick={start}>Play</GreenButton>
             )}
-          </div>
-        </GameSidebar>
-      }
-      board={
-        <>
-          <div className="absolute inset-0">
-            <img alt="" className="h-full w-full object-cover opacity-80 grayscale" src="/img/games/bg_mines.webp" />
-          </div>
-          <div
-            className="@xl/page:max-w-[480px] relative grid w-full max-w-[min(406px,100%)] gap-3 rounded-16 bg-grey-28/90 p-8 @sm/page:gap-6 @sm/page:p-12 @xl/page:gap-8"
-            style={{
-              gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-              gridTemplateRows: `repeat(${ROWS}, minmax(0, 1fr))`,
-              height: "min(520px, calc(100dvh - 220px))",
-            }}
-          >
-            {Array.from({ length: ROWS * cols }).map((_, i) => {
-              const r = Math.floor(i / cols);
-              const c = i % cols;
-              const active = started && r === row && !dead && !picking;
-              const won = cleared[r] === c;
-              const isBomb = Boolean(bombs[r]?.includes(c));
-              const hit = dead?.r === r && dead?.c === c;
-              const pulsing = picking?.r === r && picking?.c === c;
-              const open = won || isBomb || Boolean(hit);
-              const dim = started && r !== row && !open && !dead;
-              return (
-                <button
-                  key={i}
-                  type="button"
-                  disabled={!active}
-                  onClick={() => pick(r, c)}
-                  className={`relative flex min-h-0 w-full items-center justify-center overflow-hidden rounded-8 @sm/page:rounded-12 ${
-                    active ? "cursor-pointer" : "cursor-default"
-                  } ${dim ? "opacity-45" : "opacity-100"}`}
+          </aside>
+
+          <div className="relative flex min-h-0 w-full min-w-0 flex-1 items-start justify-center lg:justify-end lg:pr-48 xl:pr-80">
+            <div className="relative flex w-full min-w-0 max-w-640 gap-8 lg:max-h-[calc(100dvh-12rem)]">
+              <div className="relative flex w-56 shrink-0 flex-col gap-4">
+              {multipliers.map((m, r) => (
+                <div
+                  key={r}
+                  className={`relative z-20 flex h-40 items-center justify-center rounded-6 bg-grey-39 transition-opacity sm:h-44 lg:h-56 xl:h-64 2xl:h-80 ${
+                    started && r !== row && cleared[r] === undefined && !dead ? "opacity-40" : "opacity-100"
+                  }`}
                 >
+                  <p className={`ui-btn-label text-11 ${started && r === row ? "text-white" : "text-grey-142"}`}>
+                    X{m.toFixed(2)}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex min-w-0 flex-1 flex-col gap-4">
+              {Array.from({ length: ROWS }).map((_, r) => {
+                const active = started && r === row && !dead && !picking;
+                return (
                   <div
-                    className={`tr absolute inset-0 flex items-center justify-center rounded-8 border-b-3 border-t-3 border-b-black/25 border-t-white/15 bg-grey-58 @sm/page:rounded-12 ${
-                      open ? "animate-minescover pointer-events-none" : "opacity-100"
-                    } ${active ? "bg-grey-70" : ""}`}
+                    key={r}
+                    className={`relative flex h-40 gap-4 rounded-6 p-2 sm:h-44 lg:h-56 xl:h-64 2xl:h-80 ${
+                      active ? "bg-grey-58/40" : ""
+                    }`}
                   >
-                    <img alt="" className={`h-[58%] w-[58%] max-h-34 max-w-34 object-contain ${pulsing ? "animate-tower-pulse" : ""}`} src="/img/lion_shadow.png" />
+                    {Array.from({ length: cols }).map((_, c) => {
+                      const won = cleared[r] === c;
+                      const isBomb = Boolean(bombs[r]?.includes(c));
+                      const hit = dead?.r === r && dead?.c === c;
+                      const pulsing = picking?.r === r && picking?.c === c;
+                      const open = won || isBomb || Boolean(hit);
+                      const dim = started && r !== row && !open && !dead;
+                      return (
+                        <button
+                          key={c}
+                          type="button"
+                          disabled={!active}
+                          aria-label={`Row ${ROWS - r} column ${c + 1}`}
+                          onClick={() => pick(r, c)}
+                          className={`relative h-full min-w-0 flex-1 overflow-hidden rounded-6 bg-grey-39 shadow-[0px_2px_0px_rgba(0,0,0,0.25),inset_0px_2px_0px_#18202E] ${
+                            active ? "cursor-pointer bg-grey-47" : "cursor-default"
+                          } ${dim ? "opacity-45" : "opacity-100"}`}
+                        >
+                          <div className="absolute inset-0 flex h-full w-full items-center justify-center">
+                            <img
+                              alt=""
+                              src="/img/lion.png"
+                              className={`h-auto w-1/4 object-contain ${pulsing ? "animate-tower-pulse" : ""} ${
+                                open ? "opacity-0" : "opacity-20"
+                              }`}
+                            />
+                          </div>
+                          <div
+                            className={`absolute inset-0 flex items-center justify-center rounded-6 ${
+                              hit || isBomb ? "bg-red" : "bg-green"
+                            } ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
+                          >
+                            {hit || isBomb ? (
+                              <img alt="" className="h-[62%] w-[62%] max-h-28 max-w-28 object-contain" src="/img/bomb.webp" />
+                            ) : (
+                              <img alt="" className="h-[58%] w-[58%] max-h-28 max-w-28 object-contain" src="/img/lion_dark.png" />
+                            )}
+                          </div>
+                        </button>
+                      );
+                    })}
                   </div>
-                  <div
-                    className={`tr absolute inset-0 flex items-center justify-center rounded-8 border-b-3 border-t-3 @sm/page:rounded-12 ${
-                      hit || isBomb
-                        ? "border-b-red border-t-red-143 bg-red"
-                        : "border-b-green-95 border-t-green-222 bg-green"
-                    } ${open ? "animate-minescontent opacity-100" : "pointer-events-none opacity-0"}`}
-                  >
-                    {hit || isBomb ? (
-                      <img alt="" className="h-[62%] w-[62%] max-h-28 max-w-28 object-contain" src="/img/bomb.webp" />
-                    ) : (
-                      <div className="flex min-w-0 items-center gap-3 px-4 @sm/page:gap-4">
-                        <img alt="" className="h-14 w-14 shrink-0 object-contain @sm/page:h-18 @sm/page:w-18" src="/img/lion_dark.png" />
-                        <p className="truncate text-11 font-semibold text-grey-28 @sm/page:text-13">{payoutForRow[r].toLocaleString("en-US")}</p>
-                      </div>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
+                );
+              })}
+            </div>
+            </div>
           </div>
-        </>
-      }
-    />
+        </div>
+
+        <div className="flex items-center justify-between rounded-8 border border-grey-58 bg-grey-39 px-12 py-8">
+          <div className="flex items-center gap-6">
+            <button
+              type="button"
+              aria-label="Sound settings"
+              onClick={() => setSoundOn((v) => !v)}
+              className={`flex h-32 w-32 items-center justify-center rounded-6 ${
+                soundOn ? "bg-gradient-to-b from-green to-green-2 text-white" : "text-icons-secondary hover:bg-grey-47 hover:text-white"
+              }`}
+            >
+              <Icons.volume className="text-14" />
+            </button>
+            <button
+              type="button"
+              aria-label="How to play"
+              onClick={() => setHowTo(true)}
+              className="flex h-32 w-32 items-center justify-center rounded-6 text-icons-secondary hover:bg-grey-47 hover:text-white"
+            >
+              <span className="flex size-16 items-center justify-center rounded-full border border-current text-11 font-semibold">i</span>
+            </button>
+          </div>
+          <img alt="" src="/img/logo.png" className="h-20 w-auto opacity-70" />
+          <div className="flex items-center gap-6">
+            <button
+              type="button"
+              aria-label="Toggle turbo mode"
+              aria-pressed={turbo}
+              onClick={() => setTurbo((v) => !v)}
+              className={`flex h-32 w-32 items-center justify-center rounded-6 ${
+                turbo ? "bg-gradient-to-b from-green to-green-2 text-white" : "text-icons-secondary hover:bg-grey-47 hover:text-white"
+              }`}
+            >
+              <Icons.bolt className="text-14" />
+            </button>
+            <FairnessControl game="Towers" userSeeds compact />
+          </div>
+        </div>
+      </div>
+      <GameWins game="Tower" />
+      <GotQuestions items={TOWER_FAQS} className="mt-40 w-full" />
+      <HowToPlay open={howTo} onClose={() => setHowTo(false)} />
+    </>
   );
 }

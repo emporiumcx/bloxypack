@@ -6,26 +6,23 @@ import { SiteFooter } from "./footer";
 import { Icons } from "./icons";
 import { Modals } from "./modals";
 import { useStore } from "./providers";
+import { Sidebar } from "./sidebar";
 import { SiteHeader } from "./site-header";
 
 export function Shell({ children }: { children: React.ReactNode }) {
-  const { chatOpen, toggleChat, openModal } = useStore();
+  const { chatOpen, toggleChat, openModal, sidebarOpen } = useStore();
   const pathname = usePathname();
 
   return (
     <div className="light relative min-h-full w-full min-w-[330px] bg-grey-28">
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center opacity-[0.28]"
-        style={{ backgroundImage: "url(/img/landscape.webp)" }}
-      />
+      <SiteHeader />
+      <Sidebar />
       <ChatPanel />
-      <div className={`page-shift relative z-10 min-h-full ${chatOpen ? "lg:pl-[300px]" : ""}`}>
-        <SiteHeader />
+      <div className={`page-shift relative z-10 min-h-dvh pt-[var(--header-h)] ${sidebarOpen ? "md:pl-208" : "md:pl-64"} ${chatOpen ? "lg:pr-280 2xl:pr-320" : ""}`}>
         <div className="@container/page relative w-full overflow-x-hidden overflow-y-visible">
-          <div className="relative flex min-h-[calc(100vh-100px)] w-full justify-center">
-            <div className="flex w-full justify-center p-16 sm:p-20 md:p-24 lg:p-32">
-              <div key={pathname} className="grid w-full max-w-screen-xl animate-page-in grid-cols-1 items-start gap-20 sm:gap-30 md:gap-40">
+          <div className="relative flex min-h-[calc(100dvh-var(--header-h))] w-full justify-center">
+            <div className="mx-auto flex w-full max-w-340 justify-center px-8 pb-80 transition-all duration-400 ease-in-out sm:pb-0 md:px-40 md:pt-20 md:pb-0">
+              <div key={pathname} className="grid w-full animate-page-in grid-cols-1 items-start">
                 {children}
               </div>
             </div>
@@ -34,25 +31,28 @@ export function Shell({ children }: { children: React.ReactNode }) {
         </div>
       </div>
 
-      <button
-        type="button"
-        aria-label={chatOpen ? "close chat" : "open chat"}
-        onClick={toggleChat}
-        className={`fixed bottom-16 z-50 flex h-40 w-40 items-center justify-center rounded-10 border-1 border-grey-47 bg-grey-34 text-grey-142 shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-colors hover:bg-grey-39 hover:text-white ${
-          chatOpen ? "left-[316px]" : "left-16"
+      <div
+        className={`fixed bottom-16 z-50 hidden flex-col gap-8 transition-[right] duration-400 md:flex ${
+          chatOpen ? "right-16 lg:right-296 2xl:right-336" : "right-16"
         }`}
       >
-        <Icons.chat className="text-18" />
-      </button>
-
-      <button
-        type="button"
-        aria-label="support"
-        onClick={() => openModal("support")}
-        className="fixed bottom-16 right-16 z-50 flex h-40 w-40 items-center justify-center rounded-10 border-1 border-grey-47 bg-grey-34 text-grey-142 shadow-[0_8px_24px_rgba(0,0,0,0.4)] transition-colors hover:bg-grey-39 hover:text-white"
-      >
-        <Icons.support className="text-18" />
-      </button>
+        <button
+          type="button"
+          aria-label="Toggle chat"
+          onClick={toggleChat}
+          className="flex h-40 w-40 items-center justify-center rounded-6 border-1 border-grey-190/10 bg-grey-39 bg-gradient-to-b from-grey-190/5 to-grey-190/10 p-10 text-grey-190 transition-colors duration-400 hover:from-grey-190/10 hover:to-grey-190/20"
+        >
+          <Icons.chat className="text-20" />
+        </button>
+        <button
+          type="button"
+          aria-label="Toggle live support"
+          onClick={() => openModal("support")}
+          className="flex h-40 w-40 items-center justify-center rounded-6 border-1 border-green-2 bg-gradient-to-b from-green to-green-2 p-10 text-grey-190 transition-all duration-400 hover:brightness-110 active:brightness-95"
+        >
+          <Icons.support className="text-20" />
+        </button>
+      </div>
 
       <Modals />
     </div>

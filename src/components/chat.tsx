@@ -11,47 +11,6 @@ import { useStore } from "./providers";
 const RAIN_DURATION_MS = 60 * 60 * 1000;
 const RAIN_JOIN_WINDOW_MS = 5 * 60 * 1000;
 
-const HEADER_EMBERS = [
-  { left: 6, size: 3, h: 7, dur: 2.6, delay: 0.0, drift: -10, color: "#9dff4a", layer: "back" },
-  { left: 14, size: 2, h: 9, dur: 2.1, delay: 0.4, drift: 8, color: "#ffb347", layer: "back" },
-  { left: 22, size: 4, h: 4, dur: 3.0, delay: 0.8, drift: -6, color: "#b6ff5a", layer: "back" },
-  { left: 31, size: 2, h: 8, dur: 2.4, delay: 0.2, drift: 12, color: "#ffe066", layer: "front" },
-  { left: 39, size: 3, h: 6, dur: 2.8, delay: 1.1, drift: -14, color: "#7cff3c", layer: "back" },
-  { left: 47, size: 2, h: 10, dur: 2.2, delay: 0.6, drift: 4, color: "#ff7a2e", layer: "front" },
-  { left: 54, size: 3, h: 5, dur: 3.2, delay: 1.4, drift: -8, color: "#c8ff6a", layer: "back" },
-  { left: 62, size: 2, h: 8, dur: 2.0, delay: 0.3, drift: 10, color: "#ffd24a", layer: "front" },
-  { left: 70, size: 4, h: 4, dur: 2.7, delay: 0.9, drift: -12, color: "#90ef30", layer: "back" },
-  { left: 78, size: 2, h: 9, dur: 2.3, delay: 1.6, drift: 7, color: "#ff9a3c", layer: "front" },
-  { left: 86, size: 3, h: 6, dur: 2.9, delay: 0.5, drift: -5, color: "#a8ff4c", layer: "back" },
-  { left: 93, size: 2, h: 7, dur: 2.5, delay: 1.2, drift: 9, color: "#ffc14a", layer: "back" },
-  { left: 18, size: 2, h: 5, dur: 1.8, delay: 1.8, drift: -16, color: "#d4ff6e", layer: "front" },
-  { left: 58, size: 3, h: 8, dur: 3.4, delay: 2.0, drift: 6, color: "#ff6b1a", layer: "back" },
-  { left: 74, size: 2, h: 6, dur: 2.1, delay: 0.7, drift: -9, color: "#b8ff40", layer: "front" },
-] as const;
-
-function ChatHeaderEmbers({ layer }: { layer: "back" | "front" }) {
-  return (
-    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${layer === "front" ? "z-20" : "z-[1]"}`}>
-      {HEADER_EMBERS.filter((p) => p.layer === layer).map((p, i) => (
-        <span
-          key={`${layer}-${i}`}
-          className="animate-logo-ember absolute bottom-0 rounded-full"
-          style={{
-            left: `${p.left}%`,
-            width: p.size,
-            height: p.h,
-            background: p.color,
-            boxShadow: `0 0 6px ${p.color}`,
-            ["--ember-dur" as string]: `${p.dur}s`,
-            ["--ember-delay" as string]: `${p.delay}s`,
-            ["--ember-drift" as string]: `${p.drift}px`,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 function pad2(n: number) {
   return String(Math.max(0, n)).padStart(2, "0");
 }
@@ -114,7 +73,11 @@ function ChatRainPool() {
                       type="button"
                       onClick={onJoin}
                       disabled={joined || joining || !joinOpen}
-                      className={`ml-8 shrink-0 text-11 font-bold uppercase tracking-wide ${joined ? "text-green" : "text-grey-190 hover:text-white"}`}
+                      className={`ml-8 shrink-0 rounded-6 px-8 py-4 text-10 font-bold uppercase tracking-wide ${
+                        joined
+                          ? "bg-green/15 text-green"
+                          : "gold-fill text-grey-28 hover:brightness-110"
+                      }`}
                     >
                       {joined ? "Joined" : joining ? "..." : "Join"}
                     </button>
@@ -127,9 +90,9 @@ function ChatRainPool() {
                   type="button"
                   aria-label="tip rain"
                   onClick={() => openModal(user ? "rain" : "login")}
-                  className="relative flex h-32 w-32 cursor-pointer items-center justify-center rounded-6 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green transition-all duration-200 active:translate-y-px active:border-green"
+                  className="relative flex h-32 w-32 cursor-pointer items-center justify-center rounded-6 bg-gradient-to-b from-green to-green-2 transition-all duration-200 hover:brightness-110 active:brightness-95"
                 >
-                  <Icons.plus className="text-20 text-grey-28" />
+                  <Icons.plus className="text-20 text-grey-190" />
                 </button>
               </div>
               <div className="absolute bottom-0 left-0 z-10 h-3 w-full bg-green/20">
@@ -179,7 +142,7 @@ function ChatText({ text }: { text?: string | null }) {
 }
 
 export function ChatPanel() {
-  const { chat, sendChat, user, openModal, chatOpen, toggleChat } = useStore();
+  const { chat, sendChat, user, openModal, chatOpen } = useStore();
   const [text, setText] = useState("");
   const [emotesOpen, setEmotesOpen] = useState(false);
   const [hoveredEmote, setHoveredEmote] = useState<string>(EMOTES[0]);
@@ -214,22 +177,12 @@ export function ChatPanel() {
 
   return (
     <aside
-      className={`chat-drawer fixed bottom-0 left-0 top-0 z-50 flex w-[300px] flex-col overflow-visible border-r-1 border-grey-47 bg-grey-28 ${
+      className={`chat-drawer fixed inset-y-0 right-0 z-50 flex w-360 max-w-[90%] flex-col overflow-hidden border-l-1 border-grey-58 bg-grey-28 pt-56 transition-all duration-300 md:top-[var(--header-h)] md:z-40 md:w-280 md:max-w-none md:pt-0 2xl:w-320 ${
         chatOpen ? "" : "is-closed pointer-events-none"
       }`}
     >
-      <div className="relative z-50 flex h-100 w-full shrink-0 items-center justify-center overflow-hidden border-b-2 border-green">
-        <img alt="" src="/img/chat-banner.png" className="absolute inset-0 h-full w-full scale-110 object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/45" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-28 bg-gradient-to-t from-green/30 via-green/10 to-transparent" />
-        <ChatHeaderEmbers layer="back" />
-        <Link href="/" aria-label="home" className="relative z-10 flex h-full w-full items-center justify-center px-16">
-          <img alt="BloxyWild" className="h-58 w-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.75)]" src="/img/logo.png" />
-        </Link>
-        <ChatHeaderEmbers layer="front" />
-      </div>
-      <div className="flex h-44 shrink-0 items-center justify-between gap-10 border-b-1 border-grey-47 px-12">
-        <p className="ui-label text-11 text-grey-142">English</p>
+      <div className="flex h-40 shrink-0 items-center justify-between gap-10 border-b-1 border-grey-58 px-12">
+        <p className="text-11 font-semibold uppercase tracking-wide text-grey-142">English</p>
         <div className="flex items-center gap-6">
           <div className="relative h-10 w-10 rounded-full bg-green/20">
             <div className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-green" />
@@ -278,9 +231,9 @@ export function ChatPanel() {
 
       <div className="w-full p-12 sm:p-16">
         <div className="relative grid w-full grid-cols-1 gap-10">
-          <div ref={emoteRef} className="relative z-20 h-40 w-full rounded-10 bg-grey-39">
+          <div ref={emoteRef} className="relative z-20 h-40 w-full rounded-6 bg-grey-39">
             <div className="relative h-full w-full">
-              <div className="relative grid h-full w-full rounded-10 border-2 border-grey-39 p-2 pl-12 transition-colors duration-200">
+              <div className="relative grid h-full w-full rounded-6 border-1 border-grey-58 p-2 pl-12 transition-colors duration-200">
                 <div className="grid w-full grid-cols-[1fr_auto_auto] items-center gap-4">
                   <input
                     aria-label="chat_message"
@@ -311,9 +264,9 @@ export function ChatPanel() {
                     type="button"
                     aria-label="send"
                     onClick={submit}
-                    className="relative flex h-32 w-32 items-center justify-center rounded-6 border-b-3 border-t-3 border-b-green-95 border-t-green-222 bg-green transition-all duration-200 active:translate-y-px active:border-green"
+                    className="relative flex h-32 w-32 items-center justify-center rounded-6 bg-gradient-to-b from-green to-green-2 transition-all duration-200 hover:brightness-110 active:brightness-95"
                   >
-                    <Icons.send className="text-16 text-grey-28" />
+                    <Icons.send className="text-16 text-grey-190" />
                   </button>
                 </div>
                 {emotesOpen ? (
@@ -345,13 +298,18 @@ export function ChatPanel() {
               </div>
             </div>
           </div>
-          <p className="group relative ml-auto flex w-max cursor-default items-center gap-6 text-grey-142">
-            <Icons.clock className="text-12" />
-            <span className="font-chat text-10 font-bold uppercase">Slowmode is enabled.</span>
-            <span className="pointer-events-none absolute bottom-[calc(100%+8px)] right-0 z-30 hidden whitespace-nowrap rounded-6 bg-grey-34 px-8 py-6 text-11 text-white shadow-[0_8px_24px_rgba(0,0,0,0.45)] group-hover:block">
-              1 message every 6 seconds
-            </span>
-          </p>
+          <div className="flex items-center justify-between gap-8">
+            <Link href="/fairness" className="text-10 font-bold uppercase tracking-wide text-grey-142 hover:text-white">
+              Chat Rules
+            </Link>
+            <p className="group relative flex w-max cursor-default items-center gap-6 text-grey-142">
+              <Icons.clock className="text-12" />
+              <span className="font-chat text-10 font-bold uppercase">Slowmode</span>
+              <span className="pointer-events-none absolute bottom-[calc(100%+8px)] right-0 z-30 hidden whitespace-nowrap rounded-6 bg-grey-34 px-8 py-6 text-11 text-white shadow-[0_8px_24px_rgba(0,0,0,0.45)] group-hover:block">
+                1 message every 6 seconds
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </aside>

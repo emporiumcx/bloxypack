@@ -15,7 +15,7 @@ const TONE = {
   silver: "text-silver",
   bronze: "text-bronze",
   muted: "text-grey-142",
-  onGreen: "text-grey-28",
+  onGreen: "text-grey-190",
 } as const;
 
 export function Bux({
@@ -37,7 +37,7 @@ export function Bux({
     amount === "muted" || tone === "muted"
       ? "text-grey-142"
       : amount === "onGreen" || tone === "onGreen"
-        ? "text-grey-28"
+        ? "text-grey-190"
         : "text-white";
   return (
     <div className={`group grid grid-cols-[auto_1fr] items-center ${className}`}>

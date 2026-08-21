@@ -628,9 +628,9 @@ export function BattleLive({ id }: { id: string }) {
                             type="button"
                             disabled={busy}
                             onClick={() => join(i)}
-                            className={`flex h-40 w-[min(100%,160px)] items-center justify-center shadow-[0_2px_0_rgba(0,0,0,0.25)] ${green3d}`}
+                            className={`flex h-40 w-[min(100%,160px)] items-center justify-center ${green3d}`}
                           >
-                            <span className="ui-btn-label text-13 text-grey-28">Join</span>
+                            <span className="ui-btn-label text-13 text-grey-190">Join</span>
                           </button>
                         ) : (
                           <p className="text-13 text-grey-142">Empty</p>

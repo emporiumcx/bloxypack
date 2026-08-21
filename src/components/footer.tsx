@@ -2,160 +2,205 @@
 
 import Link from "next/link";
 import { Icons } from "./icons";
+import { useStore } from "./providers";
+import { CHAT_SOCIALS } from "@/lib/socials";
+
+const GAMES = [
+  { href: "/cases", label: "Cases" },
+  { href: "/battles", label: "Battles" },
+  { href: "/towers", label: "Tower" },
+  { href: "/mines", label: "Mines" },
+  { href: "/dice", label: "Dice" },
+];
+
+const PLATFORM = [
+  { href: "/rewards", label: "Rewards" },
+  { href: "/affiliate", label: "Affiliates" },
+  { href: "/leaderboard", label: "Leaderboard" },
+  { href: "/fairness", label: "Provably Fair" },
+  { href: "/faq", label: "FAQ" },
+];
+
+const DOCUMENTS = [
+  { href: "/terms", label: "Terms of Service" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/cookies", label: "Cookie Policy" },
+];
 
 const PAYMENTS = [
-  { src: "/img/payment/btc.webp", border: "border-orange", bg: "bg-orange" },
-  { src: "/img/payment/eth.webp", border: "border-blue-98", bg: "bg-blue-98" },
-  { src: "/img/payment/ltc.webp", border: "border-grey-190", bg: "bg-grey-190" },
-  { src: "/img/payment/tether.webp", border: "border-green-83", bg: "bg-green-83" },
-  { src: "/img/payment/usdc.webp", border: "border-blue-40", bg: "bg-blue-40" },
-  { src: "/img/payment/sol.webp", border: "border-purple-153", bg: "bg-purple-153" },
-  { src: "/img/payment/xrp.webp", border: "border-blue-170", bg: "bg-blue-170" },
-  { src: "/img/payment/tron.webp", border: "border-red-19", bg: "bg-red-19" },
-  { src: "/img/payment/bnb.webp", border: "border-yellow-241", bg: "bg-yellow-241" },
-  { src: "/img/payment/dai.webp", border: "border-yellow-244", bg: "bg-yellow-244" },
-] as const;
+  { name: "Visa", src: "/img/payment/brand/visa.webp" },
+  { name: "Mastercard", src: "/img/payment/brand/mastercard.webp" },
+  { name: "BTC", src: "/img/payment/brand/btc.webp" },
+  { name: "ETH", src: "/img/payment/brand/eth.webp" },
+  { name: "LTC", src: "/img/payment/brand/ltc.webp" },
+  { name: "USDT", src: "/img/payment/brand/usdt.webp" },
+  { name: "USDC", src: "/img/payment/brand/usdc.webp" },
+  { name: "SOL", src: "/img/payment/brand/sol.webp" },
+  { name: "BNB", src: "/img/payment/brand/bnb.webp" },
+];
 
-const LINK =
-  "w-full text-left text-14 text-grey-142 transition-colors duration-200 hover:text-white active:text-white";
+const SEO = [
+  { href: "/", label: "roblox case opening" },
+  { href: "/", label: "apertura de cajas de roblox" },
+  { href: "/", label: "abertura de caixas roblox" },
+  { href: "/", label: "открытие кейсов roblox" },
+  { href: "/", label: "ouverture de caisses roblox" },
+  { href: "/", label: "roblox Kisten öffnen" },
+  { href: "/", label: "otwieranie skrzynek roblox" },
+  { href: "/", label: "apertura casse roblox" },
+  { href: "/", label: "roblox ládanyitás" },
+  { href: "/", label: "otvaranje kutija roblox" },
+  { href: "/", label: "roblox dėžučių atidarymas" },
+];
 
-function ColHead({ label, accent }: { label: string; accent?: boolean }) {
+const LINK = "text-12 text-grey-142 transition-colors hover:text-white";
+
+function LogoGlow() {
   return (
-    <button type="button" className="flex w-full items-center justify-start">
-      <p className={`text-left text-12 font-bold uppercase ${accent ? "text-green" : "text-grey-70"}`}>{label}</p>
-      <div className="@sm/page:hidden ml-4">
-        <Icons.chevron className="text-20 text-green transition-transform duration-300 ease-in-out" />
-      </div>
-    </button>
+    <div className="relative flex h-56 items-center justify-center py-12">
+      <div className="pointer-events-none absolute top-0 left-1/2 h-32 w-136 -translate-x-1/2 bg-green/60 opacity-60 blur-[30px]" />
+      <div className="pointer-events-none absolute top-0 left-1/2 h-2 w-200 -translate-x-1/2 bg-gradient-to-r from-green/0 via-green to-green/0 opacity-30 blur-[1px]" />
+      <div className="header-logo-dots pointer-events-none absolute top-0 left-1/2 h-240 w-240 -translate-x-1/2" />
+      <img alt="BloxyPack" src="/img/logo.png" className="relative z-10 h-28 w-auto object-contain" />
+    </div>
+  );
+}
+
+function FlagEn() {
+  return (
+    <svg viewBox="0 0 60 30" className="h-12 w-auto rounded-2" aria-hidden>
+      <clipPath id="en-flag">
+        <rect width="60" height="30" rx="1" />
+      </clipPath>
+      <g clipPath="url(#en-flag)">
+        <rect width="60" height="30" fill="#012169" />
+        <path d="M0 0l60 30M60 0L0 30" stroke="#fff" strokeWidth="6" />
+        <path d="M0 0l60 30M60 0L0 30" stroke="#C8102E" strokeWidth="4" />
+        <path d="M30 0v30M0 15h60" stroke="#fff" strokeWidth="10" />
+        <path d="M30 0v30M0 15h60" stroke="#C8102E" strokeWidth="6" />
+      </g>
+    </svg>
+  );
+}
+
+function Col({ title, items }: { title: string; items: { href: string; label: string }[] }) {
+  return (
+    <div>
+      <h3 className="text-14 font-medium text-white">{title}</h3>
+      <ul className="mt-12 space-y-4">
+        {items.map((item) => (
+          <li key={item.href + item.label}>
+            <Link href={item.href} className={LINK}>
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
 export function SiteFooter() {
+  const { openModal } = useStore();
+
   return (
-    <div className="relative grid w-full grid-cols-1">
-      <div className="@lg/page:grid-cols-[1fr_auto] @sm/page:p-24 @md/page:px-70 @md/page:py-56 grid w-full grid-cols-1 gap-30 border-t-1 border-grey-47 p-24">
-        <div className="flex w-full justify-start">
-          <div className="grid w-[450px] max-w-full grid-cols-1 gap-16 sm:gap-26">
-            <Link aria-label="home" className="relative flex h-full w-full items-center justify-start" href="/">
-              <img alt="BloxyWild" className="relative h-64 w-auto object-contain" src="/img/logo.png" />
-            </Link>
-            <div className="font-chat grid w-full grid-cols-1 gap-16">
-              <p className="text-left text-12 text-grey-142">
-                BloxyWild is an entirely independent platform. It has no association, partnership, or endorsement from
-                Roblox Corporation or any of its subsidiaries or affiliates. Roblox accounts cannot be used to access
-                our site, and Robux is not accepted or exchangeable here.
-              </p>
-              <p className="text-left text-12 text-grey-142">
-                BloxyWild is a service provided by D.G.P. SOFTWORKS LTD, registered at Themistokli Dervi 48, 306, 1066
-                Nicosia, Cyprus.
-              </p>
-            </div>
-            <div className="flex w-full justify-start">
-              <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(10, 1fr)" }}>
-                {PAYMENTS.map((p) => (
-                  <button key={p.src} type="button" className="group relative w-full overflow-hidden rounded-4 bg-grey-47">
-                    <div
-                      className={`absolute inset-0 rounded-4 border-1 opacity-10 transition-opacity group-hover:opacity-100 group-active:opacity-100 ${p.border}`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-grey-58" />
-                    <div className={`absolute -top-1/2 left-0 h-1/2 w-full rounded-t-4 blur-[40px] transition-all ${p.bg}`} />
-                    <div className="relative grid w-full grid-cols-1 gap-12">
-                      <div className="flex w-full justify-center">
-                        <div
-                          className={`flex h-24 w-24 items-center justify-center rounded-4 border-b-1 border-t-1 border-b-black/20 border-t-white/40 p-3 ${p.bg}`}
-                        >
-                          <img alt="" className="h-full w-full object-contain" src={p.src} />
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
+    <div className="mx-auto mb-32 mt-66 w-full max-w-1600 overflow-hidden rounded-8 px-16 pb-80 transition-all duration-400 ease-in-out md:mt-86 md:pb-40">
+      <div className="flex w-full items-center gap-8 px-16 md:hidden">
+        <LogoGlow />
+      </div>
+
+      <div className="flex flex-wrap items-center justify-between gap-64">
+        <div className="mb-auto hidden flex-col items-center justify-center self-stretch md:flex">
+          <LogoGlow />
+          <div className="z-10 mt-12 mb-auto flex max-w-200 flex-wrap gap-8 px-16">
+            {CHAT_SOCIALS.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.label}
+                className="btn-glass inline-flex size-32 items-center justify-center rounded-6 p-7 text-14 text-grey-190"
+              >
+                <s.icon className="text-14" />
+              </a>
+            ))}
           </div>
         </div>
 
-        <div className="flex w-full items-start justify-start">
-          <div className="@lg/page:w-auto @md/page:grid-cols-[auto_auto_auto_auto] @sm/page:gap-40 grid w-full max-w-full grid-cols-2 items-start gap-24">
-            <div className="grid w-full grid-cols-1 gap-16">
-              <ColHead label="Play" accent />
-              <div className="grid w-full grid-cols-1 gap-8">
-                <Link aria-label="link" className={LINK} href="/battles">
-                  Battles
-                </Link>
-                <Link aria-label="link" className={LINK} href="/cases">
-                  Cases
-                </Link>
-                <Link aria-label="link" className={LINK} href="/dice">
-                  Dice
-                </Link>
-                <Link aria-label="link" className={LINK} href="/mines">
-                  Mines
-                </Link>
-                <Link aria-label="link" className={LINK} href="/towers">
-                  Towers
-                </Link>
-                <Link aria-label="link" className={LINK} href="/blackjack">
-                  Blackjack
-                </Link>
-              </div>
-            </div>
-            <div className="grid w-full grid-cols-1 gap-16">
-              <ColHead label="Features" />
-              <div className="grid w-full grid-cols-1 gap-8">
-                <Link aria-label="link" className={LINK} href="/affiliate">
-                  Affiliates
-                </Link>
-                <Link aria-label="link" className={LINK} href="/leaderboard">
-                  Leaderboard
-                </Link>
-                <Link aria-label="link" className={LINK} href="/marketplace">
-                  Marketplace
-                </Link>
-                <Link aria-label="link" className={LINK} href="/rewards">
-                  Rewards
-                </Link>
-              </div>
-            </div>
-            <div className="grid w-full grid-cols-1 gap-16">
-              <ColHead label="Info" />
-              <div className="grid w-full grid-cols-1 gap-8">
-                <Link aria-label="link" className={LINK} href="/support">
+        <div className="mt-16 flex flex-1 flex-wrap justify-between gap-24 px-16 md:mt-16 md:px-0">
+          <Col title="Games" items={GAMES} />
+          <div>
+            <h3 className="text-14 font-medium text-white">Platform</h3>
+            <ul className="mt-12 space-y-4">
+              {PLATFORM.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={LINK}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <button type="button" onClick={() => openModal("support")} className={LINK}>
                   Support
-                </Link>
-                <Link aria-label="link" className={LINK} href="/faq">
-                  FAQ
-                </Link>
-                <Link aria-label="link" className={LINK} href="/terms">
-                  TOS
-                </Link>
-                <Link aria-label="link" className={LINK} href="/aml">
-                  AML
-                </Link>
-                <Link aria-label="link" className={LINK} href="/privacy">
-                  Privacy
-                </Link>
-                <Link aria-label="link" className={LINK} href="/fairness">
-                  Fairness
-                </Link>
-              </div>
-            </div>
-            <div className="grid w-full grid-cols-1 gap-16">
-              <ColHead label="Socials" />
-              <div className="grid w-full grid-cols-1 gap-8">
-                <a aria-label="link" className={LINK} target="_blank" rel="noreferrer" href="https://x.com/rostakedotcom">
-                  Twitter/X
-                </a>
-                <a aria-label="link" className={LINK} target="_blank" rel="noreferrer" href="https://discord.gg/rostake">
-                  Discord
-                </a>
-              </div>
-            </div>
+                </button>
+              </li>
+            </ul>
           </div>
+          <Col title="Documents" items={DOCUMENTS} />
+        </div>
+
+        <div className="hidden gap-8 self-start md:flex">
+          <button
+            type="button"
+            className="inline-flex h-32 cursor-pointer items-center gap-8 rounded-6 border border-grey-58 bg-grey-39 px-12 text-12 text-white"
+          >
+            <FlagEn />
+            EN
+            <Icons.chevron className="text-14 text-grey-142" />
+          </button>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="btn-glass inline-flex h-32 items-center rounded-6 px-12 text-12 font-medium text-white"
+          >
+            To Top
+          </button>
         </div>
       </div>
-      <div className="w-full bg-grey-28 p-14">
-        <h2 className="text-center text-12 text-grey-142">© 2026 BloxyWild.com All rights reserved.</h2>
+
+      <div className="mx-auto my-16 w-full border-y border-grey-58 py-16">
+        <div className="flex flex-wrap items-center justify-center gap-24">
+          {PAYMENTS.map((p) => (
+            <img
+              key={p.name}
+              alt={p.name}
+              src={p.src}
+              className="h-16 w-60 min-w-40 object-contain opacity-45 grayscale"
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-center gap-4 px-16 py-12 text-center text-12 text-grey-142">
+        {SEO.map((item, i) => (
+          <span key={item.label}>
+            {i > 0 ? <span className="mr-4">|</span> : null}
+            <Link href={item.href} className="hover:text-white">
+              {item.label}
+            </Link>
+          </span>
+        ))}
+      </div>
+
+      <div className="px-16">
+        <div className="mb-8 text-center text-12 text-grey-142">© 2026 BloxyPack. All rights reserved. v0.1.0</div>
+        <div className="text-center text-12 text-grey-142">
+          BloxyPack is an entirely independent platform. It has no association, partnership, or endorsement from Roblox
+          Corporation or any of its subsidiaries or affiliates. Roblox accounts cannot be used to access our site, and
+          Robux is not accepted or exchangeable here. BloxyPack is a service provided by D.G.P. SOFTWORKS LTD, registered
+          at Themistokli Dervi 48, 306, 1066 Nicosia, Cyprus.
+        </div>
       </div>
     </div>
   );

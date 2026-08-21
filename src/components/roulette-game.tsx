@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { BetField } from "./bet-field";
-import { BetsTable } from "./bets-table";
 import { Bux } from "./bux";
-import { FairnessControl } from "@/components/fairness";
+import { BetValueField, GameHeading, GameLayout } from "@/components/game-chrome";
+import { Icons } from "./icons";
 import { useStore } from "./providers";
 import { UserAvatar } from "./user-avatar";
 import { rouletteBet, subscribeRoulette, type RouletteBetRow, type RouletteColor, type RouletteGame } from "@/lib/backend";
@@ -109,25 +108,37 @@ export function RouletteGame() {
     game?.state === "rolling" ? "Spinning" : game?.state === "completed" ? "Round over" : `Rolling in ${seconds}s`;
 
   return (
-    <>
-      <div className="grid w-full grid-cols-1 gap-16">
-        <div className="flex justify-end">
-          <FairnessControl
-            game="Roulette"
-            fields={[
-              { label: "Server Seed", value: game?.fair?.seedServer, placeholder: "Revealed after the spin" },
-              { label: "Server Seed (Hashed)", value: game?.fair?.hash },
-              { label: "Public Seed", value: game?.fair?.seedPublic },
-            ]}
-          />
-        </div>
-        <div className="panel-outline overflow-hidden rounded-12 bg-grey-39">
-          <div className="flex items-center justify-between gap-12 border-b-1 border-grey-47 px-16 py-12">
+    <GameLayout
+      fairness="Roulette"
+      fairFields={[
+        { label: "Server Seed", value: game?.fair?.seedServer, placeholder: "Revealed after the spin" },
+        { label: "Server Seed (Hashed)", value: game?.fair?.hash },
+        { label: "Public Seed", value: game?.fair?.seedPublic },
+      ]}
+      howTo={{
+        body: (
+          <>
+            <p>Set your amount, then pick Claw, Lion, or Banana before the timer hits zero.</p>
+            <p>Lion pays the most. You can place on more than one side in the same round.</p>
+          </>
+        ),
+      }}
+      panel={
+        <>
+          <GameHeading icon={<Icons.roulette className="text-12" />} title="Roulette" subtitle="Pick a side and ride the wheel" />
+          <BetValueField value={bet} onChange={setBet} max={user?.balance ?? 10} disabled={!betting} />
+          {error ? <p className="text-13 text-red">{error}</p> : null}
+          <p className="text-12 text-grey-142">{status}</p>
+        </>
+      }
+      board={
+        <div className="overflow-hidden rounded-12 border border-grey-58 bg-grey-28">
+          <div className="flex items-center justify-between gap-12 border-b border-grey-58 px-16 py-12">
             <div className="flex min-w-0 items-center gap-8 overflow-x-auto">
               {history.slice(0, 16).map((h, i) => (
                 <div
                   key={`${h.outcome}-${i}`}
-                  className={`flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-full ${tileTone(h.outcome)}`}
+                  className={`flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-6 ${tileTone(h.outcome)}`}
                   title={COLOR_MARK[h.color].label}
                 >
                   <img alt="" src={COLOR_MARK[h.color].src} className="h-16 w-16 object-contain" />
@@ -138,17 +149,17 @@ export function RouletteGame() {
 
           <div className="relative px-16 pt-16">
             <div className="mb-12 flex items-center justify-between">
-              <p className="ui-label text-12 text-white">{status}</p>
+              <p className="text-12 text-white">{status}</p>
               <p className="text-12 text-grey-142">{game?.fair?.hash ? `Hash ${game.fair.hash.slice(0, 12)}…` : ""}</p>
             </div>
-            <div className="mb-16 h-6 overflow-hidden rounded-full bg-grey-28">
+            <div className="mb-16 h-6 overflow-hidden rounded-full bg-grey-39">
               <div className="h-6 rounded-full bg-green transition-[width] duration-100" style={{ width: `${barPct}%` }} />
             </div>
 
-            <div ref={trackRef} className="relative h-88 overflow-hidden rounded-12 bg-grey-28">
-              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-48 bg-gradient-to-r from-grey-28 to-transparent" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-48 bg-gradient-to-l from-grey-28 to-transparent" />
-              <div className="pointer-events-none absolute left-1/2 top-0 z-20 h-full w-2 -translate-x-1/2 bg-green shadow-[0_0_12px_rgba(144,239,48,0.8)]" />
+            <div ref={trackRef} className="relative h-88 overflow-hidden rounded-12 bg-grey-39">
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-48 bg-gradient-to-r from-grey-39 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-48 bg-gradient-to-l from-grey-39 to-transparent" />
+              <div className="pointer-events-none absolute top-0 left-1/2 z-20 h-full w-2 -translate-x-1/2 bg-green shadow-[0_0_12px_rgba(82,181,255,0.8)]" />
               <div
                 className="absolute inset-y-0 left-0 flex items-center"
                 style={{
@@ -162,7 +173,7 @@ export function RouletteGame() {
                   return (
                     <div
                       key={`${n}-${i}`}
-                      className={`flex h-72 w-80 shrink-0 items-center justify-center rounded-10 border-b-3 border-t-3 ${tileTone(n)}`}
+                      className={`flex h-72 w-80 shrink-0 items-center justify-center rounded-6 border-b-3 border-t-3 ${tileTone(n)}`}
                     >
                       <img alt="" src={COLOR_MARK[color].src} className="h-40 w-40 object-contain" />
                     </div>
@@ -172,55 +183,50 @@ export function RouletteGame() {
             </div>
           </div>
 
-          <div className="grid gap-16 p-16">
-            <BetField value={bet} onChange={setBet} max={user?.balance ?? 10} tone="grey-28" />
-            {error ? <p className="text-13 text-red">{error}</p> : null}
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-              {(["red", "green", "black"] as RouletteColor[]).map((color) => {
-                const list = grouped[color];
-                const total = list.reduce((s, b) => s + b.amount, 0) / 1000;
-                const mine = user ? list.filter((b) => b.user?._id === user.id) : [];
-                return (
-                  <div key={color} className={`overflow-hidden rounded-12 border-1 ${columnTone(color, mine.length > 0)}`}>
-                    <button
-                      type="button"
-                      disabled={!betting}
-                      onClick={() => place(color)}
-                      className={`flex h-48 w-full items-center justify-between px-14 ${headerTone(color)} disabled:opacity-50`}
-                    >
-                      <span className="flex items-center gap-8">
-                        <img alt="" src={COLOR_MARK[color].src} className="h-22 w-22 object-contain" />
-                        <span className="ui-btn-label text-13 uppercase">
-                          {COLOR_MARK[color].label} {ROULETTE_PAYOUT[color]}x
-                        </span>
+          <div className="grid gap-12 p-16 md:grid-cols-3">
+            {(["red", "green", "black"] as RouletteColor[]).map((color) => {
+              const list = grouped[color];
+              const total = list.reduce((s, b) => s + b.amount, 0) / 1000;
+              const mine = user ? list.filter((b) => b.user?._id === user.id) : [];
+              return (
+                <div key={color} className={`overflow-hidden rounded-12 border ${columnTone(color, mine.length > 0)}`}>
+                  <button
+                    type="button"
+                    disabled={!betting}
+                    onClick={() => place(color)}
+                    className={`flex h-40 w-full items-center justify-between rounded-t-12 px-14 ${headerTone(color)} disabled:opacity-50`}
+                  >
+                    <span className="flex items-center gap-8">
+                      <img alt="" src={COLOR_MARK[color].src} className="h-22 w-22 object-contain" />
+                      <span className="ui-btn-label text-13 uppercase">
+                        {COLOR_MARK[color].label} {ROULETTE_PAYOUT[color]}x
                       </span>
-                      <span className="text-12 opacity-80">{list.length}</span>
-                    </button>
-                    <div className="flex items-center justify-between px-14 py-10 text-12 text-grey-142">
-                      <span>Total</span>
-                      <Bux value={total} />
-                    </div>
-                    <div className="grid max-h-[220px] gap-6 overflow-y-auto px-10 pb-12">
-                      {list.length === 0 ? (
-                        <p className="px-4 py-8 text-12 text-grey-112">No bets yet</p>
-                      ) : (
-                        list.map((b) => (
-                          <div key={b._id} className="panel-outline flex items-center gap-8 rounded-8 bg-grey-39 px-8 py-6">
-                            <UserAvatar avatar={b.user?.avatar} seed={b.user?._id || b.user?.username} size={22} rounded="8" level={b.user?.level} rank={b.user?.rank} />
-                            <p className="min-w-0 flex-1 truncate text-12 text-white">{b.user?.username || "Player"}</p>
-                            <Bux value={b.amount / 1000} />
-                          </div>
-                        ))
-                      )}
-                    </div>
+                    </span>
+                    <span className="text-12 opacity-80">{list.length}</span>
+                  </button>
+                  <div className="flex items-center justify-between px-14 py-10 text-12 text-grey-142">
+                    <span>Total</span>
+                    <Bux value={total} />
                   </div>
-                );
-              })}
-            </div>
+                  <div className="grid max-h-[220px] gap-6 overflow-y-auto px-10 pb-12">
+                    {list.length === 0 ? (
+                      <p className="px-4 py-8 text-12 text-grey-142">No bets yet</p>
+                    ) : (
+                      list.map((b) => (
+                        <div key={b._id} className="flex items-center gap-8 rounded-6 border border-grey-58 bg-grey-39 px-8 py-6">
+                          <UserAvatar avatar={b.user?.avatar} seed={b.user?._id || b.user?.username} size={22} rounded="8" level={b.user?.level} rank={b.user?.rank} />
+                          <p className="min-w-0 flex-1 truncate text-12 text-white">{b.user?.username || "Player"}</p>
+                          <Bux value={b.amount / 1000} />
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-      </div>
-      <BetsTable />
-    </>
+      }
+    />
   );
 }

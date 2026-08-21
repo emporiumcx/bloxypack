@@ -76,10 +76,12 @@ export type Battle = {
   teams: string;
   status: "active" | "ended";
   unboxed: number;
+  opened?: number;
   jackpot?: boolean;
   crazy?: boolean;
   terminal?: boolean;
   funding?: number;
+  createdAt?: number;
 };
 
 export const BATTLES: Battle[] = [
@@ -99,6 +101,8 @@ export const BATTLES: Battle[] = [
     teams: "2v2v2 Team",
     status: "ended",
     unboxed: 73927,
+    jackpot: true,
+    crazy: true,
   },
   {
     id: "telamon-team",
@@ -149,6 +153,7 @@ export const BATTLES: Battle[] = [
     teams: "1v1",
     status: "active",
     unboxed: 0,
+    jackpot: true,
   },
   {
     id: "mid-duel",
@@ -198,6 +203,7 @@ export const BATTLES: Battle[] = [
     teams: "1v1",
     status: "ended",
     unboxed: 7973,
+    crazy: true,
   },
 ];
 

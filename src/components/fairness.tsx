@@ -157,10 +157,12 @@ export function FairnessControl({
   game,
   fields,
   userSeeds = false,
+  compact = false,
 }: {
   game: string;
   fields?: FairField[];
   userSeeds?: boolean;
+  compact?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [leaving, setLeaving] = useState(false);
@@ -185,7 +187,18 @@ export function FairnessControl({
 
   return (
     <>
-      <FairnessButton onClick={() => setOpen(true)} />
+      {compact ? (
+        <button
+          type="button"
+          aria-label="Provably fair"
+          onClick={() => setOpen(true)}
+          className="flex h-32 w-32 shrink-0 items-center justify-center rounded-6 text-icons-secondary transition-colors hover:bg-grey-47 hover:text-white"
+        >
+          <Icons.shield className="text-16" />
+        </button>
+      ) : (
+        <FairnessButton onClick={() => setOpen(true)} />
+      )}
       {open ? <FairnessModal game={game} fields={rows} onClose={close} leaving={leaving} /> : null}
     </>
   );

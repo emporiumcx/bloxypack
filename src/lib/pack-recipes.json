@@ -1,0 +1,2394 @@
+{
+  "oil-baron": {
+    "hue": 43,
+    "shell": "bank-vault",
+    "items": [
+      1031429,
+      21070012,
+      119916949
+    ]
+  },
+  "optimus": {
+    "hue": 210,
+    "shell": "ice",
+    "items": [
+      48545806,
+      21070012,
+      31101391
+    ]
+  },
+  "bank-vault": {
+    "hue": 41,
+    "shell": "bank-vault",
+    "items": [
+      1031429,
+      21070012,
+      48545806
+    ]
+  },
+  "prestige": {
+    "hue": 89,
+    "shell": "oil-baron",
+    "items": [
+      21070012,
+      48545806,
+      162067148
+    ]
+  },
+  "ascension": {
+    "hue": 134,
+    "shell": "green",
+    "items": [
+      1031429,
+      33171947,
+      335080779
+    ]
+  },
+  "evil-fantasy": {
+    "hue": 342,
+    "shell": "pink",
+    "items": [
+      162067148,
+      259423244,
+      124730194
+    ]
+  },
+  "everest": {
+    "hue": 194,
+    "shell": "ice",
+    "items": [
+      21070012,
+      48545806,
+      1016143686
+    ]
+  },
+  "billionaire": {
+    "hue": 123,
+    "shell": "green",
+    "items": [
+      21070012,
+      33171947,
+      63043890
+    ]
+  },
+  "eclipse": {
+    "hue": 271,
+    "shell": "purple",
+    "items": [
+      64082730,
+      382881373,
+      383605854
+    ]
+  },
+  "wealth": {
+    "hue": 168,
+    "shell": "optimus",
+    "items": [
+      21070012,
+      31101391,
+      48545806
+    ]
+  },
+  "life-changing": {
+    "hue": 54,
+    "shell": "bank-vault",
+    "items": [
+      1031429,
+      33171947,
+      138932314
+    ]
+  },
+  "imagination": {
+    "hue": 220,
+    "shell": "cobalt",
+    "items": [
+      162067148,
+      16895215,
+      124730194
+    ]
+  },
+  "green-machine": {
+    "hue": 112,
+    "shell": "green",
+    "items": [
+      1158416,
+      100929604,
+      2830437685
+    ]
+  },
+  "shiny-collection": {
+    "hue": 273,
+    "shell": "purple",
+    "items": [
+      72082328,
+      119916949,
+      147180077
+    ]
+  },
+  "ancient-relics": {
+    "hue": 92,
+    "shell": "oil-baron",
+    "items": [
+      9910070,
+      26943368,
+      55907562
+    ]
+  },
+  "dominus-collector": {
+    "hue": 26,
+    "shell": "orange",
+    "items": [
+      21070012,
+      48545806,
+      31101391
+    ]
+  },
+  "diamonds": {
+    "hue": 197,
+    "shell": "ice",
+    "items": [
+      48545806,
+      88885069,
+      493476042
+    ]
+  },
+  "batman": {
+    "hue": 220,
+    "shell": "cobalt",
+    "items": [
+      162067148,
+      259423244,
+      16895215
+    ]
+  },
+  "rich-desires": {
+    "hue": 38,
+    "shell": "bank-vault",
+    "items": [
+      1031429,
+      21070012,
+      48545806
+    ]
+  },
+  "lord-federation": {
+    "hue": 314,
+    "shell": "pink",
+    "items": [
+      88885069,
+      293316452,
+      146134358
+    ]
+  },
+  "millionaire": {
+    "hue": 200,
+    "shell": "ice",
+    "items": [
+      1180433861,
+      1323384,
+      416846000
+    ]
+  },
+  "2-percent-astra": {
+    "hue": 355,
+    "shell": "crimson",
+    "items": [
+      162067148,
+      37816777,
+      439946249
+    ]
+  },
+  "valkyrie-vision": {
+    "hue": 201,
+    "shell": "ice",
+    "items": [
+      1180433861,
+      2830437685,
+      124730194
+    ]
+  },
+  "fortune": {
+    "hue": 3,
+    "shell": "crimson",
+    "items": [
+      31101391,
+      72082328,
+      128158708
+    ]
+  },
+  "miami-life": {
+    "hue": 306,
+    "shell": "pink",
+    "items": [
+      162067148,
+      33171947,
+      119916949
+    ]
+  },
+  "tango-dancer": {
+    "hue": 7,
+    "shell": "crimson",
+    "items": [
+      16652251,
+      180660043,
+      207207025
+    ]
+  },
+  "high-demand": {
+    "hue": 189,
+    "shell": "optimus",
+    "items": [
+      48545806,
+      493476042,
+      489196035
+    ]
+  },
+  "bloodbath": {
+    "hue": 2,
+    "shell": "crimson",
+    "items": [
+      1114768,
+      180660043,
+      42211680
+    ]
+  },
+  "lucky-drop": {
+    "hue": 115,
+    "shell": "green",
+    "items": [
+      98346834,
+      878889105,
+      74891470
+    ]
+  },
+  "vineyard-vibes": {
+    "hue": 19,
+    "shell": "orange",
+    "items": [
+      16652251,
+      97078419,
+      17449820
+    ]
+  },
+  "crimson-wrath": {
+    "hue": 2,
+    "shell": "crimson",
+    "items": [
+      31101391,
+      128158708,
+      42211680
+    ]
+  },
+  "roulette": {
+    "hue": 3,
+    "shell": "crimson",
+    "items": [
+      72082328,
+      259423244,
+      128158708
+    ]
+  },
+  "10-percent-sapphire": {
+    "hue": 245,
+    "shell": "cobalt",
+    "items": [
+      119916949,
+      878889105,
+      323417812
+    ]
+  },
+  "cursed-dream": {
+    "hue": 105,
+    "shell": "oil-baron",
+    "items": [
+      1158416,
+      16895215,
+      96103379
+    ]
+  },
+  "20-percent-baller": {
+    "hue": 36,
+    "shell": "bank-vault",
+    "items": [
+      124730194,
+      259423244,
+      16895215
+    ]
+  },
+  "shaggy": {
+    "hue": 212,
+    "shell": "ice",
+    "items": [
+      64082730,
+      382881373,
+      383605854
+    ]
+  },
+  "expensive-flip": {
+    "hue": 74,
+    "shell": "oil-baron",
+    "items": [
+      439984665,
+      1744246930,
+      1180428350
+    ]
+  },
+  "ro-roller": {
+    "hue": 39,
+    "shell": "bank-vault",
+    "items": [
+      124730194,
+      2799053,
+      439984665
+    ]
+  },
+  "10-percent-federation": {
+    "hue": 90,
+    "shell": "oil-baron",
+    "items": [
+      88885069,
+      24485062,
+      835095306
+    ]
+  },
+  "golden-galore": {
+    "hue": 40,
+    "shell": "bank-vault",
+    "items": [
+      2799053,
+      1285307,
+      416846000
+    ]
+  },
+  "artifical-intelligence": {
+    "hue": 314,
+    "shell": "pink",
+    "items": [
+      114385498,
+      40493240,
+      99254437
+    ]
+  },
+  "tix-bonanza": {
+    "hue": 38,
+    "shell": "bank-vault",
+    "items": [
+      335080779,
+      382880833,
+      382881237
+    ]
+  },
+  "dominus-flip": {
+    "hue": 32,
+    "shell": "bank-vault",
+    "items": [
+      335080779,
+      138932314,
+      31101391
+    ]
+  },
+  "deluxe-horns": {
+    "hue": 332,
+    "shell": "pink",
+    "items": [
+      215718515,
+      74891470,
+      1744060292
+    ]
+  },
+  "kings-crowns": {
+    "hue": 7,
+    "shell": "crimson",
+    "items": [
+      42211680,
+      1323384,
+      69226736
+    ]
+  },
+  "irregular": {
+    "hue": 94,
+    "shell": "oil-baron",
+    "items": [
+      64444871,
+      439984665,
+      98346834
+    ]
+  },
+  "jazzy": {
+    "hue": 45,
+    "shell": "bank-vault",
+    "items": [
+      334663683,
+      489196035,
+      32567578
+    ]
+  },
+  "10-percent-gold": {
+    "hue": 38,
+    "shell": "bank-vault",
+    "items": [
+      1031429,
+      2799053,
+      1285307
+    ]
+  },
+  "10-percent-dominus": {
+    "hue": 84,
+    "shell": "oil-baron",
+    "items": [
+      64444871,
+      96103379,
+      151789690
+    ]
+  },
+  "money-printer": {
+    "hue": 106,
+    "shell": "oil-baron",
+    "items": [
+      439984665,
+      96103379,
+      1180419690
+    ]
+  },
+  "black-or-white": {
+    "hue": 240,
+    "shell": "cobalt",
+    "items": [
+      259423244,
+      11748356,
+      108149175
+    ]
+  },
+  "north-pole-riches": {
+    "hue": 0,
+    "shell": "crimson",
+    "items": [
+      1323384,
+      148791559,
+      26019070
+    ]
+  },
+  "barbenheimer": {
+    "hue": 298,
+    "shell": "pink",
+    "items": [
+      334663683,
+      259423244,
+      20052135
+    ]
+  },
+  "tomb-raider": {
+    "hue": 76,
+    "shell": "oil-baron",
+    "items": [
+      55907562,
+      14671091,
+      31765091
+    ]
+  },
+  "red-dawn": {
+    "hue": 1,
+    "shell": "crimson",
+    "items": [
+      42211680,
+      180660043,
+      26343188
+    ]
+  },
+  "traders-delight": {
+    "hue": 358,
+    "shell": "crimson",
+    "items": [
+      1125510,
+      215718515,
+      74891470
+    ]
+  },
+  "ice-cold": {
+    "hue": 190,
+    "shell": "optimus",
+    "items": [
+      48545806,
+      493476042,
+      323417812
+    ]
+  },
+  "hi-lo-roller": {
+    "hue": 77,
+    "shell": "oil-baron",
+    "items": [
+      250394771,
+      39247498,
+      21024661
+    ]
+  },
+  "skateboard-days": {
+    "hue": 22,
+    "shell": "orange",
+    "items": [
+      23705521,
+      20573086,
+      47697285
+    ]
+  },
+  "white-gold": {
+    "hue": 43,
+    "shell": "bank-vault",
+    "items": [
+      37816777,
+      183468963,
+      321346550
+    ]
+  },
+  "opportunist": {
+    "hue": 359,
+    "shell": "crimson",
+    "items": [
+      439946249,
+      1125510,
+      63692675
+    ]
+  },
+  "void-star-ice": {
+    "hue": 190,
+    "shell": "optimus",
+    "items": [
+      1125510,
+      39247441,
+      4390891467
+    ]
+  },
+  "valk-flip": {
+    "hue": 231,
+    "shell": "cobalt",
+    "items": [
+      1365767,
+      175134718,
+      23634704
+    ]
+  },
+  "fedora-fiasco": {
+    "hue": 309,
+    "shell": "pink",
+    "items": [
+      493476042,
+      215751161,
+      259423244
+    ]
+  },
+  "vampire": {
+    "hue": 20,
+    "shell": "orange",
+    "items": [
+      128158708,
+      22850569,
+      16652251
+    ]
+  },
+  "eyes-of-aura": {
+    "hue": 1,
+    "shell": "crimson",
+    "items": [
+      180660043,
+      416846000,
+      398676450
+    ]
+  },
+  "indigo": {
+    "hue": 266,
+    "shell": "purple",
+    "items": [
+      47697285,
+      1323384,
+      1744060292
+    ]
+  },
+  "sword-heights": {
+    "hue": 22,
+    "shell": "orange",
+    "items": [
+      37816777,
+      16641274,
+      108149175
+    ]
+  },
+  "temple-of-wealth": {
+    "hue": 42,
+    "shell": "bank-vault",
+    "items": [
+      382881237,
+      2799053,
+      22546563
+    ]
+  },
+  "steampunk-booster": {
+    "hue": 27,
+    "shell": "orange",
+    "items": [
+      140484519,
+      12908119,
+      40893128
+    ]
+  },
+  "black-pearl": {
+    "hue": 266,
+    "shell": "purple",
+    "items": [
+      47697285,
+      1744060292,
+      172309861
+    ]
+  },
+  "10-percent-bling": {
+    "hue": 40,
+    "shell": "bank-vault",
+    "items": [
+      33171947,
+      25975243,
+      185813692
+    ]
+  },
+  "eros": {
+    "hue": 2,
+    "shell": "crimson",
+    "items": [
+      72069888,
+      146071355,
+      362051405
+    ]
+  },
+  "gold-dream": {
+    "hue": 37,
+    "shell": "bank-vault",
+    "items": [
+      138932314,
+      382881237,
+      4390900302
+    ]
+  },
+  "balloon-juicer": {
+    "hue": 354,
+    "shell": "crimson",
+    "items": [
+      27477255,
+      146071355,
+      6740391991
+    ]
+  },
+  "online-dater": {
+    "hue": 264,
+    "shell": "purple",
+    "items": [
+      1125510,
+      1285307,
+      4390891467
+    ]
+  },
+  "space-blue": {
+    "hue": 229,
+    "shell": "cobalt",
+    "items": [
+      162067148,
+      23705521,
+      878889105
+    ]
+  },
+  "30-percent-domnio": {
+    "hue": 44,
+    "shell": "bank-vault",
+    "items": [
+      68258723,
+      4390890198,
+      1560601706
+    ]
+  },
+  "dark-ice": {
+    "hue": 214,
+    "shell": "ice",
+    "items": [
+      16895215,
+      4390891467,
+      74891545
+    ]
+  },
+  "facelift": {
+    "hue": 345,
+    "shell": "crimson",
+    "items": [
+      16652251,
+      26019070,
+      26343188
+    ]
+  },
+  "highlight-boom": {
+    "hue": 339,
+    "shell": "pink",
+    "items": [
+      1285307,
+      26019070,
+      1073690
+    ]
+  },
+  "immortality": {
+    "hue": 43,
+    "shell": "bank-vault",
+    "items": [
+      416828455,
+      2041982658,
+      2222720521
+    ]
+  },
+  "10-percent-yum": {
+    "hue": 346,
+    "shell": "crimson",
+    "items": [
+      26019070,
+      20418682,
+      76692214
+    ]
+  },
+  "bucket-box": {
+    "hue": 39,
+    "shell": "bank-vault",
+    "items": [
+      1402433072,
+      128159108,
+      102604869
+    ]
+  },
+  "lord-of-war": {
+    "hue": 24,
+    "shell": "orange",
+    "items": [
+      62720797,
+      2264398,
+      1743906481
+    ]
+  },
+  "beast-case": {
+    "hue": 13,
+    "shell": "crimson",
+    "items": [
+      128992838,
+      209995252,
+      2225761296
+    ]
+  },
+  "star-juicer": {
+    "hue": 356,
+    "shell": "crimson",
+    "items": [
+      1125510,
+      1191135761,
+      439945661
+    ]
+  },
+  "hanz-lair": {
+    "hue": 14,
+    "shell": "crimson",
+    "items": [
+      215718515,
+      1191135761,
+      94794774
+    ]
+  },
+  "linkmons-case": {
+    "hue": 8,
+    "shell": "crimson",
+    "items": [
+      31101391,
+      32567578,
+      49493376
+    ]
+  },
+  "fedora-hunt": {
+    "hue": 153,
+    "shell": "green",
+    "items": [
+      100929604,
+      1016143686,
+      1285307
+    ]
+  },
+  "duck-duck-goose": {
+    "hue": 20,
+    "shell": "orange",
+    "items": [
+      104642550,
+      31149244,
+      1532385
+    ]
+  },
+  "favorite-tunes": {
+    "hue": 192,
+    "shell": "ice",
+    "items": [
+      35292167,
+      60662873,
+      60662839
+    ]
+  },
+  "periastron-flip": {
+    "hue": 294,
+    "shell": "purple",
+    "items": [
+      108158379,
+      159229806,
+      93136802
+    ]
+  },
+  "10-percent-hell": {
+    "hue": 5,
+    "shell": "crimson",
+    "items": [
+      81154592,
+      17735316,
+      144507154
+    ]
+  },
+  "buckberry": {
+    "hue": 42,
+    "shell": "bank-vault",
+    "items": [
+      102605392,
+      10159948454,
+      10159872338
+    ]
+  },
+  "demonic-dream": {
+    "hue": 357,
+    "shell": "crimson",
+    "items": [
+      1191135761,
+      188003914,
+      24487029
+    ]
+  },
+  "icebox": {
+    "hue": 42,
+    "shell": "bank-vault",
+    "items": [
+      33171947,
+      32567578,
+      445115703
+    ]
+  },
+  "rgb-roulette": {
+    "hue": 53,
+    "shell": "bank-vault",
+    "items": [
+      42211680,
+      180660043,
+      398676450
+    ]
+  },
+  "electronics": {
+    "hue": 334,
+    "shell": "pink",
+    "items": [
+      114385498,
+      29283273,
+      98253569
+    ]
+  },
+  "sparkler": {
+    "hue": 18,
+    "shell": "orange",
+    "items": [
+      439985494,
+      151784526,
+      169444294
+    ]
+  },
+  "crown-case": {
+    "hue": 22,
+    "shell": "orange",
+    "items": [
+      362032819,
+      173783297,
+      1560601706
+    ]
+  },
+  "federation-case": {
+    "hue": 282,
+    "shell": "purple",
+    "items": [
+      1180419124,
+      439984665,
+      382880833
+    ]
+  },
+  "imperialist": {
+    "hue": 40,
+    "shell": "bank-vault",
+    "items": [
+      4390896732,
+      193659065,
+      1594180
+    ]
+  },
+  "dark-lord": {
+    "hue": 239,
+    "shell": "cobalt",
+    "items": [
+      16895215,
+      74891545,
+      93131552
+    ]
+  },
+  "purple-plasma": {
+    "hue": 281,
+    "shell": "purple",
+    "items": [
+      1744060292,
+      17999992,
+      188004500
+    ]
+  },
+  "arctic-wonderland": {
+    "hue": 164,
+    "shell": "optimus",
+    "items": [
+      74891470,
+      1323384,
+      148791559
+    ]
+  },
+  "take-flight": {
+    "hue": 198,
+    "shell": "ice",
+    "items": [
+      416832622,
+      557057917,
+      2015363653
+    ]
+  },
+  "treasure-case": {
+    "hue": 39,
+    "shell": "bank-vault",
+    "items": [
+      62720797,
+      439945864,
+      1743906481
+    ]
+  },
+  "ultimate-headphones": {
+    "hue": 182,
+    "shell": "optimus",
+    "items": [
+      323417812,
+      315549204,
+      583635712
+    ]
+  },
+  "valkyries-ascension": {
+    "hue": 67,
+    "shell": "oil-baron",
+    "items": [
+      124730194,
+      1180433861,
+      4390891467
+    ]
+  },
+  "crystal-case": {
+    "hue": 104,
+    "shell": "oil-baron",
+    "items": [
+      74939231,
+      38858257,
+      323476069
+    ]
+  },
+  "3-percent-horns": {
+    "hue": 11,
+    "shell": "crimson",
+    "items": [
+      215718515,
+      74891470,
+      1744060292
+    ]
+  },
+  "grape-galore": {
+    "hue": 283,
+    "shell": "purple",
+    "items": [
+      250395631,
+      193696364,
+      553971858
+    ]
+  },
+  "mafia-moves": {
+    "hue": 28,
+    "shell": "orange",
+    "items": [
+      25740034,
+      1029025,
+      119812659
+    ]
+  },
+  "dream-box": {
+    "hue": 3,
+    "shell": "crimson",
+    "items": [
+      215718515,
+      26019070,
+      439945661
+    ]
+  },
+  "5-percent-tentacles": {
+    "hue": 182,
+    "shell": "optimus",
+    "items": [
+      16385361,
+      135470997,
+      507795810
+    ]
+  },
+  "blue-addiction": {
+    "hue": 205,
+    "shell": "ice",
+    "items": [
+      98346834,
+      136802867,
+      4390891467
+    ]
+  },
+  "10-percent-sshf": {
+    "hue": 320,
+    "shell": "pink",
+    "items": [
+      494291269,
+      835095880,
+      835095306
+    ]
+  },
+  "10-percent-capwn": {
+    "hue": 43,
+    "shell": "bank-vault",
+    "items": [
+      24123795,
+      1028606,
+      321570512
+    ]
+  },
+  "pets-party": {
+    "hue": 51,
+    "shell": "bank-vault",
+    "items": [
+      135470997,
+      24112667,
+      507795810
+    ]
+  },
+  "tsunami": {
+    "hue": 114,
+    "shell": "green",
+    "items": [
+      68258723,
+      31616411,
+      130113146
+    ]
+  },
+  "red-reign": {
+    "hue": 358,
+    "shell": "crimson",
+    "items": [
+      193696583,
+      102605392,
+      9465511
+    ]
+  },
+  "plushies": {
+    "hue": 9,
+    "shell": "crimson",
+    "items": [
+      84012460,
+      292969932,
+      292969139
+    ]
+  },
+  "crazy-boom": {
+    "hue": 94,
+    "shell": "oil-baron",
+    "items": [
+      321346616,
+      69344107,
+      638087256
+    ]
+  },
+  "barbie-girl": {
+    "hue": 321,
+    "shell": "pink",
+    "items": [
+      334663683,
+      315549204,
+      553971558
+    ]
+  },
+  "green-bonanza": {
+    "hue": 109,
+    "shell": "oil-baron",
+    "items": [
+      193696233,
+      135470963,
+      60675871
+    ]
+  },
+  "sphinxs-riddles": {
+    "hue": 29,
+    "shell": "orange",
+    "items": [
+      18482398,
+      1193866,
+      55633111
+    ]
+  },
+  "jingle-jackpot": {
+    "hue": 29,
+    "shell": "orange",
+    "items": [
+      583153791,
+      188703010,
+      67201116
+    ]
+  },
+  "summer-splash": {
+    "hue": 165,
+    "shell": "optimus",
+    "items": [
+      97852103,
+      2566024668,
+      15095717
+    ]
+  },
+  "electric-juicer": {
+    "hue": 38,
+    "shell": "bank-vault",
+    "items": [
+      1744051187,
+      12504077,
+      64038980
+    ]
+  },
+  "santas-sleigh": {
+    "hue": 16,
+    "shell": "orange",
+    "items": [
+      583153791,
+      1223107595,
+      188703010
+    ]
+  },
+  "dragon-warrior": {
+    "hue": 2,
+    "shell": "crimson",
+    "items": [
+      105344861,
+      105344365,
+      24659699
+    ]
+  },
+  "ice-storm": {
+    "hue": 195,
+    "shell": "ice",
+    "items": [
+      4390891467,
+      83704165,
+      141742418
+    ]
+  },
+  "hoodlum": {
+    "hue": 211,
+    "shell": "ice",
+    "items": [
+      136802867,
+      63692675,
+      144507154
+    ]
+  },
+  "gingerbread-jackpot": {
+    "hue": 30,
+    "shell": "orange",
+    "items": [
+      2606191948,
+      101078326,
+      138932273
+    ]
+  },
+  "15-percent-bang": {
+    "hue": 203,
+    "shell": "ice",
+    "items": [
+      4390891467,
+      439985494,
+      20980138
+    ]
+  },
+  "black-iron-case": {
+    "hue": 24,
+    "shell": "orange",
+    "items": [
+      439946249,
+      128159108,
+      628771505
+    ]
+  },
+  "diamond-fit": {
+    "hue": 180,
+    "shell": "optimus",
+    "items": [
+      98346834,
+      68258723,
+      1743903423
+    ]
+  },
+  "antler-mania": {
+    "hue": 32,
+    "shell": "bank-vault",
+    "items": [
+      193659065,
+      148791559,
+      1272714
+    ]
+  },
+  "ice-dream": {
+    "hue": 191,
+    "shell": "optimus",
+    "items": [
+      83704165,
+      135470710,
+      6552254
+    ]
+  },
+  "sunken-secrets": {
+    "hue": 197,
+    "shell": "ice",
+    "items": [
+      323417812,
+      507795810,
+      83704165
+    ]
+  },
+  "ghastly-ghouls": {
+    "hue": 44,
+    "shell": "bank-vault",
+    "items": [
+      96079550,
+      183468963,
+      6550129
+    ]
+  },
+  "greenfest": {
+    "hue": 100,
+    "shell": "oil-baron",
+    "items": [
+      398676450,
+      321346616,
+      16598513
+    ]
+  },
+  "10-percent-silver": {
+    "hue": 29,
+    "shell": "orange",
+    "items": [
+      439945661,
+      387256603,
+      878899787
+    ]
+  },
+  "emperious": {
+    "hue": 23,
+    "shell": "orange",
+    "items": [
+      25267538,
+      36466277,
+      878895806
+    ]
+  },
+  "30-percent-galaxy": {
+    "hue": 286,
+    "shell": "purple",
+    "items": [
+      36466277,
+      440739783,
+      440738448
+    ]
+  },
+  "noob-juicer": {
+    "hue": 52,
+    "shell": "bank-vault",
+    "items": [
+      32355759,
+      21070789,
+      164204164
+    ]
+  },
+  "volcanic-blaze": {
+    "hue": 15,
+    "shell": "orange",
+    "items": [
+      286524574,
+      32858948,
+      346675875
+    ]
+  },
+  "red-lagoon": {
+    "hue": 2,
+    "shell": "crimson",
+    "items": [
+      27477255,
+      16722419,
+      16598440
+    ]
+  },
+  "levs-15-percent": {
+    "hue": 191,
+    "shell": "optimus",
+    "items": [
+      16641274,
+      77443704,
+      1323367
+    ]
+  },
+  "dominus-descents": {
+    "hue": 35,
+    "shell": "bank-vault",
+    "items": [
+      138932314,
+      250395631,
+      64444871
+    ]
+  },
+  "bombastic-boom": {
+    "hue": 23,
+    "shell": "orange",
+    "items": [
+      286524574,
+      362029470,
+      147144571
+    ]
+  },
+  "colorful-extensions": {
+    "hue": 136,
+    "shell": "green",
+    "items": [
+      383605854,
+      159229806,
+      346686597
+    ]
+  },
+  "new-years-flip": {
+    "hue": 14,
+    "shell": "crimson",
+    "items": [
+      69226736,
+      42900229,
+      192562352
+    ]
+  },
+  "hooded": {
+    "hue": 343,
+    "shell": "pink",
+    "items": [
+      26769281,
+      64560136,
+      82331933
+    ]
+  },
+  "baller": {
+    "hue": 28,
+    "shell": "orange",
+    "items": [
+      62720797,
+      321346550,
+      1191152570
+    ]
+  },
+  "hellfire": {
+    "hue": 2,
+    "shell": "crimson",
+    "items": [
+      9465511,
+      323476069,
+      162066057
+    ]
+  },
+  "award-show": {
+    "hue": 49,
+    "shell": "bank-vault",
+    "items": [
+      2799053,
+      8795521,
+      8795516
+    ]
+  },
+  "crowns-of-the-night": {
+    "hue": 25,
+    "shell": "orange",
+    "items": [
+      439946249,
+      439945661,
+      439946101
+    ]
+  },
+  "sunglass-express": {
+    "hue": 46,
+    "shell": "bank-vault",
+    "items": [
+      11748356,
+      286524574,
+      15095717
+    ]
+  },
+  "blizzard-bundle": {
+    "hue": 179,
+    "shell": "optimus",
+    "items": [
+      209995252,
+      106689944,
+      68354832
+    ]
+  },
+  "police-juicer": {
+    "hue": 237,
+    "shell": "cobalt",
+    "items": [
+      1081392,
+      82358339,
+      321345425
+    ]
+  },
+  "wild-wanwood": {
+    "hue": 65,
+    "shell": "bank-vault",
+    "items": [
+      9910070,
+      1272714,
+      156105465
+    ]
+  },
+  "vamp-punk": {
+    "hue": 9,
+    "shell": "crimson",
+    "items": [
+      119812659,
+      2409285794,
+      2225761296
+    ]
+  },
+  "10-percent-snowman": {
+    "hue": 43,
+    "shell": "bank-vault",
+    "items": [
+      568921483,
+      137714292,
+      19396550
+    ]
+  },
+  "commando-case": {
+    "hue": 48,
+    "shell": "bank-vault",
+    "items": [
+      39247441,
+      39247498,
+      121260018
+    ]
+  },
+  "pumpkin-patrol": {
+    "hue": 74,
+    "shell": "oil-baron",
+    "items": [
+      1158416,
+      183468963,
+      4765323
+    ]
+  },
+  "halloween-bash": {
+    "hue": 23,
+    "shell": "orange",
+    "items": [
+      37816777,
+      96079550,
+      74891545
+    ]
+  },
+  "e-girl-heaven": {
+    "hue": 317,
+    "shell": "pink",
+    "items": [
+      1125510,
+      74891470,
+      439945661
+    ]
+  },
+  "zeus-case": {
+    "hue": 65,
+    "shell": "bank-vault",
+    "items": [
+      13793866,
+      1376466,
+      66416616
+    ]
+  },
+  "american-patriot": {
+    "hue": 280,
+    "shell": "purple",
+    "items": [
+      29715011,
+      1048338,
+      121260018
+    ]
+  },
+  "samurai-sake": {
+    "hue": 336,
+    "shell": "pink",
+    "items": [
+      22157971,
+      88777059,
+      30391731
+    ]
+  },
+  "sparkle-stockpile": {
+    "hue": 213,
+    "shell": "ice",
+    "items": [
+      1016143686,
+      1285307,
+      2566018860
+    ]
+  },
+  "dark-desire": {
+    "hue": 98,
+    "shell": "oil-baron",
+    "items": [
+      96103379,
+      74891545,
+      24123795
+    ]
+  },
+  "shaggy-flip": {
+    "hue": 225,
+    "shell": "cobalt",
+    "items": [
+      383605854,
+      119916824,
+      172309861
+    ]
+  },
+  "super-smiles": {
+    "hue": 309,
+    "shell": "pink",
+    "items": [
+      494291269,
+      376812961,
+      323191596
+    ]
+  },
+  "hair-deluxe": {
+    "hue": 21,
+    "shell": "orange",
+    "items": [
+      31312357,
+      169444294,
+      12314127
+    ]
+  },
+  "azure-addiction": {
+    "hue": 188,
+    "shell": "optimus",
+    "items": [
+      62720062,
+      69499437,
+      82332418
+    ]
+  },
+  "deck-the-halls": {
+    "hue": 42,
+    "shell": "bank-vault",
+    "items": [
+      2606192523,
+      139577901,
+      332747438
+    ]
+  },
+  "bluesteel-case": {
+    "hue": 141,
+    "shell": "green",
+    "items": [
+      98346834,
+      68258723,
+      489196035
+    ]
+  },
+  "discord-moderator": {
+    "hue": 344,
+    "shell": "crimson",
+    "items": [
+      60115635,
+      82332012,
+      63993237
+    ]
+  },
+  "10-percent-tooth": {
+    "hue": 246,
+    "shell": "cobalt",
+    "items": [
+      1365767,
+      169444294,
+      25975243
+    ]
+  },
+  "5-percent-prayer": {
+    "hue": 39,
+    "shell": "bank-vault",
+    "items": [
+      1029025,
+      1365767,
+      20052135
+    ]
+  },
+  "golden-case": {
+    "hue": 40,
+    "shell": "bank-vault",
+    "items": [
+      193659065,
+      18776718,
+      66330231
+    ]
+  },
+  "lottery-ticket": {
+    "hue": 81,
+    "shell": "oil-baron",
+    "items": [
+      16652251,
+      1125510,
+      147180077
+    ]
+  },
+  "doge-dream": {
+    "hue": 95,
+    "shell": "oil-baron",
+    "items": [
+      304718708,
+      163491813,
+      226189986
+    ]
+  },
+  "top-hat-galore": {
+    "hue": 116,
+    "shell": "green",
+    "items": [
+      158068251,
+      164204277,
+      169454280
+    ]
+  },
+  "toxic-waste": {
+    "hue": 336,
+    "shell": "pink",
+    "items": [
+      1744060292,
+      380754227,
+      583722932
+    ]
+  },
+  "lights-out": {
+    "hue": 30,
+    "shell": "orange",
+    "items": [
+      628771505,
+      928908332,
+      46363235
+    ]
+  },
+  "epicness": {
+    "hue": 34,
+    "shell": "bank-vault",
+    "items": [
+      130213380,
+      33384642,
+      51352999
+    ]
+  },
+  "gold-mine": {
+    "hue": 49,
+    "shell": "bank-vault",
+    "items": [
+      1743906481,
+      134087261,
+      1081300
+    ]
+  },
+  "pirate-plunder": {
+    "hue": 336,
+    "shell": "pink",
+    "items": [
+      435115571,
+      46839188,
+      19364667
+    ]
+  },
+  "horns": {
+    "hue": 1,
+    "shell": "crimson",
+    "items": [
+      628771505,
+      867827055,
+      280896465
+    ]
+  },
+  "1-percent-yum": {
+    "hue": 8,
+    "shell": "crimson",
+    "items": [
+      26019070,
+      101078326,
+      569676258
+    ]
+  },
+  "bubble-trouble": {
+    "hue": 315,
+    "shell": "pink",
+    "items": [
+      22920501,
+      19264845,
+      380754227
+    ]
+  },
+  "bow-tie-bonanza": {
+    "hue": 123,
+    "shell": "green",
+    "items": [
+      16598513,
+      315549086,
+      16598440
+    ]
+  },
+  "industrial-case": {
+    "hue": 30,
+    "shell": "orange",
+    "items": [
+      40893128,
+      244160357,
+      30391731
+    ]
+  },
+  "classic-case": {
+    "hue": 42,
+    "shell": "bank-vault",
+    "items": [
+      1029025,
+      15095717,
+      142285694
+    ]
+  },
+  "atlantis": {
+    "hue": 191,
+    "shell": "optimus",
+    "items": [
+      68258723,
+      31616411,
+      553970606
+    ]
+  },
+  "6-percent-beast": {
+    "hue": 8,
+    "shell": "crimson",
+    "items": [
+      128992838,
+      209995252,
+      2225761296
+    ]
+  },
+  "federation-dream": {
+    "hue": 303,
+    "shell": "pink",
+    "items": [
+      293316452,
+      16598444,
+      172309861
+    ]
+  },
+  "headless-express": {
+    "hue": 18,
+    "shell": "orange",
+    "items": [
+      95245137,
+      37820239,
+      313544522
+    ]
+  },
+  "festive-fortune": {
+    "hue": 60,
+    "shell": "bank-vault",
+    "items": [
+      139577901,
+      2606192523,
+      332747438
+    ]
+  },
+  "paradise-payday": {
+    "hue": 51,
+    "shell": "bank-vault",
+    "items": [
+      15095717,
+      175134718,
+      31541373
+    ]
+  },
+  "200x-duchess": {
+    "hue": 80,
+    "shell": "oil-baron",
+    "items": [
+      439984665,
+      2470750640,
+      241512134
+    ]
+  },
+  "hatbot-havoc": {
+    "hue": 190,
+    "shell": "optimus",
+    "items": [
+      149594188,
+      18015836,
+      1016144971
+    ]
+  },
+  "1-percent-emerald": {
+    "hue": 85,
+    "shell": "oil-baron",
+    "items": [
+      209994352,
+      102604869,
+      835094544
+    ]
+  },
+  "red-delight": {
+    "hue": 358,
+    "shell": "crimson",
+    "items": [
+      193696583,
+      376809691,
+      16598440
+    ]
+  },
+  "10-percent-dream": {
+    "hue": 90,
+    "shell": "oil-baron",
+    "items": [
+      553970961,
+      12313531,
+      380754227
+    ]
+  },
+  "overseer-case": {
+    "hue": 110,
+    "shell": "green",
+    "items": [
+      286511038,
+      286511631,
+      553720598
+    ]
+  },
+  "beautiful-hair": {
+    "hue": 226,
+    "shell": "cobalt",
+    "items": [
+      172309861,
+      135470963,
+      151786902
+    ]
+  },
+  "gaelic-luck": {
+    "hue": 100,
+    "shell": "oil-baron",
+    "items": [
+      226189871,
+      45084008,
+      48039287
+    ]
+  },
+  "sunburst-surprise": {
+    "hue": 72,
+    "shell": "oil-baron",
+    "items": [
+      376806474,
+      25545089,
+      19399000
+    ]
+  },
+  "galactic-win": {
+    "hue": 192,
+    "shell": "ice",
+    "items": [
+      162067148,
+      36466277,
+      440739783
+    ]
+  },
+  "blackout-bang": {
+    "hue": 243,
+    "shell": "cobalt",
+    "items": [
+      628771505,
+      9254521,
+      29532225
+    ]
+  },
+  "roblots": {
+    "hue": 30,
+    "shell": "orange",
+    "items": [
+      62674732,
+      467134564,
+      45513247
+    ]
+  },
+  "dancing-fruits": {
+    "hue": 26,
+    "shell": "orange",
+    "items": [
+      28278529,
+      53920070,
+      53918608
+    ]
+  },
+  "silver-vs-gold": {
+    "hue": 32,
+    "shell": "bank-vault",
+    "items": [
+      439945661,
+      439945864,
+      878899787
+    ]
+  },
+  "kungfu-case": {
+    "hue": 27,
+    "shell": "orange",
+    "items": [
+      11297766,
+      71427264,
+      439941904
+    ]
+  },
+  "3-percent-violet": {
+    "hue": 326,
+    "shell": "pink",
+    "items": [
+      220248530,
+      169454280,
+      7636350
+    ]
+  },
+  "lolfiesta": {
+    "hue": 52,
+    "shell": "bank-vault",
+    "items": [
+      25306182,
+      162372650,
+      25687227
+    ]
+  },
+  "frosty-case": {
+    "hue": 192,
+    "shell": "ice",
+    "items": [
+      136802867,
+      62720062,
+      102627528
+    ]
+  },
+  "polar-prestige": {
+    "hue": 140,
+    "shell": "green",
+    "items": [
+      1213472762,
+      19396550,
+      67200948
+    ]
+  },
+  "tropical-treasure": {
+    "hue": 79,
+    "shell": "oil-baron",
+    "items": [
+      185813692,
+      172327379,
+      253153907
+    ]
+  },
+  "book-case": {
+    "hue": 36,
+    "shell": "bank-vault",
+    "items": [
+      56561579,
+      1138390,
+      1193534
+    ]
+  },
+  "grim-or-pilgrim": {
+    "hue": 11,
+    "shell": "crimson",
+    "items": [
+      64559699,
+      107458531,
+      136172656
+    ]
+  },
+  "white-bandz": {
+    "hue": 121,
+    "shell": "green",
+    "items": [
+      1609394530,
+      327318670,
+      11297746
+    ]
+  },
+  "50-percent-legit": {
+    "hue": 32,
+    "shell": "bank-vault",
+    "items": [
+      19027209,
+      12777646,
+      22119034
+    ]
+  },
+  "adurite-case": {
+    "hue": 2,
+    "shell": "crimson",
+    "items": [
+      439946101,
+      162066176,
+      162066057
+    ]
+  },
+  "all-the-santas": {
+    "hue": 8,
+    "shell": "crimson",
+    "items": [
+      19704937,
+      18729820,
+      19327404
+    ]
+  },
+  "hearty-breakfast": {
+    "hue": 3,
+    "shell": "crimson",
+    "items": [
+      110207471,
+      399021751,
+      158066152
+    ]
+  },
+  "viking-case": {
+    "hue": 151,
+    "shell": "green",
+    "items": [
+      1028720,
+      62729995,
+      327318111
+    ]
+  },
+  "diy-case": {
+    "hue": 15,
+    "shell": "orange",
+    "items": [
+      151789690,
+      1560602573,
+      232492903
+    ]
+  },
+  "10-percent-juiced": {
+    "hue": 29,
+    "shell": "orange",
+    "items": [
+      65417235,
+      175134718,
+      30394316
+    ]
+  },
+  "blox-depot": {
+    "hue": 49,
+    "shell": "bank-vault",
+    "items": [
+      244097060,
+      27171229,
+      10467314620
+    ]
+  },
+  "sinister-mystery": {
+    "hue": 123,
+    "shell": "green",
+    "items": [
+      182640918,
+      37819478,
+      17450053
+    ]
+  },
+  "blade-arsenal": {
+    "hue": 24,
+    "shell": "orange",
+    "items": [
+      77443491,
+      241511828,
+      156467990
+    ]
+  },
+  "love-you": {
+    "hue": 328,
+    "shell": "pink",
+    "items": [
+      146071355,
+      22314719,
+      362051405
+    ]
+  },
+  "8-bit-case": {
+    "hue": 70,
+    "shell": "oil-baron",
+    "items": [
+      383507353,
+      10159600649,
+      121925071
+    ]
+  },
+  "dark-deception": {
+    "hue": 1,
+    "shell": "crimson",
+    "items": [
+      89624140,
+      54528375,
+      19112109
+    ]
+  },
+  "10-percent-virtual": {
+    "hue": 116,
+    "shell": "green",
+    "items": [
+      362081769,
+      130106467,
+      130106618
+    ]
+  },
+  "lucky-case": {
+    "hue": 107,
+    "shell": "oil-baron",
+    "items": [
+      74938783,
+      74904413,
+      48039013
+    ]
+  },
+  "party-rock": {
+    "hue": 156,
+    "shell": "green",
+    "items": [
+      60674516,
+      430063819,
+      20044751
+    ]
+  },
+  "yellowmania": {
+    "hue": 50,
+    "shell": "bank-vault",
+    "items": [
+      323191430,
+      93723594,
+      1048037
+    ]
+  },
+  "the-1-percent": {
+    "hue": 47,
+    "shell": "bank-vault",
+    "items": [
+      286524574,
+      159229806,
+      27477255
+    ]
+  },
+  "holiday-haul": {
+    "hue": 87,
+    "shell": "oil-baron",
+    "items": [
+      136777171,
+      67584675,
+      67318186
+    ]
+  },
+  "sunny-stockpile": {
+    "hue": 58,
+    "shell": "bank-vault",
+    "items": [
+      24727929,
+      62139501,
+      61458403
+    ]
+  },
+  "brilliant-boom": {
+    "hue": 27,
+    "shell": "orange",
+    "items": [
+      136803077,
+      1532390,
+      489171096
+    ]
+  },
+  "praefectus-dream": {
+    "hue": 93,
+    "shell": "oil-baron",
+    "items": [
+      527365852,
+      1609401184,
+      286512740
+    ]
+  },
+  "eye-of-the-prince": {
+    "hue": 175,
+    "shell": "optimus",
+    "items": [
+      18821202,
+      1032641,
+      4786877411
+    ]
+  },
+  "headwear-havoc": {
+    "hue": 246,
+    "shell": "cobalt",
+    "items": [
+      115300683,
+      22547636,
+      91676854
+    ]
+  },
+  "egg-case": {
+    "hue": 38,
+    "shell": "bank-vault",
+    "items": [
+      1532387,
+      1532381,
+      380566976
+    ]
+  },
+  "budget-flip": {
+    "hue": 301,
+    "shell": "pink",
+    "items": [
+      232503325,
+      293316227,
+      10467314620
+    ]
+  },
+  "heads-or-glasses": {
+    "hue": 46,
+    "shell": "bank-vault",
+    "items": [
+      835063865,
+      138932273,
+      6803412842
+    ]
+  },
+  "zoo-case": {
+    "hue": 88,
+    "shell": "oil-baron",
+    "items": [
+      258183582,
+      489170175,
+      928911381
+    ]
+  },
+  "good-luck": {
+    "hue": 81,
+    "shell": "oil-baron",
+    "items": [
+      169444294,
+      1560601706,
+      226189871
+    ]
+  },
+  "shoot-for-the-stars": {
+    "hue": 309,
+    "shell": "pink",
+    "items": [
+      161211433,
+      119917015,
+      31151864
+    ]
+  },
+  "turning-the-tides": {
+    "hue": 63,
+    "shell": "bank-vault",
+    "items": [
+      10159622004,
+      928911381,
+      124472052
+    ]
+  },
+  "50-50": {
+    "hue": 26,
+    "shell": "orange",
+    "items": [
+      2620478831,
+      3581868178
+    ]
+  },
+  "cheesy": {
+    "hue": 40,
+    "shell": "bank-vault",
+    "items": [
+      145310594,
+      46839229
+    ]
+  },
+  "beach-bonanza": {
+    "hue": 41,
+    "shell": "bank-vault",
+    "items": [
+      111903483,
+      31541373,
+      158066152
+    ]
+  },
+  "stocking-surprise": {
+    "hue": 15,
+    "shell": "orange",
+    "items": [
+      101078326,
+      327319628,
+      569676258
+    ]
+  },
+  "budget-spins": {
+    "hue": 65,
+    "shell": "bank-vault",
+    "items": [
+      9731852643,
+      6803400584,
+      110705572
+    ]
+  },
+  "low-baller": {
+    "hue": 34,
+    "shell": "bank-vault",
+    "items": [
+      6803400584,
+      3064215952,
+      4786883113
+    ]
+  },
+  "courageous-comeback": {
+    "hue": 312,
+    "shell": "pink",
+    "items": [
+      439944384,
+      110705572,
+      4771699155
+    ]
+  },
+  "cheap-box": {
+    "hue": 279,
+    "shell": "purple",
+    "items": [
+      3798243238,
+      108150260,
+      4771699155
+    ]
+  }
+}

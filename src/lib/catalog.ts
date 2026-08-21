@@ -134,17 +134,29 @@ export type Battle = {
 export const BATTLES: Battle[] = [];
 
 export const LEADERBOARD = [
-  { place: 1, user: "Joris67", wagered: 6029035, prize: 450000, item: "Ice Valkyrie" },
-  { place: 2, user: "monarch", wagered: 5353630, prize: 250000, item: "Agonizingly Red Bucket of Cheer" },
-  { place: 3, user: "Anonymous", wagered: 4873811, prize: 100000, item: "Gold Emperor of the Night" },
-  { place: 4, user: "voids", wagered: 2950109, prize: 50000, item: "Sparkle Time Fedora" },
-  { place: 5, user: "imtrynamaxwin", wagered: 1882401, prize: 25000, item: "Clockwork Headphones" },
-  { place: 6, user: "Alpha_mil0", wagered: 1104400, prize: 15000, item: "Redcliff Elite" },
-  { place: 7, user: "OMEGA51", wagered: 880120, prize: 10000, item: "Vampire Collar" },
-  { place: 8, user: "przfnn", wagered: 640330, prize: 5000, item: "Laptop Hat" },
-  { place: 9, user: "cliqziz", wagered: 512440, prize: 4000, item: "Sparkle Time" },
-  { place: 10, user: "Vasky", wagered: 388210, prize: 3000, item: "Vampire Collar" },
+  { place: 1, user: "Joris67", wagered: 6029035, prize: 25000 },
+  { place: 2, user: "monarch", wagered: 5353630, prize: 10000 },
+  { place: 3, user: "Anonymous", wagered: 4873811, prize: 7500 },
+  { place: 4, user: "voids", wagered: 2950109, prize: 2000 },
+  { place: 5, user: "imtrynamaxwin", wagered: 1882401, prize: 1000 },
+  { place: 6, user: "Alpha_mil0", wagered: 1104400, prize: 500 },
+  { place: 7, user: "OMEGA51", wagered: 880120, prize: 500 },
+  { place: 8, user: "przfnn", wagered: 640330, prize: 500 },
+  { place: 9, user: "cliqziz", wagered: 512440, prize: 250 },
+  { place: 10, user: "Vasky", wagered: 388210, prize: 250 },
+  { place: 11, user: "noxie", wagered: 301220, prize: 250 },
+  { place: 12, user: "kay2", wagered: 276519, prize: 250 },
+  { place: 13, user: "milos", wagered: 251880, prize: 250 },
+  { place: 14, user: "Rune47", wagered: 228116, prize: 250 },
+  { place: 15, user: "ivy2", wagered: 204151, prize: 250 },
+  { place: 16, user: "Cinderra", wagered: 185978, prize: 250 },
+  { place: 17, user: "Julez", wagered: 165774, prize: 250 },
+  { place: 18, user: "Gio", wagered: 153989, prize: 250 },
+  { place: 19, user: "sly", wagered: 147766, prize: 250 },
+  { place: 20, user: "AltaMM", wagered: 132002, prize: 250 },
 ];
+
+export const WEEKLY_RACE_POOL = LEADERBOARD.reduce((sum, row) => sum + row.prize, 0);
 
 export const TICKER: { name: string; value: number; id: number; glow: string }[] = [
   { name: "Dominus Empyreus", value: 40000000, id: 21070012, glow: "rgb(255, 210, 57)" },

@@ -1,7 +1,7 @@
 [
   {
     "slug": "oil-baron",
-    "name": "Oil Baron",
+    "name": "Black Gold",
     "image": "/cdn/cases/oil-baron.webp",
     "price": 18303111,
     "bar": "#3b82f6",
@@ -10,7 +10,7 @@
   },
   {
     "slug": "optimus",
-    "name": "Optimus",
+    "name": "Prime Core",
     "image": "/cdn/cases/optimus.webp",
     "price": 14101778,
     "bar": "#ef4444",
@@ -19,7 +19,7 @@
   },
   {
     "slug": "bank-vault",
-    "name": "Bank Vault",
+    "name": "Locked Vault",
     "image": "/cdn/cases/bank-vault.webp",
     "price": 7588889,
     "bar": "#ef4444",
@@ -28,7 +28,7 @@
   },
   {
     "slug": "prestige",
-    "name": "Prestige",
+    "name": "High Society",
     "image": "/cdn/cases/prestige.webp",
     "price": 7033333,
     "bar": "#ef4444",
@@ -37,7 +37,7 @@
   },
   {
     "slug": "ascension",
-    "name": "Ascension",
+    "name": "Skybound",
     "image": "/cdn/cases/ascension.webp",
     "price": 6688889,
     "bar": "#3b82f6",
@@ -46,7 +46,7 @@
   },
   {
     "slug": "evil-fantasy",
-    "name": "Evil Fantasy",
+    "name": "Dark Fable",
     "image": "/cdn/cases/evil-fantasy.webp",
     "price": 6573611,
     "bar": "#3b82f6",
@@ -55,7 +55,7 @@
   },
   {
     "slug": "everest",
-    "name": "Everest",
+    "name": "Summit",
     "image": "/cdn/cases/everest.webp",
     "price": 4881778,
     "bar": "#3b82f6",
@@ -64,7 +64,7 @@
   },
   {
     "slug": "billionaire",
-    "name": "Billionaire",
+    "name": "Ultra Rich",
     "image": "/cdn/cases/billionaire.webp",
     "price": 4220750,
     "bar": "#3b82f6",
@@ -73,7 +73,7 @@
   },
   {
     "slug": "eclipse",
-    "name": "Eclipse",
+    "name": "Dark Sun",
     "image": "/cdn/cases/eclipse.webp",
     "price": 3852222,
     "bar": "#3b82f6",
@@ -82,7 +82,7 @@
   },
   {
     "slug": "wealth",
-    "name": "Wealth",
+    "name": "Loaded",
     "image": "/cdn/cases/wealth.webp",
     "price": 1999467,
     "bar": "#3b82f6",
@@ -91,7 +91,7 @@
   },
   {
     "slug": "life-changing",
-    "name": "Life Changing",
+    "name": "Life Alter",
     "image": "/cdn/cases/life-changing.webp",
     "price": 1603124,
     "bar": "#3b82f6",
@@ -100,7 +100,7 @@
   },
   {
     "slug": "imagination",
-    "name": "Imagination",
+    "name": "Daydream",
     "image": "/cdn/cases/imagination.webp",
     "price": 1281111,
     "bar": "#ef4444",
@@ -109,7 +109,7 @@
   },
   {
     "slug": "green-machine",
-    "name": "Green Machine",
+    "name": "Emerald Engine",
     "image": "/cdn/cases/green-machine.webp",
     "price": 1260608,
     "bar": "#ef4444",
@@ -118,7 +118,7 @@
   },
   {
     "slug": "shiny-collection",
-    "name": "Shiny Collection",
+    "name": "Gleam Set",
     "image": "/cdn/cases/shiny-collection.webp",
     "price": 1258947,
     "bar": "#ef4444",
@@ -127,7 +127,7 @@
   },
   {
     "slug": "ancient-relics",
-    "name": "Ancient Relics",
+    "name": "Lost Relics",
     "image": "/cdn/cases/ancient-relics.webp",
     "price": 1235276,
     "bar": "#3b82f6",
@@ -136,7 +136,7 @@
   },
   {
     "slug": "dominus-collector",
-    "name": "Dominus Collector",
+    "name": "Hood Archive",
     "image": "/cdn/cases/dominus-collector.webp",
     "price": 1190295,
     "bar": "#3b82f6",
@@ -145,7 +145,7 @@
   },
   {
     "slug": "diamonds",
-    "name": "Diamonds",
+    "name": "Cut Gems",
     "image": "/cdn/cases/diamonds.webp",
     "price": 1187616,
     "bar": "#3b82f6",
@@ -154,7 +154,7 @@
   },
   {
     "slug": "batman",
-    "name": "Batman",
+    "name": "Night Knight",
     "image": "/cdn/cases/batman.webp",
     "price": 1090135,
     "bar": "#ef4444",
@@ -163,7 +163,7 @@
   },
   {
     "slug": "rich-desires",
-    "name": "Rich Desires",
+    "name": "Gilded Want",
     "image": "/cdn/cases/rich-desires.webp",
     "price": 1077341,
     "bar": "#3b82f6",
@@ -172,7 +172,7 @@
   },
   {
     "slug": "lord-federation",
-    "name": "Lord Federation",
+    "name": "Crown League",
     "image": "/cdn/cases/lord-federation.webp",
     "price": 1060333,
     "bar": "#ef4444",
@@ -181,7 +181,7 @@
   },
   {
     "slug": "millionaire",
-    "name": "Millionaire",
+    "name": "Seven Figures",
     "image": "/cdn/cases/millionaire.webp",
     "price": 1011662,
     "bar": "#3b82f6",
@@ -190,7 +190,7 @@
   },
   {
     "slug": "2-percent-astra",
-    "name": "2% Astra",
+    "name": "Astra Odds",
     "image": "/cdn/cases/2-percent-astra.webp",
     "price": 975278,
     "bar": "#ef4444",
@@ -199,7 +199,7 @@
   },
   {
     "slug": "valkyrie-vision",
-    "name": "Valkyrie Vision",
+    "name": "Valk Sight",
     "image": "/cdn/cases/valkyrie-vision.webp",
     "price": 851389,
     "bar": "#3b82f6",
@@ -208,7 +208,7 @@
   },
   {
     "slug": "fortune",
-    "name": "Fortune",
+    "name": "Jackpot Run",
     "image": "/cdn/cases/fortune.webp",
     "price": 840059,
     "bar": "#ef4444",
@@ -217,7 +217,7 @@
   },
   {
     "slug": "miami-life",
-    "name": "Miami Life",
+    "name": "Neon Coast",
     "image": "/cdn/cases/miami-life.webp",
     "price": 791833,
     "bar": "#ef4444",
@@ -226,7 +226,7 @@
   },
   {
     "slug": "tango-dancer",
-    "name": "Tango Dancer",
+    "name": "Last Dance",
     "image": "/cdn/cases/tango-dancer.webp",
     "price": 720558,
     "bar": "#3b82f6",
@@ -235,7 +235,7 @@
   },
   {
     "slug": "high-demand",
-    "name": "High Demand",
+    "name": "Hot List",
     "image": "/cdn/cases/high-demand.webp",
     "price": 720000,
     "bar": "#3b82f6",
@@ -244,7 +244,7 @@
   },
   {
     "slug": "bloodbath",
-    "name": "Bloodbath",
+    "name": "Crimson Tide",
     "image": "/cdn/cases/bloodbath.webp",
     "price": 713756,
     "bar": "#3b82f6",
@@ -253,7 +253,7 @@
   },
   {
     "slug": "lucky-drop",
-    "name": "Lucky Drop",
+    "name": "Lucky Pull",
     "image": "/cdn/cases/lucky-drop.webp",
     "price": 632346,
     "bar": "#3b82f6",
@@ -262,7 +262,7 @@
   },
   {
     "slug": "vineyard-vibes",
-    "name": "Vineyard Vibes",
+    "name": "Vintage",
     "image": "/cdn/cases/vineyard-vibes.webp",
     "price": 614323,
     "bar": "#3b82f6",
@@ -271,7 +271,7 @@
   },
   {
     "slug": "crimson-wrath",
-    "name": "Crimson Wrath",
+    "name": "Scarlet Rage",
     "image": "/cdn/cases/crimson-wrath.webp",
     "price": 532207,
     "bar": "#ef4444",
@@ -280,7 +280,7 @@
   },
   {
     "slug": "roulette",
-    "name": "Roulette",
+    "name": "Spin Room",
     "image": "/cdn/cases/roulette.webp",
     "price": 500002,
     "bar": "#ef4444",
@@ -289,7 +289,7 @@
   },
   {
     "slug": "10-percent-sapphire",
-    "name": "10% Sapphire",
+    "name": "Sapphire Odds",
     "image": "/cdn/cases/10-percent-sapphire.webp",
     "price": 493961,
     "bar": "#ef4444",
@@ -298,7 +298,7 @@
   },
   {
     "slug": "cursed-dream",
-    "name": "Cursed Dream",
+    "name": "Hexed Sleep",
     "image": "/cdn/cases/cursed-dream.webp",
     "price": 489444,
     "bar": "#3b82f6",
@@ -307,7 +307,7 @@
   },
   {
     "slug": "20-percent-baller",
-    "name": "20% Baller",
+    "name": "Baller Odds",
     "image": "/cdn/cases/20-percent-baller.webp",
     "price": 486293,
     "bar": "#ef4444",
@@ -316,7 +316,7 @@
   },
   {
     "slug": "shaggy",
-    "name": "Shaggy",
+    "name": "Rainbow Mop",
     "image": "/cdn/cases/shaggy.webp",
     "price": 484827,
     "bar": "#ef4444",
@@ -325,7 +325,7 @@
   },
   {
     "slug": "expensive-flip",
-    "name": "Expensive Flip",
+    "name": "High Flip",
     "image": "/cdn/cases/expensive-flip.webp",
     "price": 459293,
     "bar": "#3b82f6",
@@ -334,7 +334,7 @@
   },
   {
     "slug": "ro-roller",
-    "name": "Ro-Roller",
+    "name": "Roblox Roll",
     "image": "/cdn/cases/ro-roller.webp",
     "price": 417952,
     "bar": "#3b82f6",
@@ -343,7 +343,7 @@
   },
   {
     "slug": "10-percent-federation",
-    "name": "10% Federation",
+    "name": "Fed Odds",
     "image": "/cdn/cases/10-percent-federation.webp",
     "price": 337778,
     "bar": "#ef4444",
@@ -352,7 +352,7 @@
   },
   {
     "slug": "golden-galore",
-    "name": "Golden Galore",
+    "name": "Gold Rush",
     "image": "/cdn/cases/golden-galore.webp",
     "price": 321154,
     "bar": "#ef4444",
@@ -361,7 +361,7 @@
   },
   {
     "slug": "artifical-intelligence",
-    "name": "Artificial Intelligence",
+    "name": "Neural Pack",
     "image": "/cdn/cases/artifical-intelligence.webp",
     "price": 284500,
     "bar": "#3b82f6",
@@ -370,7 +370,7 @@
   },
   {
     "slug": "tix-bonanza",
-    "name": "Tix Bonanza",
+    "name": "Ticket Storm",
     "image": "/cdn/cases/tix-bonanza.webp",
     "price": 258883,
     "bar": "#ef4444",
@@ -379,7 +379,7 @@
   },
   {
     "slug": "dominus-flip",
-    "name": "Dominus Flip",
+    "name": "Hood Flip",
     "image": "/cdn/cases/dominus-flip.webp",
     "price": 250573,
     "bar": "#ef4444",
@@ -388,7 +388,7 @@
   },
   {
     "slug": "deluxe-horns",
-    "name": "Deluxe Horns",
+    "name": "Horn Stack",
     "image": "/cdn/cases/deluxe-horns.webp",
     "price": 226330,
     "bar": "#ef4444",
@@ -397,7 +397,7 @@
   },
   {
     "slug": "kings-crowns",
-    "name": "Kings Crowns",
+    "name": "Royal Caps",
     "image": "/cdn/cases/kings-crowns.webp",
     "price": 220334,
     "bar": "#ef4444",
@@ -406,7 +406,7 @@
   },
   {
     "slug": "irregular",
-    "name": "Irregular",
+    "name": "Odd One",
     "image": "/cdn/cases/irregular.webp",
     "price": 189455,
     "bar": "#ef4444",
@@ -415,7 +415,7 @@
   },
   {
     "slug": "jazzy",
-    "name": "Jazzy",
+    "name": "Night Jazz",
     "image": "/cdn/cases/jazzy.webp",
     "price": 184863,
     "bar": "#ef4444",
@@ -424,7 +424,7 @@
   },
   {
     "slug": "10-percent-gold",
-    "name": "10% Gold",
+    "name": "Gold Odds",
     "image": "/cdn/cases/10-percent-gold.webp",
     "price": 176699,
     "bar": "#ef4444",
@@ -433,7 +433,7 @@
   },
   {
     "slug": "10-percent-dominus",
-    "name": "10% Dominus",
+    "name": "Hood Odds",
     "image": "/cdn/cases/10-percent-dominus.webp",
     "price": 175661,
     "bar": "#ef4444",
@@ -442,7 +442,7 @@
   },
   {
     "slug": "money-printer",
-    "name": "Money Printer",
+    "name": "Print Shop",
     "image": "/cdn/cases/money-printer.webp",
     "price": 175622,
     "bar": "#ef4444",
@@ -451,7 +451,7 @@
   },
   {
     "slug": "black-or-white",
-    "name": "Black or White",
+    "name": "Mono Mix",
     "image": "/cdn/cases/black-or-white.webp",
     "price": 168550,
     "bar": "#ef4444",
@@ -460,7 +460,7 @@
   },
   {
     "slug": "north-pole-riches",
-    "name": "North Pole Riches",
+    "name": "Polar Loot",
     "image": "/cdn/cases/north-pole-riches.webp",
     "price": 165354,
     "bar": "#ef4444",
@@ -469,7 +469,7 @@
   },
   {
     "slug": "barbenheimer",
-    "name": "Barbenheimer",
+    "name": "Pink Blast",
     "image": "/cdn/cases/barbenheimer.webp",
     "price": 153566,
     "bar": "#ef4444",
@@ -478,7 +478,7 @@
   },
   {
     "slug": "tomb-raider",
-    "name": "Tomb Raider",
+    "name": "Tomb Run",
     "image": "/cdn/cases/tomb-raider.webp",
     "price": 152911,
     "bar": "#ef4444",
@@ -487,7 +487,7 @@
   },
   {
     "slug": "red-dawn",
-    "name": "Red Dawn",
+    "name": "Scarlet Rise",
     "image": "/cdn/cases/red-dawn.webp",
     "price": 152069,
     "bar": "#ef4444",
@@ -496,7 +496,7 @@
   },
   {
     "slug": "traders-delight",
-    "name": "Trader's Delight",
+    "name": "Trade Floor",
     "image": "/cdn/cases/traders-delight.webp",
     "price": 146798,
     "bar": "#ef4444",
@@ -505,7 +505,7 @@
   },
   {
     "slug": "ice-cold",
-    "name": "Ice Cold",
+    "name": "Frostbite",
     "image": "/cdn/cases/ice-cold.webp",
     "price": 136916,
     "bar": "#ef4444",
@@ -514,7 +514,7 @@
   },
   {
     "slug": "hi-lo-roller",
-    "name": "Hi-Lo Roller",
+    "name": "High Low",
     "image": "/cdn/cases/hi-lo-roller.webp",
     "price": 133658,
     "bar": "#3b82f6",
@@ -523,7 +523,7 @@
   },
   {
     "slug": "skateboard-days",
-    "name": "): Days",
+    "name": "Deck Days",
     "image": "/cdn/cases/skateboard-days.webp",
     "price": 128334,
     "bar": "#ef4444",
@@ -532,7 +532,7 @@
   },
   {
     "slug": "white-gold",
-    "name": "White Gold",
+    "name": "Pale Gold",
     "image": "/cdn/cases/white-gold.webp",
     "price": 125535,
     "bar": "#ef4444",
@@ -541,7 +541,7 @@
   },
   {
     "slug": "opportunist",
-    "name": "Opportunist",
+    "name": "Quick Grab",
     "image": "/cdn/cases/opportunist.webp",
     "price": 123121,
     "bar": "#ef4444",
@@ -550,7 +550,7 @@
   },
   {
     "slug": "void-star-ice",
-    "name": "Void Star Ice",
+    "name": "Frozen Void",
     "image": "/cdn/cases/void-star-ice.webp",
     "price": 121178,
     "bar": "#ef4444",
@@ -559,7 +559,7 @@
   },
   {
     "slug": "valk-flip",
-    "name": "Valk Flip",
+    "name": "Valk Swap",
     "image": "/cdn/cases/valk-flip.webp",
     "price": 120599,
     "bar": "#3b82f6",
@@ -568,7 +568,7 @@
   },
   {
     "slug": "fedora-fiasco",
-    "name": "Fedora Fiasco",
+    "name": "Fedora Frenzy",
     "image": "/cdn/cases/fedora-fiasco.webp",
     "price": 119645,
     "bar": "#ef4444",
@@ -577,7 +577,7 @@
   },
   {
     "slug": "vampire",
-    "name": "Vampire",
+    "name": "Night Fang",
     "image": "/cdn/cases/vampire.webp",
     "price": 107971,
     "bar": "#ef4444",
@@ -586,7 +586,7 @@
   },
   {
     "slug": "eyes-of-aura",
-    "name": "Eyes of Aura",
+    "name": "Aura Gaze",
     "image": "/cdn/cases/eyes-of-aura.webp",
     "price": 88179,
     "bar": "#ef4444",
@@ -595,7 +595,7 @@
   },
   {
     "slug": "indigo",
-    "name": "Indigo",
+    "name": "Deep Indigo",
     "image": "/cdn/cases/indigo.webp",
     "price": 83865,
     "bar": "#ef4444",
@@ -604,7 +604,7 @@
   },
   {
     "slug": "sword-heights",
-    "name": "Sword Heights",
+    "name": "Blade Peak",
     "image": "/cdn/cases/sword-heights.webp",
     "price": 83708,
     "bar": "#ef4444",
@@ -613,7 +613,7 @@
   },
   {
     "slug": "temple-of-wealth",
-    "name": "Temple of Wealth",
+    "name": "Gold Temple",
     "image": "/cdn/cases/temple-of-wealth.webp",
     "price": 82454,
     "bar": "#ef4444",
@@ -622,7 +622,7 @@
   },
   {
     "slug": "steampunk-booster",
-    "name": "Steampunk Booster",
+    "name": "Brass Boost",
     "image": "/cdn/cases/steampunk-booster.webp",
     "price": 81886,
     "bar": "#ef4444",
@@ -631,7 +631,7 @@
   },
   {
     "slug": "black-pearl",
-    "name": "Black Pearl",
+    "name": "Dark Pearl",
     "image": "/cdn/cases/black-pearl.webp",
     "price": 77223,
     "bar": "#ef4444",
@@ -640,7 +640,7 @@
   },
   {
     "slug": "10-percent-bling",
-    "name": "10% Bling",
+    "name": "Bling Odds",
     "image": "/cdn/cases/10-percent-bling.webp",
     "price": 72611,
     "bar": "#ef4444",
@@ -649,7 +649,7 @@
   },
   {
     "slug": "eros",
-    "name": "Eros",
+    "name": "Heartshot",
     "image": "/cdn/cases/eros.webp",
     "price": 72538,
     "bar": "#ef4444",
@@ -658,7 +658,7 @@
   },
   {
     "slug": "gold-dream",
-    "name": "Gold Dream",
+    "name": "Gilded Sleep",
     "image": "/cdn/cases/gold-dream.webp",
     "price": 72357,
     "bar": "#ef4444",
@@ -667,7 +667,7 @@
   },
   {
     "slug": "balloon-juicer",
-    "name": "Balloon Juicer",
+    "name": "Balloon Pop",
     "image": "/cdn/cases/balloon-juicer.webp",
     "price": 71395,
     "bar": "#ef4444",
@@ -676,7 +676,7 @@
   },
   {
     "slug": "online-dater",
-    "name": "Online Dater",
+    "name": "Profile Pic",
     "image": "/cdn/cases/online-dater.webp",
     "price": 70899,
     "bar": "#ef4444",
@@ -685,7 +685,7 @@
   },
   {
     "slug": "space-blue",
-    "name": "Space Blue",
+    "name": "Orbit Blue",
     "image": "/cdn/cases/space-blue.webp",
     "price": 70735,
     "bar": "#ef4444",
@@ -694,7 +694,7 @@
   },
   {
     "slug": "30-percent-domnio",
-    "name": "30% Domino",
+    "name": "Domino Odds",
     "image": "/cdn/cases/30-percent-domnio.webp",
     "price": 70464,
     "bar": "#ef4444",
@@ -703,7 +703,7 @@
   },
   {
     "slug": "dark-ice",
-    "name": "Dark Ice",
+    "name": "Black Ice",
     "image": "/cdn/cases/dark-ice.webp",
     "price": 69226,
     "bar": "#ef4444",
@@ -712,7 +712,7 @@
   },
   {
     "slug": "facelift",
-    "name": "Facelift",
+    "name": "Fresh Face",
     "image": "/cdn/cases/facelift.webp",
     "price": 69134,
     "bar": "#ef4444",
@@ -721,7 +721,7 @@
   },
   {
     "slug": "highlight-boom",
-    "name": "Highlight Boom",
+    "name": "Highlight Hit",
     "image": "/cdn/cases/highlight-boom.webp",
     "price": 65445,
     "bar": "#ef4444",
@@ -730,7 +730,7 @@
   },
   {
     "slug": "immortality",
-    "name": "Immortality",
+    "name": "Endless",
     "image": "/cdn/cases/immortality.webp",
     "price": 63313,
     "bar": "#ef4444",
@@ -739,7 +739,7 @@
   },
   {
     "slug": "10-percent-yum",
-    "name": "10% Yum",
+    "name": "Yum Odds",
     "image": "/cdn/cases/10-percent-yum.webp",
     "price": 60289,
     "bar": "#ef4444",
@@ -748,7 +748,7 @@
   },
   {
     "slug": "bucket-box",
-    "name": "Bucket Box",
+    "name": "Bucket Run",
     "image": "/cdn/cases/bucket-box.webp",
     "price": 57372,
     "bar": "#ef4444",
@@ -757,7 +757,7 @@
   },
   {
     "slug": "lord-of-war",
-    "name": "Lord of War",
+    "name": "War Crown",
     "image": "/cdn/cases/lord-of-war.webp",
     "price": 57276,
     "bar": "#ef4444",
@@ -766,7 +766,7 @@
   },
   {
     "slug": "beast-case",
-    "name": "Beast Case",
+    "name": "Wild Pack",
     "image": "/cdn/cases/beast-case.webp",
     "price": 55442,
     "bar": "#3b82f6",
@@ -775,7 +775,7 @@
   },
   {
     "slug": "star-juicer",
-    "name": "Star Juicer",
+    "name": "Star Press",
     "image": "/cdn/cases/star-juicer.webp",
     "price": 54093,
     "bar": "#ef4444",
@@ -784,7 +784,7 @@
   },
   {
     "slug": "hanz-lair",
-    "name": "Hanz Lair",
+    "name": "Lair Drop",
     "image": "/cdn/cases/hanz-lair.webp",
     "price": 53980,
     "bar": "#ef4444",
@@ -793,7 +793,7 @@
   },
   {
     "slug": "linkmons-case",
-    "name": "Linkmon's Case",
+    "name": "Linkmon Pack",
     "image": "/cdn/cases/linkmons-case.webp",
     "price": 51731,
     "bar": "#ef4444",
@@ -811,7 +811,7 @@
   },
   {
     "slug": "duck-duck-goose",
-    "name": "Duck Duck Goose",
+    "name": "Duck Hunt",
     "image": "/cdn/cases/duck-duck-goose.webp",
     "price": 49122,
     "bar": "#ef4444",
@@ -820,7 +820,7 @@
   },
   {
     "slug": "favorite-tunes",
-    "name": "Favorite Tunes",
+    "name": "Mix Tape",
     "image": "/cdn/cases/favorite-tunes.webp",
     "price": 49025,
     "bar": "#ef4444",
@@ -829,7 +829,7 @@
   },
   {
     "slug": "periastron-flip",
-    "name": "Periastron Flip",
+    "name": "Star Sword",
     "image": "/cdn/cases/periastron-flip.webp",
     "price": 48159,
     "bar": "#ef4444",
@@ -838,7 +838,7 @@
   },
   {
     "slug": "10-percent-hell",
-    "name": "10% Hell",
+    "name": "Hell Odds",
     "image": "/cdn/cases/10-percent-hell.webp",
     "price": 47111,
     "bar": "#ef4444",
@@ -847,7 +847,7 @@
   },
   {
     "slug": "buckberry",
-    "name": "Buckberry",
+    "name": "Berry Bucks",
     "image": "/cdn/cases/buckberry.webp",
     "price": 45890,
     "bar": "#3b82f6",
@@ -856,7 +856,7 @@
   },
   {
     "slug": "demonic-dream",
-    "name": "Demonic Dream",
+    "name": "Demon Sleep",
     "image": "/cdn/cases/demonic-dream.webp",
     "price": 45267,
     "bar": "#ef4444",
@@ -865,7 +865,7 @@
   },
   {
     "slug": "icebox",
-    "name": "Icebox",
+    "name": "Chill Box",
     "image": "/cdn/cases/icebox.webp",
     "price": 44719,
     "bar": "#ef4444",
@@ -874,7 +874,7 @@
   },
   {
     "slug": "rgb-roulette",
-    "name": "RGB Roulette",
+    "name": "RGB Spin",
     "image": "/cdn/cases/rgb-roulette.webp",
     "price": 42319,
     "bar": "#ef4444",
@@ -883,7 +883,7 @@
   },
   {
     "slug": "electronics",
-    "name": "Electronics",
+    "name": "Wired",
     "image": "/cdn/cases/electronics.webp",
     "price": 41111,
     "bar": "#ef4444",
@@ -892,7 +892,7 @@
   },
   {
     "slug": "sparkler",
-    "name": "Sparkler",
+    "name": "Spark Pack",
     "image": "/cdn/cases/sparkler.webp",
     "price": 40298,
     "bar": "#3b82f6",
@@ -901,7 +901,7 @@
   },
   {
     "slug": "crown-case",
-    "name": "Crown Case",
+    "name": "Crown Room",
     "image": "/cdn/cases/crown-case.webp",
     "price": 40044,
     "bar": "#ef4444",
@@ -910,7 +910,7 @@
   },
   {
     "slug": "federation-case",
-    "name": "Federation Case",
+    "name": "Fed Hall",
     "image": "/cdn/cases/federation-case.webp",
     "price": 37598,
     "bar": "#ef4444",
@@ -919,7 +919,7 @@
   },
   {
     "slug": "imperialist",
-    "name": "Imperialist",
+    "name": "Empire",
     "image": "/cdn/cases/imperialist.webp",
     "price": 35727,
     "bar": "#ef4444",
@@ -928,7 +928,7 @@
   },
   {
     "slug": "dark-lord",
-    "name": "Dark Lord",
+    "name": "Shadow Lord",
     "image": "/cdn/cases/dark-lord.webp",
     "price": 34511,
     "bar": "#ef4444",
@@ -937,7 +937,7 @@
   },
   {
     "slug": "purple-plasma",
-    "name": "Purple Plasma",
+    "name": "Violet Arc",
     "image": "/cdn/cases/purple-plasma.webp",
     "price": 34405,
     "bar": "#ef4444",
@@ -946,7 +946,7 @@
   },
   {
     "slug": "arctic-wonderland",
-    "name": "Arctic Wonderland",
+    "name": "Frozen Fair",
     "image": "/cdn/cases/arctic-wonderland.webp",
     "price": 34317,
     "bar": "#ef4444",
@@ -955,7 +955,7 @@
   },
   {
     "slug": "take-flight",
-    "name": "Take Flight",
+    "name": "Liftoff",
     "image": "/cdn/cases/take-flight.webp",
     "price": 34120,
     "bar": "#ef4444",
@@ -964,7 +964,7 @@
   },
   {
     "slug": "treasure-case",
-    "name": "Treasure Case",
+    "name": "Booty Box",
     "image": "/cdn/cases/treasure-case.webp",
     "price": 32531,
     "bar": "#ef4444",
@@ -973,7 +973,7 @@
   },
   {
     "slug": "ultimate-headphones",
-    "name": "Ultimate Headphones",
+    "name": "Max Cans",
     "image": "/cdn/cases/ultimate-headphones.webp",
     "price": 31645,
     "bar": "#ef4444",
@@ -981,17 +981,8 @@
     "risk": "high"
   },
   {
-    "slug": "face-of-mystery",
-    "name": "Face of Mystery",
-    "image": "/cdn/cases/face-of-mystery.webp",
-    "price": 31636,
-    "bar": "#ef4444",
-    "hue": 234,
-    "risk": "high"
-  },
-  {
     "slug": "valkyries-ascension",
-    "name": "Valkyrie's Ascension",
+    "name": "Valk Rise",
     "image": "/cdn/cases/valkyries-ascension.webp",
     "price": 31544,
     "bar": "#ef4444",
@@ -1000,7 +991,7 @@
   },
   {
     "slug": "crystal-case",
-    "name": "Crystal Case",
+    "name": "Crystal Cut",
     "image": "/cdn/cases/crystal-case.webp",
     "price": 30773,
     "bar": "#3b82f6",
@@ -1009,7 +1000,7 @@
   },
   {
     "slug": "3-percent-horns",
-    "name": "3% Horns",
+    "name": "Horn Odds",
     "image": "/cdn/cases/3-percent-horns.webp",
     "price": 30607,
     "bar": "#ef4444",
@@ -1018,7 +1009,7 @@
   },
   {
     "slug": "grape-galore",
-    "name": "Grape Galore",
+    "name": "Grape Crush",
     "image": "/cdn/cases/grape-galore.webp",
     "price": 30480,
     "bar": "#ef4444",
@@ -1026,17 +1017,8 @@
     "risk": "high"
   },
   {
-    "slug": "be-optimistic",
-    "name": "Be Optimistic",
-    "image": "/cdn/cases/be-optimistic.webp",
-    "price": 30309,
-    "bar": "#ef4444",
-    "hue": 254,
-    "risk": "high"
-  },
-  {
     "slug": "mafia-moves",
-    "name": "Mafia Moves",
+    "name": "Made Man",
     "image": "/cdn/cases/mafia-moves.webp",
     "price": 30247,
     "bar": "#ef4444",
@@ -1045,7 +1027,7 @@
   },
   {
     "slug": "dream-box",
-    "name": "Dream Box",
+    "name": "Soft Dream",
     "image": "/cdn/cases/dream-box.webp",
     "price": 30159,
     "bar": "#ef4444",
@@ -1054,7 +1036,7 @@
   },
   {
     "slug": "5-percent-tentacles",
-    "name": "5% Tentacles",
+    "name": "Tentacle Odds",
     "image": "/cdn/cases/5-percent-tentacles.webp",
     "price": 30063,
     "bar": "#ef4444",
@@ -1063,7 +1045,7 @@
   },
   {
     "slug": "blue-addiction",
-    "name": "Blue Addiction",
+    "name": "Blue Fix",
     "image": "/cdn/cases/blue-addiction.webp",
     "price": 29964,
     "bar": "#ef4444",
@@ -1072,7 +1054,7 @@
   },
   {
     "slug": "10-percent-sshf",
-    "name": "10% SSHF",
+    "name": "Sparkle Odds",
     "image": "/cdn/cases/10-percent-sshf.webp",
     "price": 29953,
     "bar": "#ef4444",
@@ -1081,7 +1063,7 @@
   },
   {
     "slug": "10-percent-capwn",
-    "name": "10% Capwn",
+    "name": "Cap Odds",
     "image": "/cdn/cases/10-percent-capwn.webp",
     "price": 28421,
     "bar": "#ef4444",
@@ -1090,7 +1072,7 @@
   },
   {
     "slug": "pets-party",
-    "name": "Pets Party",
+    "name": "Pet Parade",
     "image": "/cdn/cases/pets-party.webp",
     "price": 27998,
     "bar": "#ef4444",
@@ -1099,7 +1081,7 @@
   },
   {
     "slug": "tsunami",
-    "name": "Tsunami",
+    "name": "Wave Crash",
     "image": "/cdn/cases/tsunami.webp",
     "price": 27831,
     "bar": "#ef4444",
@@ -1107,17 +1089,8 @@
     "risk": "high"
   },
   {
-    "slug": "clockwork-or-not",
-    "name": "Clockwork or Not",
-    "image": "/cdn/cases/clockwork-or-not.webp",
-    "price": 27231,
-    "bar": "#ef4444",
-    "hue": 60,
-    "risk": "high"
-  },
-  {
     "slug": "red-reign",
-    "name": "Red Reign",
+    "name": "Red Rule",
     "image": "/cdn/cases/red-reign.webp",
     "price": 27081,
     "bar": "#ef4444",
@@ -1126,7 +1099,7 @@
   },
   {
     "slug": "plushies",
-    "name": "Plushies",
+    "name": "Plush Pit",
     "image": "/cdn/cases/plushies.webp",
     "price": 26484,
     "bar": "#3b82f6",
@@ -1135,7 +1108,7 @@
   },
   {
     "slug": "crazy-boom",
-    "name": "Crazy Boom",
+    "name": "Wild Boom",
     "image": "/cdn/cases/crazy-boom.webp",
     "price": 25952,
     "bar": "#ef4444",
@@ -1144,7 +1117,7 @@
   },
   {
     "slug": "barbie-girl",
-    "name": "Barbie Girl",
+    "name": "Pink World",
     "image": "/cdn/cases/barbie-girl.webp",
     "price": 25944,
     "bar": "#ef4444",
@@ -1153,7 +1126,7 @@
   },
   {
     "slug": "green-bonanza",
-    "name": "Green Bonanza",
+    "name": "Green Pay",
     "image": "/cdn/cases/green-bonanza.webp",
     "price": 25397,
     "bar": "#3b82f6",
@@ -1162,7 +1135,7 @@
   },
   {
     "slug": "sphinxs-riddles",
-    "name": "Sphinx's Riddles",
+    "name": "Sand Riddle",
     "image": "/cdn/cases/sphinxs-riddles.webp",
     "price": 25236,
     "bar": "#ef4444",
@@ -1171,7 +1144,7 @@
   },
   {
     "slug": "jingle-jackpot",
-    "name": "Jingle Jackpot",
+    "name": "Jingle Hit",
     "image": "/cdn/cases/jingle-jackpot.webp",
     "price": 25000,
     "bar": "#3b82f6",
@@ -1180,7 +1153,7 @@
   },
   {
     "slug": "summer-splash",
-    "name": "Summer Splash",
+    "name": "Heat Wave",
     "image": "/cdn/cases/summer-splash.webp",
     "price": 25000,
     "bar": "#ef4444",
@@ -1189,7 +1162,7 @@
   },
   {
     "slug": "electric-juicer",
-    "name": "Electric Juicer",
+    "name": "Volt Press",
     "image": "/cdn/cases/electric-juicer.webp",
     "price": 24584,
     "bar": "#ef4444",
@@ -1198,7 +1171,7 @@
   },
   {
     "slug": "santas-sleigh",
-    "name": "Santa's Sleigh",
+    "name": "Sleigh Run",
     "image": "/cdn/cases/santas-sleigh.webp",
     "price": 24377,
     "bar": "#ef4444",
@@ -1207,7 +1180,7 @@
   },
   {
     "slug": "dragon-warrior",
-    "name": "Dragon Warrior",
+    "name": "Dragon Scale",
     "image": "/cdn/cases/dragon-warrior.webp",
     "price": 24150,
     "bar": "#ef4444",
@@ -1216,7 +1189,7 @@
   },
   {
     "slug": "ice-storm",
-    "name": "Ice Storm",
+    "name": "Hailstorm",
     "image": "/cdn/cases/ice-storm.webp",
     "price": 22276,
     "bar": "#ef4444",
@@ -1225,7 +1198,7 @@
   },
   {
     "slug": "hoodlum",
-    "name": "Hoodlum",
+    "name": "Street Hood",
     "image": "/cdn/cases/hoodlum.webp",
     "price": 22214,
     "bar": "#ef4444",
@@ -1234,7 +1207,7 @@
   },
   {
     "slug": "gingerbread-jackpot",
-    "name": "Gingerbread Jackpot",
+    "name": "Cookie Hit",
     "image": "/cdn/cases/gingerbread-jackpot.webp",
     "price": 21948,
     "bar": "#ef4444",
@@ -1243,7 +1216,7 @@
   },
   {
     "slug": "15-percent-bang",
-    "name": "15% Bang",
+    "name": "Bang Odds",
     "image": "/cdn/cases/15-percent-bang.webp",
     "price": 21586,
     "bar": "#ef4444",
@@ -1252,7 +1225,7 @@
   },
   {
     "slug": "black-iron-case",
-    "name": "Black Iron Case",
+    "name": "Iron Dark",
     "image": "/cdn/cases/black-iron-case.webp",
     "price": 21464,
     "bar": "#ef4444",
@@ -1270,7 +1243,7 @@
   },
   {
     "slug": "antler-mania",
-    "name": "Antler Mania",
+    "name": "Antler Run",
     "image": "/cdn/cases/antler-mania.webp",
     "price": 21127,
     "bar": "#ef4444",
@@ -1279,7 +1252,7 @@
   },
   {
     "slug": "ice-dream",
-    "name": "Ice Dream",
+    "name": "Frost Dream",
     "image": "/cdn/cases/ice-dream.webp",
     "price": 20793,
     "bar": "#ef4444",
@@ -1288,7 +1261,7 @@
   },
   {
     "slug": "sunken-secrets",
-    "name": "Sunken Secrets",
+    "name": "Deep Secret",
     "image": "/cdn/cases/sunken-secrets.webp",
     "price": 20781,
     "bar": "#ef4444",
@@ -1297,7 +1270,7 @@
   },
   {
     "slug": "ghastly-ghouls",
-    "name": "Ghastly Ghouls",
+    "name": "Grave Hour",
     "image": "/cdn/cases/ghastly-ghouls.webp",
     "price": 20678,
     "bar": "#ef4444",
@@ -1306,7 +1279,7 @@
   },
   {
     "slug": "greenfest",
-    "name": "Greenfest",
+    "name": "Green Fest",
     "image": "/cdn/cases/greenfest.webp",
     "price": 19123,
     "bar": "#ef4444",
@@ -1315,7 +1288,7 @@
   },
   {
     "slug": "10-percent-silver",
-    "name": "10% Silver",
+    "name": "Silver Odds",
     "image": "/cdn/cases/10-percent-silver.webp",
     "price": 19068,
     "bar": "#ef4444",
@@ -1324,7 +1297,7 @@
   },
   {
     "slug": "emperious",
-    "name": "Emperious",
+    "name": "Empyrean",
     "image": "/cdn/cases/emperious.webp",
     "price": 18408,
     "bar": "#ef4444",
@@ -1333,7 +1306,7 @@
   },
   {
     "slug": "30-percent-galaxy",
-    "name": "30% Galaxy",
+    "name": "Galaxy Odds",
     "image": "/cdn/cases/30-percent-galaxy.webp",
     "price": 17896,
     "bar": "#ef4444",
@@ -1342,7 +1315,7 @@
   },
   {
     "slug": "noob-juicer",
-    "name": "Noob Juicer",
+    "name": "Noob Press",
     "image": "/cdn/cases/noob-juicer.webp",
     "price": 17611,
     "bar": "#ef4444",
@@ -1351,7 +1324,7 @@
   },
   {
     "slug": "volcanic-blaze",
-    "name": "Volcanic Blaze",
+    "name": "Magma Run",
     "image": "/cdn/cases/volcanic-blaze.webp",
     "price": 17393,
     "bar": "#ef4444",
@@ -1360,7 +1333,7 @@
   },
   {
     "slug": "red-lagoon",
-    "name": "Red Lagoon",
+    "name": "Red Pool",
     "image": "/cdn/cases/red-lagoon.webp",
     "price": 16940,
     "bar": "#ef4444",
@@ -1369,7 +1342,7 @@
   },
   {
     "slug": "levs-15-percent",
-    "name": "Lev's 15%",
+    "name": "Lev Odds",
     "image": "/cdn/cases/levs-15-percent.webp",
     "price": 16901,
     "bar": "#ef4444",
@@ -1378,7 +1351,7 @@
   },
   {
     "slug": "dominus-descents",
-    "name": "Dominus Descents",
+    "name": "Hood Fall",
     "image": "/cdn/cases/dominus-descents.webp",
     "price": 16414,
     "bar": "#ef4444",
@@ -1387,7 +1360,7 @@
   },
   {
     "slug": "bombastic-boom",
-    "name": "Bombastic Boom",
+    "name": "Big Boom",
     "image": "/cdn/cases/bombastic-boom.webp",
     "price": 15658,
     "bar": "#ef4444",
@@ -1396,7 +1369,7 @@
   },
   {
     "slug": "colorful-extensions",
-    "name": "Colorful Extensions",
+    "name": "Color Ends",
     "image": "/cdn/cases/colorful-extensions.webp",
     "price": 15548,
     "bar": "#ef4444",
@@ -1405,7 +1378,7 @@
   },
   {
     "slug": "new-years-flip",
-    "name": "New Years Flip",
+    "name": "New Year Flip",
     "image": "/cdn/cases/new-years-flip.webp",
     "price": 14955,
     "bar": "#ef4444",
@@ -1414,7 +1387,7 @@
   },
   {
     "slug": "hooded",
-    "name": "Hooded",
+    "name": "Cloaked",
     "image": "/cdn/cases/hooded.webp",
     "price": 14811,
     "bar": "#ef4444",
@@ -1423,7 +1396,7 @@
   },
   {
     "slug": "baller",
-    "name": "Baller",
+    "name": "Big Shot",
     "image": "/cdn/cases/baller.webp",
     "price": 14707,
     "bar": "#ef4444",
@@ -1432,7 +1405,7 @@
   },
   {
     "slug": "hellfire",
-    "name": "Hellfire",
+    "name": "Inferno",
     "image": "/cdn/cases/hellfire.webp",
     "price": 14551,
     "bar": "#ef4444",
@@ -1441,7 +1414,7 @@
   },
   {
     "slug": "award-show",
-    "name": "Award Show",
+    "name": "Red Carpet",
     "image": "/cdn/cases/award-show.webp",
     "price": 14485,
     "bar": "#ef4444",
@@ -1450,7 +1423,7 @@
   },
   {
     "slug": "crowns-of-the-night",
-    "name": "Crowns of the Night",
+    "name": "Night Crowns",
     "image": "/cdn/cases/crowns-of-the-night.webp",
     "price": 14002,
     "bar": "#ef4444",
@@ -1459,7 +1432,7 @@
   },
   {
     "slug": "sunglass-express",
-    "name": "Sunglass Express",
+    "name": "Shade Run",
     "image": "/cdn/cases/sunglass-express.webp",
     "price": 13910,
     "bar": "#ef4444",
@@ -1468,7 +1441,7 @@
   },
   {
     "slug": "blizzard-bundle",
-    "name": "Blizzard Bundle",
+    "name": "Snow Pack",
     "image": "/cdn/cases/blizzard-bundle.webp",
     "price": 13644,
     "bar": "#ef4444",
@@ -1477,7 +1450,7 @@
   },
   {
     "slug": "police-juicer",
-    "name": "Police Juicer",
+    "name": "Badge Press",
     "image": "/cdn/cases/police-juicer.webp",
     "price": 13560,
     "bar": "#ef4444",
@@ -1486,7 +1459,7 @@
   },
   {
     "slug": "wild-wanwood",
-    "name": "Wild Wanwood",
+    "name": "Wanwood Wild",
     "image": "/cdn/cases/wild-wanwood.webp",
     "price": 13559,
     "bar": "#ef4444",
@@ -1495,7 +1468,7 @@
   },
   {
     "slug": "vamp-punk",
-    "name": "Vamp Punk",
+    "name": "Fang Punk",
     "image": "/cdn/cases/vamp-punk.webp",
     "price": 13066,
     "bar": "#ef4444",
@@ -1504,7 +1477,7 @@
   },
   {
     "slug": "10-percent-snowman",
-    "name": "10% Snowman",
+    "name": "Snow Odds",
     "image": "/cdn/cases/10-percent-snowman.webp",
     "price": 12849,
     "bar": "#ef4444",
@@ -1513,7 +1486,7 @@
   },
   {
     "slug": "commando-case",
-    "name": "Commando Case",
+    "name": "Raid Pack",
     "image": "/cdn/cases/commando-case.webp",
     "price": 12779,
     "bar": "#ef4444",
@@ -1522,7 +1495,7 @@
   },
   {
     "slug": "pumpkin-patrol",
-    "name": "Pumpkin Patrol",
+    "name": "Pumpkin Watch",
     "image": "/cdn/cases/pumpkin-patrol.webp",
     "price": 12665,
     "bar": "#ef4444",
@@ -1531,7 +1504,7 @@
   },
   {
     "slug": "halloween-bash",
-    "name": "Halloween Bash",
+    "name": "Haunt Night",
     "image": "/cdn/cases/halloween-bash.webp",
     "price": 12584,
     "bar": "#ef4444",
@@ -1540,7 +1513,7 @@
   },
   {
     "slug": "e-girl-heaven",
-    "name": "E-Girl Heaven",
+    "name": "Soft Core",
     "image": "/cdn/cases/e-girl-heaven.webp",
     "price": 12497,
     "bar": "#ef4444",
@@ -1549,7 +1522,7 @@
   },
   {
     "slug": "zeus-case",
-    "name": "Zeus Case",
+    "name": "Thunder Pack",
     "image": "/cdn/cases/zeus-case.webp",
     "price": 12170,
     "bar": "#ef4444",
@@ -1558,7 +1531,7 @@
   },
   {
     "slug": "american-patriot",
-    "name": "American Patriot",
+    "name": "Stars Stripes",
     "image": "/cdn/cases/american-patriot.webp",
     "price": 11967,
     "bar": "#ef4444",
@@ -1567,7 +1540,7 @@
   },
   {
     "slug": "samurai-sake",
-    "name": "Samurai Sake",
+    "name": "Blade Sip",
     "image": "/cdn/cases/samurai-sake.webp",
     "price": 11896,
     "bar": "#ef4444",
@@ -1576,7 +1549,7 @@
   },
   {
     "slug": "sparkle-stockpile",
-    "name": "Sparkle Stockpile",
+    "name": "Sparkle Stash",
     "image": "/cdn/cases/sparkle-stockpile.webp",
     "price": 11699,
     "bar": "#ef4444",
@@ -1585,7 +1558,7 @@
   },
   {
     "slug": "dark-desire",
-    "name": "Dark Desire",
+    "name": "Dark Want",
     "image": "/cdn/cases/dark-desire.webp",
     "price": 11565,
     "bar": "#ef4444",
@@ -1594,7 +1567,7 @@
   },
   {
     "slug": "shaggy-flip",
-    "name": "Shaggy Flip",
+    "name": "Mop Flip",
     "image": "/cdn/cases/shaggy-flip.webp",
     "price": 11555,
     "bar": "#ef4444",
@@ -1603,7 +1576,7 @@
   },
   {
     "slug": "super-smiles",
-    "name": "Super Smiles",
+    "name": "Big Grin",
     "image": "/cdn/cases/super-smiles.webp",
     "price": 11373,
     "bar": "#ef4444",
@@ -1612,7 +1585,7 @@
   },
   {
     "slug": "hair-deluxe",
-    "name": "Hair Deluxe",
+    "name": "Hair Stack",
     "image": "/cdn/cases/hair-deluxe.webp",
     "price": 11294,
     "bar": "#ef4444",
@@ -1621,7 +1594,7 @@
   },
   {
     "slug": "azure-addiction",
-    "name": "Azure Addiction",
+    "name": "Azure Fix",
     "image": "/cdn/cases/azure-addiction.webp",
     "price": 11235,
     "bar": "#ef4444",
@@ -1630,7 +1603,7 @@
   },
   {
     "slug": "deck-the-halls",
-    "name": "Deck the Halls",
+    "name": "Hall Deck",
     "image": "/cdn/cases/deck-the-halls.webp",
     "price": 10901,
     "bar": "#ef4444",
@@ -1639,7 +1612,7 @@
   },
   {
     "slug": "bluesteel-case",
-    "name": "Bluesteel Case",
+    "name": "Blue Steel",
     "image": "/cdn/cases/bluesteel-case.webp",
     "price": 10746,
     "bar": "#ef4444",
@@ -1648,7 +1621,7 @@
   },
   {
     "slug": "discord-moderator",
-    "name": "Discord Moderator",
+    "name": "Mod Pack",
     "image": "/cdn/cases/discord-moderator.webp",
     "price": 10746,
     "bar": "#ef4444",
@@ -1657,7 +1630,7 @@
   },
   {
     "slug": "10-percent-tooth",
-    "name": "10% Tooth",
+    "name": "Tooth Odds",
     "image": "/cdn/cases/10-percent-tooth.webp",
     "price": 10585,
     "bar": "#ef4444",
@@ -1666,7 +1639,7 @@
   },
   {
     "slug": "5-percent-prayer",
-    "name": "5% Prayer",
+    "name": "Prayer Odds",
     "image": "/cdn/cases/5-percent-prayer.webp",
     "price": 10395,
     "bar": "#ef4444",
@@ -1675,7 +1648,7 @@
   },
   {
     "slug": "golden-case",
-    "name": "Golden Case",
+    "name": "Gold Box",
     "image": "/cdn/cases/golden-case.webp",
     "price": 9714,
     "bar": "#ef4444",
@@ -1684,7 +1657,7 @@
   },
   {
     "slug": "lottery-ticket",
-    "name": "Lottery Ticket",
+    "name": "Scratcher",
     "image": "/cdn/cases/lottery-ticket.webp",
     "price": 9366,
     "bar": "#ef4444",
@@ -1693,7 +1666,7 @@
   },
   {
     "slug": "doge-dream",
-    "name": "Doge Dream",
+    "name": "Doge Sleep",
     "image": "/cdn/cases/doge-dream.webp",
     "price": 9241,
     "bar": "#3b82f6",
@@ -1702,7 +1675,7 @@
   },
   {
     "slug": "top-hat-galore",
-    "name": "Top Hat Galore",
+    "name": "Top Hat Run",
     "image": "/cdn/cases/top-hat-galore.webp",
     "price": 9179,
     "bar": "#ef4444",
@@ -1711,7 +1684,7 @@
   },
   {
     "slug": "toxic-waste",
-    "name": "Toxic Waste",
+    "name": "Biohazard",
     "image": "/cdn/cases/toxic-waste.webp",
     "price": 9071,
     "bar": "#ef4444",
@@ -1720,7 +1693,7 @@
   },
   {
     "slug": "lights-out",
-    "name": "Lights Out",
+    "name": "Blackout",
     "image": "/cdn/cases/lights-out.webp",
     "price": 8183,
     "bar": "#ef4444",
@@ -1729,7 +1702,7 @@
   },
   {
     "slug": "epicness",
-    "name": "Epicness",
+    "name": "Epic Drop",
     "image": "/cdn/cases/epicness.webp",
     "price": 7668,
     "bar": "#ef4444",
@@ -1738,7 +1711,7 @@
   },
   {
     "slug": "gold-mine",
-    "name": "Gold Mine",
+    "name": "Gold Vein",
     "image": "/cdn/cases/gold-mine.webp",
     "price": 7658,
     "bar": "#ef4444",
@@ -1747,7 +1720,7 @@
   },
   {
     "slug": "pirate-plunder",
-    "name": "Pirate Plunder",
+    "name": "Pirate Take",
     "image": "/cdn/cases/pirate-plunder.webp",
     "price": 7621,
     "bar": "#3b82f6",
@@ -1756,7 +1729,7 @@
   },
   {
     "slug": "horns",
-    "name": "Horns!",
+    "name": "Horn Pit",
     "image": "/cdn/cases/horns.webp",
     "price": 7343,
     "bar": "#ef4444",
@@ -1765,7 +1738,7 @@
   },
   {
     "slug": "1-percent-yum",
-    "name": "1% Yum",
+    "name": "Rare Yum",
     "image": "/cdn/cases/1-percent-yum.webp",
     "price": 7302,
     "bar": "#ef4444",
@@ -1774,7 +1747,7 @@
   },
   {
     "slug": "bubble-trouble",
-    "name": "Bubble Trouble",
+    "name": "Bubble Pop",
     "image": "/cdn/cases/bubble-trouble.webp",
     "price": 7221,
     "bar": "#ef4444",
@@ -1783,7 +1756,7 @@
   },
   {
     "slug": "bow-tie-bonanza",
-    "name": "Bow Tie Bonanza",
+    "name": "Bow Tie Run",
     "image": "/cdn/cases/bow-tie-bonanza.webp",
     "price": 7055,
     "bar": "#ef4444",
@@ -1792,7 +1765,7 @@
   },
   {
     "slug": "industrial-case",
-    "name": "Industrial Case",
+    "name": "Factory",
     "image": "/cdn/cases/industrial-case.webp",
     "price": 6998,
     "bar": "#ef4444",
@@ -1801,7 +1774,7 @@
   },
   {
     "slug": "classic-case",
-    "name": "Classic Case",
+    "name": "OG Pack",
     "image": "/cdn/cases/classic-case.webp",
     "price": 6996,
     "bar": "#ef4444",
@@ -1810,7 +1783,7 @@
   },
   {
     "slug": "atlantis",
-    "name": "Atlantis",
+    "name": "Deep City",
     "image": "/cdn/cases/atlantis.webp",
     "price": 6801,
     "bar": "#ef4444",
@@ -1819,7 +1792,7 @@
   },
   {
     "slug": "6-percent-beast",
-    "name": "6% Beast",
+    "name": "Beast Odds",
     "image": "/cdn/cases/6-percent-beast.webp",
     "price": 6686,
     "bar": "#ef4444",
@@ -1828,7 +1801,7 @@
   },
   {
     "slug": "federation-dream",
-    "name": "Federation Dream",
+    "name": "Fed Dream",
     "image": "/cdn/cases/federation-dream.webp",
     "price": 6528,
     "bar": "#ef4444",
@@ -1837,7 +1810,7 @@
   },
   {
     "slug": "headless-express",
-    "name": "Headless Express",
+    "name": "Headless Run",
     "image": "/cdn/cases/headless-express.webp",
     "price": 6395,
     "bar": "#3b82f6",
@@ -1846,7 +1819,7 @@
   },
   {
     "slug": "festive-fortune",
-    "name": "Festive Fortune",
+    "name": "Festive Hit",
     "image": "/cdn/cases/festive-fortune.webp",
     "price": 6251,
     "bar": "#ef4444",
@@ -1855,7 +1828,7 @@
   },
   {
     "slug": "paradise-payday",
-    "name": "Paradise Payday",
+    "name": "Island Pay",
     "image": "/cdn/cases/paradise-payday.webp",
     "price": 6250,
     "bar": "#ef4444",
@@ -1864,7 +1837,7 @@
   },
   {
     "slug": "200x-duchess",
-    "name": "200X Duchess",
+    "name": "Duchess Odds",
     "image": "/cdn/cases/200x-duchess.webp",
     "price": 5903,
     "bar": "#ef4444",
@@ -1873,7 +1846,7 @@
   },
   {
     "slug": "hatbot-havoc",
-    "name": "Hatbot Havoc",
+    "name": "Hatbot Chaos",
     "image": "/cdn/cases/hatbot-havoc.webp",
     "price": 5720,
     "bar": "#ef4444",
@@ -1882,7 +1855,7 @@
   },
   {
     "slug": "1-percent-emerald",
-    "name": "1% Emerald",
+    "name": "Rare Emerald",
     "image": "/cdn/cases/1-percent-emerald.webp",
     "price": 5661,
     "bar": "#ef4444",
@@ -1891,7 +1864,7 @@
   },
   {
     "slug": "red-delight",
-    "name": "Red Delight",
+    "name": "Red Sweet",
     "image": "/cdn/cases/red-delight.webp",
     "price": 5588,
     "bar": "#ef4444",
@@ -1900,7 +1873,7 @@
   },
   {
     "slug": "10-percent-dream",
-    "name": "10% Dream",
+    "name": "Dream Odds",
     "image": "/cdn/cases/10-percent-dream.webp",
     "price": 5409,
     "bar": "#ef4444",
@@ -1909,7 +1882,7 @@
   },
   {
     "slug": "overseer-case",
-    "name": "Overseer Case",
+    "name": "Overseer",
     "image": "/cdn/cases/overseer-case.webp",
     "price": 5189,
     "bar": "#3b82f6",
@@ -1918,7 +1891,7 @@
   },
   {
     "slug": "beautiful-hair",
-    "name": "Beautiful Hair",
+    "name": "Hair Glow",
     "image": "/cdn/cases/beautiful-hair.webp",
     "price": 5181,
     "bar": "#ef4444",
@@ -1927,7 +1900,7 @@
   },
   {
     "slug": "gaelic-luck",
-    "name": "Gaelic Luck",
+    "name": "Clover Hit",
     "image": "/cdn/cases/gaelic-luck.webp",
     "price": 4939,
     "bar": "#ef4444",
@@ -1935,17 +1908,8 @@
     "risk": "high"
   },
   {
-    "slug": "emerald-case",
-    "name": "Emerald Case",
-    "image": "/cdn/cases/emerald-case.webp",
-    "price": 4865,
-    "bar": "#ef4444",
-    "hue": 73,
-    "risk": "high"
-  },
-  {
     "slug": "sunburst-surprise",
-    "name": "Sunburst Surprise",
+    "name": "Sunburst",
     "image": "/cdn/cases/sunburst-surprise.webp",
     "price": 4736,
     "bar": "#ef4444",
@@ -1954,7 +1918,7 @@
   },
   {
     "slug": "galactic-win",
-    "name": "Galactic Win",
+    "name": "Galaxy Win",
     "image": "/cdn/cases/galactic-win.webp",
     "price": 4324,
     "bar": "#ef4444",
@@ -1962,17 +1926,8 @@
     "risk": "high"
   },
   {
-    "slug": "mood-stash",
-    "name": "Mood Stash",
-    "image": "/cdn/cases/mood-stash.webp",
-    "price": 4259,
-    "bar": "#ef4444",
-    "hue": 93,
-    "risk": "high"
-  },
-  {
     "slug": "blackout-bang",
-    "name": "Blackout Bang",
+    "name": "Black Bang",
     "image": "/cdn/cases/blackout-bang.webp",
     "price": 4186,
     "bar": "#ef4444",
@@ -1981,7 +1936,7 @@
   },
   {
     "slug": "roblots",
-    "name": "Roblots",
+    "name": "Bot Drop",
     "image": "/cdn/cases/roblots.webp",
     "price": 4000,
     "bar": "#ef4444",
@@ -1990,7 +1945,7 @@
   },
   {
     "slug": "dancing-fruits",
-    "name": "Dancing Fruits",
+    "name": "Fruit Dance",
     "image": "/cdn/cases/dancing-fruits.webp",
     "price": 3836,
     "bar": "#ef4444",
@@ -1999,7 +1954,7 @@
   },
   {
     "slug": "silver-vs-gold",
-    "name": "Silver Vs Gold",
+    "name": "Silver Gold",
     "image": "/cdn/cases/silver-vs-gold.webp",
     "price": 3217,
     "bar": "#ef4444",
@@ -2008,7 +1963,7 @@
   },
   {
     "slug": "kungfu-case",
-    "name": "Kungfu Case",
+    "name": "Dojo Pack",
     "image": "/cdn/cases/kungfu-case.webp",
     "price": 3102,
     "bar": "#ef4444",
@@ -2016,17 +1971,8 @@
     "risk": "high"
   },
   {
-    "slug": "what-the-blue",
-    "name": "What The Blue",
-    "image": "/cdn/cases/what-the-blue.webp",
-    "price": 3004,
-    "bar": "#ef4444",
-    "hue": 86,
-    "risk": "high"
-  },
-  {
     "slug": "3-percent-violet",
-    "name": "3% Violet",
+    "name": "Violet Odds",
     "image": "/cdn/cases/3-percent-violet.webp",
     "price": 3002,
     "bar": "#ef4444",
@@ -2035,7 +1981,7 @@
   },
   {
     "slug": "lolfiesta",
-    "name": "LOLFIESTA",
+    "name": "Fiesta",
     "image": "/cdn/cases/lolfiesta.webp",
     "price": 2745,
     "bar": "#ef4444",
@@ -2044,7 +1990,7 @@
   },
   {
     "slug": "frosty-case",
-    "name": "Frosty Case",
+    "name": "Frost Pack",
     "image": "/cdn/cases/frosty-case.webp",
     "price": 2650,
     "bar": "#ef4444",
@@ -2053,7 +1999,7 @@
   },
   {
     "slug": "polar-prestige",
-    "name": "Polar Prestige",
+    "name": "Polar Class",
     "image": "/cdn/cases/polar-prestige.webp",
     "price": 2500,
     "bar": "#ef4444",
@@ -2062,7 +2008,7 @@
   },
   {
     "slug": "tropical-treasure",
-    "name": "Tropical Treasure",
+    "name": "Tropic Loot",
     "image": "/cdn/cases/tropical-treasure.webp",
     "price": 2500,
     "bar": "#ef4444",
@@ -2071,7 +2017,7 @@
   },
   {
     "slug": "book-case",
-    "name": "Book Case",
+    "name": "Page Pack",
     "image": "/cdn/cases/book-case.webp",
     "price": 2477,
     "bar": "#ef4444",
@@ -2080,7 +2026,7 @@
   },
   {
     "slug": "grim-or-pilgrim",
-    "name": "Grim or Pilgrim",
+    "name": "Grim Pick",
     "image": "/cdn/cases/grim-or-pilgrim.webp",
     "price": 2444,
     "bar": "#ef4444",
@@ -2089,7 +2035,7 @@
   },
   {
     "slug": "white-bandz",
-    "name": "White Bandz",
+    "name": "White Stack",
     "image": "/cdn/cases/white-bandz.webp",
     "price": 2325,
     "bar": "#ef4444",
@@ -2098,7 +2044,7 @@
   },
   {
     "slug": "50-percent-legit",
-    "name": "50% Legit",
+    "name": "Coin Flip",
     "image": "/cdn/cases/50-percent-legit.webp",
     "price": 2224,
     "bar": "#3b82f6",
@@ -2107,7 +2053,7 @@
   },
   {
     "slug": "adurite-case",
-    "name": "Adurite Case",
+    "name": "Adurite",
     "image": "/cdn/cases/adurite-case.webp",
     "price": 2195,
     "bar": "#ef4444",
@@ -2115,17 +2061,8 @@
     "risk": "high"
   },
   {
-    "slug": "fried-chicken",
-    "name": "Fried Chicken",
-    "image": "/cdn/cases/fried-chicken.webp",
-    "price": 1969,
-    "bar": "#ef4444",
-    "hue": 214,
-    "risk": "high"
-  },
-  {
     "slug": "all-the-santas",
-    "name": "All the Santas",
+    "name": "Santa Stack",
     "image": "/cdn/cases/all-the-santas.webp",
     "price": 1964,
     "bar": "#ef4444",
@@ -2134,7 +2071,7 @@
   },
   {
     "slug": "hearty-breakfast",
-    "name": "Hearty Breakfast",
+    "name": "Breakfast",
     "image": "/cdn/cases/hearty-breakfast.webp",
     "price": 1875,
     "bar": "#ef4444",
@@ -2143,7 +2080,7 @@
   },
   {
     "slug": "viking-case",
-    "name": "Viking Case",
+    "name": "Longship",
     "image": "/cdn/cases/viking-case.webp",
     "price": 1875,
     "bar": "#ef4444",
@@ -2152,7 +2089,7 @@
   },
   {
     "slug": "diy-case",
-    "name": "DIY Case",
+    "name": "Workshop",
     "image": "/cdn/cases/diy-case.webp",
     "price": 1801,
     "bar": "#3b82f6",
@@ -2161,7 +2098,7 @@
   },
   {
     "slug": "10-percent-juiced",
-    "name": "10% Juiced",
+    "name": "Juice Odds",
     "image": "/cdn/cases/10-percent-juiced.webp",
     "price": 1748,
     "bar": "#ef4444",
@@ -2170,7 +2107,7 @@
   },
   {
     "slug": "blox-depot",
-    "name": "Blox Depot",
+    "name": "Depot",
     "image": "/cdn/cases/blox-depot.webp",
     "price": 1636,
     "bar": "#3b82f6",
@@ -2179,7 +2116,7 @@
   },
   {
     "slug": "sinister-mystery",
-    "name": "Sinister Mystery",
+    "name": "Sinister",
     "image": "/cdn/cases/sinister-mystery.webp",
     "price": 1607,
     "bar": "#ef4444",
@@ -2188,7 +2125,7 @@
   },
   {
     "slug": "blade-arsenal",
-    "name": "Blade Arsenal",
+    "name": "Blade Rack",
     "image": "/cdn/cases/blade-arsenal.webp",
     "price": 1427,
     "bar": "#ef4444",
@@ -2196,17 +2133,8 @@
     "risk": "high"
   },
   {
-    "slug": "its-snowing",
-    "name": "It's Snowing",
-    "image": "/cdn/cases/its-snowing.webp",
-    "price": 1386,
-    "bar": "#ef4444",
-    "hue": 304,
-    "risk": "high"
-  },
-  {
     "slug": "love-you",
-    "name": "Love You",
+    "name": "Heart Pack",
     "image": "/cdn/cases/love-you.webp",
     "price": 1377,
     "bar": "#ef4444",
@@ -2215,7 +2143,7 @@
   },
   {
     "slug": "8-bit-case",
-    "name": "8-Bit Case",
+    "name": "Pixel Pack",
     "image": "/cdn/cases/8-bit-case.webp",
     "price": 1317,
     "bar": "#ef4444",
@@ -2224,7 +2152,7 @@
   },
   {
     "slug": "dark-deception",
-    "name": "Dark Deception",
+    "name": "Dark Trick",
     "image": "/cdn/cases/dark-deception.webp",
     "price": 1247,
     "bar": "#ef4444",
@@ -2233,7 +2161,7 @@
   },
   {
     "slug": "10-percent-virtual",
-    "name": "10% Virtual",
+    "name": "Virtual Odds",
     "image": "/cdn/cases/10-percent-virtual.webp",
     "price": 1216,
     "bar": "#ef4444",
@@ -2242,7 +2170,7 @@
   },
   {
     "slug": "lucky-case",
-    "name": "Lucky Case",
+    "name": "Lucky Box",
     "image": "/cdn/cases/lucky-case.webp",
     "price": 1181,
     "bar": "#ef4444",
@@ -2251,7 +2179,7 @@
   },
   {
     "slug": "party-rock",
-    "name": "Party Rock",
+    "name": "Party Pack",
     "image": "/cdn/cases/party-rock.webp",
     "price": 872,
     "bar": "#ef4444",
@@ -2260,7 +2188,7 @@
   },
   {
     "slug": "yellowmania",
-    "name": "Yellowmania",
+    "name": "Yellow Rush",
     "image": "/cdn/cases/yellowmania.webp",
     "price": 823,
     "bar": "#ef4444",
@@ -2269,7 +2197,7 @@
   },
   {
     "slug": "the-1-percent",
-    "name": "The 1%",
+    "name": "Elite One",
     "image": "/cdn/cases/the-1-percent.webp",
     "price": 778,
     "bar": "#ef4444",
@@ -2277,17 +2205,8 @@
     "risk": "high"
   },
   {
-    "slug": "balance-booster",
-    "name": "Balance Booster",
-    "image": "/cdn/cases/balance-booster.webp",
-    "price": 661,
-    "bar": "#ef4444",
-    "hue": 216,
-    "risk": "high"
-  },
-  {
     "slug": "holiday-haul",
-    "name": "Holiday Haul",
+    "name": "Holiday Run",
     "image": "/cdn/cases/holiday-haul.webp",
     "price": 625,
     "bar": "#ef4444",
@@ -2296,7 +2215,7 @@
   },
   {
     "slug": "sunny-stockpile",
-    "name": "Sunny Stockpile",
+    "name": "Sun Stash",
     "image": "/cdn/cases/sunny-stockpile.webp",
     "price": 625,
     "bar": "#ef4444",
@@ -2305,7 +2224,7 @@
   },
   {
     "slug": "brilliant-boom",
-    "name": "Brilliant Boom",
+    "name": "Shine Boom",
     "image": "/cdn/cases/brilliant-boom.webp",
     "price": 532,
     "bar": "#ef4444",
@@ -2314,7 +2233,7 @@
   },
   {
     "slug": "praefectus-dream",
-    "name": "Praefectus Dream",
+    "name": "Prefect Dream",
     "image": "/cdn/cases/praefectus-dream.webp",
     "price": 515,
     "bar": "#ef4444",
@@ -2323,7 +2242,7 @@
   },
   {
     "slug": "eye-of-the-prince",
-    "name": "Eye of the Prince",
+    "name": "Prince Eye",
     "image": "/cdn/cases/eye-of-the-prince.webp",
     "price": 497,
     "bar": "#ef4444",
@@ -2332,7 +2251,7 @@
   },
   {
     "slug": "headwear-havoc",
-    "name": "Headwear Havoc",
+    "name": "Hat Chaos",
     "image": "/cdn/cases/headwear-havoc.webp",
     "price": 468,
     "bar": "#ef4444",
@@ -2340,17 +2259,8 @@
     "risk": "high"
   },
   {
-    "slug": "designers-dream",
-    "name": "Designer's Dream",
-    "image": "/cdn/cases/designers-dream.webp",
-    "price": 451,
-    "bar": "#ef4444",
-    "hue": 296,
-    "risk": "high"
-  },
-  {
     "slug": "egg-case",
-    "name": "Egg Case",
+    "name": "Egg Hunt",
     "image": "/cdn/cases/egg-case.webp",
     "price": 430,
     "bar": "#3b82f6",
@@ -2359,7 +2269,7 @@
   },
   {
     "slug": "budget-flip",
-    "name": "Budget Flip",
+    "name": "Cheap Flip",
     "image": "/cdn/cases/budget-flip.webp",
     "price": 403,
     "bar": "#ef4444",
@@ -2368,7 +2278,7 @@
   },
   {
     "slug": "heads-or-glasses",
-    "name": "Heads or Glasses",
+    "name": "Heads Specs",
     "image": "/cdn/cases/heads-or-glasses.webp",
     "price": 399,
     "bar": "#3b82f6",
@@ -2377,7 +2287,7 @@
   },
   {
     "slug": "zoo-case",
-    "name": "Zoo Case",
+    "name": "Zoo Drop",
     "image": "/cdn/cases/zoo-case.webp",
     "price": 323,
     "bar": "#ef4444",
@@ -2386,7 +2296,7 @@
   },
   {
     "slug": "good-luck",
-    "name": "Good Luck",
+    "name": "Lucky Charm",
     "image": "/cdn/cases/good-luck.webp",
     "price": 257,
     "bar": "#ef4444",
@@ -2395,7 +2305,7 @@
   },
   {
     "slug": "shoot-for-the-stars",
-    "name": "Shoot for the Stars",
+    "name": "Star Shot",
     "image": "/cdn/cases/shoot-for-the-stars.webp",
     "price": 179,
     "bar": "#ef4444",
@@ -2403,17 +2313,8 @@
     "risk": "high"
   },
   {
-    "slug": "nightmare",
-    "name": "Nightmare",
-    "image": "/cdn/cases/nightmare.webp",
-    "price": 167,
-    "bar": "#ef4444",
-    "hue": 242,
-    "risk": "high"
-  },
-  {
     "slug": "turning-the-tides",
-    "name": "Turning the Tides",
+    "name": "Tide Turn",
     "image": "/cdn/cases/turning-the-tides.webp",
     "price": 153,
     "bar": "#3b82f6",
@@ -2422,7 +2323,7 @@
   },
   {
     "slug": "50-50",
-    "name": "50/50",
+    "name": "Even Odds",
     "image": "/cdn/cases/50-50.webp",
     "price": 141,
     "bar": "#3b82f6",
@@ -2431,7 +2332,7 @@
   },
   {
     "slug": "cheesy",
-    "name": "Cheesy",
+    "name": "Cheese Run",
     "image": "/cdn/cases/cheesy.webp",
     "price": 140,
     "bar": "#ef4444",
@@ -2440,7 +2341,7 @@
   },
   {
     "slug": "beach-bonanza",
-    "name": "Beach Bonanza",
+    "name": "Shore Loot",
     "image": "/cdn/cases/beach-bonanza.webp",
     "price": 125,
     "bar": "#ef4444",
@@ -2449,7 +2350,7 @@
   },
   {
     "slug": "stocking-surprise",
-    "name": "Stocking Surprise",
+    "name": "Stocking",
     "image": "/cdn/cases/stocking-surprise.webp",
     "price": 125,
     "bar": "#ef4444",
@@ -2458,7 +2359,7 @@
   },
   {
     "slug": "budget-spins",
-    "name": "Budget Spins",
+    "name": "Cheap Spin",
     "image": "/cdn/cases/budget-spins.webp",
     "price": 93,
     "bar": "#3b82f6",
@@ -2467,7 +2368,7 @@
   },
   {
     "slug": "low-baller",
-    "name": "Low Baller",
+    "name": "Low Roll",
     "image": "/cdn/cases/low-baller.webp",
     "price": 87,
     "bar": "#3b82f6",
@@ -2476,7 +2377,7 @@
   },
   {
     "slug": "courageous-comeback",
-    "name": "Courageous Comeback",
+    "name": "Comeback",
     "image": "/cdn/cases/courageous-comeback.webp",
     "price": 78,
     "bar": "#3b82f6",
@@ -2485,20 +2386,11 @@
   },
   {
     "slug": "cheap-box",
-    "name": "Cheap Box",
+    "name": "Penny Pack",
     "image": "/cdn/cases/cheap-box.webp",
     "price": 62,
     "bar": "#3b82f6",
     "hue": 28,
     "risk": "low"
-  },
-  {
-    "slug": "luxurious",
-    "name": "Luxurious",
-    "image": "/cdn/cases/luxurious.webp",
-    "price": 8,
-    "bar": "#ef4444",
-    "hue": 247,
-    "risk": "high"
   }
 ]

@@ -2,25 +2,103 @@
 
 import { useEffect, useState } from "react";
 import { Bux } from "@/components/bux";
-import { Icons } from "@/components/icons";
-import { ItemBg } from "@/components/item-bg";
-import { LEADERBOARD } from "@/lib/catalog";
-import { avatarSrc } from "@/lib/avatars";
+import { BuxGlyph, Icons } from "@/components/icons";
+import { UserAvatar } from "@/components/user-avatar";
+import { useStore } from "@/components/providers";
+import { formatBux } from "@/lib/format";
+import { LEADERBOARD, WEEKLY_RACE_POOL } from "@/lib/catalog";
 
-const PRIZE_IMG: Record<number, string> = {
-  1: "/img/leaderboard/prizes/ice_valkyrie.webp",
-  2: "/img/leaderboard/prizes/red_bucket_of_cheer.webp",
-  3: "/img/leaderboard/prizes/gold_emperor.webp",
-};
+const PACKS = [
+  { slug: "oil-baron", className: "-left-20 top-64 w-200 -rotate-12 sm:left-[-2%]", anim: "animate-float", delay: "0.35s" },
+  { slug: "optimus", className: "-right-24 top-48 w-220 rotate-10 sm:right-[-2%]", anim: "animate-float2", delay: "0.15s" },
+  { slug: "bank-vault", className: "top-280 left-[2%] hidden w-170 rotate-8 lg:block", anim: "animate-float", delay: "0.7s" },
+  { slug: "prestige", className: "top-300 right-[4%] hidden w-160 -rotate-8 lg:block", anim: "animate-float2", delay: "0.5s" },
+  { slug: "crimson-wrath", className: "top-520 -left-8 hidden w-150 rotate-14 md:block", anim: "animate-float", delay: "1s" },
+  { slug: "beast-case", className: "top-540 -right-4 hidden w-170 -rotate-6 md:block", anim: "animate-float2", delay: "0.85s" },
+];
 
-const TONE = {
-  1: { from: "from-gold", bg: "bg-gold", text: "text-gold", tone: "gold" as const, delay: "2s" },
-  2: { from: "from-silver", bg: "bg-silver", text: "text-silver", tone: "silver" as const, delay: "4s" },
-  3: { from: "from-bronze", bg: "bg-bronze", text: "text-bronze", tone: "bronze" as const, delay: "6s" },
-};
+const PLACE = {
+  1: {
+    label: "1st Place",
+    glow: "shadow-[0_0_80px_rgba(242,195,56,0.28)]",
+    bar: "from-gold-btn/80 to-gold-btn/10",
+    pill: "bg-gold-btn text-grey-28",
+    icon: "text-gold-btn",
+  },
+  2: {
+    label: "2nd Place",
+    glow: "shadow-[0_0_48px_rgba(176,179,214,0.18)]",
+    bar: "from-silver/70 to-silver/10",
+    pill: "bg-silver text-grey-28",
+    icon: "text-silver",
+  },
+  3: {
+    label: "3rd Place",
+    glow: "shadow-[0_0_48px_rgba(244,180,148,0.2)]",
+    bar: "from-bronze/80 to-bronze/10",
+    pill: "bg-bronze text-grey-28",
+    icon: "text-bronze",
+  },
+} as const;
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
+}
+
+function nextWeekEnd() {
+  const now = new Date();
+  const day = now.getUTCDay();
+  const add = day === 0 ? 7 : 7 - day;
+  return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + add, 0, 0, 0);
+}
+
+function ordinal(n: number) {
+  const v = n % 100;
+  if (v >= 11 && v <= 13) return `${n}th`;
+  if (v % 10 === 1) return `${n}st`;
+  if (v % 10 === 2) return `${n}nd`;
+  if (v % 10 === 3) return `${n}rd`;
+  return `${n}th`;
+}
+
+function useRaceClock() {
+  const [remain, setRemain] = useState<number | null>(null);
+  useEffect(() => {
+    const tick = () => setRemain(Math.max(0, Math.floor((nextWeekEnd() - Date.now()) / 1000)));
+    tick();
+    const t = setInterval(tick, 1000);
+    return () => clearInterval(t);
+  }, []);
+  const n = remain ?? 0;
+  return {
+    ready: remain != null,
+    d: Math.floor(n / 86400),
+    h: Math.floor((n % 86400) / 3600),
+    m: Math.floor((n % 3600) / 60),
+    s: n % 60,
+  };
+}
+
+function RaceClock({ size = "md" }: { size?: "md" | "lg" }) {
+  const { ready, d, h, m, s } = useRaceClock();
+  const units = [
+    { value: d, label: "Days" },
+    { value: h, label: "Hours" },
+    { value: m, label: "Minutes" },
+    { value: s, label: "Seconds" },
+  ];
+  return (
+    <div className="flex items-start gap-8">
+      {units.map((u) => (
+        <div key={u.label} className="flex flex-col items-center gap-6">
+          <div className={`flex items-center justify-center rounded-10 bg-grey-39 text-white tabular-nums ${size === "lg" ? "h-56 w-64" : "h-48 w-52"}`}>
+            <span className="tactic-title-sm">{ready ? pad(u.value) : "—"}</span>
+          </div>
+          <span className="text-11 text-grey-142">{u.label}</span>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 function PodiumCard({
@@ -28,72 +106,43 @@ function PodiumCard({
   user,
   wagered,
   prize,
-  item,
 }: {
-  place: number;
+  place: 1 | 2 | 3;
   user: string;
   wagered: number;
   prize: number;
-  item: string;
 }) {
-  const t = TONE[place as 1 | 2 | 3];
+  const t = PLACE[place];
   return (
-    <div className="relative mt-36 w-full cursor-pointer duration-500 hover:translate-y-[-8px] hover:scale-[1.02] active:translate-y-[-8px] active:scale-[1.02]">
-      <div className="absolute left-1/2 top-[-40px] z-[0] -translate-x-1/2">
-        <Icons.podium className={t.text} style={{ width: "1em", height: "1em", fontSize: 54 }} />
-      </div>
-      <div className="relative w-full overflow-hidden rounded-16 bg-grey-39 p-2">
-        <div
-          className={`absolute left-1/2 top-1/2 w-[130%] -translate-x-1/2 -translate-y-1/2 animate-leaderboard bg-gradient-to-b to-transparent pt-[130%] ${t.from} min-[1240px]:w-[200%] min-[1240px]:pt-[200%]`}
-          style={{ animationDelay: t.delay }}
+    <div className={`relative flex h-full flex-col overflow-hidden rounded-16 border border-white/8 bg-grey-34/85 backdrop-blur-md ${t.glow} ${place === 1 ? "min-h-320" : "min-h-280"}`}>
+      <div className={`absolute inset-x-0 top-0 h-2 bg-gradient-to-r ${t.bar}`} />
+      <div className="flex items-center justify-center gap-8 px-16 pt-20">
+        <Icons.trophy
+          className={`shrink-0 ${place === 1 ? "text-gold-hi" : t.icon}`}
+          style={{
+            width: 20,
+            height: 20,
+            filter: place === 1 ? "drop-shadow(0 1px 2px rgba(0,0,0,0.65)) drop-shadow(0 0 8px rgba(255,226,138,0.7))" : undefined,
+          }}
         />
-        <div className="relative grid w-full grid-cols-1 rounded-[15px] bg-grey-34 p-2">
-          <div className={`absolute -top-1/4 left-1/4 h-1/2 w-1/2 opacity-20 blur-[60px] ${t.bg}`} />
-          <div className="relative grid w-full grid-cols-1 gap-16 p-24">
-            <div className="flex w-full justify-center">
-              <div className="h-80 w-80">
-                <div className="relative flex w-full items-center justify-center rounded-full" style={{ width: 80, height: 80 }}>
-                  <div
-                    className="absolute inset-0 left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-grey-58"
-                    style={{ width: 80, height: 80 }}
-                  >
-                    <Icons.user className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-show text-grey-142" style={{ width: 40, height: 40 }} />
-                  </div>
-                  <img alt="" className="relative rounded-full object-cover opacity-100" src={avatarSrc(undefined, user)} style={{ width: 80, height: 80 }} />
-                </div>
-              </div>
-            </div>
-            <div className="grid w-full grid-cols-1 gap-12">
-              <p className="truncate text-center text-16 text-white">{user}</p>
-              <div className="flex w-full justify-center">
-                <div className="flex h-36 items-center rounded-8 bg-grey-58 px-12">
-                  <p className="mr-6 text-14 text-grey-190">Wagered</p>
-                  <Bux value={wagered} tone={t.tone} />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="relative grid w-full overflow-hidden p-16">
-            <div className={`absolute -top-1/4 left-1/4 h-1/2 w-1/2 opacity-30 blur-[40px] ${t.bg}`} />
-            <div className="relative grid w-full grid-cols-[auto_1fr] items-center gap-12">
-              <div className="relative h-80 w-80">
-                <div className={`absolute left-1/4 top-1/4 h-1/2 w-1/2 rounded opacity-80 blur-[40px] ${t.bg}`} />
-                <ItemBg className="inset-6 h-68 w-68 animate-floaty opacity-60" />
-                <img alt="" className="relative h-[80px] w-full animate-floaty object-contain" src={PRIZE_IMG[place]} />
-              </div>
-              <div className="grid w-full grid-cols-1 gap-8">
-                <p className="text-14 text-white">{item}</p>
-                <div className="flex w-full">
-                  <div className="relative flex h-32 items-center rounded-8 px-10">
-                    <div className={`absolute inset-0 rounded-8 opacity-10 ${t.bg}`} />
-                    <div className="relative">
-                      <Bux value={prize} tone={t.tone} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <p className={`ui-label text-13 ${place === 1 ? "text-gold-hi" : t.icon}`}>{t.label}</p>
+      </div>
+      <div className="flex flex-1 flex-col items-center gap-12 px-20 pt-20 pb-16">
+        <UserAvatar seed={user} size={place === 1 ? 72 : 64} rounded="8" />
+        <p className="max-w-full truncate text-16 text-white">{user}</p>
+        <p className="flex items-center gap-6 text-13 text-grey-142">
+          Opened
+          <span className="inline-flex items-center gap-4 text-white">
+            <BuxGlyph style={{ width: 14, height: 14 }} />
+            {formatBux(wagered)}
+          </span>
+        </p>
+      </div>
+      <div className="flex flex-col items-center gap-10 border-t border-white/6 px-20 py-16">
+        <p className="ui-label text-11 text-grey-142">Prize</p>
+        <div className={`flex h-36 items-center rounded-full px-14 ${t.pill}`}>
+          <BuxGlyph className="mr-6" style={{ width: 16, height: 16 }} />
+          <span className="ui-num text-14 font-black">{formatBux(prize)}</span>
         </div>
       </div>
     </div>
@@ -101,17 +150,7 @@ function PodiumCard({
 }
 
 export default function LeaderboardPage() {
-  const [remain, setRemain] = useState(2 * 3600 + 22 * 60 + 12);
-  useEffect(() => {
-    const t = setInterval(() => setRemain((n) => (n > 0 ? n - 1 : 0)), 1000);
-    return () => clearInterval(t);
-  }, []);
-  const d = Math.floor(remain / 86400);
-  const h = Math.floor((remain % 86400) / 3600);
-  const m = Math.floor((remain % 3600) / 60);
-  const s = remain % 60;
-  const clock = `${pad(d)}:${pad(h)}:${pad(m)}:${pad(s)}`;
-
+  const { user } = useStore();
   const first = LEADERBOARD[0];
   const second = LEADERBOARD[1];
   const third = LEADERBOARD[2];
@@ -119,96 +158,94 @@ export default function LeaderboardPage() {
 
   return (
     <div className="relative w-full">
-      <div className="@lg/page:-inset-32 @sm/page:-inset-20 @md/page:-inset-32 absolute -inset-16">
-        <div className="absolute -top-1/3 left-1/3 h-1/3 w-1/3 rounded-full bg-green opacity-60 blur-[100px]" />
-        <img
-          alt=""
-          className="absolute left-1/2 top-0 w-full min-w-[600px] max-w-[300%] -translate-x-1/2 mix-blend-luminosity"
-          src="/img/leaderboard/banner_leaderboard.webp"
-        />
-        <img alt="" className="absolute left-1/2 top-0 w-full min-w-[1000px] -translate-x-1/2 animate-float2" src="/img/leaderboard/trophies_left.webp" />
-        <img alt="" className="absolute left-1/2 top-0 w-full min-w-[1000px] -translate-x-1/2 animate-float" src="/img/leaderboard/trophies_right.webp" />
+      <div className="pointer-events-none absolute inset-x-[-80px] top-0 h-[720px] overflow-visible">
+        {PACKS.map((p) => (
+          <img
+            key={p.slug}
+            alt=""
+            src={`/cdn/packs/${p.slug}.webp`}
+            className={`absolute object-contain drop-shadow-[0_24px_40px_rgba(0,0,0,0.55)] ${p.className} ${p.anim}`}
+            style={{ animationDelay: p.delay }}
+          />
+        ))}
       </div>
 
-      <div className="flex w-full justify-center">
-        <div className="@sm/page:p-20 relative grid w-full max-w-screen-lg grid-cols-1 gap-50 pt-12">
-          <div className="flex w-full justify-center">
-            <div className="@sm/page:gap-32 @xs/page:w-[500px] grid w-full grid-cols-1 gap-16">
-              <div className="relative h-60 w-full">
-                <img alt="" className="absolute -left-24 top-1/2 w-full -translate-y-1/2" src="/img/leaderboard/prize_leaderboard.webp" />
-              </div>
-              <div className="flex w-full justify-center">
-                <div className="relative">
-                  <div className="absolute -left-10 top-1/2 h-2 w-60 -translate-x-full -translate-y-1/2 bg-gradient-to-r from-transparent to-green" />
-                  <div className="absolute -right-10 top-1/2 h-2 w-60 -translate-y-1/2 translate-x-full bg-gradient-to-l from-transparent to-green" />
-                  <p className="@lg/page:text-42 @md/page:text-32 relative text-24 font-black text-white">LEADERBOARD</p>
-                </div>
-              </div>
-              <div className="flex w-full justify-center">
-                <button type="button" className="flex h-44 items-center rounded-8 bg-grey-58 px-16">
-                  <p className="text-16 text-grey-190">
-                    Ends in <span className="text-16 text-white">{clock}</span>
-                  </p>
-                </button>
-              </div>
-            </div>
+      <div className="relative z-1 mx-auto flex w-full max-w-screen-bt flex-col items-center gap-40 pt-12 pb-40">
+        <div className="flex w-full flex-col items-center gap-16">
+          <h1 className="ui-label text-28 text-white md:text-36">Weekly Race</h1>
+          <div className="flex items-center gap-8 rounded-full bg-grey-39 px-16 py-8">
+            <Bux value={WEEKLY_RACE_POOL} tone="gold" />
           </div>
+        </div>
 
-          <div className="flex w-full justify-center">
-            <div className="@md/page:mt-20 grid w-full max-w-screen-bt grid-cols-1 gap-50">
-              <div className="@bt/page:grid-cols-3 @bt/page:gap-32 grid w-full grid-cols-1 gap-20">
-                <div className="@bt/page:col-start-2 @bt/page:-mt-30 col-start-1 row-start-1">
-                  <PodiumCard {...first} />
-                </div>
-                <div className="@bt/page:col-start-1 @bt/page:row-start-1 col-start-1 row-start-2">
-                  <PodiumCard {...second} />
-                </div>
-                <div className="@bt/page:col-start-3 @bt/page:row-start-1 col-start-1 row-start-3">
-                  <PodiumCard {...third} />
-                </div>
-              </div>
+        <div className="@md/page:grid-cols-3 @md/page:items-end grid w-full grid-cols-1 gap-16">
+          <div className="@md/page:col-start-2 @md/page:row-start-1 @md/page:-mt-24">
+            <PodiumCard place={1} user={first.user} wagered={first.wagered} prize={first.prize} />
+          </div>
+          <div className="@md/page:col-start-1 @md/page:row-start-1">
+            <PodiumCard place={2} user={second.user} wagered={second.wagered} prize={second.prize} />
+          </div>
+          <div className="@md/page:col-start-3 @md/page:row-start-1">
+            <PodiumCard place={3} user={third.user} wagered={third.wagered} prize={third.prize} />
+          </div>
+        </div>
 
-              <div className="scrollbar @sm/page:rounded-4 w-full overflow-x-auto pb-10" style={{ scrollbarWidth: "thin" }}>
-                <div className="grid w-full grid-cols-1 items-start gap-6" style={{ minWidth: 530 }}>
-                  <div className="@sm/page:rounded-4 relative flex h-18 w-full items-center justify-between px-12">
-                    <p className="mr-20 text-12 text-grey-142" style={{ width: 60 }}>
-                      Place
-                    </p>
-                    <p className="mr-20 text-12 text-grey-142" style={{ width: 180 }}>
-                      User
-                    </p>
-                    <p className="mr-20 text-12 text-grey-142" style={{ width: 100 }}>
-                      Wagered
-                    </p>
-                    <p className="text-right text-12 text-grey-142" style={{ width: 100 }}>
-                      Prize
-                    </p>
+        <div className="flex flex-col items-center gap-12">
+          <p className="text-14 text-grey-142">Leaderboard ends in</p>
+          <RaceClock size="lg" />
+        </div>
+
+        <div className="w-full overflow-x-auto">
+          <div className="grid min-w-[520px] grid-cols-1 gap-8">
+            <div className="grid grid-cols-[64px_1fr_140px_120px] items-center px-20 text-12 text-grey-142">
+              <p>#</p>
+              <p>Player</p>
+              <p>Opened</p>
+              <p className="text-right">Prize</p>
+            </div>
+            {rest.map((row) => (
+              <div
+                key={row.place}
+                className="grid grid-cols-[64px_1fr_140px_120px] items-center rounded-16 bg-grey-39 px-20 py-12"
+              >
+                <p className="text-14 text-white">{ordinal(row.place)}</p>
+                <div className="flex min-w-0 items-center gap-10">
+                  <UserAvatar seed={row.user} size={36} rounded="8" />
+                  <p className="truncate text-14 text-white">{row.user}</p>
+                </div>
+                <div className="flex items-center gap-6">
+                  <BuxGlyph style={{ width: 14, height: 14 }} />
+                  <p className="ui-num text-14 text-white">{formatBux(row.wagered)}</p>
+                </div>
+                <div className="flex justify-end">
+                  <div className="flex items-center gap-6">
+                    <BuxGlyph style={{ width: 16, height: 16 }} />
+                    <p className="ui-num text-14 text-success">{formatBux(row.prize)}</p>
                   </div>
-                  {rest.map((row) => (
-                    <div key={row.place} className="panel-outline relative mt-6 w-full rounded-8 bg-grey-39">
-                      <div className="hover:bg-grey-70/50 active:bg-grey-70/50 @sm/page:rounded-8 w-full transition-colors duration-200">
-                        <div className="relative flex min-h-[40px] w-full items-center justify-between gap-y-6 rounded-4 px-12 py-10">
-                          <p className="mr-20 w-full text-14 text-grey-190" style={{ width: 60 }}>
-                            #{row.place}
-                          </p>
-                          <div className="mr-20 grid grid-cols-[auto_1fr] items-center gap-8" style={{ width: 180 }}>
-                            <img alt="" className="h-32 w-32 rounded-full object-cover" src={avatarSrc(undefined, row.user)} />
-                            <p className="truncate text-left text-14 text-white">{row.user}</p>
-                          </div>
-                          <div className="mr-20 flex justify-start" style={{ width: 100 }}>
-                            <Bux value={row.wagered} />
-                          </div>
-                          <div className="flex justify-end" style={{ width: 100 }}>
-                            <Bux value={row.prize} />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
                 </div>
               </div>
+            ))}
+            <div className="grid grid-cols-[64px_1fr_140px_120px] items-center rounded-12 border border-dashed border-white/8 bg-grey-39/50 px-20 py-10">
+              <p className="text-14 text-grey-142">—</p>
+              <div className="flex min-w-0 items-center gap-10">
+                {user ? (
+                  <>
+                    <UserAvatar avatar={user.avatar} seed={user.username} size={36} rounded="8" level={user.level} rank={user.rank} />
+                    <p className="truncate text-14 text-white">{user.username}</p>
+                  </>
+                ) : (
+                  <p className="text-14 text-grey-142">Sign in to track your rank</p>
+                )}
+              </div>
+              <p className="ui-num text-14 text-grey-142">{formatBux(user?.stats.bet ?? 0)}</p>
+              <p className="text-right text-14 text-grey-142">—</p>
             </div>
           </div>
+        </div>
+
+        <div className="flex w-full max-w-640 flex-col gap-8 text-center text-12 text-grey-112">
+          <p>Bonus-balance wagers count toward the race at the bonus percent. A +100% bonus wager is counted at half.</p>
+          <p>Rankings update every 5 minutes. All prizes are credited as site balance.</p>
         </div>
       </div>
     </div>

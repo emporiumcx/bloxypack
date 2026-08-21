@@ -464,7 +464,7 @@ export function Modals() {
           <span className="rounded-full bg-green px-12 py-4 text-12 font-bold tracking-wide text-grey-1">
             WELCOME TO
           </span>
-          <img src="/img/logo.png" alt="BloxyPack" className="h-48 object-contain" />
+          <img src="/img/logo.png" alt="BloxyPack" className="h-56 object-contain" />
           <p className="text-16 text-grey-190">Welcome to the #1 Roblox Case Opening Site!</p>
           <GreenButton onClick={dismissWelcome}>Continue to BloxyWild →</GreenButton>
         </div>

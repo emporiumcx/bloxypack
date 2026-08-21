@@ -184,8 +184,8 @@ export function ChatPanel() {
       <div className="flex h-40 shrink-0 items-center justify-between gap-10 border-b-1 border-grey-58 px-12">
         <p className="text-11 font-semibold uppercase tracking-wide text-grey-142">English</p>
         <div className="flex items-center gap-6">
-          <div className="relative h-10 w-10 rounded-full bg-green/20">
-            <div className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-green" />
+          <div className="relative h-10 w-10 rounded-full bg-success/20">
+            <div className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-success" />
           </div>
           <p className="ui-num text-12 text-white">{online}</p>
         </div>

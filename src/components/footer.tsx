@@ -61,7 +61,7 @@ function LogoGlow() {
       <div className="pointer-events-none absolute top-0 left-1/2 h-32 w-136 -translate-x-1/2 bg-green/60 opacity-60 blur-[30px]" />
       <div className="pointer-events-none absolute top-0 left-1/2 h-2 w-200 -translate-x-1/2 bg-gradient-to-r from-green/0 via-green to-green/0 opacity-30 blur-[1px]" />
       <div className="header-logo-dots pointer-events-none absolute top-0 left-1/2 h-240 w-240 -translate-x-1/2" />
-      <img alt="BloxyPack" src="/img/logo.png" className="relative z-10 h-28 w-auto object-contain" />
+      <img alt="BloxyPack" src="/img/logo.png" className="relative z-10 h-36 w-auto object-contain" />
     </div>
   );
 }

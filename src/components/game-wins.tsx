@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { DropPanel, useDrop } from "@/components/dropdown";
 import { BuxGlyph, Icons } from "@/components/icons";
 
 type WinRow = {
@@ -87,17 +88,17 @@ function RankBadge({ rank }: { rank: number }) {
 export function GameWins({ game = "Tower" }: { game?: string }) {
   const [mode, setMode] = useState<"highest" | "luckiest">("highest");
   const [time, setTime] = useState<(typeof TIMES)[number]["id"]>("all");
-  const [open, setOpen] = useState(false);
+  const { open, leaving, shown, close, toggle } = useDrop();
   const ref = useRef<HTMLDivElement>(null);
   const current = TIMES.find((t) => t.id === time) ?? TIMES[3];
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
-      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+      if (!ref.current?.contains(e.target as Node)) close();
     };
     document.addEventListener("mousedown", onDoc);
     return () => document.removeEventListener("mousedown", onDoc);
-  }, []);
+  }, [open, leaving]);
 
   const rows = useMemo(() => {
     const windowed = TOWER_WINS.filter((r) => r.daysAgo < current.days);
@@ -147,7 +148,8 @@ export function GameWins({ game = "Tower" }: { game?: string }) {
           <div ref={ref} className="relative">
             <button
               type="button"
-              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open && !leaving}
+              onClick={toggle}
               className="flex h-32 min-w-0 cursor-pointer items-center justify-between gap-12 rounded-6 border border-grey-58 bg-grey-1 px-12 text-12 text-white"
             >
               <span className="flex min-w-0 items-center gap-8">
@@ -155,27 +157,26 @@ export function GameWins({ game = "Tower" }: { game?: string }) {
                 <span className="shrink-0 text-grey-142">Time</span>
                 <span>{current.label}</span>
               </span>
-              <Icons.chevron className={`text-14 text-grey-112 transition-transform ${open ? "rotate-180" : ""}`} />
+              <Icons.chevron className={`text-14 text-grey-112 transition-transform duration-200 ${open && !leaving ? "rotate-180" : ""}`} />
             </button>
-            {open ? (
-              <div className="absolute right-0 top-36 z-50 min-w-full overflow-hidden rounded-8 border border-grey-58 bg-grey-28 p-6">
-                {TIMES.map((t) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => {
-                      setTime(t.id);
-                      setOpen(false);
-                    }}
-                    className={`flex h-32 w-full items-center rounded-6 px-10 text-left text-12 ${
-                      time === t.id ? "bg-green text-white" : "text-white hover:bg-grey-39"
-                    }`}
-                  >
-                    {t.label}
-                  </button>
-                ))}
-              </div>
-            ) : null}
+            <DropPanel shown={shown} leaving={leaving} className="absolute right-0 top-36 min-w-full overflow-hidden">
+              {TIMES.map((t, i) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  onClick={() => {
+                    setTime(t.id);
+                    close();
+                  }}
+                  style={leaving ? undefined : { animation: "open-y 0.28s cubic-bezier(0.22, 1, 0.36, 1) both", animationDelay: `${i * 28}ms` }}
+                  className={`flex h-32 w-full items-center rounded-6 px-10 text-left text-12 ${
+                    time === t.id ? "bg-green text-white" : "text-white hover:bg-grey-39"
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </DropPanel>
           </div>
         </div>
       </div>

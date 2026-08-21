@@ -170,7 +170,7 @@ export function SiteHeader() {
         <div className="flex min-w-0 items-center gap-16">
           <Link href="/" aria-label="home" className="relative flex items-center overflow-visible md:hidden">
             <LogoGlow compact />
-            <img alt="BloxyPack" className="relative z-10 h-28 w-auto object-contain" src="/img/logo.png" />
+            <img alt="BloxyPack" className="relative z-10 h-36 w-auto object-contain" src="/img/logo.png" />
           </Link>
 
           <div className="hidden items-center gap-16 pl-0 md:flex">
@@ -179,16 +179,19 @@ export function SiteHeader() {
             </button>
             <Link href="/" aria-label="home" className="relative mr-24 overflow-visible">
               <LogoGlow />
-              <img alt="BloxyPack" className="relative z-10 h-36 w-auto object-contain" src="/img/logo.png" />
+              <img alt="BloxyPack" className="relative z-10 h-44 w-auto object-contain" src="/img/logo.png" />
             </Link>
           </div>
 
           <Link
             href="/rewards"
-            className="hidden items-center gap-8 rounded-6 bg-grey-39 px-16 py-12 text-[0.8rem] font-normal text-white transition-colors hover:bg-grey-47 md:flex"
+            className="group/button relative hidden h-32 items-center gap-8 overflow-hidden rounded-6 bg-gradient-to-b from-green to-green-2 px-12 text-12 font-medium text-white transition-all duration-400 hover:brightness-110 active:brightness-95 md:flex"
           >
-            <Icons.rewards className="text-16 text-icons-secondary" />
-            Rewards
+            <span className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
+              <span className="animate-btn-shine absolute inset-y-0 -left-1/2 w-1/2 bg-gradient-to-r from-transparent via-white/55 to-transparent" />
+            </span>
+            <Icons.rewards className="relative text-16 text-grey-190" />
+            <span className="relative">Rewards</span>
           </Link>
 
           <RaceChip />

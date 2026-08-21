@@ -70,7 +70,7 @@ const battlesGetData = (user) => {
             // Get battles games
             const games = battlesGames.filter((game) => game.options.private === false || (user !== undefined && game.bets.some((bet) => bet.bot === false && bet.user._id.toString() === user._id.toString()) === true));
 
-            resolve({ boxes: boxesDatabase, games: battlesSanitizeGames(games), history: battlesHistory });
+            resolve({ boxes: boxesDatabase, games: battlesSanitizeGames(games), history: battlesSanitizeGames(battlesHistory) });
         } catch(err) {
             reject(err);
         }
@@ -640,9 +640,10 @@ const battlesGameComplete = async(io, battlesGame) => {
             ...promisesAffiliates
         ]);
 
-        // Add battles game to battles history and remove last element from battles history if its longer then 8
+        battlesHistory = battlesHistory.filter((g) => String(g._id) !== String(battlesGame._id));
         battlesHistory.unshift(battlesSanitizeGame(battlesGame));
-        if(battlesHistory.length > 4) { battlesHistory.pop(); }
+        battlesHistory.sort((a, b) => (b.amount || 0) - (a.amount || 0));
+        if (battlesHistory.length > 12) battlesHistory = battlesHistory.slice(0, 12);
 
         // Remove battles game from battles games array
         battlesGames.splice(battlesGetGameIndex(battlesGames, battlesGame._id), 1);
@@ -679,7 +680,11 @@ const battlesInit = async() => {
                 path: 'bets', 
                 populate: { path: 'user', select: 'roblox.id username avatar rank xp limits stats.total affiliates anonymous createdAt' } 
             }).lean(),
-            BattlesGame.find({ 'options.private': false, state: 'completed' }).sort({ createdAt: -1 }).limit(4).select('amount playerCount mode boxes options fair state updatedAt createdAt').populate({ 
+            BattlesGame.find({
+                'options.private': false,
+                state: 'completed',
+                createdAt: { $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) }
+            }).sort({ amount: -1 }).limit(12).select('amount playerCount mode boxes options fair state updatedAt createdAt').populate({ 
                 path: 'boxes.box', 
                 select: 'name slug amount items',
                 populate: { path: 'items.item', select: 'name image amountFixed' }

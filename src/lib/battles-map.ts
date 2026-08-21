@@ -53,7 +53,11 @@ export function mapBattleGame(game: BattleGame): Battle {
     crazy: Boolean(game.options?.cursed),
     terminal: Boolean(game.options?.terminal),
     funding: Math.min(80, Math.max(0, game.options?.funding || 0)),
-    createdAt: game.updatedAt ? new Date(game.updatedAt).getTime() : 0,
+    createdAt: game.createdAt
+      ? new Date(game.createdAt).getTime()
+      : game.updatedAt
+        ? new Date(game.updatedAt).getTime()
+        : 0,
   };
 }
 

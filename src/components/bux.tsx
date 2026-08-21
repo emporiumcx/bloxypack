@@ -24,12 +24,14 @@ export function Bux({
   tone = "green",
   size = "md",
   amount = "white",
+  bold = false,
 }: {
   value: number;
   className?: string;
   tone?: keyof typeof TONE;
   size?: "md" | "sm" | "xs";
   amount?: "white" | "green" | "muted" | "onGreen";
+  bold?: boolean;
 }) {
   const sm = size === "sm";
   const xs = size === "xs";
@@ -50,7 +52,9 @@ export function Bux({
         </div>
       </div>
       <div className={`relative flex items-center ${amountClass}`}>
-        <p className={`ui-num ${xs ? "text-12" : sm ? "text-13" : "text-16"}`}>{formatBux(value)}</p>
+        <p className={`ui-num ${xs ? "text-12" : sm ? "text-13" : "text-16"}`} style={bold ? { fontWeight: 800 } : undefined}>
+          {formatBux(value)}
+        </p>
       </div>
     </div>
   );

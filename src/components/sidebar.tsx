@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import type { CSSProperties, ReactNode } from "react";
 import { Icons } from "./icons";
 import { useStore } from "./providers";
+import { SidebarGiveaway } from "./sidebar-giveaway";
 import { SocialIconButton } from "./social-icon";
 import { SIDEBAR_SOCIALS } from "@/lib/socials";
 
@@ -96,12 +97,15 @@ export function Sidebar() {
         </div>
       </div>
       {collapsed ? null : (
-        <div className="mt-auto flex flex-wrap gap-8 border-t-1 border-grey-58 pt-12">
-          {SIDEBAR_SOCIALS.map((s) => (
-            <SocialIconButton key={s.label} href={s.href} label={s.label}>
-              <s.icon />
-            </SocialIconButton>
-          ))}
+        <div className="mt-auto flex flex-col gap-12 pt-12">
+          <SidebarGiveaway />
+          <div className="flex flex-wrap gap-8 border-t-1 border-grey-58 pt-12">
+            {SIDEBAR_SOCIALS.map((s) => (
+              <SocialIconButton key={s.label} href={s.href} label={s.label}>
+                <s.icon />
+              </SocialIconButton>
+            ))}
+          </div>
         </div>
       )}
     </aside>

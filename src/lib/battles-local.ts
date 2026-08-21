@@ -1,4 +1,4 @@
-import { BATTLES, type Battle } from "./catalog";
+import { type Battle } from "./catalog";
 
 const KEY = "bloxywild-battles";
 
@@ -17,5 +17,5 @@ export function saveLocalBattle(battle: Battle) {
 }
 
 export function findBattle(id: string): Battle | undefined {
-  return loadLocalBattles().find((b) => b.id === id) ?? BATTLES.find((b) => b.id === id);
+  return loadLocalBattles().find((b) => b.id === id);
 }

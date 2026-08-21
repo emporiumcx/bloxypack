@@ -7,8 +7,11 @@ import { FairnessControl } from "@/components/fairness";
 import { GameWins } from "@/components/game-wins";
 import { GreenButton } from "@/components/green-button";
 import { GotQuestions, TOWER_FAQS } from "@/components/home-faq";
+import { DropPanel, useDrop } from "@/components/dropdown";
 import { Icons } from "@/components/icons";
+import { SoundSettings } from "@/components/sound-settings";
 import { useStore } from "@/components/providers";
+import { playSfx } from "@/lib/sfx";
 
 const DIFF = {
   Easy: { cols: 4, mines: 1 },
@@ -48,55 +51,56 @@ function DifficultySelect({
   disabled?: boolean;
   onChange: (id: keyof typeof DIFF) => void;
 }) {
-  const [open, setOpen] = useState(false);
+  const { open, leaving, shown, close, toggle } = useDrop();
   const ref = useRef<HTMLDivElement>(null);
   const current = DIFF[value];
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
-      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+      if (!ref.current?.contains(e.target as Node)) close();
     };
     document.addEventListener("mousedown", onDoc);
     return () => document.removeEventListener("mousedown", onDoc);
-  }, []);
+  }, [open, leaving]);
 
   return (
-    <div ref={ref} className={`relative w-full ${open ? "z-50" : ""}`}>
+    <div ref={ref} className={`relative w-full ${shown ? "z-50" : ""}`}>
       <button
         type="button"
         disabled={disabled}
-        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open && !leaving}
+        onClick={() => {
+          if (disabled) return;
+          toggle();
+        }}
         className="flex h-36 w-full items-center justify-between gap-8 rounded-6 border border-grey-58 bg-grey-28 px-12 text-13 text-white disabled:opacity-50"
       >
         <span className="flex items-center gap-8">
           <DiffPips cols={current.cols} mines={current.mines} />
           <span>{value}</span>
         </span>
-        <Icons.chevron className={`text-14 text-grey-142 transition-transform ${open ? "rotate-180" : ""}`} />
+        <Icons.chevron className={`text-14 text-grey-142 transition-transform duration-200 ${open && !leaving ? "rotate-180" : ""}`} />
       </button>
-      {open ? (
-        <div
-          className="absolute top-40 z-50 w-full overflow-hidden rounded-8 border border-grey-58 bg-grey-28 p-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
-          onMouseDown={(e) => e.stopPropagation()}
-        >
-          {(Object.keys(DIFF) as (keyof typeof DIFF)[]).map((id) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => {
-                onChange(id);
-                setOpen(false);
-              }}
-              className={`flex h-36 w-full items-center gap-8 rounded-6 px-8 text-13 ${
-                value === id ? "bg-green text-white" : "text-white hover:bg-grey-39"
-              }`}
-            >
-              <DiffPips cols={DIFF[id].cols} mines={DIFF[id].mines} />
-              {id}
-            </button>
-          ))}
-        </div>
-      ) : null}
+      <DropPanel shown={shown} leaving={leaving} className="absolute top-40 w-full overflow-hidden">
+        {(Object.keys(DIFF) as (keyof typeof DIFF)[]).map((id, i) => (
+          <button
+            key={id}
+            type="button"
+            onMouseDown={(e) => e.stopPropagation()}
+            onClick={() => {
+              onChange(id);
+              close();
+            }}
+            style={leaving ? undefined : { animation: "open-y 0.28s cubic-bezier(0.22, 1, 0.36, 1) both", animationDelay: `${i * 28}ms` }}
+            className={`flex h-36 w-full items-center gap-8 rounded-6 px-8 text-13 ${
+              value === id ? "bg-green text-white" : "text-white hover:bg-grey-39"
+            }`}
+          >
+            <DiffPips cols={DIFF[id].cols} mines={DIFF[id].mines} />
+            {id}
+          </button>
+        ))}
+      </DropPanel>
     </div>
   );
 }
@@ -135,7 +139,6 @@ export default function TowersPage() {
   const [cleared, setCleared] = useState<Record<number, number>>({});
   const [bombs, setBombs] = useState<Record<number, number[]>>({});
   const [picking, setPicking] = useState<{ r: number; c: number } | null>(null);
-  const [soundOn, setSoundOn] = useState(true);
   const [turbo, setTurbo] = useState(false);
   const [howTo, setHowTo] = useState(false);
   const cols = DIFF[diff].cols;
@@ -146,6 +149,7 @@ export default function TowersPage() {
     if (!user) return openModal("login");
     if (user.balance < bet || bet <= 0) return openModal("deposit");
     try {
+      playSfx("click");
       const res = await towersBet(bet, diff.toLowerCase());
       applyUser(res.user);
       setStarted(true);
@@ -160,6 +164,7 @@ export default function TowersPage() {
 
   async function pick(r: number, c: number) {
     if (!started || r !== row || dead || picking) return;
+    playSfx("click");
     setPicking({ r, c });
     try {
       const res = await towersReveal(c);
@@ -170,6 +175,7 @@ export default function TowersPage() {
       const lost = rowTiles[c] === "lose";
       setPicking(null);
       if (lost) {
+        playSfx("bomb");
         setDead({ r, c });
         setBombs((b) => {
           const next = { ...b, [r]: mineTiles };
@@ -185,8 +191,10 @@ export default function TowersPage() {
         return;
       }
       setCleared((prev) => ({ ...prev, [r]: c }));
+      playSfx("safe");
       const next = r - 1;
       if (res.game.state === "completed" || next < 0) {
+        playSfx("win");
         setStarted(false);
         setRow(-1);
         return;
@@ -202,6 +210,7 @@ export default function TowersPage() {
     if (!started || climbed === 0) return;
     try {
       const res = await towersCashout();
+      playSfx("win");
       applyUser(res.user);
       setStarted(false);
     } catch (err) {
@@ -309,7 +318,7 @@ export default function TowersPage() {
 
           <div className="relative flex min-h-0 w-full min-w-0 flex-1 items-start justify-center lg:justify-end lg:pr-48 xl:pr-80">
             <div className="relative flex w-full min-w-0 max-w-640 gap-8 lg:max-h-[calc(100dvh-12rem)]">
-              <div className="relative flex w-56 shrink-0 flex-col gap-4">
+              <div className="relative flex w-80 shrink-0 flex-col gap-4">
               {multipliers.map((m, r) => (
                 <div
                   key={r}
@@ -317,8 +326,8 @@ export default function TowersPage() {
                     started && r !== row && cleared[r] === undefined && !dead ? "opacity-40" : "opacity-100"
                   }`}
                 >
-                  <p className={`ui-btn-label text-11 ${started && r === row ? "text-white" : "text-grey-142"}`}>
-                    X{m.toFixed(2)}
+                  <p className={`ui-btn-label whitespace-nowrap text-[8px] leading-none sm:rotate-60 sm:text-vertical lg:text-[9px] xl:text-[10px] 2xl:text-[11px] ${started && r === row ? "text-white" : "text-grey-142"}`}>
+                    x{m.toFixed(2)}
                   </p>
                 </div>
               ))}
@@ -385,16 +394,7 @@ export default function TowersPage() {
 
         <div className="flex items-center justify-between rounded-8 border border-grey-58 bg-grey-39 px-12 py-8">
           <div className="flex items-center gap-6">
-            <button
-              type="button"
-              aria-label="Sound settings"
-              onClick={() => setSoundOn((v) => !v)}
-              className={`flex h-32 w-32 items-center justify-center rounded-6 ${
-                soundOn ? "bg-gradient-to-b from-green to-green-2 text-white" : "text-icons-secondary hover:bg-grey-47 hover:text-white"
-              }`}
-            >
-              <Icons.volume className="text-14" />
-            </button>
+            <SoundSettings />
             <button
               type="button"
               aria-label="How to play"
@@ -404,7 +404,7 @@ export default function TowersPage() {
               <span className="flex size-16 items-center justify-center rounded-full border border-current text-11 font-semibold">i</span>
             </button>
           </div>
-          <img alt="" src="/img/logo.png" className="h-20 w-auto opacity-70" />
+          <img alt="" src="/img/logo.png" className="h-28 w-auto opacity-70" />
           <div className="flex items-center gap-6">
             <button
               type="button"

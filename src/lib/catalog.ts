@@ -28,6 +28,11 @@ export function caseImage(item: Pick<CaseItem, "image" | "imageId"> | undefined 
   return "/img/home/cases.webp";
 }
 
+export function itemImage(id: number | string | null | undefined, fallback?: string) {
+  if (id == null || id === "") return fallback || "/img/home/cases.webp";
+  return `/cdn/items/${id}.webp`;
+}
+
 export type DropColor =
   | "RAINBOW"
   | "GOLD"
@@ -37,6 +42,17 @@ export type DropColor =
   | "GRAY"
   | "YELLOW"
   | "BLUE";
+
+export const DROP_RARITY: Record<DropColor, { hex: string; label: string }> = {
+  RAINBOW: { hex: "#ffd239", label: "Rainbow" },
+  GOLD: { hex: "#ffd239", label: "Gold" },
+  RED: { hex: "#eb4b4b", label: "Red" },
+  PURPLE: { hex: "#8847ff", label: "Purple" },
+  GREEN: { hex: "#5e98d9", label: "Blue" },
+  GRAY: { hex: "#b0c3d9", label: "Common" },
+  YELLOW: { hex: "#ffd239", label: "Gold" },
+  BLUE: { hex: "#4b69ff", label: "Rare" },
+};
 
 export type CaseDrop = {
   name: string;
@@ -84,128 +100,7 @@ export type Battle = {
   createdAt?: number;
 };
 
-export const BATTLES: Battle[] = [
-  {
-    id: "neon-6man",
-    cost: 188312,
-    cases: ["star-case", "fedora-case", "through-the-flames", "50-50"],
-    players: [
-      { name: "imtrynamaxwin", team: 0 },
-      { name: "Bot", bot: true, team: 0 },
-      { name: "Bot", bot: true, team: 1 },
-      { name: "Bot", bot: true, team: 1 },
-      { name: "Bot", bot: true, team: 2 },
-      { name: "Bot", bot: true, team: 2 },
-    ],
-    slots: 6,
-    teams: "2v2v2 Team",
-    status: "ended",
-    unboxed: 73927,
-    jackpot: true,
-    crazy: true,
-  },
-  {
-    id: "telamon-team",
-    cost: 36244,
-    cases: Array(9).fill("creator-case"),
-    players: [{ name: "Joris67", team: 0 }],
-    slots: 4,
-    teams: "2v2 Team",
-    status: "ended",
-    unboxed: 1290119,
-  },
-  {
-    id: "valk-duel",
-    cost: 92440,
-    cases: ["risky-valk", "through-the-flames"],
-    players: [
-      { name: "Joris67", team: 0 },
-      { name: "monarch", team: 1 },
-    ],
-    slots: 2,
-    teams: "1v1",
-    status: "active",
-    unboxed: 0,
-  },
-  {
-    id: "budget-4",
-    cost: 18420,
-    cases: ["budget-case", "the-grind", "creepy-case", "70-random"],
-    players: [
-      { name: "Alpha_mil0", team: 0 },
-      { name: "Bot", bot: true, team: 1 },
-      { name: "voids", team: 2 },
-    ],
-    slots: 4,
-    teams: "FFA",
-    status: "active",
-    unboxed: 0,
-  },
-  {
-    id: "gold-rush",
-    cost: 410900,
-    cases: ["dominus-domination", "golden-case", "bling-case"],
-    players: [
-      { name: "Anonymous", team: 0 },
-      { name: "Bot", bot: true, team: 1 },
-    ],
-    slots: 2,
-    teams: "1v1",
-    status: "active",
-    unboxed: 0,
-    jackpot: true,
-  },
-  {
-    id: "mid-duel",
-    cost: 48220,
-    cases: ["golden-case", "budget-flip"],
-    players: [{ name: "OMEGA51", team: 0 }],
-    slots: 2,
-    teams: "1v1",
-    status: "active",
-    unboxed: 0,
-  },
-  {
-    id: "fedora-ffa",
-    cost: 22140,
-    cases: ["fedora-case", "70-random", "the-grind"],
-    players: [
-      { name: "przfnn", team: 0 },
-      { name: "Vasky", team: 1 },
-    ],
-    slots: 4,
-    teams: "1v1v1v1",
-    status: "active",
-    unboxed: 0,
-  },
-  {
-    id: "inferno-ended",
-    cost: 110400,
-    cases: ["through-the-flames", "risky-valk", "star-case"],
-    players: [
-      { name: "Joris67", team: 0 },
-      { name: "monarch", team: 1 },
-    ],
-    slots: 2,
-    teams: "1v1",
-    status: "ended",
-    unboxed: 88420,
-  },
-  {
-    id: "wild-duel",
-    cost: 4132,
-    cases: ["crazy-hair-case"],
-    players: [
-      { name: "WILD", team: 0 },
-      { name: "Bot", bot: true, team: 1 },
-    ],
-    slots: 2,
-    teams: "1v1",
-    status: "ended",
-    unboxed: 7973,
-    crazy: true,
-  },
-];
+export const BATTLES: Battle[] = [];
 
 export const LEADERBOARD = [
   { place: 1, user: "Joris67", wagered: 6029035, prize: 450000, item: "Ice Valkyrie" },

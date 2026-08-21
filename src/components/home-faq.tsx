@@ -38,24 +38,32 @@ export type FaqItemData = { q: string; a: string };
 
 function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
   return (
-    <div className="h-fit rounded-12 border border-grey-58 bg-grey-39 px-16">
-      <h3 className="flex">
+    <div className="h-fit min-w-0 overflow-hidden rounded-12 border border-grey-58 bg-grey-39 px-16">
+      <h3 className="flex min-w-0">
         <button
           type="button"
           aria-expanded={open}
           onClick={onToggle}
-          className="flex flex-1 cursor-pointer items-center justify-between gap-12 py-16 text-14 font-semibold text-grey-190 transition-all"
+          className="flex min-w-0 flex-1 cursor-pointer items-center justify-between gap-12 py-16 text-left text-grey-190 transition-all"
         >
-          <span className="flex items-center gap-12 text-left">
+          <span className="flex min-w-0 flex-1 items-center gap-12">
             <span className="flex h-28 w-28 shrink-0 items-center justify-center rounded-6 bg-grey-1 text-grey-112">
               <Icons.faq className="text-14" />
             </span>
-            {q}
+            <span className="min-w-0 flex-1 text-[15.3125px] font-semibold leading-[17.5px] break-words">
+              {q}
+            </span>
           </span>
-          <Icons.chevron className={`shrink-0 text-20 text-grey-112 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+          <Icons.chevron
+            className={`shrink-0 text-20 text-grey-112 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          />
         </button>
       </h3>
-      {open ? <div className="overflow-hidden pb-16 text-12 font-thin leading-5 text-grey-142">{a}</div> : null}
+      <div className={`faq-answer ${open ? "is-open" : ""}`}>
+        <div className="faq-answer-inner">
+          <p className="pb-16 text-[13.125px] font-thin leading-[21.875px] break-words text-grey-142">{a}</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -77,16 +85,16 @@ export function GotQuestions({
     <section className={className}>
       <div className="mb-20 flex items-center justify-start gap-10">
         <div className="inline-flex h-40 w-40 shrink-0 items-center justify-center rounded-6 bg-gold-btn/15 text-gold-btn">
-          <Icons.faq className="text-16" />
+          <Icons.faq className="size-16" />
         </div>
         <div className="flex min-w-0 flex-col gap-2">
           <h2 className="font-tactic text-start text-14 font-black uppercase leading-[1.14] text-white">Got Questions?</h2>
           <span className="text-start text-12 leading-[1.17] text-grey-142">{subtitle}</span>
         </div>
       </div>
-      <div className="grid grid-cols-1 items-start gap-x-12 gap-y-12 md:grid-cols-2 md:gap-y-0">
+      <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
         {cols.map((col, i) => (
-          <div key={i} className="flex flex-col gap-12">
+          <div key={i} className="flex min-w-0 flex-col gap-12">
             {col.map((item) => (
               <FaqItem
                 key={item.q}

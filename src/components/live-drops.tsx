@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Bux } from "./bux";
-import { TICKER } from "@/lib/catalog";
+import { TICKER, itemImage } from "@/lib/catalog";
 
 function splitName(name: string) {
   const pipe = name.split(" | ");
@@ -44,10 +44,7 @@ export function LiveDrops() {
                       width={36}
                       height={36}
                       className="relative h-36 w-36 object-contain"
-                      src={`https://cdn.rostake.com/items_centered/${item.id}.webp`}
-                      onError={(e) => {
-                        e.currentTarget.src = `/cdn/items/${item.id}.webp`;
-                      }}
+                      src={itemImage(item.id)}
                     />
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col gap-4">

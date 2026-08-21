@@ -39,16 +39,18 @@ const GAME_ICON: Record<BetRow["game"], keyof typeof Icons> = {
 };
 
 const ROW_COLS =
-  "w-full min-w-0 grid-cols-[minmax(0,1.15fr)_minmax(0,1.1fr)_minmax(0,0.9fr)_minmax(0,0.55fr)_minmax(0,0.95fr)] items-center gap-6 @xs/page:grid-cols-[minmax(0,1.2fr)_minmax(0,1.15fr)_minmax(36px,0.45fr)_minmax(0,0.95fr)_minmax(40px,0.55fr)_minmax(0,0.95fr)] @xs/page:gap-8 @sm/page:gap-12 @md/page:grid-cols-[minmax(0,150px)_minmax(0,140px)_60px_minmax(0,120px)_60px_minmax(0,120px)] @md/page:justify-between @md/page:gap-20";
+  "w-full min-w-0 grid-cols-[minmax(0,1.15fr)_minmax(0,1.1fr)_minmax(0,0.9fr)_minmax(0,0.7fr)_minmax(0,0.95fr)] items-center gap-6 @xs/page:grid-cols-[minmax(0,1.2fr)_minmax(0,1.15fr)_minmax(36px,0.45fr)_minmax(0,0.95fr)_minmax(72px,0.7fr)_minmax(0,0.95fr)] @xs/page:gap-8 @sm/page:gap-12 @md/page:grid-cols-[minmax(0,150px)_minmax(0,140px)_60px_minmax(0,120px)_88px_minmax(0,120px)] @md/page:justify-between @md/page:gap-20";
 
 function MultiBadge({ multi }: { multi: number }) {
   const win = multi >= 1;
-  const whole = Math.floor(multi);
-  const frac = (multi - whole).toFixed(2).slice(2);
   return (
-    <div className={`flex h-24 max-w-full items-center rounded-4 px-4 @sm/page:h-28 @sm/page:px-6 @md/page:h-36 @md/page:px-12 ${win ? "bg-green/20" : "bg-red-dark/20"}`}>
-      <p className="flex items-end whitespace-nowrap text-11 text-grey-190 @sm/page:text-14">
-        x{whole}.<span>{frac}</span>
+    <div
+      className={`inline-flex h-24 w-max min-w-56 shrink-0 items-center justify-center rounded-4 px-8 @sm/page:h-28 @sm/page:min-w-64 @sm/page:px-10 @md/page:h-36 ${
+        win ? "bg-success/15" : "bg-red-dark/20"
+      }`}
+    >
+      <p className={`whitespace-nowrap text-11 leading-none @sm/page:text-14 ${win ? "text-success" : "text-grey-190"}`}>
+        x{multi.toFixed(2)}
       </p>
     </div>
   );
@@ -93,8 +95,8 @@ export function BetsTable() {
   }, [tab]);
 
   return (
-    <div className="@sm/page:gap-24 relative grid w-full min-w-0 grid-cols-1 gap-12">
-      <div className="@sm/page:pt-0 flex w-full pt-24">
+    <div className="@sm/page:mt-24 @sm/page:gap-24 relative mt-16 grid w-full min-w-0 grid-cols-1 gap-12">
+      <div className="flex w-full">
         <div className="relative flex w-full justify-start">
           <div ref={barRef} className="relative flex min-w-[120px] items-center justify-start rounded-6 bg-transparent">
             <div
@@ -146,8 +148,8 @@ export function BetsTable() {
               </linearGradient>
             </defs>
           </svg>
-          <div className="w-full min-w-0 overflow-hidden" style={{ height: 310 }}>
-            <div key={tab} className="flex w-full min-w-0 flex-wrap items-start">
+          <div className="bets-fade w-full min-w-0 overflow-hidden" style={{ height: 400 }}>
+            <div key={tab} className="flex w-full min-w-0 flex-col items-stretch">
               {rows.map((row, i) => {
                 const Icon = Icons[GAME_ICON[row.game]];
                 const win = row.payout > 0;
@@ -186,7 +188,7 @@ export function BetsTable() {
                         <div className="flex min-w-0 items-center">
                           <BetAmount value={row.bet} />
                         </div>
-                        <div className="flex min-w-0 justify-center">
+                        <div className="flex justify-center">
                           <MultiBadge multi={row.multi} />
                         </div>
                         <div className="flex min-w-0 items-center justify-end">

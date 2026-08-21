@@ -197,6 +197,7 @@ export type BattleGame = {
   playerCount: number;
   mode: "standard" | "team" | "group";
   state: string;
+  createdAt?: number | string;
   updatedAt?: number | string;
   boxes: {
     box: {
@@ -220,8 +221,8 @@ export type BattleGame = {
   fair?: { hash?: string; seedServer?: string; seedPublic?: string; blockId?: string | number };
 };
 
-type BattleState = { boxes: BattleBox[]; games: BattleGame[] };
-let battleState: BattleState = { boxes: [], games: [] };
+type BattleState = { boxes: BattleBox[]; games: BattleGame[]; history: BattleGame[] };
+let battleState: BattleState = { boxes: [], games: [], history: [] };
 const battleSubs = new Set<(state: BattleState) => void>();
 
 function setBattleState(next: Partial<BattleState>) {
@@ -250,12 +251,26 @@ function mergeBattleGame(prev: BattleGame | undefined, next: BattleGame): Battle
 }
 
 function upsertBattle(game: BattleGame) {
-  if (game.state === "cancelled") {
-    setBattleState({ games: battleState.games.filter((g) => g._id !== game._id) });
+  if (game.state === "cancelled" || game.state === "canceled") {
+    setBattleState({
+      games: battleState.games.filter((g) => g._id !== game._id),
+      history: battleState.history.filter((g) => g._id !== game._id),
+    });
     return;
   }
-  const prev = battleState.games.find((g) => g._id === game._id);
+  const prev = battleState.games.find((g) => g._id === game._id) || battleState.history.find((g) => g._id === game._id);
   const merged = mergeBattleGame(prev, game);
+  if (merged.state === "completed") {
+    const history = [merged, ...battleState.history.filter((g) => g._id !== merged._id)]
+      .filter((g) => !g.options?.private)
+      .sort((a, b) => (b.amount || 0) - (a.amount || 0))
+      .slice(0, 12);
+    setBattleState({
+      games: battleState.games.filter((g) => g._id !== merged._id),
+      history,
+    });
+    return;
+  }
   setBattleState({ games: [merged, ...battleState.games.filter((g) => g._id !== game._id)] });
 }
 
@@ -413,8 +428,12 @@ export function connectSockets(handlers: {
     });
   });
 
-  battles.on("init", (payload: { boxes?: BattleBox[]; games?: BattleGame[] }) => {
-    setBattleState({ boxes: payload.boxes || [], games: payload.games || [] });
+  battles.on("init", (payload: { boxes?: BattleBox[]; games?: BattleGame[]; history?: BattleGame[] }) => {
+    setBattleState({
+      boxes: payload.boxes || [],
+      games: (payload.games || []).filter((g) => g.state !== "completed" && g.state !== "cancelled" && g.state !== "canceled"),
+      history: payload.history || [],
+    });
   });
   battles.on("game", (payload: { game?: BattleGame }) => {
     if (payload?.game) upsertBattle(payload.game);

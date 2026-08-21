@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import { Bux } from "@/components/bux";
 import { ChoiceBar } from "@/components/bet-field";
 import { Dropdown } from "@/components/dropdown";
@@ -75,8 +75,8 @@ export default function CasesPage() {
           <Link
             key={item.slug}
             href={`/cases/${item.slug}`}
-            className="panel-outline @sm/page:rounded-12 group relative w-full overflow-hidden rounded-8 bg-grey-39 p-16 transition-transform duration-300 hover:-translate-y-4 hover:scale-[1.02] active:-translate-y-4 active:scale-[1.02] animate-show"
-            style={{ animationDelay: `${(i % 20) * 20}ms` }}
+            className="panel-outline @sm/page:rounded-12 group relative w-full overflow-hidden rounded-8 bg-grey-39 p-16 transition-transform duration-300 hover:-translate-y-4 hover:scale-[1.02] active:-translate-y-4 active:scale-[1.02] animate-case-in"
+            style={{ "--case-i": i } as CSSProperties}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-grey-39" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100" />

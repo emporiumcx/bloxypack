@@ -3,11 +3,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { BuxIcon } from "@/components/bux";
 import { BetsTable } from "@/components/bets-table";
+import { DropPanel, useDrop } from "@/components/dropdown";
 import { AutobetFields } from "@/components/game-shell";
 import { FairnessControl } from "@/components/fairness";
 import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
+import { SoundSettings } from "@/components/sound-settings";
 import { useStore } from "@/components/providers";
+import { playSfx } from "@/lib/sfx";
 
 const GRID_SIZES = [4, 5, 6, 7, 8];
 
@@ -31,20 +34,21 @@ function Select<T extends string>({
   prefix?: React.ReactNode;
   accent?: boolean;
 }) {
-  const [open, setOpen] = useState(false);
+  const { open, leaving, shown, close, toggle } = useDrop();
   const ref = useRef<HTMLDivElement>(null);
   const current = options.find((o) => o.id === value)?.label ?? value;
+  const stagger = options.length <= 12;
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
-      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+      if (!ref.current?.contains(e.target as Node)) close();
     };
     document.addEventListener("mousedown", onDoc);
     return () => document.removeEventListener("mousedown", onDoc);
-  }, []);
+  }, [open, leaving]);
 
   return (
-    <div ref={ref} className={`relative w-full ${open ? "z-50" : ""}`}>
+    <div ref={ref} className={`relative w-full ${shown ? "z-50" : ""}`}>
       <div
         className={
           accent
@@ -55,7 +59,11 @@ function Select<T extends string>({
         <button
           type="button"
           disabled={disabled}
-          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open && !leaving}
+          onClick={() => {
+            if (disabled) return;
+            toggle();
+          }}
           className={`flex h-36 w-full items-center justify-between gap-8 rounded-6 px-12 text-13 text-white disabled:opacity-50 ${
             accent ? "border-0 bg-grey-28" : "border border-grey-58 bg-grey-28"
           }`}
@@ -64,28 +72,31 @@ function Select<T extends string>({
             {prefix}
             <span>{current}</span>
           </span>
-          <Icons.chevron className={`text-14 text-grey-142 transition-transform ${open ? "rotate-180" : ""}`} />
+          <Icons.chevron className={`text-14 text-grey-142 transition-transform duration-200 ${open && !leaving ? "rotate-180" : ""}`} />
         </button>
       </div>
-      {open ? (
-        <div className="absolute top-40 z-50 max-h-240 w-full overflow-y-auto rounded-8 border border-grey-58 bg-grey-28 p-6 shadow-[0_16px_40px_rgba(0,0,0,0.45)]">
-          {options.map((o) => (
-            <button
-              key={o.id}
-              type="button"
-              onClick={() => {
-                onChange(o.id);
-                setOpen(false);
-              }}
-              className={`flex h-36 w-full items-center rounded-6 px-8 text-13 ${
-                value === o.id ? "bg-green text-white" : "text-white hover:bg-grey-39"
-              }`}
-            >
-              {o.label}
-            </button>
-          ))}
-        </div>
-      ) : null}
+      <DropPanel shown={shown} leaving={leaving} className="absolute top-40 max-h-240 w-full overflow-y-auto">
+        {options.map((o, i) => (
+          <button
+            key={o.id}
+            type="button"
+            onClick={() => {
+              onChange(o.id);
+              close();
+            }}
+            style={
+              leaving || !stagger
+                ? undefined
+                : { animation: "open-y 0.28s cubic-bezier(0.22, 1, 0.36, 1) both", animationDelay: `${i * 28}ms` }
+            }
+            className={`flex h-36 w-full items-center rounded-6 px-8 text-13 ${
+              value === o.id ? "bg-green text-white" : "text-white hover:bg-grey-39"
+            }`}
+          >
+            {o.label}
+          </button>
+        ))}
+      </DropPanel>
     </div>
   );
 }
@@ -140,7 +151,6 @@ export default function MinesPage() {
   const [revealed, setRevealed] = useState<number[]>([]);
   const [boom, setBoom] = useState<number | null>(null);
   const [mineSet, setMineSet] = useState<Set<number>>(new Set());
-  const [soundOn, setSoundOn] = useState(true);
   const [turbo, setTurbo] = useState(false);
   const [drag, setDrag] = useState(false);
   const [howTo, setHowTo] = useState(false);
@@ -163,6 +173,7 @@ export default function MinesPage() {
     if (user.balance < bet || bet <= 0) return openModal("deposit");
     setBooting(true);
     try {
+      playSfx("click");
       const res = await minesBet(bet, Math.min(mines, maxMines), n);
       if (res.user) applyUser(res.user);
       setMineSet(new Set());
@@ -179,11 +190,13 @@ export default function MinesPage() {
 
   async function click(i: number) {
     if (!started || boom !== null || revealedRef.current.includes(i)) return;
+    playSfx("click");
     try {
       const res = await minesReveal(i);
       if (res.user) applyUser(res.user);
       const last = res.game.revealed[res.game.revealed.length - 1];
       if (last?.value === "mine") {
+        playSfx("bomb");
         setBoom(i);
         const tiles = res.game.revealed.map((r) => r.tile);
         revealedRef.current = tiles;
@@ -197,7 +210,11 @@ export default function MinesPage() {
       const tiles = res.game.revealed.map((r) => r.tile);
       revealedRef.current = tiles;
       setRevealed(tiles);
-      if (res.game.state === "completed") setStarted(false);
+      playSfx("safe");
+      if (res.game.state === "completed") {
+        playSfx("win");
+        setStarted(false);
+      }
     } catch (err) {
       alert(err instanceof Error ? err.message : "Reveal failed.");
     }
@@ -211,6 +228,7 @@ export default function MinesPage() {
     if (!started || !revealed.length) return;
     try {
       const res = await minesCashout();
+      playSfx("win");
       applyUser(res.user);
       setStarted(false);
     } catch (err) {
@@ -437,16 +455,7 @@ export default function MinesPage() {
 
         <div className="flex items-center justify-between rounded-8 border border-grey-58 bg-grey-39 px-12 py-8">
           <div className="flex items-center gap-6">
-            <button
-              type="button"
-              aria-label="Sound settings"
-              onClick={() => setSoundOn((v) => !v)}
-              className={`flex h-32 w-32 items-center justify-center rounded-6 ${
-                soundOn ? "bg-gradient-to-b from-green to-green-2 text-white" : "text-icons-secondary hover:bg-grey-47 hover:text-white"
-              }`}
-            >
-              <Icons.volume className="text-14" />
-            </button>
+            <SoundSettings />
             <button
               type="button"
               aria-label="How to play"
@@ -458,7 +467,7 @@ export default function MinesPage() {
               </span>
             </button>
           </div>
-          <img alt="" src="/img/logo.png" className="h-20 w-auto opacity-70" />
+          <img alt="" src="/img/logo.png" className="h-28 w-auto opacity-70" />
           <div className="flex items-center gap-6">
             <button
               type="button"

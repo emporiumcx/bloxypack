@@ -137,7 +137,7 @@ export default function DicePage() {
         <div className="flex h-full min-h-280 w-full items-center justify-center rounded-12 border border-grey-58 bg-grey-28 p-20 sm:min-h-360 sm:p-32">
           <div className="flex w-full max-w-640 flex-col">
             <span
-              className={`text-center text-64 transition-colors ${rolling ? "animate-dice-tick" : ""} ${
+              className={`ui-btn-label text-center text-64 transition-colors ${rolling ? "animate-dice-tick" : ""} ${
                 rolling ? "text-white" : win === true ? "text-green" : win === false ? "text-red-206" : "text-white"
               }`}
             >

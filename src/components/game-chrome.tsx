@@ -5,6 +5,7 @@ import { BuxIcon } from "./bux";
 import { BetsTable } from "./bets-table";
 import { FairnessControl, type FairField } from "@/components/fairness";
 import { Icons } from "./icons";
+import { SoundSettings } from "./sound-settings";
 
 export function GameLayout({
   panel,
@@ -22,7 +23,6 @@ export function GameLayout({
   howTo?: { title?: string; body: ReactNode };
 }) {
   const [help, setHelp] = useState(false);
-  const [soundOn, setSoundOn] = useState(true);
   const [turbo, setTurbo] = useState(false);
 
   return (
@@ -38,9 +38,7 @@ export function GameLayout({
           fairness={fairness}
           fairFields={fairFields}
           extra={extraToolbar}
-          soundOn={soundOn}
           turbo={turbo}
-          onSound={() => setSoundOn((v) => !v)}
           onTurbo={() => setTurbo((v) => !v)}
           onHowTo={howTo ? () => setHelp(true) : undefined}
         />
@@ -241,38 +239,25 @@ export function SideButton({
   );
 }
 
-function GameToolbar({
+export function GameToolbar({
   fairness,
   fairFields,
   extra,
-  soundOn,
   turbo,
-  onSound,
   onTurbo,
   onHowTo,
 }: {
   fairness?: string;
   fairFields?: FairField[];
   extra?: ReactNode;
-  soundOn: boolean;
   turbo: boolean;
-  onSound: () => void;
   onTurbo: () => void;
   onHowTo?: () => void;
 }) {
   return (
     <div className="flex items-center justify-between rounded-8 border border-grey-58 bg-grey-39 px-12 py-8">
       <div className="flex items-center gap-6">
-        <button
-          type="button"
-          aria-label="Sound settings"
-          onClick={onSound}
-          className={`flex h-32 w-32 items-center justify-center rounded-6 ${
-            soundOn ? "bg-gradient-to-b from-green to-green-2 text-white" : "text-icons-secondary hover:bg-grey-47 hover:text-white"
-          }`}
-        >
-          <Icons.volume className="text-14" />
-        </button>
+        <SoundSettings />
         {onHowTo ? (
           <button
             type="button"
@@ -285,7 +270,7 @@ function GameToolbar({
         ) : null}
         {extra}
       </div>
-      <img alt="" src="/img/logo.png" className="h-20 w-auto opacity-70" />
+      <img alt="" src="/img/logo.png" className="h-28 w-auto opacity-70" />
       <div className="flex items-center gap-6">
         <button
           type="button"

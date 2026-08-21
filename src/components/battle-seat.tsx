@@ -96,22 +96,30 @@ export function BattleModeIcons({
   crazy?: boolean;
   terminal?: boolean;
 }) {
-  if (!jackpot && !crazy && !terminal) return null;
+  if (!jackpot && !crazy && !terminal) {
+    return (
+      <div className="flex items-center justify-center gap-6" title="Normal">
+        <span className="flex size-16 items-center justify-center overflow-hidden text-battle-normal">
+          <Icons.battles className="text-14" />
+        </span>
+      </div>
+    );
+  }
   return (
     <div className="flex items-center justify-center gap-6">
       {jackpot ? (
-        <span className="text-[#FE963B]" title="Jackpot">
-          <Icons.jackpot />
+        <span className="flex size-16 items-center justify-center overflow-hidden text-[#FE963B]" title="Jackpot">
+          <Icons.jackpot className="text-14" />
         </span>
       ) : null}
       {crazy ? (
-        <span className="text-pink-231" title="Crazy">
-          <Icons.wild />
+        <span className="flex size-16 items-center justify-center overflow-hidden text-pink-231" title="Crazy">
+          <Icons.wild className="text-14" />
         </span>
       ) : null}
       {terminal ? (
-        <span className="text-red" title="Terminal">
-          <Icons.terminal />
+        <span className="flex size-16 items-center justify-center overflow-hidden text-red" title="Terminal">
+          <Icons.terminal className="text-14" />
         </span>
       ) : null}
     </div>

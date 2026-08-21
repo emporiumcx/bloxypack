@@ -5,13 +5,13 @@ import { Bux } from "./bux";
 import { Icons } from "./icons";
 import { useStore } from "./providers";
 import { sendRewardOpen, type RewardsInfo } from "@/lib/backend";
-import { dropsForCase, pickDrop, type CaseDrop } from "@/lib/catalog";
+import { dropsForCase, itemImage, pickDrop, type CaseDrop } from "@/lib/catalog";
 import { getRewardCase } from "@/lib/rewards";
 
 const EXIT_MS = 220;
 
 function itemSrc(id: number) {
-  return `https://cdn.rostake.com/items_centered/${id}.webp`;
+  return itemImage(id);
 }
 
 function formatChance(n: number) {

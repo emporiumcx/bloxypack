@@ -8,6 +8,7 @@ import { ModeIcon, MODE_META } from "@/components/battle-modes";
 import { Bux } from "@/components/bux";
 import { Dropdown } from "@/components/dropdown";
 import { GreenButton } from "@/components/green-button";
+import { GotQuestions } from "@/components/home-faq";
 import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
 import { subscribeBattles } from "@/lib/backend";
@@ -137,7 +138,6 @@ export default function CreateBattlePage() {
   const [borrowPct, setBorrowPct] = useState(50);
   const [layoutId, setLayoutId] = useState("1v1");
   const [creating, setCreating] = useState(false);
-  const [faq, setFaq] = useState<string | null>(null);
   const [sort, setSort] = useState("manual");
   const layout = ALL.find((l) => l.id === layoutId) ?? ALL[0];
   const cost = picked.reduce((s, c) => s + c.price, 0);
@@ -403,30 +403,7 @@ export default function CreateBattlePage() {
         </div>
       </div>
 
-      <div className="mt-40 w-full">
-        <div className="mb-16 flex flex-col gap-2">
-          <h2 className="ui-label text-16 text-white">Got Questions?</h2>
-          <p className="text-12 text-grey-142">Find answers to the most common questions about battles</p>
-        </div>
-        <div className="grid gap-8">
-          {FAQS.map((item) => {
-            const open = faq === item.q;
-            return (
-              <div key={item.q} className="rounded-8 bg-grey-39">
-                <button
-                  type="button"
-                  onClick={() => setFaq(open ? null : item.q)}
-                  className="flex w-full items-center justify-between gap-12 px-16 py-16 text-left text-14 text-white"
-                >
-                  {item.q}
-                  <Icons.chevron className={`text-16 text-grey-142 transition-transform ${open ? "rotate-180" : ""}`} />
-                </button>
-                {open ? <p className="px-16 pb-16 text-13 leading-relaxed text-grey-142">{item.a}</p> : null}
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      <GotQuestions items={FAQS} subtitle="Find answers to the most common questions about battles" className="mt-40 w-full" />
 
       {adding ? (
         <AddCaseModal

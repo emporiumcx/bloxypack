@@ -13,17 +13,17 @@ import { useStore } from "@/components/providers";
 import { subscribeBattles, type BattleGame, type BattleItem } from "@/lib/backend";
 import { battleCaseImage, mapBattleGame } from "@/lib/battles-map";
 import { botAvatar, botName } from "@/lib/avatars";
-import { dropsForCase, type CaseDrop, type DropColor } from "@/lib/catalog";
+import { dropsForCase, itemImage, type CaseDrop, type DropColor } from "@/lib/catalog";
 
 const RARITY: Record<DropColor, string> = {
   RAINBOW: "#ff4ecd",
   GOLD: "rgb(255, 200, 50)",
   RED: "rgb(255, 64, 80)",
   PURPLE: "rgb(136, 71, 255)",
-  GREEN: "rgb(46, 204, 113)",
+  GREEN: "#5e98d9",
   GRAY: "rgb(176, 195, 217)",
   YELLOW: "rgb(255, 200, 50)",
-  BLUE: "rgb(94, 152, 217)",
+  BLUE: "#4b69ff",
 };
 
 const STRIP_LEN = 25;
@@ -39,7 +39,7 @@ function easeOutQuart(t: number) {
 }
 
 function itemSrc(id?: number, image?: string) {
-  if (id) return `https://cdn.rostake.com/items_centered/${id}.webp`;
+  if (id) return itemImage(id);
   if (image && /^https?:\/\//i.test(image)) return image;
   if (image) return image.startsWith("/") ? image : `/cdn/items/${image}`;
   return "/img/home/cases.webp";

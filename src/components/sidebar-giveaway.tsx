@@ -34,8 +34,8 @@ const GIVEAWAYS: {
   image: string;
 }[] = [
   { id: "daily", label: "Daily", amount: 242.3, image: "/img/home/daily-case.webp" },
-  { id: "weekly", label: "Weekly", amount: 2871.76, image: "/cdn/cases/41.webp" },
-  { id: "monthly", label: "Monthly", amount: 10392.86, image: "/cdn/cases/34.webp" },
+  { id: "weekly", label: "Weekly", amount: 2871.76, image: "/cdn/cases/prestige.webp" },
+  { id: "monthly", label: "Monthly", amount: 10392.86, image: "/cdn/cases/oil-baron.webp" },
 ];
 
 function pad(n: number) {
@@ -180,7 +180,7 @@ export function SidebarGiveaway() {
                   />
                   <img
                     alt=""
-                    src="/img/lion.png"
+                    src="/img/bloxypack-mark.png"
                     className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-4/5 w-auto max-w-[45%] -translate-x-1/2 -translate-y-1/2 opacity-15 blur-[2px]"
                   />
                   <img

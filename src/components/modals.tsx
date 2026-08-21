@@ -6,57 +6,9 @@ import { GreenButton, green3d } from "./green-button";
 import { Icons } from "./icons";
 import { useStore } from "./providers";
 import { Bux, BuxIcon } from "./bux";
+import { WalletModal } from "./wallet-modal";
 
 const FEATURED_AFFILIATE_CODE = "BLOXYWILD";
-const BUX_USD = 0.002;
-const WITHDRAW_FEE = 0.02;
-
-type CashierCoin = {
-  name: string;
-  ticker: string;
-  price: number;
-  img: string;
-};
-
-const FIAT_METHODS = [
-  { name: "Credit card", sub: "Credit cards", img: "/img/payment/paypal.webp" },
-  { name: "Paypal", sub: "Kinguin", img: "/img/payment/paypal.webp" },
-];
-
-const DEPOSIT_CRYPTO: CashierCoin[] = [
-  { name: "Bitcoin", ticker: "BTC", price: 64311, img: "/img/payment/btc.webp" },
-  { name: "Ethereum", ticker: "ETH", price: 1907.86, img: "/img/payment/eth.webp" },
-  { name: "Litecoin", ticker: "LTC", price: 44.48, img: "/img/payment/ltc.webp" },
-  { name: "USDT", ticker: "USDT", price: 1, img: "/img/payment/tether.webp" },
-  { name: "USDC", ticker: "USDC", price: 1, img: "/img/payment/usdc.webp" },
-  { name: "Solana", ticker: "SOL", price: 75.84, img: "/img/payment/sol.webp" },
-  { name: "Ripple", ticker: "XRP", price: 1, img: "/img/payment/xrp.webp" },
-  { name: "Tron", ticker: "TRX", price: 0.33, img: "/img/payment/tron.webp" },
-  { name: "BNB", ticker: "BNB", price: 60, img: "/img/payment/bnb.webp" },
-  { name: "BTC Cash", ticker: "BCH", price: 210.1, img: "/img/payment/btc.webp" },
-  { name: "DAI", ticker: "DAI", price: 1, img: "/img/payment/dai.webp" },
-  { name: "Toncoin", ticker: "TON", price: 1.39, img: "/img/payment/ton.webp" },
-];
-
-const WITHDRAW_CRYPTO: CashierCoin[] = [
-  { name: "Ethereum", ticker: "ETH", price: 1907.53, img: "/img/payment/eth.webp" },
-  { name: "Litecoin", ticker: "LTC", price: 44.48, img: "/img/payment/ltc.webp" },
-  { name: "Solana", ticker: "SOL", price: 75.81, img: "/img/payment/sol.webp" },
-];
-
-function formatUsd(n: number) {
-  if (Number.isInteger(n)) return `$${n.toLocaleString("en-US")}`;
-  return `$${n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-}
-
-function demoAddress(ticker: string) {
-  if (ticker === "SOL") return "7k2Hq9pL3mR8sW4nY6cT1vB5xJ0dF8aQ3uP9eH2kL6mN";
-  if (ticker === "BTC" || ticker === "BCH") return "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
-  if (ticker === "LTC") return "ltc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
-  if (ticker === "TRX") return "TXYZopqrstuvwxyz1234567890abcdef";
-  if (ticker === "TON") return "UQBvI0aFLnw2QbZcq8YpxlrdQ8mW0z9p7example";
-  return "0x71C7656EC7ab88b098defB751B7401B5f6d8976F";
-}
 
 const MODAL_EXIT_MS = 220;
 
@@ -153,78 +105,6 @@ function ModalFrame({
         </div>
       </div>
     </div>
-  );
-}
-
-function CashierHeader({
-  title,
-  onClose,
-  onBack,
-}: {
-  title: string;
-  onClose: () => void;
-  onBack?: () => void;
-}) {
-  return (
-    <div className="@sm/page:p-24 @sm/page:pb-0 relative z-10 grid w-full items-center gap-10 p-16 pb-0">
-      <div className="grid w-full grid-cols-[1fr_auto] items-center">
-        {onBack ? (
-          <button type="button" onClick={onBack} className="flex min-w-0 items-center gap-8 text-left">
-            <Icons.chevronLeft className="text-20 text-grey-142" />
-            <h1 className="text-white/90">{title}</h1>
-          </button>
-        ) : (
-          <h1 className="text-white/90">{title}</h1>
-        )}
-        <button type="button" aria-label="close" className="group flex h-20 w-20 items-center justify-center" onClick={onClose}>
-          <Icons.close className="text-22 text-grey-142 transition-colors group-hover:text-white group-active:text-white" />
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function MethodLabel({ children }: { children: ReactNode }) {
-  return <p className="mb-10 text-13 text-grey-142">{children}</p>;
-}
-
-function FiatCard({
-  name,
-  sub,
-  img,
-  onClick,
-}: {
-  name: string;
-  sub: string;
-  img: string;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="flex items-center gap-12 rounded-8 bg-grey-28 p-12 text-left transition-colors duration-200 hover:bg-grey-39"
-    >
-      <img src={img} alt="" className="h-40 w-40 rounded-8 object-contain" />
-      <span>
-        <span className="block text-14 text-white">{name}</span>
-        <span className="text-12 text-grey-142">{sub}</span>
-      </span>
-    </button>
-  );
-}
-
-function CryptoCard({ coin, onClick }: { coin: CashierCoin; onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="grid w-full grid-cols-1 gap-8 rounded-8 bg-grey-28 p-12 text-left transition-colors duration-200 hover:bg-grey-39"
-    >
-      <img src={coin.img} alt="" className="h-28 w-28 object-contain" />
-      <span className="block text-13 text-white">{coin.name}</span>
-      <span className="text-12 text-grey-142">{formatUsd(coin.price)}</span>
-    </button>
   );
 }
 
@@ -410,8 +290,6 @@ export function Modals() {
     login,
     register,
     user,
-    addBalance,
-    spend,
     tipRain,
     rain,
     applyUser,
@@ -426,11 +304,6 @@ export function Modals() {
   const [showPassword, setShowPassword] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [cashierPick, setCashierPick] = useState<CashierCoin | "card" | "paypal" | null>(null);
-  const [withdrawAddress, setWithdrawAddress] = useState("");
-  const [withdrawUsd, setWithdrawUsd] = useState("");
-  const [withdrawBux, setWithdrawBux] = useState("");
-  const [copied, setCopied] = useState(false);
   const [shown, setShown] = useState(modal);
 
   useEffect(() => {
@@ -441,17 +314,6 @@ export function Modals() {
     const t = window.setTimeout(() => setShown(null), MODAL_EXIT_MS);
     return () => window.clearTimeout(t);
   }, [modal]);
-
-  useEffect(() => {
-    if (modal === "deposit" || modal === "withdraw") return;
-    if (shown === "deposit" || shown === "withdraw") return;
-    setCashierPick(null);
-    setWithdrawAddress("");
-    setWithdrawUsd("");
-    setWithdrawBux("");
-    setCopied(false);
-    setError("");
-  }, [modal, shown]);
 
   const view = modal ?? shown;
   const leaving = !modal && !!shown;
@@ -622,206 +484,7 @@ export function Modals() {
   }
 
   if (view === "deposit" || view === "withdraw") {
-    const isWithdraw = view === "withdraw";
-    const pickCoin = cashierPick && typeof cashierPick === "object" ? cashierPick : null;
-    const backToMethods = () => {
-      setCashierPick(null);
-      setWithdrawAddress("");
-      setWithdrawUsd("");
-      setWithdrawBux("");
-      setCopied(false);
-      setError("");
-    };
-    const requireUser = (next: () => void) => {
-      if (!user) return openModal("login");
-      next();
-    };
-    const setUsd = (value: string) => {
-      setWithdrawUsd(value);
-      const n = Number(value);
-      setWithdrawBux(Number.isFinite(n) && value.trim() ? String(Math.round((n / BUX_USD) * 100) / 100) : "");
-    };
-    const setBux = (value: string) => {
-      setWithdrawBux(value);
-      const n = Number(value);
-      setWithdrawUsd(Number.isFinite(n) && value.trim() ? String(Math.round(n * BUX_USD * 100) / 100) : "");
-    };
-    const usdValue = Number(withdrawUsd) || 0;
-    const buxValue = Number(withdrawBux) || 0;
-    const receivedCrypto = pickCoin && usdValue > 0 ? (usdValue / pickCoin.price) * (1 - WITHDRAW_FEE) : 0;
-
-    if (pickCoin && isWithdraw) {
-      return (
-        <ModalFrame width={560} onClose={closeModal} leaving={leaving}>
-          <CashierHeader title="Back to methods" onClose={closeModal} onBack={backToMethods} />
-          <div className="@sm/page:p-24 flex w-full flex-grow flex-col p-16">
-            <div className="grid w-full grid-cols-1 gap-16">
-              <div className="flex items-center gap-12">
-                <img src={pickCoin.img} alt="" className="h-36 w-36 object-contain" />
-                <h2 className="text-18 text-white">{pickCoin.name}</h2>
-              </div>
-              <p className="text-13 text-grey-142">
-                You will receive crypto after requesting {pickCoin.ticker} to the address entered below.
-              </p>
-              <div className="grid w-full grid-cols-1 gap-8">
-                <p className="text-13 text-grey-142">{pickCoin.ticker} address</p>
-                <div className="relative flex h-44 w-full items-center rounded-8 border-2 border-transparent bg-grey-28 px-14 transition-colors duration-200 focus-within:border-grey-47">
-                  <input
-                    autoComplete="off"
-                    className="h-full w-full bg-transparent text-14 text-white outline-none placeholder:text-grey-142"
-                    placeholder={`${pickCoin.ticker} address`}
-                    value={withdrawAddress}
-                    onChange={(e) => setWithdrawAddress(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div className="grid w-full grid-cols-1 gap-8">
-                <p className="text-13 text-grey-142">Amount in USD = Amount in BUX</p>
-                <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-8">
-                  <div className="relative flex h-44 items-center rounded-8 border-2 border-transparent bg-grey-28 px-14 focus-within:border-grey-47">
-                    <span className="mr-8 text-13 text-grey-142">$</span>
-                    <input
-                      autoComplete="off"
-                      className="h-full w-full bg-transparent text-14 text-white outline-none"
-                      placeholder="0.00"
-                      type="number"
-                      value={withdrawUsd}
-                      onChange={(e) => setUsd(e.target.value)}
-                    />
-                  </div>
-                  <Icons.swap className="text-16 text-grey-142" />
-                  <div className="relative flex h-44 items-center rounded-8 border-2 border-transparent bg-grey-28 px-10 focus-within:border-grey-47">
-                    <BuxIcon />
-                    <input
-                      autoComplete="off"
-                      className="h-full w-full bg-transparent px-8 text-14 text-white outline-none"
-                      placeholder="0.00"
-                      type="number"
-                      value={withdrawBux}
-                      onChange={(e) => setBux(e.target.value)}
-                    />
-                  </div>
-                </div>
-              </div>
-              <p className="text-13 text-grey-142">
-                You will receive {receivedCrypto > 0 ? receivedCrypto.toFixed(5) : "0"} {pickCoin.ticker} after fees.
-              </p>
-              {error ? <p className="text-13 text-red">{error}</p> : null}
-              <GreenButton
-                onClick={() => {
-                  if (!user) return openModal("login");
-                  if (!withdrawAddress.trim()) return setError("Enter a destination address.");
-                  if (buxValue <= 0) return setError("Enter an amount.");
-                  if (buxValue > user.balance) return setError("Not enough balance.");
-                  if (spend(buxValue)) closeModal();
-                }}
-              >
-                Initiate withdrawal
-              </GreenButton>
-            </div>
-          </div>
-        </ModalFrame>
-      );
-    }
-
-    if (pickCoin && !isWithdraw) {
-      const address = demoAddress(pickCoin.ticker);
-      return (
-        <ModalFrame width={560} onClose={closeModal} leaving={leaving}>
-          <CashierHeader title="Back to methods" onClose={closeModal} onBack={backToMethods} />
-          <div className="@sm/page:p-24 flex w-full flex-grow flex-col p-16">
-            <div className="grid w-full grid-cols-1 gap-16">
-              <div className="flex items-center gap-12">
-                <img src={pickCoin.img} alt="" className="h-36 w-36 object-contain" />
-                <h2 className="text-18 text-white">{pickCoin.name}</h2>
-              </div>
-              <p className="text-13 text-grey-142">
-                Send {pickCoin.ticker} to the address below. Deposits are credited after network confirmation.
-              </p>
-              <div className="grid w-full grid-cols-1 gap-8">
-                <p className="text-13 text-grey-142">{pickCoin.ticker} address</p>
-                <div className="flex h-44 items-center gap-8 rounded-8 bg-grey-28 py-4 pl-14 pr-6">
-                  <input readOnly value={address} className="h-full min-w-0 flex-1 bg-transparent text-13 text-white outline-none" />
-                  <GreenButton
-                    size="sm"
-                    wide={false}
-                    className="w-72"
-                    onClick={() => {
-                      void navigator.clipboard.writeText(address);
-                      setCopied(true);
-                    }}
-                  >
-                    {copied ? "Copied" : "Copy"}
-                  </GreenButton>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ModalFrame>
-      );
-    }
-
-    if (cashierPick === "card" || cashierPick === "paypal") {
-      return (
-        <ModalFrame width={560} onClose={closeModal} leaving={leaving}>
-          <CashierHeader title="Back to methods" onClose={closeModal} onBack={backToMethods} />
-          <div className="@sm/page:p-24 flex w-full flex-grow flex-col gap-16 p-16">
-            <h2 className="text-18 text-white">{cashierPick === "card" ? "Credit card" : "Paypal"}</h2>
-            <p className="text-13 text-grey-142">
-              You will be redirected to our payment partner to complete this deposit.
-            </p>
-            <GreenButton
-              onClick={() => {
-                if (!user) return openModal("login");
-                addBalance(10000);
-                closeModal();
-              }}
-            >
-              Continue
-            </GreenButton>
-          </div>
-        </ModalFrame>
-      );
-    }
-
-    return (
-      <ModalFrame width={560} onClose={closeModal} leaving={leaving}>
-        <CashierHeader title={isWithdraw ? "Withdraw" : "Deposit"} onClose={closeModal} />
-        <div className="flex w-full flex-grow flex-col p-16 sm:p-24">
-          {isWithdraw ? (
-            <>
-              <MethodLabel>Crypto methods</MethodLabel>
-              <div className="grid grid-cols-3 gap-8">
-                {WITHDRAW_CRYPTO.map((coin) => (
-                  <CryptoCard key={coin.ticker} coin={coin} onClick={() => requireUser(() => setCashierPick(coin))} />
-                ))}
-              </div>
-            </>
-          ) : (
-            <>
-              <MethodLabel>Fiat methods</MethodLabel>
-              <div className="mb-18 grid grid-cols-2 gap-8">
-                {FIAT_METHODS.map((m) => (
-                  <FiatCard
-                    key={m.name}
-                    name={m.name}
-                    sub={m.sub}
-                    img={m.img}
-                    onClick={() => requireUser(() => setCashierPick(m.name === "Paypal" ? "paypal" : "card"))}
-                  />
-                ))}
-              </div>
-              <MethodLabel>Crypto methods</MethodLabel>
-              <div className="grid grid-cols-3 gap-8 sm:grid-cols-4">
-                {DEPOSIT_CRYPTO.map((coin) => (
-                  <CryptoCard key={coin.ticker} coin={coin} onClick={() => requireUser(() => setCashierPick(coin))} />
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-      </ModalFrame>
-    );
+    return <WalletModal tab={view} leaving={leaving} onClose={closeModal} />;
   }
 
   if (view === "support") {

@@ -1,6 +1,9 @@
 import casesData from "./cases-data.json";
 import dropsData from "./drops-data.json";
+import packManifest from "./pack-manifest.json";
 import { ALL_REWARD_CASES, getRewardCase } from "./rewards";
+
+const PACK_SLUGS = new Set(packManifest as string[]);
 
 export type CaseItem = {
   slug: string;
@@ -21,8 +24,13 @@ export function getCase(slug: string) {
   return CASES.find((c) => c.slug === slug) ?? getRewardCase(slug) ?? undefined;
 }
 
-export function caseImage(item: Pick<CaseItem, "image" | "imageId"> | undefined | null) {
+export function caseImage(item: Pick<CaseItem, "image" | "imageId" | "slug"> | undefined | null) {
   if (!item) return "/img/home/cases.webp";
+  const slug =
+    ("slug" in item && item.slug) ||
+    item.image?.match(/\/cdn\/cases\/([^/.]+)\./)?.[1] ||
+    "";
+  if (slug && PACK_SLUGS.has(slug)) return `/cdn/packs/${slug}.webp`;
   if (item.image) return item.image;
   if (item.imageId != null) return `/cdn/cases/${item.imageId}.webp`;
   return "/img/home/cases.webp";
@@ -77,6 +85,29 @@ export function dropsForCase(slug: string): CaseDrop[] {
   }));
 }
 
+export function packGlow(hue: number) {
+  return `hsl(${Math.round(hue)} 92% 54%)`;
+}
+
+export type Volatility = {
+  level: 1 | 2 | 3 | 4 | 5;
+  label: "Low" | "Medium" | "High";
+};
+
+export function caseVolatility(slug: string): Volatility {
+  const drops = DROPS[slug] ?? [];
+  if (!drops.length) return { level: 3, label: "Medium" };
+  const tot = drops.reduce((sum, d) => sum + d.chance, 0) || 1;
+  const mean = drops.reduce((sum, d) => sum + d.value * d.chance, 0) / tot;
+  const variance = drops.reduce((sum, d) => sum + (d.value - mean) ** 2 * d.chance, 0) / tot;
+  const cv = mean > 0 ? Math.sqrt(variance) / mean : 0;
+  const level = (cv < 1.3 ? 1 : cv < 1.8 ? 2 : cv < 2.6 ? 3 : cv < 3.8 ? 4 : 5) as Volatility["level"];
+  return {
+    level,
+    label: level <= 2 ? "Low" : level === 3 ? "Medium" : "High",
+  };
+}
+
 export function pickDrop(drops: CaseDrop[]) {
   if (!drops.length) return null;
   const ticket = Math.floor(Math.random() * 100000);
@@ -116,22 +147,21 @@ export const LEADERBOARD = [
 ];
 
 export const TICKER: { name: string; value: number; id: number; glow: string }[] = [
-  { name: "Redcliff Elite Knight Pauldrons", value: 1, id: 483900585, glow: "rgb(176, 195, 217)" },
-  { name: "BotM: September Redcliff Bandana", value: 1, id: 301933531, glow: "rgb(176, 195, 217)" },
-  { name: "Redcliff Elite Knight Pauldrons", value: 1, id: 483900585, glow: "rgb(176, 195, 217)" },
-  { name: "Redcliff Hero Cape", value: 2, id: 501959589, glow: "rgb(176, 195, 217)" },
-  { name: "Redcliff Crossbow", value: 600, id: 178076831, glow: "rgb(228, 174, 57)" },
-  { name: "Sir Rustalot", value: 19, id: 48155742, glow: "rgb(176, 195, 217)" },
-  { name: "BotM: September Redcliff Bandana", value: 1, id: 301933531, glow: "rgb(176, 195, 217)" },
-  { name: "Knights of Redcliff: Bow and Arrow", value: 2747, id: 49929776, glow: "rgb(228, 174, 57)" },
-  { name: "Christmas Fedora", value: 1039, id: 139152348, glow: "rgb(94, 152, 217)" },
-  { name: "Black Iron Commando", value: 3364, id: 928908332, glow: "rgb(228, 174, 57)" },
-  { name: "Roblox Sunglasses", value: 1, id: 18396858069, glow: "rgb(176, 195, 217)" },
-  { name: "Leather Jacket - Black", value: 1, id: 7192549218, glow: "rgb(176, 195, 217)" },
-  { name: "Laptop Hat", value: 1, id: 8666492376, glow: "rgb(176, 195, 217)" },
-  { name: "Goldrow", value: 79, id: 3581868178, glow: "rgb(176, 195, 217)" },
-  { name: "Silver Braid Fedora", value: 224, id: 113328346, glow: "rgb(176, 195, 217)" },
-  { name: "Orange Shades", value: 2, id: 376527500, glow: "rgb(176, 195, 217)" },
+  { name: "Dominus Empyreus", value: 40000000, id: 21070012, glow: "rgb(255, 210, 57)" },
+  { name: "Domino Crown", value: 24000000, id: 1031429, glow: "rgb(255, 210, 57)" },
+  { name: "Dominus Astra", value: 20000000, id: 162067148, glow: "rgb(255, 210, 57)" },
+  { name: "Dominus Frigidus", value: 19000000, id: 48545806, glow: "rgb(255, 210, 57)" },
+  { name: "Dominus Infernus", value: 15000000, id: 31101391, glow: "rgb(235, 75, 75)" },
+  { name: "Duke of the Federation", value: 12000000, id: 128158708, glow: "rgb(255, 210, 57)" },
+  { name: "Red Sparkle Time Fedora", value: 11500000, id: 72082328, glow: "rgb(235, 75, 75)" },
+  { name: "Bling $$ Necklace", value: 10000000, id: 33171947, glow: "rgb(255, 210, 57)" },
+  { name: "Lord of the Federation", value: 10000000, id: 88885069, glow: "rgb(255, 210, 57)" },
+  { name: "Rainbow Shaggy", value: 10000000, id: 64082730, glow: "rgb(136, 71, 255)" },
+  { name: "Midnight Blue Sparkle Time Fedora", value: 9500000, id: 119916949, glow: "rgb(75, 105, 255)" },
+  { name: "The Wanwood Crown", value: 8000000, id: 9910070, glow: "rgb(255, 210, 57)" },
+  { name: "Purple Sparkle Time Fedora", value: 7500000, id: 63043890, glow: "rgb(136, 71, 255)" },
+  { name: "Archduke of the Federation", value: 6800000, id: 293316452, glow: "rgb(255, 210, 57)" },
+  { name: "Eccentric Shop Teacher", value: 6500000, id: 26943368, glow: "rgb(94, 152, 217)" },
 ];
 
 export const LIVE_BETS = [

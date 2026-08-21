@@ -11,7 +11,7 @@ import { getRewardsData, sendRakebackClaim, type RewardsInfo } from "@/lib/backe
 import { caseImage, getCase } from "@/lib/catalog";
 import { BONUS_CASES, DAILY_CASES, bonusProgress, bonusTierForXp } from "@/lib/rewards";
 
-const HEADER_CASES = ["halloween-case", "haunted-case", "golden-case"] as const;
+const HEADER_CASES = ["batman", "diamonds", "eclipse"] as const;
 
 const RAKEBACK = [
   { name: "Daily Rakeback", kind: "daily" as const, img: "/img/rewards/rakeback/daily.png" },

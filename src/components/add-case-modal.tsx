@@ -1,12 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Bux } from "./bux";
 import { ChoiceBar } from "./bet-field";
 import { Dropdown } from "./dropdown";
 import { Icons } from "./icons";
-import { ItemBg } from "./item-bg";
-import { CASES, caseImage, type CaseItem } from "@/lib/catalog";
+import { CASES, caseVolatility, type CaseItem } from "@/lib/catalog";
+import { CaseCard } from "@/components/case-card";
 
 const MODAL_EXIT_MS = 220;
 
@@ -25,7 +24,7 @@ export function AddCaseModal({
   const list = useMemo(() => {
     return CASES.filter((c) => {
       if (q && !c.name.toLowerCase().includes(q.toLowerCase())) return false;
-      if (risk !== "all" && c.risk !== risk) return false;
+      if (risk !== "all" && caseVolatility(c.slug).label.toLowerCase() !== risk) return false;
       return true;
     }).sort((a, b) => (sort === "high" ? b.price - a.price : a.price - b.price));
   }, [q, risk, sort]);
@@ -71,8 +70,9 @@ export function AddCaseModal({
             onChange={setRisk}
             options={[
               { id: "all", label: "All" },
-              { id: "high", label: "High Risk" },
-              { id: "low", label: "Low Risk" },
+              { id: "low", label: "Low" },
+              { id: "medium", label: "Medium" },
+              { id: "high", label: "High" },
             ]}
           />
           <Dropdown
@@ -91,33 +91,17 @@ export function AddCaseModal({
         <div className="scrollbar-y min-h-0 flex-1 overflow-y-auto bg-grey-28 p-12 sm:p-16">
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {list.map((item, i) => (
-              <button
+              <CaseCard
                 key={item.slug}
-                type="button"
-                onClick={() => onAdd(item)}
-                className="panel-outline group relative w-full overflow-hidden rounded-12 bg-grey-39 p-14 text-left transition-transform duration-300 hover:-translate-y-4 hover:bg-grey-47 hover:scale-[1.02] active:scale-[1.02] animate-show"
-                style={{ animationDelay: `${(i % 20) * 16}ms` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-grey-39" />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="relative grid w-full grid-cols-1 gap-10">
-                  <div className="relative flex w-full pt-[82%]">
-                    <ItemBg className="inset-[8%] opacity-40" />
-                    <img
-                      className="absolute inset-0 w-full object-contain transition-transform duration-300 group-hover:rotate-[5deg] group-hover:scale-[1.1]"
-                      alt=""
-                      src={caseImage(item)}
-                    />
-                  </div>
-                  <p className="truncate text-center text-14 text-white">{item.name}</p>
-                  <div className="flex w-full justify-center">
-                    <Bux value={item.price} />
-                  </div>
+                item={item}
+                index={i}
+                onSelect={() => onAdd(item)}
+                footer={
                   <div className="flex h-32 items-center justify-center rounded-6 bg-gradient-to-b from-green to-green-2">
                     <span className="ui-btn-label text-12 text-grey-190">Add case</span>
                   </div>
-                </div>
-              </button>
+                }
+              />
             ))}
           </div>
         </div>

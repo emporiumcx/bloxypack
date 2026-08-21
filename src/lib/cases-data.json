@@ -1,802 +1,2504 @@
 [
   {
-    "slug": "01-pull",
-    "name": "1% Pull",
-    "imageId": 34,
-    "image": "/cdn/cases/34.webp",
-    "price": 7368000,
-    "bar": "#ef4444",
-    "hue": 110,
-    "risk": "high"
-  },
-  {
-    "slug": "flashback-case",
-    "name": "Flashback Case",
-    "imageId": 11,
-    "image": "/cdn/cases/11.webp",
-    "price": 1113000,
-    "bar": "#ef4444",
-    "hue": 53,
-    "risk": "high"
-  },
-  {
-    "slug": "rose-case",
-    "name": "Rose Case",
-    "imageId": 41,
-    "image": "/cdn/cases/41.webp",
-    "price": 722000,
+    "slug": "oil-baron",
+    "name": "Oil Baron",
+    "image": "/cdn/cases/oil-baron.webp",
+    "price": 18303111,
     "bar": "#3b82f6",
-    "hue": 212,
-    "risk": "high"
+    "hue": 88,
+    "risk": "low"
   },
   {
-    "slug": "halloween-case",
-    "name": "Halloween Case",
-    "imageId": 64,
-    "image": "/cdn/cases/64.webp",
-    "price": 540000,
-    "bar": "#eab308",
-    "hue": 107,
-    "risk": "high"
-  },
-  {
-    "slug": "haunted-case",
-    "name": "Haunted Case",
-    "imageId": 7,
-    "image": "/cdn/cases/7.webp",
-    "price": 309500,
-    "bar": "#3b82f6",
-    "hue": 286,
-    "risk": "high"
-  },
-  {
-    "slug": "toxic-case",
-    "name": "Toxic Case",
-    "imageId": 10,
-    "image": "/cdn/cases/10.webp",
-    "price": 291500,
-    "bar": "#eab308",
-    "hue": 252,
-    "risk": "medium"
-  },
-  {
-    "slug": "madness",
-    "name": "Madness",
-    "imageId": 60,
-    "image": "/cdn/cases/60.webp",
-    "price": 270500,
-    "bar": "#7c3aed",
-    "hue": 270,
-    "risk": "high"
-  },
-  {
-    "slug": "commando-case",
-    "name": "Commando Case",
-    "imageId": 43,
-    "image": "/cdn/cases/43.webp",
-    "price": 117000,
-    "bar": "#14b8a6",
-    "hue": 150,
-    "risk": "high"
-  },
-  {
-    "slug": "risky-case",
-    "name": "Risky Case",
-    "imageId": 36,
-    "image": "/cdn/cases/36.webp",
-    "price": 78192,
-    "bar": "#ef4444",
-    "hue": 0,
-    "risk": "high"
-  },
-  {
-    "slug": "valk-case",
-    "name": "Valk Case",
-    "imageId": 27,
-    "image": "/cdn/cases/27.webp",
-    "price": 67804,
-    "bar": "#22d3ee",
-    "hue": 188,
-    "risk": "high"
-  },
-  {
-    "slug": "ice-case",
-    "name": "Ice Case",
-    "imageId": 12,
-    "image": "/cdn/cases/12.webp",
-    "price": 57954,
-    "bar": "#3b82f6",
-    "hue": 226,
-    "risk": "high"
-  },
-  {
-    "slug": "fall-case",
-    "name": "Fall Case",
-    "imageId": 23,
-    "image": "/cdn/cases/23.webp",
-    "price": 48506,
-    "bar": "#22c55e",
-    "hue": 22,
-    "risk": "high"
-  },
-  {
-    "slug": "creator-case",
-    "name": "Creator Case",
-    "imageId": 30,
-    "image": "/cdn/cases/30.webp",
-    "price": 48400,
-    "bar": "#ef4444",
-    "hue": 99,
-    "risk": "high"
-  },
-  {
-    "slug": "star-case",
-    "name": "Star Case",
-    "imageId": 6,
-    "image": "/cdn/cases/6.webp",
-    "price": 43446,
-    "bar": "#eab308",
-    "hue": 303,
-    "risk": "high"
-  },
-  {
-    "slug": "50-50",
-    "name": "50/50",
-    "imageId": 5,
-    "image": "/cdn/cases/5.webp",
-    "price": 42700,
-    "bar": "#22c55e",
-    "hue": 87,
-    "risk": "high"
-  },
-  {
-    "slug": "golden-case",
-    "name": "Golden Case",
-    "imageId": 25,
-    "image": "/cdn/cases/25.webp",
-    "price": 39400,
-    "bar": "#ef4444",
-    "hue": 150,
-    "risk": "high"
-  },
-  {
-    "slug": "derek-case",
-    "name": "Derek Case",
-    "imageId": 66,
-    "image": "/cdn/cases/66.webp",
-    "price": 37812,
-    "bar": "#fb7185",
-    "hue": 18,
-    "risk": "high"
-  },
-  {
-    "slug": "bucket-flip",
-    "name": "Bucket Flip",
-    "imageId": 24,
-    "image": "/cdn/cases/24.webp",
-    "price": 37400,
-    "bar": "#3b82f6",
-    "hue": 133,
-    "risk": "high"
-  },
-  {
-    "slug": "music-case",
-    "name": "Music Case",
-    "imageId": 3,
-    "image": "/cdn/cases/3.webp",
-    "price": 36916,
-    "bar": "#3b82f6",
-    "hue": 104,
-    "risk": "high"
-  },
-  {
-    "slug": "egg-hunter",
-    "name": "Egg Hunter",
-    "imageId": 73,
-    "image": "/cdn/cases/73.webp",
-    "price": 35900,
-    "bar": "#3b82f6",
-    "hue": 187,
-    "risk": "high"
-  },
-  {
-    "slug": "fedora-case",
-    "name": "Fedora Case",
-    "imageId": 2,
-    "image": "/cdn/cases/2.webp",
-    "price": 35300,
-    "bar": "#eab308",
-    "hue": 320,
-    "risk": "high"
-  },
-  {
-    "slug": "antler-case",
-    "name": "Antler Case",
-    "imageId": 31,
-    "image": "/cdn/cases/31.webp",
-    "price": 34545,
-    "bar": "#3b82f6",
-    "hue": 65,
-    "risk": "high"
-  },
-  {
-    "slug": "70-random",
-    "name": "70% Random",
-    "imageId": 76,
-    "image": "/cdn/cases/76.webp",
-    "price": 33200,
-    "bar": "#eab308",
-    "hue": 153,
-    "risk": "high"
-  },
-  {
-    "slug": "green-case",
-    "name": "Green Case",
-    "imageId": 44,
-    "image": "/cdn/cases/44.webp",
-    "price": 24856,
-    "bar": "#eab308",
-    "hue": 164,
-    "risk": "high"
-  },
-  {
-    "slug": "dominus-domination",
-    "name": "Dominus Domination",
-    "imageId": 22,
-    "image": "/cdn/cases/22.webp",
-    "price": 24269,
-    "bar": "#ef4444",
-    "hue": 76,
-    "risk": "high"
-  },
-  {
-    "slug": "dark-horns",
-    "name": "Dark Horns",
-    "imageId": 15,
-    "image": "/cdn/cases/15.webp",
-    "price": 23137,
-    "bar": "#ef4444",
-    "hue": 124,
-    "risk": "high"
-  },
-  {
-    "slug": "sinister-case",
-    "name": "Sinister Case",
-    "imageId": 67,
-    "image": "/cdn/cases/67.webp",
-    "price": 21500,
-    "bar": "#ef4444",
-    "hue": 215,
-    "risk": "high"
-  },
-  {
-    "slug": "bling-case",
-    "name": "Bling Case",
-    "imageId": 65,
-    "image": "/cdn/cases/65.webp",
-    "price": 20293,
-    "bar": "#ef4444",
-    "hue": 221,
-    "risk": "high"
-  },
-  {
-    "slug": "demonic-case",
-    "name": "Demonic Case",
-    "imageId": 9,
-    "image": "/cdn/cases/9.webp",
-    "price": 20031,
-    "bar": "#3b82f6",
-    "hue": 36,
-    "risk": "high"
-  },
-  {
-    "slug": "risky-valk",
-    "name": "Risky Valk",
-    "imageId": 19,
-    "image": "/cdn/cases/19.webp",
-    "price": 19621,
+    "slug": "optimus",
+    "name": "Optimus",
+    "image": "/cdn/cases/optimus.webp",
+    "price": 14101778,
     "bar": "#ef4444",
     "hue": 184,
     "risk": "high"
   },
   {
-    "slug": "vampire-case",
-    "name": "Vampire Case",
-    "imageId": 68,
-    "image": "/cdn/cases/68.webp",
-    "price": 16542,
-    "bar": "#eab308",
-    "hue": 96,
-    "risk": "high"
-  },
-  {
-    "slug": "high-stakes-case",
-    "name": "High Stakes Case",
-    "imageId": 20,
-    "image": "/cdn/cases/20.webp",
-    "price": 16518,
-    "bar": "#3b82f6",
-    "hue": 25,
-    "risk": "high"
-  },
-  {
-    "slug": "like-clock-work",
-    "name": "Like Clockwork",
-    "imageId": 29,
-    "image": "/cdn/cases/29.webp",
-    "price": 15549,
-    "bar": "#d97706",
-    "hue": 32,
-    "risk": "high"
-  },
-  {
-    "slug": "candy-case",
-    "name": "Candy Case",
-    "imageId": 58,
-    "image": "/cdn/cases/58.webp",
-    "price": 14350,
-    "bar": "#eab308",
-    "hue": 255,
-    "risk": "high"
-  },
-  {
-    "slug": "the-deep-end",
-    "name": "The Deep End",
-    "imageId": 17,
-    "image": "/cdn/cases/17.webp",
-    "price": 14100,
-    "bar": "#eab308",
-    "hue": 138,
-    "risk": "high"
-  },
-  {
-    "slug": "pink-case",
-    "name": "Pink Case",
-    "imageId": 55,
-    "image": "/cdn/cases/55.webp",
-    "price": 13953,
-    "bar": "#22c55e",
-    "hue": 289,
-    "risk": "high"
-  },
-  {
-    "slug": "executed-case",
-    "name": "Executed Case",
-    "imageId": 70,
-    "image": "/cdn/cases/70.webp",
-    "price": 13703,
-    "bar": "#3b82f6",
-    "hue": 297,
-    "risk": "high"
-  },
-  {
-    "slug": "captain-doge-case",
-    "name": "Captain Doge Case",
-    "imageId": 35,
-    "image": "/cdn/cases/35.webp",
-    "price": 13250,
-    "bar": "#eab308",
-    "hue": 260,
-    "risk": "high"
-  },
-  {
-    "slug": "winter-case",
-    "name": "Winter Case",
-    "imageId": 53,
-    "image": "/cdn/cases/53.webp",
-    "price": 9600,
-    "bar": "#eab308",
-    "hue": 277,
-    "risk": "high"
-  },
-  {
-    "slug": "happy-case",
-    "name": "Happy Case",
-    "imageId": 40,
-    "image": "/cdn/cases/40.webp",
-    "price": 7600,
+    "slug": "bank-vault",
+    "name": "Bank Vault",
+    "image": "/cdn/cases/bank-vault.webp",
+    "price": 7588889,
     "bar": "#ef4444",
-    "hue": 198,
+    "hue": 43,
     "risk": "high"
   },
   {
-    "slug": "horn-case",
-    "name": "Horn Case",
-    "imageId": 32,
-    "image": "/cdn/cases/32.webp",
-    "price": 6050,
-    "bar": "#f43f5e",
-    "hue": 12,
-    "risk": "high"
-  },
-  {
-    "slug": "face-case",
-    "name": "Face Case",
-    "imageId": 16,
-    "image": "/cdn/cases/16.webp",
-    "price": 6037,
-    "bar": "#eab308",
-    "hue": 218,
-    "risk": "high"
-  },
-  {
-    "slug": "gold-shades",
-    "name": "Gold Shades",
-    "imageId": 38,
-    "image": "/cdn/cases/38.webp",
-    "price": 5376,
-    "bar": "#22c55e",
-    "hue": 127,
-    "risk": "high"
-  },
-  {
-    "slug": "rozone-case",
-    "name": "Rozone Case",
-    "imageId": 52,
-    "image": "/cdn/cases/52.webp",
-    "price": 4638,
-    "bar": "#22c55e",
-    "hue": 142,
-    "risk": "high"
-  },
-  {
-    "slug": "blackout-boogaloo",
-    "name": "Blackout Boogaloo",
-    "imageId": 49,
-    "image": "/cdn/cases/49.webp",
-    "price": 4131,
-    "bar": "#eab308",
-    "hue": 323,
-    "risk": "high"
-  },
-  {
-    "slug": "crazy-hair-case",
-    "name": "Crazy Hair Case",
-    "imageId": 1,
-    "image": "/cdn/cases/1.webp",
-    "price": 4109,
-    "bar": "#3b82f6",
-    "hue": 192,
-    "risk": "high"
-  },
-  {
-    "slug": "headphone-case",
-    "name": "Headphone Case",
-    "imageId": 21,
-    "image": "/cdn/cases/21.webp",
-    "price": 3676,
+    "slug": "prestige",
+    "name": "Prestige",
+    "image": "/cdn/cases/prestige.webp",
+    "price": 7033333,
     "bar": "#ef4444",
-    "hue": 294,
+    "hue": 15,
     "risk": "high"
   },
   {
-    "slug": "whiteout-case",
-    "name": "Whiteout Case",
-    "imageId": 13,
-    "image": "/cdn/cases/13.webp",
-    "price": 3650,
-    "bar": "#eab308",
-    "hue": 235,
-    "risk": "high"
-  },
-  {
-    "slug": "top-hat-case",
-    "name": "Top Hat Case",
-    "imageId": 63,
-    "image": "/cdn/cases/63.webp",
-    "price": 3497,
-    "bar": "#eab308",
-    "hue": 238,
-    "risk": "high"
-  },
-  {
-    "slug": "evil-case",
-    "name": "Evil Case",
-    "imageId": 71,
-    "image": "/cdn/cases/71.webp",
-    "price": 3349,
-    "bar": "#22c55e",
-    "hue": 249,
-    "risk": "high"
-  },
-  {
-    "slug": "purple-power",
-    "name": "Purple Power",
-    "imageId": 42,
-    "image": "/cdn/cases/42.webp",
-    "price": 3287,
-    "bar": "#a855f7",
-    "hue": 278,
-    "risk": "high"
-  },
-  {
-    "slug": "the-kungfu-case",
-    "name": "The Kungfu Case",
-    "imageId": 46,
-    "image": "/cdn/cases/46.webp",
-    "price": 3075,
-    "bar": "#22c55e",
-    "hue": 340,
-    "risk": "high"
-  },
-  {
-    "slug": "touch-the-sky",
-    "name": "Touch The Sky",
-    "imageId": 14,
-    "image": "/cdn/cases/14.webp",
-    "price": 3025,
-    "bar": "#eab308",
-    "hue": 311,
-    "risk": "high"
-  },
-  {
-    "slug": "steampunk-case",
-    "name": "Steampunk Case",
-    "imageId": 33,
-    "image": "/cdn/cases/33.webp",
-    "price": 2984,
-    "bar": "#ef4444",
-    "hue": 178,
-    "risk": "high"
-  },
-  {
-    "slug": "wild-case",
-    "name": "Wild Case",
-    "imageId": 51,
-    "image": "/cdn/cases/51.webp",
-    "price": 2979,
-    "bar": "#22c55e",
-    "hue": 90,
-    "risk": "high"
-  },
-  {
-    "slug": "zeus-case",
-    "name": "Zeus Case",
-    "imageId": 56,
-    "image": "/cdn/cases/56.webp",
-    "price": 2725,
-    "bar": "#eab308",
-    "hue": 195,
-    "risk": "high"
-  },
-  {
-    "slug": "wacky-case",
-    "name": "Wacky Case",
-    "imageId": 18,
-    "image": "/cdn/cases/18.webp",
-    "price": 2425,
-    "bar": "#eab308",
-    "hue": 243,
-    "risk": "high"
-  },
-  {
-    "slug": "tie-case",
-    "name": "Tie Case",
-    "imageId": 78,
-    "image": "/cdn/cases/78.webp",
-    "price": 2125,
-    "bar": "#eab308",
-    "hue": 136,
-    "risk": "high"
-  },
-  {
-    "slug": "forever-blue-case",
-    "name": "Forever Blue Case",
-    "imageId": 8,
-    "image": "/cdn/cases/8.webp",
-    "price": 2074,
+    "slug": "ascension",
+    "name": "Ascension",
+    "image": "/cdn/cases/ascension.webp",
+    "price": 6688889,
     "bar": "#3b82f6",
-    "hue": 19,
+    "hue": 244,
+    "risk": "low"
+  },
+  {
+    "slug": "evil-fantasy",
+    "name": "Evil Fantasy",
+    "image": "/cdn/cases/evil-fantasy.webp",
+    "price": 6573611,
+    "bar": "#3b82f6",
+    "hue": 125,
+    "risk": "low"
+  },
+  {
+    "slug": "everest",
+    "name": "Everest",
+    "image": "/cdn/cases/everest.webp",
+    "price": 4881778,
+    "bar": "#3b82f6",
+    "hue": 313,
+    "risk": "low"
+  },
+  {
+    "slug": "billionaire",
+    "name": "Billionaire",
+    "image": "/cdn/cases/billionaire.webp",
+    "price": 4220750,
+    "bar": "#3b82f6",
+    "hue": 310,
+    "risk": "low"
+  },
+  {
+    "slug": "eclipse",
+    "name": "Eclipse",
+    "image": "/cdn/cases/eclipse.webp",
+    "price": 3852222,
+    "bar": "#3b82f6",
+    "hue": 151,
+    "risk": "low"
+  },
+  {
+    "slug": "wealth",
+    "name": "Wealth",
+    "image": "/cdn/cases/wealth.webp",
+    "price": 1999467,
+    "bar": "#3b82f6",
+    "hue": 276,
+    "risk": "low"
+  },
+  {
+    "slug": "life-changing",
+    "name": "Life Changing",
+    "image": "/cdn/cases/life-changing.webp",
+    "price": 1603124,
+    "bar": "#3b82f6",
+    "hue": 307,
+    "risk": "low"
+  },
+  {
+    "slug": "imagination",
+    "name": "Imagination",
+    "image": "/cdn/cases/imagination.webp",
+    "price": 1281111,
+    "bar": "#ef4444",
+    "hue": 217,
     "risk": "high"
   },
   {
-    "slug": "mrblox-case",
-    "name": "MrBlox Case",
-    "imageId": 57,
-    "image": "/cdn/cases/57.webp",
-    "price": 2056,
-    "bar": "#0ea5e9",
-    "hue": 205,
+    "slug": "green-machine",
+    "name": "Green Machine",
+    "image": "/cdn/cases/green-machine.webp",
+    "price": 1260608,
+    "bar": "#ef4444",
+    "hue": 62,
     "risk": "high"
   },
   {
-    "slug": "creepy-case",
-    "name": "Creepy Case",
-    "imageId": 28,
-    "image": "/cdn/cases/28.webp",
-    "price": 1653,
-    "bar": "#eab308",
+    "slug": "shiny-collection",
+    "name": "Shiny Collection",
+    "image": "/cdn/cases/shiny-collection.webp",
+    "price": 1258947,
+    "bar": "#ef4444",
+    "hue": 282,
+    "risk": "high"
+  },
+  {
+    "slug": "ancient-relics",
+    "name": "Ancient Relics",
+    "image": "/cdn/cases/ancient-relics.webp",
+    "price": 1235276,
+    "bar": "#3b82f6",
+    "hue": 28,
+    "risk": "low"
+  },
+  {
+    "slug": "dominus-collector",
+    "name": "Dominus Collector",
+    "image": "/cdn/cases/dominus-collector.webp",
+    "price": 1190295,
+    "bar": "#3b82f6",
+    "hue": 248,
+    "risk": "low"
+  },
+  {
+    "slug": "diamonds",
+    "name": "Diamonds",
+    "image": "/cdn/cases/diamonds.webp",
+    "price": 1187616,
+    "bar": "#3b82f6",
+    "hue": 118,
+    "risk": "low"
+  },
+  {
+    "slug": "batman",
+    "name": "Batman",
+    "image": "/cdn/cases/batman.webp",
+    "price": 1090135,
+    "bar": "#ef4444",
+    "hue": 333,
+    "risk": "high"
+  },
+  {
+    "slug": "rich-desires",
+    "name": "Rich Desires",
+    "image": "/cdn/cases/rich-desires.webp",
+    "price": 1077341,
+    "bar": "#3b82f6",
+    "hue": 69,
+    "risk": "low"
+  },
+  {
+    "slug": "lord-federation",
+    "name": "Lord Federation",
+    "image": "/cdn/cases/lord-federation.webp",
+    "price": 1060333,
+    "bar": "#ef4444",
+    "hue": 98,
+    "risk": "high"
+  },
+  {
+    "slug": "millionaire",
+    "name": "Millionaire",
+    "image": "/cdn/cases/millionaire.webp",
+    "price": 1011662,
+    "bar": "#3b82f6",
+    "hue": 208,
+    "risk": "low"
+  },
+  {
+    "slug": "2-percent-astra",
+    "name": "2% Astra",
+    "image": "/cdn/cases/2-percent-astra.webp",
+    "price": 975278,
+    "bar": "#ef4444",
+    "hue": 84,
+    "risk": "high"
+  },
+  {
+    "slug": "valkyrie-vision",
+    "name": "Valkyrie Vision",
+    "image": "/cdn/cases/valkyrie-vision.webp",
+    "price": 851389,
+    "bar": "#3b82f6",
+    "hue": 120,
+    "risk": "low"
+  },
+  {
+    "slug": "fortune",
+    "name": "Fortune",
+    "image": "/cdn/cases/fortune.webp",
+    "price": 840059,
+    "bar": "#ef4444",
+    "hue": 145,
+    "risk": "high"
+  },
+  {
+    "slug": "miami-life",
+    "name": "Miami Life",
+    "image": "/cdn/cases/miami-life.webp",
+    "price": 791833,
+    "bar": "#ef4444",
     "hue": 348,
     "risk": "high"
   },
   {
-    "slug": "through-the-flames",
-    "name": "Through The Flames",
-    "imageId": 4,
-    "image": "/cdn/cases/4.webp",
-    "price": 1627,
-    "bar": "#eab308",
-    "hue": 45,
+    "slug": "tango-dancer",
+    "name": "Tango Dancer",
+    "image": "/cdn/cases/tango-dancer.webp",
+    "price": 720558,
+    "bar": "#3b82f6",
+    "hue": 139,
+    "risk": "low"
+  },
+  {
+    "slug": "high-demand",
+    "name": "High Demand",
+    "image": "/cdn/cases/high-demand.webp",
+    "price": 720000,
+    "bar": "#3b82f6",
+    "hue": 295,
+    "risk": "low"
+  },
+  {
+    "slug": "bloodbath",
+    "name": "Bloodbath",
+    "image": "/cdn/cases/bloodbath.webp",
+    "price": 713756,
+    "bar": "#3b82f6",
+    "hue": 231,
+    "risk": "low"
+  },
+  {
+    "slug": "lucky-drop",
+    "name": "Lucky Drop",
+    "image": "/cdn/cases/lucky-drop.webp",
+    "price": 632346,
+    "bar": "#3b82f6",
+    "hue": 320,
+    "risk": "low"
+  },
+  {
+    "slug": "vineyard-vibes",
+    "name": "Vineyard Vibes",
+    "image": "/cdn/cases/vineyard-vibes.webp",
+    "price": 614323,
+    "bar": "#3b82f6",
+    "hue": 115,
+    "risk": "low"
+  },
+  {
+    "slug": "crimson-wrath",
+    "name": "Crimson Wrath",
+    "image": "/cdn/cases/crimson-wrath.webp",
+    "price": 532207,
+    "bar": "#ef4444",
+    "hue": 247,
     "risk": "high"
   },
   {
-    "slug": "craft-it-case",
-    "name": "Craft It Case",
-    "imageId": 77,
-    "image": "/cdn/cases/77.webp",
-    "price": 1625,
-    "bar": "#f59e0b",
+    "slug": "roulette",
+    "name": "Roulette",
+    "image": "/cdn/cases/roulette.webp",
+    "price": 500002,
+    "bar": "#ef4444",
+    "hue": 199,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-sapphire",
+    "name": "10% Sapphire",
+    "image": "/cdn/cases/10-percent-sapphire.webp",
+    "price": 493961,
+    "bar": "#ef4444",
+    "hue": 264,
+    "risk": "high"
+  },
+  {
+    "slug": "cursed-dream",
+    "name": "Cursed Dream",
+    "image": "/cdn/cases/cursed-dream.webp",
+    "price": 489444,
+    "bar": "#3b82f6",
+    "hue": 152,
+    "risk": "low"
+  },
+  {
+    "slug": "20-percent-baller",
+    "name": "20% Baller",
+    "image": "/cdn/cases/20-percent-baller.webp",
+    "price": 486293,
+    "bar": "#ef4444",
+    "hue": 73,
+    "risk": "high"
+  },
+  {
+    "slug": "shaggy",
+    "name": "Shaggy",
+    "image": "/cdn/cases/shaggy.webp",
+    "price": 484827,
+    "bar": "#ef4444",
+    "hue": 221,
+    "risk": "high"
+  },
+  {
+    "slug": "expensive-flip",
+    "name": "Expensive Flip",
+    "image": "/cdn/cases/expensive-flip.webp",
+    "price": 459293,
+    "bar": "#3b82f6",
+    "hue": 172,
+    "risk": "low"
+  },
+  {
+    "slug": "ro-roller",
+    "name": "Ro-Roller",
+    "image": "/cdn/cases/ro-roller.webp",
+    "price": 417952,
+    "bar": "#3b82f6",
+    "hue": 177,
+    "risk": "low"
+  },
+  {
+    "slug": "10-percent-federation",
+    "name": "10% Federation",
+    "image": "/cdn/cases/10-percent-federation.webp",
+    "price": 337778,
+    "bar": "#ef4444",
+    "hue": 31,
+    "risk": "high"
+  },
+  {
+    "slug": "golden-galore",
+    "name": "Golden Galore",
+    "image": "/cdn/cases/golden-galore.webp",
+    "price": 321154,
+    "bar": "#ef4444",
+    "hue": 57,
+    "risk": "high"
+  },
+  {
+    "slug": "artifical-intelligence",
+    "name": "Artificial Intelligence",
+    "image": "/cdn/cases/artifical-intelligence.webp",
+    "price": 284500,
+    "bar": "#3b82f6",
+    "hue": 129,
+    "risk": "low"
+  },
+  {
+    "slug": "tix-bonanza",
+    "name": "Tix Bonanza",
+    "image": "/cdn/cases/tix-bonanza.webp",
+    "price": 258883,
+    "bar": "#ef4444",
+    "hue": 100,
+    "risk": "high"
+  },
+  {
+    "slug": "dominus-flip",
+    "name": "Dominus Flip",
+    "image": "/cdn/cases/dominus-flip.webp",
+    "price": 250573,
+    "bar": "#ef4444",
+    "hue": 87,
+    "risk": "high"
+  },
+  {
+    "slug": "deluxe-horns",
+    "name": "Deluxe Horns",
+    "image": "/cdn/cases/deluxe-horns.webp",
+    "price": 226330,
+    "bar": "#ef4444",
+    "hue": 79,
+    "risk": "high"
+  },
+  {
+    "slug": "kings-crowns",
+    "name": "Kings Crowns",
+    "image": "/cdn/cases/kings-crowns.webp",
+    "price": 220334,
+    "bar": "#ef4444",
+    "hue": 63,
+    "risk": "high"
+  },
+  {
+    "slug": "irregular",
+    "name": "Irregular",
+    "image": "/cdn/cases/irregular.webp",
+    "price": 189455,
+    "bar": "#ef4444",
+    "hue": 80,
+    "risk": "high"
+  },
+  {
+    "slug": "jazzy",
+    "name": "Jazzy",
+    "image": "/cdn/cases/jazzy.webp",
+    "price": 184863,
+    "bar": "#ef4444",
+    "hue": 87,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-gold",
+    "name": "10% Gold",
+    "image": "/cdn/cases/10-percent-gold.webp",
+    "price": 176699,
+    "bar": "#ef4444",
+    "hue": 360,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-dominus",
+    "name": "10% Dominus",
+    "image": "/cdn/cases/10-percent-dominus.webp",
+    "price": 175661,
+    "bar": "#ef4444",
+    "hue": 90,
+    "risk": "high"
+  },
+  {
+    "slug": "money-printer",
+    "name": "Money Printer",
+    "image": "/cdn/cases/money-printer.webp",
+    "price": 175622,
+    "bar": "#ef4444",
+    "hue": 348,
+    "risk": "high"
+  },
+  {
+    "slug": "black-or-white",
+    "name": "Black or White",
+    "image": "/cdn/cases/black-or-white.webp",
+    "price": 168550,
+    "bar": "#ef4444",
+    "hue": 240,
+    "risk": "high"
+  },
+  {
+    "slug": "north-pole-riches",
+    "name": "North Pole Riches",
+    "image": "/cdn/cases/north-pole-riches.webp",
+    "price": 165354,
+    "bar": "#ef4444",
+    "hue": 124,
+    "risk": "high"
+  },
+  {
+    "slug": "barbenheimer",
+    "name": "Barbenheimer",
+    "image": "/cdn/cases/barbenheimer.webp",
+    "price": 153566,
+    "bar": "#ef4444",
+    "hue": 304,
+    "risk": "high"
+  },
+  {
+    "slug": "tomb-raider",
+    "name": "Tomb Raider",
+    "image": "/cdn/cases/tomb-raider.webp",
+    "price": 152911,
+    "bar": "#ef4444",
+    "hue": 149,
+    "risk": "high"
+  },
+  {
+    "slug": "red-dawn",
+    "name": "Red Dawn",
+    "image": "/cdn/cases/red-dawn.webp",
+    "price": 152069,
+    "bar": "#ef4444",
+    "hue": 327,
+    "risk": "high"
+  },
+  {
+    "slug": "traders-delight",
+    "name": "Trader's Delight",
+    "image": "/cdn/cases/traders-delight.webp",
+    "price": 146798,
+    "bar": "#ef4444",
+    "hue": 145,
+    "risk": "high"
+  },
+  {
+    "slug": "ice-cold",
+    "name": "Ice Cold",
+    "image": "/cdn/cases/ice-cold.webp",
+    "price": 136916,
+    "bar": "#ef4444",
+    "hue": 21,
+    "risk": "high"
+  },
+  {
+    "slug": "hi-lo-roller",
+    "name": "Hi-Lo Roller",
+    "image": "/cdn/cases/hi-lo-roller.webp",
+    "price": 133658,
+    "bar": "#3b82f6",
+    "hue": 218,
+    "risk": "low"
+  },
+  {
+    "slug": "skateboard-days",
+    "name": "): Days",
+    "image": "/cdn/cases/skateboard-days.webp",
+    "price": 128334,
+    "bar": "#ef4444",
+    "hue": 73,
+    "risk": "high"
+  },
+  {
+    "slug": "white-gold",
+    "name": "White Gold",
+    "image": "/cdn/cases/white-gold.webp",
+    "price": 125535,
+    "bar": "#ef4444",
+    "hue": 74,
+    "risk": "high"
+  },
+  {
+    "slug": "opportunist",
+    "name": "Opportunist",
+    "image": "/cdn/cases/opportunist.webp",
+    "price": 123121,
+    "bar": "#ef4444",
+    "hue": 153,
+    "risk": "high"
+  },
+  {
+    "slug": "void-star-ice",
+    "name": "Void Star Ice",
+    "image": "/cdn/cases/void-star-ice.webp",
+    "price": 121178,
+    "bar": "#ef4444",
+    "hue": 48,
+    "risk": "high"
+  },
+  {
+    "slug": "valk-flip",
+    "name": "Valk Flip",
+    "image": "/cdn/cases/valk-flip.webp",
+    "price": 120599,
+    "bar": "#3b82f6",
+    "hue": 252,
+    "risk": "low"
+  },
+  {
+    "slug": "fedora-fiasco",
+    "name": "Fedora Fiasco",
+    "image": "/cdn/cases/fedora-fiasco.webp",
+    "price": 119645,
+    "bar": "#ef4444",
+    "hue": 317,
+    "risk": "high"
+  },
+  {
+    "slug": "vampire",
+    "name": "Vampire",
+    "image": "/cdn/cases/vampire.webp",
+    "price": 107971,
+    "bar": "#ef4444",
+    "hue": 39,
+    "risk": "high"
+  },
+  {
+    "slug": "eyes-of-aura",
+    "name": "Eyes of Aura",
+    "image": "/cdn/cases/eyes-of-aura.webp",
+    "price": 88179,
+    "bar": "#ef4444",
+    "hue": 49,
+    "risk": "high"
+  },
+  {
+    "slug": "indigo",
+    "name": "Indigo",
+    "image": "/cdn/cases/indigo.webp",
+    "price": 83865,
+    "bar": "#ef4444",
+    "hue": 194,
+    "risk": "high"
+  },
+  {
+    "slug": "sword-heights",
+    "name": "Sword Heights",
+    "image": "/cdn/cases/sword-heights.webp",
+    "price": 83708,
+    "bar": "#ef4444",
     "hue": 32,
     "risk": "high"
   },
   {
-    "slug": "the-fancy-case",
-    "name": "The Fancy Case",
-    "imageId": 59,
-    "image": "/cdn/cases/59.webp",
-    "price": 1564,
+    "slug": "temple-of-wealth",
+    "name": "Temple of Wealth",
+    "image": "/cdn/cases/temple-of-wealth.webp",
+    "price": 82454,
+    "bar": "#ef4444",
+    "hue": 93,
+    "risk": "high"
+  },
+  {
+    "slug": "steampunk-booster",
+    "name": "Steampunk Booster",
+    "image": "/cdn/cases/steampunk-booster.webp",
+    "price": 81886,
+    "bar": "#ef4444",
+    "hue": 309,
+    "risk": "high"
+  },
+  {
+    "slug": "black-pearl",
+    "name": "Black Pearl",
+    "image": "/cdn/cases/black-pearl.webp",
+    "price": 77223,
+    "bar": "#ef4444",
+    "hue": 93,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-bling",
+    "name": "10% Bling",
+    "image": "/cdn/cases/10-percent-bling.webp",
+    "price": 72611,
+    "bar": "#ef4444",
+    "hue": 258,
+    "risk": "high"
+  },
+  {
+    "slug": "eros",
+    "name": "Eros",
+    "image": "/cdn/cases/eros.webp",
+    "price": 72538,
+    "bar": "#ef4444",
+    "hue": 80,
+    "risk": "high"
+  },
+  {
+    "slug": "gold-dream",
+    "name": "Gold Dream",
+    "image": "/cdn/cases/gold-dream.webp",
+    "price": 72357,
+    "bar": "#ef4444",
+    "hue": 62,
+    "risk": "high"
+  },
+  {
+    "slug": "balloon-juicer",
+    "name": "Balloon Juicer",
+    "image": "/cdn/cases/balloon-juicer.webp",
+    "price": 71395,
+    "bar": "#ef4444",
+    "hue": 217,
+    "risk": "high"
+  },
+  {
+    "slug": "online-dater",
+    "name": "Online Dater",
+    "image": "/cdn/cases/online-dater.webp",
+    "price": 70899,
+    "bar": "#ef4444",
+    "hue": 326,
+    "risk": "high"
+  },
+  {
+    "slug": "space-blue",
+    "name": "Space Blue",
+    "image": "/cdn/cases/space-blue.webp",
+    "price": 70735,
+    "bar": "#ef4444",
+    "hue": 22,
+    "risk": "high"
+  },
+  {
+    "slug": "30-percent-domnio",
+    "name": "30% Domino",
+    "image": "/cdn/cases/30-percent-domnio.webp",
+    "price": 70464,
+    "bar": "#ef4444",
+    "hue": 69,
+    "risk": "high"
+  },
+  {
+    "slug": "dark-ice",
+    "name": "Dark Ice",
+    "image": "/cdn/cases/dark-ice.webp",
+    "price": 69226,
+    "bar": "#ef4444",
+    "hue": 283,
+    "risk": "high"
+  },
+  {
+    "slug": "facelift",
+    "name": "Facelift",
+    "image": "/cdn/cases/facelift.webp",
+    "price": 69134,
+    "bar": "#ef4444",
+    "hue": 5,
+    "risk": "high"
+  },
+  {
+    "slug": "highlight-boom",
+    "name": "Highlight Boom",
+    "image": "/cdn/cases/highlight-boom.webp",
+    "price": 65445,
+    "bar": "#ef4444",
+    "hue": 74,
+    "risk": "high"
+  },
+  {
+    "slug": "immortality",
+    "name": "Immortality",
+    "image": "/cdn/cases/immortality.webp",
+    "price": 63313,
+    "bar": "#ef4444",
+    "hue": 100,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-yum",
+    "name": "10% Yum",
+    "image": "/cdn/cases/10-percent-yum.webp",
+    "price": 60289,
+    "bar": "#ef4444",
+    "hue": 275,
+    "risk": "high"
+  },
+  {
+    "slug": "bucket-box",
+    "name": "Bucket Box",
+    "image": "/cdn/cases/bucket-box.webp",
+    "price": 57372,
+    "bar": "#ef4444",
+    "hue": 22,
+    "risk": "high"
+  },
+  {
+    "slug": "lord-of-war",
+    "name": "Lord of War",
+    "image": "/cdn/cases/lord-of-war.webp",
+    "price": 57276,
+    "bar": "#ef4444",
+    "hue": 166,
+    "risk": "high"
+  },
+  {
+    "slug": "beast-case",
+    "name": "Beast Case",
+    "image": "/cdn/cases/beast-case.webp",
+    "price": 55442,
+    "bar": "#3b82f6",
+    "hue": 206,
+    "risk": "low"
+  },
+  {
+    "slug": "star-juicer",
+    "name": "Star Juicer",
+    "image": "/cdn/cases/star-juicer.webp",
+    "price": 54093,
+    "bar": "#ef4444",
+    "hue": 0,
+    "risk": "high"
+  },
+  {
+    "slug": "hanz-lair",
+    "name": "Hanz Lair",
+    "image": "/cdn/cases/hanz-lair.webp",
+    "price": 53980,
+    "bar": "#ef4444",
+    "hue": 45,
+    "risk": "high"
+  },
+  {
+    "slug": "linkmons-case",
+    "name": "Linkmon's Case",
+    "image": "/cdn/cases/linkmons-case.webp",
+    "price": 51731,
+    "bar": "#ef4444",
+    "hue": 237,
+    "risk": "high"
+  },
+  {
+    "slug": "fedora-hunt",
+    "name": "Fedora Hunt",
+    "image": "/cdn/cases/fedora-hunt.webp",
+    "price": 50603,
+    "bar": "#ef4444",
+    "hue": 264,
+    "risk": "high"
+  },
+  {
+    "slug": "duck-duck-goose",
+    "name": "Duck Duck Goose",
+    "image": "/cdn/cases/duck-duck-goose.webp",
+    "price": 49122,
+    "bar": "#ef4444",
+    "hue": 128,
+    "risk": "high"
+  },
+  {
+    "slug": "favorite-tunes",
+    "name": "Favorite Tunes",
+    "image": "/cdn/cases/favorite-tunes.webp",
+    "price": 49025,
+    "bar": "#ef4444",
+    "hue": 290,
+    "risk": "high"
+  },
+  {
+    "slug": "periastron-flip",
+    "name": "Periastron Flip",
+    "image": "/cdn/cases/periastron-flip.webp",
+    "price": 48159,
+    "bar": "#ef4444",
+    "hue": 340,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-hell",
+    "name": "10% Hell",
+    "image": "/cdn/cases/10-percent-hell.webp",
+    "price": 47111,
+    "bar": "#ef4444",
+    "hue": 327,
+    "risk": "high"
+  },
+  {
+    "slug": "buckberry",
+    "name": "Buckberry",
+    "image": "/cdn/cases/buckberry.webp",
+    "price": 45890,
+    "bar": "#3b82f6",
+    "hue": 328,
+    "risk": "low"
+  },
+  {
+    "slug": "demonic-dream",
+    "name": "Demonic Dream",
+    "image": "/cdn/cases/demonic-dream.webp",
+    "price": 45267,
+    "bar": "#ef4444",
+    "hue": 176,
+    "risk": "high"
+  },
+  {
+    "slug": "icebox",
+    "name": "Icebox",
+    "image": "/cdn/cases/icebox.webp",
+    "price": 44719,
+    "bar": "#ef4444",
+    "hue": 273,
+    "risk": "high"
+  },
+  {
+    "slug": "rgb-roulette",
+    "name": "RGB Roulette",
+    "image": "/cdn/cases/rgb-roulette.webp",
+    "price": 42319,
+    "bar": "#ef4444",
+    "hue": 81,
+    "risk": "high"
+  },
+  {
+    "slug": "electronics",
+    "name": "Electronics",
+    "image": "/cdn/cases/electronics.webp",
+    "price": 41111,
+    "bar": "#ef4444",
+    "hue": 220,
+    "risk": "high"
+  },
+  {
+    "slug": "sparkler",
+    "name": "Sparkler",
+    "image": "/cdn/cases/sparkler.webp",
+    "price": 40298,
+    "bar": "#3b82f6",
+    "hue": 189,
+    "risk": "low"
+  },
+  {
+    "slug": "crown-case",
+    "name": "Crown Case",
+    "image": "/cdn/cases/crown-case.webp",
+    "price": 40044,
+    "bar": "#ef4444",
+    "hue": 98,
+    "risk": "high"
+  },
+  {
+    "slug": "federation-case",
+    "name": "Federation Case",
+    "image": "/cdn/cases/federation-case.webp",
+    "price": 37598,
+    "bar": "#ef4444",
+    "hue": 186,
+    "risk": "high"
+  },
+  {
+    "slug": "imperialist",
+    "name": "Imperialist",
+    "image": "/cdn/cases/imperialist.webp",
+    "price": 35727,
+    "bar": "#ef4444",
+    "hue": 244,
+    "risk": "high"
+  },
+  {
+    "slug": "dark-lord",
+    "name": "Dark Lord",
+    "image": "/cdn/cases/dark-lord.webp",
+    "price": 34511,
+    "bar": "#ef4444",
+    "hue": 255,
+    "risk": "high"
+  },
+  {
+    "slug": "purple-plasma",
+    "name": "Purple Plasma",
+    "image": "/cdn/cases/purple-plasma.webp",
+    "price": 34405,
+    "bar": "#ef4444",
+    "hue": 306,
+    "risk": "high"
+  },
+  {
+    "slug": "arctic-wonderland",
+    "name": "Arctic Wonderland",
+    "image": "/cdn/cases/arctic-wonderland.webp",
+    "price": 34317,
+    "bar": "#ef4444",
+    "hue": 320,
+    "risk": "high"
+  },
+  {
+    "slug": "take-flight",
+    "name": "Take Flight",
+    "image": "/cdn/cases/take-flight.webp",
+    "price": 34120,
+    "bar": "#ef4444",
+    "hue": 266,
+    "risk": "high"
+  },
+  {
+    "slug": "treasure-case",
+    "name": "Treasure Case",
+    "image": "/cdn/cases/treasure-case.webp",
+    "price": 32531,
+    "bar": "#ef4444",
+    "hue": 158,
+    "risk": "high"
+  },
+  {
+    "slug": "ultimate-headphones",
+    "name": "Ultimate Headphones",
+    "image": "/cdn/cases/ultimate-headphones.webp",
+    "price": 31645,
+    "bar": "#ef4444",
+    "hue": 42,
+    "risk": "high"
+  },
+  {
+    "slug": "face-of-mystery",
+    "name": "Face of Mystery",
+    "image": "/cdn/cases/face-of-mystery.webp",
+    "price": 31636,
+    "bar": "#ef4444",
+    "hue": 234,
+    "risk": "high"
+  },
+  {
+    "slug": "valkyries-ascension",
+    "name": "Valkyrie's Ascension",
+    "image": "/cdn/cases/valkyries-ascension.webp",
+    "price": 31544,
+    "bar": "#ef4444",
+    "hue": 334,
+    "risk": "high"
+  },
+  {
+    "slug": "crystal-case",
+    "name": "Crystal Case",
+    "image": "/cdn/cases/crystal-case.webp",
+    "price": 30773,
+    "bar": "#3b82f6",
+    "hue": 357,
+    "risk": "low"
+  },
+  {
+    "slug": "3-percent-horns",
+    "name": "3% Horns",
+    "image": "/cdn/cases/3-percent-horns.webp",
+    "price": 30607,
+    "bar": "#ef4444",
+    "hue": 29,
+    "risk": "high"
+  },
+  {
+    "slug": "grape-galore",
+    "name": "Grape Galore",
+    "image": "/cdn/cases/grape-galore.webp",
+    "price": 30480,
+    "bar": "#ef4444",
+    "hue": 276,
+    "risk": "high"
+  },
+  {
+    "slug": "be-optimistic",
+    "name": "Be Optimistic",
+    "image": "/cdn/cases/be-optimistic.webp",
+    "price": 30309,
+    "bar": "#ef4444",
+    "hue": 254,
+    "risk": "high"
+  },
+  {
+    "slug": "mafia-moves",
+    "name": "Mafia Moves",
+    "image": "/cdn/cases/mafia-moves.webp",
+    "price": 30247,
+    "bar": "#ef4444",
+    "hue": 46,
+    "risk": "high"
+  },
+  {
+    "slug": "dream-box",
+    "name": "Dream Box",
+    "image": "/cdn/cases/dream-box.webp",
+    "price": 30159,
+    "bar": "#ef4444",
+    "hue": 279,
+    "risk": "high"
+  },
+  {
+    "slug": "5-percent-tentacles",
+    "name": "5% Tentacles",
+    "image": "/cdn/cases/5-percent-tentacles.webp",
+    "price": 30063,
+    "bar": "#ef4444",
+    "hue": 125,
+    "risk": "high"
+  },
+  {
+    "slug": "blue-addiction",
+    "name": "Blue Addiction",
+    "image": "/cdn/cases/blue-addiction.webp",
+    "price": 29964,
+    "bar": "#ef4444",
+    "hue": 333,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-sshf",
+    "name": "10% SSHF",
+    "image": "/cdn/cases/10-percent-sshf.webp",
+    "price": 29953,
+    "bar": "#ef4444",
+    "hue": 145,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-capwn",
+    "name": "10% Capwn",
+    "image": "/cdn/cases/10-percent-capwn.webp",
+    "price": 28421,
+    "bar": "#ef4444",
+    "hue": 258,
+    "risk": "high"
+  },
+  {
+    "slug": "pets-party",
+    "name": "Pets Party",
+    "image": "/cdn/cases/pets-party.webp",
+    "price": 27998,
+    "bar": "#ef4444",
+    "hue": 251,
+    "risk": "high"
+  },
+  {
+    "slug": "tsunami",
+    "name": "Tsunami",
+    "image": "/cdn/cases/tsunami.webp",
+    "price": 27831,
+    "bar": "#ef4444",
+    "hue": 312,
+    "risk": "high"
+  },
+  {
+    "slug": "clockwork-or-not",
+    "name": "Clockwork or Not",
+    "image": "/cdn/cases/clockwork-or-not.webp",
+    "price": 27231,
+    "bar": "#ef4444",
+    "hue": 60,
+    "risk": "high"
+  },
+  {
+    "slug": "red-reign",
+    "name": "Red Reign",
+    "image": "/cdn/cases/red-reign.webp",
+    "price": 27081,
+    "bar": "#ef4444",
+    "hue": 338,
+    "risk": "high"
+  },
+  {
+    "slug": "plushies",
+    "name": "Plushies",
+    "image": "/cdn/cases/plushies.webp",
+    "price": 26484,
+    "bar": "#3b82f6",
+    "hue": 168,
+    "risk": "low"
+  },
+  {
+    "slug": "crazy-boom",
+    "name": "Crazy Boom",
+    "image": "/cdn/cases/crazy-boom.webp",
+    "price": 25952,
+    "bar": "#ef4444",
+    "hue": 144,
+    "risk": "high"
+  },
+  {
+    "slug": "barbie-girl",
+    "name": "Barbie Girl",
+    "image": "/cdn/cases/barbie-girl.webp",
+    "price": 25944,
+    "bar": "#ef4444",
+    "hue": 2,
+    "risk": "high"
+  },
+  {
+    "slug": "green-bonanza",
+    "name": "Green Bonanza",
+    "image": "/cdn/cases/green-bonanza.webp",
+    "price": 25397,
+    "bar": "#3b82f6",
+    "hue": 319,
+    "risk": "low"
+  },
+  {
+    "slug": "sphinxs-riddles",
+    "name": "Sphinx's Riddles",
+    "image": "/cdn/cases/sphinxs-riddles.webp",
+    "price": 25236,
+    "bar": "#ef4444",
+    "hue": 115,
+    "risk": "high"
+  },
+  {
+    "slug": "jingle-jackpot",
+    "name": "Jingle Jackpot",
+    "image": "/cdn/cases/jingle-jackpot.webp",
+    "price": 25000,
+    "bar": "#3b82f6",
+    "hue": 122,
+    "risk": "low"
+  },
+  {
+    "slug": "summer-splash",
+    "name": "Summer Splash",
+    "image": "/cdn/cases/summer-splash.webp",
+    "price": 25000,
+    "bar": "#ef4444",
+    "hue": 313,
+    "risk": "high"
+  },
+  {
+    "slug": "electric-juicer",
+    "name": "Electric Juicer",
+    "image": "/cdn/cases/electric-juicer.webp",
+    "price": 24584,
+    "bar": "#ef4444",
+    "hue": 144,
+    "risk": "high"
+  },
+  {
+    "slug": "santas-sleigh",
+    "name": "Santa's Sleigh",
+    "image": "/cdn/cases/santas-sleigh.webp",
+    "price": 24377,
+    "bar": "#ef4444",
+    "hue": 227,
+    "risk": "high"
+  },
+  {
+    "slug": "dragon-warrior",
+    "name": "Dragon Warrior",
+    "image": "/cdn/cases/dragon-warrior.webp",
+    "price": 24150,
+    "bar": "#ef4444",
+    "hue": 259,
+    "risk": "high"
+  },
+  {
+    "slug": "ice-storm",
+    "name": "Ice Storm",
+    "image": "/cdn/cases/ice-storm.webp",
+    "price": 22276,
+    "bar": "#ef4444",
+    "hue": 31,
+    "risk": "high"
+  },
+  {
+    "slug": "hoodlum",
+    "name": "Hoodlum",
+    "image": "/cdn/cases/hoodlum.webp",
+    "price": 22214,
+    "bar": "#ef4444",
+    "hue": 220,
+    "risk": "high"
+  },
+  {
+    "slug": "gingerbread-jackpot",
+    "name": "Gingerbread Jackpot",
+    "image": "/cdn/cases/gingerbread-jackpot.webp",
+    "price": 21948,
+    "bar": "#ef4444",
+    "hue": 228,
+    "risk": "high"
+  },
+  {
+    "slug": "15-percent-bang",
+    "name": "15% Bang",
+    "image": "/cdn/cases/15-percent-bang.webp",
+    "price": 21586,
+    "bar": "#ef4444",
+    "hue": 138,
+    "risk": "high"
+  },
+  {
+    "slug": "black-iron-case",
+    "name": "Black Iron Case",
+    "image": "/cdn/cases/black-iron-case.webp",
+    "price": 21464,
+    "bar": "#ef4444",
+    "hue": 39,
+    "risk": "high"
+  },
+  {
+    "slug": "diamond-fit",
+    "name": "Diamond Fit",
+    "image": "/cdn/cases/diamond-fit.webp",
+    "price": 21322,
+    "bar": "#ef4444",
+    "hue": 184,
+    "risk": "high"
+  },
+  {
+    "slug": "antler-mania",
+    "name": "Antler Mania",
+    "image": "/cdn/cases/antler-mania.webp",
+    "price": 21127,
+    "bar": "#ef4444",
+    "hue": 302,
+    "risk": "high"
+  },
+  {
+    "slug": "ice-dream",
+    "name": "Ice Dream",
+    "image": "/cdn/cases/ice-dream.webp",
+    "price": 20793,
+    "bar": "#ef4444",
+    "hue": 33,
+    "risk": "high"
+  },
+  {
+    "slug": "sunken-secrets",
+    "name": "Sunken Secrets",
+    "image": "/cdn/cases/sunken-secrets.webp",
+    "price": 20781,
+    "bar": "#ef4444",
+    "hue": 108,
+    "risk": "high"
+  },
+  {
+    "slug": "ghastly-ghouls",
+    "name": "Ghastly Ghouls",
+    "image": "/cdn/cases/ghastly-ghouls.webp",
+    "price": 20678,
+    "bar": "#ef4444",
+    "hue": 19,
+    "risk": "high"
+  },
+  {
+    "slug": "greenfest",
+    "name": "Greenfest",
+    "image": "/cdn/cases/greenfest.webp",
+    "price": 19123,
+    "bar": "#ef4444",
+    "hue": 228,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-silver",
+    "name": "10% Silver",
+    "image": "/cdn/cases/10-percent-silver.webp",
+    "price": 19068,
+    "bar": "#ef4444",
+    "hue": 162,
+    "risk": "high"
+  },
+  {
+    "slug": "emperious",
+    "name": "Emperious",
+    "image": "/cdn/cases/emperious.webp",
+    "price": 18408,
+    "bar": "#ef4444",
+    "hue": 98,
+    "risk": "high"
+  },
+  {
+    "slug": "30-percent-galaxy",
+    "name": "30% Galaxy",
+    "image": "/cdn/cases/30-percent-galaxy.webp",
+    "price": 17896,
+    "bar": "#ef4444",
+    "hue": 241,
+    "risk": "high"
+  },
+  {
+    "slug": "noob-juicer",
+    "name": "Noob Juicer",
+    "image": "/cdn/cases/noob-juicer.webp",
+    "price": 17611,
+    "bar": "#ef4444",
+    "hue": 256,
+    "risk": "high"
+  },
+  {
+    "slug": "volcanic-blaze",
+    "name": "Volcanic Blaze",
+    "image": "/cdn/cases/volcanic-blaze.webp",
+    "price": 17393,
+    "bar": "#ef4444",
+    "hue": 296,
+    "risk": "high"
+  },
+  {
+    "slug": "red-lagoon",
+    "name": "Red Lagoon",
+    "image": "/cdn/cases/red-lagoon.webp",
+    "price": 16940,
+    "bar": "#ef4444",
+    "hue": 208,
+    "risk": "high"
+  },
+  {
+    "slug": "levs-15-percent",
+    "name": "Lev's 15%",
+    "image": "/cdn/cases/levs-15-percent.webp",
+    "price": 16901,
+    "bar": "#ef4444",
+    "hue": 132,
+    "risk": "high"
+  },
+  {
+    "slug": "dominus-descents",
+    "name": "Dominus Descents",
+    "image": "/cdn/cases/dominus-descents.webp",
+    "price": 16414,
+    "bar": "#ef4444",
+    "hue": 330,
+    "risk": "high"
+  },
+  {
+    "slug": "bombastic-boom",
+    "name": "Bombastic Boom",
+    "image": "/cdn/cases/bombastic-boom.webp",
+    "price": 15658,
+    "bar": "#ef4444",
+    "hue": 271,
+    "risk": "high"
+  },
+  {
+    "slug": "colorful-extensions",
+    "name": "Colorful Extensions",
+    "image": "/cdn/cases/colorful-extensions.webp",
+    "price": 15548,
+    "bar": "#ef4444",
+    "hue": 242,
+    "risk": "high"
+  },
+  {
+    "slug": "new-years-flip",
+    "name": "New Years Flip",
+    "image": "/cdn/cases/new-years-flip.webp",
+    "price": 14955,
+    "bar": "#ef4444",
+    "hue": 18,
+    "risk": "high"
+  },
+  {
+    "slug": "hooded",
+    "name": "Hooded",
+    "image": "/cdn/cases/hooded.webp",
+    "price": 14811,
+    "bar": "#ef4444",
+    "hue": 221,
+    "risk": "high"
+  },
+  {
+    "slug": "baller",
+    "name": "Baller",
+    "image": "/cdn/cases/baller.webp",
+    "price": 14707,
+    "bar": "#ef4444",
+    "hue": 46,
+    "risk": "high"
+  },
+  {
+    "slug": "hellfire",
+    "name": "Hellfire",
+    "image": "/cdn/cases/hellfire.webp",
+    "price": 14551,
+    "bar": "#ef4444",
+    "hue": 321,
+    "risk": "high"
+  },
+  {
+    "slug": "award-show",
+    "name": "Award Show",
+    "image": "/cdn/cases/award-show.webp",
+    "price": 14485,
+    "bar": "#ef4444",
+    "hue": 309,
+    "risk": "high"
+  },
+  {
+    "slug": "crowns-of-the-night",
+    "name": "Crowns of the Night",
+    "image": "/cdn/cases/crowns-of-the-night.webp",
+    "price": 14002,
+    "bar": "#ef4444",
+    "hue": 249,
+    "risk": "high"
+  },
+  {
+    "slug": "sunglass-express",
+    "name": "Sunglass Express",
+    "image": "/cdn/cases/sunglass-express.webp",
+    "price": 13910,
+    "bar": "#ef4444",
+    "hue": 326,
+    "risk": "high"
+  },
+  {
+    "slug": "blizzard-bundle",
+    "name": "Blizzard Bundle",
+    "image": "/cdn/cases/blizzard-bundle.webp",
+    "price": 13644,
+    "bar": "#ef4444",
+    "hue": 316,
+    "risk": "high"
+  },
+  {
+    "slug": "police-juicer",
+    "name": "Police Juicer",
+    "image": "/cdn/cases/police-juicer.webp",
+    "price": 13560,
+    "bar": "#ef4444",
+    "hue": 87,
+    "risk": "high"
+  },
+  {
+    "slug": "wild-wanwood",
+    "name": "Wild Wanwood",
+    "image": "/cdn/cases/wild-wanwood.webp",
+    "price": 13559,
+    "bar": "#ef4444",
+    "hue": 91,
+    "risk": "high"
+  },
+  {
+    "slug": "vamp-punk",
+    "name": "Vamp Punk",
+    "image": "/cdn/cases/vamp-punk.webp",
+    "price": 13066,
+    "bar": "#ef4444",
+    "hue": 163,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-snowman",
+    "name": "10% Snowman",
+    "image": "/cdn/cases/10-percent-snowman.webp",
+    "price": 12849,
+    "bar": "#ef4444",
+    "hue": 313,
+    "risk": "high"
+  },
+  {
+    "slug": "commando-case",
+    "name": "Commando Case",
+    "image": "/cdn/cases/commando-case.webp",
+    "price": 12779,
     "bar": "#ef4444",
     "hue": 331,
     "risk": "high"
   },
   {
-    "slug": "diy-case",
-    "name": "DIY Case",
-    "imageId": 79,
-    "image": "/cdn/cases/79.webp",
-    "price": 1550,
-    "bar": "#d97706",
-    "hue": 28,
+    "slug": "pumpkin-patrol",
+    "name": "Pumpkin Patrol",
+    "image": "/cdn/cases/pumpkin-patrol.webp",
+    "price": 12665,
+    "bar": "#ef4444",
+    "hue": 103,
     "risk": "high"
   },
   {
-    "slug": "circlet-case",
-    "name": "Circlet Case",
-    "imageId": 45,
-    "image": "/cdn/cases/45.webp",
-    "price": 1515,
-    "bar": "#fbbf24",
+    "slug": "halloween-bash",
+    "name": "Halloween Bash",
+    "image": "/cdn/cases/halloween-bash.webp",
+    "price": 12584,
+    "bar": "#ef4444",
+    "hue": 290,
+    "risk": "high"
+  },
+  {
+    "slug": "e-girl-heaven",
+    "name": "E-Girl Heaven",
+    "image": "/cdn/cases/e-girl-heaven.webp",
+    "price": 12497,
+    "bar": "#ef4444",
+    "hue": 136,
+    "risk": "high"
+  },
+  {
+    "slug": "zeus-case",
+    "name": "Zeus Case",
+    "image": "/cdn/cases/zeus-case.webp",
+    "price": 12170,
+    "bar": "#ef4444",
+    "hue": 199,
+    "risk": "high"
+  },
+  {
+    "slug": "american-patriot",
+    "name": "American Patriot",
+    "image": "/cdn/cases/american-patriot.webp",
+    "price": 11967,
+    "bar": "#ef4444",
+    "hue": 39,
+    "risk": "high"
+  },
+  {
+    "slug": "samurai-sake",
+    "name": "Samurai Sake",
+    "image": "/cdn/cases/samurai-sake.webp",
+    "price": 11896,
+    "bar": "#ef4444",
+    "hue": 33,
+    "risk": "high"
+  },
+  {
+    "slug": "sparkle-stockpile",
+    "name": "Sparkle Stockpile",
+    "image": "/cdn/cases/sparkle-stockpile.webp",
+    "price": 11699,
+    "bar": "#ef4444",
+    "hue": 264,
+    "risk": "high"
+  },
+  {
+    "slug": "dark-desire",
+    "name": "Dark Desire",
+    "image": "/cdn/cases/dark-desire.webp",
+    "price": 11565,
+    "bar": "#ef4444",
+    "hue": 288,
+    "risk": "high"
+  },
+  {
+    "slug": "shaggy-flip",
+    "name": "Shaggy Flip",
+    "image": "/cdn/cases/shaggy-flip.webp",
+    "price": 11555,
+    "bar": "#ef4444",
     "hue": 46,
+    "risk": "high"
+  },
+  {
+    "slug": "super-smiles",
+    "name": "Super Smiles",
+    "image": "/cdn/cases/super-smiles.webp",
+    "price": 11373,
+    "bar": "#ef4444",
+    "hue": 187,
+    "risk": "high"
+  },
+  {
+    "slug": "hair-deluxe",
+    "name": "Hair Deluxe",
+    "image": "/cdn/cases/hair-deluxe.webp",
+    "price": 11294,
+    "bar": "#ef4444",
+    "hue": 282,
+    "risk": "high"
+  },
+  {
+    "slug": "azure-addiction",
+    "name": "Azure Addiction",
+    "image": "/cdn/cases/azure-addiction.webp",
+    "price": 11235,
+    "bar": "#ef4444",
+    "hue": 35,
+    "risk": "high"
+  },
+  {
+    "slug": "deck-the-halls",
+    "name": "Deck the Halls",
+    "image": "/cdn/cases/deck-the-halls.webp",
+    "price": 10901,
+    "bar": "#ef4444",
+    "hue": 186,
+    "risk": "high"
+  },
+  {
+    "slug": "bluesteel-case",
+    "name": "Bluesteel Case",
+    "image": "/cdn/cases/bluesteel-case.webp",
+    "price": 10746,
+    "bar": "#ef4444",
+    "hue": 240,
+    "risk": "high"
+  },
+  {
+    "slug": "discord-moderator",
+    "name": "Discord Moderator",
+    "image": "/cdn/cases/discord-moderator.webp",
+    "price": 10746,
+    "bar": "#ef4444",
+    "hue": 0,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-tooth",
+    "name": "10% Tooth",
+    "image": "/cdn/cases/10-percent-tooth.webp",
+    "price": 10585,
+    "bar": "#ef4444",
+    "hue": 300,
+    "risk": "high"
+  },
+  {
+    "slug": "5-percent-prayer",
+    "name": "5% Prayer",
+    "image": "/cdn/cases/5-percent-prayer.webp",
+    "price": 10395,
+    "bar": "#ef4444",
+    "hue": 242,
+    "risk": "high"
+  },
+  {
+    "slug": "golden-case",
+    "name": "Golden Case",
+    "image": "/cdn/cases/golden-case.webp",
+    "price": 9714,
+    "bar": "#ef4444",
+    "hue": 67,
+    "risk": "high"
+  },
+  {
+    "slug": "lottery-ticket",
+    "name": "Lottery Ticket",
+    "image": "/cdn/cases/lottery-ticket.webp",
+    "price": 9366,
+    "bar": "#ef4444",
+    "hue": 317,
+    "risk": "high"
+  },
+  {
+    "slug": "doge-dream",
+    "name": "Doge Dream",
+    "image": "/cdn/cases/doge-dream.webp",
+    "price": 9241,
+    "bar": "#3b82f6",
+    "hue": 295,
+    "risk": "low"
+  },
+  {
+    "slug": "top-hat-galore",
+    "name": "Top Hat Galore",
+    "image": "/cdn/cases/top-hat-galore.webp",
+    "price": 9179,
+    "bar": "#ef4444",
+    "hue": 81,
+    "risk": "high"
+  },
+  {
+    "slug": "toxic-waste",
+    "name": "Toxic Waste",
+    "image": "/cdn/cases/toxic-waste.webp",
+    "price": 9071,
+    "bar": "#ef4444",
+    "hue": 200,
+    "risk": "high"
+  },
+  {
+    "slug": "lights-out",
+    "name": "Lights Out",
+    "image": "/cdn/cases/lights-out.webp",
+    "price": 8183,
+    "bar": "#ef4444",
+    "hue": 323,
+    "risk": "high"
+  },
+  {
+    "slug": "epicness",
+    "name": "Epicness",
+    "image": "/cdn/cases/epicness.webp",
+    "price": 7668,
+    "bar": "#ef4444",
+    "hue": 328,
+    "risk": "high"
+  },
+  {
+    "slug": "gold-mine",
+    "name": "Gold Mine",
+    "image": "/cdn/cases/gold-mine.webp",
+    "price": 7658,
+    "bar": "#ef4444",
+    "hue": 59,
+    "risk": "high"
+  },
+  {
+    "slug": "pirate-plunder",
+    "name": "Pirate Plunder",
+    "image": "/cdn/cases/pirate-plunder.webp",
+    "price": 7621,
+    "bar": "#3b82f6",
+    "hue": 179,
+    "risk": "low"
+  },
+  {
+    "slug": "horns",
+    "name": "Horns!",
+    "image": "/cdn/cases/horns.webp",
+    "price": 7343,
+    "bar": "#ef4444",
+    "hue": 248,
+    "risk": "high"
+  },
+  {
+    "slug": "1-percent-yum",
+    "name": "1% Yum",
+    "image": "/cdn/cases/1-percent-yum.webp",
+    "price": 7302,
+    "bar": "#ef4444",
+    "hue": 228,
+    "risk": "high"
+  },
+  {
+    "slug": "bubble-trouble",
+    "name": "Bubble Trouble",
+    "image": "/cdn/cases/bubble-trouble.webp",
+    "price": 7221,
+    "bar": "#ef4444",
+    "hue": 237,
+    "risk": "high"
+  },
+  {
+    "slug": "bow-tie-bonanza",
+    "name": "Bow Tie Bonanza",
+    "image": "/cdn/cases/bow-tie-bonanza.webp",
+    "price": 7055,
+    "bar": "#ef4444",
+    "hue": 151,
+    "risk": "high"
+  },
+  {
+    "slug": "industrial-case",
+    "name": "Industrial Case",
+    "image": "/cdn/cases/industrial-case.webp",
+    "price": 6998,
+    "bar": "#ef4444",
+    "hue": 182,
+    "risk": "high"
+  },
+  {
+    "slug": "classic-case",
+    "name": "Classic Case",
+    "image": "/cdn/cases/classic-case.webp",
+    "price": 6996,
+    "bar": "#ef4444",
+    "hue": 2,
+    "risk": "high"
+  },
+  {
+    "slug": "atlantis",
+    "name": "Atlantis",
+    "image": "/cdn/cases/atlantis.webp",
+    "price": 6801,
+    "bar": "#ef4444",
+    "hue": 289,
+    "risk": "high"
+  },
+  {
+    "slug": "6-percent-beast",
+    "name": "6% Beast",
+    "image": "/cdn/cases/6-percent-beast.webp",
+    "price": 6686,
+    "bar": "#ef4444",
+    "hue": 103,
+    "risk": "high"
+  },
+  {
+    "slug": "federation-dream",
+    "name": "Federation Dream",
+    "image": "/cdn/cases/federation-dream.webp",
+    "price": 6528,
+    "bar": "#ef4444",
+    "hue": 199,
+    "risk": "high"
+  },
+  {
+    "slug": "headless-express",
+    "name": "Headless Express",
+    "image": "/cdn/cases/headless-express.webp",
+    "price": 6395,
+    "bar": "#3b82f6",
+    "hue": 36,
+    "risk": "low"
+  },
+  {
+    "slug": "festive-fortune",
+    "name": "Festive Fortune",
+    "image": "/cdn/cases/festive-fortune.webp",
+    "price": 6251,
+    "bar": "#ef4444",
+    "hue": 192,
+    "risk": "high"
+  },
+  {
+    "slug": "paradise-payday",
+    "name": "Paradise Payday",
+    "image": "/cdn/cases/paradise-payday.webp",
+    "price": 6250,
+    "bar": "#ef4444",
+    "hue": 43,
+    "risk": "high"
+  },
+  {
+    "slug": "200x-duchess",
+    "name": "200X Duchess",
+    "image": "/cdn/cases/200x-duchess.webp",
+    "price": 5903,
+    "bar": "#ef4444",
+    "hue": 117,
+    "risk": "high"
+  },
+  {
+    "slug": "hatbot-havoc",
+    "name": "Hatbot Havoc",
+    "image": "/cdn/cases/hatbot-havoc.webp",
+    "price": 5720,
+    "bar": "#ef4444",
+    "hue": 208,
+    "risk": "high"
+  },
+  {
+    "slug": "1-percent-emerald",
+    "name": "1% Emerald",
+    "image": "/cdn/cases/1-percent-emerald.webp",
+    "price": 5661,
+    "bar": "#ef4444",
+    "hue": 43,
+    "risk": "high"
+  },
+  {
+    "slug": "red-delight",
+    "name": "Red Delight",
+    "image": "/cdn/cases/red-delight.webp",
+    "price": 5588,
+    "bar": "#ef4444",
+    "hue": 256,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-dream",
+    "name": "10% Dream",
+    "image": "/cdn/cases/10-percent-dream.webp",
+    "price": 5409,
+    "bar": "#ef4444",
+    "hue": 227,
+    "risk": "high"
+  },
+  {
+    "slug": "overseer-case",
+    "name": "Overseer Case",
+    "image": "/cdn/cases/overseer-case.webp",
+    "price": 5189,
+    "bar": "#3b82f6",
+    "hue": 145,
+    "risk": "low"
+  },
+  {
+    "slug": "beautiful-hair",
+    "name": "Beautiful Hair",
+    "image": "/cdn/cases/beautiful-hair.webp",
+    "price": 5181,
+    "bar": "#ef4444",
+    "hue": 264,
+    "risk": "high"
+  },
+  {
+    "slug": "gaelic-luck",
+    "name": "Gaelic Luck",
+    "image": "/cdn/cases/gaelic-luck.webp",
+    "price": 4939,
+    "bar": "#ef4444",
+    "hue": 101,
+    "risk": "high"
+  },
+  {
+    "slug": "emerald-case",
+    "name": "Emerald Case",
+    "image": "/cdn/cases/emerald-case.webp",
+    "price": 4865,
+    "bar": "#ef4444",
+    "hue": 73,
+    "risk": "high"
+  },
+  {
+    "slug": "sunburst-surprise",
+    "name": "Sunburst Surprise",
+    "image": "/cdn/cases/sunburst-surprise.webp",
+    "price": 4736,
+    "bar": "#ef4444",
+    "hue": 107,
+    "risk": "high"
+  },
+  {
+    "slug": "galactic-win",
+    "name": "Galactic Win",
+    "image": "/cdn/cases/galactic-win.webp",
+    "price": 4324,
+    "bar": "#ef4444",
+    "hue": 204,
+    "risk": "high"
+  },
+  {
+    "slug": "mood-stash",
+    "name": "Mood Stash",
+    "image": "/cdn/cases/mood-stash.webp",
+    "price": 4259,
+    "bar": "#ef4444",
+    "hue": 93,
+    "risk": "high"
+  },
+  {
+    "slug": "blackout-bang",
+    "name": "Blackout Bang",
+    "image": "/cdn/cases/blackout-bang.webp",
+    "price": 4186,
+    "bar": "#ef4444",
+    "hue": 175,
+    "risk": "high"
+  },
+  {
+    "slug": "roblots",
+    "name": "Roblots",
+    "image": "/cdn/cases/roblots.webp",
+    "price": 4000,
+    "bar": "#ef4444",
+    "hue": 53,
+    "risk": "high"
+  },
+  {
+    "slug": "dancing-fruits",
+    "name": "Dancing Fruits",
+    "image": "/cdn/cases/dancing-fruits.webp",
+    "price": 3836,
+    "bar": "#ef4444",
+    "hue": 165,
+    "risk": "high"
+  },
+  {
+    "slug": "silver-vs-gold",
+    "name": "Silver Vs Gold",
+    "image": "/cdn/cases/silver-vs-gold.webp",
+    "price": 3217,
+    "bar": "#ef4444",
+    "hue": 35,
+    "risk": "high"
+  },
+  {
+    "slug": "kungfu-case",
+    "name": "Kungfu Case",
+    "image": "/cdn/cases/kungfu-case.webp",
+    "price": 3102,
+    "bar": "#ef4444",
+    "hue": 350,
+    "risk": "high"
+  },
+  {
+    "slug": "what-the-blue",
+    "name": "What The Blue",
+    "image": "/cdn/cases/what-the-blue.webp",
+    "price": 3004,
+    "bar": "#ef4444",
+    "hue": 86,
+    "risk": "high"
+  },
+  {
+    "slug": "3-percent-violet",
+    "name": "3% Violet",
+    "image": "/cdn/cases/3-percent-violet.webp",
+    "price": 3002,
+    "bar": "#ef4444",
+    "hue": 220,
+    "risk": "high"
+  },
+  {
+    "slug": "lolfiesta",
+    "name": "LOLFIESTA",
+    "image": "/cdn/cases/lolfiesta.webp",
+    "price": 2745,
+    "bar": "#ef4444",
+    "hue": 241,
+    "risk": "high"
+  },
+  {
+    "slug": "frosty-case",
+    "name": "Frosty Case",
+    "image": "/cdn/cases/frosty-case.webp",
+    "price": 2650,
+    "bar": "#ef4444",
+    "hue": 334,
+    "risk": "high"
+  },
+  {
+    "slug": "polar-prestige",
+    "name": "Polar Prestige",
+    "image": "/cdn/cases/polar-prestige.webp",
+    "price": 2500,
+    "bar": "#ef4444",
+    "hue": 313,
+    "risk": "high"
+  },
+  {
+    "slug": "tropical-treasure",
+    "name": "Tropical Treasure",
+    "image": "/cdn/cases/tropical-treasure.webp",
+    "price": 2500,
+    "bar": "#ef4444",
+    "hue": 319,
+    "risk": "high"
+  },
+  {
+    "slug": "book-case",
+    "name": "Book Case",
+    "image": "/cdn/cases/book-case.webp",
+    "price": 2477,
+    "bar": "#ef4444",
+    "hue": 271,
+    "risk": "high"
+  },
+  {
+    "slug": "grim-or-pilgrim",
+    "name": "Grim or Pilgrim",
+    "image": "/cdn/cases/grim-or-pilgrim.webp",
+    "price": 2444,
+    "bar": "#ef4444",
+    "hue": 62,
+    "risk": "high"
+  },
+  {
+    "slug": "white-bandz",
+    "name": "White Bandz",
+    "image": "/cdn/cases/white-bandz.webp",
+    "price": 2325,
+    "bar": "#ef4444",
+    "hue": 206,
+    "risk": "high"
+  },
+  {
+    "slug": "50-percent-legit",
+    "name": "50% Legit",
+    "image": "/cdn/cases/50-percent-legit.webp",
+    "price": 2224,
+    "bar": "#3b82f6",
+    "hue": 40,
+    "risk": "low"
+  },
+  {
+    "slug": "adurite-case",
+    "name": "Adurite Case",
+    "image": "/cdn/cases/adurite-case.webp",
+    "price": 2195,
+    "bar": "#ef4444",
+    "hue": 218,
+    "risk": "high"
+  },
+  {
+    "slug": "fried-chicken",
+    "name": "Fried Chicken",
+    "image": "/cdn/cases/fried-chicken.webp",
+    "price": 1969,
+    "bar": "#ef4444",
+    "hue": 214,
+    "risk": "high"
+  },
+  {
+    "slug": "all-the-santas",
+    "name": "All the Santas",
+    "image": "/cdn/cases/all-the-santas.webp",
+    "price": 1964,
+    "bar": "#ef4444",
+    "hue": 4,
+    "risk": "high"
+  },
+  {
+    "slug": "hearty-breakfast",
+    "name": "Hearty Breakfast",
+    "image": "/cdn/cases/hearty-breakfast.webp",
+    "price": 1875,
+    "bar": "#ef4444",
+    "hue": 135,
+    "risk": "high"
+  },
+  {
+    "slug": "viking-case",
+    "name": "Viking Case",
+    "image": "/cdn/cases/viking-case.webp",
+    "price": 1875,
+    "bar": "#ef4444",
+    "hue": 297,
+    "risk": "high"
+  },
+  {
+    "slug": "diy-case",
+    "name": "DIY Case",
+    "image": "/cdn/cases/diy-case.webp",
+    "price": 1801,
+    "bar": "#3b82f6",
+    "hue": 31,
+    "risk": "low"
+  },
+  {
+    "slug": "10-percent-juiced",
+    "name": "10% Juiced",
+    "image": "/cdn/cases/10-percent-juiced.webp",
+    "price": 1748,
+    "bar": "#ef4444",
+    "hue": 336,
+    "risk": "high"
+  },
+  {
+    "slug": "blox-depot",
+    "name": "Blox Depot",
+    "image": "/cdn/cases/blox-depot.webp",
+    "price": 1636,
+    "bar": "#3b82f6",
+    "hue": 228,
+    "risk": "low"
+  },
+  {
+    "slug": "sinister-mystery",
+    "name": "Sinister Mystery",
+    "image": "/cdn/cases/sinister-mystery.webp",
+    "price": 1607,
+    "bar": "#ef4444",
+    "hue": 97,
+    "risk": "high"
+  },
+  {
+    "slug": "blade-arsenal",
+    "name": "Blade Arsenal",
+    "image": "/cdn/cases/blade-arsenal.webp",
+    "price": 1427,
+    "bar": "#ef4444",
+    "hue": 158,
+    "risk": "high"
+  },
+  {
+    "slug": "its-snowing",
+    "name": "It's Snowing",
+    "image": "/cdn/cases/its-snowing.webp",
+    "price": 1386,
+    "bar": "#ef4444",
+    "hue": 304,
+    "risk": "high"
+  },
+  {
+    "slug": "love-you",
+    "name": "Love You",
+    "image": "/cdn/cases/love-you.webp",
+    "price": 1377,
+    "bar": "#ef4444",
+    "hue": 141,
     "risk": "high"
   },
   {
     "slug": "8-bit-case",
     "name": "8-Bit Case",
-    "imageId": 62,
-    "image": "/cdn/cases/62.webp",
-    "price": 1150,
+    "image": "/cdn/cases/8-bit-case.webp",
+    "price": 1317,
+    "bar": "#ef4444",
+    "hue": 103,
+    "risk": "high"
+  },
+  {
+    "slug": "dark-deception",
+    "name": "Dark Deception",
+    "image": "/cdn/cases/dark-deception.webp",
+    "price": 1247,
+    "bar": "#ef4444",
+    "hue": 49,
+    "risk": "high"
+  },
+  {
+    "slug": "10-percent-virtual",
+    "name": "10% Virtual",
+    "image": "/cdn/cases/10-percent-virtual.webp",
+    "price": 1216,
+    "bar": "#ef4444",
+    "hue": 313,
+    "risk": "high"
+  },
+  {
+    "slug": "lucky-case",
+    "name": "Lucky Case",
+    "image": "/cdn/cases/lucky-case.webp",
+    "price": 1181,
+    "bar": "#ef4444",
+    "hue": 136,
+    "risk": "high"
+  },
+  {
+    "slug": "party-rock",
+    "name": "Party Rock",
+    "image": "/cdn/cases/party-rock.webp",
+    "price": 872,
+    "bar": "#ef4444",
+    "hue": 341,
+    "risk": "high"
+  },
+  {
+    "slug": "yellowmania",
+    "name": "Yellowmania",
+    "image": "/cdn/cases/yellowmania.webp",
+    "price": 823,
+    "bar": "#ef4444",
+    "hue": 124,
+    "risk": "high"
+  },
+  {
+    "slug": "the-1-percent",
+    "name": "The 1%",
+    "image": "/cdn/cases/the-1-percent.webp",
+    "price": 778,
+    "bar": "#ef4444",
+    "hue": 91,
+    "risk": "high"
+  },
+  {
+    "slug": "balance-booster",
+    "name": "Balance Booster",
+    "image": "/cdn/cases/balance-booster.webp",
+    "price": 661,
+    "bar": "#ef4444",
+    "hue": 216,
+    "risk": "high"
+  },
+  {
+    "slug": "holiday-haul",
+    "name": "Holiday Haul",
+    "image": "/cdn/cases/holiday-haul.webp",
+    "price": 625,
+    "bar": "#ef4444",
+    "hue": 39,
+    "risk": "high"
+  },
+  {
+    "slug": "sunny-stockpile",
+    "name": "Sunny Stockpile",
+    "image": "/cdn/cases/sunny-stockpile.webp",
+    "price": 625,
+    "bar": "#ef4444",
+    "hue": 128,
+    "risk": "high"
+  },
+  {
+    "slug": "brilliant-boom",
+    "name": "Brilliant Boom",
+    "image": "/cdn/cases/brilliant-boom.webp",
+    "price": 532,
+    "bar": "#ef4444",
+    "hue": 197,
+    "risk": "high"
+  },
+  {
+    "slug": "praefectus-dream",
+    "name": "Praefectus Dream",
+    "image": "/cdn/cases/praefectus-dream.webp",
+    "price": 515,
+    "bar": "#ef4444",
+    "hue": 49,
+    "risk": "high"
+  },
+  {
+    "slug": "eye-of-the-prince",
+    "name": "Eye of the Prince",
+    "image": "/cdn/cases/eye-of-the-prince.webp",
+    "price": 497,
+    "bar": "#ef4444",
+    "hue": 93,
+    "risk": "high"
+  },
+  {
+    "slug": "headwear-havoc",
+    "name": "Headwear Havoc",
+    "image": "/cdn/cases/headwear-havoc.webp",
+    "price": 468,
+    "bar": "#ef4444",
+    "hue": 79,
+    "risk": "high"
+  },
+  {
+    "slug": "designers-dream",
+    "name": "Designer's Dream",
+    "image": "/cdn/cases/designers-dream.webp",
+    "price": 451,
+    "bar": "#ef4444",
+    "hue": 296,
+    "risk": "high"
+  },
+  {
+    "slug": "egg-case",
+    "name": "Egg Case",
+    "image": "/cdn/cases/egg-case.webp",
+    "price": 430,
     "bar": "#3b82f6",
-    "hue": 266,
-    "risk": "high"
-  },
-  {
-    "slug": "the-grind",
-    "name": "The Grind",
-    "imageId": 82,
-    "image": "/cdn/cases/82.webp",
-    "price": 1067,
-    "bar": "#64748b",
-    "hue": 210,
-    "risk": "medium"
-  },
-  {
-    "slug": "spooky-flip",
-    "name": "Spooky Flip",
-    "imageId": 75,
-    "image": "/cdn/cases/75.webp",
-    "price": 952,
-    "bar": "#f97316",
-    "hue": 28,
-    "risk": "high"
-  },
-  {
-    "slug": "the-gucci-sampler",
-    "name": "The Gucci Sampler",
-    "imageId": 83,
-    "image": "/cdn/cases/83.webp",
-    "price": 864,
-    "bar": "#eab308",
-    "hue": 85,
-    "risk": "high"
-  },
-  {
-    "slug": "rags-2-riches",
-    "name": "Rags 2 Riches",
-    "imageId": 84,
-    "image": "/cdn/cases/84.webp",
-    "price": 783,
-    "bar": "#eab308",
-    "hue": 42,
-    "risk": "high"
-  },
-  {
-    "slug": "vengeance-case",
-    "name": "Vengeance Case",
-    "imageId": 47,
-    "image": "/cdn/cases/47.webp",
-    "price": 615,
-    "bar": "#eab308",
-    "hue": 144,
-    "risk": "high"
-  },
-  {
-    "slug": "switch-it-up",
-    "name": "Switch It Up",
-    "imageId": 72,
-    "image": "/cdn/cases/72.webp",
-    "price": 190,
-    "bar": "#a855f7",
-    "hue": 280,
-    "risk": "high"
+    "hue": 241,
+    "risk": "low"
   },
   {
     "slug": "budget-flip",
     "name": "Budget Flip",
-    "imageId": 85,
-    "image": "/cdn/cases/85.webp",
-    "price": 160,
-    "bar": "#84cc16",
-    "hue": 95,
+    "image": "/cdn/cases/budget-flip.webp",
+    "price": 403,
+    "bar": "#ef4444",
+    "hue": 337,
     "risk": "high"
   },
   {
-    "slug": "spin-2-win",
-    "name": "Spin 2 Win",
-    "imageId": 50,
-    "image": "/cdn/cases/50.webp",
-    "price": 125,
-    "bar": "#22c55e",
-    "hue": 306,
-    "risk": "medium"
-  },
-  {
-    "slug": "low-cost-king",
-    "name": "Low Cost King",
-    "imageId": 81,
-    "image": "/cdn/cases/81.webp",
-    "price": 75,
-    "bar": "#eab308",
-    "hue": 11,
-    "risk": "high"
-  },
-  {
-    "slug": "budget-case",
-    "name": "Budget Case",
-    "imageId": 80,
-    "image": "/cdn/cases/80.webp",
-    "price": 47,
+    "slug": "heads-or-glasses",
+    "name": "Heads or Glasses",
+    "image": "/cdn/cases/heads-or-glasses.webp",
+    "price": 399,
     "bar": "#3b82f6",
-    "hue": 354,
+    "hue": 259,
+    "risk": "low"
+  },
+  {
+    "slug": "zoo-case",
+    "name": "Zoo Case",
+    "image": "/cdn/cases/zoo-case.webp",
+    "price": 323,
+    "bar": "#ef4444",
+    "hue": 55,
     "risk": "high"
   },
   {
-    "slug": "crazy-case",
-    "name": "Crazy Case",
-    "imageId": 61,
-    "image": "/cdn/cases/61.webp",
-    "price": 45,
-    "bar": "#e879f9",
-    "hue": 312,
+    "slug": "good-luck",
+    "name": "Good Luck",
+    "image": "/cdn/cases/good-luck.webp",
+    "price": 257,
+    "bar": "#ef4444",
+    "hue": 306,
     "risk": "high"
   },
   {
-    "slug": "the-equalizer",
-    "name": "The Equalizer",
-    "imageId": 26,
-    "image": "/cdn/cases/26.webp",
-    "price": 44,
-    "bar": "#34d399",
-    "hue": 160,
+    "slug": "shoot-for-the-stars",
+    "name": "Shoot for the Stars",
+    "image": "/cdn/cases/shoot-for-the-stars.webp",
+    "price": 179,
+    "bar": "#ef4444",
+    "hue": 323,
     "risk": "high"
   },
   {
-    "slug": "puzz-case",
-    "name": "Puzz Case",
-    "imageId": 74,
-    "image": "/cdn/cases/74.webp",
-    "price": 10,
-    "bar": "#22c55e",
-    "hue": 170,
+    "slug": "nightmare",
+    "name": "Nightmare",
+    "image": "/cdn/cases/nightmare.webp",
+    "price": 167,
+    "bar": "#ef4444",
+    "hue": 242,
+    "risk": "high"
+  },
+  {
+    "slug": "turning-the-tides",
+    "name": "Turning the Tides",
+    "image": "/cdn/cases/turning-the-tides.webp",
+    "price": 153,
+    "bar": "#3b82f6",
+    "hue": 240,
+    "risk": "low"
+  },
+  {
+    "slug": "50-50",
+    "name": "50/50",
+    "image": "/cdn/cases/50-50.webp",
+    "price": 141,
+    "bar": "#3b82f6",
+    "hue": 138,
+    "risk": "low"
+  },
+  {
+    "slug": "cheesy",
+    "name": "Cheesy",
+    "image": "/cdn/cases/cheesy.webp",
+    "price": 140,
+    "bar": "#ef4444",
+    "hue": 131,
+    "risk": "high"
+  },
+  {
+    "slug": "beach-bonanza",
+    "name": "Beach Bonanza",
+    "image": "/cdn/cases/beach-bonanza.webp",
+    "price": 125,
+    "bar": "#ef4444",
+    "hue": 183,
+    "risk": "high"
+  },
+  {
+    "slug": "stocking-surprise",
+    "name": "Stocking Surprise",
+    "image": "/cdn/cases/stocking-surprise.webp",
+    "price": 125,
+    "bar": "#ef4444",
+    "hue": 110,
+    "risk": "high"
+  },
+  {
+    "slug": "budget-spins",
+    "name": "Budget Spins",
+    "image": "/cdn/cases/budget-spins.webp",
+    "price": 93,
+    "bar": "#3b82f6",
+    "hue": 9,
+    "risk": "low"
+  },
+  {
+    "slug": "low-baller",
+    "name": "Low Baller",
+    "image": "/cdn/cases/low-baller.webp",
+    "price": 87,
+    "bar": "#3b82f6",
+    "hue": 31,
+    "risk": "low"
+  },
+  {
+    "slug": "courageous-comeback",
+    "name": "Courageous Comeback",
+    "image": "/cdn/cases/courageous-comeback.webp",
+    "price": 78,
+    "bar": "#3b82f6",
+    "hue": 155,
+    "risk": "low"
+  },
+  {
+    "slug": "cheap-box",
+    "name": "Cheap Box",
+    "image": "/cdn/cases/cheap-box.webp",
+    "price": 62,
+    "bar": "#3b82f6",
+    "hue": 28,
+    "risk": "low"
+  },
+  {
+    "slug": "luxurious",
+    "name": "Luxurious",
+    "image": "/cdn/cases/luxurious.webp",
+    "price": 8,
+    "bar": "#ef4444",
+    "hue": 247,
     "risk": "high"
   }
 ]

@@ -7,7 +7,8 @@ import { FairnessControl } from "@/components/fairness";
 import { Icons } from "./icons";
 import { SoundSettings } from "./sound-settings";
 import { useStore, useBalanceHold } from "./providers";
-import { caseImage, DROP_RARITY, dropsForCase, itemImage, pickDrop, type CaseDrop, type CaseItem, type DropColor } from "@/lib/catalog";
+import { caseImage, caseVolatility, DROP_RARITY, dropsForCase, itemImage, packGlow, pickDrop, type CaseDrop, type CaseItem, type DropColor } from "@/lib/catalog";
+import { VolatilityScale } from "@/components/volatility-scale";
 import { isRewardSlug } from "@/lib/rewards";
 import { sendRewardOpen } from "@/lib/backend";
 import { playSfx, preloadSfx, unlockSfx } from "@/lib/sfx";
@@ -309,6 +310,7 @@ function CasesSpinner({
   multi,
   trackH,
   caseImg,
+  glow,
 }: {
   rows: RowState[];
   phase: "idle" | "spinning" | "landed";
@@ -321,6 +323,7 @@ function CasesSpinner({
   multi: boolean;
   trackH: number;
   caseImg: string;
+  glow: string;
 }) {
   const reelsRef = useRef<HTMLDivElement>(null);
   const showHits = phase !== "idle";
@@ -443,7 +446,11 @@ function CasesSpinner({
         {phase === "idle" ? (
           <div className="mm2-prespin-overlay">
             <div className="relative max-w-[250px]">
-              <img alt="" className="relative h-auto w-full" src={caseImg} />
+              <div
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[70%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-80 blur-[34px]"
+                style={{ background: glow }}
+              />
+              <img alt="" className="relative z-1 h-auto w-full" src={caseImg} />
             </div>
           </div>
         ) : null}
@@ -554,6 +561,8 @@ export function CaseOpening({ item }: { item: CaseItem }) {
   const cost = item.price * n;
   const duration = cfg.duration;
   const caseImg = caseImage(item);
+  const glow = packGlow(item.hue);
+  const vol = caseVolatility(item.slug);
   const spinning = phase === "spinning";
 
   useEffect(() => {
@@ -664,7 +673,10 @@ export function CaseOpening({ item }: { item: CaseItem }) {
         </div>
 
         <div className="mt-16 grid w-full grid-cols-1 gap-16">
-          <h2 className="ui-label w-full truncate text-center text-18 text-white">{item.name}</h2>
+          <div className="grid w-full grid-cols-1 justify-items-center gap-8">
+            <h2 className="ui-label w-full truncate text-center text-18 text-white">{item.name}</h2>
+            <VolatilityScale level={vol.level} label={vol.label} />
+          </div>
           <CasesSpinner
             rows={rows}
             phase={phase}
@@ -677,6 +689,7 @@ export function CaseOpening({ item }: { item: CaseItem }) {
             multi={cfg.multi}
             trackH={cfg.trackH}
             caseImg={caseImg}
+            glow={glow}
           />
         </div>
 

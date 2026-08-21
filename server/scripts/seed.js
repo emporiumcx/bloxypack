@@ -2,7 +2,6 @@ require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
 const mongoose = require('mongoose');
 const Box = require('../database/models/Box');
 const Rain = require('../database/models/Rain');
-const Setting = require('../database/models/Setting');
 const cases = require('../data/cases-data.json');
 const drops = require('../data/drops-data.json');
 
@@ -11,8 +10,7 @@ async function run() {
   await mongoose.connect(uri);
   console.log('Connected', uri);
 
-  await Box.deleteMany({});
-  await Setting.deleteMany({});
+  await Box.deleteMany({ type: { $ne: "reward" } });
   const docs = cases.map((c) => {
     const items = (drops[c.slug] || []).map((d) => {
       const item = {

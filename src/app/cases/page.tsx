@@ -1,14 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import { useMemo, useState, type CSSProperties } from "react";
-import { Bux } from "@/components/bux";
+import { useMemo, useState } from "react";
+import { CaseCard } from "@/components/case-card";
 import { ChoiceBar } from "@/components/bet-field";
 import { Dropdown } from "@/components/dropdown";
 import { FairnessControl } from "@/components/fairness";
 import { Icons } from "@/components/icons";
-import { ItemBg } from "@/components/item-bg";
-import { CASES, caseImage } from "@/lib/catalog";
+import { CASES, caseVolatility } from "@/lib/catalog";
 
 export default function CasesPage() {
   const [q, setQ] = useState("");
@@ -18,7 +16,7 @@ export default function CasesPage() {
   const list = useMemo(() => {
     return CASES.filter((c) => {
       if (q && !c.name.toLowerCase().includes(q.toLowerCase())) return false;
-      if (risk !== "all" && c.risk !== risk) return false;
+      if (risk !== "all" && caseVolatility(c.slug).label.toLowerCase() !== risk) return false;
       return true;
     }).sort((a, b) => (sort === "high" ? b.price - a.price : a.price - b.price));
   }, [q, risk, sort]);
@@ -51,8 +49,9 @@ export default function CasesPage() {
               onChange={setRisk}
               options={[
                 { id: "all", label: "All" },
-                { id: "high", label: "High Risk" },
-                { id: "low", label: "Low Risk" },
+                { id: "low", label: "Low" },
+                { id: "medium", label: "Medium" },
+                { id: "high", label: "High" },
               ]}
             />
           </div>
@@ -72,31 +71,7 @@ export default function CasesPage() {
 
       <div className="@sm/page:grid-cols-3 @md/page:grid-cols-4 @bt/page:grid-cols-5 @lg/page:grid-cols-6 @xl/page:grid-cols-7 grid w-full grid-cols-2 gap-10">
         {list.map((item, i) => (
-          <Link
-            key={item.slug}
-            href={`/cases/${item.slug}`}
-            className="panel-outline @sm/page:rounded-12 group relative w-full overflow-hidden rounded-8 bg-grey-39 p-16 transition-transform duration-300 hover:-translate-y-4 hover:scale-[1.02] active:-translate-y-4 active:scale-[1.02] animate-case-in"
-            style={{ "--case-i": i } as CSSProperties}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-grey-39" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-green/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100" />
-            <div className="relative grid w-full grid-cols-1 gap-16">
-              <div className="relative flex w-full pt-[81%]">
-                <ItemBg className="inset-[8%] opacity-40" />
-                <img
-                  className="absolute inset-0 w-full scale-100 object-contain transition-transform duration-300 group-hover:rotate-[5deg] group-hover:scale-[1.1] group-active:rotate-[5deg] group-active:scale-[1.1]"
-                  alt=""
-                  src={caseImage(item)}
-                />
-              </div>
-              <div className="grid w-full grid-cols-1 gap-8">
-                <p className="truncate text-center text-14 text-grey-190">{item.name}</p>
-                <div className="flex w-full justify-center">
-                  <Bux value={item.price} />
-                </div>
-              </div>
-            </div>
-          </Link>
+          <CaseCard key={item.slug} item={item} index={i} href={`/cases/${item.slug}`} />
         ))}
       </div>
     </div>

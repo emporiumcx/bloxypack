@@ -364,7 +364,7 @@ export default function TowersPage() {
                           <div className="absolute inset-0 flex h-full w-full items-center justify-center">
                             <img
                               alt=""
-                              src="/img/lion.png"
+                              src="/img/bloxypack-mark.png"
                               className={`h-auto w-1/4 object-contain ${pulsing ? "animate-tower-pulse" : ""} ${
                                 open ? "opacity-0" : "opacity-20"
                               }`}
@@ -378,7 +378,7 @@ export default function TowersPage() {
                             {hit || isBomb ? (
                               <img alt="" className="h-[62%] w-[62%] max-h-28 max-w-28 object-contain" src="/img/bomb.webp" />
                             ) : (
-                              <img alt="" className="h-[58%] w-[58%] max-h-28 max-w-28 object-contain" src="/img/lion_dark.png" />
+                              <img alt="" className="h-[58%] w-[58%] max-h-28 max-w-28 object-contain" src="/img/bloxypack-mark-dark.png" />
                             )}
                           </div>
                         </button>

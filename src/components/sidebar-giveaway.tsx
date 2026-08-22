@@ -33,7 +33,7 @@ const GIVEAWAYS: {
   amount: number;
   image: string;
 }[] = [
-  { id: "daily", label: "Daily", amount: 242.3, image: "/img/home/daily-case.webp" },
+  { id: "daily", label: "Daily", amount: 242.3, image: "/cdn/packs/daily-1.webp" },
   { id: "weekly", label: "Weekly", amount: 2871.76, image: "/cdn/cases/prestige.webp" },
   { id: "monthly", label: "Monthly", amount: 10392.86, image: "/cdn/cases/oil-baron.webp" },
 ];

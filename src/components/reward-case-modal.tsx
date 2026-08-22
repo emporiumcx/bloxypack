@@ -118,12 +118,7 @@ export function RewardCaseModal({
         <div className="scrollbar-y min-h-0 flex-1 overflow-y-auto">
           <div className="grid gap-16 px-16 py-16 sm:px-24">
             <div className="flex justify-center">
-              <img
-                alt=""
-                src={box.image}
-                className="h-[140px] w-[140px] object-contain"
-                style={box.hue ? { filter: `hue-rotate(${box.hue}deg)` } : undefined}
-              />
+              <img alt="" src={box.image} className="h-[140px] w-[140px] object-contain" />
             </div>
 
             {hit ? (

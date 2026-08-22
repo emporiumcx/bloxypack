@@ -98,7 +98,7 @@ export function ExploreRewards() {
       </RewardCard>
 
       <RewardCard
-        img="/img/home/bonus-case.webp"
+        img="/cdn/packs/bonus-1.webp"
         imgClass="top-[-58px] h-[132px] w-[132px]"
         glow="bg-[radial-gradient(circle_at_50%_80%,rgba(98,126,234,0.16),transparent_70%)]"
       >
@@ -120,7 +120,7 @@ export function ExploreRewards() {
       </RewardCard>
 
       <RewardCard
-        img="/img/home/daily-case.webp"
+        img="/cdn/packs/daily-1.webp"
         imgClass="top-[-64px] h-[136px] w-[136px]"
         glow="bg-[radial-gradient(circle_at_50%_80%,rgba(82,181,255,0.18),transparent_70%)]"
       >

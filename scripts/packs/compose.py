@@ -8,6 +8,7 @@ per pack. Packs only change shell/theme/layout around those fixed assets.
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -36,6 +37,37 @@ SHELL_HUES = {
     "cobalt": 232,
     "purple": 270,
     "pink": 320,
+}
+
+# Empty logo packs for rewards (bonus / daily / rank). No catalog items.
+REWARD_PACKS = {
+    "bonus-1": 205,
+    "bonus-2": 210,
+    "bonus-3": 220,
+    "bonus-4": 232,
+    "bonus-5": 198,
+    "bonus-6": 270,
+    "bonus-7": 45,
+    "bonus-8": 30,
+    "bonus-9": 8,
+    "bonus-10": 184,
+    "bonus-15": 40,
+    "bonus-20": 320,
+    "daily-1": 205,
+    "daily-2": 210,
+    "daily-3": 220,
+    "daily-4": 232,
+    "daily-5": 198,
+    "daily-6": 270,
+    "daily-7": 45,
+    "daily-8": 30,
+    "daily-9": 8,
+    "daily-10": 184,
+    "bronze-case": 30,
+    "silver-case": 220,
+    "gold-case": 45,
+    "platinum-case": 210,
+    "diamond-case": 200,
 }
 
 
@@ -220,16 +252,86 @@ def clip_to_pouch(layer: Image.Image, shell: Image.Image, grow: int = 10) -> Ima
     return Image.fromarray(arr, "RGBA")
 
 
-def compose(shell: Image.Image, items: list[Image.Image], hue: int) -> Image.Image:
-    canvas = shell.copy()
+def hsv_rgb(hue: float, sat: int = 220, val: int = 240) -> tuple[int, int, int]:
+    return tuple(int(c) for c in Image.new("HSV", (1, 1), (int(hue / 360 * 255), sat, val)).convert("RGB").getpixel((0, 0)))
+
+
+def load_logo_mark() -> Image.Image:
+    src = ROOT / "public/img/bloxypack-mark.png"
+    arr = np.array(Image.open(src).convert("RGBA"))
+    lum = 0.2126 * arr[:, :, 0] + 0.7152 * arr[:, :, 1] + 0.0722 * arr[:, :, 2]
+    arr[:, :, 3] = np.where(lum < 28, 0, arr[:, :, 3])
+    return crop_item(Image.fromarray(arr, "RGBA"))
+
+
+def colorize_mark(mark: Image.Image, hue: float) -> Image.Image:
+    arr = np.array(mark.convert("RGBA"))
+    rgb = hsv_rgb(hue, 70, 255)
+    mix = tuple(int(255 * 0.42 + c * 0.58) for c in rgb)
+    lum = arr[:, :, 0].astype(np.float32) / 255.0
+    out = arr.copy()
+    for i in range(3):
+        out[:, :, i] = np.clip(mix[i] * lum, 0, 255).astype(np.uint8)
+    return Image.fromarray(out, "RGBA")
+
+
+def pouch_glow(canvas: Image.Image, shell: Image.Image, hue: int) -> None:
     px0, py0, px1, py1 = bbox(shell)
     pw, ph = px1 - px0, py1 - py0
     glow = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
     draw = ImageDraw.Draw(glow)
-    color = tuple(int(c) for c in Image.new("HSV", (1, 1), (int(hue / 360 * 255), 220, 240)).convert("RGB").getpixel((0, 0)))
+    color = hsv_rgb(hue)
     gx, gy = px0 + pw // 2, py0 + int(ph * 0.60)
-    draw.ellipse((gx - int(pw * 0.36), gy - int(ph * 0.20), gx + int(pw * 0.36), gy + int(ph * 0.22)), fill=(*color, 80))
+    draw.ellipse((gx - int(pw * 0.36), gy - int(ph * 0.20), gx + int(pw * 0.36), gy + int(ph * 0.22)), fill=(*color, 90))
     canvas.alpha_composite(glow.filter(ImageFilter.GaussianBlur(36)))
+
+
+def compose_plain(shell: Image.Image, mark: Image.Image, hue: int) -> Image.Image:
+    canvas = shell.copy()
+    pouch_glow(canvas, shell, hue)
+    px0, py0, px1, py1 = bbox(shell)
+    pw, ph = px1 - px0, py1 - py0
+    layer = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+    sprite = fit_width(colorize_mark(mark, hue), int(pw * 0.48))
+    paste_center(layer, sprite, px0 + pw // 2, py0 + int(ph * 0.58))
+    canvas.alpha_composite(clip_to_pouch(layer, shell, grow=8))
+    return canvas
+
+
+def write_manifest(slugs: list[str]) -> None:
+    MANIFEST.write_text(json.dumps(slugs, indent=2) + "\n")
+
+
+def merge_manifest(extra: list[str]) -> None:
+    current = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else []
+    seen = set(current)
+    for slug in extra:
+        if slug not in seen:
+            current.append(slug)
+            seen.add(slug)
+    write_manifest(current)
+
+
+def build_reward_packs() -> None:
+    mark = load_logo_mark()
+    shell_cache: dict[str, Image.Image] = {}
+    for slug, hue in REWARD_PACKS.items():
+        shell_name = nearest_shell(hue)
+        if shell_name not in shell_cache:
+            shell_cache[shell_name] = load_shell(shell_name)
+        tint = tint_shell(shell_cache[shell_name], SHELL_HUES.get(shell_name, hue), hue)
+        pack = compose_plain(tint, mark, hue)
+        save_rgba(pack, PACKS / slug)
+        print("reward-pack", slug, shell_name, hue, flush=True)
+    merge_manifest(list(REWARD_PACKS.keys()))
+    print("done", len(REWARD_PACKS), "reward packs")
+
+
+def compose(shell: Image.Image, items: list[Image.Image], hue: int) -> Image.Image:
+    canvas = shell.copy()
+    pouch_glow(canvas, shell, hue)
+    px0, py0, px1, py1 = bbox(shell)
+    pw, ph = px1 - px0, py1 - py0
 
     items_layer = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
     if items:
@@ -302,9 +404,12 @@ def main() -> None:
         print("pack", slug, flush=True)
 
     CANON_MAP.write_text(json.dumps(canon_meta, indent=2) + "\n")
-    MANIFEST.write_text(json.dumps(list(recipes.keys()), indent=2) + "\n")
+    write_manifest(list(recipes.keys()) + [s for s in REWARD_PACKS if s not in recipes])
     print("done", len(recipes), "packs", len(cache), "items")
 
 
 if __name__ == "__main__":
-    main()
+    if "--rewards" in sys.argv:
+        build_reward_packs()
+    else:
+        main()

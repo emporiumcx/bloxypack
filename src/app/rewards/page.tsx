@@ -68,7 +68,6 @@ function RakebackTimer({ kind }: { kind: "daily" | "weekly" | "monthly" }) {
 function CaseCard({
   name,
   img,
-  hue,
   locked,
   lockLabel,
   action,
@@ -77,7 +76,6 @@ function CaseCard({
 }: {
   name: string;
   img: string;
-  hue?: number;
   locked: boolean;
   lockLabel: ReactNode;
   action: string;
@@ -96,7 +94,6 @@ function CaseCard({
             alt=""
             className={`h-[110px] w-[110px] object-contain transition-all duration-300 ${locked ? "opacity-25 blur-[4px]" : ""}`}
             src={img}
-            style={hue ? { filter: `hue-rotate(${hue}deg)` } : undefined}
           />
           {locked ? <Icons.lock className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-32 text-grey-190" /> : null}
         </div>
@@ -239,7 +236,6 @@ export default function RewardsPage() {
               alt=""
               src={featured.image}
               className={`h-[160px] w-[160px] object-contain ${canOpenFeatured ? "" : "opacity-60"}`}
-              style={{ filter: `hue-rotate(${featured.hue}deg)` }}
             />
           </div>
           <div className="grid w-full grid-cols-1 items-center gap-12">
@@ -274,7 +270,6 @@ export default function RewardsPage() {
                 key={c.slug}
                 name={c.name}
                 img={c.image!}
-                hue={c.hue}
                 locked={!unlocked}
                 lockLabel={unlocked ? "Unlocked" : `${c.xp.toLocaleString("en-US")} XP`}
                 action={unlocked ? "Open case" : "View case"}
@@ -300,7 +295,6 @@ export default function RewardsPage() {
                 key={c.slug}
                 name={c.name}
                 img={c.image!}
-                hue={c.hue}
                 locked={!canOpen}
                 lockLabel={!unlocked ? `Reach level ${c.level}` : opened ? "Come back tomorrow" : "Ready to open"}
                 action={canOpen ? "Open case" : "View case"}

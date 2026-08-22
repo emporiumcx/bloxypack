@@ -17,8 +17,12 @@ const adminCheckSendCashierCryptoActionData = (data) => {
         throw new Error('Your provided action is invalid.');
     } else if(data.transactionId === undefined || typeof data.transactionId !== 'string' || validator.isMongoId(data.transactionId) !== true) {
         throw new Error('Your provided transaction id is invalid.');
-    } else if(data.action === 'approve' && (data.transactionHash === undefined || data.transactionHash === null || typeof data.transactionHash !== 'string')) {
-        throw new Error('Your provided transaction hash is invalid.');
+    } else if(data.action === 'approve') {
+        const hash = typeof data.transactionHash === 'string' ? data.transactionHash.trim() : '';
+        if (!hash || hash.length < 8 || hash.length > 128 || !/^(0x)?[A-Za-z0-9]+$/.test(hash)) {
+            throw new Error('Your provided transaction hash is invalid.');
+        }
+        data.transactionHash = hash;
     }
 }
 

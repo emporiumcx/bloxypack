@@ -5,17 +5,20 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index",
-    "build": "npx babel . -d dist --ignore node_modules",
+    "build": "node -e \"console.log('no compile step')\"",
     "audit": "better-npm-audit audit"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@solana/spl-token": "^0.4.13",
+    "@solana/web3.js": "^1.98.4",
     "@types/mongoose": "^5.11.97",
     "adm-zip": "^0.5.16",
     "base64-img": "^1.0.1",
     "base64url": "^3.0.1",
     "bcryptjs": "^2.4.3",
+    "bs58": "^5.0.0",
     "cbor": "^9.0.1",
     "chance": "^1.1.8",
     "cheerio": "^1.0.0-rc.12",
@@ -42,8 +45,13 @@
     "rate-limiter-flexible": "^2.3.8",
     "slugify": "^1.6.6",
     "socket.io": "^4.6.1",
+    "tweetnacl": "^1.0.3",
     "typescript": "^5.4.3",
+    "utf-8-validate": "^5.0.10",
     "validator": "^13.7.0"
+  },
+  "overrides": {
+    "uuid": "8.3.2"
   },
   "description": ""
 }

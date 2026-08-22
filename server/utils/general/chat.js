@@ -97,12 +97,12 @@ const generalGetChatOnlineCount = (io) => {
             ]);
 
             resolve({ 
-                en: Math.floor(onlineData[0].size * 1.6), 
-                tr: Math.floor(onlineData[1].size * 1.6), 
-                de: Math.floor(onlineData[2].size * 1.6), 
-                es: Math.floor(onlineData[3].size * 1.6), 
-                beg: Math.floor(onlineData[4].size * 1.6), 
-                whale: Math.floor(onlineData[5].size * 1.6) 
+                en: onlineData[0].size, 
+                tr: onlineData[1].size, 
+                de: onlineData[2].size, 
+                es: onlineData[3].size, 
+                beg: onlineData[4].size, 
+                whale: onlineData[5].size 
             });
         } catch(err) {
             resolve({ en: 0, tr: 0, de: 0, es: 0, beg: 0, whale: 0 });

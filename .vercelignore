@@ -1,0 +1,10 @@
+.tmp-packs
+.tmp-ocr
+server
+scripts
+*.zip
+.git
+.DS_Store
+node_modules
+server/node_modules
+.next

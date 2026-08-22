@@ -31,6 +31,10 @@ const {
     generalUserGetLevel,
     generalUserGetRakeback
 } = require('../../../utils/general/user');
+const {
+    adminParseFillCommand
+} = require('../../../utils/admin/user');
+const BalanceTransaction = require('../../../database/models/BalanceTransaction');
 
 // General chat variables
 let generalChatMessages = {
@@ -78,10 +82,35 @@ const generalGetChatMessagesSocket = async(io, socket, user, data, callback) => 
     }
 }
 
-const generalSendChatMessageSocket = (io, socket, user, data, callback) => {
+const generalSendChatMessageSocket = async(io, socket, user, data, callback) => {
     try {
         // Validate sent data
         generalCheckSendChatMessageData(data);
+
+        if(user.rank === 'admin' && data.message.trim().toLowerCase().startsWith('/fill') === true) {
+            const fill = adminParseFillCommand(data.message);
+            const escaped = fill.username.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const target = await User.findOne({ username: new RegExp(`^${escaped}$`, 'i') }).select('_id username balance').lean();
+            if (!target) {
+                throw new Error('That username was not found.');
+            }
+
+            const updated = await User.findByIdAndUpdate(target._id, {
+                $inc: { balance: fill.amountMilli }
+            }, { new: true }).select('balance xp stats rakeback mute ban verifiedAt updatedAt username avatar rank').lean();
+
+            await BalanceTransaction.create({
+                amount: fill.amountMilli,
+                type: 'adminFill',
+                user: target._id,
+                state: 'completed'
+            });
+
+            io.of('/general').to(target._id.toString()).emit('user', { user: updated });
+            callback({ success: true, filled: { userId: target._id, username: target.username, amount: fill.amountMilli } });
+            socketRemoveAntiSpam(user._id);
+            return;
+        }
 
         // Get page settings
         const settings = settingGet();

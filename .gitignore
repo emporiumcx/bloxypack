@@ -37,6 +37,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local scrape/temp assets (never deploy)
+.tmp-packs
+.tmp-ocr
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

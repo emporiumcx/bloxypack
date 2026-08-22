@@ -6,6 +6,7 @@ import { qrModules } from "@/lib/qr-pattern";
 import { BuxGlyph } from "./icons";
 import { Icons } from "./icons";
 import { useStore } from "./providers";
+import { getCryptoData, sendCryptoWithdraw } from "@/lib/backend";
 
 const BUX_USD = 0.002;
 const WITHDRAW_FEE = 0.02;
@@ -412,7 +413,7 @@ export function WalletModal({
   leaving: boolean;
   onClose: () => void;
 }) {
-  const { user, openModal, addBalance, spend } = useStore();
+  const { user, openModal, applyUser } = useStore();
   const [tab, setTab] = useState<Tab>(initialTab);
   const [methodId, setMethodId] = useState(initialTab === "withdraw" ? WITHDRAW_CRYPTO[0].id : DEPOSIT_FIAT[0].id);
   const [usd, setUsd] = useState("50");
@@ -425,6 +426,9 @@ export function WalletModal({
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
   const [detailOpen, setDetailOpen] = useState(true);
+  const [busy, setBusy] = useState(false);
+  const [depositAddress, setDepositAddress] = useState("");
+  const [solUsd, setSolUsd] = useState(0);
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -446,12 +450,12 @@ export function WalletModal({
 
   const methods = tab === "withdraw" ? WITHDRAW_CRYPTO : [...DEPOSIT_FIAT, ...DEPOSIT_CRYPTO];
   const method = methods.find((m) => m.id === methodId) ?? methods[0];
-  const depositAddress = demoAddress(method.ticker);
+  const livePrice = method.ticker === "SOL" && solUsd > 0 ? solUsd : method.price;
   const usdNum = Number(usd) || 0;
   const cryptoPay = Number(cryptoAmt) || 0;
   const buxFromFiat = usdToBux(usdNum);
   const withdrawBux = Number(withdrawAmt) || 0;
-  const withdrawCrypto = method.price > 0 ? (withdrawBux * BUX_USD * (1 - WITHDRAW_FEE)) / method.price : 0;
+  const withdrawCrypto = livePrice > 0 ? withdrawBux / livePrice : 0;
   const available = user?.balance ?? 0;
 
   const requireUser = (next: () => void) => {
@@ -478,43 +482,67 @@ export function WalletModal({
     setDetailOpen(true);
   };
 
+  useEffect(() => {
+    if (!user || method.kind !== "crypto") return;
+    let cancelled = false;
+    getCryptoData()
+      .then((res) => {
+        if (cancelled) return;
+        const ticker = method.ticker === "USDCS" || method.ticker === "USDC" ? "usdc" : method.ticker.toLowerCase();
+        setDepositAddress(res.addresses?.[ticker] || res.addresses?.sol || "");
+        const solMilli = res.prices?.sol?.price;
+        if (solMilli) setSolUsd(solMilli / 1000);
+      })
+      .catch((err: Error) => {
+        if (!cancelled) setError(err.message || "Could not load deposit address.");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [user, method.kind, method.ticker, method.id]);
+
   const setPayCrypto = (value: string) => {
     setCryptoAmt(value);
     const n = Number(value);
     if (!Number.isFinite(n) || !value.trim()) return setReceiveBux("");
-    setReceiveBux(String(Math.round(usdToBux(n * method.price))));
+    setReceiveBux(String(Math.round(n * livePrice)));
   };
 
   const setRecvBux = (value: string) => {
     setReceiveBux(value);
     const n = Number(value);
     if (!Number.isFinite(n) || !value.trim() || method.price <= 0) return setCryptoAmt("");
-    setCryptoAmt(((n * BUX_USD) / method.price).toFixed(6).replace(/0+$/, "").replace(/\.$/, ""));
+    setCryptoAmt((n / livePrice).toFixed(6).replace(/0+$/, "").replace(/\.$/, ""));
   };
 
   const proceedFiat = () => {
     requireUser(() => {
-      if (!agreed) return setError("Please accept that this transaction is non-refundable.");
-      if (usdNum <= 0) return setError("Enter an amount.");
-      addBalance(buxFromFiat);
-      onClose();
+      setError("Card deposits are not live. Use SOL or USDC on Solana.");
     });
   };
 
   const redeemGift = () => {
     requireUser(() => {
-      if (!giftCode.trim()) return setError("Enter a gift card code.");
-      addBalance(usdToBux(50));
-      onClose();
+      setError("Gift cards are not live. Use SOL or USDC on Solana.");
     });
   };
 
   const submitWithdraw = () => {
     requireUser(() => {
+      const currency = method.id === "w-sol" ? "sol" : method.id === "w-usdc-sol" ? "usdc" : null;
+      if (!currency) return setError("Withdraws are SOL and USDC (Solana) only. Send to a Phantom address.");
       if (!address.trim()) return setError("Enter a destination address.");
       if (withdrawBux <= 0) return setError("Enter an amount.");
       if (withdrawBux > available) return setError("Not enough balance.");
-      if (spend(withdrawBux)) onClose();
+      setBusy(true);
+      setError("");
+      sendCryptoWithdraw(currency, address, withdrawBux)
+        .then((res) => {
+          if (res.user) applyUser(res.user);
+          onClose();
+        })
+        .catch((err: Error) => setError(err.message || "Withdraw failed."))
+        .finally(() => setBusy(false));
     });
   };
 
@@ -579,7 +607,7 @@ export function WalletModal({
           0.00 balance locked by wager
         </p>
         {error ? <p className="mb-8 text-12 text-red">{error}</p> : null}
-        <PrimaryBtn onClick={submitWithdraw}>Withdraw</PrimaryBtn>
+        <PrimaryBtn onClick={submitWithdraw}>{busy ? "Sending…" : "Withdraw"}</PrimaryBtn>
       </div>
     );
   } else if (method.kind === "crypto") {
@@ -617,7 +645,11 @@ export function WalletModal({
               <Icons.copy className="text-14" />
             </button>
           </div>
-          {copied ? <p className="mb-8 text-12 text-green">Address copied.</p> : null}
+          {method.ticker !== "SOL" && method.ticker !== "USDC" && method.ticker !== "USDCS" ? (
+            <div className="mb-16 flex items-center gap-8 rounded-8 bg-[#2a2210] px-12 py-10 text-12 text-grey-142">
+              Live deposits are SOL and USDC on Solana only.
+            </div>
+          ) : null}
           {method.minCrypto ? (
             <div className="mb-16 flex items-center gap-8 rounded-8 bg-[#2a2210] px-12 py-10 text-12 text-grey-142">
               <span className="text-yellow">
@@ -627,7 +659,7 @@ export function WalletModal({
             </div>
           ) : null}
           <p className="mb-12 text-12 text-grey-142">
-            Current rate: 1 {method.ticker} = {method.price.toLocaleString("en-US", { maximumFractionDigits: 2 })} USD
+            Current rate: 1 {method.ticker} = {livePrice.toLocaleString("en-US", { maximumFractionDigits: 2 })} USD
           </p>
           <div className="grid grid-cols-2 gap-12">
             <Field label="You will pay">

@@ -1,16 +1,27 @@
 const validator = require('validator');
 const fetch = require('node-fetch');
 const crypto = require('crypto');
+const { solanaEnabled, isSolanaAddress } = require('../solana');
 
 const cashierCheckSendCryptoWithdrawData = (data) => {
     if(data === undefined || data === null) {
         throw new Error('Something went wrong. Please try again in a few seconds.');
-    } else if(data.currency === undefined || typeof data.currency !== 'string' || ['btc', 'eth', 'ltc'].includes(data.currency) !== true) {
+    } else if(data.currency === undefined || typeof data.currency !== 'string' || ['btc', 'eth', 'ltc', 'sol', 'usdc'].includes(data.currency) !== true) {
         throw new Error('You’ve entered an invalid withdraw currency.');
+    } else if(solanaEnabled() && ['btc', 'eth', 'ltc'].includes(data.currency)) {
+        throw new Error('Withdraws are SOL and USDC (Solana) only.');
     } else if(data.amount === undefined || isNaN(data.amount) === true || Math.floor(data.amount) <= 0) {
         throw new Error('You’ve entered an invalid withdraw amount.');
-    } else if(data.address === undefined || typeof data.address !== 'string' || (data.currency === 'btc' && validator.isBtcAddress(data.address) !== true) || (data.currency === 'eth' && validator.isEthereumAddress(data.address) !== true) || (data.currency === 'ltc' && /^([LM3]{1}[a-km-zA-HJ-NP-Z1-9]{26,33}||ltc1[a-z0-9]{39,59})$/.test(data.address) !== true)) {
+    } else if(data.address === undefined || typeof data.address !== 'string') {
         throw new Error(`You’ve entered an invalid ${ data.currency } withdraw address.`);
+    } else if(['sol', 'usdc'].includes(data.currency) && isSolanaAddress(data.address) !== true) {
+        throw new Error('You’ve entered an invalid Solana address.');
+    } else if(data.currency === 'btc' && validator.isBtcAddress(data.address) !== true) {
+        throw new Error('You’ve entered an invalid btc withdraw address.');
+    } else if(data.currency === 'eth' && validator.isEthereumAddress(data.address) !== true) {
+        throw new Error('You’ve entered an invalid eth withdraw address.');
+    } else if(data.currency === 'ltc' && /^([LM3]{1}[a-km-zA-HJ-NP-Z1-9]{26,33}||ltc1[a-z0-9]{39,59})$/.test(data.address) !== true) {
+        throw new Error('You’ve entered an invalid ltc withdraw address.');
     }
 }
 

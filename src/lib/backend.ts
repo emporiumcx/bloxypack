@@ -177,6 +177,7 @@ let unbox: Socket | null = null;
 let battles: Socket | null = null;
 let blackjack: Socket | null = null;
 let roulette: Socket | null = null;
+let cashier: Socket | null = null;
 
 export type BattleBox = { _id: string; slug: string; name: string; amount: number };
 export type BattleItem = {
@@ -387,6 +388,7 @@ export function connectSockets(handlers: {
   battles = ns("/battles");
   blackjack = ns("/blackjack");
   roulette = ns("/roulette");
+  cashier = ns("/cashier");
 
   general.on("user", (payload: { user?: ServerUser } | ServerUser) => {
     const raw = payload && typeof payload === "object" && "user" in payload ? payload.user : payload;
@@ -453,8 +455,22 @@ export function connectSockets(handlers: {
 }
 
 export function disconnectSockets() {
-  for (const s of [general, mines, towers, dice, unbox, battles, blackjack, roulette]) s?.disconnect();
-  general = mines = towers = dice = unbox = battles = blackjack = roulette = null;
+  for (const s of [general, mines, towers, dice, unbox, battles, blackjack, roulette, cashier]) s?.disconnect();
+  general = mines = towers = dice = unbox = battles = blackjack = roulette = cashier = null;
+}
+
+export async function getCryptoData() {
+  if (!cashier) throw new Error("Cashier is not connected.");
+  return emit<{ addresses: Record<string, string>; prices: Record<string, { price: number; fee: number }> }>(cashier, "getCryptoData", {});
+}
+
+export async function sendCryptoWithdraw(currency: "sol" | "usdc", address: string, amountCoins: number) {
+  if (!cashier) throw new Error("Cashier is not connected.");
+  return emit<{ user: ServerUser }>(cashier, "sendCryptoWithdraw", {
+    currency,
+    address: address.trim(),
+    amount: Math.round(amountCoins * 1000),
+  });
 }
 
 export async function sendChatMessage(message: string) {

@@ -88,34 +88,43 @@ const adminSendCashierCryptoActionSocket = async(io, socket, user, data, callbac
             let promises = [];
 
             if(data.action === 'approve') {
-                // Add update crypto transaction query to promises array
-                promises = [
-                    CryptoTransaction.findByIdAndUpdate(transactionDatabase._id, {
-                        'data.transaction': data.transactionHash,
-                        state: 'completed'
-                    }, { new: true }).select('state').lean()
-                ];
+                const completed = await CryptoTransaction.findOneAndUpdate({
+                    _id: transactionDatabase._id,
+                    type: 'withdraw',
+                    state: 'pending'
+                }, {
+                    'data.transaction': data.transactionHash,
+                    state: 'completed'
+                }, { new: true }).select('state').lean();
+                if (!completed) {
+                    throw new Error('Your provided transaction is not available.');
+                }
+                promises = [Promise.resolve(completed)];
             } else {
-                // Add update crypto transaction and user query to promises array
-                promises = [
-                    CryptoTransaction.findByIdAndUpdate(transactionDatabase._id, {
-                        state: 'canceled'
-                    }, { new: true }).select('state').lean(),
-                    User.findByIdAndUpdate(transactionDatabase.user, {
-                        $inc: {
-                            balance: transactionDatabase.amount,
-                            'stats.total.withdraw': -transactionDatabase.amount,
-                            'stats.crypto.withdraw': -transactionDatabase.amount
-                        }
-                    }, { new: true }).select('balance xp stats rakeback mute ban verifiedAt updatedAt').lean()
-                ];
+                const canceled = await CryptoTransaction.findOneAndUpdate({
+                    _id: transactionDatabase._id,
+                    type: 'withdraw',
+                    state: 'pending'
+                }, {
+                    state: 'canceled'
+                }, { new: true }).select('state').lean();
+                if (!canceled) {
+                    throw new Error('Your provided transaction is not available.');
+                }
+                const refunded = await User.findByIdAndUpdate(transactionDatabase.user, {
+                    $inc: {
+                        balance: transactionDatabase.amount,
+                        'stats.withdraw': -transactionDatabase.amount
+                    }
+                }, { new: true }).select('balance xp stats rakeback mute ban verifiedAt updatedAt').lean();
+                promises = [Promise.resolve(canceled), Promise.resolve(refunded)];
             }
 
             // Execute promises array queries
             const dataDatabase = await Promise.all(promises);
 
             // Send updated user to frontend
-            if(data.action === 'cancel') { io.of('/general').to(dataDatabase[1]._id.toString()).emit('user', { user: dataDatabase[1] }); }
+            if(data.action === 'cancel' && dataDatabase[1]) { io.of('/general').to(dataDatabase[1]._id.toString()).emit('user', { user: dataDatabase[1] }); }
 
             callback({ success: true, transaction: dataDatabase[0] });
 

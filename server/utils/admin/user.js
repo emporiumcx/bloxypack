@@ -46,16 +46,49 @@ const adminCheckGetUserGamesData = (data) => {
     }
 }
 
-const  adminCheckSendUserValueData = (data) => {
+const ADMIN_USER_SETTINGS = [
+    'rank',
+    'flags',
+    'stats.deposit',
+    'vault.amount',
+    'stats.withdraw',
+    'limits.blockRain',
+    'limits.blockTip',
+    'limits.limitTip',
+    'limits.blockSponsor',
+    'limits.blockLeaderboard',
+    'leaderboard.points'
+];
+const ADMIN_RANKS = ['user', 'mod', 'admin'];
+const FILL_MAX_DISPLAY = 1000000;
+
+const adminCheckSendUserValueData = (data) => {
     if(data === undefined || data === null) {
         throw new Error('Something went wrong. Please try again in a few seconds.');
     } else if(data.userId === undefined || data.userId === null || typeof data.userId !== 'string' || validator.isMongoId(data.userId) !== true) {
         throw new Error('Your entered user id is invalid.');
-    } else if(data.setting === undefined || typeof data.setting !== 'string' || ['rank', 'flags', 'stats.deposit', 'vault.amount', 'stats.withdraw', 'limits.blockRain', 'limits.blockTip', 'limits.limitTip', 'limits.blockSponsor', 'limits.blockLeaderboard', 'leaderboard.points'].includes(data.setting) !== true) {
+    } else if(data.setting === undefined || typeof data.setting !== 'string' || ADMIN_USER_SETTINGS.includes(data.setting) !== true) {
         throw new Error('Your entered setting is invalid.');
     } else if(data.value === undefined) {
         throw new Error('Your entered value is invalid.');
+    } else if(data.setting === 'rank' && (typeof data.value !== 'string' || ADMIN_RANKS.includes(data.value) !== true)) {
+        throw new Error('Your entered rank is invalid.');
     }
+}
+
+const adminParseFillCommand = (message) => {
+    const match = String(message || '').trim().match(/^\/fill\s+(\S+)\s+([0-9]+(?:\.[0-9]{1,2})?)$/i);
+    if (!match) {
+        throw new Error('Use /fill username amount');
+    }
+    const amountDisplay = Number(match[2]);
+    if (!Number.isFinite(amountDisplay) || amountDisplay <= 0 || amountDisplay > FILL_MAX_DISPLAY) {
+        throw new Error(`Fill amount must be between 0.01 and ${FILL_MAX_DISPLAY}.`);
+    }
+    return {
+        username: match[1],
+        amountMilli: Math.floor(amountDisplay * 1000)
+    };
 }
 
 const adminCheckSendUserBalanceData = (data) => {
@@ -122,6 +155,7 @@ const adminFormatUserSort = (value) => {
 }
 
 module.exports = {
+    ADMIN_RANKS,
     adminCheckGetUserListData,
     adminCheckGetUserDataData,
     adminCheckGetUserDataUser,
@@ -133,5 +167,6 @@ module.exports = {
     adminCheckSendUserMuteData,
     adminCheckSendUserBanData,
     adminCheckSendUserUnBanData,
-    adminFormatUserSort
+    adminFormatUserSort,
+    adminParseFillCommand
 }

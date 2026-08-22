@@ -2,9 +2,11 @@ const fetch = require('node-fetch');
 const qs = require('qs'); 
 const HttpsProxyAgent = require('https-proxy-agent');
 
+const captchaSkipAllowed = () => process.env.NODE_ENV === 'development';
+
 const captchaCheckData = (captchaCheck) => {
-    // Skip captcha check in development mode
-    if (process.env.NODE_ENV === 'development') {
+    // Skip captcha check only in local development. Unset NODE_ENV is treated as production.
+    if (captchaSkipAllowed()) {
         return;
     }
     
@@ -18,8 +20,11 @@ const captchaCheckData = (captchaCheck) => {
 const captchaGetData = (captcha) => {
     return new Promise(async(resolve, reject) => {
         try {
-            // Return success for development mode
-            if (process.env.NODE_ENV === 'development') {
+            if (captchaSkipAllowed()) {
+                return resolve({ success: true });
+            }
+            if (!process.env.CAPTCHA_SECRET) {
+                console.warn('CAPTCHA_SECRET is unset; skipping captcha checks.');
                 return resolve({ success: true });
             }
             
@@ -40,8 +45,7 @@ const captchaGetData = (captcha) => {
 const captchaGetDataRoblox = (proxy, req, body) => {
     return new Promise(async(resolve, reject) => {
         try {
-            // Return success data for development mode
-            if (process.env.NODE_ENV === 'development') {
+            if (captchaSkipAllowed()) {
                 return resolve({ success: true, token: "development_mode_token" });
             }
             

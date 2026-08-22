@@ -11,8 +11,17 @@ const callbackCheckPostCoinpaymentsData = (headers, data) => {
     }
 }
 
+const hmacEqual = (left, right) => {
+    const a = Buffer.from(String(left), 'utf8');
+    const b = Buffer.from(String(right), 'utf8');
+    if (a.length !== b.length) {
+        return false;
+    }
+    return crypto.timingSafeEqual(a, b);
+}
+
 const callbackCheckPostCoinpaymentsHmac = (hmac, headers) => {
-    if(hmac.toString() !== headers.hmac.toString()) {
+    if(!hmacEqual(hmac, headers.hmac)) {
         throw new Error('Your provided hmac is invalid.');
     }
 }
@@ -36,7 +45,7 @@ const callbackCheckPostSkinifyData = (data) => {
 }
 
 const callbackCheckPostSkinifyToken = (token, data) => {
-    if(token.toString() !== data.token_md5.toString()) {
+    if(!hmacEqual(token, data.token_md5)) {
         throw new Error('Your provided token is invalid.');
     }
 }
@@ -56,7 +65,7 @@ const callbackCheckPostZebrasmarketData = (data) => {
 }
 
 const callbackCheckPostZebrasmarketSignature = (signature, data) => {
-    if(signature.toString() !== data.signature.toString()) {
+    if(!hmacEqual(signature, data.signature)) {
         throw new Error('Your provided signature is invalid.');
     }
 }

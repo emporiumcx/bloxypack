@@ -1,4 +1,17 @@
-const dropsData = require('../../../src/lib/drops-data.json');
+const fs = require('fs');
+const path = require('path');
+
+const dropsData = require((() => {
+    const candidates = [
+        path.join(__dirname, '../../data/drops-data.json'),
+        path.join(__dirname, '../../../src/lib/drops-data.json')
+    ];
+    const found = candidates.find((file) => fs.existsSync(file));
+    if (!found) {
+        throw new Error('drops-data.json is missing from the API deploy.');
+    }
+    return found;
+})());
 
 const BONUS_CASES = [
     { kind: 'bonus', tier: 1, xp: 10000, slug: 'bonus-1' },

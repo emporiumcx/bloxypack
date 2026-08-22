@@ -35,6 +35,8 @@ export function CaseCard({
           className="absolute inset-0 z-1 m-auto h-[82%] w-[82%] object-contain transition-transform duration-300 group-hover:rotate-[4deg] group-hover:scale-[1.06] group-active:rotate-[4deg] group-active:scale-[1.06]"
           alt=""
           src={caseImage(item)}
+          loading={index != null && index < 12 ? "eager" : "lazy"}
+          decoding="async"
         />
       </div>
       <div className="relative z-1 grid w-full grid-cols-1 gap-8">

@@ -45,6 +45,8 @@ export function LiveDrops() {
                       height={36}
                       className="relative h-36 w-36 object-contain"
                       src={itemImage(item.id)}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col gap-4">

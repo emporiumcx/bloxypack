@@ -11,12 +11,12 @@ import { getRewardsData, sendRakebackClaim, type RewardsInfo } from "@/lib/backe
 import { caseImage, getCase } from "@/lib/catalog";
 import { BONUS_CASES, DAILY_CASES, bonusProgress, bonusTierForXp } from "@/lib/rewards";
 
-const HEADER_CASES = ["batman", "diamonds", "eclipse"] as const;
+const HEADER_CASES = ["bronze-case", "gold-case", "diamond-case"] as const;
 
 const RAKEBACK = [
-  { name: "Daily Rakeback", kind: "daily" as const, img: "/img/rewards/rakeback/daily.png" },
-  { name: "Weekly Rakeback", kind: "weekly" as const, img: "/img/rewards/rakeback/weekly.png" },
-  { name: "Monthly Rakeback", kind: "monthly" as const, img: "/img/rewards/rakeback/monthly.png" },
+  { name: "Daily Rakeback", kind: "daily" as const, img: "/img/rewards/rakeback/daily.png", imgClass: "h-[72%] w-[72%]" },
+  { name: "Weekly Rakeback", kind: "weekly" as const, img: "/img/rewards/rakeback/weekly.png", imgClass: "h-[78%] w-[78%]" },
+  { name: "Monthly Rakeback", kind: "monthly" as const, img: "/img/rewards/rakeback/monthly.png", imgClass: "h-full w-full" },
 ];
 
 function pad(n: number) {
@@ -168,8 +168,8 @@ export default function RewardsPage() {
             <img alt="" className="animate-floaty -mt-16 w-24" src="/img/rewards/gift.svg" />
             <h2 className="@sm/page:text-24 text-18 text-white">Rewards</h2>
           </div>
-          <div className="relative hidden h-[120px] w-[280px] overflow-hidden sm:block">
-            <div className="absolute -bottom-28 right-0 flex h-[148px] w-[280px] items-end justify-center">
+          <div className="relative hidden h-[120px] w-[240px] overflow-hidden sm:block">
+            <div className="absolute -bottom-16 right-0 flex h-[132px] w-[240px] items-end justify-center">
               {HEADER_CASES.map((slug, i) => {
                 const item = getCase(slug);
                 const front = i === 1;
@@ -177,8 +177,8 @@ export default function RewardsPage() {
                   <Link
                     key={slug}
                     href={`/cases/${slug}`}
-                    className={`relative transition-transform duration-200 hover:-translate-y-6 hover:scale-105 ${
-                      front ? "z-20 -mx-28 w-[148px]" : "z-10 w-[124px]"
+                    className={`relative transition-transform duration-200 hover:-translate-y-4 hover:scale-105 ${
+                      front ? "z-20 -mx-20 w-[108px]" : "z-10 w-[92px]"
                     } ${i === 0 ? "rotate-[-8deg]" : i === 2 ? "rotate-[8deg]" : ""}`}
                   >
                     <img alt={item?.name ?? slug} className="w-full object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.45)]" src={caseImage(item)} />
@@ -200,10 +200,10 @@ export default function RewardsPage() {
               <div key={r.name} className="group relative w-full overflow-hidden rounded-12 border-2 border-grey-58 bg-grey-39 transition-transform duration-300 ease-out">
                 <div className="relative flex w-full items-center gap-16 p-8">
                   <div className="relative flex h-[92px] w-[92px] shrink-0 items-center justify-center">
-                    <img alt="" className={`h-full w-full object-contain drop-shadow-[0_6px_10px_rgba(0,0,0,0.45)] transition-all duration-300 ${claimable ? "" : "grayscale"}`} src={r.img} />
+                    <img alt="" className={`${r.imgClass} object-contain drop-shadow-[0_6px_10px_rgba(0,0,0,0.45)] transition-all duration-300 ${claimable ? "" : "grayscale"}`} src={r.img} />
                   </div>
-                  <div className="flex flex-1 flex-col gap-8">
-                    <h4 className="text-balance text-14 text-white">{r.name}</h4>
+                  <div className="flex h-[92px] min-w-0 flex-1 flex-col justify-between gap-8">
+                    <h4 className="text-14 leading-[1.2] text-white">{r.name}</h4>
                     {claimable ? <Bux value={rakeback} size="sm" /> : null}
                     <div className="flex w-full">
                       {claimable ? (
@@ -211,7 +211,7 @@ export default function RewardsPage() {
                           {claiming ? "..." : "Claim"}
                         </GreenButton>
                       ) : (
-                        <button className="relative flex h-40 items-center justify-center rounded-6 bg-grey-28 px-16" type="button">
+                        <button className="relative flex h-40 w-full items-center justify-center rounded-6 bg-grey-28 px-16" type="button">
                           <RakebackTimer kind={r.kind} />
                         </button>
                       )}

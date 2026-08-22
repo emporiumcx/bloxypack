@@ -27,7 +27,7 @@ const tacticSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "BloxyWild | Premium Case Opening Site",
+  title: "BloxyPack | Premium Case Opening Site",
   description: "Crack cases. Win limiteds. Cash out crypto.",
   icons: { icon: "/img/icon.png" },
 };

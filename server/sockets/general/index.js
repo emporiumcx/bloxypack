@@ -73,6 +73,7 @@ module.exports = (io) => {
         require('./promo')(io, socket);
         require('./rain')(io, socket);
         require('./leaderboard')(io, socket);
+        require('./giveaway')(io, socket);
 
         socket.on('disconnect', async() => {
             const identifier = socket.handshake.headers['cf-connecting-ip'] || socket.conn.remoteAddress;

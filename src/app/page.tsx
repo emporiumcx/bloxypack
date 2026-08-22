@@ -108,7 +108,7 @@ export default function HomePage() {
 
       <div className="@sm/page:gap-20 @sm/page:py-0 grid w-full grid-cols-1 gap-12 py-24">
         <div className="grid w-full grid-cols-[1fr_auto] items-center gap-10">
-          <h2 className="@sm/page:text-20 text-16 text-white">BloxyWild Originals</h2>
+          <h2 className="@sm/page:text-20 text-16 text-white">BloxyPack Originals</h2>
           <div className="grid w-full grid-cols-2 gap-8">
             <button
               type="button"

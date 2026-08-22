@@ -45,7 +45,7 @@ async function start() {
 
     const PORT = Number(process.env.PORT || process.env.SERVER_PORT || 5000);
     server.listen(PORT, '0.0.0.0', () => {
-        console.log(`BloxyWild server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}. URLS: ${frontendUrls.join(', ')}`);
+        console.log(`BloxyPack server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}. URLS: ${frontendUrls.join(', ')}`);
     });
 }
 

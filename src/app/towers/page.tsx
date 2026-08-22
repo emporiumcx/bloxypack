@@ -106,16 +106,44 @@ function DifficultySelect({
 }
 
 function HowToPlay({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [leaving, setLeaving] = useState(false);
+
+  useEffect(() => {
+    if (open) setLeaving(false);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  function requestClose() {
+    if (leaving) return;
+    setLeaving(true);
+    window.setTimeout(onClose, 220);
+  }
+
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-16" onClick={onClose}>
+    <div className={`fixed inset-0 z-50 flex items-center justify-center p-16 ${leaving ? "pointer-events-none" : ""}`}>
+      <button
+        type="button"
+        aria-label="close overlay"
+        className={`${leaving ? "animate-overlay-out" : "animate-overlay-in"} absolute inset-0 bg-black/60 backdrop-blur-[8px]`}
+        onClick={leaving ? undefined : requestClose}
+      />
       <div
-        className="w-full max-w-420 rounded-12 border border-grey-58 bg-grey-39 p-20"
-        onClick={(e) => e.stopPropagation()}
+        className={`relative z-10 w-full max-w-420 rounded-12 border border-grey-58 bg-grey-39 p-20 shadow-[0_24px_80px_rgba(0,0,0,0.45)] ${
+          leaving ? "animate-modal-out" : "animate-modal-in"
+        }`}
       >
         <div className="mb-12 flex items-center justify-between">
           <h2 className="ui-label text-14 text-white">How to play</h2>
-          <button type="button" onClick={onClose} className="text-14 text-grey-142 hover:text-white">
+          <button type="button" onClick={requestClose} className="text-14 text-grey-142 hover:text-white">
             Close
           </button>
         </div>
@@ -399,7 +427,7 @@ export default function TowersPage() {
               type="button"
               aria-label="How to play"
               onClick={() => setHowTo(true)}
-              className="flex h-32 w-32 items-center justify-center rounded-6 text-icons-secondary hover:bg-grey-47 hover:text-white"
+              className="toolbar-toggle flex h-32 w-32 items-center justify-center rounded-6 text-icons-secondary hover:bg-grey-47 hover:text-white"
             >
               <span className="flex size-16 items-center justify-center rounded-full border border-current text-11 font-semibold">i</span>
             </button>
@@ -411,8 +439,8 @@ export default function TowersPage() {
               aria-label="Toggle turbo mode"
               aria-pressed={turbo}
               onClick={() => setTurbo((v) => !v)}
-              className={`flex h-32 w-32 items-center justify-center rounded-6 ${
-                turbo ? "bg-gradient-to-b from-green to-green-2 text-white" : "text-icons-secondary hover:bg-grey-47 hover:text-white"
+              className={`toolbar-toggle flex h-32 w-32 items-center justify-center rounded-6 ${
+                turbo ? "is-on bg-gradient-to-b from-green to-green-2 text-white" : "text-icons-secondary hover:bg-grey-47 hover:text-white"
               }`}
             >
               <Icons.bolt className="text-14" />

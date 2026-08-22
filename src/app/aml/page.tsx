@@ -3,7 +3,7 @@ export default function AmlPage() {
     <article className="mx-auto max-w-[720px] space-y-12 text-14 leading-7 text-grey-190">
       <h1 className="text-24 font-semibold text-white">AML</h1>
       <p>
-        BloxyWild may request identity verification before large deposits or withdrawals. We monitor unusual activity,
+        BloxyPack may request identity verification before large deposits or withdrawals. We monitor unusual activity,
         multi-accounting, and third-party payment use.
       </p>
       <p>

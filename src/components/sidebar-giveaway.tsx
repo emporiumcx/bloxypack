@@ -3,66 +3,14 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { Icons } from "./icons";
-
-type Recurrence = "daily" | "weekly" | "monthly";
-
-const THEME = {
-  daily: {
-    badge: "bg-[#14d96b]/10 text-[#14d96b]",
-    glow: "bg-[#14d96b]",
-    fill: "fill-[#14d96b]",
-    dot: "bg-[#14d96b]",
-  },
-  weekly: {
-    badge: "bg-[#f81f48]/10 text-[#f81f48]",
-    glow: "bg-[#f81f48]",
-    fill: "fill-[#f81f48]",
-    dot: "bg-[#f81f48]",
-  },
-  monthly: {
-    badge: "bg-[#ffae3a]/10 text-[#ffae3a]",
-    glow: "bg-[#ffae3a]",
-    fill: "fill-[#ffae3a]",
-    dot: "bg-[#ffae3a]",
-  },
-} as const;
-
-const GIVEAWAYS: {
-  id: Recurrence;
-  label: string;
-  amount: number;
-  image: string;
-}[] = [
-  { id: "daily", label: "Daily", amount: 242.3, image: "/cdn/packs/daily-1.webp" },
-  { id: "weekly", label: "Weekly", amount: 2871.76, image: "/cdn/cases/prestige.webp" },
-  { id: "monthly", label: "Monthly", amount: 10392.86, image: "/cdn/cases/oil-baron.webp" },
-];
-
-function pad(n: number) {
-  return String(Math.max(0, n)).padStart(2, "0");
-}
-
-function remainingParts(kind: Recurrence) {
-  const now = Date.now();
-  const d = new Date();
-  let end: number;
-  if (kind === "daily") {
-    end = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 1);
-  } else if (kind === "weekly") {
-    const day = d.getUTCDay();
-    const daysToAdd = (8 - day) % 7 || 7;
-    end = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + daysToAdd);
-  } else {
-    end = Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1);
-  }
-  const total = Math.max(0, Math.floor((end - now) / 1000));
-  return {
-    days: Math.floor(total / 86400),
-    hours: Math.floor((total % 86400) / 3600),
-    minutes: Math.floor((total % 3600) / 60),
-    seconds: total % 60,
-  };
-}
+import {
+  GIVEAWAY_THEME,
+  SIDEBAR_GIVEAWAYS,
+  formatGiveawayAmount,
+  padGiveaway,
+  remainingParts,
+  type GiveawayRecurrence,
+} from "@/lib/giveaways";
 
 function StarBadgeIcon() {
   return (
@@ -80,14 +28,14 @@ function CrownIcon() {
   );
 }
 
-function BadgeIcon({ id }: { id: Recurrence }) {
+function BadgeIcon({ id }: { id: GiveawayRecurrence }) {
   if (id === "weekly") return <StarBadgeIcon />;
   if (id === "monthly") return <CrownIcon />;
   return <Icons.bolt className="size-14" />;
 }
 
 function GiveawayAmount({ amount }: { amount: number }) {
-  const [whole, frac] = amount.toFixed(2).split(".");
+  const { whole, frac } = formatGiveawayAmount(amount);
   return (
     <div className="tactic-title-sm inline-block w-full whitespace-nowrap text-center text-white">
       <span className="mr-3">
@@ -97,13 +45,13 @@ function GiveawayAmount({ amount }: { amount: number }) {
           className="mb-[0.1em] inline-block size-[1em] object-contain align-middle"
         />
       </span>
-      {Number(whole).toLocaleString("en-US")}
+      {whole}
       <span className="text-grey-142">.{frac}</span>
     </div>
   );
 }
 
-function Countdown({ kind }: { kind: Recurrence }) {
+function Countdown({ kind }: { kind: GiveawayRecurrence }) {
   const [parts, setParts] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
@@ -127,7 +75,7 @@ function Countdown({ kind }: { kind: Recurrence }) {
           key={cell.label}
           className="flex flex-col items-center justify-center rounded-6 border border-grey-58 bg-grey-34/80 px-4 py-6 backdrop-blur-sm"
         >
-          <span className="text-13 font-bold tabular-nums text-white">{pad(cell.value)}</span>
+          <span className="text-13 font-bold tabular-nums text-white">{padGiveaway(cell.value)}</span>
           <span className="text-[9px] uppercase leading-none text-grey-142">{cell.label}</span>
         </div>
       ))}
@@ -137,16 +85,16 @@ function Countdown({ kind }: { kind: Recurrence }) {
 
 export function SidebarGiveaway() {
   const [index, setIndex] = useState(0);
-  const active = GIVEAWAYS[index] ?? GIVEAWAYS[0];
-  const theme = THEME[active.id];
+  const active = SIDEBAR_GIVEAWAYS[index] ?? SIDEBAR_GIVEAWAYS[0];
+  const theme = GIVEAWAY_THEME[active.id];
 
   useEffect(() => {
-    if (GIVEAWAYS.length <= 1) return;
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % GIVEAWAYS.length), 5000);
+    if (SIDEBAR_GIVEAWAYS.length <= 1) return;
+    const id = window.setInterval(() => setIndex((i) => (i + 1) % SIDEBAR_GIVEAWAYS.length), 5000);
     return () => window.clearInterval(id);
   }, []);
 
-  const slides = useMemo(() => GIVEAWAYS, []);
+  const slides = useMemo(() => SIDEBAR_GIVEAWAYS, []);
 
   return (
     <div className="flex w-full flex-col gap-8">
@@ -155,11 +103,12 @@ export function SidebarGiveaway() {
         <div className="relative z-1">
           {slides.map((item, i) => {
             const on = i === index;
-            const look = THEME[item.id];
+            const look = GIVEAWAY_THEME[item.id];
+            const image = item.prizes[0]?.image ?? "";
             return (
               <Link
                 key={item.id}
-                href="/rewards"
+                href="/rewards/giveaway"
                 aria-hidden={!on}
                 tabIndex={on ? 0 : -1}
                 className={`group inset-0 flex flex-col gap-8 p-12 pb-4 transition-opacity ease-out ${
@@ -183,11 +132,13 @@ export function SidebarGiveaway() {
                     src="/img/bloxypack-mark.png"
                     className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-4/5 w-auto max-w-[45%] -translate-x-1/2 -translate-y-1/2 opacity-15 blur-[2px]"
                   />
-                  <img
-                    alt=""
-                    src={item.image}
-                    className="relative z-1 h-auto max-h-88 w-auto max-w-[75%] animate-float object-contain transition-transform duration-500 ease-out group-hover:scale-105"
-                  />
+                  <div className="relative z-1 -rotate-12">
+                    <img
+                      alt=""
+                      src={image}
+                      className="h-auto max-h-88 w-auto max-w-[75%] animate-float object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                  </div>
                 </div>
                 <Countdown kind={item.id} />
                 <div className="ui-label text-center text-10 text-grey-142">Giveaway</div>

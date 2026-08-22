@@ -10,7 +10,7 @@ import { useStore, useBalanceHold } from "./providers";
 import { caseImage, caseVolatility, DROP_RARITY, dropsForCase, itemImage, packGlow, pickDrop, type CaseDrop, type CaseItem, type DropColor } from "@/lib/catalog";
 import { VolatilityScale } from "@/components/volatility-scale";
 import { isRewardSlug } from "@/lib/rewards";
-import { sendRewardOpen } from "@/lib/backend";
+import { sendGiveawayOpen, sendRewardOpen, type RewardsInfo } from "@/lib/backend";
 import { playSfx, preloadSfx, unlockSfx } from "@/lib/sfx";
 
 const RARITY: Record<DropColor, string> = {
@@ -537,7 +537,21 @@ function CasesSpinner({
   );
 }
 
-export function CaseOpening({ item }: { item: CaseItem }) {
+export function CaseOpening({
+  item,
+  variant = "page",
+  canOpen = true,
+  giveawayWinId,
+  onClose,
+  onOpened,
+}: {
+  item: CaseItem;
+  variant?: "page" | "modal";
+  canOpen?: boolean;
+  giveawayWinId?: string;
+  onClose?: () => void;
+  onOpened?: (rewards?: RewardsInfo) => void;
+}) {
   const { user, openModal, applyUser, unboxBet, addBalance } = useStore();
   const { begin: holdBalance, end: revealBalance } = useBalanceHold();
   const [qty, setQty] = useState("1");
@@ -552,7 +566,8 @@ export function CaseOpening({ item }: { item: CaseItem }) {
     return [front, ...rest.sort((a, b) => b.value - a.value || a.minTicket - b.minTicket)];
   }, [drops]);
   const reward = isRewardSlug(item.slug);
-  const n = reward ? 1 : Number(qty);
+  const freeOpen = reward || Boolean(giveawayWinId);
+  const n = freeOpen ? 1 : Number(qty);
   const cfg = spinConfig(n, speed);
   const [rows, setRows] = useState<RowState[]>(() => {
     const start = spinConfig(1, "fast");
@@ -594,7 +609,8 @@ export function CaseOpening({ item }: { item: CaseItem }) {
   async function open(demo: boolean) {
     if (spinning) return;
     if (!demo && !user) return openModal("login");
-    if (!demo && !reward && user && user.balance < cost) return openModal("deposit");
+    if (!demo && reward && !canOpen && !giveawayWinId) return;
+    if (!demo && !freeOpen && user && user.balance < cost) return openModal("deposit");
     if (!drops.length) return;
 
     const next: RowState[] = [];
@@ -610,9 +626,15 @@ export function CaseOpening({ item }: { item: CaseItem }) {
     } else {
       holdBalance();
       try {
-        const res = reward ? await sendRewardOpen(item.slug) : await unboxBet(item.slug, n);
-        if (!reward) addBalance(-cost);
+        const res = giveawayWinId
+          ? await sendGiveawayOpen(giveawayWinId)
+          : reward
+            ? await sendRewardOpen(item.slug)
+            : await unboxBet(item.slug, n);
+        if (!freeOpen) addBalance(-cost);
         applyUser(res.user);
+        if (reward && "rewards" in res && res.rewards) onOpened?.(res.rewards);
+        else if (giveawayWinId) onOpened?.();
         for (const game of res.games) {
           const hit =
             drops.find((d) => d.id === game.item.dropId) ??
@@ -637,23 +659,38 @@ export function CaseOpening({ item }: { item: CaseItem }) {
     playSfx("spin_start");
   }
 
-  return (
+  const body = (
     <div className="@xl/page:gap-32 @bt/page:gap-24 grid w-full grid-cols-1 gap-16">
-      <div className="@sm/page:px-0 @sm/page:py-0 relative w-full py-24">
+      <div className="@sm/page:px-0 @sm/page:py-0 relative w-full py-8 sm:py-16">
         <div className="@sm/page:grid-cols-[auto_1fr] grid w-full grid-cols-[1fr_auto_auto] gap-10">
           <div className="flex justify-start">
-            <a
-              href={reward ? "/rewards" : "/cases"}
-              aria-label={reward ? "Back to rewards" : "Back to cases"}
-              className="group/button relative flex h-32 items-center justify-center rounded-6 bg-grey-39 opacity-100 transition-all duration-200 hover:bg-grey-47 active:bg-grey-47"
-            >
-              <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-10">
-                <div className="-ml-2 text-grey-142">
-                  <Icons.chevronLeft className="text-22" />
+            {variant === "modal" ? (
+              <button
+                type="button"
+                aria-label="Close"
+                disabled={spinning}
+                onClick={onClose}
+                className="group/button relative flex h-32 items-center justify-center rounded-6 bg-grey-39 opacity-100 transition-all duration-200 hover:bg-grey-47 active:bg-grey-47 disabled:opacity-40"
+              >
+                <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-10">
+                  <Icons.close className="text-16 text-grey-142" />
+                  <p className="text-14 text-grey-142">Close</p>
                 </div>
-                <p className="text-14 text-grey-142 transition-all duration-300">{reward ? "Back to rewards" : "Back to All Cases"}</p>
-              </div>
-            </a>
+              </button>
+            ) : (
+              <a
+                href={reward ? "/rewards" : "/cases"}
+                aria-label={reward ? "Back to rewards" : "Back to cases"}
+                className="group/button relative flex h-32 items-center justify-center rounded-6 bg-grey-39 opacity-100 transition-all duration-200 hover:bg-grey-47 active:bg-grey-47"
+              >
+                <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-10">
+                  <div className="-ml-2 text-grey-142">
+                    <Icons.chevronLeft className="text-22" />
+                  </div>
+                  <p className="text-14 text-grey-142 transition-all duration-300">{reward ? "Back to rewards" : "Back to All Cases"}</p>
+                </div>
+              </a>
+            )}
           </div>
           <div className="col-span-1 col-start-2 flex w-full justify-end">
             <div className="flex items-center gap-4">
@@ -695,7 +732,7 @@ export function CaseOpening({ item }: { item: CaseItem }) {
 
         <div className="mt-16 flex w-full justify-center">
           <div className="flex max-w-full flex-wrap items-center justify-center gap-12">
-            {reward ? null : (
+            {freeOpen ? null : (
               <div className="w-max">
                 <ChoiceBar
                   value={qty}
@@ -737,13 +774,13 @@ export function CaseOpening({ item }: { item: CaseItem }) {
             <button
               type="button"
               aria-label="Open case"
-              disabled={spinning}
+              disabled={spinning || (reward && !canOpen && !giveawayWinId)}
               onClick={() => open(false)}
               className="group/button relative flex h-40 min-w-220 cursor-pointer items-start justify-center rounded-6 bg-gradient-to-b from-green to-green-2 opacity-100 transition-all duration-200 hover:brightness-110 active:brightness-95 disabled:opacity-40"
             >
               <div className="tr relative flex h-full w-full items-center justify-center gap-4 px-16">
-                {reward ? (
-                  <p className="ui-btn-label text-nowrap text-12 text-grey-190">Open case</p>
+                {freeOpen ? (
+                  <p className="ui-btn-label text-nowrap text-12 text-grey-190">{canOpen || giveawayWinId ? "Open case" : "Locked"}</p>
                 ) : (
                   <div className="grid grid-cols-[auto_auto] items-center gap-4">
                     <p className="ui-btn-label text-nowrap text-12 text-grey-190">Open for</p>
@@ -779,4 +816,22 @@ export function CaseOpening({ item }: { item: CaseItem }) {
       </div>
     </div>
   );
+
+  if (variant === "modal") {
+    return (
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-10 sm:p-16">
+        <button
+          type="button"
+          aria-label="close overlay"
+          className="animate-overlay-in absolute inset-0 bg-black/70 backdrop-blur-[8px]"
+          onClick={spinning ? undefined : onClose}
+        />
+        <div className="animate-modal-in relative z-10 flex max-h-[calc(100vh-32px)] w-[min(1120px,calc(100vw-24px))] flex-col overflow-hidden rounded-12 bg-grey-28 shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
+          <div className="@container/page scrollbar-y min-h-0 flex-1 overflow-y-auto px-12 py-12 sm:px-20 sm:py-16">{body}</div>
+        </div>
+      </div>
+    );
+  }
+
+  return body;
 }

@@ -704,6 +704,44 @@ a > * {
   opacity: 0.2;
 }
 
+.race-grid {
+  pointer-events: none;
+  position: absolute;
+  inset: -48px -96px 0;
+  background-image:
+    linear-gradient(rgba(82, 181, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(82, 181, 255, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+}
+
+.race-particle {
+  pointer-events: none;
+  position: absolute;
+  border-radius: 999px;
+  background: #52b5ff;
+  box-shadow: 0 0 10px rgba(82, 181, 255, 0.85);
+  animation: race-particle-drift linear infinite;
+  opacity: 0;
+}
+
+@keyframes race-particle-drift {
+  0% {
+    transform: translate3d(0, 12px, 0) scale(0.35);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.55;
+  }
+  72% {
+    opacity: 0.28;
+  }
+  100% {
+    transform: translate3d(var(--px), var(--py), 0) scale(1);
+    opacity: 0;
+  }
+}
+
 .case-card-aura {
   pointer-events: none;
   position: absolute;
@@ -952,6 +990,36 @@ a > * {
 
 .animate-modal-out {
   animation: modal-out 0.22s cubic-bezier(0.55, 0, 0.78, 0.2) both;
+}
+
+.toolbar-toggle {
+  transition:
+    transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.toolbar-toggle:hover {
+  transform: scale(1.08);
+}
+.toolbar-toggle:active {
+  transform: scale(0.9);
+}
+.toolbar-toggle.is-on {
+  animation: toolbar-pop 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 12px rgba(82, 181, 255, 0.45);
+}
+
+@keyframes toolbar-pop {
+  0% {
+    transform: scale(0.82);
+  }
+  58% {
+    transform: scale(1.14);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes modal-in {

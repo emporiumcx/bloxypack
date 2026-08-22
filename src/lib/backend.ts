@@ -561,6 +561,42 @@ export type RewardsInfo = {
   rakeback: number;
 };
 
+export type GiveawayLive = {
+  entries: number;
+  deposited: number;
+  tickets: number;
+  eligible: boolean;
+};
+
+export type GiveawayClaim = {
+  id: string;
+  kind: "daily" | "weekly" | "monthly";
+  slug: string;
+  name: string;
+  image: string;
+  expiresAt: number;
+};
+
+export async function getGiveawayData() {
+  if (!general) throw new Error("Not connected.");
+  return emit<{ giveaways: Record<"daily" | "weekly" | "monthly", GiveawayLive>; claims: GiveawayClaim[] }>(
+    general,
+    "getGiveawayData",
+    {},
+  );
+}
+
+export async function sendGiveawayOpen(winId: string) {
+  if (!general) throw new Error("Not connected.");
+  return emit<{
+    user: ServerUser;
+    games: {
+      ticket: number;
+      item: { name: string; image: string; amountFixed: number; color: string; dropId: number };
+    }[];
+  }>(general, "sendGiveawayOpen", { winId });
+}
+
 export async function getRewardsData() {
   if (!general) throw new Error("Not connected.");
   return emit<{ user?: ServerUser; rewards: RewardsInfo }>(general, "getRewardsData", {});

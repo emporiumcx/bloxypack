@@ -3,7 +3,7 @@ export default function FairnessPage() {
     <article className="mx-auto max-w-[720px] space-y-12 text-14 leading-7 text-grey-190">
       <h1 className="text-24 font-semibold text-white">Provably Fair</h1>
       <p>
-        BloxyWild uses the same HMAC-SHA256 system as RoStake. Before you play, the server commits to a hidden server
+        BloxyPack uses HMAC-SHA256 for provably fair outcomes. Before you play, the server commits to a hidden server
         seed and shows you its SHA-256 hash. Your client seed and a nonce are mixed in so the house cannot change the
         result after you bet.
       </p>
@@ -14,7 +14,7 @@ export default function FairnessPage() {
         match the ticket against each item&apos;s min–max range.
       </p>
       <p>
-        House edge matches RoStake: Mines 1% (0.99 × combinatorial multiplier), Towers 3% (0.97 × row ratio), Dice 10%
+        House edge: Mines 1% (0.99 × combinatorial multiplier), Towers 3% (0.97 × row ratio), Dice 10%
         (90 / win chance), Roulette 6.67% (14/15 return on every color).
       </p>
       <p>

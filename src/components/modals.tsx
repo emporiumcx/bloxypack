@@ -93,7 +93,7 @@ function ModalFrame({
                   <img
                     src={banner}
                     alt=""
-                    className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
                   />
                 </div>
               ) : null}
@@ -328,7 +328,7 @@ export function Modals() {
           </span>
           <img src="/img/logo.png" alt="BloxyPack" className="h-56 object-contain" />
           <p className="text-16 text-grey-190">Welcome to the #1 Roblox Case Opening Site!</p>
-          <GreenButton onClick={dismissWelcome}>Continue to BloxyWild →</GreenButton>
+          <GreenButton onClick={dismissWelcome}>Continue to BloxyPack →</GreenButton>
         </div>
       </Overlay>
     );

@@ -149,6 +149,27 @@ function PodiumCard({
   );
 }
 
+const RACE_PARTICLES = [
+  { left: "8%", top: "12%", w: 3, dur: "11s", delay: "0s", px: "28px", py: "-120px" },
+  { left: "22%", top: "28%", w: 2, dur: "14s", delay: "1.2s", px: "-18px", py: "-90px" },
+  { left: "41%", top: "8%", w: 4, dur: "10s", delay: "0.4s", px: "12px", py: "-140px" },
+  { left: "58%", top: "18%", w: 2, dur: "13s", delay: "2.1s", px: "22px", py: "-100px" },
+  { left: "74%", top: "6%", w: 3, dur: "12s", delay: "0.8s", px: "-16px", py: "-110px" },
+  { left: "88%", top: "22%", w: 2, dur: "15s", delay: "1.6s", px: "10px", py: "-80px" },
+  { left: "12%", top: "46%", w: 3, dur: "16s", delay: "2.8s", px: "-24px", py: "-70px" },
+  { left: "33%", top: "38%", w: 2, dur: "11s", delay: "0.3s", px: "18px", py: "-95px" },
+  { left: "49%", top: "32%", w: 4, dur: "9s", delay: "1.9s", px: "-8px", py: "-125px" },
+  { left: "67%", top: "44%", w: 2, dur: "14s", delay: "0.6s", px: "26px", py: "-85px" },
+  { left: "81%", top: "36%", w: 3, dur: "12s", delay: "2.4s", px: "-12px", py: "-105px" },
+  { left: "5%", top: "62%", w: 2, dur: "17s", delay: "1.1s", px: "14px", py: "-60px" },
+  { left: "27%", top: "58%", w: 3, dur: "13s", delay: "3.2s", px: "-20px", py: "-75px" },
+  { left: "54%", top: "54%", w: 2, dur: "15s", delay: "0.9s", px: "16px", py: "-88px" },
+  { left: "71%", top: "66%", w: 3, dur: "11s", delay: "2s", px: "-10px", py: "-70px" },
+  { left: "93%", top: "50%", w: 2, dur: "16s", delay: "1.4s", px: "8px", py: "-92px" },
+  { left: "16%", top: "78%", w: 2, dur: "14s", delay: "2.6s", px: "20px", py: "-55px" },
+  { left: "62%", top: "74%", w: 3, dur: "12s", delay: "0.2s", px: "-14px", py: "-64px" },
+] as const;
+
 export default function LeaderboardPage() {
   const { user } = useStore();
   const first = LEADERBOARD[0];
@@ -158,6 +179,25 @@ export default function LeaderboardPage() {
 
   return (
     <div className="relative w-full">
+      <div className="race-grid" />
+      <div className="pointer-events-none absolute inset-x-[-80px] top-0 h-[860px] overflow-hidden">
+        {RACE_PARTICLES.map((p, i) => (
+          <span
+            key={i}
+            className="race-particle"
+            style={{
+              left: p.left,
+              top: p.top,
+              width: p.w,
+              height: p.w,
+              animationDuration: p.dur,
+              animationDelay: p.delay,
+              ["--px" as string]: p.px,
+              ["--py" as string]: p.py,
+            }}
+          />
+        ))}
+      </div>
       <div className="pointer-events-none absolute inset-x-[-80px] top-0 h-[720px] overflow-visible">
         {PACKS.map((p) => (
           <img

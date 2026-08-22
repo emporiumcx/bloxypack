@@ -83,7 +83,7 @@ export function ExploreRewards() {
       <h2 className="@sm/page:col-span-3 @sm/page:text-20 text-16 text-white">Explore Rewards</h2>
 
       <RewardCard
-        img="/img/home/chest-character.webp"
+        img="/img/rewards/rakeback/weekly.png"
         imgClass="top-[-44px] h-[118px] w-[122px]"
         glow="bg-[radial-gradient(circle_at_50%_80%,rgba(242,195,56,0.2),transparent_70%)]"
       >

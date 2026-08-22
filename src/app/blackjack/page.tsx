@@ -255,28 +255,27 @@ export default function BlackjackPage() {
         </>
       }
       board={
-        <div className="relative flex min-h-280 w-full flex-col items-center justify-between overflow-hidden rounded-12 border border-grey-58 bg-grey-28 p-16 sm:min-h-340 sm:p-20 md:min-h-400 md:p-24">
-          <div className="absolute inset-16 rounded-12 border-3 border-grey-58 sm:inset-20" />
-          <div className="absolute top-0 left-1/2 h-full w-[110px] -translate-x-1/2 bg-grey-39 sm:w-[140px] md:w-[170px]" />
-          <div className="absolute top-0 right-20 z-20 h-44 w-44 bg-gradient-to-b from-grey-28 to-transparent md:right-28 md:h-64 md:w-64" />
-          <div className="absolute -top-28 right-20 z-20 w-40 sm:-top-32 sm:w-48 md:right-28 md:w-56">
-            <img alt="shoe" className="h-auto w-full" src="/img/blackjack/stacked-cards.svg" />
-          </div>
-          <div className="relative z-20">
-            <Hand
-              cards={dealer}
-              hideHole={live}
-              dealFrom={dealFromDealer.current}
-              score={dealer.length ? (live ? total([dealer[0]]) : total(dealer)) : undefined}
+        <div className="relative flex min-h-280 w-full flex-col rounded-12 border border-grey-58 bg-grey-28 p-16 sm:min-h-340 sm:p-20 md:min-h-400 md:p-24">
+          <div className="relative flex min-h-0 flex-1 flex-col items-center justify-between overflow-hidden rounded-12 border-3 border-grey-58 bg-grey-39">
+            <div className="absolute top-12 right-12 z-20 w-36 sm:top-16 sm:right-16 sm:w-44 md:w-48">
+              <img alt="" className="h-auto w-full drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]" src="/img/blackjack/stacked-cards.svg" />
+            </div>
+            <div className="relative z-20 pt-16 sm:pt-20">
+              <Hand
+                cards={dealer}
+                hideHole={live}
+                dealFrom={dealFromDealer.current}
+                score={dealer.length ? (live ? total([dealer[0]]) : total(dealer)) : undefined}
+              />
+            </div>
+            <img
+              alt="BloxyPack"
+              className="relative z-10 h-36 w-auto max-w-[46%] object-contain opacity-80 sm:h-44 md:h-52"
+              src="/img/bloxypack-mark.png"
             />
-          </div>
-          <img
-            alt="board"
-            className="absolute top-1/2 left-1/2 z-10 h-36 w-auto max-w-[58%] -translate-x-1/2 -translate-y-1/2 object-contain sm:h-48 md:h-56"
-            src="/img/blackjack/board.svg"
-          />
-          <div className="relative z-20">
-            <Hand cards={player} dealFrom={dealFromPlayer.current} score={player.length ? total(player) : undefined} />
+            <div className="relative z-20 pb-16 sm:pb-20">
+              <Hand cards={player} dealFrom={dealFromPlayer.current} score={player.length ? total(player) : undefined} />
+            </div>
           </div>
         </div>
       }

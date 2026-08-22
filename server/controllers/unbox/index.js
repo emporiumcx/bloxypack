@@ -28,6 +28,13 @@ const {
     generalUserGetRakeback,
     generalUserGetFormated
 } = require('../../utils/general/user');
+const {
+    wagerLimitFields
+} = require('../../utils/wager');
+const {
+    findActiveBox,
+    syncCaseBoxes
+} = require('../../utils/boxes');
 
 // Load controllers
 const {
@@ -38,6 +45,7 @@ const unboxGetData = () => {
     return new Promise(async(resolve, reject) => {
         try {
             // Get active boxes from database
+            await syncCaseBoxes();
             const boxesDatabase = await Box.find({ state: 'active' }).select('name slug amount categories type state').lean();
 
             resolve({ boxes: boxesDatabase });
@@ -53,8 +61,7 @@ const unboxGetBoxDataSocket = async(io, socket, user, data, callback) => {
         unboxCheckGetBoxDataData(data);
 
         // Get box from database
-        const boxQuery = data.slug ? { slug: data.slug } : { _id: data.boxId };
-        const boxDatabase = await Box.findOne(boxQuery).select('name slug amount items categories type state').lean();
+        const boxDatabase = await findActiveBox(data);
 
         // Validate box
         unboxCheckGetBoxDataBox(boxDatabase);
@@ -72,8 +79,7 @@ const unboxSendBetSocket = async(io, socket, user, data, callback) => {
         unboxCheckSendBetData(data);
 
         // Validate box
-        const boxQuery = data.slug ? { slug: data.slug } : { _id: data.boxId };
-        const boxDatabase = await Box.findOne(boxQuery).select('amount items state name slug').lean();
+        const boxDatabase = await findActiveBox(data);
         unboxCheckSendBetBox(boxDatabase);
 
         // Get unbox count
@@ -156,8 +162,7 @@ const unboxSendBetSocket = async(io, socket, user, data, callback) => {
                     'rewards.bonusXp': user.limits.blockSponsor !== true ? Math.floor(amountBetTotal * settings.general.reward.multiplier) : 0,
                     'stats.bet': amountBetTotal,
                     'stats.won': amountPayout,
-                    'limits.betToWithdraw': Math.floor(user.limits.betToWithdraw - amountBetTotal) <= 0 ? -user.limits.betToWithdraw : -amountBetTotal,
-                    'limits.betToRain': Math.floor(user.limits.betToRain - amountBetTotal) <= 0 ? -user.limits.betToRain : -amountBetTotal,
+                    ...wagerLimitFields(user.limits, amountBetTotal),
                     'leaderboard.points': leaderboardDatabase !== null && user.limits.blockSponsor !== true && user.limits.blockLeaderboard !== true ? amountBetTotal : 0,
                     'affiliates.generated': amountAffiliate,
                     'rakeback.earned': amountRakeback,

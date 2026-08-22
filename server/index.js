@@ -25,6 +25,12 @@ const io = socket(server, {
 async function start() {
     await require('./database')();
     await require('./utils/setting').settingInitDatabase();
+    try {
+        await require('./utils/boxes').syncCaseBoxes();
+        console.log('Case catalog synced');
+    } catch (err) {
+        console.error(`Case catalog sync failed: ${err.message}`);
+    }
 
     app.set('trust proxy', 1);
     app.use(express.json());

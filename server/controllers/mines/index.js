@@ -31,6 +31,9 @@ const {
     generalUserGetRakeback,
     generalUserGetFormated
 } = require('../../utils/general/user');
+const {
+    wagerLimitFields
+} = require('../../utils/wager');
 
 // Load controllers
 const {
@@ -207,8 +210,7 @@ const minesSendRevealSocket = async(io, socket, user, data, callback) => {
                     $inc: {
                         balance: amountPayout,
                         'stats.won': amountPayout,
-                        'limits.betToWithdraw': Math.floor(user.limits.betToWithdraw - amountLimits) <= 0 ? -user.limits.betToWithdraw : -amountLimits,
-                        'limits.betToRain': Math.floor(user.limits.betToRain - amountLimits) <= 0 ? -user.limits.betToRain : -amountLimits
+                        ...wagerLimitFields(user.limits, amountLimits)
                     },
                     updatedAt: new Date().getTime()
                 }, { new: true }).select('username avatar rank balance xp stats local.email rakeback mute ban verifiedAt updatedAt').lean(),
@@ -296,8 +298,7 @@ const minesSendCashoutSocket = async(io, socket, user, data, callback) => {
                 $inc: {
                     balance: amountPayout,
                     'stats.won': amountPayout,
-                    'limits.betToWithdraw': Math.floor(user.limits.betToWithdraw - amountLimits) <= 0 ? -user.limits.betToWithdraw : -amountLimits,
-                    'limits.betToRain': Math.floor(user.limits.betToRain - amountLimits) <= 0 ? -user.limits.betToRain : -amountLimits
+                    ...wagerLimitFields(user.limits, amountLimits)
                 },
                 updatedAt: new Date().getTime()
             }, { new: true }).select('username avatar rank balance xp stats local.email rakeback mute ban verifiedAt updatedAt').lean(),

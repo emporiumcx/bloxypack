@@ -21,7 +21,7 @@ const unboxCheckSendBetData = (data) => {
         throw new Error('Something went wrong. Please try again in a few seconds.');
     } else if((data.boxId === undefined || data.boxId === null) && (data.slug === undefined || typeof data.slug !== 'string')) {
         throw new Error('You’ve entered an invalid box id.');
-    } else if(data.unboxCount === undefined || data.unboxCount === null || isNaN(data.unboxCount) === true || Math.floor(data.unboxCount) < 1 || Math.floor(data.unboxCount) > 4) {
+    } else if(data.unboxCount === undefined || data.unboxCount === null || isNaN(data.unboxCount) === true || Math.floor(data.unboxCount) < 1 || Math.floor(data.unboxCount) > 5) {
         throw new Error('You’ve entered an invalid unbox count.');
     }
 }

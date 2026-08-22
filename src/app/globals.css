@@ -1362,6 +1362,38 @@ a > * {
   animation: tower-pulse 0.22s ease-in-out infinite;
 }
 
+.game-flip {
+  perspective: 900px;
+}
+
+.game-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  transform-style: preserve-3d;
+  transition: transform 0.42s cubic-bezier(0.22, 0.8, 0.2, 1);
+}
+
+.game-flip-inner.is-open {
+  transform: rotateY(180deg);
+}
+
+.game-flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.game-flip-back {
+  transform: rotateY(180deg);
+}
+
 .group\/button:hover .group-hover\/button\:rotate-\[360deg\] {
   transform: rotate(360deg);
 }

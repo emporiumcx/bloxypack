@@ -11,6 +11,7 @@ import { DropPanel, useDrop } from "@/components/dropdown";
 import { Icons } from "@/components/icons";
 import { SoundSettings } from "@/components/sound-settings";
 import { useStore } from "@/components/providers";
+import { FlipTile } from "@/components/flip-tile";
 import { playSfx } from "@/lib/sfx";
 
 const DIFF = {
@@ -379,37 +380,31 @@ export default function TowersPage() {
                       const open = won || isBomb || Boolean(hit);
                       const dim = started && r !== row && !open && !dead;
                       return (
-                        <button
+                        <FlipTile
                           key={c}
-                          type="button"
+                          open={open}
+                          backClassName={hit || isBomb ? "bg-red" : "bg-green"}
                           disabled={!active}
                           aria-label={`Row ${ROWS - r} column ${c + 1}`}
                           onClick={() => pick(r, c)}
-                          className={`relative h-full min-w-0 flex-1 overflow-hidden rounded-6 bg-grey-39 shadow-[0px_2px_0px_rgba(0,0,0,0.25),inset_0px_2px_0px_#18202E] ${
+                          className={`relative h-full min-w-0 flex-1 rounded-6 bg-grey-39 shadow-[0px_2px_0px_rgba(0,0,0,0.25),inset_0px_2px_0px_#18202E] ${
                             active ? "cursor-pointer bg-grey-47" : "cursor-default"
                           } ${dim ? "opacity-45" : "opacity-100"}`}
-                        >
-                          <div className="absolute inset-0 flex h-full w-full items-center justify-center">
+                          front={
                             <img
                               alt=""
                               src="/img/bloxypack-mark.png"
-                              className={`h-auto w-1/4 object-contain ${pulsing ? "animate-tower-pulse" : ""} ${
-                                open ? "opacity-0" : "opacity-20"
-                              }`}
+                              className={`h-auto w-1/4 object-contain opacity-20 ${pulsing ? "animate-tower-pulse" : ""}`}
                             />
-                          </div>
-                          <div
-                            className={`absolute inset-0 flex items-center justify-center rounded-6 ${
-                              hit || isBomb ? "bg-red" : "bg-green"
-                            } ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
-                          >
-                            {hit || isBomb ? (
+                          }
+                          back={
+                            hit || isBomb ? (
                               <img alt="" className="h-[62%] w-[62%] max-h-28 max-w-28 object-contain" src="/img/bomb.webp" />
                             ) : (
                               <img alt="" className="h-[58%] w-[58%] max-h-28 max-w-28 object-contain" src="/img/bloxypack-mark-dark.png" />
-                            )}
-                          </div>
-                        </button>
+                            )
+                          }
+                        />
                       );
                     })}
                   </div>

@@ -10,6 +10,7 @@ import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { SoundSettings } from "@/components/sound-settings";
 import { useStore } from "@/components/providers";
+import { FlipTile } from "@/components/flip-tile";
 import { playSfx } from "@/lib/sfx";
 
 const GRID_SIZES = [4, 5, 6, 7, 8];
@@ -408,9 +409,10 @@ export default function MinesPage() {
                   const open = isMine || isGem;
                   const hit = boom === i;
                   return (
-                    <button
+                    <FlipTile
                       key={i}
-                      type="button"
+                      open={open}
+                      backClassName={isMine ? (hit ? "bg-red" : "bg-red/70") : "bg-green"}
                       aria-label={`Tile ${i + 1}`}
                       disabled={!started || open || booting}
                       onPointerDown={(e) => {
@@ -427,29 +429,24 @@ export default function MinesPage() {
                       onClick={() => {
                         if (!drag) reveal(i);
                       }}
-                      className={`relative aspect-square overflow-hidden rounded-12 bg-grey-39 shadow-[0px_2px_0px_rgba(0,0,0,0.25),inset_0px_2px_0px_#18202E] ${
+                      className={`relative aspect-square rounded-12 bg-grey-39 shadow-[0px_2px_0px_rgba(0,0,0,0.25),inset_0px_2px_0px_#18202E] ${
                         started && !open ? "cursor-pointer hover:bg-grey-47" : "cursor-default"
                       } ${booting ? "animate-pulse" : ""}`}
-                    >
-                      <div className="absolute inset-0 flex h-full w-full items-center justify-center">
+                      front={
                         <img
                           alt=""
                           src="/img/bloxypack-mark.png"
-                          className={`h-auto w-1/3 object-contain ${open ? "opacity-0" : "opacity-20"}`}
+                          className="h-auto w-1/3 object-contain opacity-20"
                         />
-                      </div>
-                      <div
-                        className={`absolute inset-0 flex items-center justify-center rounded-12 ${
-                          isMine ? (hit ? "bg-red" : "bg-red/70") : "bg-green"
-                        } ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
-                      >
-                        {isMine ? (
+                      }
+                      back={
+                        isMine ? (
                           <img alt="" className="h-[62%] w-[62%] object-contain" src="/img/bomb.webp" />
                         ) : (
                           <img alt="" className="h-[58%] w-[58%] object-contain" src="/img/bloxypack-mark-dark.png" />
-                        )}
-                      </div>
-                    </button>
+                        )
+                      }
+                    />
                   );
                 })}
               </div>

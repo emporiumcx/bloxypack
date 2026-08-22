@@ -14,7 +14,7 @@ const FIAT_PRESETS = [25, 50, 100, 250, 500, 1000];
 const GIFT_PRESETS = [20, 50, 100, 250, 500];
 
 type Tab = "deposit" | "withdraw";
-type MethodKind = "fiat" | "gift" | "crypto";
+type MethodKind = "crypto";
 
 type WalletMethod = {
   id: string;
@@ -28,56 +28,15 @@ type WalletMethod = {
   icon: string;
 };
 
-const DEPOSIT_FIAT: WalletMethod[] = [
-  { id: "apple", kind: "fiat", name: "Apple Pay", sub: "ZEN", badge: "Instant", ticker: "USD", price: 1, icon: "apple" },
-  { id: "card", kind: "fiat", name: "Credit Card", sub: "ZEN", ticker: "USD", price: 1, icon: "card" },
-  { id: "google", kind: "fiat", name: "Google Pay", sub: "ZEN", badge: "Instant", ticker: "USD", price: 1, icon: "gpay" },
-  { id: "gift", kind: "gift", name: "Gift card", sub: "Kinguin", ticker: "USD", price: 1, icon: "gift" },
-];
-
 const DEPOSIT_CRYPTO: WalletMethod[] = [
   { id: "sol", kind: "crypto", name: "Solana", sub: "SOL", badge: "Fastest", ticker: "SOL", price: 89.03, minCrypto: 0.05, icon: "sol" },
-  { id: "usdt", kind: "crypto", name: "Tether", sub: "USDT", ticker: "USDT", price: 1, minCrypto: 10, icon: "usdt" },
-  { id: "eth", kind: "crypto", name: "Ethereum", sub: "ETH", ticker: "ETH", price: 1907.86, minCrypto: 0.005, icon: "eth" },
-  { id: "usdc", kind: "crypto", name: "USD Coin", sub: "USDC", ticker: "USDC", price: 1, minCrypto: 10, icon: "usdc" },
-  { id: "btc", kind: "crypto", name: "Bitcoin", sub: "BTC", ticker: "BTC", price: 64311, minCrypto: 0.0002, icon: "btc" },
-  { id: "ltc", kind: "crypto", name: "Litecoin", sub: "LTC", ticker: "LTC", price: 44.48, minCrypto: 0.05, icon: "ltc" },
-  { id: "trx", kind: "crypto", name: "Tron", sub: "TRX", ticker: "TRX", price: 0.33, minCrypto: 20, icon: "trx" },
-  { id: "xrp", kind: "crypto", name: "XRP", sub: "XRP", ticker: "XRP", price: 0.55, minCrypto: 10, icon: "xrp" },
-  { id: "ton", kind: "crypto", name: "Ton", sub: "TON", ticker: "TON", price: 5.2, minCrypto: 1, icon: "ton" },
-  { id: "doge", kind: "crypto", name: "Dogecoin", sub: "DOGE", ticker: "DOGE", price: 0.12, minCrypto: 20, icon: "doge" },
-  { id: "ada", kind: "crypto", name: "Cardano", sub: "ADA", ticker: "ADA", price: 0.45, minCrypto: 10, icon: "ada" },
-  { id: "bnb", kind: "crypto", name: "BNB (BSC)", sub: "BNB-BSC", ticker: "BNB", price: 580, minCrypto: 0.02, icon: "bnb" },
-  { id: "bch", kind: "crypto", name: "Bitcoin Cash", sub: "BCH", ticker: "BCH", price: 210.1, minCrypto: 0.02, icon: "bch" },
+  { id: "usdc", kind: "crypto", name: "USD Coin", sub: "USDC", ticker: "USDC", price: 1, minCrypto: 1, icon: "usdc" },
 ];
 
 const WITHDRAW_CRYPTO: WalletMethod[] = [
   { id: "w-sol", kind: "crypto", name: "Solana", sub: "SOL", badge: "Fastest", ticker: "SOL", price: 89.03, icon: "sol" },
-  { id: "w-usdt-trc", kind: "crypto", name: "Tether (TRC20)", sub: "USDTT", ticker: "USDT", price: 1, icon: "usdt" },
-  { id: "w-usdt-erc", kind: "crypto", name: "Tether (ERC20)", sub: "USDTE", ticker: "USDT", price: 1, icon: "usdt" },
-  { id: "w-usdt-bep", kind: "crypto", name: "Tether (BEP20)", sub: "USDTB", ticker: "USDT", price: 1, icon: "usdt" },
-  { id: "w-eth", kind: "crypto", name: "Ethereum", sub: "ETH", ticker: "ETH", price: 1907.53, icon: "eth" },
-  { id: "w-usdc-erc", kind: "crypto", name: "USDC (ERC20)", sub: "USDC", ticker: "USDC", price: 1, icon: "usdc" },
-  { id: "w-usdc-sol", kind: "crypto", name: "USDC (Solana)", sub: "USDCS", ticker: "USDC", price: 1, icon: "usdc" },
-  { id: "w-btc", kind: "crypto", name: "Bitcoin", sub: "BTC", ticker: "BTC", price: 64311, icon: "btc" },
-  { id: "w-ltc", kind: "crypto", name: "Litecoin", sub: "LTC", ticker: "LTC", price: 44.48, icon: "ltc" },
-  { id: "w-trx", kind: "crypto", name: "Tron", sub: "TRX", ticker: "TRX", price: 0.33, icon: "trx" },
-  { id: "w-xrp", kind: "crypto", name: "XRP", sub: "XRP", ticker: "XRP", price: 0.55, icon: "xrp" },
-  { id: "w-ton", kind: "crypto", name: "Ton", sub: "TON", ticker: "TON", price: 5.2, icon: "ton" },
-  { id: "w-doge", kind: "crypto", name: "Dogecoin", sub: "DOGE", ticker: "DOGE", price: 0.12, icon: "doge" },
-  { id: "w-ada", kind: "crypto", name: "Cardano", sub: "ADA", ticker: "ADA", price: 0.45, icon: "ada" },
-  { id: "w-bnb", kind: "crypto", name: "BNB (BSC)", sub: "BNB-BSC", ticker: "BNB", price: 580, icon: "bnb" },
-  { id: "w-bch", kind: "crypto", name: "Bitcoin Cash", sub: "BCH", ticker: "BCH", price: 210.1, icon: "bch" },
+  { id: "w-usdc-sol", kind: "crypto", name: "USDC (Solana)", sub: "USDC", ticker: "USDC", price: 1, icon: "usdc" },
 ];
-
-function demoAddress(ticker: string) {
-  if (ticker === "SOL" || ticker === "USDCS") return "7k2Hq9pL3mR8sW4nY6cT1vB5xJ0dF8aQ3uP9eH2kL6mN";
-  if (ticker === "BTC" || ticker === "BCH") return "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
-  if (ticker === "LTC") return "ltc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
-  if (ticker === "TRX" || ticker === "USDTT") return "TXYZopqrstuvwxyz1234567890abcdef";
-  if (ticker === "TON") return "UQBvI0aFLnw2QbZcq8YpxlrdQ8mW0z9p7example";
-  return "0x71C7656EC7ab88b098defB751B7401B5f6d8976F";
-}
 
 function usdToBux(usd: number) {
   return usd / BUX_USD;
@@ -415,7 +374,7 @@ export function WalletModal({
 }) {
   const { user, openModal, applyUser } = useStore();
   const [tab, setTab] = useState<Tab>(initialTab);
-  const [methodId, setMethodId] = useState(initialTab === "withdraw" ? WITHDRAW_CRYPTO[0].id : DEPOSIT_FIAT[0].id);
+  const [methodId, setMethodId] = useState(initialTab === "withdraw" ? WITHDRAW_CRYPTO[0].id : DEPOSIT_CRYPTO[0].id);
   const [usd, setUsd] = useState("50");
   const [cryptoAmt, setCryptoAmt] = useState("");
   const [receiveBux, setReceiveBux] = useState("");
@@ -442,13 +401,13 @@ export function WalletModal({
 
   useEffect(() => {
     setTab(initialTab);
-    setMethodId(initialTab === "withdraw" ? WITHDRAW_CRYPTO[0].id : DEPOSIT_FIAT[0].id);
+    setMethodId(initialTab === "withdraw" ? WITHDRAW_CRYPTO[0].id : DEPOSIT_CRYPTO[0].id);
     setError("");
     setCopied(false);
     setDetailOpen(true);
   }, [initialTab]);
 
-  const methods = tab === "withdraw" ? WITHDRAW_CRYPTO : [...DEPOSIT_FIAT, ...DEPOSIT_CRYPTO];
+  const methods = tab === "withdraw" ? WITHDRAW_CRYPTO : DEPOSIT_CRYPTO;
   const method = methods.find((m) => m.id === methodId) ?? methods[0];
   const livePrice = method.ticker === "SOL" && solUsd > 0 ? solUsd : method.price;
   const usdNum = Number(usd) || 0;
@@ -465,7 +424,7 @@ export function WalletModal({
 
   const selectTab = (next: Tab) => {
     setTab(next);
-    setMethodId(next === "withdraw" ? WITHDRAW_CRYPTO[0].id : DEPOSIT_FIAT[0].id);
+    setMethodId(next === "withdraw" ? WITHDRAW_CRYPTO[0].id : DEPOSIT_CRYPTO[0].id);
     setError("");
     setCopied(false);
     setWithdrawAmt("");
@@ -628,11 +587,17 @@ export function WalletModal({
             <MethodMark icon={method.icon} size={20} />
             <span className="text-12 text-white">{method.name}</span>
           </div>
-          <AddressQr value={depositAddress} />
+          {depositAddress ? (
+            <AddressQr value={depositAddress} />
+          ) : (
+            <div className="relative mx-auto my-16 flex h-180 w-180 items-center justify-center rounded-8 bg-white/90 p-6 text-center text-12 text-grey-58">
+              {error || "Loading address…"}
+            </div>
+          )}
           <p className="mb-12 text-center text-12 text-grey-142">Your personal {method.name} address</p>
           <p className="mb-6 text-12 text-grey-142">{method.name} address</p>
           <div className="mb-16 flex h-36 items-center gap-8 rounded-8 border-1 border-grey-58 bg-grey-34 py-4 pl-12 pr-4">
-            <input readOnly value={depositAddress} className="h-full min-w-0 flex-1 bg-transparent text-12 text-white outline-none" />
+            <input readOnly value={depositAddress} placeholder="Loading…" className="h-full min-w-0 flex-1 bg-transparent text-12 text-white outline-none" />
             <button
               type="button"
               className="flex h-28 w-28 shrink-0 items-center justify-center rounded-6 bg-gradient-to-b from-green to-green-2 text-grey-190"
@@ -882,12 +847,6 @@ export function WalletModal({
             <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain pr-4">
               {tab === "deposit" ? (
                 <>
-                  <p className="mb-8 text-12 text-grey-142">Fiat</p>
-                  <div className="mb-20 grid grid-cols-3 gap-8">
-                    {DEPOSIT_FIAT.map((m) => (
-                      <MethodCard key={m.id} method={m} selected={methodId === m.id} onClick={() => selectMethod(m.id)} />
-                    ))}
-                  </div>
                   <p className="mb-8 text-12 text-grey-142">Cryptocurrency</p>
                   <div className="grid grid-cols-3 gap-8 pb-8">
                     {DEPOSIT_CRYPTO.map((m) => (

@@ -1,24 +1,17 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import QRCode from "qrcode";
 import { formatBux } from "@/lib/format";
-import { qrModules } from "@/lib/qr-pattern";
 import { BuxGlyph } from "./icons";
 import { Icons } from "./icons";
 import { useStore } from "./providers";
 import { getCryptoData, sendCryptoWithdraw } from "@/lib/backend";
 
-const BUX_USD = 0.002;
-const WITHDRAW_FEE = 0.02;
-const FIAT_PRESETS = [25, 50, 100, 250, 500, 1000];
-const GIFT_PRESETS = [20, 50, 100, 250, 500];
-
 type Tab = "deposit" | "withdraw";
-type MethodKind = "crypto";
-
 type WalletMethod = {
   id: string;
-  kind: MethodKind;
+  kind: "crypto";
   name: string;
   sub: string;
   badge?: string;
@@ -37,10 +30,6 @@ const WITHDRAW_CRYPTO: WalletMethod[] = [
   { id: "w-sol", kind: "crypto", name: "Solana", sub: "SOL", badge: "Fastest", ticker: "SOL", price: 89.03, icon: "sol" },
   { id: "w-usdc-sol", kind: "crypto", name: "USDC (Solana)", sub: "USDC", ticker: "USDC", price: 1, icon: "usdc" },
 ];
-
-function usdToBux(usd: number) {
-  return usd / BUX_USD;
-}
 
 function PanelIcon({
   tone = "primary",
@@ -90,14 +79,6 @@ function BriefcaseGlyph() {
   );
 }
 
-function GiftGlyph() {
-  return (
-    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden>
-      <path d="M8.5 1.2c.9 0 1.6.5 2 .9.3-.3.8-.9 1.7-.9 1.2 0 2.1 1 2.1 2.2 0 1.5-1.3 2.4-2.8 2.6H13v6.5c0 .9-.7 1.5-1.5 1.5H4.5C3.7 14 3 13.4 3 12.5V6h1.5C3.1 5.8 1.7 4.9 1.7 3.4 1.7 2.2 2.6 1.2 3.8 1.2c.9 0 1.4.6 1.7.9.4-.4 1.1-.9 2-.9.5 0 1 .2 1.3.5.3-.3.8-.5 1.3-.5ZM4.2 3.4c0 .6.8 1.2 2.1 1.2h.4C6.4 4 6 3.4 6 2.8c0-.4.2-.7.5-.9.4-.3.8 0 1.1.4L8 3l.4-.7c.3-.4.7-.7 1.1-.4.3.2.5.5.5.9 0 .6-.4 1.2-.7 1.8h.4c1.3 0 2.1-.6 2.1-1.2 0-.5-.4-.9-.8-.9-.4 0-.8.3-1.2.8L8.7 5 8 4.1 7.3 5 6.2 3.3c-.4-.5-.8-.8-1.2-.8-.4 0-.8.4-.8.9ZM4.5 7v5.5h7V7h-7Z" />
-    </svg>
-  );
-}
-
 function WarningGlyph() {
   return (
     <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden>
@@ -106,103 +87,21 @@ function WarningGlyph() {
   );
 }
 
-const MARK: Record<string, { outer: string; inner: string; src?: string; letter?: string; color?: string }> = {
+const MARK: Record<string, { outer: string; inner: string; src: string }> = {
   sol: {
     outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(57, 23, 116) 100%)",
     inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(172, 131, 243) 0%, rgba(59, 36, 99, 0) 85.58%), rgb(57, 23, 116)",
     src: "/img/payment/solana.svg",
-  },
-  usdt: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(14, 90, 70) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(80, 210, 170) 0%, rgba(14, 90, 70, 0) 85.58%), rgb(14, 90, 70)",
-    src: "/img/payment/tether.svg",
-  },
-  eth: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(50, 60, 90) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(170, 180, 220) 0%, rgba(50, 60, 90, 0) 85.58%), rgb(40, 48, 72)",
-    src: "/img/payment/eth.svg",
   },
   usdc: {
     outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(20, 70, 140) 100%)",
     inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(90, 170, 255) 0%, rgba(20, 70, 140, 0) 85.58%), rgb(20, 70, 140)",
     src: "/img/payment/usdc.svg",
   },
-  btc: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(140, 80, 10) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(255, 190, 80) 0%, rgba(140, 80, 10, 0) 85.58%), rgb(140, 80, 10)",
-    src: "/img/payment/btc.svg",
-  },
-  ltc: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(70, 90, 130) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(180, 200, 230) 0%, rgba(70, 90, 130, 0) 85.58%), rgb(70, 90, 130)",
-    src: "/img/payment/ltc.svg",
-  },
-  trx: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(120, 30, 40) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(255, 110, 110) 0%, rgba(120, 30, 40, 0) 85.58%), rgb(120, 30, 40)",
-    src: "/img/payment/brand/tron.webp",
-  },
-  xrp: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(20, 28, 40) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(160, 180, 200) 0%, rgba(20, 28, 40, 0) 85.58%), rgb(28, 36, 52)",
-    src: "/img/payment/brand/ripple.webp",
-  },
-  bnb: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(120, 90, 10) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(255, 220, 80) 0%, rgba(120, 90, 10, 0) 85.58%), rgb(120, 90, 10)",
-    src: "/img/payment/brand/bnb.webp",
-  },
-  bch: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(20, 110, 50) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(90, 220, 130) 0%, rgba(20, 110, 50, 0) 85.58%), rgb(20, 110, 50)",
-    src: "/img/payment/brand/bch.webp",
-  },
-  ton: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(10, 90, 160) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(80, 190, 255) 0%, rgba(10, 90, 160, 0) 85.58%), rgb(10, 90, 160)",
-    letter: "◆",
-    color: "#fff",
-  },
-  doge: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(140, 110, 20) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(255, 214, 80) 0%, rgba(140, 110, 20, 0) 85.58%), rgb(140, 110, 20)",
-    letter: "Ð",
-    color: "#fff",
-  },
-  ada: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(20, 60, 130) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(90, 140, 255) 0%, rgba(20, 60, 130, 0) 85.58%), rgb(20, 60, 130)",
-    letter: "₳",
-    color: "#fff",
-  },
-  apple: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(221, 228, 234) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(196, 196, 196) 0%, rgba(96, 63, 155, 0) 85.58%), rgb(221, 228, 234)",
-  },
-  gpay: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(235, 240, 246) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(220, 230, 255) 0%, rgba(96, 63, 155, 0) 85.58%), rgb(235, 240, 246)",
-  },
-  card: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(40, 70, 140) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(120, 170, 255) 0%, rgba(40, 70, 140, 0) 85.58%), rgb(32, 54, 110)",
-  },
-  gift: {
-    outer: "linear-gradient(rgb(30, 40, 55) 0%, rgb(180, 90, 20) 100%)",
-    inner: "radial-gradient(62.5% 62.5% at 50% 89.29%, rgb(255, 170, 70) 0%, rgba(180, 90, 20, 0) 85.58%), rgb(180, 90, 20)",
-  },
 };
 
-function AppleLogo() {
-  return (
-    <svg viewBox="0 0 13 16" className="size-16" fill="#171717" aria-hidden>
-      <path d="M12.582 5.455c-.075.047-1.743 1.02-1.724 3.045.02 2.422 2.118 3.228 2.142 3.237-.019.058-.335 1.149-1.105 2.275-.666.976-1.356 1.947-2.444 1.967-1.07.02-1.414-.635-2.635-.635-1.222 0-1.605.615-2.616.655-1.05.04-1.85-1.054-2.52-2.025C.308 11.988-.74 8.36.667 5.912c.699-1.216 1.947-1.986 3.302-2.006 1.032-.02 2.005.695 2.637.695.622 0 1.737-.833 3.051-.735.515.038 1.978.192 2.924 1.59m-3.735-2.9c.558-.677.934-1.618.83-2.555-.803.032-1.775.536-2.35 1.212-.517.599-.97 1.557-.847 2.475.895.07 1.81-.456 2.367-1.133" />
-    </svg>
-  );
-}
-
 function MethodMark({ icon, size = 32 }: { icon: string; size?: number }) {
-  const m = MARK[icon] ?? MARK.btc;
+  const m = MARK[icon] ?? MARK.sol;
   return (
     <div
       className="flex shrink-0 items-center justify-center rounded-6 p-px"
@@ -212,44 +111,57 @@ function MethodMark({ icon, size = 32 }: { icon: string; size?: number }) {
         className="flex h-full w-full items-center justify-center overflow-hidden rounded-[5px]"
         style={{ background: m.inner }}
       >
-        {icon === "apple" ? (
-          <AppleLogo />
-        ) : icon === "gpay" ? (
-          <Icons.google className="text-14 text-[#4285F4]" />
-        ) : icon === "card" ? (
-          <div className="flex items-center">
-            <img src="/img/payment/visa.svg" alt="" className="h-10 w-14 object-contain" />
-            <img src="/img/payment/mastercard.svg" alt="" className="-ml-4 h-10 w-14 object-contain" />
-          </div>
-        ) : icon === "gift" ? (
-          <span className="text-10 font-bold text-white">K</span>
-        ) : m.src ? (
-          <img src={m.src} alt="" className="h-18 w-18 object-contain" />
-        ) : (
-          <span className="text-12 font-bold" style={{ color: m.color }}>
-            {m.letter}
-          </span>
-        )}
+        <img src={m.src} alt="" className="h-18 w-18 object-contain" />
       </div>
     </div>
   );
 }
 
 function AddressQr({ value }: { value: string }) {
-  const modules = useMemo(() => qrModules(value, 25), [value]);
-  const n = modules.length;
-  const size = 168;
-  const cell = size / n;
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || !value) return;
+    let cancelled = false;
+
+    const draw = async () => {
+      await QRCode.toCanvas(canvas, value, {
+        width: 168,
+        margin: 1,
+        errorCorrectionLevel: "H",
+        color: { dark: "#0e111a", light: "#ffffff" },
+      });
+      if (cancelled) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      const logo = new Image();
+      logo.src = "/img/logo.png";
+      await logo.decode();
+      if (cancelled) return;
+      const max = 52;
+      const ratio = logo.width / Math.max(logo.height, 1);
+      const w = ratio >= 1 ? max : max * ratio;
+      const h = ratio >= 1 ? max / ratio : max;
+      const x = (canvas.width - w) / 2;
+      const y = (canvas.height - h) / 2;
+      const pad = 5;
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.roundRect(x - pad, y - pad, w + pad * 2, h + pad * 2, 6);
+      ctx.fill();
+      ctx.drawImage(logo, x, y, w, h);
+    };
+
+    void draw();
+    return () => {
+      cancelled = true;
+    };
+  }, [value]);
+
   return (
     <div className="relative mx-auto my-16 flex h-180 w-180 items-center justify-center rounded-8 bg-white p-6">
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="block">
-        {modules.map((row, y) =>
-          row.map((on, x) =>
-            on ? <rect key={`${x}-${y}`} x={x * cell} y={y * cell} width={cell} height={cell} fill="#0e111a" /> : null,
-          ),
-        )}
-      </svg>
-      <img src="/img/bloxypack-mark.png" alt="" className="pointer-events-none absolute h-28 w-28 object-contain" />
+      <canvas ref={canvasRef} width={168} height={168} className="block h-168 w-168" />
     </div>
   );
 }
@@ -375,13 +287,10 @@ export function WalletModal({
   const { user, openModal, applyUser } = useStore();
   const [tab, setTab] = useState<Tab>(initialTab);
   const [methodId, setMethodId] = useState(initialTab === "withdraw" ? WITHDRAW_CRYPTO[0].id : DEPOSIT_CRYPTO[0].id);
-  const [usd, setUsd] = useState("50");
   const [cryptoAmt, setCryptoAmt] = useState("");
   const [receiveBux, setReceiveBux] = useState("");
   const [withdrawAmt, setWithdrawAmt] = useState("");
   const [address, setAddress] = useState("");
-  const [giftCode, setGiftCode] = useState("");
-  const [agreed, setAgreed] = useState(false);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
   const [detailOpen, setDetailOpen] = useState(true);
@@ -410,9 +319,6 @@ export function WalletModal({
   const methods = tab === "withdraw" ? WITHDRAW_CRYPTO : DEPOSIT_CRYPTO;
   const method = methods.find((m) => m.id === methodId) ?? methods[0];
   const livePrice = method.ticker === "SOL" && solUsd > 0 ? solUsd : method.price;
-  const usdNum = Number(usd) || 0;
-  const cryptoPay = Number(cryptoAmt) || 0;
-  const buxFromFiat = usdToBux(usdNum);
   const withdrawBux = Number(withdrawAmt) || 0;
   const withdrawCrypto = livePrice > 0 ? withdrawBux / livePrice : 0;
   const available = user?.balance ?? 0;
@@ -472,18 +378,6 @@ export function WalletModal({
     const n = Number(value);
     if (!Number.isFinite(n) || !value.trim() || method.price <= 0) return setCryptoAmt("");
     setCryptoAmt((n / livePrice).toFixed(6).replace(/0+$/, "").replace(/\.$/, ""));
-  };
-
-  const proceedFiat = () => {
-    requireUser(() => {
-      setError("Card deposits are not live. Use SOL or USDC on Solana.");
-    });
-  };
-
-  const redeemGift = () => {
-    requireUser(() => {
-      setError("Gift cards are not live. Use SOL or USDC on Solana.");
-    });
   };
 
   const submitWithdraw = () => {
@@ -569,7 +463,7 @@ export function WalletModal({
         <PrimaryBtn onClick={submitWithdraw}>{busy ? "Sending…" : "Withdraw"}</PrimaryBtn>
       </div>
     );
-  } else if (method.kind === "crypto") {
+  } else {
     leftPanel = (
       <>
         <div className="flex shrink-0 flex-col rounded-8 bg-grey-39 p-12">
@@ -654,123 +548,6 @@ export function WalletModal({
               </DarkInput>
             </Field>
           </div>
-        </div>
-        <AffiliateBanner onClick={() => openModal("affiliate")} />
-      </>
-    );
-  } else {
-    const presets = method.kind === "gift" ? GIFT_PRESETS : FIAT_PRESETS;
-    leftPanel = (
-      <>
-        <div className="flex shrink-0 flex-col rounded-8 bg-grey-39 p-12">
-          <BackBtn onClick={() => setDetailOpen(false)} />
-          {method.kind === "gift" ? (
-            <>
-              <div className="mb-16 flex items-center gap-8">
-                <PanelIcon>
-                  <GiftGlyph />
-                </PanelIcon>
-                <div className="flex min-w-0 flex-col gap-2">
-                  <h3 className="tactic-heading-xs text-start text-white">1. Select Provider</h3>
-                  <span className="text-start text-13 text-grey-142">Choose where to buy your gift card</span>
-                </div>
-              </div>
-              <div className="mb-24 grid grid-cols-2 gap-12">
-                <div className="relative flex h-40 cursor-default items-center justify-center rounded-8 border-1 border-green/20 bg-green/20">
-                  <span className="text-13 font-semibold tracking-[0.12em] text-orange">KINGUIN</span>
-                </div>
-              </div>
-            </>
-          ) : null}
-          <div className={`${method.kind === "gift" ? "mb-16" : "mb-32"} flex items-center gap-8`}>
-            <PanelIcon>
-              <WalletGlyph />
-            </PanelIcon>
-            <div className="flex min-w-0 flex-col gap-2">
-              <h3 className="tactic-heading-xs text-start text-white">{method.kind === "gift" ? "2. Enter amount" : "Enter amount"}</h3>
-              <span className="text-start text-13 text-grey-142">Choose how much you want to deposit</span>
-            </div>
-          </div>
-          <div className="mb-16 grid grid-cols-2 gap-12">
-            <Field label="You will pay">
-              <DarkInput>
-                <span className="mr-6 text-13 text-grey-142">$</span>
-                <input
-                  autoComplete="off"
-                  className="h-full w-full bg-transparent text-13 text-white outline-none"
-                  type="number"
-                  value={usd}
-                  onChange={(e) => setUsd(e.target.value)}
-                />
-              </DarkInput>
-            </Field>
-            <Field label="You will receive" tone="green">
-              <DarkInput>
-                <BuxGlyph style={{ width: 16, height: 16 }} />
-                <span className="ml-8 text-13 text-green">{usdNum > 0 ? formatBux(buxFromFiat) : ""}</span>
-              </DarkInput>
-            </Field>
-          </div>
-          <div className="mb-24 grid grid-cols-3 gap-8 border-b-1 border-grey-58 pb-32">
-            {presets.map((n) => {
-              const on = usdNum === n;
-              return (
-                <button
-                  key={n}
-                  type="button"
-                  onClick={() => setUsd(String(n))}
-                  className={`h-32 rounded-6 text-12 font-medium transition-colors ${
-                    on
-                      ? "bg-gradient-to-b from-green to-green-2 text-grey-190"
-                      : "bg-grey-34 text-grey-142 hover:bg-grey-47 hover:text-white"
-                  }`}
-                >
-                  ${n}
-                </button>
-              );
-            })}
-          </div>
-          <label className="mb-16 flex cursor-pointer items-center gap-8">
-            <button
-              type="button"
-              aria-label="toggle"
-              onClick={() => setAgreed((v) => !v)}
-              className={`flex h-18 w-18 shrink-0 items-center justify-center rounded-4 border-2 ${
-                agreed ? "border-green bg-green" : "border-grey-58 bg-transparent"
-              }`}
-            >
-              <Icons.check className={`text-12 text-grey-28 ${agreed ? "opacity-100" : "opacity-0"}`} />
-            </button>
-            <span className="text-12 leading-snug text-grey-142">
-              I understand and accept that this transaction is non-refundable.
-            </span>
-          </label>
-          {error && method.kind !== "gift" ? <p className="mb-8 text-12 text-red">{error}</p> : null}
-          <PrimaryBtn onClick={proceedFiat}>Proceed Payment</PrimaryBtn>
-          {method.kind === "gift" ? (
-            <div className="mt-24">
-              <div className="mb-12 flex items-center gap-8">
-                <PanelIcon>
-                  <GiftGlyph />
-                </PanelIcon>
-                <div className="flex min-w-0 flex-col gap-2">
-                  <h3 className="tactic-heading-xs text-start text-white">Got a gift card? Redeem it here</h3>
-                  <span className="text-start text-13 text-grey-142">Enter your gift card code to add funds to your account</span>
-                </div>
-              </div>
-              <DarkInput className="mb-12">
-                <input
-                  autoComplete="off"
-                  className="h-full w-full bg-transparent text-13 text-white outline-none placeholder:text-grey-112"
-                  placeholder="Gift card code"
-                  value={giftCode}
-                  onChange={(e) => setGiftCode(e.target.value)}
-                />
-              </DarkInput>
-              {error ? <p className="mb-8 text-12 text-red">{error}</p> : null}
-              <PrimaryBtn onClick={redeemGift}>Redeem</PrimaryBtn>
-            </div>
-          ) : null}
         </div>
         <AffiliateBanner onClick={() => openModal("affiliate")} />
       </>

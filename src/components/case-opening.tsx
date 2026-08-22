@@ -633,8 +633,12 @@ export function CaseOpening({
             : await unboxBet(item.slug, n);
         if (!freeOpen) addBalance(-cost);
         applyUser(res.user);
-        if (reward && "rewards" in res && res.rewards) onOpened?.(res.rewards);
-        else if (giveawayWinId) onOpened?.();
+        if (giveawayWinId) {
+          onOpened?.();
+        } else if (reward) {
+          const payload = res as { rewards?: RewardsInfo };
+          if (payload.rewards) onOpened?.(payload.rewards);
+        }
         for (const game of res.games) {
           const hit =
             drops.find((d) => d.id === game.item.dropId) ??

@@ -17,5 +17,15 @@ export function RewardCaseModal({
 }) {
   const box = getRewardCase(slug);
   if (!box) return null;
-  return <CaseOpening item={box} variant="modal" canOpen={canOpen} onClose={onClose} onOpened={onOpened} />;
+  return (
+    <CaseOpening
+      item={box}
+      variant="modal"
+      canOpen={canOpen}
+      onClose={onClose}
+      onOpened={(rewards) => {
+        if (rewards) onOpened?.(rewards);
+      }}
+    />
+  );
 }

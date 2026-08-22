@@ -373,7 +373,7 @@ export default function MinesPage() {
                   value={String(mines)}
                   disabled={started}
                   accent
-                  prefix={<img alt="" src="/img/bomb.webp" className="size-20 object-contain" />}
+                  prefix={<img alt="" src="/img/mine-x.png" className="size-20 object-contain" />}
                   onChange={(id) => {
                     if (started) return;
                     setMines(Math.min(maxMines, Math.max(1, Number(id) || 1)));
@@ -407,12 +407,11 @@ export default function MinesPage() {
                   const isMine = boom !== null && mineSet.has(i);
                   const isGem = revealed.includes(i);
                   const open = isMine || isGem;
-                  const hit = boom === i;
                   return (
                     <FlipTile
                       key={i}
                       open={open}
-                      backClassName={isMine ? (hit ? "bg-red" : "bg-red/70") : "bg-green"}
+                      backClassName="bg-grey-39"
                       aria-label={`Tile ${i + 1}`}
                       disabled={!started || open || booting}
                       onPointerDown={(e) => {
@@ -441,9 +440,9 @@ export default function MinesPage() {
                       }
                       back={
                         isMine ? (
-                          <img alt="" className="h-[62%] w-[62%] object-contain" src="/img/bomb.webp" />
+                          <img alt="" className="h-[58%] w-[58%] object-contain" src="/img/mine-x.png" />
                         ) : (
-                          <img alt="" className="h-[58%] w-[58%] object-contain" src="/img/bloxypack-mark-dark.png" />
+                          <img alt="" className="h-[58%] w-[58%] object-contain" src="/img/mine-diamond.png" />
                         )
                       }
                     />

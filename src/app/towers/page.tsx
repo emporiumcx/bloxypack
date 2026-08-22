@@ -383,7 +383,7 @@ export default function TowersPage() {
                         <FlipTile
                           key={c}
                           open={open}
-                          backClassName={hit || isBomb ? "bg-red" : "bg-green"}
+                          backClassName="bg-grey-39"
                           disabled={!active}
                           aria-label={`Row ${ROWS - r} column ${c + 1}`}
                           onClick={() => pick(r, c)}
@@ -399,9 +399,9 @@ export default function TowersPage() {
                           }
                           back={
                             hit || isBomb ? (
-                              <img alt="" className="h-[62%] w-[62%] max-h-28 max-w-28 object-contain" src="/img/bomb.webp" />
+                              <img alt="" className="h-[58%] w-[58%] max-h-28 max-w-28 object-contain" src="/img/mine-x.png" />
                             ) : (
-                              <img alt="" className="h-[58%] w-[58%] max-h-28 max-w-28 object-contain" src="/img/bloxypack-mark-dark.png" />
+                              <img alt="" className="h-[58%] w-[58%] max-h-28 max-w-28 object-contain" src="/img/mine-diamond.png" />
                             )
                           }
                         />

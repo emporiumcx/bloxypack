@@ -1074,6 +1074,44 @@ a > * {
   animation: pop 0.28s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 
+@keyframes balance-up {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes balance-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.animate-balance-up {
+  animation: balance-up 1.2s ease-out both;
+}
+
+.animate-balance-down {
+  animation: balance-down 1.2s ease-out both;
+}
+
 @keyframes case-spin {
   0% {
     transform: translateX(0);

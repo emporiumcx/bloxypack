@@ -8,19 +8,65 @@ import { BuxGlyph, Icons } from "./icons";
 import { useStore } from "./providers";
 import { SITE_GAMES } from "@/lib/games";
 import { xpProgress } from "@/lib/levels";
+import { formatBux } from "@/lib/format";
 import { UserAvatar } from "./user-avatar";
 
 function HeaderBalance({ value }: { value: number }) {
-  const prev = useRef(value);
-  const [tick, setTick] = useState(0);
+  const primed = useRef(false);
+  const shownRef = useRef(value);
+  const [shown, setShown] = useState(value);
+  const [flash, setFlash] = useState<{ id: number; delta: number } | null>(null);
+
   useEffect(() => {
-    if (prev.current === value) return;
-    prev.current = value;
-    setTick((n) => n + 1);
+    if (!primed.current) {
+      primed.current = true;
+      shownRef.current = value;
+      setShown(value);
+      return;
+    }
+    const from = shownRef.current;
+    const to = value;
+    if (Math.abs(to - from) < 0.0001) return;
+    const delta = to - from;
+    const id = Date.now();
+    setFlash({ id, delta });
+    const start = performance.now();
+    const dur = 480;
+    let raf = 0;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / dur);
+      const eased = 1 - (1 - t) ** 3;
+      const next = from + (to - from) * eased;
+      shownRef.current = next;
+      setShown(next);
+      if (t < 1) raf = requestAnimationFrame(tick);
+      else {
+        shownRef.current = to;
+        setShown(to);
+      }
+    };
+    raf = requestAnimationFrame(tick);
+    const clear = window.setTimeout(() => setFlash((cur) => (cur?.id === id ? null : cur)), 1400);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(clear);
+    };
   }, [value]);
+
   return (
-    <div key={tick} className={tick ? "animate-pop" : undefined}>
-      <Bux value={value} />
+    <div className="relative">
+      <Bux value={shown} />
+      {flash ? (
+        <span
+          key={flash.id}
+          className={`pointer-events-none absolute top-full left-0 mt-2 ui-num text-11 font-bold leading-none ${
+            flash.delta < 0 ? "animate-balance-down text-red" : "animate-balance-up text-success"
+          }`}
+        >
+          {flash.delta > 0 ? "+" : "-"}
+          {formatBux(Math.abs(flash.delta))}
+        </span>
+      ) : null}
     </div>
   );
 }
@@ -240,7 +286,7 @@ export function SiteHeader() {
         <div className="flex shrink-0 items-center gap-8 sm:gap-16">
           {user ? (
             <>
-              <div className="flex h-40 items-center gap-8 rounded-6 bg-grey-39 py-4 pl-12 pr-4">
+              <div className="relative z-20 flex h-40 items-center gap-8 overflow-visible rounded-6 bg-grey-39 py-4 pl-12 pr-4">
                 <HeaderBalance value={user.balance} />
                 <button
                   type="button"

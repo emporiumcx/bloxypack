@@ -8,7 +8,7 @@ import { Icons } from "./icons";
 import { useStore } from "./providers";
 import { UserAvatar } from "./user-avatar";
 import { rouletteBet, subscribeRoulette, type RouletteBetRow, type RouletteColor, type RouletteGame } from "@/lib/backend";
-import { REEL_LOOPS, ROULETTE_ORDER, ROULETTE_PAYOUT, TILE_SLOT, TILE_W, rouletteColor } from "@/lib/roulette";
+import { REEL_LOOPS, ROULETTE_ORDER, ROULETTE_PAYOUT, rouletteColor } from "@/lib/roulette";
 
 const TILES = Array.from({ length: REEL_LOOPS }, () => [...ROULETTE_ORDER]).flat();
 
@@ -71,16 +71,37 @@ export function RouletteGame() {
       setOffset(0);
       return;
     }
-    if ((game.state === "rolling" || game.state === "completed") && game.outcome != null && lastSpin.current !== game._id) {
-      lastSpin.current = game._id;
-      const width = trackRef.current?.clientWidth || 900;
-      const loop = 6;
-      const idx = loop * ROULETTE_ORDER.length + ROULETTE_ORDER.indexOf(game.outcome as (typeof ROULETTE_ORDER)[number]);
-      const jitter = (Math.random() - 0.5) * 18;
-      const target = idx * TILE_SLOT + TILE_W / 2 - width / 2 + jitter;
-      setSpinning(true);
-      requestAnimationFrame(() => setOffset(target));
+    if ((game.state !== "rolling" && game.state !== "completed") || game.outcome == null || lastSpin.current === game._id) {
+      return;
     }
+    lastSpin.current = game._id;
+    const outcome = Number(game.outcome);
+    const orderIdx = ROULETTE_ORDER.findIndex((n) => n === outcome);
+    if (orderIdx < 0) return;
+    const idx = 6 * ROULETTE_ORDER.length + orderIdx;
+    setSpinning(false);
+    setOffset(0);
+    let cancelled = false;
+    let inner = 0;
+    const outer = requestAnimationFrame(() => {
+      inner = requestAnimationFrame(() => {
+        if (cancelled) return;
+        const track = trackRef.current;
+        const tile = track?.querySelector(`[data-roulette-i="${idx}"]`);
+        if (!track || !(tile instanceof HTMLElement)) return;
+        const trackBox = track.getBoundingClientRect();
+        const tileBox = tile.getBoundingClientRect();
+        const pointer = trackBox.left + trackBox.width / 2;
+        const center = tileBox.left + tileBox.width / 2;
+        setSpinning(true);
+        setOffset(center - pointer);
+      });
+    });
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(outer);
+      cancelAnimationFrame(inner);
+    };
   }, [game]);
 
   const remain = Math.max(0, (game?.endsAt || 0) - now);
@@ -127,7 +148,7 @@ export function RouletteGame() {
                 <div
                   key={`${h.outcome}-${i}`}
                   className={`flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-6 border-b-2 border-t-2 ${tileTone(h.outcome)}`}
-                  title={`${COLOR_LABEL[h.color]} ${h.outcome}`}
+                  title={`${COLOR_LABEL[rouletteColor(h.outcome)]} ${h.outcome}`}
                 >
                   <span className="ui-btn-label text-12 leading-none">{h.outcome}</span>
                 </div>
@@ -159,6 +180,7 @@ export function RouletteGame() {
                 {TILES.map((n, i) => (
                   <div
                     key={`${n}-${i}`}
+                    data-roulette-i={i}
                     className={`flex h-72 w-80 shrink-0 items-center justify-center rounded-6 border-b-3 border-t-3 ${tileTone(n)}`}
                   >
                     <span className="ui-btn-label text-28 leading-none">{n}</span>

@@ -294,6 +294,7 @@ export function BattleLive({ id }: { id: string }) {
   const router = useRouter();
   const { user, openModal, applyUser, battlesJoin, battlesBot, battlesGame, battlesCancel, battlesCreate } = useStore();
   const [game, setGame] = useState<BattleGame | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [fast, setFast] = useState(false);
   const [sound, setSound] = useState(true);
   const [count, setCount] = useState<number | null>(null);
@@ -314,11 +315,42 @@ export function BattleLive({ id }: { id: string }) {
   gameRef.current = game;
 
   useEffect(() => {
-    battlesGame(id).catch(() => {});
-    return subscribeBattles((state) => {
-      const found = state.games.find((g) => g._id === id);
-      if (found) setGame(found);
+    let alive = true;
+    let tries = 0;
+    let timer: number | undefined;
+    primed.current = false;
+    setGame(null);
+    setLoadError(null);
+
+    const apply = (found?: BattleGame) => {
+      if (!alive || !found || String(found._id) !== String(id)) return;
+      setGame(found);
+      setLoadError(null);
+    };
+
+    const load = () => {
+      battlesGame(id)
+        .then((res) => apply(res.game))
+        .catch((err) => {
+          if (!alive) return;
+          const msg = err instanceof Error ? err.message : "Could not load battle.";
+          if (/not connected/i.test(msg) && tries < 40) {
+            tries += 1;
+            timer = window.setTimeout(load, 250);
+            return;
+          }
+          setLoadError(msg);
+        });
+    };
+    load();
+    const unsub = subscribeBattles((state) => {
+      apply(state.games.find((g) => String(g._id) === String(id)) || state.history.find((g) => String(g._id) === String(id)));
     });
+    return () => {
+      alive = false;
+      if (timer) window.clearTimeout(timer);
+      unsub();
+    };
   }, [id, battlesGame]);
 
   useEffect(() => {
@@ -445,9 +477,9 @@ export function BattleLive({ id }: { id: string }) {
     return (
       <div className="grid gap-12">
         <Link href="/battles" className="text-14 text-grey-142 hover:text-white">
-          ← Back to battles
+          ← Back to All Battles
         </Link>
-        <p className="text-16">Loading battle…</p>
+        <p className="text-16">{loadError || "Loading battle…"}</p>
       </div>
     );
   }

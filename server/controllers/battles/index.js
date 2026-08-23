@@ -90,15 +90,21 @@ const battlesGetGameDataSocket = async(io, socket, user, data, callback) => {
             battlesGame = await BattlesGame.findById(data.gameId).select('amount playerCount mode boxes options fair state updatedAt createdAt').populate({ 
                 path: 'boxes.box', 
                 select: 'name slug amount items',
-                populate: { path: 'items.item', select: 'name image amountFixed' }
+                populate: { path: 'items.item', select: 'name image amountFixed color dropId' }
             }).populate({ 
                 path: 'bets', 
                 populate: { path: 'user', select: 'roblox.id username avatar rank xp limits stats.total affiliates anonymous createdAt' } 
-            }).lean();
+            }).lean({ virtuals: true });
 
-            // Add level and rakeback info to user objects
-            for(let bet of battlesGame.bets) { 
-                if(bet.bot === false) { 
+            if (battlesGame && (!Array.isArray(battlesGame.bets) || battlesGame.bets.length === 0)) {
+                battlesGame.bets = await BattlesBet.find({ game: battlesGame._id }).populate({
+                    path: 'user',
+                    select: 'roblox.id username avatar rank xp limits stats.total affiliates anonymous createdAt'
+                }).lean();
+            }
+
+            for(let bet of battlesGame.bets || []) { 
+                if(bet.bot === false && bet.user) { 
                     bet.user.level = generalUserGetLevel(bet.user);
                     bet.user.rakeback = generalUserGetRakeback(bet.user); 
                 } 

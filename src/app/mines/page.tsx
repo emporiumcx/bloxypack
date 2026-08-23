@@ -253,11 +253,12 @@ export default function MinesPage() {
     try {
       const res = await minesReveal(i);
       if (res.user) applyUser(res.user);
-      const last = res.game.revealed[res.game.revealed.length - 1];
+      const revealedTiles = res.game.revealed ?? [];
+      const last = revealedTiles[revealedTiles.length - 1];
       if (last?.value === "mine") {
         playSfx("bomb");
         setBoom(i);
-        const tiles = res.game.revealed.map((r) => r.tile);
+        const tiles = revealedTiles.map((r) => r.tile);
         revealedRef.current = tiles;
         setRevealed(tiles);
         const minesFound = (res.game.deck || []).map((v, idx) => (v === "mine" ? idx : -1)).filter((v) => v >= 0);
@@ -266,7 +267,7 @@ export default function MinesPage() {
         dragging.current = false;
         return;
       }
-      const tiles = res.game.revealed.map((r) => r.tile);
+      const tiles = revealedTiles.map((r) => r.tile);
       revealedRef.current = tiles;
       setRevealed(tiles);
       playSfx("safe");

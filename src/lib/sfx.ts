@@ -5,7 +5,7 @@ const DEFAULT_THROTTLE_MS = 45;
 const CATALOG = {
   click: { src: "/sounds/games/click.mp3", gain: 0.25 },
   safe: { src: "/sounds/games/tile1.mp3", gain: 0.45 },
-  bomb: { src: "/sounds/games/bomb.mp3", gain: 0.5 },
+  bomb: { src: "/sounds/games/mine.mp3", gain: 0.55 },
   win: { src: "/sounds/games/win.mp3", gain: 0.15 },
   spin_start: { src: "/sounds/cases/spin_start.mp3", gain: 0.1 },
   spin_tick: { src: "/sounds/cases/spin_tick.mp3", gain: 0.7 },

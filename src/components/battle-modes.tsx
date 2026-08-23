@@ -65,7 +65,7 @@ export const MODE_META = {
   },
   jackpot: {
     title: "Jackpot Battle",
-    copy: "The winner is drawn based on each player’s total value.",
+    copy: "Each player’s unboxed total becomes tickets. A draw spin then picks who takes the whole pot.",
     color: "battle-jackpot",
   },
   group: {

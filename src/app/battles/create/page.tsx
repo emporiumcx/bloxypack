@@ -45,8 +45,12 @@ const FAQS = [
     a: "Normal awards the highest total. Jackpot draws a winner from each player’s share of the pot. Group splits the winnings equally. Crazy inverts the ranking, and Terminal only counts the last case.",
   },
   {
+    q: "What is Jackpot mode?",
+    a: "Everyone still opens the same cases. After the last round, each player’s unboxed total becomes tickets in a draw. Higher value means a bigger slice of the wheel, then one spin picks the winner of the whole pot.",
+  },
+  {
     q: "What is Borrow mode?",
-    a: "Borrow lets the host cover part of every seat. Joiners pay a reduced cost, and you pay the difference up front.",
+    a: "Borrow lets joiners enter cheaper. You set a percent when creating the battle; joiners pay that much less, and you cover the difference up front. If a joiner wins, they only receive that same percent of the pot.",
   },
   {
     q: "What happens in a draw?",
@@ -142,7 +146,7 @@ export default function CreateBattlePage() {
   const layout = ALL.find((l) => l.id === layoutId) ?? ALL[0];
   const cost = picked.reduce((s, c) => s + c.price, 0);
   const funding = borrow ? Math.min(80, Math.max(0, borrowPct)) : 0;
-  const creatorCost = cost + (cost * layout.slots * funding) / 100;
+  const creatorCost = cost + (cost * (layout.slots - 1) * funding) / 100;
 
   useEffect(() => {
     return subscribeBattles((state) => {
@@ -394,9 +398,15 @@ export default function CreateBattlePage() {
             Cases <span className="text-white">{picked.length}</span>
           </div>
           <div className="flex items-center gap-8">
-            <span className="text-13 text-grey-142">Battle Cost</span>
+            <span className="text-13 text-grey-142">{borrow ? "Your cost" : "Battle Cost"}</span>
             <Bux value={creatorCost} />
           </div>
+          {borrow ? (
+            <div className="flex items-center gap-8">
+              <span className="text-13 text-grey-142">Join cost</span>
+              <Bux value={cost * (1 - funding / 100)} />
+            </div>
+          ) : null}
           <GreenButton className="ml-auto" size="sm" disabled={!picked.length || creating} onClick={create} icon={<Icons.plus className="text-14" />}>
             {creating ? "Creating..." : "Create Battle"}
           </GreenButton>

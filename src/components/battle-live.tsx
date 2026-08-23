@@ -14,6 +14,7 @@ import { subscribeBattles, type BattleGame, type BattleItem } from "@/lib/backen
 import { battleCaseImage, mapBattleGame } from "@/lib/battles-map";
 import { botAvatar, botName } from "@/lib/avatars";
 import { dropsForCase, itemImage, type CaseDrop, type DropColor } from "@/lib/catalog";
+import { JackpotDraw, WinnerOverlay, battleSfx } from "@/components/battle-result";
 
 const RARITY: Record<DropColor, string> = {
   RAINBOW: "#ff4ecd",
@@ -303,11 +304,13 @@ export function BattleLive({ id }: { id: string }) {
   const [strips, setStrips] = useState<CaseDrop[][]>([]);
   const [pulled, setPulled] = useState<CaseDrop[][]>([]);
   const [busy, setBusy] = useState(false);
+  const [overlay, setOverlay] = useState<"none" | "jackpot" | "winner">("none");
   const landedRef = useRef(0);
   const spinningRef = useRef(false);
   const primed = useRef(false);
   const gameRef = useRef(game);
   const spinTimer = useRef<number | null>(null);
+  const watchingRef = useRef(false);
   gameRef.current = game;
 
   useEffect(() => {
@@ -329,9 +332,10 @@ export function BattleLive({ id }: { id: string }) {
       return;
     }
     setCount(3);
+    if (sound) battleSfx("/sounds/battles/battle_countdown.mp3", 0.8);
     const timers = [window.setTimeout(() => setCount(2), 1000), window.setTimeout(() => setCount(1), 2000), window.setTimeout(() => setCount(0), 3000)];
     return () => timers.forEach((t) => window.clearTimeout(t));
-  }, [game?._id, game?.state]);
+  }, [game?._id, game?.state, sound]);
 
   const battle = useMemo(() => (game ? mapBattleGame(game) : null), [game]);
   const duration = fast ? FAST_MS : SPIN_MS;
@@ -364,7 +368,7 @@ export function BattleLive({ id }: { id: string }) {
     setSpinMs(durationRef.current);
     setSpinKey((n) => n + 1);
     spinningRef.current = true;
-    if (soundRef.current) playSfx("/sounds/cases/spin.mp3", 0.35);
+    if (soundRef.current) playSfx("/sounds/cases/spin_start.mp3", 0.35);
     if (spinTimer.current) window.clearTimeout(spinTimer.current);
     spinTimer.current = window.setTimeout(() => {
       spinningRef.current = false;
@@ -380,6 +384,17 @@ export function BattleLive({ id }: { id: string }) {
       });
       setPhase("landed");
       if (soundRef.current) playSfx("/sounds/cases/battle-land-1.mp3", 1);
+      const totalRounds = roundSlugs(nextGame).length;
+      if (watchingRef.current && index + 1 < totalRounds) {
+        window.setTimeout(() => startRound(index + 1, nextGame), 420);
+        return;
+      }
+      if (index + 1 >= totalRounds) {
+        watchingRef.current = false;
+        const winners = (nextGame.bets || []).filter((b) => (b.payout || 0) > 0);
+        if (nextGame.options?.jackpot && winners.length === 1) setOverlay("jackpot");
+        else setOverlay("winner");
+      }
     }, durationRef.current + SETTLE_MS);
   };
 
@@ -410,6 +425,7 @@ export function BattleLive({ id }: { id: string }) {
       landedRef.current = done;
       if (nextGame.state === "completed") {
         setPhase("landed");
+        setOverlay("winner");
         return;
       }
       if (n > landedRef.current) startRound(landedRef.current, nextGame);
@@ -450,6 +466,7 @@ export function BattleLive({ id }: { id: string }) {
     if (user.balance < joinCost) return openModal("deposit");
     setBusy(true);
     try {
+      if (sound) battleSfx("/sounds/battles/battle_join.mp3", 0.6);
       const res = await battlesJoin(game._id, slotIndex);
       if (res.user) applyUser(res.user);
     } catch (err) {
@@ -485,7 +502,7 @@ export function BattleLive({ id }: { id: string }) {
     }
   };
 
-  const replay = async () => {
+  const recreate = async () => {
     if (!user) return openModal("login");
     const boxes = (game.boxes || [])
       .map((b) => ({ _id: b.box?._id || "", count: b.count || 1 }))
@@ -566,8 +583,35 @@ export function BattleLive({ id }: { id: string }) {
               </p>
               <p className="text-12 uppercase text-grey-142">{battle.teams}</p>
               <p className="text-12 uppercase text-grey-142">{ended ? "completed" : waiting ? "waiting" : game.state}</p>
-              <div className="mt-6 flex justify-end">
+              <div className="mt-6 flex flex-wrap justify-end gap-8">
                 <BattleModeIcons jackpot={game.options?.jackpot} crazy={game.options?.cursed} terminal={game.options?.terminal} />
+                {ended ? (
+                  <>
+                    <button
+                      type="button"
+                      disabled={busy}
+                      onClick={() => void recreate()}
+                      className="rounded-6 bg-green px-10 py-6 text-12 font-medium text-grey-28"
+                    >
+                      Recreate
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        watchingRef.current = true;
+                        spinningRef.current = false;
+                        landedRef.current = 0;
+                        setPulled(Array.from({ length: game.playerCount }, () => []));
+                        setOverlay("none");
+                        startRound(0, game);
+                      }}
+                      className="inline-flex items-center gap-6 rounded-6 bg-grey-28 px-10 py-6 text-12 text-white"
+                    >
+                      <Icons.replay className="text-14" />
+                      Replay
+                    </button>
+                  </>
+                ) : null}
               </div>
             </div>
           </div>
@@ -579,13 +623,41 @@ export function BattleLive({ id }: { id: string }) {
               <p className="text-[72px] font-bold leading-none text-green">{count}</p>
             </div>
           ) : null}
+          {overlay === "jackpot" ? (
+            <JackpotDraw
+              game={game}
+              totals={Array.from({ length: game.playerCount }, (_, i) => (pulled[i] || []).reduce((s, d) => s + d.value, 0))}
+              winnerSlot={(game.bets || []).find((b) => (b.payout || 0) > 0)?.slot ?? 0}
+              sound={sound}
+              onDone={() => setOverlay("winner")}
+            />
+          ) : null}
+          {overlay === "winner" ? (
+            <WinnerOverlay
+              game={game}
+              totals={Array.from({ length: game.playerCount }, (_, i) => (pulled[i] || []).reduce((s, d) => s + d.value, 0))}
+              funding={funding}
+              recreateCost={battle.cost + (battle.cost * (game.playerCount - 1) * funding) / 100}
+              busy={busy}
+              sound={sound}
+              onRecreate={() => void recreate()}
+              onWatchAgain={() => {
+                watchingRef.current = true;
+                spinningRef.current = false;
+                landedRef.current = 0;
+                setPulled(Array.from({ length: game.playerCount }, () => []));
+                setOverlay("none");
+                startRound(0, game);
+              }}
+            />
+          ) : null}
           <div className="grid gap-12" style={{ gridTemplateColumns: `repeat(${game.playerCount}, minmax(0, 1fr))` }}>
             {Array.from({ length: game.playerCount }, (_, i) => {
               const bet = (game.bets || []).find((b) => b.slot === i);
               const filled = Boolean(bet);
               const name = bet?.bot ? botName(i) : bet?.user?.username || "Waiting";
               const seatPulled = pulled[i] || [];
-              const total = ended ? (bet?.payout || 0) / 1000 : seatPulled.reduce((s, d) => s + d.value, 0);
+              const total = seatPulled.reduce((s, d) => s + d.value, 0);
               const won = ended && (bet?.payout || 0) > 0;
               const lost = ended && filled && !won;
               return (
@@ -604,7 +676,9 @@ export function BattleLive({ id }: { id: string }) {
                       />
                       <div className="min-w-0">
                         <p className="truncate text-13 text-white">{filled ? name : "Waiting"}</p>
-                        <p className="text-11 text-grey-142">{bet?.bot ? "Bot" : filled ? "Player" : "Empty seat"}</p>
+                        <p className="text-11 text-grey-142">
+                          {bet?.bot ? "Bot" : filled ? (funding > 0 && (bet?.amount || 0) < (game.amount || 0) ? `Borrow ${funding}%` : "Player") : "Empty seat"}
+                        </p>
                       </div>
                     </div>
                     {filled ? <Bux value={total} size="sm" /> : null}
@@ -674,10 +748,21 @@ export function BattleLive({ id }: { id: string }) {
         <div className="flex justify-center gap-8">
           {ended ? (
             <>
-              <GreenButton onClick={() => void replay()} disabled={busy} icon={<Icons.replay className="text-18" />}>
-                Replay
+              <GreenButton onClick={() => void recreate()} disabled={busy} icon={<Icons.replay className="text-18" />}>
+                Recreate battle
               </GreenButton>
-              <GreyButton onClick={() => router.push("/battles")}>Back to battles</GreyButton>
+              <GreyButton
+                onClick={() => {
+                  watchingRef.current = true;
+                  spinningRef.current = false;
+                  landedRef.current = 0;
+                  setPulled(Array.from({ length: game.playerCount }, () => []));
+                  setOverlay("none");
+                  startRound(0, game);
+                }}
+              >
+                Watch again
+              </GreyButton>
             </>
           ) : waiting ? (
             <>

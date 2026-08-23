@@ -132,7 +132,8 @@ const battlesSendCreateSocket = async(io, socket, user, data, callback) => {
         const amount = battlesGetAmountGame(boxes);
 
         // Get battle user amount
-        const amountUser = Math.floor(amount + (amount * Math.floor(data.playerCount) * Math.floor(data.funding) / 100));
+        const funding = Math.min(80, Math.max(0, Math.floor(data.funding)));
+        const amountUser = Math.floor(amount + (amount * (Math.floor(data.playerCount) - 1) * funding / 100));
 
         // Validate user
         battlesCheckSendCreateUser(user, data, amountUser);
@@ -160,7 +161,7 @@ const battlesSendCreateSocket = async(io, socket, user, data, callback) => {
                 updatedAt: new Date().getTime()
             }, { new: true }).select('username avatar rank balance xp stats local.email rakeback mute ban verifiedAt updatedAt').lean(),
             BattlesBet.create({
-                amount: amountUser,
+                amount: amount,
                 outcomes: [],
                 slot: 0,
                 game: battlesGame._id,
@@ -558,7 +559,11 @@ const battlesGameComplete = async(io, battlesGame) => {
         // Add update battles bet querys to promise array
         for(const bet of battlesGame.bets) {
             // Get payout amount for user bet
-            bet.payout = winnerBets.some((element) => element._id.toString() === bet._id.toString()) === true ? Math.floor(amountWinTotal / winnerBets.length) : 0;
+            const stake = Math.max(1, battlesGame.amount);
+            const paid = Math.max(0, bet.amount || 0);
+            const borrowShare = Math.min(1, paid / stake);
+            const gross = winnerBets.some((element) => element._id.toString() === bet._id.toString()) === true ? Math.floor(amountWinTotal / winnerBets.length) : 0;
+            bet.payout = battlesGame.mode === 'group' ? gross : Math.floor(gross * borrowShare);
 
             if(bet.bot !== true) {
                 // Add user bet amount to total bet amount

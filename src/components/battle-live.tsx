@@ -28,14 +28,15 @@ const RARITY: Record<DropColor, string> = {
   BLUE: "#4b69ff",
 };
 
-const STRIP_LEN = 25;
-const WIN_INDEX = 21;
-const SPIN_MS = 4000;
-const FAST_MS = 2000;
-const SETTLE_MS = 750;
+const STRIP_LEN = 32;
+const WIN_INDEX = 24;
+const SPIN_MS = 4200;
+const FAST_MS = 2200;
+const SETTLE_MS = 400;
+const ARENA_H = 460;
 
-function easeOutQuart(t: number) {
-  return 1 - (1 - t) ** 4;
+function easeOutQuint(t: number) {
+  return 1 - (1 - t) ** 5;
 }
 
 function itemSrc(id?: number, image?: string) {
@@ -193,26 +194,27 @@ function BattleReel({
   slot: number;
 }) {
   const stripRef = useRef<HTMLDivElement>(null);
+  const winRef = useRef<HTMLDivElement>(null);
   const frozen = useRef<{ key: number; strip: CaseDrop[] }>({ key: -1, strip });
   if (phase !== "spinning" || frozen.current.key !== spinKey || !frozen.current.strip.length) {
     frozen.current = { key: spinKey, strip };
   }
   const shown = frozen.current.strip;
-  const startY = -slot * 2;
+  const startY = ARENA_H / 2 - slot * 2.2 - slot / 2;
+  const endY = ARENA_H / 2 - WIN_INDEX * slot - slot / 2;
 
   useEffect(() => {
     const el = stripRef.current;
-    if (!el?.parentElement) return;
-    const center = () => el.parentElement!.clientHeight / 2 - slot / 2;
-    const endY = -(WIN_INDEX * slot) + center() + (Math.random() * 6 - 3);
-    const apply = (y: number) => {
+    if (!el) return;
+    const apply = (y: number, blur = 0) => {
       el.style.transform = `translate3d(0, ${y}px, 0)`;
+      el.style.filter = blur > 0.4 ? `blur(${blur.toFixed(2)}px)` : "none";
     };
     if (phase !== "spinning" || spinKey === 0) {
-      apply(phase === "landed" ? -(WIN_INDEX * slot) + center() : startY);
+      apply(phase === "landed" ? endY : startY);
       return;
     }
-    apply(startY);
+    apply(startY, 4);
     let raf = 0;
     let cancelled = false;
     let t0 = 0;
@@ -220,15 +222,27 @@ function BattleReel({
       if (cancelled) return;
       if (!t0) t0 = now;
       const u = Math.min((now - t0) / duration, 1);
-      apply(startY + (endY - startY) * easeOutQuart(u));
+      const y = startY + (endY - startY) * easeOutQuint(u);
+      apply(y, u < 0.5 ? (1 - u / 0.5) * 2.4 : 0);
       if (u < 1) raf = requestAnimationFrame(step);
+      else {
+        apply(endY);
+        winRef.current?.animate(
+          [
+            { transform: "scale(1)" },
+            { transform: "scale(1.12)", offset: 0.35 },
+            { transform: "scale(1)" },
+          ],
+          { duration: 520, easing: "cubic-bezier(0.22, 1.4, 0.36, 1)" },
+        );
+      }
     };
     raf = requestAnimationFrame(step);
     return () => {
       cancelled = true;
       cancelAnimationFrame(raf);
     };
-  }, [phase, spinKey, duration, slot, startY]);
+  }, [phase, spinKey, duration, startY, endY]);
 
   const winner = phase !== "idle" ? shown[WIN_INDEX] : null;
   const color = winner ? RARITY[winner.color] : "transparent";
@@ -240,14 +254,16 @@ function BattleReel({
         <div
           className="csd-reel-glow"
           style={{
-            background: `radial-gradient(circle, ${color}66 0%, transparent 70%)`,
-            opacity: landed ? 1 : phase === "spinning" ? 0.4 : 0,
+            background: `radial-gradient(circle, ${color}99 0%, ${color}22 42%, transparent 70%)`,
+            opacity: phase === "idle" ? 0 : landed ? 1 : 0.55,
           }}
         />
         <div ref={stripRef} className="csd-reel-strip">
           {shown.map((d, j) => (
             <div key={j} className={`csd-reel-slot${landed && j === WIN_INDEX ? " is-won" : ""}`}>
-              <img alt="" src={itemSrc(d.id, d.image)} />
+              <div ref={landed && j === WIN_INDEX ? winRef : undefined} className="csd-reel-skin">
+                <img alt="" src={itemSrc(d.id, d.image)} />
+              </div>
             </div>
           ))}
         </div>
@@ -345,8 +361,8 @@ export function BattleLive({ id }: { id: string }) {
   soundRef.current = sound;
   durationRef.current = duration;
   const seats = game?.playerCount || 2;
-  const itemSize = seats >= 6 ? 64 : seats >= 4 ? 76 : seats === 3 ? 88 : 100;
-  const slot = seats >= 6 ? 84 : seats >= 4 ? 96 : seats === 3 ? 108 : 120;
+  const itemSize = seats >= 6 ? 78 : seats >= 4 ? 88 : 100;
+  const slot = seats >= 6 ? 102 : seats >= 4 ? 114 : 126;
 
   const startRound = (index: number, nextGame: BattleGame) => {
     if (spinningRef.current) return;
@@ -386,7 +402,7 @@ export function BattleLive({ id }: { id: string }) {
       if (soundRef.current) playSfx("/sounds/cases/battle-land-1.mp3", 1);
       const totalRounds = roundSlugs(nextGame).length;
       if (watchingRef.current && index + 1 < totalRounds) {
-        window.setTimeout(() => startRound(index + 1, nextGame), 420);
+        window.setTimeout(() => startRound(index + 1, nextGame), 900);
         return;
       }
       if (index + 1 >= totalRounds) {
@@ -722,17 +738,26 @@ export function BattleLive({ id }: { id: string }) {
           </div>
         </div>
 
-        <div className="csd-arena relative">
+        <div className="csd-arena relative" style={{ height: ARENA_H }}>
+          <div className="csd-arena-grid" />
+          <div className="csd-hitline" />
+          <div className="csd-pointer csd-pointer-l" />
+          <div className="csd-pointer csd-pointer-r" />
           {game.options?.jackpot && overlay === "none" && !counting ? (
-            <div className="pointer-events-none absolute left-1/2 top-12 z-20 flex -translate-x-1/2 items-center gap-8 rounded-full bg-black/50 px-12 py-6">
+            <div className="pointer-events-none absolute left-1/2 top-12 z-20 flex -translate-x-1/2 items-center gap-8 rounded-full bg-black/55 px-12 py-6 ring-1 ring-white/10">
               <Icons.jackpot className="text-16" />
               <span className="text-11 font-black tracking-[0.18em] text-[#7eb6ff]">JACKPOT</span>
+              <Bux value={pot} size="xs" tone="gold" />
+            </div>
+          ) : game.mode === "group" && overlay === "none" && !counting ? (
+            <div className="pointer-events-none absolute left-1/2 top-12 z-20 flex -translate-x-1/2 items-center gap-8 rounded-full bg-black/55 px-12 py-6 ring-1 ring-white/10">
+              <span className="text-11 font-black tracking-[0.18em] text-[#e8b923]">GROUP</span>
               <Bux value={pot} size="xs" tone="gold" />
             </div>
           ) : null}
           {counting ? (
             <div className="absolute inset-0 z-30 grid place-items-center">
-              <p className="text-[120px] font-black leading-none text-white/80">{count}</p>
+              <p className="text-[120px] font-black leading-none text-white/75">{count}</p>
             </div>
           ) : null}
           {overlay === "jackpot" ? (
@@ -750,17 +775,30 @@ export function BattleLive({ id }: { id: string }) {
               onWatchAgain={runReplay}
             />
           ) : null}
-          <div className={`flex h-full min-h-[420px] ${counting ? "opacity-0" : ""}`}>
+          <div className={`relative z-10 flex h-full ${counting ? "opacity-0" : ""}`}>
             {groups.map((g, gi) => (
               <div key={gi} className="flex min-w-0 flex-1">
                 {gi > 0 ? (
-                  <div className="relative z-10 flex w-28 shrink-0 items-center justify-center">
-                    <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-white/10" />
-                    <span className="relative rounded-full bg-grey-28 px-4 py-4 text-11 font-bold text-grey-142">VS</span>
+                  <div className="relative z-10 flex w-36 shrink-0 items-center justify-center">
+                    <div className="absolute inset-y-24 left-1/2 w-px -translate-x-1/2 bg-white/12" />
+                    <span className="relative grid size-28 place-items-center rounded-full bg-grey-28 text-11 font-bold text-grey-142 ring-1 ring-white/10">
+                      VS
+                    </span>
                   </div>
                 ) : null}
-                <div className="grid min-w-0 flex-1" style={{ gridTemplateColumns: `repeat(${g.length}, minmax(0, 1fr))` }}>
-                  {g.map((i) => renderReel(i))}
+                <div className="flex min-w-0 flex-1">
+                  {g.map((i, ii) => (
+                    <div key={i} className="relative min-w-0 flex-1">
+                      {ii > 0 ? (
+                        <div className="csd-col-split">
+                          <span className="csd-col-split-icon">
+                            <Icons.user className="text-12" />
+                          </span>
+                        </div>
+                      ) : null}
+                      {renderReel(i)}
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}

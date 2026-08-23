@@ -2078,14 +2078,82 @@ input.rs-range::-moz-range-track {
   overflow: hidden;
   border-radius: 12px;
   background-color: #0a101c;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 18px 18px;
-  min-height: 420px;
+  height: 460px;
+}
+
+.csd-arena-grid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.11) 1px, transparent 1.2px),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 22px 22px, 22px 22px, 22px 22px;
+  background-position: 0 0, 0 0, 0 0;
+  mask-image: radial-gradient(ellipse at center, #000 20%, transparent 78%);
+}
+
+.csd-hitline {
+  pointer-events: none;
+  position: absolute;
+  z-index: 6;
+  left: 18px;
+  right: 18px;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(91, 140, 255, 0.55), transparent);
+}
+
+.csd-pointer {
+  pointer-events: none;
+  position: absolute;
+  z-index: 7;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.csd-pointer-l {
+  left: 6px;
+  border-left: 10px solid #5b8cff;
+}
+
+.csd-pointer-r {
+  right: 6px;
+  border-right: 10px solid #5b8cff;
+}
+
+.csd-col-split {
+  pointer-events: none;
+  position: absolute;
+  top: 48px;
+  bottom: 48px;
+  left: 0;
+  z-index: 5;
+  width: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.csd-col-split-icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  color: #8b97b3;
+  background: #141b2b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
 }
 
 .csd-reel {
   height: 100%;
-  min-height: 420px;
   overflow: hidden;
 }
 
@@ -2093,26 +2161,26 @@ input.rs-range::-moz-range-track {
   position: relative;
   height: 100%;
   overflow: hidden;
-  mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
 }
 
 .csd-reel-glow {
   pointer-events: none;
   position: absolute;
   left: 50%;
-  top: 42%;
+  top: 50%;
   z-index: 1;
-  width: 160px;
-  height: 160px;
+  width: 170px;
+  height: 170px;
   transform: translate(-50%, -50%);
   border-radius: 999px;
-  transition: opacity 200ms;
+  transition: opacity 180ms;
 }
 
 .csd-reel-strip {
   position: relative;
   z-index: 2;
-  will-change: transform;
+  will-change: transform, filter;
 }
 
 .csd-reel-slot {
@@ -2122,31 +2190,38 @@ input.rs-range::-moz-range-track {
   justify-content: center;
 }
 
+.csd-reel-skin {
+  display: grid;
+  place-items: center;
+}
+
 .csd-reel-slot img {
   height: var(--itemSize);
   width: var(--itemSize);
   object-fit: contain;
-  opacity: 0.28;
-  filter: saturate(0.85);
+  opacity: 0.92;
 }
 
 .csd-reel-slot.is-won img {
   opacity: 1;
   filter: none;
-  transform: scale(1.08);
+}
+
+.csd-reel-window:has(.is-won) .csd-reel-slot:not(.is-won) img {
+  opacity: 0.22;
 }
 
 .csd-reel-meta {
   pointer-events: none;
   position: absolute;
-  right: 8px;
-  bottom: 28%;
-  left: 8px;
-  z-index: 3;
+  z-index: 4;
+  right: 6px;
+  left: 6px;
+  top: calc(50% + 46px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   text-align: center;
 }
 
@@ -2156,6 +2231,7 @@ input.rs-range::-moz-range-track {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 11px;
+  line-height: 1.2;
   color: #fff;
 }
 

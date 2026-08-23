@@ -159,10 +159,29 @@ export async function meRequest() {
 
 type Ack<T> = { success: true } & T | { success: false; error: { message: string } };
 
+function waitConnected(socket: Socket | null) {
+  if (socket?.connected) return Promise.resolve(socket);
+  return new Promise<Socket>((resolve, reject) => {
+    if (!socket) return reject(new Error("Not connected."));
+    const timer = setTimeout(() => {
+      socket.off("connect", onConnect);
+      reject(new Error("Not connected."));
+    }, 8000);
+    const onConnect = () => {
+      clearTimeout(timer);
+      resolve(socket);
+    };
+    socket.once("connect", onConnect);
+  });
+}
+
 function emit<T>(socket: Socket, event: string, data: unknown) {
   return new Promise<T>((resolve, reject) => {
     socket.timeout(15000).emit(event, data, (err: Error | null, res: Ack<T>) => {
-      if (err) return reject(err);
+      if (err) {
+        const msg = /disconnect/i.test(err.message) ? "Lost connection. Try again." : err.message;
+        return reject(new Error(msg));
+      }
       if (!res || res.success === false) return reject(new Error(res?.error?.message || "Action failed"));
       resolve(res as T);
     });
@@ -648,8 +667,8 @@ export async function battlesCreate(data: {
   jackpot?: boolean;
   teams?: string;
 }) {
-  if (!battles) throw new Error("Not connected.");
-  const res = await emit<{ user?: ServerUser; game: BattleGame }>(battles, "sendCreate", {
+  const sock = await waitConnected(battles);
+  const res = await emit<{ user?: ServerUser; game: BattleGame }>(sock, "sendCreate", {
     playerCount: data.playerCount,
     mode: data.mode,
     boxes: data.boxes,

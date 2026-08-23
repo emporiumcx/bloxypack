@@ -540,8 +540,17 @@ export function BattleLive({ id }: { id: string }) {
             className="group/button relative flex h-32 items-center justify-center rounded-6 bg-grey-39 px-10 text-14 text-grey-142 transition-colors hover:bg-grey-47 hover:text-white"
           >
             <Icons.chevronLeft className="text-18" />
-            <span className="ml-4">Back to battles</span>
+            <span className="ml-4">Back to All Battles</span>
           </Link>
+          <div className="flex flex-1 items-center justify-center text-13 text-grey-142">
+            {!waiting && !ended ? (
+              <span className="ui-label text-white">Round {Math.min(round + 1, slugs.length || 1)} / {slugs.length || 1}</span>
+            ) : ended ? (
+              <span className="ui-label text-white">Round {slugs.length || 1} / {slugs.length || 1}</span>
+            ) : (
+              <span>Countdown</span>
+            )}
+          </div>
           <div className="flex items-center gap-12">
             <Toggle on={sound} icon={<Icons.volume />} onClick={() => setSound((v) => !v)} />
             <Toggle on={fast} icon={<Icons.bolt />} onClick={() => setFast((v) => !v)} />
@@ -620,7 +629,7 @@ export function BattleLive({ id }: { id: string }) {
         <div className="relative">
           {count != null && count > 0 ? (
             <div className="absolute inset-0 z-40 grid place-items-center rounded-12 bg-grey-28/70">
-              <p className="text-[72px] font-bold leading-none text-green">{count}</p>
+              <p className="text-[96px] font-black leading-none text-white/80">{count}</p>
             </div>
           ) : null}
           {overlay === "jackpot" ? (
@@ -658,33 +667,13 @@ export function BattleLive({ id }: { id: string }) {
               const name = bet?.bot ? botName(i) : bet?.user?.username || "Waiting";
               const seatPulled = pulled[i] || [];
               const total = seatPulled.reduce((s, d) => s + d.value, 0);
-              const won = ended && (bet?.payout || 0) > 0;
-              const lost = ended && filled && !won;
+              const lost = ended && filled && (bet?.payout || 0) <= 0;
               return (
                 <div
                   key={i}
-                  className={`panel-outline flex min-w-0 flex-col rounded-12 bg-grey-39 p-12 ${won ? "ring-2 ring-green" : ""} ${lost ? "opacity-70" : ""}`}
+                  className={`flex min-w-0 flex-col ${lost && overlay === "none" ? "opacity-70" : ""}`}
                 >
-                  <div className="flex items-center justify-between gap-8">
-                    <div className="flex min-w-0 items-center gap-8">
-                      <BattleSeat
-                        name={name}
-                        filled={filled}
-                        size={40}
-                        src={bet?.bot ? botAvatar(i) : bet?.user?.avatar}
-                        level={bet?.user?.level || 1}
-                      />
-                      <div className="min-w-0">
-                        <p className="truncate text-13 text-white">{filled ? name : "Waiting"}</p>
-                        <p className="text-11 text-grey-142">
-                          {bet?.bot ? "Bot" : filled ? (funding > 0 && (bet?.amount || 0) < (game.amount || 0) ? `Borrow ${funding}%` : "Player") : "Empty seat"}
-                        </p>
-                      </div>
-                    </div>
-                    {filled ? <Bux value={total} size="sm" /> : null}
-                  </div>
-
-                  <div className="relative mt-12">
+                  <div className="relative">
                     {filled ? (
                       <BattleReel
                         strip={strips[i] || []}
@@ -711,14 +700,26 @@ export function BattleLive({ id }: { id: string }) {
                         )}
                       </div>
                     )}
-                    {ended && filled ? (
-                      <p className={`mt-10 rounded-6 px-8 py-6 text-center text-12 font-bold ${won ? "bg-green text-grey-28" : "bg-red/20 text-red"}`}>
-                        {won ? "WINNER" : "LOST"}
-                      </p>
+                  </div>
+                  <div className="mt-8 flex items-center justify-between gap-8 rounded-8 bg-grey-39 px-10 py-8">
+                    <div className="flex min-w-0 items-center gap-8">
+                      <BattleSeat
+                        name={name}
+                        filled={filled}
+                        size={40}
+                        src={bet?.bot ? botAvatar(i) : bet?.user?.avatar}
+                        level={bet?.user?.level || 1}
+                      />
+                      <div className="min-w-0">
+                        <p className="truncate text-13 uppercase text-white">{filled ? name : "Waiting"}</p>
+                        {filled ? <Bux value={total} size="sm" /> : <p className="text-11 text-grey-142">Empty seat</p>}
+                      </div>
+                    </div>
+                    {funding > 0 && filled && (bet?.amount || 0) < (game.amount || 0) ? (
+                      <span className="rounded-4 bg-[#f2c338]/15 px-6 py-2 text-11 font-bold text-[#f2c338]">{funding}%</span>
                     ) : null}
                   </div>
-
-                  <div className="mt-12 grid grid-cols-1 gap-6">
+                  <div className="mt-8 grid grid-cols-1 gap-6">
                     {seatPulled.map((item, ri) => (
                       <div
                         key={`${item.id}-${ri}`}
@@ -730,6 +731,7 @@ export function BattleLive({ id }: { id: string }) {
                           opacity: game.options?.terminal && ri < seatPulled.length - 1 && !ended ? 0.45 : 1,
                         }}
                       >
+                        <span className="w-24 shrink-0 text-11 uppercase text-grey-142">Round {ri + 1}</span>
                         <div className="relative h-36 w-36 shrink-0">
                           <ItemBg className="inset-0 h-full w-full opacity-40" color={RARITY[item.color] ?? RARITY.GRAY} />
                           <img alt="" src={itemSrc(item.id, item.image)} className="relative h-36 w-36 object-contain" />

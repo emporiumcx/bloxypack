@@ -164,64 +164,45 @@ export function WinnerOverlay({
   const winners = useMemo(() => (game.bets || []).filter((b) => (b.payout || 0) > 0), [game.bets]);
   useEffect(() => {
     if (sound) battleSfx("/sounds/battles/battle_win_appear.mp3", 0.55);
-  }, [sound]);
+    if (sound && winners.some((b) => funding > 0 && (b.amount || 0) < (game.amount || 0) - 1)) {
+      window.setTimeout(() => battleSfx("/sounds/battles/battle_win_borrow_hit.mp3", 0.7), 400);
+    }
+  }, [sound, winners, funding, game.amount]);
 
   return (
-    <div className="absolute inset-0 z-50 flex flex-col items-center justify-center rounded-12 bg-grey-28/92 px-16 py-20">
-      <p className="ui-label mb-16 text-12 uppercase tracking-[0.2em] text-grey-142">Winner</p>
-      <div className="flex flex-wrap items-end justify-center gap-24">
+    <div className="absolute inset-0 z-50 flex flex-col items-center justify-center overflow-hidden rounded-12 bg-[#0b1220]/95 px-16 py-24">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(82,181,255,0.18),transparent_55%)]" />
+      <p className="relative mb-20 text-[42px] font-black tracking-[0.18em] text-[#f2c338]">WINNERS</p>
+      <div className="relative flex flex-wrap items-end justify-center gap-32">
         {winners.map((bet) => {
           const name = bet.bot ? botName(bet.slot) : bet.user?.username || "Winner";
-          const gross = totals[bet.slot] ?? (bet.payout || 0) / 1000;
           const net = (bet.payout || 0) / 1000;
           const borrowed = funding > 0 && (bet.amount || 0) < (game.amount || 0) - 1;
           return (
             <div key={bet.slot} className="flex flex-col items-center">
               <BattleSeat name={name} filled size={72} src={bet.bot ? botAvatar(bet.slot) : bet.user?.avatar} level={bet.user?.level || 1} />
-              <p className="mt-8 text-14 text-white">{name}</p>
-              <div className="relative mt-8 flex flex-col items-center">
-                <div className="flex items-center gap-6 text-success">
-                  <span className="text-18 font-bold">+</span>
-                  <CountUp value={borrowed ? gross : net} sound={sound} />
-                </div>
+              <div className="mt-8 flex items-center gap-6">
+                <p className="text-14 font-semibold uppercase text-white">{name}</p>
                 {borrowed ? (
-                  <BorrowStamp net={net} sound={sound} />
+                  <span className="rounded-4 bg-red px-6 py-2 text-[9px] font-bold uppercase text-white">Borrowed</span>
                 ) : null}
+              </div>
+              <div className="mt-10 flex items-center gap-6 text-[#f2c338]">
+                <span className="text-18 font-bold text-white">+</span>
+                <CountUp value={net} sound={sound} />
               </div>
             </div>
           );
         })}
       </div>
-      <div className="mt-28 flex flex-wrap items-center justify-center gap-8">
+      <div className="relative mt-28 flex flex-wrap items-center justify-center gap-8">
         <GreenButton onClick={onRecreate} disabled={busy} loading={busy}>
-          Recreate battle
+          Recreate for
           <Bux value={recreateCost} size="sm" className="ml-8" />
         </GreenButton>
         <GreyButton onClick={onWatchAgain} disabled={busy} icon={<Icons.replay className="text-16" />}>
-          Watch again
+          Replay
         </GreyButton>
-      </div>
-    </div>
-  );
-}
-
-function BorrowStamp({ net, sound }: { net: number; sound: boolean }) {
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const t = window.setTimeout(() => {
-      setShow(true);
-      if (sound) battleSfx("/sounds/battles/battle_win_borrow_hit.mp3", 0.7);
-    }, 950);
-    return () => window.clearTimeout(t);
-  }, [sound]);
-  if (!show) return null;
-  return (
-    <div className="mt-10 flex flex-col items-center">
-      <div className="h-1 w-80 bg-grey-142/50" />
-      <span className="-mt-8 rotate-[-8deg] rounded-4 bg-red px-8 py-2 text-[9px] font-bold uppercase text-white">Borrowed</span>
-      <div className="mt-8 flex items-center gap-6 text-success">
-        <span className="text-16 font-bold">+</span>
-        <Bux value={net} className="text-18" />
       </div>
     </div>
   );

@@ -17,7 +17,8 @@ const battlesGameSchema = new mongoose.Schema({
         terminal: { type: Boolean },
         jackpot: { type: Boolean },
         private: { type: Boolean },
-        affiliateOnly: { type: Boolean }
+        affiliateOnly: { type: Boolean },
+        teams: { type: String }
     },
     fair: {
         seedServer: { type: String },

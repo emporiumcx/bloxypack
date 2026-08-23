@@ -184,6 +184,7 @@ export default function CreateBattlePage() {
         cursed: crazy,
         terminal,
         jackpot: kind === "jackpot",
+        teams: layout.api === "team" ? layout.id : "",
         affiliateOnly: false,
         levelMin: 0,
       });

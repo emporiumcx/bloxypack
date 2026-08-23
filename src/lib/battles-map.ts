@@ -2,6 +2,38 @@ import { caseImage, getCase, type Battle } from "./catalog";
 import type { BattleGame } from "./backend";
 import { botAvatar, botName } from "./avatars";
 
+export function battleTeamSizes(game: Pick<BattleGame, "mode" | "playerCount" | "options">) {
+  const n = game.playerCount;
+  if (game.mode !== "team") return [n];
+  const tag = String(game.options?.teams || "")
+    .toLowerCase()
+    .replace(/vs/g, "v");
+  if (tag === "2v2v2") return [2, 2, 2];
+  if (tag === "3v3") return [3, 3];
+  if (n === 6) return [2, 2, 2];
+  if (n === 4) return [2, 2];
+  return [Math.floor(n / 2), Math.ceil(n / 2)];
+}
+
+export function battleTeamsLabel(game: Pick<BattleGame, "mode" | "playerCount" | "options">) {
+  if (game.mode === "group") return `${game.playerCount}P Group`;
+  if (game.mode === "team") {
+    const sizes = battleTeamSizes(game);
+    return `${sizes.join("v")} Team`;
+  }
+  return Array.from({ length: game.playerCount }, () => "1").join("v");
+}
+
+export function battleFormatTag(game: Pick<BattleGame, "mode" | "playerCount" | "options">) {
+  if (game.mode === "group") return `${game.playerCount}P`;
+  if (game.mode === "team") {
+    const sizes = battleTeamSizes(game);
+    return sizes.map((n) => `${n}`).join("vs");
+  }
+  if (game.playerCount === 2) return "1vs1";
+  return `${game.playerCount}-way`;
+}
+
 export function mapBattleGame(game: BattleGame): Battle {
   const cases: string[] = [];
   for (const box of game.boxes || []) {
@@ -22,20 +54,7 @@ export function mapBattleGame(game: BattleGame): Battle {
     };
   }).filter(Boolean) as Battle["players"];
 
-  const teams =
-    game.mode === "team"
-      ? game.playerCount === 6
-        ? "2v2v2 Team"
-        : "2v2 Team"
-      : game.mode === "group"
-        ? `${game.playerCount}P Group`
-        : game.playerCount === 6
-          ? "1v1v1v1v1v1"
-          : game.playerCount === 4
-            ? "1v1v1v1"
-            : game.playerCount === 3
-              ? "1v1v1"
-              : "1v1";
+  const teams = battleTeamsLabel(game);
 
   const opened = Math.max(0, ...(game.bets || []).map((b) => b.outcomes?.length || 0), 0);
 

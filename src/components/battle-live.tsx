@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { BattleModeIcons, BattleSeat } from "@/components/battle-seat";
+import { BattleSeat } from "@/components/battle-seat";
 import { Bux } from "@/components/bux";
 import { FairnessControl } from "@/components/fairness";
 import { GreenButton, GreyButton, green3d } from "@/components/green-button";
@@ -11,10 +11,11 @@ import { Icons } from "@/components/icons";
 import { ItemBg } from "@/components/item-bg";
 import { useStore } from "@/components/providers";
 import { subscribeBattles, type BattleGame, type BattleItem } from "@/lib/backend";
-import { battleCaseImage, mapBattleGame } from "@/lib/battles-map";
+import { battleCaseImage, battleFormatTag, battleTeamSizes, mapBattleGame } from "@/lib/battles-map";
 import { botAvatar, botName } from "@/lib/avatars";
-import { dropsForCase, itemImage, type CaseDrop, type DropColor } from "@/lib/catalog";
-import { JackpotDraw, WinnerOverlay, battleSfx } from "@/components/battle-result";
+import { dropsForCase, getCase, itemImage, type CaseDrop, type DropColor } from "@/lib/catalog";
+import { JackpotDraw, SLOT_COLORS, WinnerOverlay, battleSfx } from "@/components/battle-result";
+import { BattleBadge } from "@/components/battle-modes";
 
 const RARITY: Record<DropColor, string> = {
   RAINBOW: "#ff4ecd",
@@ -32,8 +33,6 @@ const WIN_INDEX = 21;
 const SPIN_MS = 4000;
 const FAST_MS = 2000;
 const SETTLE_MS = 750;
-const OUT_BACK = "cubic-bezier(0.34, 1.56, 0.64, 1)";
-const IN_OUT_SINE = "cubic-bezier(0.37, 0, 0.63, 1)";
 
 function easeOutQuart(t: number) {
   return 1 - (1 - t) ** 4;
@@ -170,6 +169,14 @@ function Toggle({ on, icon, onClick }: { on: boolean; icon: React.ReactNode; onC
   );
 }
 
+function jackpotShares(totals: number[], cursed?: boolean) {
+  if (!totals.some((v) => v > 0)) return totals.map(() => 0);
+  const max = Math.max(0, ...totals);
+  const tickets = totals.map((v) => (cursed ? Math.max(0.0001, max - v + 0.0001) : Math.max(0, v)));
+  const sum = tickets.reduce((a, b) => a + b, 0) || 1;
+  return tickets.map((t) => (t / sum) * 100);
+}
+
 function BattleReel({
   strip,
   phase,
@@ -177,7 +184,6 @@ function BattleReel({
   duration,
   itemSize,
   slot,
-  trackH,
 }: {
   strip: CaseDrop[];
   phase: "idle" | "spinning" | "landed";
@@ -185,106 +191,72 @@ function BattleReel({
   duration: number;
   itemSize: number;
   slot: number;
-  trackH: number;
 }) {
-  const rootRef = useRef<HTMLDivElement>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
   const frozen = useRef<{ key: number; strip: CaseDrop[] }>({ key: -1, strip });
   if (phase !== "spinning" || frozen.current.key !== spinKey || !frozen.current.strip.length) {
     frozen.current = { key: spinKey, strip };
   }
   const shown = frozen.current.strip;
-  const startPct = -18;
+  const startY = -slot * 2;
 
   useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-    const reel = root.querySelector<HTMLElement>(".mm2-reel");
-    if (!reel) return;
-    const apply = (pct: number) => {
-      reel.style.transform = `translate3d(0px, ${pct}%, 0px)`;
+    const el = stripRef.current;
+    if (!el?.parentElement) return;
+    const center = () => el.parentElement!.clientHeight / 2 - slot / 2;
+    const endY = -(WIN_INDEX * slot) + center() + (Math.random() * 6 - 3);
+    const apply = (y: number) => {
+      el.style.transform = `translate3d(0, ${y}px, 0)`;
     };
     if (phase !== "spinning" || spinKey === 0) {
-      apply(phase === "landed" ? -86 : startPct);
+      apply(phase === "landed" ? -(WIN_INDEX * slot) + center() : startY);
       return;
     }
-
-    apply(startPct);
-    const rafs: number[] = [];
+    apply(startY);
+    let raf = 0;
     let cancelled = false;
-    const endPct = -(84 + 4 * Math.random());
-
-    const runPct = (from: number, to: number, ms: number) =>
-      new Promise<void>((resolve) => {
-        let t0 = 0;
-        const step = (now: number) => {
-          if (cancelled) return resolve();
-          if (!t0) t0 = now;
-          const u = Math.min((now - t0) / ms, 1);
-          apply(easeOutQuart(u) * (to - from) + from);
-          if (u < 1) rafs.push(requestAnimationFrame(step));
-          else resolve();
-        };
-        rafs.push(requestAnimationFrame(step));
-      });
-
-    void (async () => {
-      await runPct(startPct, endPct, duration);
+    let t0 = 0;
+    const step = (now: number) => {
       if (cancelled) return;
-      reel.querySelectorAll(".mm2-reel-slot").forEach((node, i) => {
-        node.classList.toggle("is-won", i === WIN_INDEX);
-      });
-      const win = reel.querySelector<HTMLElement>(`.mm2-reel-slot:nth-child(${WIN_INDEX + 1}) .mm2-reel-item`);
-      if (win) {
-        const pop = win.animate([{ transform: "scale(1)" }, { transform: "scale(1.15)", easing: OUT_BACK }], {
-          duration: 800,
-          fill: "forwards",
-        });
-        pop.onfinish = () => {
-          win.animate([{ transform: "scale(1.15)" }, { transform: "scale(1)", easing: IN_OUT_SINE }], {
-            duration: 1500,
-            fill: "forwards",
-          });
-        };
-      }
-    })();
-
+      if (!t0) t0 = now;
+      const u = Math.min((now - t0) / duration, 1);
+      apply(startY + (endY - startY) * easeOutQuart(u));
+      if (u < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
     return () => {
       cancelled = true;
-      rafs.forEach((id) => cancelAnimationFrame(id));
+      cancelAnimationFrame(raf);
     };
-  }, [phase, spinKey, duration]);
+  }, [phase, spinKey, duration, slot, startY]);
 
   const winner = phase !== "idle" ? shown[WIN_INDEX] : null;
   const color = winner ? RARITY[winner.color] : "transparent";
+  const landed = phase === "landed" && winner;
 
   return (
-    <div
-      ref={rootRef}
-      className={`mm2-cases-spinner is-battle relative w-full overflow-hidden rounded-12 bg-grey-28 ${phase === "landed" ? "is-landed" : ""}`}
-      style={{
-        ["--slot" as string]: `${slot}px`,
-        ["--itemSize" as string]: `${itemSize}px`,
-        ["--trackH" as string]: `${trackH}px`,
-        height: trackH,
-      }}
-    >
-      <div className="mm2-spinner-inner relative h-full w-full">
-        <div className="mm2-reel-hit-info">
-          <div className="mm2-reel-hit-info-container" style={{ ["--color" as string]: color }}>
-            <div className={`mm2-item-glow-bg${phase === "landed" && winner ? " is-on" : ""}`} style={{ color, ["--circle-color" as string]: color }} />
-          </div>
-        </div>
-        <div className="mm2-reels">
-          <div className="mm2-reel-track">
-            <div className="mm2-reel">
-              {shown.map((d, j) => (
-                <div key={j} className={`mm2-reel-slot${phase === "landed" && j === WIN_INDEX ? " is-won" : ""}`}>
-                  <img alt="" className="mm2-reel-item rounded-lg" src={itemSrc(d.id, d.image)} />
-                </div>
-              ))}
+    <div className="csd-reel" style={{ ["--slot" as string]: `${slot}px`, ["--itemSize" as string]: `${itemSize}px` }}>
+      <div className="csd-reel-window">
+        <div
+          className="csd-reel-glow"
+          style={{
+            background: `radial-gradient(circle, ${color}66 0%, transparent 70%)`,
+            opacity: landed ? 1 : phase === "spinning" ? 0.4 : 0,
+          }}
+        />
+        <div ref={stripRef} className="csd-reel-strip">
+          {shown.map((d, j) => (
+            <div key={j} className={`csd-reel-slot${landed && j === WIN_INDEX ? " is-won" : ""}`}>
+              <img alt="" src={itemSrc(d.id, d.image)} />
             </div>
-          </div>
+          ))}
         </div>
+        {landed ? (
+          <div className="csd-reel-meta">
+            <p className="csd-reel-name">{winner.name}</p>
+            <Bux value={winner.value} size="xs" tone="gold" />
+          </div>
+        ) : null}
       </div>
     </div>
   );
@@ -359,10 +331,7 @@ export function BattleLive({ id }: { id: string }) {
   }, [game, router]);
 
   useEffect(() => {
-    if (!game || game.state !== "countdown") {
-      setCount(null);
-      return;
-    }
+    if (!game || game.state !== "countdown") return;
     setCount(3);
     if (sound) battleSfx("/sounds/battles/battle_countdown.mp3", 0.8);
     const timers = [window.setTimeout(() => setCount(2), 1000), window.setTimeout(() => setCount(1), 2000), window.setTimeout(() => setCount(0), 3000)];
@@ -376,9 +345,8 @@ export function BattleLive({ id }: { id: string }) {
   soundRef.current = sound;
   durationRef.current = duration;
   const seats = game?.playerCount || 2;
-  const itemSize = seats >= 4 ? 72 : seats === 3 ? 84 : 100;
-  const slot = seats >= 4 ? 92 : seats === 3 ? 104 : 120;
-  const trackH = seats >= 4 ? 360 : seats === 3 ? 400 : 440;
+  const itemSize = seats >= 6 ? 64 : seats >= 4 ? 76 : seats === 3 ? 88 : 100;
+  const slot = seats >= 6 ? 84 : seats >= 4 ? 96 : seats === 3 ? 108 : 120;
 
   const startRound = (index: number, nextGame: BattleGame) => {
     if (spinningRef.current) return;
@@ -423,8 +391,7 @@ export function BattleLive({ id }: { id: string }) {
       }
       if (index + 1 >= totalRounds) {
         watchingRef.current = false;
-        const winners = (nextGame.bets || []).filter((b) => (b.payout || 0) > 0);
-        if (nextGame.options?.jackpot && winners.length === 1) setOverlay("jackpot");
+        if (nextGame.options?.jackpot) setOverlay("jackpot");
         else setOverlay("winner");
       }
     }, durationRef.current + SETTLE_MS);
@@ -492,6 +459,47 @@ export function BattleLive({ id }: { id: string }) {
   const isCreator = Boolean(user && creatorId && String(creatorId) === String(user.id));
   const emptySeats = Array.from({ length: game.playerCount }, (_, i) => i).filter((i) => !(game.bets || []).some((b) => b.slot === i));
   const slugs = roundSlugs(game);
+  const totals = Array.from({ length: game.playerCount }, (_, i) => (pulled[i] || []).reduce((s, d) => s + d.value, 0));
+  const shares = jackpotShares(totals, game.options?.cursed);
+  const pot = totals.reduce((a, b) => a + b, 0);
+  const teamSizes = battleTeamSizes(game);
+  const groups: number[][] = [];
+  {
+    let i = 0;
+    for (const size of teamSizes) {
+      groups.push(Array.from({ length: size }, (_, k) => i + k));
+      i += size;
+    }
+  }
+  const counting = count != null && count > 0;
+  const roundLabel = counting
+    ? "Countdown"
+    : overlay === "jackpot"
+      ? "Jackpot Draw"
+      : `Round ${Math.min(round + 1, slugs.length || 1)} / ${slugs.length || 1}`;
+  const formatTag = battleFormatTag(game);
+  const currentCase = getCase(slugs[round] || "");
+  const currentBox = game.boxes?.[Math.min(round, (game.boxes?.length || 1) - 1)];
+  const currentPrice = currentCase?.price ?? (currentBox?.box?.amount || 0) / 1000;
+  const payoutWinners = (game.bets || []).filter((b) => (b.payout || 0) > 0);
+  const winnerSlot = [...payoutWinners].sort((a, b) => (totals[b.slot] || 0) - (totals[a.slot] || 0))[0]?.slot ?? 0;
+
+  const runReplay = () => {
+    watchingRef.current = true;
+    spinningRef.current = false;
+    landedRef.current = 0;
+    setPulled(Array.from({ length: game.playerCount }, () => []));
+    setOverlay("none");
+    setPhase("idle");
+    setCount(3);
+    if (sound) battleSfx("/sounds/battles/battle_countdown.mp3", 0.8);
+    window.setTimeout(() => setCount(2), 1000);
+    window.setTimeout(() => setCount(1), 2000);
+    window.setTimeout(() => {
+      setCount(null);
+      startRound(0, game);
+    }, 3000);
+  };
 
   const join = async (slotIndex: number) => {
     if (!user) return openModal("login");
@@ -551,6 +559,7 @@ export function BattleLive({ id }: { id: string }) {
         cursed: game.options?.cursed ?? false,
         terminal: game.options?.terminal ?? false,
         jackpot: game.options?.jackpot ?? false,
+        teams: game.options?.teams,
         affiliateOnly: false,
         levelMin: 0,
       });
@@ -563,9 +572,92 @@ export function BattleLive({ id }: { id: string }) {
     }
   };
 
+
+  const renderReel = (i: number) => {
+    const bet = (game.bets || []).find((b) => b.slot === i);
+    const filled = Boolean(bet);
+    return filled ? (
+      <BattleReel
+        key={i}
+        strip={strips[i] || []}
+        phase={waiting || counting ? "idle" : phase}
+        spinKey={spinKey}
+        duration={spinMs}
+        itemSize={itemSize}
+        slot={slot}
+      />
+    ) : (
+      <div key={i} className="grid h-full place-items-center">
+        {waiting ? (
+          <button type="button" disabled={busy} onClick={() => join(i)} className={`flex h-40 w-[min(100%,160px)] items-center justify-center ${green3d}`}>
+            <span className="ui-btn-label text-13 text-grey-190">Join</span>
+          </button>
+        ) : (
+          <p className="text-13 text-grey-142">Empty</p>
+        )}
+      </div>
+    );
+  };
+
+  const renderSeat = (i: number) => {
+    const bet = (game.bets || []).find((b) => b.slot === i);
+    const filled = Boolean(bet);
+    const name = bet?.bot ? botName(i) : bet?.user?.username || "Waiting";
+    const seatPulled = pulled[i] || [];
+    const borrowed = funding > 0 && filled && (bet?.amount || 0) < (game.amount || 0) - 1;
+    return (
+      <div key={i} className="flex min-w-0 flex-col">
+        <div className="flex items-center gap-8 rounded-8 bg-grey-39 px-10 py-8">
+          <BattleSeat name={name} filled={filled} size={40} src={bet?.bot ? botAvatar(i) : bet?.user?.avatar} level={bet?.user?.level || 1} interactive={false} />
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-13 uppercase text-white">{filled ? name : "Waiting"}</p>
+            <div className="mt-4 flex flex-wrap items-center gap-6">
+              {game.options?.jackpot ? (
+                <span
+                  className="rounded-4 px-6 py-2 text-11 font-bold"
+                  style={{
+                    color: SLOT_COLORS[i % SLOT_COLORS.length],
+                    background: `${SLOT_COLORS[i % SLOT_COLORS.length]}22`,
+                    boxShadow: `inset 0 0 0 1px ${SLOT_COLORS[i % SLOT_COLORS.length]}66`,
+                  }}
+                >
+                  {(shares[i] || 0).toFixed(2)}%
+                </span>
+              ) : filled ? (
+                <Bux value={totals[i] || 0} size="xs" />
+              ) : null}
+              {borrowed ? <span className="rounded-4 bg-[#f2c338]/20 px-6 py-2 text-11 font-bold text-[#f2c338]">{funding}%</span> : null}
+            </div>
+          </div>
+        </div>
+        <div className="mt-8 grid grid-cols-1 gap-6">
+          {seatPulled.map((item, ri) => (
+            <div
+              key={`${item.id}-${ri}`}
+              className="relative overflow-hidden rounded-8 bg-grey-28 px-8 py-8"
+              style={{ opacity: game.options?.terminal && ri < seatPulled.length - 1 && !ended ? 0.45 : 1 }}
+            >
+              <p className="text-11 uppercase text-grey-142">Round {ri + 1}</p>
+              <div className="mt-6 flex items-center gap-8">
+                <div className="relative h-40 w-40 shrink-0">
+                  <ItemBg className="inset-0 h-full w-full opacity-40" color={RARITY[item.color] ?? RARITY.GRAY} />
+                  <img alt="" src={itemSrc(item.id, item.image)} className="relative h-40 w-40 object-contain" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-12 text-white">{item.name}</p>
+                  <Bux value={item.value} size="xs" tone="gold" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="flex w-full justify-center">
-      <div className="grid w-full max-w-screen-lg grid-cols-1 gap-16">
+      <div className="grid w-full max-w-screen-lg grid-cols-1 gap-12">
         <div className="flex w-full items-center justify-between gap-12">
           <Link
             href="/battles"
@@ -574,22 +666,16 @@ export function BattleLive({ id }: { id: string }) {
             <Icons.chevronLeft className="text-18" />
             <span className="ml-4">Back to All Battles</span>
           </Link>
-          <div className="flex flex-1 items-center justify-center text-13 text-grey-142">
-            {!waiting && !ended ? (
-              <span className="ui-label text-white">Round {Math.min(round + 1, slugs.length || 1)} / {slugs.length || 1}</span>
-            ) : ended ? (
-              <span className="ui-label text-white">Round {slugs.length || 1} / {slugs.length || 1}</span>
-            ) : (
-              <span>Countdown</span>
-            )}
+          <div className="flex items-center gap-8 rounded-8 bg-grey-39 px-8 py-6 text-13 text-white">
+            <Icons.chevronLeft className="text-16 text-grey-142" />
+            <span className="ui-label">{roundLabel}</span>
+            <Icons.chevronRight className="text-16 text-grey-142" />
           </div>
-          <div className="flex items-center gap-12">
+          <div className="flex items-center gap-8">
             <Toggle on={sound} icon={<Icons.volume />} onClick={() => setSound((v) => !v)} />
             <Toggle on={fast} icon={<Icons.bolt />} onClick={() => setFast((v) => !v)} />
-            <button type="button" className="text-13 text-grey-142 hover:text-white" onClick={() => navigator.clipboard.writeText(window.location.href)}>
-              Share
-            </button>
             <FairnessControl
+              compact
               game="Battles"
               fields={[
                 { label: "Server Seed", value: game.fair?.seedServer, placeholder: "Revealed after the battle" },
@@ -601,182 +687,103 @@ export function BattleLive({ id }: { id: string }) {
           </div>
         </div>
 
-        <div className="panel-outline relative overflow-hidden rounded-12 bg-grey-39 px-12 py-12 md:px-20">
-          <div className="grid w-full grid-cols-1 items-center gap-16 md:grid-cols-[auto_1fr_auto]">
-            <div>
-              <p className="text-12 uppercase text-grey-142">{funding > 0 ? "Join cost" : "Battle cost"}</p>
-              <Bux value={funding > 0 ? joinCost : battle.cost} className="text-18" />
-              {funding > 0 ? <p className="mt-4 text-11 uppercase text-green">Borrow {funding}%</p> : null}
-            </div>
-            <div className="relative min-h-[80px] overflow-hidden rounded-4 bg-grey-28">
-              <div className="flex h-[80px] w-max items-center">
-                {slugs.filter(Boolean).map((slug, i) => (
-                  <span key={`${slug}-${i}`} className={`flex h-80 w-84 items-center justify-center ${i === round && !waiting ? "opacity-100" : "opacity-60"}`}>
-                    <img alt="" src={battleCaseImage(slug)} className="h-72 w-72 object-contain" />
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="text-right">
-              <p className="text-14 text-white">
-                {(game.bets || []).length}
-                <span className="text-grey-142">/{game.playerCount}</span>
-              </p>
-              <p className="text-12 uppercase text-grey-142">{battle.teams}</p>
-              <p className="text-12 uppercase text-grey-142">{ended ? "completed" : waiting ? "waiting" : game.state}</p>
-              <div className="mt-6 flex flex-wrap justify-end gap-8">
-                <BattleModeIcons jackpot={game.options?.jackpot} crazy={game.options?.cursed} terminal={game.options?.terminal} />
-                {ended ? (
-                  <>
-                    <button
-                      type="button"
-                      disabled={busy}
-                      onClick={() => void recreate()}
-                      className="rounded-6 bg-green px-10 py-6 text-12 font-medium text-grey-28"
-                    >
-                      Recreate
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        watchingRef.current = true;
-                        spinningRef.current = false;
-                        landedRef.current = 0;
-                        setPulled(Array.from({ length: game.playerCount }, () => []));
-                        setOverlay("none");
-                        startRound(0, game);
-                      }}
-                      className="inline-flex items-center gap-6 rounded-6 bg-grey-28 px-10 py-6 text-12 text-white"
-                    >
-                      <Icons.replay className="text-14" />
-                      Replay
-                    </button>
-                  </>
-                ) : null}
-              </div>
-            </div>
+        <div className="flex flex-wrap items-center gap-12">
+          <div className="flex items-center gap-8">
+            <span className="inline-flex h-26 items-center rounded-6 bg-grey-28 px-8 text-11 font-medium text-grey-142">{formatTag}</span>
+            {game.options?.jackpot ? <BattleBadge kind="jackpot" /> : game.mode === "group" ? <BattleBadge kind="group" /> : <BattleBadge kind="normal" />}
+            {game.options?.cursed ? <BattleBadge kind="crazy" /> : null}
+            {game.options?.terminal ? <BattleBadge kind="terminal" /> : null}
+          </div>
+          <div className="flex min-w-0 flex-1 items-center gap-12 overflow-x-auto">
+            {slugs.filter(Boolean).map((slug, i) => {
+              const active = i === round && !waiting;
+              const c = getCase(slug);
+              const price = c?.price ?? (game.boxes?.find((b) => b.box?.slug === slug)?.box?.amount || 0) / 1000;
+              return (
+                <div key={`${slug}-${i}`} className={`flex shrink-0 items-center gap-8 ${active ? "opacity-100" : "opacity-45"}`}>
+                  <img alt="" src={battleCaseImage(slug)} className={active ? "h-56 w-56 object-contain" : "h-40 w-40 object-contain"} />
+                  {active ? (
+                    <div>
+                      <p className="max-w-140 truncate text-12 text-white">{c?.name || currentBox?.box?.name || slug}</p>
+                      <Bux value={price || currentPrice} size="xs" tone="gold" />
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
+          </div>
+          <div className="ml-auto text-right">
+            <p className="text-14 text-white">
+              {Math.min(round + 1, slugs.length || 1)}
+              <span className="text-grey-142">/{slugs.length || 1}</span>
+            </p>
+            <p className="text-11 uppercase text-grey-142">Battle Cost</p>
+            <Bux value={battle.cost} size="sm" tone="gold" />
           </div>
         </div>
 
-        <div className="relative">
-          {count != null && count > 0 ? (
-            <div className="absolute inset-0 z-40 grid place-items-center rounded-12 bg-grey-28/70">
-              <p className="text-[96px] font-black leading-none text-white/80">{count}</p>
+        <div className="csd-arena relative">
+          {game.options?.jackpot && overlay === "none" && !counting ? (
+            <div className="pointer-events-none absolute left-1/2 top-12 z-20 flex -translate-x-1/2 items-center gap-8 rounded-full bg-black/50 px-12 py-6">
+              <Icons.jackpot className="text-16" />
+              <span className="text-11 font-black tracking-[0.18em] text-[#7eb6ff]">JACKPOT</span>
+              <Bux value={pot} size="xs" tone="gold" />
+            </div>
+          ) : null}
+          {counting ? (
+            <div className="absolute inset-0 z-30 grid place-items-center">
+              <p className="text-[120px] font-black leading-none text-white/80">{count}</p>
             </div>
           ) : null}
           {overlay === "jackpot" ? (
-            <JackpotDraw
-              game={game}
-              totals={Array.from({ length: game.playerCount }, (_, i) => (pulled[i] || []).reduce((s, d) => s + d.value, 0))}
-              winnerSlot={(game.bets || []).find((b) => (b.payout || 0) > 0)?.slot ?? 0}
-              sound={sound}
-              onDone={() => setOverlay("winner")}
-            />
+            <JackpotDraw game={game} totals={totals} winnerSlot={winnerSlot} sound={sound} onDone={() => setOverlay("winner")} />
           ) : null}
           {overlay === "winner" ? (
             <WinnerOverlay
               game={game}
-              totals={Array.from({ length: game.playerCount }, (_, i) => (pulled[i] || []).reduce((s, d) => s + d.value, 0))}
+              totals={totals}
               funding={funding}
               recreateCost={battle.cost + (battle.cost * (game.playerCount - 1) * funding) / 100}
               busy={busy}
               sound={sound}
               onRecreate={() => void recreate()}
-              onWatchAgain={() => {
-                watchingRef.current = true;
-                spinningRef.current = false;
-                landedRef.current = 0;
-                setPulled(Array.from({ length: game.playerCount }, () => []));
-                setOverlay("none");
-                startRound(0, game);
-              }}
+              onWatchAgain={runReplay}
             />
           ) : null}
-          <div className="grid gap-12" style={{ gridTemplateColumns: `repeat(${game.playerCount}, minmax(0, 1fr))` }}>
-            {Array.from({ length: game.playerCount }, (_, i) => {
-              const bet = (game.bets || []).find((b) => b.slot === i);
-              const filled = Boolean(bet);
-              const name = bet?.bot ? botName(i) : bet?.user?.username || "Waiting";
-              const seatPulled = pulled[i] || [];
-              const total = seatPulled.reduce((s, d) => s + d.value, 0);
-              const lost = ended && filled && (bet?.payout || 0) <= 0;
-              return (
-                <div
-                  key={i}
-                  className={`flex min-w-0 flex-col ${lost && overlay === "none" ? "opacity-70" : ""}`}
-                >
-                  <div className="relative">
-                    {filled ? (
-                      <BattleReel
-                        strip={strips[i] || []}
-                        phase={waiting ? "idle" : phase}
-                        spinKey={spinKey}
-                        duration={spinMs}
-                        itemSize={itemSize}
-                        slot={slot}
-                        trackH={trackH}
-                      />
-                    ) : (
-                      <div className="grid place-items-center rounded-12 bg-grey-28" style={{ height: trackH }}>
-                        {waiting ? (
-                          <button
-                            type="button"
-                            disabled={busy}
-                            onClick={() => join(i)}
-                            className={`flex h-40 w-[min(100%,160px)] items-center justify-center ${green3d}`}
-                          >
-                            <span className="ui-btn-label text-13 text-grey-190">Join</span>
-                          </button>
-                        ) : (
-                          <p className="text-13 text-grey-142">Empty</p>
-                        )}
-                      </div>
-                    )}
+          <div className={`flex h-full min-h-[420px] ${counting ? "opacity-0" : ""}`}>
+            {groups.map((g, gi) => (
+              <div key={gi} className="flex min-w-0 flex-1">
+                {gi > 0 ? (
+                  <div className="relative z-10 flex w-28 shrink-0 items-center justify-center">
+                    <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-white/10" />
+                    <span className="relative rounded-full bg-grey-28 px-4 py-4 text-11 font-bold text-grey-142">VS</span>
                   </div>
-                  <div className="mt-8 flex items-center justify-between gap-8 rounded-8 bg-grey-39 px-10 py-8">
-                    <div className="flex min-w-0 items-center gap-8">
-                      <BattleSeat
-                        name={name}
-                        filled={filled}
-                        size={40}
-                        src={bet?.bot ? botAvatar(i) : bet?.user?.avatar}
-                        level={bet?.user?.level || 1}
-                      />
-                      <div className="min-w-0">
-                        <p className="truncate text-13 uppercase text-white">{filled ? name : "Waiting"}</p>
-                        {filled ? <Bux value={total} size="sm" /> : <p className="text-11 text-grey-142">Empty seat</p>}
-                      </div>
-                    </div>
-                    {funding > 0 && filled && (bet?.amount || 0) < (game.amount || 0) ? (
-                      <span className="rounded-4 bg-[#f2c338]/15 px-6 py-2 text-11 font-bold text-[#f2c338]">{funding}%</span>
-                    ) : null}
-                  </div>
-                  <div className="mt-8 grid grid-cols-1 gap-6">
-                    {seatPulled.map((item, ri) => (
-                      <div
-                        key={`${item.id}-${ri}`}
-                        className="relative flex items-center gap-8 overflow-hidden rounded-8 bg-grey-28 px-8 py-6"
-                        style={{
-                          ...(item.color === "RAINBOW" || item.color === "GOLD" || item.color === "YELLOW"
-                            ? { boxShadow: `inset 0 0 0 1px ${RARITY[item.color] ?? "rgba(228, 174, 57, 0.5)"}` }
-                            : undefined),
-                          opacity: game.options?.terminal && ri < seatPulled.length - 1 && !ended ? 0.45 : 1,
-                        }}
-                      >
-                        <span className="w-24 shrink-0 text-11 uppercase text-grey-142">Round {ri + 1}</span>
-                        <div className="relative h-36 w-36 shrink-0">
-                          <ItemBg className="inset-0 h-full w-full opacity-40" color={RARITY[item.color] ?? RARITY.GRAY} />
-                          <img alt="" src={itemSrc(item.id, item.image)} className="relative h-36 w-36 object-contain" />
-                        </div>
-                        <p className="min-w-0 flex-1 truncate text-12 text-white">{item.name}</p>
-                        <Bux value={item.value} size="xs" />
-                      </div>
-                    ))}
-                  </div>
+                ) : null}
+                <div className="grid min-w-0 flex-1" style={{ gridTemplateColumns: `repeat(${g.length}, minmax(0, 1fr))` }}>
+                  {g.map((i) => renderReel(i))}
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
+        </div>
+
+        <div className="flex">
+          {groups.map((g, gi) => (
+            <div key={gi} className="flex min-w-0 flex-1">
+              {gi > 0 ? <div className="w-28 shrink-0" /> : null}
+              <div className="flex min-w-0 flex-1 flex-col gap-8">
+              {game.mode === "team" ? (
+                <div className="flex items-center justify-center gap-8 rounded-8 border border-grey-58 bg-grey-39 py-8">
+                  <span className="text-12 text-grey-142">Team value:</span>
+                  <Bux value={g.reduce((s, i) => s + (totals[i] || 0), 0)} size="sm" tone="gold" />
+                </div>
+              ) : null}
+              <div className="grid gap-8" style={{ gridTemplateColumns: `repeat(${g.length}, minmax(0, 1fr))` }}>
+                {g.map((i) => renderSeat(i))}
+              </div>
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="flex justify-center gap-8">
@@ -785,16 +792,7 @@ export function BattleLive({ id }: { id: string }) {
               <GreenButton onClick={() => void recreate()} disabled={busy} icon={<Icons.replay className="text-18" />}>
                 Recreate battle
               </GreenButton>
-              <GreyButton
-                onClick={() => {
-                  watchingRef.current = true;
-                  spinningRef.current = false;
-                  landedRef.current = 0;
-                  setPulled(Array.from({ length: game.playerCount }, () => []));
-                  setOverlay("none");
-                  startRound(0, game);
-                }}
-              >
+              <GreyButton onClick={runReplay} icon={<Icons.replay className="text-16" />}>
                 Watch again
               </GreyButton>
             </>
@@ -805,9 +803,7 @@ export function BattleLive({ id }: { id: string }) {
                   Call bots
                 </GreenButton>
               ) : null}
-              {isCreator ? (
-                <GreyButton onClick={() => void cancel()}>Cancel battle</GreyButton>
-              ) : null}
+              {isCreator ? <GreyButton onClick={() => void cancel()}>Cancel battle</GreyButton> : null}
             </>
           ) : null}
         </div>

@@ -218,7 +218,7 @@ export type BattleGame = {
     outcomes?: number[];
     user?: { username?: string; _id?: string; level?: number; avatar?: string };
   }[];
-  options?: { private?: boolean; cursed?: boolean; terminal?: boolean; jackpot?: boolean; funding?: number };
+  options?: { private?: boolean; cursed?: boolean; terminal?: boolean; jackpot?: boolean; funding?: number; teams?: string };
   fair?: { hash?: string; seedServer?: string; seedPublic?: string; blockId?: string | number };
 };
 
@@ -646,6 +646,7 @@ export async function battlesCreate(data: {
   cursed?: boolean;
   terminal?: boolean;
   jackpot?: boolean;
+  teams?: string;
 }) {
   if (!battles) throw new Error("Not connected.");
   const res = await emit<{ user?: ServerUser; game: BattleGame }>(battles, "sendCreate", {
@@ -659,6 +660,7 @@ export async function battlesCreate(data: {
     cursed: data.cursed ?? false,
     terminal: data.terminal ?? false,
     jackpot: data.jackpot ?? false,
+    teams: data.teams ?? "",
   });
   upsertBattle(res.game);
   return res;

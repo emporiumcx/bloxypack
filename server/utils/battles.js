@@ -157,7 +157,8 @@ const battlesGenerateGame = (data, amount, boxes) => {
                     terminal: data.terminal,
                     jackpot: data.jackpot === true,
                     private: data.private,
-                    affiliateOnly: data.affiliateOnly
+                    affiliateOnly: data.affiliateOnly,
+                    teams: battlesTeamTag(data)
                 },
                 fair: {
                     seedServer: seedServer,
@@ -268,6 +269,38 @@ const battlesGetOutcomeItem = ( items, outcome) => {
     return outcomeItem;
 }
 
+const battlesTeamTag = (data) => {
+    const raw = typeof data.teams === 'string' ? data.teams.toLowerCase().replace(/vs/g, 'v') : '';
+    const n = Math.floor(data.playerCount);
+    if (data.mode !== 'team') return '';
+    if (raw === '2v2v2' || raw === '3v3' || raw === '2v2') return raw;
+    if (n === 6) return '2v2v2';
+    if (n === 4) return '2v2';
+    return '';
+};
+
+const battlesTeamSizes = (battlesGame) => {
+    const n = Math.floor(battlesGame.playerCount);
+    if (battlesGame.mode !== 'team') return Array.from({ length: n }, () => 1);
+    const tag = String(battlesGame.options?.teams || '').toLowerCase().replace(/vs/g, 'v');
+    if (tag === '2v2v2') return [2, 2, 2];
+    if (tag === '3v3') return [3, 3];
+    if (n === 6) return [2, 2, 2];
+    if (n === 4) return [2, 2];
+    return [Math.floor(n / 2), Math.ceil(n / 2)];
+};
+
+const battlesTeamGroups = (battlesGame) => {
+    const sizes = battlesTeamSizes(battlesGame);
+    const groups = [];
+    let i = 0;
+    for (const size of sizes) {
+        groups.push(Array.from({ length: size }, (_, k) => i + k));
+        i += size;
+    }
+    return groups;
+};
+
 const battlesBetScore = (battlesGame, bet) => {
     if (!bet?.outcomes?.length) return 0;
     if (battlesGame.options.terminal === true) return bet.outcomes[bet.outcomes.length - 1] || 0;
@@ -289,14 +322,22 @@ const battlesGetWinnerBets = (battlesGame) => {
     if (battlesGame.options.jackpot === true) {
         const invert = battlesGame.options.cursed === true;
         if (battlesGame.mode === 'team') {
-            const amountOne = battlesBetScore(battlesGame, bets[0]) + battlesBetScore(battlesGame, bets[1]);
-            const amountTwo = battlesBetScore(battlesGame, bets[2]) + battlesBetScore(battlesGame, bets[3]);
-            const max = Math.max(amountOne, amountTwo);
-            const tickets = invert
-                ? [Math.max(1, max - amountOne + 1), Math.max(1, max - amountTwo + 1)]
-                : [Math.max(1, amountOne), Math.max(1, amountTwo)];
+            const groups = battlesTeamGroups(battlesGame);
+            const scoreAt = (slot) => battlesBetScore(battlesGame, bets.find((b) => b.slot === slot) || { outcomes: [] });
+            const scores = groups.map((slots) => slots.reduce((sum, slot) => sum + scoreAt(slot), 0));
+            const max = Math.max(0, ...scores);
+            const tickets = scores.map((score) => invert ? Math.max(1, max - score + 1) : Math.max(1, score));
             const roll = battlesJackpotRoll(battlesGame, tickets);
-            winners = roll < tickets[0] ? [battlesGame.bets[0], battlesGame.bets[1]] : [battlesGame.bets[2], battlesGame.bets[3]];
+            let cursor = 0;
+            let winGroup = groups[groups.length - 1] || [];
+            for (let i = 0; i < tickets.length; i++) {
+                cursor += tickets[i];
+                if (roll < cursor) {
+                    winGroup = groups[i];
+                    break;
+                }
+            }
+            winners = winGroup.map((slot) => battlesGame.bets.find((b) => b.slot === slot)).filter(Boolean);
         } else {
             const scores = bets.map((bet) => battlesBetScore(battlesGame, bet));
             const max = Math.max(0, ...scores);
@@ -318,12 +359,16 @@ const battlesGetWinnerBets = (battlesGame) => {
     if(battlesGame.mode === 'group') {
         winners = battlesGame.bets;
     } else if(battlesGame.mode === 'team') {
-        const amountOne = battlesBetScore(battlesGame, bets[0]) + battlesBetScore(battlesGame, bets[1]);
-        const amountTwo = battlesBetScore(battlesGame, bets[2]) + battlesBetScore(battlesGame, bets[3]);
-
-        if(amountOne === amountTwo) { winners = battlesGame.bets; }
-        else if((battlesGame.options.cursed === false && amountOne > amountTwo) || (battlesGame.options.cursed === true && amountOne < amountTwo)) { winners = [battlesGame.bets[0], battlesGame.bets[1]]; }
-        else { winners = [battlesGame.bets[2], battlesGame.bets[3]]; }
+        const groups = battlesTeamGroups(battlesGame);
+        const scoreAt = (slot) => battlesBetScore(battlesGame, bets.find((b) => b.slot === slot) || { outcomes: [] });
+        const scores = groups.map((slots) => slots.reduce((sum, slot) => sum + scoreAt(slot), 0));
+        const target = battlesGame.options.cursed === true ? Math.min(...scores) : Math.max(...scores);
+        const tied = scores.filter((score) => score === target).length > 1;
+        if (tied) winners = battlesGame.bets;
+        else {
+            const gi = scores.findIndex((score) => score === target);
+            winners = (groups[gi] || []).map((slot) => battlesGame.bets.find((b) => b.slot === slot)).filter(Boolean);
+        }
     } else {
         const amounts = bets.map((bet) => battlesBetScore(battlesGame, bet));
         const amountWin = battlesGame.options.cursed === false ? Math.max(...amounts) : Math.min(...amounts);

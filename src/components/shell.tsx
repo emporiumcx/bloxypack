@@ -5,6 +5,7 @@ import { ChatPanel } from "./chat";
 import { SiteFooter } from "./footer";
 import { Icons } from "./icons";
 import { Modals } from "./modals";
+import { Toasts } from "./toasts";
 import { useStore } from "./providers";
 import { Sidebar } from "./sidebar";
 import { SiteHeader } from "./site-header";
@@ -55,6 +56,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </div>
 
       <Modals />
+      <Toasts />
     </div>
   );
 }

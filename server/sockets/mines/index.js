@@ -42,9 +42,6 @@ module.exports = (io) => {
                 next(err);
             }
     
-            // Send mines game to the frontend
-            socket.emit('init', { game: minesGetGame(socket.decoded) });
-
             next();
         } catch(err) {
             return next({ success: false, error: { type: 'error', message: err.message } });
@@ -54,6 +51,16 @@ module.exports = (io) => {
     io.of('/mines').on('connection', (socket) => {
         const identifier = socket.handshake.headers['cf-connecting-ip'] || socket.conn.remoteAddress;
         socketAddConnectionLimit('mines', identifier);
+
+        if (socket.decoded) {
+            socket.emit('init', { game: minesGetGame(socket.decoded) });
+        }
+
+        socket.on('sendGetGame', (data, callback) => {
+            if (callback === undefined || typeof callback !== 'function') { return; }
+            if (!socket.decoded) return callback({ success: true, game: null });
+            callback({ success: true, game: minesGetGame(socket.decoded) });
+        });
 
         socket.on('sendBet', async(data, callback) => {
             if(callback === undefined || typeof callback !== 'function') { return; }

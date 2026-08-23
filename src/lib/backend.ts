@@ -401,6 +401,15 @@ export function connectSockets(handlers: {
   disconnectSockets();
   general = ns("/general");
   mines = ns("/mines");
+  mines.on("init", (payload: { game?: MinesLiveGame | null }) => {
+    setMinesLive(payload?.game || null);
+  });
+  mines.on("connect", () => {
+    mines?.emit("sendGetGame", {}, (res: Ack<{ game: MinesLiveGame | null }>) => {
+      if (!res || res.success === false) return;
+      setMinesLive(res.game || null);
+    });
+  });
   towers = ns("/towers");
   dice = ns("/dice");
   unbox = ns("/unbox");
@@ -476,6 +485,7 @@ export function connectSockets(handlers: {
 export function disconnectSockets() {
   for (const s of [general, mines, towers, dice, unbox, battles, blackjack, roulette, cashier]) s?.disconnect();
   general = mines = towers = dice = unbox = battles = blackjack = roulette = cashier = null;
+  setMinesLive(null);
 }
 
 export async function getCryptoData() {
@@ -523,27 +533,65 @@ export async function claimPromoCode(code: string) {
   });
 }
 
+export type MinesLiveGame = {
+  _id?: string;
+  amount?: number;
+  minesCount?: number;
+  grid?: number;
+  revealed?: { tile: number; value: string }[];
+  state?: string;
+};
+
+let minesLive: MinesLiveGame | null = null;
+const minesLiveSubs = new Set<(game: MinesLiveGame | null) => void>();
+
+function setMinesLive(game: MinesLiveGame | null) {
+  minesLive = game;
+  minesLiveSubs.forEach((fn) => fn(minesLive));
+}
+
+export function subscribeMinesGame(fn: (game: MinesLiveGame | null) => void) {
+  minesLiveSubs.add(fn);
+  fn(minesLive);
+  return () => {
+    minesLiveSubs.delete(fn);
+  };
+}
+
+export async function minesGetGame() {
+  if (!mines) throw new Error("Not connected.");
+  const res = await emit<{ game: MinesLiveGame | null }>(mines, "sendGetGame", {});
+  setMinesLive(res.game || null);
+  return res.game || null;
+}
+
 export async function minesBet(amount: number, minesCount: number, grid: number) {
   if (!mines) throw new Error("Not connected.");
-  return emit<{ user: ServerUser; game: { _id: string } }>(mines, "sendBet", {
+  const res = await emit<{ user: ServerUser; game: MinesLiveGame }>(mines, "sendBet", {
     amount: Math.round(amount * 1000),
     minesCount,
     grid,
   });
+  if (res.game) setMinesLive(res.game);
+  return res;
 }
 
 export async function minesReveal(tile: number) {
   if (!mines) throw new Error("Not connected.");
-  return emit<{ user: ServerUser; game: { revealed: { tile: number; value: string }[]; state: string; payout?: number; deck?: string[] } }>(
+  const res = await emit<{ user: ServerUser; game: MinesLiveGame & { payout?: number; deck?: string[] } }>(
     mines,
     "sendReveal",
     { tile },
   );
+  setMinesLive(res.game?.state === "completed" ? null : res.game || null);
+  return res;
 }
 
 export async function minesCashout() {
   if (!mines) throw new Error("Not connected.");
-  return emit<{ user: ServerUser; game: { payout: number; state: string } }>(mines, "sendCashout", {});
+  const res = await emit<{ user: ServerUser; game: MinesLiveGame & { payout: number } }>(mines, "sendCashout", {});
+  setMinesLive(null);
+  return res;
 }
 
 export async function towersBet(amount: number, risk: string) {

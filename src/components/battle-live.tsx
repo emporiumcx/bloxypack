@@ -16,6 +16,7 @@ import { botAvatar, botName } from "@/lib/avatars";
 import { dropsForCase, getCase, itemImage, type CaseDrop, type DropColor } from "@/lib/catalog";
 import { JackpotDraw, SLOT_COLORS, WinnerOverlay, battleSfx } from "@/components/battle-result";
 import { BattleBadge } from "@/components/battle-modes";
+import { notifyError } from "@/components/toasts";
 
 const RARITY: Record<DropColor, string> = {
   RAINBOW: "#ff4ecd",
@@ -526,7 +527,7 @@ export function BattleLive({ id }: { id: string }) {
       const res = await battlesJoin(game._id, slotIndex);
       if (res.user) applyUser(res.user);
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Could not join.");
+      notifyError(err, "Could not join.");
     } finally {
       setBusy(false);
     }
@@ -538,7 +539,7 @@ export function BattleLive({ id }: { id: string }) {
     try {
       await battlesBot(game._id);
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Could not add bots.");
+      notifyError(err, "Could not add bots.");
     } finally {
       setBusy(false);
     }
@@ -552,7 +553,7 @@ export function BattleLive({ id }: { id: string }) {
       if (res.user) applyUser(res.user);
       router.replace("/battles");
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Could not cancel.");
+      notifyError(err, "Could not cancel.");
     } finally {
       setBusy(false);
     }
@@ -582,7 +583,7 @@ export function BattleLive({ id }: { id: string }) {
       if (res.user) applyUser(res.user);
       router.push(`/battles/${res.game._id}`);
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Could not recreate battle.");
+      notifyError(err, "Could not recreate battle.");
     } finally {
       setBusy(false);
     }

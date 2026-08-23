@@ -13,6 +13,7 @@ import { Icons } from "@/components/icons";
 import { useStore } from "@/components/providers";
 import { subscribeBattles } from "@/lib/backend";
 import { caseImage, type CaseItem } from "@/lib/catalog";
+import { notifyError } from "@/components/toasts";
 
 const SINGLE = [
   { id: "1v1", label: "1vs1", slots: 2, teams: "1v1", api: "standard" as const },
@@ -192,7 +193,7 @@ export default function CreateBattlePage() {
       if (!res.game?._id) throw new Error("Battle was created but no game id was returned.");
       router.push(`/battles/${res.game._id}`);
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Could not create battle.");
+      notifyError(err, "Could not create battle.");
     } finally {
       setCreating(false);
     }

@@ -336,7 +336,7 @@ const minesSendCashoutSocket = async(io, socket, user, data, callback) => {
 const minesInit = async(io) => {
     try {
         // Get towers games and add to towers game array
-        minesGames = await MinesGame.find({ state: 'created' }).select('amount minesCount deck revealed user state').lean();
+        minesGames = await MinesGame.find({ state: 'created' }).select('amount minesCount grid deck revealed user state').lean();
     } catch(err) {
         console.error(err);
     }

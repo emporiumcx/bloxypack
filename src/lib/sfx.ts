@@ -4,6 +4,8 @@ const DEFAULT_THROTTLE_MS = 45;
 
 const CATALOG = {
   click: { src: "/sounds/games/click.mp3", gain: 0.25 },
+  notice: { src: "/sounds/battles/battle_join.mp3", gain: 0.45 },
+  notice_error: { src: "/sounds/cases/hit_basic.mp3", gain: 0.35 },
   safe: { src: "/sounds/games/tile1.mp3", gain: 0.45 },
   bomb: { src: "/sounds/games/mine.mp3", gain: 0.55 },
   win: { src: "/sounds/games/win.mp3", gain: 0.15 },

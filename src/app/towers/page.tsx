@@ -13,6 +13,7 @@ import { SoundSettings } from "@/components/sound-settings";
 import { useStore } from "@/components/providers";
 import { FlipTile } from "@/components/flip-tile";
 import { playSfx } from "@/lib/sfx";
+import { notifyError } from "@/components/toasts";
 
 const DIFF = {
   Easy: { cols: 4, mines: 1 },
@@ -187,7 +188,7 @@ export default function TowersPage() {
       setCleared({});
       setBombs({});
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Could not start towers.");
+      notifyError(err, "Could not start towers.");
     }
   }
 
@@ -231,7 +232,7 @@ export default function TowersPage() {
       setRow(next);
     } catch (err) {
       setPicking(null);
-      alert(err instanceof Error ? err.message : "Reveal failed.");
+      notifyError(err, "Reveal failed.");
     }
   }
 
@@ -243,7 +244,7 @@ export default function TowersPage() {
       applyUser(res.user);
       setStarted(false);
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Cashout failed.");
+      notifyError(err, "Cashout failed.");
     }
   }
 

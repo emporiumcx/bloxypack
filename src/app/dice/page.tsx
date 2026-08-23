@@ -14,6 +14,7 @@ import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { BuxIcon } from "@/components/bux";
 import { useStore, useBalanceHold } from "@/components/providers";
+import { notifyError } from "@/components/toasts";
 
 export default function DicePage() {
   const { user, openModal, applyUser, diceBet, addBalance } = useStore();
@@ -70,7 +71,7 @@ export default function DicePage() {
       rollTimer.current = null;
       setRolling(false);
       revealBalance();
-      alert(err instanceof Error ? err.message : "Roll failed.");
+      notifyError(err, "Roll failed.");
     }
   }
 

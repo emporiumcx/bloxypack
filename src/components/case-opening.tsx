@@ -12,6 +12,7 @@ import { VolatilityScale } from "@/components/volatility-scale";
 import { isRewardSlug } from "@/lib/rewards";
 import { sendGiveawayOpen, sendRewardOpen, type RewardsInfo } from "@/lib/backend";
 import { playSfx, preloadSfx, unlockSfx } from "@/lib/sfx";
+import { notifyError } from "@/components/toasts";
 
 const RARITY: Record<DropColor, string> = {
   RAINBOW: DROP_RARITY.RAINBOW.hex,
@@ -652,7 +653,7 @@ export function CaseOpening({
         }
       } catch (err) {
         revealBalance();
-        alert(err instanceof Error ? err.message : "Could not open case.");
+        notifyError(err, "Could not open case.");
         return;
       }
     }

@@ -12,6 +12,8 @@ import { SoundSettings } from "@/components/sound-settings";
 import { useStore } from "@/components/providers";
 import { FlipTile } from "@/components/flip-tile";
 import { playSfx } from "@/lib/sfx";
+import { notifyError } from "@/components/toasts";
+import { subscribeMinesGame, minesGetGame, type MinesLiveGame } from "@/lib/backend";
 
 const GRID_SIZES = [4, 5, 6, 7, 8];
 
@@ -197,6 +199,26 @@ export default function MinesPage() {
     [steps, cells, mines],
   );
 
+  function applyRunning(game: MinesLiveGame) {
+    if (!game || game.state !== "created") return;
+    const grid = Math.max(4, Math.min(8, game.grid || 5));
+    setSize(String(grid));
+    setMines(Math.max(1, game.minesCount || 8));
+    if (game.amount) setBet(game.amount / 1000);
+    const tiles = (game.revealed || []).filter((r) => r.value === "coin").map((r) => r.tile);
+    revealedRef.current = tiles;
+    setRevealed(tiles);
+    setBoom(null);
+    setMineSet(new Set());
+    setStarted(true);
+  }
+
+  useEffect(() => {
+    return subscribeMinesGame((game) => {
+      if (game?.state === "created") applyRunning(game);
+    });
+  }, []);
+
   async function start() {
     if (!user) return openModal("login");
     if (user.balance < bet || bet <= 0) return openModal("deposit");
@@ -211,7 +233,15 @@ export default function MinesPage() {
       setBoom(null);
       setStarted(true);
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Could not start mines.");
+      const msg = err instanceof Error ? err.message : "Could not start mines.";
+      if (/running mines game/i.test(msg)) {
+        const game = await minesGetGame().catch(() => null);
+        if (game?.state === "created") {
+          applyRunning(game);
+          return;
+        }
+      }
+      notifyError(err, "Could not start mines.");
     } finally {
       setBooting(false);
     }
@@ -245,7 +275,7 @@ export default function MinesPage() {
         setStarted(false);
       }
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Reveal failed.");
+      notifyError(err, "Reveal failed.");
     }
   }
 
@@ -261,7 +291,7 @@ export default function MinesPage() {
       applyUser(res.user);
       setStarted(false);
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Cashout failed.");
+      notifyError(err, "Cashout failed.");
     }
   }
 

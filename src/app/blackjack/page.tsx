@@ -6,6 +6,7 @@ import { GreenButton } from "@/components/green-button";
 import { Icons } from "@/components/icons";
 import { useStore, useBalanceHold } from "@/components/providers";
 import type { BjCard } from "@/lib/backend";
+import { notifyError } from "@/components/toasts";
 
 const SUITS = [
   { mark: "♠", red: false },
@@ -155,7 +156,7 @@ export default function BlackjackPage() {
     } catch (err) {
       setDealing(false);
       revealBalance();
-      alert(err instanceof Error ? err.message : "Could not start blackjack.");
+      notifyError(err, "Could not start blackjack.");
     }
   }
 
@@ -175,7 +176,7 @@ export default function BlackjackPage() {
       revealBalance();
     } catch (err) {
       revealBalance();
-      alert(err instanceof Error ? err.message : "Hit failed.");
+      notifyError(err, "Hit failed.");
     }
   }
 
@@ -192,7 +193,7 @@ export default function BlackjackPage() {
       revealBalance();
     } catch (err) {
       revealBalance();
-      alert(err instanceof Error ? err.message : "Stand failed.");
+      notifyError(err, "Stand failed.");
     }
   }
 
@@ -210,7 +211,7 @@ export default function BlackjackPage() {
       revealBalance();
     } catch (err) {
       revealBalance();
-      alert(err instanceof Error ? err.message : "Double failed.");
+      notifyError(err, "Double failed.");
     }
   }
 
